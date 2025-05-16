@@ -28,59 +28,59 @@
   <div id="status">⏳ Загружаем рекламу...</div>
 
   <script>
-    const prompt = "Ты эксперт по картам Таро Уэйта. Проанализируй: Дурак + Императрица + Сила. Добавь emoji. Опиши: общее значение, любовь, работа, деньги, судьба. Разбей по абзацам.";
+  const prompt = "Ты эксперт по картам Таро Уэйта. Проанализируй: Дурак + Императрица + Сила. Добавь emoji. Опиши: общее значение, любовь, работа, деньги, судьба. Разбей по абзацам.";
 
-    window.yaContextCb = window.yaContextCb || [];
-    window.yaContextCb.push(() => {
-      const platform = Ya.Context.AdvManager.getPlatform();
+  window.yaContextCb = window.yaContextCb || [];
+  window.yaContextCb.push(() => {
+    const platform = Ya.Context.AdvManager.getPlatform();
 
-      // Отдельные блоки для desktop и touch
-      if (platform === 'desktop') {
-        Ya.Context.AdvManager.render({
-          blockId: 'R-A-4178257-16',
-          type: 'rewarded',
-          platform: 'desktop',
-          onRewarded: handleRewarded
-        });
-      } else if (platform === 'touch') {
-        Ya.Context.AdvManager.render({
-          blockId: 'R-A-4178257-17',
-          type: 'rewarded',
-          platform: 'touch',
-          onRewarded: handleRewarded
-        });
-      }
+    // Отдельные блоки для desktop и touch
+    Ya.Context.AdvManager.render({
+      blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
+      type: 'rewarded',
+      platform: platform,
+      onRewarded: handleRewarded
     });
+  });
 
-    async function handleRewarded(isRewarded) {
-      if (isRewarded) {
-        document.getElementById("status").innerText = "🔮 Генерируем расклад...";
-        try {
-          const res = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "sk-jndRCPQoy8_cQYsT4wU0Sp88GNy1nq0gY8E8WjVKZ9T3BlbkFJTswqa0r5ELGqrr7ArkcfuXq3GP2enm7t8Lgbclb0MA"
-            },
-            body: JSON.stringify({
-              model: "gpt-4o-mini",
-              messages: [{ role: "user", content: prompt }],
-              max_tokens: 2000
-            })
-          });
+  async function handleRewarded(isRewarded) {
+    const statusEl = document.getElementById("status");
 
-          const data = await res.json();
-          const result = data.choices[0].message.content.replace(/###\s?/g, "");
-          localStorage.setItem("tarotResult", result);
-          window.location.href = "https://картытароуэйта.рф/sochetanie#result";
-        } catch (err) {
-          document.getElementById("status").innerText = "Ошибка генерации расклада.";
-          console.error(err);
-        }
-      } else {
-        document.getElementById("status").innerText = "Вы не досмотрели рекламу. Попробуйте снова.";
-      }
+    if (!isRewarded) {
+      statusEl.innerText = "❌ Вы не досмотрели рекламу. Попробуйте снова.";
+      return;
     }
-  </script>
-</body>
-</html>
+
+    statusEl.innerText = "🔮 Генерируем расклад...";
+    try {
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "sk-jndRCPQoy8_cQYsT4wU0Sp88GNy1nq0gY8E8WjVKZ9T3BlbkFJTswqa0r5ELGqrr7ArkcfuXq3GP2enm7t8Lgbclb0MA'"
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [{ role: "user", content: prompt }],
+          max_tokens: 2000
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.choices || !data.choices[0]) {
+        statusEl.innerText = "❌ Ошибка: не удалось получить расклад.";
+        console.error("OpenAI API error:", data);
+        return;
+      }
+
+      const result = data.choices[0].message.content.replace(/###\s?/g, "");
+      localStorage.setItem("tarotResult", result);
+      window.location.href = "https://картытароуэйта.рф/sochetanie#result";
+
+    } catch (err) {
+      statusEl.innerText = "⚠️ Ошибка при генерации расклада.";
+      console.error(err);
+    }
+  }
+</script>
