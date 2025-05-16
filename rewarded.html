@@ -2,38 +2,85 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Смотреть рекламу</title>
+  <title>Смотреть рекламу и получить расклад</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://yastatic.net/pcode/adfox/loader.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f8f8;
       text-align: center;
-      padding-top: 50px;
+    }
+    h1 {
+      color: #153842;
+    }
+    #status {
+      margin-top: 30px;
+      font-size: 18px;
     }
   </style>
-  <script>
-    window.yaContextCb = window.yaContextCb || [];
-  </script>
-  <script src="https://yandex.ru/ads/system/context.js" async></script>
 </head>
 <body>
-  <h1>🎁 Для получения расклада посмотрите рекламу</h1>
-  <div id="marketWidget" style="margin-top: 40px;"></div>
+  <h1>🎁 Получите ваш Таро-расклад</h1>
+  <p>Пожалуйста, досмотрите рекламу до конца, чтобы получить бесплатный расклад.</p>
+  <div id="status">⏳ Загружаем рекламу...</div>
 
   <script>
+    const prompt = "Ты эксперт по картам Таро Уэйта. Проанализируй: Дурак + Императрица + Сила. Добавь emoji. Опиши: общее значение, любовь, работа, деньги, судьба. Разбей по абзацам.";
+
+    window.yaContextCb = window.yaContextCb || [];
     window.yaContextCb.push(() => {
-      Ya.Context.AdvManager.render({
-        blockId: 'R-A-4178257-16', // ⚠️ Замени на свой, если другой
-        type: 'rewarded',
-        platform: Ya.Context.AdvManager.getPlatform(),
-        onRewarded: function (isRewarded) {
-          if (isRewarded) {
-            window.location.href = "https://картытароуэйта.рф/sochetanie#result"; // ⚠️ Замени на свой
-          } else {
-            alert("Вы не досмотрели рекламу. Попробуйте снова.");
-          }
-        }
-      });
+      const platform = Ya.Context.AdvManager.getPlatform();
+
+      // Отдельные блоки для desktop и touch
+      if (platform === 'desktop') {
+        Ya.Context.AdvManager.render({
+          blockId: 'R-A-4178257-16',
+          type: 'rewarded',
+          platform: 'desktop',
+          onRewarded: handleRewarded
+        });
+      } else if (platform === 'touch') {
+        Ya.Context.AdvManager.render({
+          blockId: 'R-A-4178257-17',
+          type: 'rewarded',
+          platform: 'touch',
+          onRewarded: handleRewarded
+        });
+      }
     });
+
+    async function handleRewarded(isRewarded) {
+      if (isRewarded) {
+        document.getElementById("status").innerText = "🔮 Генерируем расклад...";
+        try {
+          const res = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer sk-jndRCPQoy8_cQYsT4wU0Sp88GNy1nq0gY8E8WjVKZ9T3BlbkFJTswqa0r5ELGqrr7ArkcfuXq3GP2enm7t8Lgbclb0MA"
+            },
+            body: JSON.stringify({
+              model: "gpt-4o-mini",
+              messages: [{ role: "user", content: prompt }],
+              max_tokens: 2000
+            })
+          });
+
+          const data = await res.json();
+          const result = data.choices[0].message.content.replace(/###\s?/g, "");
+          localStorage.setItem("tarotResult", result);
+          window.location.href = "https://картытароуэйта.рф/sochetanie#result";
+        } catch (err) {
+          document.getElementById("status").innerText = "Ошибка генерации расклада.";
+          console.error(err);
+        }
+      } else {
+        document.getElementById("status").innerText = "Вы не досмотрели рекламу. Попробуйте снова.";
+      }
+    }
   </script>
 </body>
 </html>
