@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Смотреть рекламу</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+  <script>
+    window.yaContextCb = window.yaContextCb || [];
+  </script>
+  <script src="https://yandex.ru/ads/system/context.js" async></script>
+</head>
+<body>
+  <h1>🎁 Для получения расклада посмотрите рекламу</h1>
+  <div id="marketWidget" style="margin-top: 40px;"></div>
+
+  <script>
+    window.yaContextCb.push(() => {
+      Ya.Context.AdvManager.render({
+        blockId: 'R-A-4178257-16', // ⚠️ Замени на свой, если другой
+        type: 'rewarded',
+        platform: Ya.Context.AdvManager.getPlatform(),
+        onRewarded: function (isRewarded) {
+          if (isRewarded) {
+            window.location.href = "https://картытароуэйта.рф/sochetanie"; // ⚠️ Замени на свой
+          } else {
+            alert("Вы не досмотрели рекламу. Попробуйте снова.");
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
