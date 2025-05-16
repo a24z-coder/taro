@@ -30,18 +30,19 @@
   <script>
   const prompt = "Ты эксперт по картам Таро Уэйта. Проанализируй: Дурак + Императрица + Сила. Добавь emoji. Опиши: общее значение, любовь, работа, деньги, судьба. Разбей по абзацам.";
 
-  window.yaContextCb = window.yaContextCb || [];
-  window.yaContextCb.push(() => {
-    const platform = Ya.Context.AdvManager.getPlatform();
+  window.onload = () => {
+    window.yaContextCb = window.yaContextCb || [];
+    window.yaContextCb.push(() => {
+      const platform = Ya.Context.AdvManager.getPlatform();
 
-    // Отдельные блоки для desktop и touch
-    Ya.Context.AdvManager.render({
-      blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
-      type: 'rewarded',
-      platform: platform,
-      onRewarded: handleRewarded
+      Ya.Context.AdvManager.render({
+        blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
+        type: 'rewarded',
+        platform: platform,
+        onRewarded: handleRewarded
+      });
     });
-  });
+  };
 
   async function handleRewarded(isRewarded) {
     const statusEl = document.getElementById("status");
