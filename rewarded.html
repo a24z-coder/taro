@@ -77,7 +77,7 @@
 
       const result = data.choices[0].message.content.replace(/###\s?/g, "");
       localStorage.setItem("tarotResult", result);
-      window.location.href = "https://картытароуэйта.рф/sochetanie#result";
+      window.top.location.href = "https://картытароуэйта.рф/sochetanie#result";
 
     } catch (err) {
       statusEl.innerText = "⚠️ Ошибка при генерации расклада.";
