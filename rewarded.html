@@ -2,86 +2,42 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Смотреть рекламу и получить расклад</title>
+  <title>Смотреть рекламу</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://yastatic.net/pcode/adfox/loader.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f8f8f8;
-      text-align: center;
-    }
-    h1 {
-      color: #153842;
-    }
-    #status {
-      margin-top: 30px;
-      font-size: 18px;
-    }
-  </style>
 </head>
 <body>
   <h1>🎁 Получите ваш Таро-расклад</h1>
-  <p>Пожалуйста, досмотрите рекламу до конца, чтобы получить бесплатный расклад.</p>
+  <p>Пожалуйста, досмотрите рекламу до конца</p>
   <div id="status">⏳ Загружаем рекламу...</div>
 
   <script>
-  const prompt = "Ты эксперт по картам Таро Уэйта. Проанализируй: Дурак + Императрица + Сила. Добавь emoji. Опиши: общее значение, любовь, работа, деньги, судьба. Разбей по абзацам.";
+    window.onload = () => {
+      window.yaContextCb = window.yaContextCb || [];
+      window.yaContextCb.push(() => {
+        const platform = Ya.Context.AdvManager.getPlatform();
 
-  window.onload = () => {
-    window.yaContextCb = window.yaContextCb || [];
-    window.yaContextCb.push(() => {
-      const platform = Ya.Context.AdvManager.getPlatform();
-
-      Ya.Context.AdvManager.render({
-        blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
-        type: 'rewarded',
-        platform: platform,
-        onRewarded: handleRewarded
+        Ya.Context.AdvManager.render({
+          blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
+          type: 'rewarded',
+          platform: platform,
+          onRewarded: handleRewarded
+        });
       });
-    });
-  };
+    };
 
-  async function handleRewarded(isRewarded) {
-    const statusEl = document.getElementById("status");
+    function handleRewarded(isRewarded) {
+      const statusEl = document.getElementById("status");
 
-    if (!isRewarded) {
-      statusEl.innerText = "❌ Вы не досмотрели рекламу. Попробуйте снова.";
-      return;
-    }
-
-    statusEl.innerText = "🔮 Генерируем расклад...";
-    try {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer sk-jndRCPQoy8_cQYsT4wU0Sp88GNy1nq0gY8E8WjVKZ9T3BlbkFJTswqa0r5ELGqrr7ArkcfuXq3GP2enm7t8Lgbclb0MA"
-        },
-        body: JSON.stringify({
-          model: "gpt-4o",
-          messages: [{ role: "user", content: prompt }],
-          max_tokens: 2000
-        })
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.choices || !data.choices[0]) {
-        statusEl.innerText = "❌ Ошибка: не удалось получить расклад.";
-        console.error("OpenAI API error:", data);
+      if (!isRewarded) {
+        statusEl.innerText = "❌ Вы не досмотрели рекламу. Попробуйте снова.";
         return;
       }
 
-      const result = data.choices[0].message.content.replace(/###\s?/g, "");
-      localStorage.setItem("tarotResult", result);
-      window.top.location.href = "https://картытароуэйта.рф/sochetanie#result";
-
-    } catch (err) {
-      statusEl.innerText = "⚠️ Ошибка при генерации расклада.";
-      console.error(err);
+      statusEl.innerText = "✅ Реклама просмотрена, переходим к раскладу...";
+      // Переход обратно в Tilda
+      window.location.href = "https://картытароуэйта.рф/sochetanie#rewarded";
     }
-  }
-</script>
+  </script>
+</body>
+</html>
