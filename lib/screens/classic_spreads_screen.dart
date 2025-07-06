@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'chat_with_tarot_reader_screen.dart';
 import 'five_card_spread_screen.dart';
 import 'celtic_cross_screen.dart';
@@ -12,12 +13,13 @@ class ClassicSpreadsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final langCode = LanguageService().currentLanguageCode;
+    final loc = AppLocalizations.of(context)!;
     const accentColor = Color(0xFFDBC195);
     Widget glassBlock({
       required Widget icon,
       required String title,
       required String description,
-      double height = 110,
+      double? height,
       Widget? trailing,
       bool highlight = false,
       Widget? overlay,
@@ -26,14 +28,13 @@ class ClassicSpreadsScreen extends StatelessWidget {
         children: [
           if (overlay != null) overlay,
           ClipRRect(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(24),
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
               child: Container(
-                height: height,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.35),
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(24),
                   border: Border.all(color: Colors.white.withOpacity(0.85), width: 1.5),
                   boxShadow: highlight
                       ? [
@@ -47,24 +48,25 @@ class ClassicSpreadsScreen extends StatelessWidget {
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      width: height,
-                      height: height,
+                      width: height ?? 110,
+                      height: height ?? 110,
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
                           Image.asset(
                             'assets/images/ellipse.png',
-                            width: height,
-                            height: height,
+                            width: height ?? 110,
+                            height: height ?? 110,
                             fit: BoxFit.cover,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: SizedBox(
-                              width: height - 12,
-                              height: height - 12,
+                              width: (height ?? 110) - 12,
+                              height: (height ?? 110) - 12,
                               child: icon,
                             ),
                           ),
@@ -88,8 +90,7 @@ class ClassicSpreadsScreen extends StatelessWidget {
                             Text(
                               description,
                               style: bodyStyleForLang(langCode, 13, color: Colors.white.withOpacity(0.92)),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
                             ),
                           ],
                         ),
@@ -133,7 +134,7 @@ class ClassicSpreadsScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          'Классические расклады',
+                          loc.classic_spreads_screen_title,
                           style: headingStyleForLang(langCode, 22, color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
@@ -166,9 +167,8 @@ class ClassicSpreadsScreen extends StatelessWidget {
                                 onTap: go,
                                 child: glassBlock(
                                   icon: Image.asset('assets/images/3karty.png', width: 54, height: 54, fit: BoxFit.contain),
-                                  title: '3 карты в раскладе',
-                                  description: 'прошлое – настоящее – будущее',
-                                  height: 110,
+                                  title: loc.classic_spreads_screen_three_cards_title,
+                                  description: loc.classic_spreads_screen_three_cards_description,
                                   trailing: IconButton(
                                     icon: const Icon(Icons.chevron_right, color: Colors.white, size: 36),
                                     onPressed: go,
@@ -193,9 +193,8 @@ class ClassicSpreadsScreen extends StatelessWidget {
                                 onTap: go,
                                 child: glassBlock(
                                   icon: Image.asset('assets/images/5karty.png', width: 54, height: 54, fit: BoxFit.contain),
-                                  title: '5 карт в раскладе',
-                                  description: 'детальный обзор ситуации',
-                                  height: 110,
+                                  title: loc.classic_spreads_screen_five_cards_title,
+                                  description: loc.classic_spreads_screen_five_cards_description,
                                   trailing: IconButton(
                                     icon: const Icon(Icons.chevron_right, color: Colors.white, size: 36),
                                     onPressed: go,
@@ -220,9 +219,8 @@ class ClassicSpreadsScreen extends StatelessWidget {
                                 onTap: go,
                                 child: glassBlock(
                                   icon: Image.asset('assets/images/krest.png', width: 54, height: 54, fit: BoxFit.contain),
-                                  title: 'Кельтский крест',
-                                  description: 'полный развёрнутый анализ',
-                                  height: 110,
+                                  title: loc.classic_spreads_screen_celtic_cross_title,
+                                  description: loc.classic_spreads_screen_celtic_cross_description,
                                   trailing: IconButton(
                                     icon: const Icon(Icons.chevron_right, color: Colors.white, size: 36),
                                     onPressed: go,

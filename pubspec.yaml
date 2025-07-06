@@ -47,6 +47,9 @@ dependencies:
   in_app_review: ^2.0.8
   cloud_firestore: ^5.6.9
   share_plus: ^7.2.1
+  auto_size_text: ^3.0.0
+  connectivity_plus: ^5.0.2
+  stack_appodeal_flutter: ^3.5.2
 
 dev_dependencies:
   flutter_test:
@@ -114,6 +117,11 @@ flutter:
         - asset: assets/fonts/ancizar/AncizarSerif-ExtraBoldItalic.ttf
           weight: 800
           style: italic
+    - family: CormorantInfant
+      fonts:
+        - asset: assets/fonts/cormorant_infant/CormorantInfant-Regular.ttf
+        - asset: assets/fonts/cormorant_infant/CormorantInfant-Bold.ttf
+          weight: 700
     - family: NotoSans
       fonts:
         - asset: assets/fonts/NotoSans/NotoSans-Regular.ttf

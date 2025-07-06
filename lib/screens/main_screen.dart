@@ -10,11 +10,17 @@ import 'package:tarot_ai/screens/quick_reading_screen.dart';
 import 'package:tarot_ai/screens/notification_settings_screen.dart';
 import 'package:tarot_ai/screens/contact_us_screen.dart';
 import 'package:tarot_ai/screens/fun_spread_screen.dart';
+import 'package:tarot_ai/screens/purchase_love_screen.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'package:tarot_ai/utils/performance_utils.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:in_app_review/in_app_review.dart';
-// import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:tarot_ai/utils/card_translations.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tarot_ai/services/translation_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -41,149 +47,220 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  @override
+  void dispose() {
+    debugPrint('[MainScreen] dispose');
+    super.dispose();
+  }
+
   Future<void> _loadData() async {
     debugPrint('[MainScreen] _loadData: start');
+    final loadStopwatch = Stopwatch()..start();
+    
     try {
+      debugPrint('[MainScreen] _loadData: starting parallel data loading');
       await Future.wait([
         _loadUserName(),
         _loadCardOfTheDay(),
       ]);
-    } catch (error) {
-      debugPrint('[MainScreen] Error loading data: $error');
+      debugPrint('[MainScreen] _loadData: parallel loading completed, elapsed: ${loadStopwatch.elapsedMilliseconds}ms');
+    } catch (error, stack) {
+      debugPrint('[MainScreen] ERROR in _loadData: $error\n$stack');
     } finally {
       if (mounted) {
         setState(() {
           _isLoading = false;
         });
         debugPrint('[MainScreen] _loadData: finished, elapsed: ${_stopwatch.elapsedMilliseconds}ms');
+      } else {
+        debugPrint('[MainScreen] _loadData: not mounted, skipping setState');
       }
     }
   }
 
   Future<void> _loadUserName() async {
     debugPrint('[MainScreen] _loadUserName: start');
-    final result = await PerformanceUtils.safeAsyncOperation(() async {
-      await UserService().loadUserName();
-      return UserService().userName;
-    });
-    if (result != null && mounted) {
-      setState(() {
-        _userName = result;
+    final stopwatch = Stopwatch()..start();
+    
+    try {
+      final result = await PerformanceUtils.safeAsyncOperation(() async {
+        debugPrint('[MainScreen] _loadUserName: calling UserService.loadUserName()');
+        await UserService().loadUserName();
+        final userName = UserService().userName;
+        debugPrint('[MainScreen] _loadUserName: UserService.userName = $userName');
+        return userName;
       });
-      debugPrint('[MainScreen] _loadUserName: loaded=$_userName');
+      
+      if (result != null && mounted) {
+        setState(() {
+          _userName = result;
+        });
+        debugPrint('[MainScreen] _loadUserName: loaded=$_userName, elapsed: ${stopwatch.elapsedMilliseconds}ms');
+      } else {
+        debugPrint('[MainScreen] _loadUserName: result=$result, mounted=$mounted');
+      }
+    } catch (error, stack) {
+      debugPrint('[MainScreen] ERROR in _loadUserName: $error\n$stack');
     }
   }
 
   Future<void> _loadCardOfTheDay() async {
     debugPrint('[MainScreen] _loadCardOfTheDay: start');
-    final result = await PerformanceUtils.safeAsyncOperation(() async {
-      final prefs = await PerformanceUtils.prefsInstance;
+    final stopwatch = Stopwatch()..start();
+    
+    try {
+      final result = await PerformanceUtils.safeAsyncOperation(() async {
+        debugPrint('[MainScreen] _loadCardOfTheDay: getting prefs instance');
+        final prefs = await PerformanceUtils.prefsInstance;
+        debugPrint('[MainScreen] _loadCardOfTheDay: prefs loaded');
+        
+        final today = DateTime.now().toIso8601String().split('T')[0];
+        final cardKey = 'card_of_the_day_$today';
+        debugPrint('[MainScreen] _loadCardOfTheDay: cardKey = $cardKey');
+        
+        final cardData = prefs.getString(cardKey);
+        debugPrint('[MainScreen] _loadCardOfTheDay: cardData = $cardData');
+        return cardData;
+      });
+      
+      if (mounted) {
+        if (result != null) {
+          final data = result.split('|');
+          debugPrint('[MainScreen] _loadCardOfTheDay: parsed data = $data');
+          
+          setState(() {
+            _cardOfTheDayName = data[0];
+            _cardOfTheDayImage = data[1];
+          });
+          debugPrint('[MainScreen] _loadCardOfTheDay: loaded=$_cardOfTheDayName, elapsed: ${stopwatch.elapsedMilliseconds}ms');
+        } else {
+          setState(() {
+            _cardOfTheDayName = null;
+            _cardOfTheDayImage = null;
+          });
+          debugPrint('[MainScreen] _loadCardOfTheDay: no card, elapsed: ${stopwatch.elapsedMilliseconds}ms');
+        }
+      } else {
+        debugPrint('[MainScreen] _loadCardOfTheDay: not mounted, skipping setState');
+      }
+    } catch (error, stack) {
+      debugPrint('[MainScreen] ERROR in _loadCardOfTheDay: $error\n$stack');
+    }
+  }
+
+  // Метод для параллельной загрузки описания карты дня
+  Future<void> _loadCardOfTheDayDescription() async {
+    debugPrint('[MainScreen] _loadCardOfTheDayDescription: start');
+    final stopwatch = Stopwatch()..start();
+    
+    try {
+      final prefs = await SharedPreferences.getInstance();
       final today = DateTime.now().toIso8601String().split('T')[0];
+      final descriptionKey = 'card_description_$today';
+      
+      // Проверяем, есть ли уже сохраненное описание
+      final savedDescription = prefs.getString(descriptionKey);
+      if (savedDescription != null) {
+        debugPrint('[MainScreen] _loadCardOfTheDayDescription: using cached description, elapsed: ${stopwatch.elapsedMilliseconds}ms');
+        return;
+      }
+      
+      // Если описания нет, загружаем карту дня и генерируем описание
       final cardKey = 'card_of_the_day_$today';
-      return prefs.getString(cardKey);
-    });
-    if (mounted) {
-      if (result != null) {
-        final data = result.split('|');
-        setState(() {
-          _cardOfTheDayName = data[0];
-          _cardOfTheDayImage = data[1];
-        });
-        debugPrint('[MainScreen] _loadCardOfTheDay: loaded=$_cardOfTheDayName');
+      final cardData = prefs.getString(cardKey);
+      
+      if (cardData != null) {
+        final data = cardData.split('|');
+        final cardName = data[0];
+        
+        // Генерируем описание через OpenAI
+        final translationService = TranslationService();
+        final languageCode = LanguageService().currentLanguageCode;
+        
+        final translatedCardName = CardTranslations.getTranslation(cardName, AppLocalizations.of(context)!);
+        final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
+          translatedCardName,
+          _userName,
+        );
+        
+        debugPrint('[MainScreen] _loadCardOfTheDayDescription: generating description for $cardName');
+        final openAIDescription = await translationService.getTranslatedText(
+          text: prompt,
+          targetLanguageCode: languageCode,
+          isTarotReading: true,
+        );
+        
+        // Сохраняем описание
+        await prefs.setString(descriptionKey, openAIDescription);
+        debugPrint('[MainScreen] _loadCardOfTheDayDescription: description generated and saved, elapsed: ${stopwatch.elapsedMilliseconds}ms');
       } else {
-        setState(() {
-          _cardOfTheDayName = null;
-          _cardOfTheDayImage = null;
-        });
-        debugPrint('[MainScreen] _loadCardOfTheDay: no card');
+        debugPrint('[MainScreen] _loadCardOfTheDayDescription: no card data found, skipping description generation');
       }
+    } catch (e, stack) {
+      debugPrint('[MainScreen] ERROR in _loadCardOfTheDayDescription: $e\n$stack');
     }
   }
 
-  String _getGreeting(String langCode) {
-    if (langCode.startsWith('ru')) {
-      return _userName.isNotEmpty ? 'Приветствую, $_userName' : 'Приветствую';
-    } else if (langCode.startsWith('nl')) {
-      return _userName.isNotEmpty ? 'Welkom, $_userName' : 'Welkom';
-    } else {
-      return _userName.isNotEmpty ? 'Welcome, $_userName' : 'Welcome';
-    }
+  String _getGreeting() {
+    final loc = AppLocalizations.of(context)!;
+    return _userName.isNotEmpty ? loc.main_screen_greeting_with_name(_userName) : loc.main_screen_greeting;
   }
 
-  String _getDateText(String langCode) {
-    if (langCode.startsWith('ru')) {
-      return 'Сегодня, 14/06/2023, Чт';
-    } else if (langCode.startsWith('nl')) {
-      return 'Vandaag: 14/06/2023 Do';
-    } else {
-      return 'Today: 14/06/2023 Thu';
+  String _getDateText() {
+    final loc = AppLocalizations.of(context)!;
+    final now = DateTime.now();
+    final day = now.day.toString().padLeft(2, '0');
+    final month = now.month.toString().padLeft(2, '0');
+    final year = now.year;
+    
+    // Получаем короткое название дня недели
+    String weekday;
+    switch (now.weekday) {
+      case 1: weekday = loc.main_screen_monday; break;
+      case 2: weekday = loc.main_screen_tuesday; break;
+      case 3: weekday = loc.main_screen_wednesday; break;
+      case 4: weekday = loc.main_screen_thursday; break;
+      case 5: weekday = loc.main_screen_friday; break;
+      case 6: weekday = loc.main_screen_saturday; break;
+      case 7: weekday = loc.main_screen_sunday; break;
+      default: weekday = '';
     }
+    
+    return '$day/$month/$year, $weekday';
   }
 
-  String _getCardOfTheDayTitle(String langCode) {
-    if (langCode.startsWith('ru')) {
-      return 'Ваша карта дня';
-    } else if (langCode.startsWith('nl')) {
-      return 'Jouw dagkaart';
-    } else {
-      return 'Your card of the day';
-    }
+  String _getCardOfTheDayTitle() {
+    final loc = AppLocalizations.of(context)!;
+    return loc.main_screen_your_card_of_the_day;
   }
 
-  String _getCardOfTheDayDescription(String langCode) {
+  String _getCardOfTheDayDescription() {
+    final loc = AppLocalizations.of(context)!;
     if (_cardOfTheDayName != null) {
-      if (langCode.startsWith('ru')) {
-        return 'Карта дня: $_cardOfTheDayName';
-      } else if (langCode.startsWith('nl')) {
-        return 'Kaart van de dag: $_cardOfTheDayName';
-      } else {
-        return 'Card of the day: $_cardOfTheDayName';
-      }
+      return loc.main_screen_card_of_the_day_with_name(CardTranslations.getTranslation(_cardOfTheDayName!, loc));
     } else {
-      if (langCode.startsWith('ru')) {
-        return 'Карта дня:';
-      } else if (langCode.startsWith('nl')) {
-        return 'Kaart van de dag:';
-      } else {
-        return 'Card of the day:';
-      }
+      return loc.main_screen_card_of_the_day;
     }
   }
 
-  String _getCardOfTheDayStatus(String langCode) {
+  String _getCardOfTheDayStatus() {
+    final loc = AppLocalizations.of(context)!;
     if (_cardOfTheDayName != null) {
-      if (langCode.startsWith('ru')) {
-        return 'Открыта';
-      } else if (langCode.startsWith('nl')) {
-        return 'Bekeken';
-      } else {
-        return 'Viewed';
-      }
+      return loc.main_screen_viewed;
     } else {
-      if (langCode.startsWith('ru')) {
-        return 'Посмотреть';
-      } else if (langCode.startsWith('nl')) {
-        return 'Bekijken';
-      } else {
-        return 'View';
-      }
+      return loc.main_screen_not_viewed;
     }
   }
 
-  String _getSectionTitle(String section, String langCode) {
+  String _getSectionTitle(String section) {
+    final loc = AppLocalizations.of(context)!;
     switch (section) {
       case 'spreads':
-        if (langCode.startsWith('ru')) return 'Расклады';
-        if (langCode.startsWith('nl')) return 'Leggingen';
-        return 'Spreads';
+        return loc.main_screen_spreads;
       case 'training':
-        if (langCode.startsWith('ru')) return 'Обучение';
-        if (langCode.startsWith('nl')) return 'Training';
-        return 'Training';
+        return loc.main_screen_training;
       case 'entertainment':
-        if (langCode.startsWith('ru')) return 'Развлечение';
-        if (langCode.startsWith('nl')) return 'Entertainment';
-        return 'Entertainment';
+        return loc.main_screen_entertainment;
       default:
         return '';
     }
@@ -193,7 +270,7 @@ class _MainScreenState extends State<MainScreen> {
     required Widget icon,
     required String title,
     required String description,
-    double height = 110,
+    double? height,
     Widget? trailing,
     bool highlight = false,
     Widget? overlay,
@@ -208,15 +285,14 @@ class _MainScreenState extends State<MainScreen> {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
             child: Container(
-              height: height,
               decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.35),
+                color: Colors.black.withOpacity(0.35),
                 borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: Colors.white.withValues(alpha: 0.85), width: 1.5),
+                border: Border.all(color: Colors.white.withOpacity(0.85), width: 1.5),
                 boxShadow: highlight
                     ? [
                         BoxShadow(
-                          color: accentColor.withValues(alpha: 0.25),
+                          color: accentColor.withOpacity(0.25),
                           blurRadius: 32,
                           spreadRadius: 2,
                         ),
@@ -225,24 +301,25 @@ class _MainScreenState extends State<MainScreen> {
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: height,
-                    height: height,
+                    width: height ?? 110,
+                    height: height ?? 110,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         Image.asset(
                           'assets/images/ellipse.png',
-                          width: height,
-                          height: height,
+                          width: height ?? 110,
+                          height: height ?? 110,
                           fit: BoxFit.cover,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: SizedBox(
-                            width: height - 12,
-                            height: height - 12,
+                            width: (height ?? 110) - 12,
+                            height: (height ?? 110) - 12,
                             child: icon,
                           ),
                         ),
@@ -252,7 +329,7 @@ class _MainScreenState extends State<MainScreen> {
                   const SizedBox(width: 18),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 0),
+                      padding: const EdgeInsets.only(top: 14.0, bottom: 14.0, right: 18.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -265,9 +342,8 @@ class _MainScreenState extends State<MainScreen> {
                           const SizedBox(height: 6),
                           Text(
                             description,
-                            style: bodyStyleForLang(Localizations.localeOf(context).toLanguageTag(), 13, color: Colors.white.withValues(alpha: 0.92)),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                            style: bodyStyleForLang(Localizations.localeOf(context).toLanguageTag(), 13, color: Colors.white.withOpacity(0.92)),
+                            softWrap: true,
                           ),
                         ],
                       ),
@@ -288,6 +364,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void _showMenu() {
+    final loc = AppLocalizations.of(context)!;
     debugPrint('[MainScreen] Меню открыто, elapsed: ${_stopwatch.elapsedMilliseconds}ms');
     debugPrint('[MainScreen] Screen size: ${MediaQuery.of(context).size}');
     
@@ -316,7 +393,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Expanded(
                     child: Text(
-                      'Привет, $_userName',
+                      loc.main_screen_greeting_with_name(_userName),
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -333,7 +410,7 @@ class _MainScreenState extends State<MainScreen> {
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFDBC195).withValues(alpha: 0.1),
+                        color: const Color(0xFFDBC195).withOpacity(0.1),
                         shape: BoxShape.circle,
                         border: Border.all(color: const Color(0xFFDBC195), width: 1),
                       ),
@@ -347,9 +424,9 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Рады видеть тебя здесь',
-                style: TextStyle(
+              Text(
+                loc.main_screen_glad_to_see_you_here,
+                style: const TextStyle(
                   fontSize: 14,
                   color: Colors.white70,
                 ),
@@ -358,115 +435,203 @@ class _MainScreenState extends State<MainScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFDBC195).withValues(alpha: 0.1),
+                  color: const Color(0xFFDBC195).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: const Color(0xFFDBC195).withValues(alpha: 0.3)),
+                  border: Border.all(color: const Color(0xFFDBC195).withOpacity(0.3)),
                 ),
-                child: const Text(
-                  'Ваш план: Пробный (с рекламой)',
-                  style: TextStyle(
+                child: Text(
+                  AppLocalizations.of(context)!.main_screen_your_plan_trial,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 13,
                   ),
                 ),
               ),
               const SizedBox(height: 16),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFCEB88B),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  // Определяем ширину блока
+                  double maxWidth = constraints.maxWidth;
+                  // Базовые размеры
+                  double titleFontSize = 24;
+                  double badgeFontSize = 24;
+                  double actionFontSize = 15;
+                  double bulletFontSize = 16;
+                  double imageSize = 90;
+                  // Если мало места — уменьшаем всё
+                  if (maxWidth < 400) {
+                    titleFontSize = 18;
+                    badgeFontSize = 18;
+                    actionFontSize = 12;
+                    bulletFontSize = 13;
+                    imageSize = 60;
+                  } else if (maxWidth < 500) {
+                    titleFontSize = 20;
+                    badgeFontSize = 20;
+                    actionFontSize = 13;
+                    bulletFontSize = 14;
+                    imageSize = 75;
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const PurchaseLoveScreen()),
+                      );
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFCEB88B),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                            decoration: BoxDecoration(
-                              color: Colors.redAccent,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Text(
-                              'АКЦИЯ -50%',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        AppLocalizations.of(context)!.main_screen_tariff,
+                                        style: TextStyle(
+                                          fontSize: titleFontSize,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.black87,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Flexible(
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF3B4B47),
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context)!.main_screen_love_badge,
+                                          style: TextStyle(
+                                            fontSize: badgeFontSize,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.white,
+                                            letterSpacing: 1.1,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                                      decoration: BoxDecoration(
+                                        color: Colors.redAccent,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Text(
+                                        AppLocalizations.of(context)!.main_screen_promo_50,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: actionFontSize,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 14),
+                                    Flexible(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(AppLocalizations.of(context)!.main_screen_no_ads, style: TextStyle(fontSize: bulletFontSize, color: Colors.black87), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                          Text(AppLocalizations.of(context)!.main_screen_no_limits, style: TextStyle(fontSize: bulletFontSize, color: Colors.black87), maxLines: 1, overflow: TextOverflow.ellipsis),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          Row(
-                            children: [
-                              const Text(
-                                'ТАРИФ ',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF3B4B47),
-                                  borderRadius: BorderRadius.circular(6),
-                                ),
-                                child: const Text(
-                                  'ЛЮБОВЬ',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          const SizedBox(width: 12),
+                          SizedBox(
+                            width: imageSize,
+                            height: imageSize,
+                            child: Image.asset(
+                              'assets/images/tarifflove.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
-                          const SizedBox(height: 6),
-                          const Text('• без рекламы', style: TextStyle(fontSize: 13, color: Colors.black87)),
-                          const Text('• без ограничений', style: TextStyle(fontSize: 13, color: Colors.black87)),
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset(
-                        'assets/images/tarifflove.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               ),
               const SizedBox(height: 16),
-              _buildMenuItem(Icons.storefront, 'Магазин (soon)', null),
-              _buildMenuItem(Icons.notifications, 'Настройки уведомлений', () {
+              _buildMenuItem(Icons.storefront, AppLocalizations.of(context)!.main_screen_shop_soon, null),
+              _buildMenuItem(Icons.notifications, AppLocalizations.of(context)!.main_screen_notification_settings, () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => const NotificationSettingsScreen()));
               }),
-              _buildMenuItem(Icons.language, 'Выбор языка', () {
+              _buildMenuItem(Icons.language, AppLocalizations.of(context)!.main_screen_language_selection, () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => const LanguageSelectionOnboardingScreen()));
               }),
-              _buildMenuItem(Icons.star_rate, 'Оцените приложение', () async {
-                final inAppReview = InAppReview.instance;
-                if (await inAppReview.isAvailable()) {
-                  inAppReview.requestReview();
-                } else {
-                  inAppReview.openStoreListing();
+              _buildMenuItem(Icons.star_rate, AppLocalizations.of(context)!.main_screen_rate_app, () async {
+                try {
+                  debugPrint('[MainScreen] Rate app button tapped');
+                  final inAppReview = InAppReview.instance;
+                  bool reviewRequested = false;
+                  if (await inAppReview.isAvailable()) {
+                    await inAppReview.requestReview();
+                    reviewRequested = true;
+                    debugPrint('[MainScreen] In-app review requested');
+                  }
+                  // Ждем 2 секунды — если окно не появилось, открываем Google Play
+                  await Future.delayed(const Duration(seconds: 2));
+                  if (!mounted) return;
+                  // Показываем SnackBar с подсказкой
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(AppLocalizations.of(context)!.main_screen_rate_hint),
+                      backgroundColor: Colors.black87,
+                      duration: Duration(seconds: 3),
+                    ),
+                  );
+                  // Открываем Google Play (в любом случае, чтобы повысить конверсию)
+                  await inAppReview.openStoreListing();
+                } catch (error, stackTrace) {
+                  debugPrint('[MainScreen] ERROR in rate app: $error');
+                  debugPrint('[MainScreen] Stack trace: $stackTrace');
+                  if (mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(AppLocalizations.of(context)!.main_screen_rate_error),
+                        backgroundColor: Colors.red,
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  }
                 }
               }),
-              _buildMenuItem(Icons.mail_outline, 'Связаться с нами', () {
+              _buildMenuItem(Icons.mail_outline, AppLocalizations.of(context)!.main_screen_contact_us, () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ContactUsScreen()));
               }),
               const SizedBox(height: 16),
-              const Center(
+              Center(
                 child: Text(
-                  'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.',
+                  AppLocalizations.of(context)!.disclaimer_text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 9,
@@ -493,206 +658,289 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final langCode = Localizations.localeOf(context).toLanguageTag();
+    debugPrint('[MainScreen] build: start');
+    final buildStopwatch = Stopwatch()..start();
+    
+    try {
+      final size = MediaQuery.of(context).size;
+      debugPrint('[MainScreen] build: screen size = ${size.width}x${size.height}');
+      
+      final langCode = LanguageService().currentLanguageCode;
+      debugPrint('[MainScreen] build: language code = $langCode');
+      
+      final loc = AppLocalizations.of(context)!;
+      debugPrint('[MainScreen] build: localizations loaded');
+      
+      debugPrint('[MainScreen] build: elapsed: ${_stopwatch.elapsedMilliseconds}ms');
 
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: PerformanceUtils.optimizedImage(
-              assetPath: 'assets/images/main-2.jpg',
-              width: size.width,
-              height: size.height,
-              fit: BoxFit.cover,
-              errorWidget: Container(
-                color: const Color(0xFF153842),
-                child: const Center(
-                  child: Icon(
-                    Icons.image_not_supported,
-                    color: Colors.white,
-                    size: 64,
+      final scaffold = Scaffold(
+        extendBodyBehindAppBar: true,
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: PerformanceUtils.optimizedImage(
+                assetPath: 'assets/images/main-2.jpg',
+                width: size.width,
+                height: size.height,
+                fit: BoxFit.cover,
+                errorWidget: Container(
+                  color: const Color(0xFF153842),
+                  child: const Center(
+                    child: Icon(
+                      Icons.image_not_supported,
+                      color: Colors.white,
+                      size: 64,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SafeArea(
-            top: true,
-            bottom: false,
-            child: _isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                  )
-                : SingleChildScrollView(
-                    padding: EdgeInsets.fromLTRB(16, 18, 16, MediaQuery.of(context).padding.bottom + 24),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                _getGreeting(langCode),
-                                style: bodyStyleForLang(langCode, 20, color: Colors.white),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: _showMenu,
-                              child: Container(
-                                width: 36,
-                                height: 36,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.13),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white, width: 2),
+            SafeArea(
+              top: true,
+              bottom: false,
+              child: _isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    )
+                  : SingleChildScrollView(
+                      padding: EdgeInsets.fromLTRB(16, 18, 16, MediaQuery.of(context).padding.bottom + 48),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  _getGreeting(),
+                                  style: bodyStyleForLang(langCode, 20, color: Colors.white),
                                 ),
-                                child: const Icon(Icons.person, color: Colors.white, size: 22),
+                              ),
+                              GestureDetector(
+                                onTap: _showMenu,
+                                child: Container(
+                                  width: 36,
+                                  height: 36,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.13),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.white, width: 2),
+                                  ),
+                                  child: const Icon(Icons.person, color: Colors.white, size: 22),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            _getDateText(),
+                            style: bodyStyleForLang(langCode, 15, color: Colors.white.withOpacity(0.8)),
+                          ),
+                          const SizedBox(height: 22),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () async {
+                                debugPrint('[MainScreen] Card of the day tapped - starting parallel loading');
+                                
+                                // Начинаем загрузку описания карты дня параллельно
+                                final descriptionFuture = _loadCardOfTheDayDescription();
+                                
+                                // Показываем рекламу параллельно
+                                try {
+                                  bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                  debugPrint('[MainScreen] Appodeal Interstitial loaded: $isLoaded');
+                                  if (isLoaded) {
+                                    debugPrint('[MainScreen] Showing Appodeal Interstitial ad');
+                                    await Appodeal.show(AppodealAdType.Interstitial);
+                                    debugPrint('[MainScreen] Appodeal Interstitial ad shown');
+                                    await Appodeal.cache(AppodealAdType.Interstitial);
+                                  } else {
+                                    debugPrint('[MainScreen] Appodeal Interstitial not loaded, caching now');
+                                    await Appodeal.cache(AppodealAdType.Interstitial);
+                                  }
+                                } catch (e, st) {
+                                  debugPrint('[MainScreen] ERROR showing Appodeal Interstitial: $e\n$st');
+                                }
+                                
+                                // Ждем завершения загрузки описания (если еще не завершилось)
+                                await descriptionFuture;
+                                
+                                await Navigator.push(context, MaterialPageRoute(builder: (_) => const CardOfTheDayScreen()));
+                                _loadCardOfTheDay();
+                              },
+                              child: _buildGlassBlock(
+                                icon: _cardOfTheDayImage != null
+                                    ? ClipRRect(
+                                        borderRadius: BorderRadius.circular(8),
+                                        child: Image.asset(
+                                          _cardOfTheDayImage!,
+                                          width: 54,
+                                          height: 80,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      )
+                                    : Image.asset('assets/images/blur.png', width: 54, height: 80, fit: BoxFit.contain),
+                                title: _getCardOfTheDayTitle(),
+                                description: _getCardOfTheDayDescription(),
+                                height: 110,
+                                trailing: Text(
+                                  _getCardOfTheDayStatus(),
+                                  style: bodyStyleForLang(langCode, 14, color: Colors.white.withOpacity(0.7)),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          _getDateText(langCode),
-                          style: bodyStyleForLang(langCode, 15, color: Colors.white.withValues(alpha: 0.8)),
-                        ),
-                        const SizedBox(height: 22),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () async {
-                              await Navigator.push(context, MaterialPageRoute(builder: (_) => const CardOfTheDayScreen()));
-                              _loadCardOfTheDay();
-                            },
-                            child: _buildGlassBlock(
-                              icon: _cardOfTheDayImage != null
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.asset(
-                                        _cardOfTheDayImage!,
-                                        width: 54,
-                                        height: 80,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    )
-                                  : Image.asset('assets/images/blur.png', width: 54, height: 80, fit: BoxFit.contain),
-                              title: _getCardOfTheDayTitle(langCode),
-                              description: _getCardOfTheDayDescription(langCode),
-                              height: 110,
-                              trailing: Text(
-                                _getCardOfTheDayStatus(langCode),
-                                style: bodyStyleForLang(langCode, 14, color: Colors.white.withValues(alpha: 0.7)),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            _getSectionTitle('spreads'),
+                            style: headingStyleForLang(langCode, 18, color: Colors.white),
+                          ),
+                          const SizedBox(height: 16),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const QuickReadingScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/fast.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: loc.main_screen_quick_reading_title,
+                                description: loc.main_screen_quick_reading_description,
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          _getSectionTitle('spreads', langCode),
-                          style: headingStyleForLang(langCode, 18, color: Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const QuickReadingScreen()));
-                            },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/fast.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Быстрый расклад' : langCode.startsWith('nl') ? 'Snelle legging' : 'Quick spread',
-                              description: langCode.startsWith('ru') ? 'за пару касаний получите чёткий ответ на свой вопрос одной картой' : langCode.startsWith('nl') ? 'snel antwoord op je vraag met één kaart' : 'get a quick answer to your question with one card',
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const ClassicSpreadsScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/classic.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: AppLocalizations.of(context)!.main_screen_classic_spreads_title,
+                                description: AppLocalizations.of(context)!.main_screen_classic_spreads_description,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const ClassicSpreadsScreen()));
-                            },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/classic.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Классические расклады' : langCode.startsWith('nl') ? 'Klassieke leggingen' : 'Classic spreads',
-                              description: langCode.startsWith('ru') ? 'расклады на 2 / 3 / 5 карт и полный развёрнутый Кельтский крест' : langCode.startsWith('nl') ? 'leggingen met 2 / 3 / 5 kaarten en het volledige Keltisch kruis' : 'spreads for 2 / 3 / 5 cards and the full Celtic cross',
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const ThematicSpreadsScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/love.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: AppLocalizations.of(context)!.main_screen_thematic_spreads_title,
+                                description: AppLocalizations.of(context)!.main_screen_thematic_spreads_description,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const ThematicSpreadsScreen()));
-                            },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/love.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Тематические расклады' : langCode.startsWith('nl') ? 'Thematische leggingen' : 'Thematic spreads',
-                              description: langCode.startsWith('ru') ? 'готовые схемы для важных сфер: любовь, карьера, здоровье, путешествия' : langCode.startsWith('nl') ? 'voor liefde, carrière, gezondheid, reizen' : 'ready-made layouts for love, career, health, travel',
+                          const SizedBox(height: 16),
+                          Text(
+                            _getSectionTitle('training'),
+                            style: headingStyleForLang(langCode, 18, color: Colors.white),
+                          ),
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const CardCombinationScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/change.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: AppLocalizations.of(context)!.main_screen_card_combination_title,
+                                description: AppLocalizations.of(context)!.main_screen_card_combination_description,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          _getSectionTitle('training', langCode),
-                          style: headingStyleForLang(langCode, 18, color: Colors.white),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const CardCombinationScreen()));
-                            },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/change.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Сочетание карт' : langCode.startsWith('nl') ? 'Kaartcombinatie' : 'Card Combination',
-                              description: langCode.startsWith('ru') ? '{калькулятор таро} выберите карты и получите глубокий анализ связей' : langCode.startsWith('nl') ? 'kies kaarten en krijg diepgaande analyse van combinaties' : 'choose cards and get a deep analysis of connections',
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const CardMeaningsScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/mean.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: AppLocalizations.of(context)!.main_screen_card_meanings_title,
+                                description: AppLocalizations.of(context)!.main_screen_card_meanings_description,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const CardMeaningsScreen()));
-                            },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/mean.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Значение карт' : langCode.startsWith('nl') ? 'Betekenissen van kaarten' : 'Card Meanings',
-                              description: langCode.startsWith('ru') ? 'полный справочник прямых и перевёрнутых значений всех старших и младших арканов' : langCode.startsWith('nl') ? 'volledig overzicht van rechtopstaande en omgekeerde betekenissen' : 'full reference of upright and reversed meanings of all major and minor arcana',
+                          const SizedBox(height: 16),
+                          Text(
+                            _getSectionTitle('entertainment'),
+                            style: headingStyleForLang(langCode, 18, color: Colors.white),
+                          ),
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => const FunSpreadScreen()));
+                              },
+                              child: _buildGlassBlock(
+                                icon: Image.asset('assets/images/fun.png', width: 54, height: 54, fit: BoxFit.contain),
+                                title: AppLocalizations.of(context)!.main_screen_fun_spread_title,
+                                description: AppLocalizations.of(context)!.main_screen_fun_spread_description,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          _getSectionTitle('entertainment', langCode),
-                          style: headingStyleForLang(langCode, 18, color: Colors.white),
-                        ),
-                        const SizedBox(height: 10),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: GestureDetector(
+                          const SizedBox(height: 12),
+                          GestureDetector(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => const FunSpreadScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => const ContactUsScreen()));
                             },
-                            child: _buildGlassBlock(
-                              icon: Image.asset('assets/images/fun.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: langCode.startsWith('ru') ? 'Шуточный расклад для соц.сетей' : langCode.startsWith('nl') ? 'Graplegging voor socials' : 'Fun spread for social media',
-                              description: langCode.startsWith('ru') ? 'поднимите настроение, сделайте шуточный расклад и поделитесь в соц сетях' : langCode.startsWith('nl') ? 'verhoog je stemming, maak een grappige legging en deel het op sociale media' : 'lift your mood, make a fun spread and share it on social media',
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.08),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: Colors.white.withOpacity(0.2)),
+                              ),
+                              child: Text(
+                                AppLocalizations.of(context)!.main_screen_suggest_spread,
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 18),
-                      ],
+                          const SizedBox(height: 18),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                            child: Text(
+                              AppLocalizations.of(context)!.main_screen_disclaimer,
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.6),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                height: 1.3,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-          ),
-        ],
-      ),
-    );
+            ),
+          ],
+        ),
+      );
+      
+      debugPrint('[MainScreen] build: completed, elapsed: ${buildStopwatch.elapsedMilliseconds}ms');
+      return scaffold;
+    } catch (e, stack) {
+      debugPrint('[MainScreen] ERROR in build(): $e\n$stack');
+      rethrow;
+    }
   }
 } 

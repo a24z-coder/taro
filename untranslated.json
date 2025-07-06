@@ -1,0 +1,99 @@
+{
+  "ar": [
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "bg": [
+    "analyzing_cards",
+    "month_january",
+    "month_february",
+    "month_march",
+    "month_april",
+    "month_may",
+    "month_june",
+    "month_july",
+    "month_august",
+    "month_september",
+    "month_october",
+    "month_november",
+    "month_december"
+  ],
+
+  "bn": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "bn_BD": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "de": [
+    "self_growth_balance_prompt"
+  ],
+
+  "de_DE": [
+    "quick_reading_screen_quick_spread_explanation"
+  ],
+
+  "gl": [
+    "self_growth_balance_prompt"
+  ],
+
+  "he_IL": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "hi": [
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "hi_IN": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "it_IT": [
+    "self_growth_balance_prompt"
+  ],
+
+  "ja_JP": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "kk": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "ky": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "ky_KG": [
+    "self_growth_balance_prompt",
+    "main_screen_suggest_spread",
+    "main_screen_disclaimer"
+  ],
+
+  "lv": [
+    "self_growth_balance_prompt"
+  ],
+
+  "th": [
+    "appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake"
+  ]
+}

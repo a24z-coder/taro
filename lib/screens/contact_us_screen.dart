@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:tarot_ai/l10n/app_localizations.dart';
 
 class ContactUsScreen extends StatefulWidget {
   const ContactUsScreen({Key? key}) : super(key: key);
@@ -45,14 +47,14 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Ваше сообщение получено, спасибо!')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.contact_us_screen_message_sent)),
         );
         _emailController.clear();
         _messageController.clear();
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Ошибка отправки сообщения')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.contact_us_screen_message_error)),
       );
     }
     // Здесь можно добавить отправку на email через backend/EmailJS/Firebase Functions
@@ -93,9 +95,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 12),
-                        const Text(
-                          'Напишите нам',
-                          style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                        Text(
+                          AppLocalizations.of(context)!.contact_us_title,
+                          style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 24),
                         GestureDetector(
@@ -132,14 +134,14 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             keyboardType: TextInputType.emailAddress,
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
-                              hintText: 'Ваш e-mail',
+                              hintText: AppLocalizations.of(context)!.contact_us_email_hint,
                               hintStyle: TextStyle(color: Colors.white70),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                             ),
                             validator: (value) {
-                              if (value == null || value.isEmpty) return 'Введите e-mail';
-                              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)) return 'Некорректный e-mail';
+                              if (value == null || value.isEmpty) return AppLocalizations.of(context)!.contact_us_email_empty;
+                              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)) return AppLocalizations.of(context)!.contact_us_email_invalid;
                               return null;
                             },
                           ),
@@ -157,13 +159,13 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             minLines: 3,
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
-                              hintText: 'Ваше сообщение',
+                              hintText: AppLocalizations.of(context)!.contact_us_message_hint,
                               hintStyle: TextStyle(color: Colors.white70),
                               border: InputBorder.none,
                               contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                             ),
                             validator: (value) {
-                              if (value == null || value.isEmpty) return 'Введите сообщение';
+                              if (value == null || value.isEmpty) return AppLocalizations.of(context)!.contact_us_message_empty;
                               return null;
                             },
                           ),
@@ -179,7 +181,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                             ),
                             onPressed: _sending ? null : _sendEmail,
-                            child: const Text('Отправить', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                            child: Text(AppLocalizations.of(context)!.contact_us_send_button, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ],

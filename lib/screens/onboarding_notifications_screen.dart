@@ -8,7 +8,7 @@ class OnboardingNotificationsScreen extends StatelessWidget {
   const OnboardingNotificationsScreen({Key? key}) : super(key: key);
 
   Future<void> _requestNotificationPermission(BuildContext context) async {
-    await FirebaseMessaging.instance.requestPermission();
+    // await FirebaseMessaging.instance.requestPermission();
     // Можно обработать статус, если нужно
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const OnboardingFinalScreen()),
@@ -17,6 +17,7 @@ class OnboardingNotificationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('OnboardingNotificationsScreen build called');
     final size = MediaQuery.of(context).size;
     final langCode = Localizations.localeOf(context).toLanguageTag();
     print('OnboardingNotificationsScreen langCode: ' + langCode);
@@ -50,7 +51,10 @@ class OnboardingNotificationsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   GestureDetector(
-                    onTap: () => _requestNotificationPermission(context),
+                    onTap: () async {
+                      print('Allow notifications tapped');
+                      await _requestNotificationPermission(context);
+                    },
                     child: Container(
                       width: double.infinity,
                       height: 56,
@@ -77,6 +81,7 @@ class OnboardingNotificationsScreen extends StatelessWidget {
                   Center(
                     child: GestureDetector(
                       onTap: () {
+                        print('Decline notifications tapped');
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (_) => const OnboardingFinalScreen()),
                         );

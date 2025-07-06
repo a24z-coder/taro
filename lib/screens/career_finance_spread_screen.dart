@@ -5,7 +5,10 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class CareerFinanceSpreadScreen extends StatefulWidget {
   const CareerFinanceSpreadScreen({Key? key}) : super(key: key);
@@ -15,30 +18,20 @@ class CareerFinanceSpreadScreen extends StatefulWidget {
 }
 
 class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
+  String _languageCode = 'en';
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
-  String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What is the main challenge I face now?',
-    'What should I focus on in the near future?',
-    'What is hidden from me?',
-  ];
 
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
-  List<String?> _flippedCards = [null, null, null];
-  List<bool> _cardFlipped = [false, false, false];
+  List<String?> _flippedCards = List.filled(3, null);
+  List<bool> _cardFlipped = List.filled(3, false);
   List<GlobalKey<FlipCardState>> _cardKeys = List.generate(3, (_) => GlobalKey<FlipCardState>());
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
 
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
@@ -50,18 +43,61 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.career_finance_spread_screen_suggested_questions_1,
+        l10n.career_finance_spread_screen_suggested_questions_2,
+        l10n.career_finance_spread_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return l10n.good_day_please_write_your_question_below;
+    }
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
   }
 
-  Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
-    });
+  @override
+  void dispose() {
+    LanguageService().removeListener(_onLanguageChanged);
+    _questionController.dispose();
+    super.dispose();
+  }
+
+  void _onLanguageChanged() {
+    if (mounted) {
+      setState(() {
+        _languageCode = LanguageService().currentLanguageCode;
+      });
+    }
   }
 
   void _handleGetAnswer() async {
@@ -76,11 +112,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.career_finance_spread_screen_request_accepted,
         isUser: false,
       ));
       List<String> available = List.from(_allCardNames);
@@ -92,20 +124,27 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     });
   }
 
-  void _handleSeeMeaning() async {
+  Future<void> _loadCardsDescription() async {
     setState(() {
-      _showSeeMeaningButton = false;
+      _isLoading = true;
     });
+    final l10n = AppLocalizations.of(context)!;
     final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для  ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад на те три карты что выпали: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een legging op deze drie kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these three cards: ${cards.join(', ')}';
-    }
-
+    String situationCardRu = cards.length > 0 ? CardTranslations.getTranslatedCardName(cards[0]!, l10n) : '';
+    String challengeCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1]!, l10n) : '';
+    String adviceCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2]!, l10n) : '';
+    String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
+    String prompt = l10n.career_three_card_prompt(
+      situationCardRu,
+      challengeCardRu,
+      adviceCardRu,
+      _userName.isNotEmpty ? _userName : l10n.the_user,
+      userText,
+    );
+    print('[CareerSpread] situationCardRu: ' + situationCardRu);
+    print('[CareerSpread] challengeCardRu: ' + challengeCardRu);
+    print('[CareerSpread] adviceCardRu: ' + adviceCardRu);
+    print('[CareerSpread] prompt: ' + prompt);
     try {
       final response = await TranslationService().getTranslatedText(
         text: prompt,
@@ -115,20 +154,48 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
       setState(() {
         _openAiAnswer = response;
         _showAdAndNewSpread = true;
+        _isLoading = false;
       });
     } catch (e) {
       setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = AppLocalizations.of(context)!.career_finance_spread_screen_error_getting_value;
+        }
         _showAdAndNewSpread = true;
+        _isLoading = false;
       });
     }
   }
 
+  void _handleSeeMeaning() async {
+    setState(() {
+      _showSeeMeaningButton = false;
+    });
+    _loadCardsDescription();
+    try {
+      final adStartTime = DateTime.now();
+      debugPrint('[CareerFinance] Starting ad loading at [36m${adStartTime.toIso8601String()}[0m');
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[CareerFinance] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[CareerFinance] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[CareerFinance] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
+    }
+  }
+
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -142,9 +209,9 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое расклад Карьера и финансы?',
-                style: TextStyle(
+              Text(
+                loc.career_finance_spread_screen_what_is_career_finance_spread,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -152,9 +219,9 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Этот расклад помогает проанализировать профессиональную и финансовую сферу. Вы узнаете о возможностях, препятствиях и перспективах роста.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.career_finance_spread_screen_career_finance_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -168,9 +235,9 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.career_finance_spread_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -217,6 +284,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
   }
 
   Widget _buildThreeCards() {
+    final l10n = AppLocalizations.of(context)!;
     final allFlipped = _cardFlipped.every((f) => f);
     return Align(
       alignment: Alignment.centerRight,
@@ -249,39 +317,43 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                     return Flexible(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                        child: SizedBox(
-                          width: cardWidth,
-                          height: cardHeight,
-                          child: GestureDetector(
-                            onTap: () {
-                              if (!_cardFlipped[index]) {
-                                _cardKeys[index].currentState?.toggleCard();
-                                setState(() {
-                                  _cardFlipped[index] = true;
-                                });
-                              }
-                            },
-                            child: FlipCard(
-                              key: _cardKeys[index],
-                              front: Image.asset(
-                                'assets/images/card_back.png',
-                                width: cardWidth,
-                                height: cardHeight,
-                                fit: BoxFit.contain,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: cardWidth,
+                              height: cardHeight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (!_cardFlipped[index]) {
+                                    _cardKeys[index].currentState?.toggleCard();
+                                    setState(() {
+                                      _cardFlipped[index] = true;
+                                    });
+                                  }
+                                },
+                                child: FlipCard(
+                                  key: _cardKeys[index],
+                                  front: Image.asset(
+                                    'assets/images/card_back.png',
+                                    width: cardWidth,
+                                    height: cardHeight,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  back: _flippedCards[index] != null
+                                      ? Image.asset(
+                                          'assets/cards/' + CardTranslations.cardToFileMap[_flippedCards[index]!]!,
+                                          width: cardWidth,
+                                          height: cardHeight,
+                                          fit: BoxFit.contain,
+                                        )
+                                      : Container(),
+                                  onFlipped: () {
+                                    setState(() {});
+                                  },
+                                ),
                               ),
-                              back: _flippedCards[index] != null
-                                  ? Image.asset(
-                                      'assets/cards/' + CardTranslations.cardToFileMap[_flippedCards[index]!]!,
-                                      width: cardWidth,
-                                      height: cardHeight,
-                                      fit: BoxFit.contain,
-                                    )
-                                  : Container(),
-                              onFlipped: () {
-                                setState(() {});
-                              },
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     );
@@ -298,16 +370,12 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFDBC195),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          _languageCode == 'ru'
-                              ? 'Узнать значение'
-                              : _languageCode == 'nl'
-                                  ? 'Bekijk betekenis'
-                                  : 'See meaning',
+                          AppLocalizations.of(context)!.seeMeaning,
                           style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -326,7 +394,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -354,6 +422,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -364,7 +433,6 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -379,11 +447,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Карьера и финансы'
-                : _languageCode == 'nl'
-                    ? 'Carrière en financiën'
-                    : 'Career & Finance',
+            AppLocalizations.of(context)!.careerFinance,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -428,7 +492,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                           children: [
                             const SizedBox(height: 32),
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               child: Image.asset(
                                 'assets/images/tarolog.png',
                                 width: double.infinity,
@@ -462,19 +526,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -487,17 +539,31 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.newSpread,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.career_finance_spread_screen_disclaimer,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -506,6 +572,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                             const SizedBox(height: 18),
                             _buildSuggestedQuestions(),
                             const SizedBox(height: 24),
+                            SizedBox(height: 10),
                           ],
                         ),
                       ),
@@ -532,24 +599,20 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enterYourQuestion,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Color(0xFFDBC195)),
                             ),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -563,7 +626,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),
@@ -583,12 +646,6 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _questionController.dispose();
-    super.dispose();
   }
 }
 

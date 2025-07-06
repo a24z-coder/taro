@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
 
 class NotificationSettingsScreen extends StatefulWidget {
   const NotificationSettingsScreen({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text('Настройки уведомлений', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.notification_settings_screen_title, style: const TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       extendBodyBehindAppBar: true,
@@ -70,87 +71,111 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Как часто вы хотите получать уведомление о карте дня?',
-                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                    Text(
+                      AppLocalizations.of(context)!.notification_settings_screen_frequency_question,
+                      style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: 'daily',
                         groupValue: _frequency,
                         onChanged: (v) => setState(() => _frequency = v!),
                         activeColor: accentColor,
-                        title: const Text('Каждый день', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_every_day, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: '3days',
                         groupValue: _frequency,
                         onChanged: (v) => setState(() => _frequency = v!),
                         activeColor: accentColor,
-                        title: const Text('Раз в три дня', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_every_three_days, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: 'weekly',
                         groupValue: _frequency,
                         onChanged: (v) => setState(() => _frequency = v!),
                         activeColor: accentColor,
-                        title: const Text('Раз в неделю', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_every_week, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 32),
-                    const Text(
-                      'В какое время суток?',
-                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                    Text(
+                      AppLocalizations.of(context)!.notification_settings_screen_time_question,
+                      style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: 'morning',
                         groupValue: _time,
                         onChanged: (v) => setState(() => _time = v!),
                         activeColor: accentColor,
-                        title: const Text('Утром', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_morning, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: 'day',
                         groupValue: _time,
                         onChanged: (v) => setState(() => _time = v!),
                         activeColor: accentColor,
-                        title: const Text('Днем', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_day, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     Theme(
-                      data: Theme.of(context).copyWith(
-                        unselectedWidgetColor: Colors.white,
-                      ),
+                      data: Theme.of(context),
                       child: RadioListTile<String>(
                         value: 'evening',
                         groupValue: _time,
                         onChanged: (v) => setState(() => _time = v!),
                         activeColor: accentColor,
-                        title: const Text('Вечером', style: TextStyle(color: Colors.white)),
+                        fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return accentColor;
+                          }
+                          return Colors.white;
+                        }),
+                        title: Text(AppLocalizations.of(context)!.notification_settings_screen_evening, style: const TextStyle(color: Colors.white)),
                       ),
                     ),
                     const Spacer(),
@@ -164,7 +189,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                         ),
                         onPressed: _saveSettings,
-                        child: const Text('Сохранить', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        child: Text(AppLocalizations.of(context)!.notification_settings_screen_save_button, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                       ),
                     ),
                   ],

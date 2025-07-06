@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class CelticCrossScreen extends StatefulWidget {
   const CelticCrossScreen({Key? key}) : super(key: key);
@@ -14,18 +17,13 @@ class CelticCrossScreen extends StatefulWidget {
   State<CelticCrossScreen> createState() => _CelticCrossScreenState();
 }
 
-class _CelticCrossScreenState extends State<CelticCrossScreen> {
+class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTickerProviderStateMixin {
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
 
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What is the main challenge I face now?',
-    'What should I focus on in the near future?',
-    'What is hidden from me?',
-  ];
 
   List<String?> _flippedCards = List.filled(10, null);
   List<bool> _cardFlipped = List.filled(10, false);
@@ -33,17 +31,14 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   String? _openAiAnswer;
+  bool _isLoadingCardsDescription = false;
 
   // Диалоговые сообщения
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
+  String _userQuestion = '';
   Future<void> _loadUserName() async {
     await UserService().loadUserName();
     setState(() {
@@ -56,13 +51,222 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    // Добавляем слушатель изменений языка
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // Удаляем слушатель при уничтожении виджета
+    LanguageService().removeListener(_onLanguageChanged);
+    super.dispose();
+  }
+
+  void _onLanguageChanged() {
+    // Принудительно обновляем UI при смене языка
+    if (mounted) {
+      setState(() {
+        _languageCode = LanguageService().currentLanguageCode;
+      });
+    }
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = LanguageService().currentLanguageCode;
     });
+  }
+
+  // Метод для асинхронной загрузки описания карт
+  Future<void> _loadCardsDescription() async {
+    final startTime = DateTime.now();
+    debugPrint('[CelticCross] _loadCardsDescription: starting at ${startTime.toIso8601String()}');
+    
+    // Получаем перевод названия карты через локализацию
+    String getCardTranslation(String cardName) {
+      final loc = AppLocalizations.of(context)!;
+      final cardKey = CardTranslations.cardToLocalizationKey[cardName];
+      if (cardKey != null) {
+        switch (cardKey) {
+          case 'card_name_the_fool': return loc.card_name_the_fool;
+          case 'card_name_the_magician': return loc.card_name_the_magician;
+          case 'card_name_the_high_priestess': return loc.card_name_the_high_priestess;
+          case 'card_name_the_empress': return loc.card_name_the_empress;
+          case 'card_name_the_emperor': return loc.card_name_the_emperor;
+          case 'card_name_the_hierophant': return loc.card_name_the_hierophant;
+          case 'card_name_the_lovers': return loc.card_name_the_lovers;
+          case 'card_name_the_chariot': return loc.card_name_the_chariot;
+          case 'card_name_strength': return loc.card_name_strength;
+          case 'card_name_the_hermit': return loc.card_name_the_hermit;
+          case 'card_name_wheel_of_fortune': return loc.card_name_wheel_of_fortune;
+          case 'card_name_justice': return loc.card_name_justice;
+          case 'card_name_the_hanged_man': return loc.card_name_the_hanged_man;
+          case 'card_name_death': return loc.card_name_death;
+          case 'card_name_temperance': return loc.card_name_temperance;
+          case 'card_name_the_devil': return loc.card_name_the_devil;
+          case 'card_name_the_tower': return loc.card_name_the_tower;
+          case 'card_name_the_star': return loc.card_name_the_star;
+          case 'card_name_the_moon': return loc.card_name_the_moon;
+          case 'card_name_the_sun': return loc.card_name_the_sun;
+          case 'card_name_judgement': return loc.card_name_judgement;
+          case 'card_name_the_world': return loc.card_name_the_world;
+          case 'card_name_ace_of_wands': return loc.card_name_ace_of_wands;
+          case 'card_name_two_of_wands': return loc.card_name_two_of_wands;
+          case 'card_name_three_of_wands': return loc.card_name_three_of_wands;
+          case 'card_name_four_of_wands': return loc.card_name_four_of_wands;
+          case 'card_name_five_of_wands': return loc.card_name_five_of_wands;
+          case 'card_name_six_of_wands': return loc.card_name_six_of_wands;
+          case 'card_name_seven_of_wands': return loc.card_name_seven_of_wands;
+          case 'card_name_eight_of_wands': return loc.card_name_eight_of_wands;
+          case 'card_name_nine_of_wands': return loc.card_name_nine_of_wands;
+          case 'card_name_ten_of_wands': return loc.card_name_ten_of_wands;
+          case 'card_name_page_of_wands': return loc.card_name_page_of_wands;
+          case 'card_name_knight_of_wands': return loc.card_name_knight_of_wands;
+          case 'card_name_queen_of_wands': return loc.card_name_queen_of_wands;
+          case 'card_name_king_of_wands': return loc.card_name_king_of_wands;
+          case 'card_name_ace_of_cups': return loc.card_name_ace_of_cups;
+          case 'card_name_two_of_cups': return loc.card_name_two_of_cups;
+          case 'card_name_three_of_cups': return loc.card_name_three_of_cups;
+          case 'card_name_four_of_cups': return loc.card_name_four_of_cups;
+          case 'card_name_five_of_cups': return loc.card_name_five_of_cups;
+          case 'card_name_six_of_cups': return loc.card_name_six_of_cups;
+          case 'card_name_seven_of_cups': return loc.card_name_seven_of_cups;
+          case 'card_name_eight_of_cups': return loc.card_name_eight_of_cups;
+          case 'card_name_nine_of_cups': return loc.card_name_nine_of_cups;
+          case 'card_name_ten_of_cups': return loc.card_name_ten_of_cups;
+          case 'card_name_page_of_cups': return loc.card_name_page_of_cups;
+          case 'card_name_knight_of_cups': return loc.card_name_knight_of_cups;
+          case 'card_name_queen_of_cups': return loc.card_name_queen_of_cups;
+          case 'card_name_king_of_cups': return loc.card_name_king_of_cups;
+          case 'card_name_ace_of_swords': return loc.card_name_ace_of_swords;
+          case 'card_name_two_of_swords': return loc.card_name_two_of_swords;
+          case 'card_name_three_of_swords': return loc.card_name_three_of_swords;
+          case 'card_name_four_of_swords': return loc.card_name_four_of_swords;
+          case 'card_name_five_of_swords': return loc.card_name_five_of_swords;
+          case 'card_name_six_of_swords': return loc.card_name_six_of_swords;
+          case 'card_name_seven_of_swords': return loc.card_name_seven_of_swords;
+          case 'card_name_eight_of_swords': return loc.card_name_eight_of_swords;
+          case 'card_name_nine_of_swords': return loc.card_name_nine_of_swords;
+          case 'card_name_ten_of_swords': return loc.card_name_ten_of_swords;
+          case 'card_name_page_of_swords': return loc.card_name_page_of_swords;
+          case 'card_name_knight_of_swords': return loc.card_name_knight_of_swords;
+          case 'card_name_queen_of_swords': return loc.card_name_queen_of_swords;
+          case 'card_name_king_of_swords': return loc.card_name_king_of_swords;
+          case 'card_name_ace_of_pentacles': return loc.card_name_ace_of_pentacles;
+          case 'card_name_two_of_pentacles': return loc.card_name_two_of_pentacles;
+          case 'card_name_three_of_pentacles': return loc.card_name_three_of_pentacles;
+          case 'card_name_four_of_pentacles': return loc.card_name_four_of_pentacles;
+          case 'card_name_five_of_pentacles': return loc.card_name_five_of_pentacles;
+          case 'card_name_six_of_pentacles': return loc.card_name_six_of_pentacles;
+          case 'card_name_seven_of_pentacles': return loc.card_name_seven_of_pentacles;
+          case 'card_name_eight_of_pentacles': return loc.card_name_eight_of_pentacles;
+          case 'card_name_nine_of_pentacles': return loc.card_name_nine_of_pentacles;
+          case 'card_name_ten_of_pentacles': return loc.card_name_ten_of_pentacles;
+          case 'card_name_page_of_pentacles': return loc.card_name_page_of_pentacles;
+          case 'card_name_knight_of_pentacles': return loc.card_name_knight_of_pentacles;
+          case 'card_name_queen_of_pentacles': return loc.card_name_queen_of_pentacles;
+          case 'card_name_king_of_pentacles': return loc.card_name_king_of_pentacles;
+          default: return cardName;
+        }
+      }
+      return cardName;
+    }
+
+    final promptStartTime = DateTime.now();
+    String prompt = AppLocalizations.of(context)!.celtic_cross_screen_prompt(
+      getCardTranslation(_flippedCards[1] ?? ''), // challengeCard (1)
+      getCardTranslation(_flippedCards[4] ?? ''), // consciousCard (2)
+      getCardTranslation(_flippedCards[7] ?? ''), // environmentCard (3)
+      getCardTranslation(_flippedCards[5] ?? ''), // futureCard (4)
+      getCardTranslation(_flippedCards[8] ?? ''), // hopesCard (5)
+      getCardTranslation(_flippedCards[9] ?? ''), // outcomeCard (6)
+      getCardTranslation(_flippedCards[3] ?? ''), // pastCard (7)
+      getCardTranslation(_flippedCards[0] ?? ''), // presentCard (8) - situation card
+      getCardTranslation(_flippedCards[6] ?? ''), // selfCard (9)
+      getCardTranslation(_flippedCards[0] ?? ''), // situationCard (10)
+      getCardTranslation(_flippedCards[2] ?? ''), // subconsciousCard (11)
+      _userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user, // userName (12)
+      _userQuestion, // userQuestion (13)
+    );
+    final promptEndTime = DateTime.now();
+    debugPrint('[CelticCross] _loadCardsDescription: prompt created in ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
+
+    try {
+      final apiStartTime = DateTime.now();
+      debugPrint('[CelticCross] _loadCardsDescription: calling TranslationService at ${apiStartTime.toIso8601String()}');
+      
+      debugPrint('[CelticCross] Using language code: $_languageCode');
+      final response = await TranslationService().getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      
+      final apiEndTime = DateTime.now();
+      debugPrint('[CelticCross] _loadCardsDescription: API response received in ${apiEndTime.difference(apiStartTime).inMilliseconds}ms');
+      
+      if (mounted) {
+        setState(() {
+          _openAiAnswer = response;
+          _isLoadingCardsDescription = false;
+        });
+      }
+      
+      final totalTime = DateTime.now();
+      debugPrint('[CelticCross] _loadCardsDescription: completed successfully in ${totalTime.difference(startTime).inMilliseconds}ms');
+    } catch (e) {
+      final errorTime = DateTime.now();
+      debugPrint('[CelticCross] _loadCardsDescription: ERROR after ${errorTime.difference(startTime).inMilliseconds}ms: $e');
+      
+      if (mounted) {
+        setState(() {
+          if (e.toString().contains('NO_INTERNET')) {
+            _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+          } else if (e.toString().contains('Timeout')) {
+            _openAiAnswer = 'Сервер временно недоступен. Пожалуйста, попробуйте еще раз через несколько секунд.';
+          } else {
+            _openAiAnswer = AppLocalizations.of(context)!.errorGettingSpreadMeaningPleaseTryAgain;
+          }
+          _isLoadingCardsDescription = false;
+        });
+      }
+    }
+  }
+
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.celtic_cross_screen_suggested_questions_1,
+        l10n.celtic_cross_screen_suggested_questions_2,
+        l10n.celtic_cross_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return l10n.good_day_please_write_your_question_below;
+    }
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
   }
 
   void _handleGetAnswer() async {
@@ -70,6 +274,8 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
     if (userText.isEmpty) return;
     setState(() {
       _isLoading = true;
+      // Сохраняем вопрос пользователя
+      _userQuestion = userText;
       _messages.add(_ChatMessage(text: userText, isUser: true));
       _questionController.clear();
       _questionSent = true;
@@ -77,11 +283,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.celtic_cross_screen_please_open_cards(''),
         isUser: false,
       ));
       // Случайно выбираем 10 карт
@@ -95,37 +297,50 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
   }
 
   void _handleSeeMeaning() async {
+    final startTime = DateTime.now();
+    debugPrint('[CelticCross] _handleSeeMeaning: starting at ${startTime.toIso8601String()}');
+    
     setState(() {
       _showSeeMeaningButton = false;
+      _isLoadingCardsDescription = true;
     });
-    // Формируем промт для OpenAI
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад Кельтский крест на эти 10 карт: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een Keltisch Kruis legging op deze tien kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a Celtic Cross tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these ten cards: ${cards.join(', ')}';
-    }
 
+    // Запускаем рекламу и генерацию расклада параллельно
+    debugPrint('[CelticCross] _handleSeeMeaning: starting parallel execution');
+    await Future.wait([
+      _showAd(),
+      _loadCardsDescription(),
+    ]);
+    
+    final endTime = DateTime.now();
+    debugPrint('[CelticCross] _handleSeeMeaning: completed in ${endTime.difference(startTime).inMilliseconds}ms');
+  }
+
+  // Метод для показа рекламы
+  Future<void> _showAd() async {
+    final startTime = DateTime.now();
+    debugPrint('[CelticCross] _showAd: starting at ${startTime.toIso8601String()}');
+    
     try {
-      final response = await TranslationService().getTranslatedText(
-        text: prompt,
-        targetLanguageCode: _languageCode,
-        isTarotReading: true,
-      );
-      setState(() {
-        _openAiAnswer = response;
-      });
-    } catch (e) {
-      setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
-      });
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      debugPrint('[CelticCross] _showAd: isLoaded = $isLoaded');
+      
+      if (isLoaded) {
+        debugPrint('[CelticCross] _showAd: showing ad');
+        // Показываем рекламу, но не ждем её завершения
+        Appodeal.show(AppodealAdType.Interstitial);
+        // Кэшируем следующую рекламу
+        Appodeal.cache(AppodealAdType.Interstitial);
+      } else {
+        debugPrint('[CelticCross] _showAd: caching ad');
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      }
+      
+      final endTime = DateTime.now();
+      debugPrint('[CelticCross] _showAd: completed in ${endTime.difference(startTime).inMilliseconds}ms');
+    } catch (e, st) {
+      final errorTime = DateTime.now();
+      debugPrint('[CelticCross] _showAd: ERROR after ${errorTime.difference(startTime).inMilliseconds}ms: $e\n$st');
     }
   }
 
@@ -200,55 +415,55 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                         Positioned(
                           left: cardWidth * 1.5,
                           top: cardHeight * 1.2,
-                          child: _buildFlipCard(0, cardWidth, cardHeight), // 1. Сигнификатор
+                          child: _buildFlipCard(0, cardWidth, cardHeight), // 1. Ситуация
                         ),
                         Positioned(
                           left: cardWidth * 1.5,
                           top: cardHeight * 1.2,
                           child: Transform.rotate(
                             angle: -1.5708, // -90 градусов
-                            child: _buildFlipCard(1, cardWidth, cardHeight), // 2. Наложение
+                            child: _buildFlipCard(1, cardWidth, cardHeight), // 2. Вызов
                           ),
                         ),
                         Positioned(
                           left: cardWidth * 1.5,
-                          top: cardHeight * 2.3,
-                          child: _buildFlipCard(2, cardWidth, cardHeight), // 3. Основа (внизу)
-                        ),
-                        Positioned(
-                          left: cardWidth * 0.1,
-                          top: cardHeight * 1.2,
-                          child: _buildFlipCard(3, cardWidth, cardHeight), // 4. Прошлое (слева)
+                          top: cardHeight * 0.1,
+                          child: _buildFlipCard(2, cardWidth, cardHeight), // 3. Подсознательное (верх)
                         ),
                         Positioned(
                           left: cardWidth * 1.5,
-                          top: cardHeight * 0.1,
-                          child: _buildFlipCard(4, cardWidth, cardHeight), // 5. Цели и идеалы (верх)
+                          top: cardHeight * 2.3,
+                          child: _buildFlipCard(3, cardWidth, cardHeight), // 4. Прошлое (внизу)
                         ),
                         Positioned(
                           left: cardWidth * 3.0,
                           top: cardHeight * 1.2,
-                          child: _buildFlipCard(5, cardWidth, cardHeight), // 6. Ближайшее будущее (справа)
+                          child: _buildFlipCard(4, cardWidth, cardHeight), // 5. Сознание / цель (справа)
                         ),
                         Positioned(
-                          left: cardWidth * 4.5,
-                          top: cardHeight * 0.1,
-                          child: _buildFlipCard(6, cardWidth, cardHeight), // 7. Вопрошающий
-                        ),
-                        Positioned(
-                          left: cardWidth * 4.5,
-                          top: cardHeight * 0.1 + cardHeight * 1.05,
-                          child: _buildFlipCard(7, cardWidth, cardHeight), // 8. Окружение
-                        ),
-                        Positioned(
-                          left: cardWidth * 4.5,
-                          top: cardHeight * 0.1 + cardHeight * 2.1,
-                          child: _buildFlipCard(8, cardWidth, cardHeight), // 9. Надежды и опасения
+                          left: cardWidth * 0.1,
+                          top: cardHeight * 1.2,
+                          child: _buildFlipCard(5, cardWidth, cardHeight), // 6. Будущее (слева)
                         ),
                         Positioned(
                           left: cardWidth * 4.5,
                           top: cardHeight * 0.1 + cardHeight * 3.15,
-                          child: _buildFlipCard(9, cardWidth, cardHeight), // 10. Итог
+                          child: _buildFlipCard(6, cardWidth, cardHeight), // 7. Вопрошающий (нижняя)
+                        ),
+                        Positioned(
+                          left: cardWidth * 4.5,
+                          top: cardHeight * 0.1 + cardHeight * 2.1,
+                          child: _buildFlipCard(7, cardWidth, cardHeight), // 8. Окружение (третья)
+                        ),
+                        Positioned(
+                          left: cardWidth * 4.5,
+                          top: cardHeight * 0.1 + cardHeight * 1.05,
+                          child: _buildFlipCard(8, cardWidth, cardHeight), // 9. Надежды и опасения (вторая)
+                        ),
+                        Positioned(
+                          left: cardWidth * 4.5,
+                          top: cardHeight * 0.1,
+                          child: _buildFlipCard(9, cardWidth, cardHeight), // 10. Итог (верхняя)
                         ),
                       ],
                     ),
@@ -265,18 +480,44 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFDBC195),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          _languageCode == 'ru'
-                              ? 'Узнать значение'
-                              : _languageCode == 'nl'
-                                  ? 'Bekijk betekenis'
-                                  : 'See meaning',
+                          AppLocalizations.of(context)!.seeMeaning,
                           style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
+                      ),
+                    ),
+                  ),
+                if (allFlipped && _isLoadingCardsDescription)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Container(
+                      width: 220,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFDBC195),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            AppLocalizations.of(context)!.analyzing_cards,
+                            style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -318,7 +559,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) {
                       debugPrint('CARD ASSET ERROR: Unable to load asset: assets/cards/' + (fileName ?? 'NOT_FOUND.jpg'));
-                      return const Center(child: Text('Unable to load card', style: TextStyle(color: Colors.red)));
+                      return Center(child: Text(AppLocalizations.of(context)!.celtic_cross_screen_unable_to_load_card, style: const TextStyle(color: Colors.red)));
                     },
                   );
                 },
@@ -340,7 +581,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -368,6 +609,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -377,6 +619,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -390,9 +633,9 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое Кельтский крест?',
-                style: TextStyle(
+              Text(
+                loc.celtic_cross_screen_what_is_celtic_cross_dialog,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -400,10 +643,24 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Кельтский крест — один из самых глубоких и популярных раскладов. Он раскрывает все аспекты ситуации: прошлое, настоящее, будущее, скрытые влияния, страхи, надежды и итог.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-                textAlign: TextAlign.center,
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(
+                        loc.celtic_cross_screen_celtic_cross_explanation_dialog,
+                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 16),
+                      Image.asset(
+                        'assets/images/kelt.png',
+                        width: 260,
+                        fit: BoxFit.contain,
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
               SizedBox(
@@ -413,12 +670,12 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFDBC195),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.celtic_cross_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -447,11 +704,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
         ),
         centerTitle: true,
         title: Text(
-          _languageCode == 'ru'
-              ? 'Кельтский крест'
-              : _languageCode == 'nl'
-                  ? 'Keltisch Kruis Legging'
-                  : 'Celtic Cross Spread',
+          AppLocalizations.of(context)!.celticCrossTitle,
           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -496,7 +749,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                         children: [
                           const SizedBox(height: 32),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(24),
                             child: Image.asset(
                               'assets/images/tarolog.png',
                               width: double.infinity,
@@ -530,19 +783,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                               ),
                             ),
                             const SizedBox(height: 24),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(
-                                'assets/images/banner_ad.png',
-                                fit: BoxFit.fitWidth,
-                                width: double.infinity,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return const Center(
-                                    child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                  );
-                                },
-                              ),
-                            ),
+                            AdPromoBlock(),
                             const SizedBox(height: 18),
                             Center(
                               child: SizedBox(
@@ -555,17 +796,31 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(24),
                                     ),
                                     elevation: 0,
                                   ),
                                   child: Text(
-                                    _languageCode == 'ru'
-                                        ? 'Сделать новый расклад'
-                                        : _languageCode == 'nl'
-                                            ? 'Nieuwe legging maken'
-                                            : 'New spread',
+                                    AppLocalizations.of(context)!.newSpread,
                                     style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                            Center(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: 420),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.appUsageDisclaimer,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -574,6 +829,8 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                           const SizedBox(height: 18),
                           _buildSuggestedQuestions(),
                           const SizedBox(height: 24),
+                          SizedBox(height: 10),
+                          SizedBox(height: MediaQuery.of(context).padding.bottom + 10),
                         ],
                       ),
                     ),
@@ -600,24 +857,20 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                         style: const TextStyle(color: Colors.white, fontSize: 18),
                         cursorColor: Color(0xFFDBC195),
                         decoration: InputDecoration(
-                          hintText: _languageCode == 'ru'
-                              ? 'Введите ваш вопрос...'
-                              : _languageCode == 'nl'
-                                  ? 'Voer uw vraag in...'
-                                  : 'Enter your question...',
+                          hintText: AppLocalizations.of(context)!.enter_your_question,
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.08),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(24),
                             borderSide: BorderSide(color: Colors.white24),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(24),
                             borderSide: BorderSide(color: Colors.white24),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(24),
                             borderSide: BorderSide(color: Color(0xFFDBC195)),
                           ),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -631,7 +884,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> {
                         backgroundColor: Colors.white,
                         padding: const EdgeInsets.all(16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(24),
                         ),
                         minimumSize: const Size(48, 48),
                       ),

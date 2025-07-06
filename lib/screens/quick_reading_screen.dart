@@ -7,6 +7,8 @@ import 'package:tarot_ai/screens/quick_reading_result_screen.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import 'package:tarot_ai/services/user_service.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class QuickReadingScreen extends StatefulWidget {
   const QuickReadingScreen({super.key});
@@ -28,7 +30,7 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
   late Animation<Rect?> _cardAnimation; // Анимация для позиции карты
 
   final TranslationService translationService = TranslationService(); // Добавил обратно
-  String? _languageCode;
+  String _languageCode = 'en';
 
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
@@ -49,13 +51,128 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
   int? _animatingCardIndex; // Индекс карты, которая анимируется
   bool _isAnimating = false;
 
+  final TextEditingController _questionController = TextEditingController();
+  bool _isLoading = false;
+  String _userName = '';
+  String _userQuestion = '';
+  List<String?> _flippedCards = List.filled(3, null);
+  List<bool> _cardFlipped = List.filled(3, false);
+  bool _showCards = false;
+  bool _showSeeMeaningButton = true;
+  String? _openAiAnswer;
+
+  // Диалоговые сообщения
+  List<_ChatMessage> _messages = [];
+  bool _questionSent = false;
+  bool _isGeneratingAnswer = false;
+
+  Future<void> _loadUserName() async {
+    await UserService().loadUserName();
+    setState(() {
+      _userName = UserService().userName;
+    });
+  }
+
   String _getCardImagePath(String cardName) {
     final fileName = CardTranslations.cardToFileMap[cardName];
     if (fileName == null) {
-      print('ERROR: No image file found for card name: $cardName');
+      print(AppLocalizations.of(context)!.quick_reading_screen_error_no_image_file_found(cardName));
       return ''; // Return an empty string or a placeholder if the file is not found
     }
     return 'assets/cards/$fileName';
+  }
+
+  // Метод для загрузки ответа от OpenAI
+  Future<void> _loadAnswer() async {
+    if (_isGeneratingAnswer) return;
+    
+    final startTime = DateTime.now();
+    debugPrint('[QuickReading] _loadAnswer: starting at ${startTime.toIso8601String()}');
+    
+    setState(() {
+      _isGeneratingAnswer = true;
+    });
+
+    try {
+      // Формируем промпт для OpenAI
+      final promptStartTime = DateTime.now();
+      debugPrint('[QuickReading] Starting prompt formation at ${promptStartTime.toIso8601String()}');
+      
+      final l10n = AppLocalizations.of(context)!;
+      final cardName = selectedCards[_tappedCardIndex!];
+      
+      if (cardName == null) {
+        debugPrint('[QuickReading] ERROR: cardName is null');
+        setState(() {
+          _openAiAnswer = 'Ошибка: cardName is null';
+          _isGeneratingAnswer = false;
+        });
+        return;
+      }
+      
+      // Получаем перевод названия карты
+      final String cardNameRu = CardTranslations.getTranslation(cardName, l10n);
+      
+      // Убеждаемся, что имя пользователя загружено
+      await UserService().loadUserName();
+      final String userName = UserService().userName;
+      
+      final String prompt = l10n.quick_reading_result_screen_prompt(
+        cardNameRu,
+        userName,
+      );
+      
+      if (prompt.isEmpty) {
+        debugPrint('[QuickReading] ERROR: prompt is empty');
+        setState(() {
+          _openAiAnswer = 'Ошибка: prompt is empty';
+          _isGeneratingAnswer = false;
+        });
+        return;
+      }
+      
+      debugPrint('[QuickReading] Calling getTranslatedText...');
+      final String generatedText = await translationService.getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      
+      debugPrint('[QuickReading] OpenAI response: $generatedText');
+      setState(() {
+        _openAiAnswer = generatedText;
+        _isGeneratingAnswer = false;
+      });
+    } catch (e, stack) {
+      debugPrint('[QuickReading] ERROR: $e');
+      debugPrint('[QuickReading] STACK: $stack');
+      setState(() {
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = 'Ошибка: $e';
+        }
+        _isGeneratingAnswer = false;
+      });
+    }
+  }
+
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.quick_reading_screen_suggested_questions_1,
+        l10n.quick_reading_screen_suggested_questions_2,
+        l10n.quick_reading_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
   }
 
   @override
@@ -66,12 +183,43 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
       duration: const Duration(milliseconds: 500), // Длительность анимации движения
     );
     _loadLanguage();
+    _loadUserName();
+    // Добавляем слушатель изменений языка
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
   }
 
-  void _loadLanguage() {
-    final langCode = LanguageService().currentLanguageCode;
+  @override
+  void dispose() {
+    // Удаляем слушатель при уничтожении виджета
+    LanguageService().removeListener(_onLanguageChanged);
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _onLanguageChanged() {
+    // Принудительно обновляем UI при смене языка
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  Future<void> _loadLanguage() async {
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = langCode;
+      _languageCode = LanguageService().currentLanguageCode;
     });
   }
 
@@ -85,10 +233,13 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
     }
   }
 
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
+  // Функция для получения переведенного названия карты
+  String _getTranslatedCardName(String englishName) {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return CardTranslations.getTranslatedCardName(englishName, l10n);
+    }
+    return englishName;
   }
 
   @override
@@ -120,7 +271,7 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                         Expanded(
                           child: Text(
                             loc.quickReading,
-                            style: headingStyleForLang(_languageCode ?? 'en-US', 22, color: Colors.white),
+                            style: headingStyleForLang(_languageCode, 22, color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -200,8 +351,8 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                                 ),
                                 const SizedBox(height: 32),
                                 Text(
-                                  'Выберите карту',
-                                  style: headingStyleForLang(_languageCode ?? 'ru', 18, color: Colors.white),
+                                  loc.quick_reading_screen_select_card,
+                                  style: headingStyleForLang(_languageCode, 18, color: Colors.white),
                                 ),
                               ],
                             )
@@ -237,19 +388,51 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                                         const SizedBox(height: 24),
                                         if (_showAnswerButton)
                                           ElevatedButton(
-                                            onPressed: () {
+                                            onPressed: () async {
                                               final cardName = selectedCards[_tappedCardIndex!];
-                                              if (cardName != null && _languageCode != null) {
+                                              debugPrint('[QuickReadingScreen] onPressed: cardName=\x1b[36m$cardName\x1b[0m, languageCode=[36m[0m$_languageCode');
+                                              
+                                              // Запускаем загрузку ответа параллельно с показом рекламы
+                                              _loadAnswer();
+
+                                              // Показываем рекламу параллельно
+                                              try {
+                                                final adStartTime = DateTime.now();
+                                                debugPrint('[QuickReading] Starting ad loading at ${adStartTime.toIso8601String()}');
+                                                
+                                                bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                                if (isLoaded) {
+                                                  await Appodeal.show(AppodealAdType.Interstitial);
+                                                  await Appodeal.cache(AppodealAdType.Interstitial);
+                                                  final adEndTime = DateTime.now();
+                                                  debugPrint('[QuickReading] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                } else {
+                                                  await Appodeal.cache(AppodealAdType.Interstitial);
+                                                  final adEndTime = DateTime.now();
+                                                  debugPrint('[QuickReading] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                }
+                                              } catch (e, st) {
+                                                final adEndTime = DateTime.now();
+                                                debugPrint('[QuickReading] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
+                                              }
+                                              
+                                              // Ждем немного чтобы ответ мог сгенерироваться, затем переходим
+                                              await Future.delayed(const Duration(milliseconds: 500));
+                                              
+                                              // --- Переход к результату после рекламы ---
+                                              if (cardName != null) {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (_) => QuickReadingResultScreen(
                                                       selectedCardName: cardName,
-                                                      languageCode: _languageCode!,
+                                                      languageCode: _languageCode,
                                                       imagePath: _getCardImagePath(cardName),
+                                                      preGeneratedAnswer: _openAiAnswer,
                                                     ),
                                                   ),
                                                 );
+                                                debugPrint('[QuickReadingScreen] Navigated to QuickReadingResultScreen with cardName=$cardName, languageCode=$_languageCode, preGeneratedAnswer: $_openAiAnswer');
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
@@ -257,11 +440,11 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                                               elevation: 6,
                                               shadowColor: Colors.black.withOpacity(0.18),
                                               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                                             ),
-                                            child: const Text(
-                                              'Узнать ответ',
-                                              style: TextStyle(
+                                            child: Text(
+                                              loc.quick_reading_screen_get_answer_button,
+                                              style: const TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 18,
@@ -345,6 +528,7 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -358,9 +542,9 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое быстрый расклад?',
-                style: TextStyle(
+              Text(
+                loc.quick_reading_screen_what_is_quick_reading,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -368,9 +552,9 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Быстрый расклад — это однокарточный ответ на ваш вопрос. Просто выберите карту, чтобы получить краткое и точное предсказание.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.quick_reading_screen_quick_reading_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -381,12 +565,12 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFDBC195),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.quick_reading_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -479,4 +663,10 @@ class _FlipCardState extends State<FlipCard> with SingleTickerProviderStateMixin
       ),
     );
   }
+}
+
+class _ChatMessage {
+  final String text;
+  final bool isUser;
+  _ChatMessage({required this.text, required this.isUser});
 } 

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:tarot_ai/services/language_service.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:flutter/foundation.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
+import 'package:tarot_ai/utils/card_translations.dart';
+import 'card_meanings_screen.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class CardDetailScreen extends StatefulWidget {
   final String cardName;
@@ -18,12 +24,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
   bool _isLoading = false;
   late TranslationService _translationService;
   String? _langCode;
-  Map<String, String> _details = {
-    'Общее значение': '',
-    'Перевернутое значение': '',
-    'Оригинальный текст Уэйта': '',
-    'Символизм': '',
-  };
+  Map<String, String> _details = {};
 
   @override
   void initState() {
@@ -42,7 +43,11 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
   Future<void> _loadOrGenerateDetails() async {
     setState(() { _isLoading = true; });
     final prefs = await SharedPreferences.getInstance();
-    final sections = _details.keys.toList();
+    final sections = [
+      AppLocalizations.of(context)!.card_detail_screen_general_meaning,
+      AppLocalizations.of(context)!.card_detail_screen_reversed_meaning,
+      AppLocalizations.of(context)!.card_detail_screen_symbolism,
+    ];
     Map<String, String> newDetails = {};
     for (final section in sections) {
       final cacheKey = 'card_${widget.cardName}_${_langCode}_$section';
@@ -51,18 +56,22 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
         newDetails[section] = cached;
         continue;
       }
-      // Генерируем prompt для каждой секции
-      String prompt = _buildPrompt(section, widget.cardName, _langCode ?? 'ru-RU');
+      // Generate prompt for each section
+      String prompt = _buildPrompt(section, widget.cardName, _langCode ?? LanguageService().currentLanguageCode);
       try {
         final text = await _translationService.getTranslatedText(
           text: prompt,
-          targetLanguageCode: _langCode ?? 'ru-RU',
+          targetLanguageCode: _langCode ?? LanguageService().currentLanguageCode,
           isTarotReading: true,
         );
         newDetails[section] = text;
         await prefs.setString(cacheKey, text);
       } catch (e) {
-        newDetails[section] = 'Ошибка загрузки текста. Попробуйте позже.';
+        if (e.toString().contains('NO_INTERNET')) {
+          newDetails[section] = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          newDetails[section] = AppLocalizations.of(context)!.card_detail_screen_error_loading_text;
+        }
       }
     }
     setState(() {
@@ -72,18 +81,15 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
   }
 
   String _buildPrompt(String section, String cardName, String lang) {
-    switch (section) {
-      case 'Общее значение':
-        return 'Дай подробное, глубокое и мистическое описание общего значения карты Таро "$cardName". Ответь на языке $lang. Не используй приветствий и заключений.';
-      case 'Перевернутое значение':
-        return 'Дай подробное, глубокое и мистическое описание перевернутого значения карты Таро "$cardName". Ответь на языке $lang. Не используй приветствий и заключений.';
-      case 'Оригинальный текст Уэйта':
-        return 'Найди оригинальный текст Артура Уэйта для карты Таро "$cardName" из книги "The Pictorial Key to the Tarot" и переведи его на $lang. Приводи только точный перевод оригинального текста, без пересказа, без добавлений, без сокращений, без приветствий и заключений. Если оригинального текста нет — напиши "Нет оригинального текста".';
-      case 'Символизм':
-        return 'Опиши символизм и ключевые образы карты Таро "$cardName". Ответь на языке $lang. Не используй приветствий и заключений.';
-      default:
-        return '';
+    final loc = AppLocalizations.of(context)!;
+    if (section == loc.card_detail_screen_general_meaning) {
+      return loc.card_detail_screen_general_meaning_prompt(cardName, lang);
+    } else if (section == loc.card_detail_screen_reversed_meaning) {
+      return loc.card_detail_screen_reversed_meaning_prompt(cardName, lang);
+    } else if (section == loc.card_detail_screen_symbolism) {
+      return loc.card_detail_screen_symbolism_prompt(cardName, lang);
     }
+    return '';
   }
 
   @override
@@ -91,7 +97,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Значение карт', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.card_detail_screen_title, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -145,7 +151,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(16),
                                       child: Transform.rotate(
-                                        angle: 3.14159, // 180 градусов
+                                        angle: 3.14159, // 180 degrees
                                         child: Image.asset(
                                           'assets/cards/${widget.cardFile}',
                                           fit: BoxFit.contain,
@@ -158,45 +164,53 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                             ),
                             const SizedBox(height: 24),
                             Text(
-                              'Узнать обычное и перевернутое значение ${widget.cardName}',
+                              AppLocalizations.of(context)!.card_detail_screen_description(CardTranslations.getTranslation(widget.cardName, AppLocalizations.of(context)!)),
                               style: const TextStyle(color: Colors.white, fontSize: 16),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 24),
-                            ..._details.entries.map((entry) => _TarotDetailCard(
+                            ..._details.entries.where((entry) => entry.key != AppLocalizations.of(context)!.card_detail_screen_original_waite_text).map((entry) => _TarotDetailCard(
                                   title: entry.key,
                                   text: entry.value,
                                 )),
                             const SizedBox(height: 24),
-                            Image.asset(
-                              'assets/images/banner_ad.png',
-                              width: double.infinity,
-                              fit: BoxFit.fitWidth,
-                            ),
+                            AdPromoBlock(),
                             const SizedBox(height: 18),
                             SizedBox(
                               width: double.infinity,
                               height: 54,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  setState(() {
-                                    _showDetails = false;
-                                    _details = {
-                                      'Общее значение': '',
-                                      'Перевернутое значение': '',
-                                      'Оригинальный текст Уэйта': '',
-                                      'Символизм': '',
-                                    };
-                                  });
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(builder: (_) => const CardMeaningsScreen()),
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                                   elevation: 0,
                                 ),
-                                child: const Text(
-                                  'Узнать значение другой карты',
-                                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                child: Text(
+                                  AppLocalizations.of(context)!.card_detail_screen_see_other_card_meaning,
+                                  style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+                            Center(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: 420),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.app_uses_ai_for_entertainment_purposes,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -230,7 +244,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(16),
                                   child: Transform.rotate(
-                                    angle: 3.14159, // 180 градусов
+                                    angle: 3.14159, // 180 degrees
                                     child: Image.asset(
                                       'assets/cards/${widget.cardFile}',
                                       fit: BoxFit.contain,
@@ -243,20 +257,16 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          'Узнать обычное и перевернутое значение ${widget.cardName}',
+                          AppLocalizations.of(context)!.card_detail_screen_description(CardTranslations.getTranslation(widget.cardName, AppLocalizations.of(context)!)),
                           style: const TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 24),
-                        Image.asset(
-                          'assets/images/banner_ad.png',
-                          width: double.infinity,
-                          fit: BoxFit.fitWidth,
-                        ),
+                        AdPromoBlock(),
                         const SizedBox(height: 18),
-                        const Text(
-                          'или',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        Text(
+                          AppLocalizations.of(context)!.card_detail_screen_or,
+                          style: const TextStyle(color: Colors.white, fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 18),
@@ -267,6 +277,18 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                             onPressed: (_langCode == null)
                                 ? null
                                 : () async {
+                                    // --- Показываем рекламу перед логикой ---
+                                    try {
+                                      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                      if (isLoaded) {
+                                        await Appodeal.show(AppodealAdType.Interstitial);
+                                        await Appodeal.cache(AppodealAdType.Interstitial);
+                                      } else {
+                                        await Appodeal.cache(AppodealAdType.Interstitial);
+                                      }
+                                    } catch (e, st) {
+                                      debugPrint('[CardDetail] ERROR showing Appodeal Interstitial: $e\n$st');
+                                    }
                                     setState(() { _showDetails = true; });
                                     await _loadOrGenerateDetails();
                                   },
@@ -277,8 +299,8 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                             ),
                             child: Text(
                               (_langCode == null)
-                                  ? 'Загрузка языка...'
-                                  : 'Узнать значение карты',
+                                  ? AppLocalizations.of(context)!.card_detail_screen_loading_language
+                                  : AppLocalizations.of(context)!.card_detail_screen_see_card_meaning,
                               style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -307,17 +329,23 @@ class _TarotDetailCardState extends State<_TarotDetailCard> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    // Don't show the block if it's the original Waite text and contains a message about missing text
+    if ((widget.title == AppLocalizations.of(context)!.card_detail_screen_original_waite_text) &&
+        (widget.text.trim().toLowerCase() == AppLocalizations.of(context)!.card_detail_screen_no_original_text.toLowerCase() || widget.text.trim().toLowerCase() == 'no original')) {
+      return const SizedBox.shrink();
+    }
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(_expanded ? 0.22 : 0.13),
         border: Border.all(color: Color(0xFFDBC195), width: 2),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(24),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(24),
           onTap: () => setState(() => _expanded = !_expanded),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),

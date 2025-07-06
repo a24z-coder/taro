@@ -2,8 +2,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // jcenter() // JCenter устарел и может быть удален, если не используется другими зависимостями
-        maven { setUrl("https://artifactory.appodeal.com/appodeal") }
     }
 }
 
@@ -22,6 +20,12 @@ tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
 
-plugins {
-    id("com.google.gms.google-services") version "4.4.1" apply false
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.gms:google-services:4.4.1")
+    }
 }

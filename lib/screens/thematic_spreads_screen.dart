@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'love_spread_screen.dart';
 import 'career_finance_spread_screen.dart';
 import 'pros_cons_spread_screen.dart';
@@ -14,12 +15,13 @@ class ThematicSpreadsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final langCode = LanguageService().currentLanguageCode;
+    final loc = AppLocalizations.of(context)!;
     const accentColor = Color(0xFFDBC195);
     Widget glassBlock({
       required Widget icon,
       required String title,
       required String description,
-      double height = 110,
+      double? height,
       Widget? trailing,
       bool highlight = false,
       Widget? overlay,
@@ -32,7 +34,6 @@ class ThematicSpreadsScreen extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
               child: Container(
-                height: height,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.35),
                   borderRadius: BorderRadius.circular(22),
@@ -49,24 +50,25 @@ class ThematicSpreadsScreen extends StatelessWidget {
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      width: height,
-                      height: height,
+                      width: height ?? 110,
+                      height: height ?? 110,
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
                           Image.asset(
                             'assets/images/ellipse.png',
-                            width: height,
-                            height: height,
+                            width: height ?? 110,
+                            height: height ?? 110,
                             fit: BoxFit.cover,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: SizedBox(
-                              width: height - 12,
-                              height: height - 12,
+                              width: (height ?? 110) - 12,
+                              height: (height ?? 110) - 12,
                               child: icon,
                             ),
                           ),
@@ -90,8 +92,7 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             Text(
                               description,
                               style: bodyStyleForLang(langCode, 13, color: Colors.white.withOpacity(0.92)),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
                             ),
                           ],
                         ),
@@ -135,7 +136,7 @@ class ThematicSpreadsScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          'Тематические расклады',
+                          loc.thematic_spreads_screen_title,
                           style: headingStyleForLang(langCode, 22, color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
@@ -165,9 +166,8 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             },
                             child: glassBlock(
                               icon: Image.asset('assets/images/love.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: 'Любовный расклад',
-                              description: 'Чувства, барьеры и перспективы отношений',
-                              height: 110,
+                              title: loc.thematic_spreads_screen_love_spread_title,
+                              description: loc.thematic_spreads_screen_love_spread_description,
                             ),
                           ),
                         ),
@@ -182,9 +182,8 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             },
                             child: glassBlock(
                               icon: Image.asset('assets/images/money.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: 'Карьера и финансы',
-                              description: 'Ситуация, препятствия, возможности и доход',
-                              height: 110,
+                              title: loc.thematic_spreads_screen_career_finance_title,
+                              description: loc.thematic_spreads_screen_career_finance_description,
                             ),
                           ),
                         ),
@@ -199,9 +198,8 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             },
                             child: glassBlock(
                               icon: Image.asset('assets/images/yesno.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: 'Расклад «За и Против»',
-                              description: 'Взвесь «за» и «против», получи совет',
-                              height: 110,
+                              title: loc.thematic_spreads_screen_pros_cons_title,
+                              description: loc.thematic_spreads_screen_pros_cons_description,
                             ),
                           ),
                         ),
@@ -216,9 +214,8 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             },
                             child: glassBlock(
                               icon: Image.asset('assets/images/12.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: 'Месячный прогноз',
-                              description: 'Ключевые темы каждого предстоящего месяца',
-                              height: 110,
+                              title: loc.thematic_spreads_screen_monthly_forecast_title,
+                              description: loc.thematic_spreads_screen_monthly_forecast_description,
                             ),
                           ),
                         ),
@@ -233,9 +230,8 @@ class ThematicSpreadsScreen extends StatelessWidget {
                             },
                             child: glassBlock(
                               icon: Image.asset('assets/images/inyan.png', width: 54, height: 54, fit: BoxFit.contain),
-                              title: 'Саморазвитие и баланс',
-                              description: 'Блоки, ресурсы и путь к гармонии',
-                              height: 110,
+                              title: loc.thematic_spreads_screen_self_development_title,
+                              description: loc.thematic_spreads_screen_self_development_description,
                             ),
                           ),
                         ),

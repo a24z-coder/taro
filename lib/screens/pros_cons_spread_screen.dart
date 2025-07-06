@@ -5,7 +5,10 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class ProsConsSpreadScreen extends StatefulWidget {
   const ProsConsSpreadScreen({Key? key}) : super(key: key);
@@ -18,27 +21,17 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What are the pros of this situation?',
-    'What are the cons of this situation?',
-    'What should I consider before making a decision?',
-  ];
 
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
-  List<String?> _flippedCards = [null, null, null];
-  List<bool> _cardFlipped = [false, false, false];
+  List<String?> _flippedCards = List.filled(3, null);
+  List<bool> _cardFlipped = List.filled(3, false);
   List<GlobalKey<FlipCardState>> _cardKeys = List.generate(3, (_) => GlobalKey<FlipCardState>());
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
 
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
@@ -50,17 +43,49 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.pros_cons_spread_screen_suggested_questions_1,
+        l10n.pros_cons_spread_screen_suggested_questions_2,
+        l10n.pros_cons_spread_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
   @override
   void initState() {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = LanguageService().currentLanguageCode;
     });
   }
 
@@ -76,11 +101,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.requestReceived,
         isUser: false,
       ));
       List<String> available = List.from(_allCardNames);
@@ -96,39 +117,29 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
     setState(() {
       _showSeeMeaningButton = false;
     });
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для  ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад на те три карты что выпали: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een legging op deze drie kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these three cards: ${cards.join(', ')}';
-    }
-
+    _loadCardsDescription();
     try {
-      final response = await TranslationService().getTranslatedText(
-        text: prompt,
-        targetLanguageCode: _languageCode,
-        isTarotReading: true,
-      );
-      setState(() {
-        _openAiAnswer = response;
-        _showAdAndNewSpread = true;
-      });
-    } catch (e) {
-      setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
-        _showAdAndNewSpread = true;
-      });
+      final adStartTime = DateTime.now();
+      debugPrint('[ProsCons] Starting ad loading at \x1b[36m${adStartTime.toIso8601String()}\x1b[0m');
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[ProsCons] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[ProsCons] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[ProsCons] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
     }
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -142,9 +153,9 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое расклад "За и Против"?',
-                style: TextStyle(
+              Text(
+                loc.pros_cons_spread_screen_what_is_pros_cons_spread,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -152,9 +163,9 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Этот расклад помогает принять решение, взвесив все плюсы и минусы. Карты покажут сильные и слабые стороны ситуации, а также дадут совет.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.pros_cons_spread_screen_pros_cons_spread_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -165,12 +176,12 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFDBC195),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.pros_cons_spread_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -298,16 +309,12 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFDBC195),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          _languageCode == 'ru'
-                              ? 'Узнать значение'
-                              : _languageCode == 'nl'
-                                  ? 'Bekijk betekenis'
-                                  : 'See meaning',
+                          AppLocalizations.of(context)!.seeMeaning,
                           style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -326,7 +333,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -354,6 +361,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -364,7 +372,6 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -379,11 +386,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Расклад "За и Против"'
-                : _languageCode == 'nl'
-                    ? 'Voor- en nadelen legging'
-                    : 'Pros & Cons Spread',
+            AppLocalizations.of(context)!.prosConsSpreadTitle,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -428,7 +431,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                           children: [
                             const SizedBox(height: 32),
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               child: Image.asset(
                                 'assets/images/tarolog.png',
                                 width: double.infinity,
@@ -462,19 +465,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -487,17 +478,31 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.newSpread,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.spreadDisclaimer,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -506,6 +511,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                             const SizedBox(height: 18),
                             _buildSuggestedQuestions(),
                             const SizedBox(height: 24),
+                            SizedBox(height: 10),
                           ],
                         ),
                       ),
@@ -532,24 +538,20 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enterQuestion,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Color(0xFFDBC195)),
                             ),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -563,7 +565,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),
@@ -587,8 +589,62 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> {
 
   @override
   void dispose() {
+    LanguageService().removeListener(_onLanguageChanged);
     _questionController.dispose();
     super.dispose();
+  }
+
+  void _onLanguageChanged() {
+    if (mounted) {
+      setState(() {
+        _languageCode = LanguageService().currentLanguageCode;
+      });
+    }
+  }
+
+  Future<void> _loadCardsDescription() async {
+    setState(() {
+      _isLoading = true;
+    });
+    final l10n = AppLocalizations.of(context)!;
+    final cards = _flippedCards.whereType<String>().toList();
+    String proCardRu = cards.length > 0 ? CardTranslations.getTranslatedCardName(cards[0]!, l10n) : '';
+    String conCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1]!, l10n) : '';
+    String adviceCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2]!, l10n) : '';
+    String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
+    String prompt = l10n.pros_cons_three_card_prompt(
+      adviceCardRu,
+      conCardRu,
+      proCardRu,
+      _userName.isNotEmpty ? _userName : l10n.the_user,
+      userText,
+    );
+    print('[ProsConsSpread] proCardRu: ' + proCardRu);
+    print('[ProsConsSpread] conCardRu: ' + conCardRu);
+    print('[ProsConsSpread] adviceCardRu: ' + adviceCardRu);
+    print('[ProsConsSpread] prompt: ' + prompt);
+    try {
+      final response = await TranslationService().getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      setState(() {
+        _openAiAnswer = response;
+        _showAdAndNewSpread = true;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = AppLocalizations.of(context)!.errorGettingSpreadMeaning;
+        }
+        _showAdAndNewSpread = true;
+        _isLoading = false;
+      });
+    }
   }
 }
 

@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tarot_ai"
+    namespace = "com.tarotaiapp.com"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 

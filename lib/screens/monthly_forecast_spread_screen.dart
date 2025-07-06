@@ -5,7 +5,10 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class MonthlyForecastSpreadScreen extends StatefulWidget {
   const MonthlyForecastSpreadScreen({Key? key}) : super(key: key);
@@ -18,13 +21,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What will be the key themes of the month?',
-    'What should I pay attention to this month?',
-    'What opportunities and challenges await me?',
-  ];
 
-  final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
   List<String?> _flippedCards = List.filled(12, null);
   List<bool> _cardFlipped = List.filled(12, false);
@@ -32,17 +29,13 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
+  String? _openAiAnswer;
 
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  // Диалоговые сообщения
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
-  String? _openAiAnswer;
   Future<void> _loadUserName() async {
     await UserService().loadUserName();
     setState(() {
@@ -50,17 +43,49 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.monthly_forecast_spread_screen_suggested_questions_1,
+        l10n.monthly_forecast_spread_screen_suggested_questions_2,
+        l10n.monthly_forecast_spread_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
   @override
   void initState() {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = LanguageService().currentLanguageCode;
     });
   }
 
@@ -76,14 +101,10 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.monthly_forecast_spread_screen_request_accepted,
         isUser: false,
       ));
-      List<String> available = List.from(_allCardNames);
+      List<String> available = List.from(CardTranslations.cards);
       available.shuffle(_random);
       _flippedCards = available.take(12).toList();
       _cardFlipped = List.filled(12, false);
@@ -96,34 +117,181 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
     setState(() {
       _showSeeMeaningButton = false;
     });
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для  ${_userName.isNotEmpty ? _userName : 'пользователя'}. месячный прогноз на эти 12 карт: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een maandprognose op deze twaalf kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a monthly tarot forecast for ${_userName.isNotEmpty ? _userName : 'the user'} on these twelve cards: ${cards.join(', ')}';
+    _loadCardsDescription();
+    try {
+      final adStartTime = DateTime.now();
+      debugPrint('[MonthlyForecast] Starting ad loading at \x1b[36m${adStartTime.toIso8601String()}\x1b[0m');
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[MonthlyForecast] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[MonthlyForecast] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[MonthlyForecast] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
     }
+  }
 
+  void _onLanguageChanged() {
+    if (mounted) {
+      setState(() {
+        _languageCode = LanguageService().currentLanguageCode;
+      });
+    }
+  }
+
+  Future<void> _loadCardsDescription() async {
+    setState(() {
+      _isLoading = true;
+    });
+    if (_userName.isEmpty) {
+      await _loadUserName();
+    }
+    final l10n = AppLocalizations.of(context)!;
+    final cards = _flippedCards.whereType<String>().toList();
+    List<String> cardsRu = List.generate(12, (i) => cards.length > i ? CardTranslations.getTranslatedCardName(cards[i]!, l10n) : '');
+    String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
+    final now = DateTime.now();
+    String monthRu;
+    switch (now.month) {
+      case 1:
+        monthRu = AppLocalizations.of(context)!.month_january + ' ' + now.year.toString();
+        break;
+      case 2:
+        monthRu = AppLocalizations.of(context)!.month_february + ' ' + now.year.toString();
+        break;
+      case 3:
+        monthRu = AppLocalizations.of(context)!.month_march + ' ' + now.year.toString();
+        break;
+      case 4:
+        monthRu = AppLocalizations.of(context)!.month_april + ' ' + now.year.toString();
+        break;
+      case 5:
+        monthRu = AppLocalizations.of(context)!.month_may + ' ' + now.year.toString();
+        break;
+      case 6:
+        monthRu = AppLocalizations.of(context)!.month_june + ' ' + now.year.toString();
+        break;
+      case 7:
+        monthRu = AppLocalizations.of(context)!.month_july + ' ' + now.year.toString();
+        break;
+      case 8:
+        monthRu = AppLocalizations.of(context)!.month_august + ' ' + now.year.toString();
+        break;
+      case 9:
+        monthRu = AppLocalizations.of(context)!.month_september + ' ' + now.year.toString();
+        break;
+      case 10:
+        monthRu = AppLocalizations.of(context)!.month_october + ' ' + now.year.toString();
+        break;
+      case 11:
+        monthRu = AppLocalizations.of(context)!.month_november + ' ' + now.year.toString();
+        break;
+      case 12:
+        monthRu = AppLocalizations.of(context)!.month_december + ' ' + now.year.toString();
+        break;
+      default:
+        monthRu = AppLocalizations.of(context)!.month_january + ' ' + now.year.toString();
+    }
+    String prompt = l10n.monthly_wheel_prompt(
+      cardsRu[0],
+      cardsRu[9],
+      cardsRu[10],
+      cardsRu[11],
+      cardsRu[1],
+      cardsRu[2],
+      cardsRu[3],
+      cardsRu[4],
+      cardsRu[5],
+      cardsRu[6],
+      cardsRu[7],
+      cardsRu[8],
+      monthRu,
+      _userName.isNotEmpty ? _userName : l10n.the_user,
+      userText
+    );
+    print('[MonthlyForecast] prompt: ' + prompt);
     try {
       final response = await TranslationService().getTranslatedText(
         text: prompt,
         targetLanguageCode: _languageCode,
         isTarotReading: true,
       );
+      // Фильтрация имени пользователя после диапазона дат
+      String filteredResponse = response;
+      if (_userName.isNotEmpty) {
+        final namePattern = RegExp.escape(_userName);
+        filteredResponse = filteredResponse.replaceAllMapped(
+          RegExp(r'(\d+–\d+|\d+)\s+' + namePattern + r'\s+—'),
+          (m) => '${m[1]} —',
+        );
+      }
+      // Автоматическая подстановка месяца после диапазона дат
+      String monthGenitive;
+      switch (now.month) {
+        case 1:
+          monthGenitive = AppLocalizations.of(context)!.month_january;
+          break;
+        case 2:
+          monthGenitive = AppLocalizations.of(context)!.month_february;
+          break;
+        case 3:
+          monthGenitive = AppLocalizations.of(context)!.month_march;
+          break;
+        case 4:
+          monthGenitive = AppLocalizations.of(context)!.month_april;
+          break;
+        case 5:
+          monthGenitive = AppLocalizations.of(context)!.month_may;
+          break;
+        case 6:
+          monthGenitive = AppLocalizations.of(context)!.month_june;
+          break;
+        case 7:
+          monthGenitive = AppLocalizations.of(context)!.month_july;
+          break;
+        case 8:
+          monthGenitive = AppLocalizations.of(context)!.month_august;
+          break;
+        case 9:
+          monthGenitive = AppLocalizations.of(context)!.month_september;
+          break;
+        case 10:
+          monthGenitive = AppLocalizations.of(context)!.month_october;
+          break;
+        case 11:
+          monthGenitive = AppLocalizations.of(context)!.month_november;
+          break;
+        case 12:
+          monthGenitive = AppLocalizations.of(context)!.month_december;
+          break;
+        default:
+          monthGenitive = AppLocalizations.of(context)!.month_january;
+      }
+      filteredResponse = filteredResponse.replaceAllMapped(
+        RegExp(r'(\d+–\d+|\d+)\s+—'),
+        (m) => '${m[1]} $monthGenitive —',
+      );
       setState(() {
-        _openAiAnswer = response;
+        _openAiAnswer = filteredResponse;
         _showAdAndNewSpread = true;
+        _isLoading = false;
       });
     } catch (e) {
       setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = AppLocalizations.of(context)!.monthly_forecast_spread_screen_error_getting_value;
+        }
         _showAdAndNewSpread = true;
+        _isLoading = false;
       });
     }
   }
@@ -259,17 +427,17 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFDBC195),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(22),
+                              borderRadius: BorderRadius.circular(24),
                             ),
                             elevation: 0,
+                            minimumSize: const Size(0, 44),
                           ),
-                          child: Text(
-                            _languageCode == 'ru'
-                                ? 'Узнать ответ'
-                                : _languageCode == 'nl'
-                                    ? 'Antwoord krijgen'
-                                    : 'Get Answer',
-                            style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              AppLocalizations.of(context)!.getAnswer,
+                              style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
@@ -289,7 +457,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -317,6 +485,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -328,51 +497,59 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
   void _showInfoDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Row(
-          children: [
-            const Icon(Icons.info_outline, color: Color(0xFFDBC195)),
-            SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                _languageCode == 'ru'
-                    ? 'О раскладе'
-                    : _languageCode == 'nl'
-                        ? 'Over de legging'
-                        : 'About the Spread',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
-        content: Text(
-          _languageCode == 'ru'
-              ? 'Месячный прогноз — это расклад на 12 карт, каждая из которых символизирует определённый аспект месяца. Задайте вопрос и откройте карты, чтобы получить подробный прогноз.'
-              : _languageCode == 'nl'
-                  ? 'De maandprognose is een legging van 12 kaarten, elk vertegenwoordigt een aspect van de maand. Stel een vraag en open de kaarten voor een gedetailleerde voorspelling.'
-                  : 'The monthly forecast is a 12-card spread, each representing an aspect of the month. Ask your question and open the cards for a detailed forecast.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              _languageCode == 'ru'
-                  ? 'Понятно'
-                  : _languageCode == 'nl'
-                      ? 'Begrepen'
-                      : 'Got it',
-              style: const TextStyle(color: Color(0xFFDBC195)),
-            ),
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.9),
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.aboutSpread,
+                style: const TextStyle(
+                  color: Color(0xFFDBC195),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                AppLocalizations.of(context)!.monthly_forecast_spread_screen_monthly_forecast_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFDBC195),
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.gotIt,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -387,11 +564,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Месячный прогноз'
-                : _languageCode == 'nl'
-                    ? 'Maandprognose'
-                    : 'Monthly Forecast',
+            AppLocalizations.of(context)!.monthlyForecast,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -470,19 +643,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -495,17 +656,31 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.newSpread,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -514,6 +689,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                             const SizedBox(height: 18),
                             _buildSuggestedQuestions(),
                             const SizedBox(height: 24),
+                            SizedBox(height: 10),
                           ],
                         ),
                       ),
@@ -540,11 +716,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enterYourQuestion,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
@@ -571,7 +743,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),
@@ -595,6 +767,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
 
   @override
   void dispose() {
+    LanguageService().removeListener(_onLanguageChanged);
     _questionController.dispose();
     super.dispose();
   }

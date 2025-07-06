@@ -52,7 +52,7 @@ class _OnboardingNameScreenState extends State<OnboardingNameScreen> {
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.13),
-                      borderRadius: BorderRadius.circular(22),
+                      borderRadius: BorderRadius.circular(24),
                       border: Border.all(color: Colors.white, width: 1.2),
                       boxShadow: [
                         BoxShadow(
@@ -101,7 +101,7 @@ class _OnboardingNameScreenState extends State<OnboardingNameScreen> {
                           height: 56,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(22),
+                            borderRadius: BorderRadius.circular(24),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.white.withOpacity(0.55),

@@ -5,7 +5,10 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class SelfDevelopmentBalanceSpreadScreen extends StatefulWidget {
   const SelfDevelopmentBalanceSpreadScreen({Key? key}) : super(key: key);
@@ -18,11 +21,6 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'How can I achieve better balance in my life?',
-    'What areas of self-development should I focus on?',
-    'How can I improve my spiritual growth?',
-  ];
 
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
@@ -32,17 +30,13 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
+  String? _openAiAnswer;
 
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  // Диалоговые сообщения
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
-  String? _openAiAnswer;
   Future<void> _loadUserName() async {
     await UserService().loadUserName();
     setState(() {
@@ -50,17 +44,48 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.self_development_balance_spread_screen_suggested_questions_1,
+        l10n.self_development_balance_spread_screen_suggested_questions_2,
+        l10n.self_development_balance_spread_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
   @override
   void initState() {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = LanguageService().currentLanguageCode;
     });
   }
 
@@ -76,11 +101,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.self_development_balance_spread_screen_request_accepted,
         isUser: false,
       ));
       List<String> available = List.from(_allCardNames);
@@ -93,23 +114,46 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
   }
 
   void _handleSeeMeaning() async {
+    // --- Показываем рекламу перед логикой ---
+    try {
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      }
+    } catch (e, st) {
+      debugPrint('[SelfDevelopmentBalance] ERROR showing Appodeal Interstitial: $e\n$st');
+    }
     setState(() {
       _showSeeMeaningButton = false;
     });
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для ${_userName.isNotEmpty ? _userName : 'пользователя'} расклад на саморазвитие и баланс на эти 7 карт: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een zelfontwikkeling en balans legging op deze zeven kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a self-development and balance tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these seven cards: ${cards.join(', ')}';
+    // Дожидаемся загрузки имени пользователя, если оно ещё не загружено
+    if (_userName.isEmpty) {
+      await _loadUserName();
     }
-
+    final l10n = AppLocalizations.of(context)!;
+    final cards = _flippedCards.whereType<String>().toList();
+    // Переводим каждую карту на русский (строго по индексам, чтобы порядок совпадал с визуальным)
+    List<String> cardsRu = List.generate(7, (i) => _flippedCards[i] != null ? CardTranslations.getTranslatedCardName(_flippedCards[i]!, l10n) : '');
+    String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
+    String prompt = l10n.self_growth_balance_prompt(
+      cardsRu[6], // adviceCard
+      cardsRu[3], // bodyCard
+      cardsRu[5], // challengeCard
+      cardsRu[0], // coreCard
+      cardsRu[2], // emotionCard
+      cardsRu[1], // mindCard
+      cardsRu[4], // strengthCard
+      _userName.isNotEmpty ? _userName : l10n.the_user,
+      userText,
+    );
+    print('[SelfDevelopmentBalance] prompt: ' + prompt);
     try {
       final response = await TranslationService().getTranslatedText(
         text: prompt,
-        targetLanguageCode: _languageCode,
+        targetLanguageCode: LanguageService().currentLanguageCode,
         isTarotReading: true,
       );
       setState(() {
@@ -118,11 +162,11 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
       });
     } catch (e) {
       setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = AppLocalizations.of(context)!.self_development_balance_spread_screen_error_getting_value;
+        }
         _showAdAndNewSpread = true;
       });
     }
@@ -161,6 +205,9 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
 
   Widget _buildSevenCards() {
     final allFlipped = _cardFlipped.every((f) => f);
+    double cardWidth = 60.0;
+    double cardHeight = cardWidth * 1.55;
+    double spacing = 8.0;
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
@@ -176,103 +223,64 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
           ),
           border: Border.all(color: Colors.white24),
         ),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            double cardWidth = 60.0;
-            double cardHeight = cardWidth * 1.55;
-            double spacing = 8.0;
-            double cardsBlockWidth = cardWidth * 3 + spacing * 2;
-            double buttonWidth = 120;
-            debugPrint('SEVEN_CARDS: constraints.maxWidth = $constraints.maxWidth');
-            debugPrint('SEVEN_CARDS: cardsBlockWidth = $cardsBlockWidth, buttonWidth = $buttonWidth');
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            // 1 карта сверху по центру (между двумя пропусками)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: cardsBlockWidth,
-                  height: cardHeight * 3 + spacing * 2,
-                  child: Stack(
-                    children: [
-                      // Карта 1 (центр) - [1]
-                      Positioned(
-                        left: cardWidth + spacing,
-                        top: cardHeight + spacing,
-                        child: _buildCard(0, cardWidth, cardHeight),
-                      ),
-                      // Карта 2 (верх) - [2]
-                      Positioned(
-                        left: cardWidth + spacing,
-                        top: 0,
-                        child: _buildCard(1, cardWidth, cardHeight),
-                      ),
-                      // Карта 3 (право) - [3]
-                      Positioned(
-                        left: (cardWidth + spacing) * 2,
-                        top: cardHeight + spacing,
-                        child: _buildCard(2, cardWidth, cardHeight),
-                      ),
-                      // Карта 4 (низ-право) - [4]
-                      Positioned(
-                        left: (cardWidth + spacing) * 2,
-                        top: (cardHeight + spacing) * 2,
-                        child: _buildCard(3, cardWidth, cardHeight),
-                      ),
-                      // Карта 5 (низ) - [5]
-                      Positioned(
-                        left: cardWidth + spacing,
-                        top: (cardHeight + spacing) * 2,
-                        child: _buildCard(4, cardWidth, cardHeight),
-                      ),
-                      // Карта 6 (низ-лево) - [6]
-                      Positioned(
-                        left: 0,
-                        top: (cardHeight + spacing) * 2,
-                        child: _buildCard(5, cardWidth, cardHeight),
-                      ),
-                      // Карта 7 (лево) - [7]
-                      Positioned(
-                        left: 0,
-                        top: cardHeight + spacing,
-                        child: _buildCard(6, cardWidth, cardHeight),
-                      ),
-                    ],
+                const Spacer(),
+                _buildCard(0, cardWidth, cardHeight),
+                const Spacer(),
+              ],
+            ),
+            const SizedBox(height: 12),
+            // 3 карты во втором ряду
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildCard(1, cardWidth, cardHeight),
+                SizedBox(width: spacing),
+                _buildCard(2, cardWidth, cardHeight),
+                SizedBox(width: spacing),
+                _buildCard(3, cardWidth, cardHeight),
+              ],
+            ),
+            const SizedBox(height: 12),
+            // 3 карты в третьем ряду
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildCard(4, cardWidth, cardHeight),
+                SizedBox(width: spacing),
+                _buildCard(5, cardWidth, cardHeight),
+                SizedBox(width: spacing),
+                _buildCard(6, cardWidth, cardHeight),
+              ],
+            ),
+            if (allFlipped && _showSeeMeaningButton) ...[
+              const SizedBox(height: 16),
+              SizedBox(
+                width: 180,
+                child: ElevatedButton(
+                  onPressed: _handleSeeMeaning,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFDBC195),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.getAnswer,
+                    style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
-                if (allFlipped && _showSeeMeaningButton) ...[
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: cardsBlockWidth,
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: SizedBox(
-                        width: buttonWidth,
-                        height: 44,
-                        child: ElevatedButton(
-                          onPressed: _handleSeeMeaning,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFDBC195),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(22),
-                            ),
-                            elevation: 0,
-                          ),
-                          child: Text(
-                            _languageCode == 'ru'
-                                ? 'Узнать ответ'
-                                : _languageCode == 'nl'
-                                    ? 'Antwoord krijgen'
-                                    : 'Get Answer',
-                            style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            );
-          },
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -316,7 +324,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -344,6 +352,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -355,51 +364,59 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
   void _showInfoDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Row(
-          children: [
-            const Icon(Icons.info_outline, color: Color(0xFFDBC195)),
-            SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                _languageCode == 'ru'
-                    ? 'О раскладе'
-                    : _languageCode == 'nl'
-                        ? 'Over de legging'
-                        : 'About the Spread',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
-        ),
-        content: Text(
-          _languageCode == 'ru'
-              ? 'Расклад "Саморазвитие и баланс" состоит из 7 карт, расположенных в форме круга. Каждая карта символизирует определённый аспект вашего духовного роста и внутренней гармонии.'
-              : _languageCode == 'nl'
-                  ? 'De "Zelfontwikkeling en balans" legging bestaat uit 7 kaarten in een cirkelpatroon. Elke kaart vertegenwoordigt een aspect van je spirituele groei en innerlijke harmonie.'
-                  : 'The "Self-Development & Balance" spread consists of 7 cards arranged in a circle pattern. Each card represents an aspect of your spiritual growth and inner harmony.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              _languageCode == 'ru'
-                  ? 'Понятно'
-                  : _languageCode == 'nl'
-                      ? 'Begrepen'
-                      : 'Got it',
-              style: const TextStyle(color: Color(0xFFDBC195)),
-            ),
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.9),
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.aboutTheSpread,
+                style: const TextStyle(
+                  color: Color(0xFFDBC195),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                AppLocalizations.of(context)!.aboutSpreadDescription,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFDBC195),
+                    foregroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.gotIt,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -414,11 +431,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Саморазвитие и баланс'
-                : _languageCode == 'nl'
-                    ? 'Zelfontwikkeling en balans'
-                    : 'Self-Development & Balance',
+            AppLocalizations.of(context)!.selfDevelopmentAndBalance,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -497,19 +510,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -522,17 +523,31 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.newSpread,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -541,6 +556,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                             const SizedBox(height: 18),
                             _buildSuggestedQuestions(),
                             const SizedBox(height: 24),
+                            SizedBox(height: 10),
                           ],
                         ),
                       ),
@@ -567,11 +583,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enterYourQuestion,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
@@ -598,7 +610,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),

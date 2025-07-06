@@ -82,7 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                                       decoration: BoxDecoration(
                                         color: Colors.white.withOpacity(0.13),
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: BorderRadius.circular(24),
                                         border: Border.all(color: Colors.white, width: 1.2),
                                       ),
                                       child: Row(
@@ -140,7 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: 12,
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(24),
                 ),
                 child: Stack(
                   children: [
@@ -150,7 +150,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       height: 12,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(24),
                       ),
                     ),
                   ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tarot_ai/services/language_service.dart';
+import '../utils/card_translations.dart';
+import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'card_detail_screen.dart';
 
@@ -26,14 +28,6 @@ const List<String> majorArcanaFilenames = [
   'the tower.jpg',
   'the world.jpg',
   'wheel of fortune.jpg',
-];
-
-const List<String> tabTitles = [
-  'Главные арканы',
-  'Жезлы',
-  'Кубки',
-  'Мечи',
-  'Пентакли',
 ];
 
 const List<IconData> tabIcons = [
@@ -142,9 +136,8 @@ const List<Map<String, String>> pentaclesCards = [
   {'name': 'King of Pentacles', 'file': 'king of pentacles.jpg'},
 ];
 
-String getCardDisplayName(String name) {
-  if (name == 'The High Priestess') return 'Priestess';
-  return name;
+String getCardDisplayName(String name, AppLocalizations l10n) {
+  return CardTranslations.getTranslatedCardName(name, l10n);
 }
 
 class CardMeaningsScreen extends StatefulWidget {
@@ -160,9 +153,17 @@ class _CardMeaningsScreenState extends State<CardMeaningsScreen> {
   @override
   Widget build(BuildContext context) {
     final langCode = LanguageService().currentLanguageCode;
+    final l10n = AppLocalizations.of(context)!;
+    final tabTitles = [
+      l10n.card_meanings_screen_major_arcana,
+      l10n.card_meanings_screen_wands,
+      l10n.card_meanings_screen_cups,
+      l10n.card_meanings_screen_swords,
+      l10n.card_meanings_screen_pentacles,
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Значение карт', style: TextStyle(color: Colors.white)),
+        title: Text(l10n.card_meanings_screen_title, style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -273,7 +274,7 @@ class _CardMeaningsScreenState extends State<CardMeaningsScreen> {
                             children: [
                               Expanded(
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(7),
+                                  borderRadius: BorderRadius.circular(8),
                                   child: Image.asset(
                                     'assets/cards/${card['file']}',
                                     fit: BoxFit.cover,
@@ -282,7 +283,7 @@ class _CardMeaningsScreenState extends State<CardMeaningsScreen> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                getCardDisplayName(card['name']!),
+                                getCardDisplayName(card['name']!, l10n),
                                 textAlign: TextAlign.center,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,

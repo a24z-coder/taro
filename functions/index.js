@@ -38,12 +38,48 @@ const openai = new OpenAI({
   apiKey: functions.config().openai.key,
 });
 
+// Функция для тестирования подключения к OpenAI
+exports.testOpenAiConnection = functions.region("europe-west1").https.onCall(async (data, context) => {
+  console.log("[testOpenAiConnection] Testing OpenAI connection...");
+
+  try {
+    // Простой тест - запрашиваем список моделей
+    const models = await openai.models.list();
+    console.log("[testOpenAiConnection] Successfully connected to OpenAI");
+    console.log("[testOpenAiConnection] Available models count:", models.data.length);
+
+    return {
+      success: true,
+      message: "OpenAI connection successful",
+      modelsCount: models.data.length,
+      timestamp: new Date().toISOString(),
+    };
+  } catch (error) {
+    console.error("[testOpenAiConnection] Error connecting to OpenAI:", {
+      message: error.message,
+      status: error.status,
+      response: error.response && error.response.data,
+      stack: error.stack,
+    });
+
+    return {
+      success: false,
+      error: error.message,
+      status: error.status,
+      timestamp: new Date().toISOString(),
+    };
+  }
+});
+
 // Создаем нашу облачную функцию
 exports.getOpenAiTranslation = functions.region("europe-west1").https.onCall(async (data, context) => {
   const prompt = data.prompt;
   const targetLanguage = data.targetLanguage;
 
+  console.log("[getOpenAiTranslation] called with:", {prompt, targetLanguage});
+
   if (!prompt || !targetLanguage) {
+    console.error("[getOpenAiTranslation] Missing arguments", {prompt, targetLanguage});
     throw new functions.https.HttpsError(
         "invalid-argument",
         "The function must be called with two arguments 'prompt' and 'targetLanguage'.",
@@ -51,18 +87,25 @@ exports.getOpenAiTranslation = functions.region("europe-west1").https.onCall(asy
   }
 
   try {
+    console.log("[getOpenAiTranslation] Attempting to call OpenAI API...");
     const chatCompletion = await openai.chat.completions.create({
       messages: [{role: "user", content: prompt}],
-      model: "gpt-4.1-nano",
+      model: "gpt-4.1-nano", // gpt-4.1-nano
     });
 
     const translatedText = chatCompletion.choices[0].message.content;
+    console.log("[getOpenAiTranslation] OpenAI response:", translatedText);
     return {translation: translatedText};
   } catch (error) {
-    console.error("Error calling OpenAI API", error);
+    console.error("[getOpenAiTranslation] Error calling OpenAI API", {
+      message: error.message,
+      status: error.status,
+      response: error.response && error.response.data,
+      stack: error.stack,
+    });
     throw new functions.https.HttpsError(
         "internal",
-        "Failed to get translation.",
+        `Failed to get translation: ${error.message}`,
     );
   }
 });

@@ -6,6 +6,9 @@ import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class ChatWithTarotReaderScreen extends StatefulWidget {
   const ChatWithTarotReaderScreen({super.key});
@@ -18,11 +21,6 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What does my future hold?',
-    'Will I find love soon?',
-    'What career path should I follow?',
-  ];
 
   // Для карт
   final List<String> _allCardNames = CardTranslations.cards;
@@ -35,16 +33,15 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
   bool _showAdAndNewSpread = false;
 
   // Диалоговые сообщения
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  List<_ChatMessage> _messages = [];
+
   bool _questionSent = false;
 
   String _userName = '';
   String? _openAiAnswer;
+  String _userQuestion = '';
+  bool _isLoadingAnswer = false;
+  
   Future<void> _loadUserName() async {
     await UserService().loadUserName();
     setState(() {
@@ -52,11 +49,209 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.three_cards_screen_suggested_questions_1,
+        l10n.three_cards_screen_suggested_questions_2,
+        l10n.three_cards_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
+  // Метод для загрузки описания карт от OpenAI
+  Future<void> _loadCardsDescription() async {
+    if (_isLoadingAnswer) return;
+    
+    final startTime = DateTime.now();
+    debugPrint('[ThreeCard] _loadCardsDescription: starting at ${startTime.toIso8601String()}');
+    
+    setState(() {
+      _isLoadingAnswer = true;
+    });
+
+    try {
+      // Формируем промпт для OpenAI
+      final promptStartTime = DateTime.now();
+      debugPrint('[ThreeCard] Starting prompt formation at ${promptStartTime.toIso8601String()}');
+      
+      final loc = AppLocalizations.of(context)!;
+      final cards = _flippedCards.whereType<String>().toList;
+      
+      // Получаем перевод названия карты через локализацию
+      String getCardTranslation(String cardName) {
+        final cardKey = CardTranslations.cardToLocalizationKey[cardName];
+        if (cardKey != null) {
+          switch (cardKey) {
+            case 'card_name_the_fool': return loc.card_name_the_fool;
+            case 'card_name_the_magician': return loc.card_name_the_magician;
+            case 'card_name_the_high_priestess': return loc.card_name_the_high_priestess;
+            case 'card_name_the_empress': return loc.card_name_the_empress;
+            case 'card_name_the_emperor': return loc.card_name_the_emperor;
+            case 'card_name_the_hierophant': return loc.card_name_the_hierophant;
+            case 'card_name_the_lovers': return loc.card_name_the_lovers;
+            case 'card_name_the_chariot': return loc.card_name_the_chariot;
+            case 'card_name_strength': return loc.card_name_strength;
+            case 'card_name_the_hermit': return loc.card_name_the_hermit;
+            case 'card_name_wheel_of_fortune': return loc.card_name_wheel_of_fortune;
+            case 'card_name_justice': return loc.card_name_justice;
+            case 'card_name_the_hanged_man': return loc.card_name_the_hanged_man;
+            case 'card_name_death': return loc.card_name_death;
+            case 'card_name_temperance': return loc.card_name_temperance;
+            case 'card_name_the_devil': return loc.card_name_the_devil;
+            case 'card_name_the_tower': return loc.card_name_the_tower;
+            case 'card_name_the_star': return loc.card_name_the_star;
+            case 'card_name_the_moon': return loc.card_name_the_moon;
+            case 'card_name_the_sun': return loc.card_name_the_sun;
+            case 'card_name_judgement': return loc.card_name_judgement;
+            case 'card_name_the_world': return loc.card_name_the_world;
+            case 'card_name_ace_of_wands': return loc.card_name_ace_of_wands;
+            case 'card_name_two_of_wands': return loc.card_name_two_of_wands;
+            case 'card_name_three_of_wands': return loc.card_name_three_of_wands;
+            case 'card_name_four_of_wands': return loc.card_name_four_of_wands;
+            case 'card_name_five_of_wands': return loc.card_name_five_of_wands;
+            case 'card_name_six_of_wands': return loc.card_name_six_of_wands;
+            case 'card_name_seven_of_wands': return loc.card_name_seven_of_wands;
+            case 'card_name_eight_of_wands': return loc.card_name_eight_of_wands;
+            case 'card_name_nine_of_wands': return loc.card_name_nine_of_wands;
+            case 'card_name_ten_of_wands': return loc.card_name_ten_of_wands;
+            case 'card_name_page_of_wands': return loc.card_name_page_of_wands;
+            case 'card_name_knight_of_wands': return loc.card_name_knight_of_wands;
+            case 'card_name_queen_of_wands': return loc.card_name_queen_of_wands;
+            case 'card_name_king_of_wands': return loc.card_name_king_of_wands;
+            case 'card_name_ace_of_cups': return loc.card_name_ace_of_cups;
+            case 'card_name_two_of_cups': return loc.card_name_two_of_cups;
+            case 'card_name_three_of_cups': return loc.card_name_three_of_cups;
+            case 'card_name_four_of_cups': return loc.card_name_four_of_cups;
+            case 'card_name_five_of_cups': return loc.card_name_five_of_cups;
+            case 'card_name_six_of_cups': return loc.card_name_six_of_cups;
+            case 'card_name_seven_of_cups': return loc.card_name_seven_of_cups;
+            case 'card_name_eight_of_cups': return loc.card_name_eight_of_cups;
+            case 'card_name_nine_of_cups': return loc.card_name_nine_of_cups;
+            case 'card_name_ten_of_cups': return loc.card_name_ten_of_cups;
+            case 'card_name_page_of_cups': return loc.card_name_page_of_cups;
+            case 'card_name_knight_of_cups': return loc.card_name_knight_of_cups;
+            case 'card_name_queen_of_cups': return loc.card_name_queen_of_cups;
+            case 'card_name_king_of_cups': return loc.card_name_king_of_cups;
+            case 'card_name_ace_of_swords': return loc.card_name_ace_of_swords;
+            case 'card_name_two_of_swords': return loc.card_name_two_of_swords;
+            case 'card_name_three_of_swords': return loc.card_name_three_of_swords;
+            case 'card_name_four_of_swords': return loc.card_name_four_of_swords;
+            case 'card_name_five_of_swords': return loc.card_name_five_of_swords;
+            case 'card_name_six_of_swords': return loc.card_name_six_of_swords;
+            case 'card_name_seven_of_swords': return loc.card_name_seven_of_swords;
+            case 'card_name_eight_of_swords': return loc.card_name_eight_of_swords;
+            case 'card_name_nine_of_swords': return loc.card_name_nine_of_swords;
+            case 'card_name_ten_of_swords': return loc.card_name_ten_of_swords;
+            case 'card_name_page_of_swords': return loc.card_name_page_of_swords;
+            case 'card_name_knight_of_swords': return loc.card_name_knight_of_swords;
+            case 'card_name_queen_of_swords': return loc.card_name_queen_of_swords;
+            case 'card_name_king_of_swords': return loc.card_name_king_of_swords;
+            case 'card_name_ace_of_pentacles': return loc.card_name_ace_of_pentacles;
+            case 'card_name_two_of_pentacles': return loc.card_name_two_of_pentacles;
+            case 'card_name_three_of_pentacles': return loc.card_name_three_of_pentacles;
+            case 'card_name_four_of_pentacles': return loc.card_name_four_of_pentacles;
+            case 'card_name_five_of_pentacles': return loc.card_name_five_of_pentacles;
+            case 'card_name_six_of_pentacles': return loc.card_name_six_of_pentacles;
+            case 'card_name_seven_of_pentacles': return loc.card_name_seven_of_pentacles;
+            case 'card_name_eight_of_pentacles': return loc.card_name_eight_of_pentacles;
+            case 'card_name_nine_of_pentacles': return loc.card_name_nine_of_pentacles;
+            case 'card_name_ten_of_pentacles': return loc.card_name_ten_of_pentacles;
+            case 'card_name_page_of_pentacles': return loc.card_name_page_of_pentacles;
+            case 'card_name_knight_of_pentacles': return loc.card_name_knight_of_pentacles;
+            case 'card_name_queen_of_pentacles': return loc.card_name_queen_of_pentacles;
+            case 'card_name_king_of_pentacles': return loc.card_name_king_of_pentacles;
+            default: return cardName;
+          }
+        }
+        return cardName;
+      }
+
+      String prompt = loc.chat_with_tarot_reader_screen_prompt(
+        getCardTranslation(_flippedCards[2] ?? ''), // futureCard
+        getCardTranslation(_flippedCards[0] ?? ''), // pastCard
+        getCardTranslation(_flippedCards[1] ?? ''), // presentCard
+        _userName.isNotEmpty ? _userName : loc.the_user, // userName
+        _userQuestion, // userQuestion
+      );
+
+      final promptEndTime = DateTime.now();
+      debugPrint('[ThreeCard] Prompt formation completed at ${promptEndTime.toIso8601String()}, duration: ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
+
+      final openaiStartTime = DateTime.now();
+      debugPrint('[ThreeCard] Starting OpenAI request at ${openaiStartTime.toIso8601String()}');
+      
+      final response = await TranslationService().getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      
+      final openaiEndTime = DateTime.now();
+      debugPrint('[ThreeCard] OpenAI response received at ${openaiEndTime.toIso8601String()}, duration: ${openaiEndTime.difference(openaiStartTime).inMilliseconds}ms');
+      
+      if (mounted) {
+        setState(() {
+          _openAiAnswer = response;
+          _showAdAndNewSpread = true;
+          _isLoadingAnswer = false;
+        });
+        final totalTime = DateTime.now().difference(startTime);
+        debugPrint('[ThreeCard] Answer ready, loading indicator hidden. Total time: ${totalTime.inMilliseconds}ms');
+      }
+    } catch (e) {
+      final errorTime = DateTime.now();
+      debugPrint('[ThreeCard] Error occurred at ${errorTime.toIso8601String()}: $e');
+      if (mounted) {
+        setState(() {
+          if (e.toString().contains('NO_INTERNET')) {
+            _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+          } else {
+            _openAiAnswer = AppLocalizations.of(context)!.errorGettingSpreadMeaning;
+          }
+          _showAdAndNewSpread = true;
+          _isLoadingAnswer = false;
+        });
+        debugPrint('[ThreeCard] Error occurred, loading indicator hidden');
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    // Добавляем слушатель изменений языка
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
+  }
+
+  void _onLanguageChanged() {
+    // Принудительно обновляем UI при смене языка
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _loadLanguage() async {
@@ -71,6 +266,8 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
     if (userText.isEmpty) return;
     setState(() {
       _isLoading = true;
+      // Сохраняем вопрос пользователя
+      _userQuestion = userText;
       // Добавляем сообщение пользователя
       _messages.add(_ChatMessage(text: userText, isUser: true));
       _questionController.clear();
@@ -79,12 +276,9 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       // Добавляем ответ таролога
+      final loc = AppLocalizations.of(context)!;
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: loc.chat_with_tarot_reader_screen_request_received,
         isUser: false,
       ));
       // Случайно выбираем 3 карты
@@ -98,43 +292,41 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
   }
 
   void _handleSeeMeaning() async {
+    final startTime = DateTime.now();
+    debugPrint('[ThreeCard] _handleSeeMeaning: starting at ${startTime.toIso8601String()}');
+    
+    // Скрываем кнопку сразу
     setState(() {
       _showSeeMeaningButton = false;
     });
-    // Формируем промт для OpenAI
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад на те три карты что выпали: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een legging op deze drie kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these three cards: ${cards.join(', ')}';
-    }
 
+    // Запускаем загрузку описания карт параллельно с показом рекламы
+    _loadCardsDescription();
+
+    // Показываем рекламу параллельно
     try {
-      final response = await TranslationService().getTranslatedText(
-        text: prompt,
-        targetLanguageCode: _languageCode,
-        isTarotReading: true,
-      );
-      setState(() {
-        _openAiAnswer = response;
-        _showAdAndNewSpread = true;
-      });
-    } catch (e) {
-      setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
-        _showAdAndNewSpread = true;
-      });
+      final adStartTime = DateTime.now();
+      debugPrint('[ThreeCard] Starting ad loading at ${adStartTime.toIso8601String()}');
+      
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[ThreeCard] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[ThreeCard] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[ThreeCard] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
     }
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -148,9 +340,9 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое расклад на 3 карты?',
-                style: TextStyle(
+              Text(
+                loc.three_cards_screen_what_is_three_cards,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -158,9 +350,9 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Классический расклад, который показывает прошлое, настоящее и будущее вашей ситуации. Первая карта — прошлое, вторая — настоящее, третья — будущее.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.three_cards_screen_three_cards_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -171,12 +363,12 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFDBC195),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.three_cards_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -290,16 +482,12 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFDBC195),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(24),
                       ),
                       elevation: 0,
                     ),
                     child: Text(
-                      _languageCode == 'ru'
-                          ? 'Узнать значение'
-                          : _languageCode == 'nl'
-                              ? 'Bekijk betekenis'
-                              : 'See meaning',
+                      AppLocalizations.of(context)!.see_meaning_button,
                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -316,7 +504,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -344,6 +532,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -369,11 +558,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Три карты'
-                : _languageCode == 'nl'
-                    ? 'Drie kaarten'
-                    : 'Three Cards',
+            AppLocalizations.of(context)!.classic_spreads_screen_three_cards_title,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -428,6 +613,44 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                             const SizedBox(height: 24),
                             _buildDialogMessages(),
                             if (_showCards) _buildThreeCards(),
+                            if (_isLoadingAnswer) ...[
+                              const SizedBox(height: 24),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF23272F).withOpacity(0.85),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(16),
+                                      topRight: Radius.circular(16),
+                                      bottomLeft: Radius.circular(4),
+                                      bottomRight: Radius.circular(16),
+                                    ),
+                                    border: Border.all(color: Colors.white24),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                                                             Text(
+                                         AppLocalizations.of(context)!.analyzing_cards,
+                                         style: const TextStyle(color: Colors.white, fontSize: 16),
+                                       ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                             if (_openAiAnswer != null) ...[
                               const SizedBox(height: 24),
                               Align(
@@ -452,19 +675,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -477,17 +688,31 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.new_spread_button,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 18),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.disclaimer_text,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -522,11 +747,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enter_your_question,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
@@ -553,7 +774,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),
@@ -577,6 +798,8 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> {
 
   @override
   void dispose() {
+    // Удаляем слушатель при уничтожении виджета
+    LanguageService().removeListener(_onLanguageChanged);
     _questionController.dispose();
     super.dispose();
   }

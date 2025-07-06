@@ -3,6 +3,9 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class CardCombinationScreen extends StatefulWidget {
   const CardCombinationScreen({Key? key}) : super(key: key);
@@ -19,6 +22,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
   String? _languageCode;
   late TranslationService _translationService;
   String? _userName;
+  bool _isError = false;
 
   @override
   void initState() {
@@ -64,9 +68,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
     // Проверяем, что все поля заполнены
     if (_selectedCards.any((c) => c == null || c!.isEmpty)) {
       setState(() {
-        _answerText = _languageCode == 'ru'
-            ? 'Пожалуйста, заполните все ${_selectedCards.length} полей карт.'
-            : 'Please fill all ${_selectedCards.length} card fields.';
+        _answerText = AppLocalizations.of(context)!.please_fill_all_fields;
       });
       return;
     }
@@ -75,9 +77,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
     final invalidCards = _selectedCards.where((card) => !_allCards.contains(card)).toList();
     if (invalidCards.isNotEmpty) {
       setState(() {
-        _answerText = _languageCode == 'ru'
-            ? 'Пожалуйста, выберите карты только из предложенного списка. Неверные карты: ${invalidCards.join(', ')}'
-            : 'Please select cards only from the suggested list. Invalid cards: ${invalidCards.join(', ')}';
+        _answerText = AppLocalizations.of(context)!.please_select_cards_only_from_suggested_list;
       });
       return;
     }
@@ -85,21 +85,35 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
     // Проверяем, что все карты разные
     if (_selectedCards.toSet().length != _selectedCards.length) {
       setState(() {
-        _answerText = _languageCode == 'ru'
-            ? 'Пожалуйста, выберите разные карты во всех полях.'
-            : 'Please select different cards in all fields.';
+        _answerText = AppLocalizations.of(context)!.please_select_different_cards_in_all_fields;
       });
       return;
+    }
+    // --- Показываем рекламу перед реальным запросом ---
+    try {
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      }
+    } catch (e, st) {
+      debugPrint('[CardCombination] ERROR showing Appodeal Interstitial: $e\n$st');
     }
     setState(() {
       _isLoading = true;
       _answerText = null;
+      _isError = false;
     });
     try {
-      final String contextMessage =
-        'Проанализируй сочетание карт Таро: ${_selectedCards.join(', ')}.\n'
-        'Дай глубокий мистический анализ их взаимодействия и общий совет.\n'
-        'Ответ полностью на языке ${_languageCode}. Без приветствий и заключений.';
+      // Переводим английские названия карт на русский для промпта
+      final l10n = AppLocalizations.of(context);
+      final russianCardNames = _selectedCards.map((card) => 
+        CardTranslations.getTranslatedCardName(card!, l10n!)
+      ).join(', ');
+      
+      final String contextMessage = AppLocalizations.of(context)!.card_combination_screen_prompt(russianCardNames, _languageCode ?? 'ru');
       String aiResponse = await _translationService.getTranslatedText(
         text: contextMessage,
         targetLanguageCode: _languageCode!,
@@ -108,20 +122,56 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
       setState(() {
         _answerText = aiResponse;
         _isLoading = false;
+        _isError = false;
       });
     } catch (e) {
       setState(() {
-        _answerText = "Ошибка: не удалось получить ответ. Попробуйте еще раз.";
+        if (e.toString().contains('NO_INTERNET')) {
+          _answerText = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _answerText = AppLocalizations.of(context)!.error_getting_answer_try_again;
+        }
         _isLoading = false;
+        _isError = true;
       });
     }
+  }
+
+  // Получаем список карт с русскими названиями для отображения
+  List<String> _getTranslatedCards() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return _allCards;
+    
+    return _allCards.map((card) => CardTranslations.getTranslatedCardName(card, l10n)).toList();
+  }
+
+  // Получаем английское название карты по русскому
+  String? _getEnglishCardName(String russianName) {
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return null;
+    
+    for (String englishCard in _allCards) {
+      if (CardTranslations.getTranslatedCardName(englishCard, l10n) == russianName) {
+        return englishCard;
+      }
+    }
+    return null;
   }
 
   List<String> _getFilteredCards(int index, String pattern) {
     final lowerPattern = pattern.toLowerCase();
     final used = _selectedCards.where((c) => c != null && c != _selectedCards[index]).toSet();
-    return _allCards
-        .where((card) => !used.contains(card) && card.toLowerCase().contains(lowerPattern))
+    final translatedCards = _getTranslatedCards();
+    
+    return translatedCards
+        .where((card) {
+          // Проверяем, что карта не используется
+          final englishCard = _getEnglishCardName(card);
+          if (englishCard == null || used.contains(englishCard)) return false;
+          
+          // Проверяем соответствие паттерну
+          return card.toLowerCase().contains(lowerPattern);
+        })
         .toList();
   }
 
@@ -131,7 +181,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(_languageCode == 'ru' ? 'Сочетание карт' : 'Card Combination', style: const TextStyle(color: Colors.white)),
+          title: Text(AppLocalizations.of(context)!.card_combination_screen_title, style: const TextStyle(color: Colors.white)),
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
@@ -162,9 +212,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                   children: [
                     const SizedBox(height: 8),
                     Text(
-                      _languageCode == 'ru'
-                          ? 'Добрый день${_userName != null && _userName!.isNotEmpty ? ', $_userName' : ''},\nВыберите карты, чтобы узнать сочетание и значение'
-                          : 'Good day${_userName != null && _userName!.isNotEmpty ? ', $_userName' : ''},\nSelect cards to learn their combination and meaning',
+                      AppLocalizations.of(context)!.good_day,
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                     const SizedBox(height: 18),
@@ -180,60 +228,54 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                                 },
                                 displayStringForOption: (option) => option,
                                 fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
-                                  if (controller.text != (_selectedCards[index] ?? '')) {
-                                    controller.text = _selectedCards[index] ?? '';
+                                  // Отображаем русское название, но храним английское
+                                  String displayText = '';
+                                  if (_selectedCards[index] != null) {
+                                    final l10n = AppLocalizations.of(context);
+                                    if (l10n != null) {
+                                      displayText = CardTranslations.getTranslatedCardName(_selectedCards[index]!, l10n);
+                                    } else {
+                                      displayText = _selectedCards[index]!;
+                                    }
                                   }
                                   
-                                  // Проверяем, есть ли введенная карта в списке
-                                  final isValidCard = controller.text.isEmpty || _allCards.contains(controller.text);
+                                  if (controller.text != displayText) {
+                                    controller.text = displayText;
+                                  }
                                   
-                                  return TextField(
-                                    controller: controller,
-                                    focusNode: focusNode,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _selectedCards[index] = value.isEmpty ? null : value;
-                                      });
-                                    },
-                                    style: const TextStyle(color: Color(0xFFDBC195), fontSize: 18),
-                                    cursorColor: Color(0xFFDBC195),
-                                    decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: Colors.white.withOpacity(0.35),
-                                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(16),
-                                        borderSide: BorderSide(
-                                          color: isValidCard ? Color(0xFFDBC195) : Colors.red, 
-                                          width: 1.5
-                                        ),
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.13),
+                                      borderRadius: BorderRadius.circular(18),
+                                      border: Border.all(color: Color(0xFFDBC195), width: 1.5),
+                                    ),
+                                    child: TextField(
+                                      controller: controller,
+                                      focusNode: focusNode,
+                                      onChanged: (value) {
+                                        // При изменении текста ищем соответствующую английскую карту
+                                        final englishCard = _getEnglishCardName(value);
+                                        setState(() {
+                                          _selectedCards[index] = englishCard;
+                                        });
+                                      },
+                                      style: const TextStyle(color: Colors.white, fontSize: 18),
+                                      cursorColor: Color(0xFFDBC195),
+                                      decoration: InputDecoration(
+                                        filled: false,
+                                        hintText: AppLocalizations.of(context)!.card,
+                                        hintStyle: const TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.w400),
+                                        border: InputBorder.none,
+                                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                                       ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(16),
-                                        borderSide: BorderSide(
-                                          color: isValidCard ? Color(0xFFDBC195) : Colors.red, 
-                                          width: 1.5
-                                        ),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(16),
-                                        borderSide: BorderSide(
-                                          color: isValidCard ? Color(0xFFDBC195) : Colors.red, 
-                                          width: 2
-                                        ),
-                                      ),
-                                      hintText: _languageCode == 'ru' ? 'Карта ${index + 1}' : 'Card ${index + 1}',
-                                      hintStyle: const TextStyle(color: Color(0xFFDBC195), fontSize: 18, fontWeight: FontWeight.w400),
-                                      errorText: !isValidCard && controller.text.isNotEmpty 
-                                          ? (_languageCode == 'ru' ? 'Карта не найдена' : 'Card not found')
-                                          : null,
-                                      errorStyle: const TextStyle(color: Colors.red, fontSize: 12),
                                     ),
                                   );
                                 },
                                 onSelected: (String selection) {
+                                  // При выборе карты из списка сохраняем английское название
+                                  final englishCard = _getEnglishCardName(selection);
                                   setState(() {
-                                    _selectedCards[index] = selection;
+                                    _selectedCards[index] = englishCard;
                                   });
                                 },
                                 optionsViewBuilder: (context, onSelected, options) {
@@ -279,11 +321,11 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                               onPressed: _isLoading ? null : _handleGetCombination,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFFDBC195),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                                 elevation: 0,
                               ),
                               child: Text(
-                                _languageCode == 'ru' ? 'Узнать сочетание' : 'Get Combination',
+                                AppLocalizations.of(context)!.get_combination,
                                 style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -309,27 +351,41 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                     const SizedBox(height: 18),
                     if (_isLoading)
                       const Center(child: CircularProgressIndicator(color: Colors.amber)),
-                    if (_answerText != null)
+                    if (_answerText != null && !_isError && !_isLoading)
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
-                        child: Text(
-                          _answerText!,
-                          style: const TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    if (_answerText != null &&
-                        _answerText != (_languageCode == 'ru' ? 'Пожалуйста, заполните все ${_selectedCards.length} полей карт.' : 'Please fill all ${_selectedCards.length} card fields.') &&
-                        !_answerText!.contains(_languageCode == 'ru' ? 'Пожалуйста, выберите карты только из предложенного списка' : 'Please select cards only from the suggested list') &&
-                        _answerText != (_languageCode == 'ru' ? 'Пожалуйста, выберите разные карты во всех полях.' : 'Please select different cards in all fields.') &&
-                        !_answerText!.startsWith('Ошибка:')) ...[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 0),
-                        child: Image.asset(
-                          'assets/images/banner_ad.png',
+                        child: Container(
                           width: double.infinity,
-                          fit: BoxFit.fitWidth,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.35),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                          child: Text(
+                            _answerText!,
+                            style: const TextStyle(color: Colors.white, fontSize: 16),
+                          ),
                         ),
                       ),
+                    if (_answerText != null && _isError)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 18.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(color: Colors.red.withOpacity(0.5)),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                          child: Text(
+                            _answerText!,
+                            style: const TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    if (_answerText != null && !_isError && !_isLoading && !_answerText!.startsWith(AppLocalizations.of(context)!.please_fill_all_fields)) ...[
+                      AdPromoBlock(),
                       const SizedBox(height: 18),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
@@ -347,13 +403,28 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(24),
                               ),
                               elevation: 0,
                             ),
                             child: Text(
-                              _languageCode == 'ru' ? 'Сделать новый расклад' : 'New spread',
+                              AppLocalizations.of(context)!.new_spread,
                               style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 18),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
+                          child: Text(
+                            AppLocalizations.of(context)!.app_uses_ai_for_entertainment_purposes,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w400,
                             ),
                           ),
                         ),

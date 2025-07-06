@@ -1,4 +1,5 @@
 import 'dart:math';
+import '../l10n/app_localizations.dart';
 
 class CardTranslations {
   static final List<String> cards = [
@@ -120,7 +121,7 @@ class CardTranslations {
     'Eight of Wands': '8 of wands.jpg',
     'Nine of Wands': '9 of wands.jpg',
     'Ten of Wands': '10 of wands.jpg',
-    'Page of Wands': 'page of wants.jpg',
+    'Page of Wands': 'page of wands.jpg',
     'Knight of Wands': 'knight of wands.jpg',
     'Queen of Wands': 'queen of wands.jpg',
     'King of Wands': 'king of wands.jpg',
@@ -168,8 +169,184 @@ class CardTranslations {
     'King of Pentacles': 'king of pentacles.jpg',
   };
 
+  // Маппинг английских названий на ключи локализации
+  static final Map<String, String> cardToLocalizationKey = {
+    'The Fool': 'card_name_the_fool',
+    'The Magician': 'card_name_the_magician',
+    'The High Priestess': 'card_name_the_high_priestess',
+    'The Empress': 'card_name_the_empress',
+    'The Emperor': 'card_name_the_emperor',
+    'The Hierophant': 'card_name_the_hierophant',
+    'The Lovers': 'card_name_the_lovers',
+    'The Chariot': 'card_name_the_chariot',
+    'Strength': 'card_name_strength',
+    'The Hermit': 'card_name_the_hermit',
+    'Wheel of Fortune': 'card_name_wheel_of_fortune',
+    'Justice': 'card_name_justice',
+    'The Hanged Man': 'card_name_the_hanged_man',
+    'Death': 'card_name_death',
+    'Temperance': 'card_name_temperance',
+    'The Devil': 'card_name_the_devil',
+    'The Tower': 'card_name_the_tower',
+    'The Star': 'card_name_the_star',
+    'The Moon': 'card_name_the_moon',
+    'The Sun': 'card_name_the_sun',
+    'Judgement': 'card_name_judgement',
+    'The World': 'card_name_the_world',
+    'Ace of Wands': 'card_name_ace_of_wands',
+    'Two of Wands': 'card_name_two_of_wands',
+    'Three of Wands': 'card_name_three_of_wands',
+    'Four of Wands': 'card_name_four_of_wands',
+    'Five of Wands': 'card_name_five_of_wands',
+    'Six of Wands': 'card_name_six_of_wands',
+    'Seven of Wands': 'card_name_seven_of_wands',
+    'Eight of Wands': 'card_name_eight_of_wands',
+    'Nine of Wands': 'card_name_nine_of_wands',
+    'Ten of Wands': 'card_name_ten_of_wands',
+    'Page of Wands': 'card_name_page_of_wands',
+    'Knight of Wands': 'card_name_knight_of_wands',
+    'Queen of Wands': 'card_name_queen_of_wands',
+    'King of Wands': 'card_name_king_of_wands',
+    'Ace of Cups': 'card_name_ace_of_cups',
+    'Two of Cups': 'card_name_two_of_cups',
+    'Three of Cups': 'card_name_three_of_cups',
+    'Four of Cups': 'card_name_four_of_cups',
+    'Five of Cups': 'card_name_five_of_cups',
+    'Six of Cups': 'card_name_six_of_cups',
+    'Seven of Cups': 'card_name_seven_of_cups',
+    'Eight of Cups': 'card_name_eight_of_cups',
+    'Nine of Cups': 'card_name_nine_of_cups',
+    'Ten of Cups': 'card_name_ten_of_cups',
+    'Page of Cups': 'card_name_page_of_cups',
+    'Knight of Cups': 'card_name_knight_of_cups',
+    'Queen of Cups': 'card_name_queen_of_cups',
+    'King of Cups': 'card_name_king_of_cups',
+    'Ace of Swords': 'card_name_ace_of_swords',
+    'Two of Swords': 'card_name_two_of_swords',
+    'Three of Swords': 'card_name_three_of_swords',
+    'Four of Swords': 'card_name_four_of_swords',
+    'Five of Swords': 'card_name_five_of_swords',
+    'Six of Swords': 'card_name_six_of_swords',
+    'Seven of Swords': 'card_name_seven_of_swords',
+    'Eight of Swords': 'card_name_eight_of_swords',
+    'Nine of Swords': 'card_name_nine_of_swords',
+    'Ten of Swords': 'card_name_ten_of_swords',
+    'Page of Swords': 'card_name_page_of_swords',
+    'Knight of Swords': 'card_name_knight_of_swords',
+    'Queen of Swords': 'card_name_queen_of_swords',
+    'King of Swords': 'card_name_king_of_swords',
+    'Ace of Pentacles': 'card_name_ace_of_pentacles',
+    'Two of Pentacles': 'card_name_two_of_pentacles',
+    'Three of Pentacles': 'card_name_three_of_pentacles',
+    'Four of Pentacles': 'card_name_four_of_pentacles',
+    'Five of Pentacles': 'card_name_five_of_pentacles',
+    'Six of Pentacles': 'card_name_six_of_pentacles',
+    'Seven of Pentacles': 'card_name_seven_of_pentacles',
+    'Eight of Pentacles': 'card_name_eight_of_pentacles',
+    'Nine of Pentacles': 'card_name_nine_of_pentacles',
+    'Ten of Pentacles': 'card_name_ten_of_pentacles',
+    'Page of Pentacles': 'card_name_page_of_pentacles',
+    'Knight of Pentacles': 'card_name_knight_of_pentacles',
+    'Queen of Pentacles': 'card_name_queen_of_pentacles',
+    'King of Pentacles': 'card_name_king_of_pentacles',
+  };
+
   static String getRandomCard() {
     final _random = Random();
     return cards[_random.nextInt(cards.length)];
+  }
+
+  // Функция для получения переведенного названия карты
+  static String getTranslatedCardName(String englishName, AppLocalizations l10n) {
+    final key = cardToLocalizationKey[englishName];
+    if (key != null) {
+      // Используем рефлексию для получения значения по ключу
+      switch (key) {
+        case 'card_name_the_fool': return l10n.card_name_the_fool;
+        case 'card_name_the_magician': return l10n.card_name_the_magician;
+        case 'card_name_the_high_priestess': return l10n.card_name_the_high_priestess;
+        case 'card_name_the_empress': return l10n.card_name_the_empress;
+        case 'card_name_the_emperor': return l10n.card_name_the_emperor;
+        case 'card_name_the_hierophant': return l10n.card_name_the_hierophant;
+        case 'card_name_the_lovers': return l10n.card_name_the_lovers;
+        case 'card_name_the_chariot': return l10n.card_name_the_chariot;
+        case 'card_name_strength': return l10n.card_name_strength;
+        case 'card_name_the_hermit': return l10n.card_name_the_hermit;
+        case 'card_name_wheel_of_fortune': return l10n.card_name_wheel_of_fortune;
+        case 'card_name_justice': return l10n.card_name_justice;
+        case 'card_name_the_hanged_man': return l10n.card_name_the_hanged_man;
+        case 'card_name_death': return l10n.card_name_death;
+        case 'card_name_temperance': return l10n.card_name_temperance;
+        case 'card_name_the_devil': return l10n.card_name_the_devil;
+        case 'card_name_the_tower': return l10n.card_name_the_tower;
+        case 'card_name_the_star': return l10n.card_name_the_star;
+        case 'card_name_the_moon': return l10n.card_name_the_moon;
+        case 'card_name_the_sun': return l10n.card_name_the_sun;
+        case 'card_name_judgement': return l10n.card_name_judgement;
+        case 'card_name_the_world': return l10n.card_name_the_world;
+        case 'card_name_ace_of_wands': return l10n.card_name_ace_of_wands;
+        case 'card_name_two_of_wands': return l10n.card_name_two_of_wands;
+        case 'card_name_three_of_wands': return l10n.card_name_three_of_wands;
+        case 'card_name_four_of_wands': return l10n.card_name_four_of_wands;
+        case 'card_name_five_of_wands': return l10n.card_name_five_of_wands;
+        case 'card_name_six_of_wands': return l10n.card_name_six_of_wands;
+        case 'card_name_seven_of_wands': return l10n.card_name_seven_of_wands;
+        case 'card_name_eight_of_wands': return l10n.card_name_eight_of_wands;
+        case 'card_name_nine_of_wands': return l10n.card_name_nine_of_wands;
+        case 'card_name_ten_of_wands': return l10n.card_name_ten_of_wands;
+        case 'card_name_page_of_wands': return l10n.card_name_page_of_wands;
+        case 'card_name_knight_of_wands': return l10n.card_name_knight_of_wands;
+        case 'card_name_queen_of_wands': return l10n.card_name_queen_of_wands;
+        case 'card_name_king_of_wands': return l10n.card_name_king_of_wands;
+        case 'card_name_ace_of_cups': return l10n.card_name_ace_of_cups;
+        case 'card_name_two_of_cups': return l10n.card_name_two_of_cups;
+        case 'card_name_three_of_cups': return l10n.card_name_three_of_cups;
+        case 'card_name_four_of_cups': return l10n.card_name_four_of_cups;
+        case 'card_name_five_of_cups': return l10n.card_name_five_of_cups;
+        case 'card_name_six_of_cups': return l10n.card_name_six_of_cups;
+        case 'card_name_seven_of_cups': return l10n.card_name_seven_of_cups;
+        case 'card_name_eight_of_cups': return l10n.card_name_eight_of_cups;
+        case 'card_name_nine_of_cups': return l10n.card_name_nine_of_cups;
+        case 'card_name_ten_of_cups': return l10n.card_name_ten_of_cups;
+        case 'card_name_page_of_cups': return l10n.card_name_page_of_cups;
+        case 'card_name_knight_of_cups': return l10n.card_name_knight_of_cups;
+        case 'card_name_queen_of_cups': return l10n.card_name_queen_of_cups;
+        case 'card_name_king_of_cups': return l10n.card_name_king_of_cups;
+        case 'card_name_ace_of_swords': return l10n.card_name_ace_of_swords;
+        case 'card_name_two_of_swords': return l10n.card_name_two_of_swords;
+        case 'card_name_three_of_swords': return l10n.card_name_three_of_swords;
+        case 'card_name_four_of_swords': return l10n.card_name_four_of_swords;
+        case 'card_name_five_of_swords': return l10n.card_name_five_of_swords;
+        case 'card_name_six_of_swords': return l10n.card_name_six_of_swords;
+        case 'card_name_seven_of_swords': return l10n.card_name_seven_of_swords;
+        case 'card_name_eight_of_swords': return l10n.card_name_eight_of_swords;
+        case 'card_name_nine_of_swords': return l10n.card_name_nine_of_swords;
+        case 'card_name_ten_of_swords': return l10n.card_name_ten_of_swords;
+        case 'card_name_page_of_swords': return l10n.card_name_page_of_swords;
+        case 'card_name_knight_of_swords': return l10n.card_name_knight_of_swords;
+        case 'card_name_queen_of_swords': return l10n.card_name_queen_of_swords;
+        case 'card_name_king_of_swords': return l10n.card_name_king_of_swords;
+        case 'card_name_ace_of_pentacles': return l10n.card_name_ace_of_pentacles;
+        case 'card_name_two_of_pentacles': return l10n.card_name_two_of_pentacles;
+        case 'card_name_three_of_pentacles': return l10n.card_name_three_of_pentacles;
+        case 'card_name_four_of_pentacles': return l10n.card_name_four_of_pentacles;
+        case 'card_name_five_of_pentacles': return l10n.card_name_five_of_pentacles;
+        case 'card_name_six_of_pentacles': return l10n.card_name_six_of_pentacles;
+        case 'card_name_seven_of_pentacles': return l10n.card_name_seven_of_pentacles;
+        case 'card_name_eight_of_pentacles': return l10n.card_name_eight_of_pentacles;
+        case 'card_name_nine_of_pentacles': return l10n.card_name_nine_of_pentacles;
+        case 'card_name_ten_of_pentacles': return l10n.card_name_ten_of_pentacles;
+        case 'card_name_page_of_pentacles': return l10n.card_name_page_of_pentacles;
+        case 'card_name_knight_of_pentacles': return l10n.card_name_knight_of_pentacles;
+        case 'card_name_queen_of_pentacles': return l10n.card_name_queen_of_pentacles;
+        case 'card_name_king_of_pentacles': return l10n.card_name_king_of_pentacles;
+        default: return englishName; // Возвращаем оригинальное название, если перевод не найден
+      }
+    }
+    return englishName; // Возвращаем оригинальное название, если ключ не найден
+  }
+
+  static String getTranslation(String cardName, AppLocalizations l10n) {
+    return getTranslatedCardName(cardName, l10n);
   }
 } 

@@ -5,42 +5,35 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class LoveSpreadScreen extends StatefulWidget {
-  const LoveSpreadScreen({Key? key}) : super(key: key);
+  const LoveSpreadScreen({super.key});
 
   @override
   State<LoveSpreadScreen> createState() => _LoveSpreadScreenState();
 }
 
-class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
+class _LoveSpreadScreenState extends State<LoveSpreadScreen> with SingleTickerProviderStateMixin {
+  final List<String> _allCardNames = CardTranslations.cards;
+  final Random _random = Random();
+
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What is the main challenge I face now?',
-    'What should I focus on in the near future?',
-    'What is hidden from me?',
-  ];
 
-  // Для карт
-  final List<String> _allCardNames = CardTranslations.cards;
-  final Random _random = Random();
-  List<String?> _flippedCards = [null, null, null];
-  List<bool> _cardFlipped = [false, false, false];
+  List<String?> _flippedCards = List.filled(3, null);
+  List<bool> _cardFlipped = List.filled(3, false);
   List<GlobalKey<FlipCardState>> _cardKeys = List.generate(3, (_) => GlobalKey<FlipCardState>());
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
 
   // Диалоговые сообщения
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  late List<_ChatMessage> _messages;
   bool _questionSent = false;
 
   String _userName = '';
@@ -57,13 +50,43 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _messages = [
+      _ChatMessage(
+        text: AppLocalizations.of(context)!.love_spread_screen_initial_message,
+        isUser: false,
+      ),
+    ];
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = LanguageService().currentLanguageCode;
     });
+  }
+
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.love_spread_screen_suggested_questions_1,
+        l10n.love_spread_screen_suggested_questions_2,
+        l10n.love_spread_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
   }
 
   void _handleGetAnswer() async {
@@ -78,11 +101,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.requestReceivedPleaseOpenCards,
         isUser: false,
       ));
       // Случайно выбираем 3 карты
@@ -99,40 +118,30 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
     setState(() {
       _showSeeMeaningButton = false;
     });
-    // Формируем промт для OpenAI
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад на те три карты что выпали: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een legging op deze drie kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these three cards: ${cards.join(', ')}';
-    }
-
+    // Запускаем генерацию ответа и рекламу параллельно
+    _loadCardsDescription();
     try {
-      final response = await TranslationService().getTranslatedText(
-        text: prompt,
-        targetLanguageCode: _languageCode,
-        isTarotReading: true,
-      );
-      setState(() {
-        _openAiAnswer = response;
-        _showAdAndNewSpread = true;
-      });
-    } catch (e) {
-      setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
-        _showAdAndNewSpread = true;
-      });
+      final adStartTime = DateTime.now();
+      debugPrint('[LoveSpread] Starting ad loading at [36m${adStartTime.toIso8601String()}[0m');
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[LoveSpread] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[LoveSpread] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[LoveSpread] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
     }
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -146,9 +155,9 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое любовный расклад?',
-                style: TextStyle(
+              Text(
+                loc.love_spread_screen_what_is_love_spread,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -156,9 +165,9 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Любовный расклад помогает понять чувства, барьеры и перспективы отношений. Используйте его для анализа текущей или будущей любви.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.love_spread_screen_love_spread_explanation,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -172,9 +181,9 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.love_spread_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -222,6 +231,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
 
   Widget _buildThreeCards() {
     final allFlipped = _cardFlipped.every((f) => f);
+    // Порядок отображения: 1 - ты, 2 - партнёр, 3 - динамика
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
@@ -250,6 +260,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: List.generate(3, (index) {
+                    // Карты всегда отображаются слева направо: 1-2-3
                     return Flexible(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 2.0),
@@ -302,16 +313,12 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFDBC195),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          _languageCode == 'ru'
-                              ? 'Узнать значение'
-                              : _languageCode == 'nl'
-                                  ? 'Bekijk betekenis'
-                                  : 'See meaning',
+                          AppLocalizations.of(context)!.seeMeaning,
                           style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -330,7 +337,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -358,6 +365,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -368,7 +376,6 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -383,11 +390,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
           ),
           centerTitle: true,
           title: Text(
-            _languageCode == 'ru'
-                ? 'Любовный расклад'
-                : _languageCode == 'nl'
-                    ? 'Liefdeslegging'
-                    : 'Love Spread',
+            AppLocalizations.of(context)!.loveSpread,
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -466,19 +469,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                                 ),
                               ),
                               const SizedBox(height: 24),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
-                                ),
-                              ),
+                              AdPromoBlock(),
                               const SizedBox(height: 18),
                               Center(
                                 child: SizedBox(
@@ -491,17 +482,32 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
+                                        borderRadius: BorderRadius.circular(24),
                                       ),
                                       elevation: 0,
                                     ),
                                     child: Text(
-                                      _languageCode == 'ru'
-                                          ? 'Сделать новый расклад'
-                                          : _languageCode == 'nl'
-                                              ? 'Nieuwe legging maken'
-                                              : 'New spread',
+                                      AppLocalizations.of(context)!.newSpread,
                                       style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 18),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                        backgroundColor: Colors.transparent,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -536,24 +542,20 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: _languageCode == 'ru'
-                                ? 'Введите ваш вопрос...'
-                                : _languageCode == 'nl'
-                                    ? 'Voer uw vraag in...'
-                                    : 'Enter your question...',
+                            hintText: AppLocalizations.of(context)!.enterYourQuestion,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.08),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18),
+                              borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Color(0xFFDBC195)),
                             ),
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -567,7 +569,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.all(16),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           minimumSize: const Size(48, 48),
                         ),
@@ -591,8 +593,63 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> {
 
   @override
   void dispose() {
+    LanguageService().removeListener(_onLanguageChanged);
     _questionController.dispose();
     super.dispose();
+  }
+
+  void _onLanguageChanged() {
+    if (mounted) {
+      setState(() {
+        _languageCode = LanguageService().currentLanguageCode;
+      });
+    }
+  }
+
+  Future<void> _loadCardsDescription() async {
+    setState(() {
+      _isLoading = true;
+    });
+    // Получаем последний пользовательский вопрос
+    String userText = _messages.lastWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
+    final l10n = AppLocalizations.of(context)!;
+    final cards = _flippedCards.whereType<String>().toList();
+    String youCardRu = cards.length > 0 ? CardTranslations.getTranslatedCardName(cards[0], l10n) : '';
+    String partnerCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1], l10n) : '';
+    String dynamicCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2], l10n) : '';
+    String prompt = l10n.love_spread_prompt(
+      dynamicCardRu,
+      partnerCardRu,
+      _userName.isNotEmpty ? _userName : l10n.the_user,
+      userText,
+      youCardRu,
+    );
+    print('[LoveSpread] youCardRu: ' + youCardRu);
+    print('[LoveSpread] partnerCardRu: ' + partnerCardRu);
+    print('[LoveSpread] dynamicCardRu: ' + dynamicCardRu);
+    print('[LoveSpread] prompt: ' + prompt);
+    try {
+      final response = await TranslationService().getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      setState(() {
+        _openAiAnswer = response;
+        _showAdAndNewSpread = true;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        if (e.toString().contains('NO_INTERNET')) {
+          _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          _openAiAnswer = AppLocalizations.of(context)!.errorGettingSpreadMeaningPleaseTryAgain;
+        }
+        _showAdAndNewSpread = true;
+        _isLoading = false;
+      });
+    }
   }
 }
 

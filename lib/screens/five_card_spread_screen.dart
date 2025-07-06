@@ -5,7 +5,10 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class FiveCardSpreadScreen extends StatefulWidget {
   const FiveCardSpreadScreen({Key? key}) : super(key: key);
@@ -18,33 +21,26 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
   String _languageCode = 'en';
-  final List<String> _suggestedQuestions = [
-    'What is the main challenge I face now?',
-    'What should I focus on in the near future?',
-    'What is hidden from me?',
-  ];
 
   // Для карт
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
-  List<String?> _flippedCards = [null, null, null, null, null];
-  List<bool> _cardFlipped = [false, false, false, false, false];
+  List<String?> _flippedCards = List.filled(5, null);
+  List<bool> _cardFlipped = List.filled(5, false);
   List<GlobalKey<FlipCardState>> _cardKeys = List.generate(5, (_) => GlobalKey<FlipCardState>());
   bool _showCards = false;
   bool _showSeeMeaningButton = true;
   bool _showAdAndNewSpread = false;
 
   // Диалоговые сообщения
-  List<_ChatMessage> _messages = [
-    _ChatMessage(
-      text: 'Good day, please write your question below:',
-      isUser: false,
-    ),
-  ];
+  List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
   String _userName = '';
   String? _openAiAnswer;
+  String _userQuestion = '';
+  bool _isLoadingAnswer = false;
+
   Future<void> _loadUserName() async {
     await UserService().loadUserName();
     setState(() {
@@ -52,11 +48,235 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
     });
   }
 
+  // Функция для получения переведенных предложенных вопросов
+  List<String> _getTranslatedSuggestedQuestions() {
+    final l10n = AppLocalizations.of(context);
+    if (l10n != null) {
+      return [
+        l10n.five_cards_screen_suggested_questions_1,
+        l10n.five_cards_screen_suggested_questions_2,
+        l10n.five_cards_screen_suggested_questions_3,
+      ];
+    }
+    return []; // Возвращаем пустой список, если локализация недоступна
+  }
+
+  // Функция для получения переведенного приветственного сообщения
+  String _getTranslatedInitialMessage() {
+    return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
+  }
+
+  // Метод для загрузки описания карт от OpenAI
+  Future<void> _loadCardsDescription() async {
+    if (_isLoadingAnswer) return;
+    
+    final startTime = DateTime.now();
+    debugPrint('[FiveCard] _loadCardsDescription: starting at ${startTime.toIso8601String()}');
+    
+    setState(() {
+      _isLoadingAnswer = true;
+    });
+
+    try {
+      final promptStartTime = DateTime.now();
+      debugPrint('[FiveCard] Starting prompt formation at ${promptStartTime.toIso8601String()}');
+      
+      // Логируем значения перед формированием промпта
+      final actualUserName = _userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user;
+      debugPrint('[FiveCardPrompt] userName: [33m"'+actualUserName+'"[0m');
+      debugPrint('[FiveCardPrompt] userQuestion: [33m"'+_userQuestion+'"[0m');
+      for (int i = 0; i < 5; i++) {
+        debugPrint('[FiveCardPrompt] card[$i]: [33m"'+(_flippedCards[i] ?? '')+'"[0m');
+      }
+      
+      String getCardTranslation(String? cardName) {
+        if (cardName == null) return '';
+        final cardKey = CardTranslations.cardToLocalizationKey[cardName];
+        if (cardKey != null) {
+          switch (cardKey) {
+            case 'card_name_the_fool': return AppLocalizations.of(context)!.card_name_the_fool;
+            case 'card_name_the_magician': return AppLocalizations.of(context)!.card_name_the_magician;
+            case 'card_name_the_high_priestess': return AppLocalizations.of(context)!.card_name_the_high_priestess;
+            case 'card_name_the_empress': return AppLocalizations.of(context)!.card_name_the_empress;
+            case 'card_name_the_emperor': return AppLocalizations.of(context)!.card_name_the_emperor;
+            case 'card_name_the_hierophant': return AppLocalizations.of(context)!.card_name_the_hierophant;
+            case 'card_name_the_lovers': return AppLocalizations.of(context)!.card_name_the_lovers;
+            case 'card_name_the_chariot': return AppLocalizations.of(context)!.card_name_the_chariot;
+            case 'card_name_strength': return AppLocalizations.of(context)!.card_name_strength;
+            case 'card_name_the_hermit': return AppLocalizations.of(context)!.card_name_the_hermit;
+            case 'card_name_wheel_of_fortune': return AppLocalizations.of(context)!.card_name_wheel_of_fortune;
+            case 'card_name_justice': return AppLocalizations.of(context)!.card_name_justice;
+            case 'card_name_the_hanged_man': return AppLocalizations.of(context)!.card_name_the_hanged_man;
+            case 'card_name_death': return AppLocalizations.of(context)!.card_name_death;
+            case 'card_name_temperance': return AppLocalizations.of(context)!.card_name_temperance;
+            case 'card_name_the_devil': return AppLocalizations.of(context)!.card_name_the_devil;
+            case 'card_name_the_tower': return AppLocalizations.of(context)!.card_name_the_tower;
+            case 'card_name_the_star': return AppLocalizations.of(context)!.card_name_the_star;
+            case 'card_name_the_moon': return AppLocalizations.of(context)!.card_name_the_moon;
+            case 'card_name_the_sun': return AppLocalizations.of(context)!.card_name_the_sun;
+            case 'card_name_judgement': return AppLocalizations.of(context)!.card_name_judgement;
+            case 'card_name_the_world': return AppLocalizations.of(context)!.card_name_the_world;
+            case 'card_name_ace_of_wands': return AppLocalizations.of(context)!.card_name_ace_of_wands;
+            case 'card_name_two_of_wands': return AppLocalizations.of(context)!.card_name_two_of_wands;
+            case 'card_name_three_of_wands': return AppLocalizations.of(context)!.card_name_three_of_wands;
+            case 'card_name_four_of_wands': return AppLocalizations.of(context)!.card_name_four_of_wands;
+            case 'card_name_five_of_wands': return AppLocalizations.of(context)!.card_name_five_of_wands;
+            case 'card_name_six_of_wands': return AppLocalizations.of(context)!.card_name_six_of_wands;
+            case 'card_name_seven_of_wands': return AppLocalizations.of(context)!.card_name_seven_of_wands;
+            case 'card_name_eight_of_wands': return AppLocalizations.of(context)!.card_name_eight_of_wands;
+            case 'card_name_nine_of_wands': return AppLocalizations.of(context)!.card_name_nine_of_wands;
+            case 'card_name_ten_of_wands': return AppLocalizations.of(context)!.card_name_ten_of_wands;
+            case 'card_name_page_of_wands': return AppLocalizations.of(context)!.card_name_page_of_wands;
+            case 'card_name_knight_of_wands': return AppLocalizations.of(context)!.card_name_knight_of_wands;
+            case 'card_name_queen_of_wands': return AppLocalizations.of(context)!.card_name_queen_of_wands;
+            case 'card_name_king_of_wands': return AppLocalizations.of(context)!.card_name_king_of_wands;
+            case 'card_name_ace_of_cups': return AppLocalizations.of(context)!.card_name_ace_of_cups;
+            case 'card_name_two_of_cups': return AppLocalizations.of(context)!.card_name_two_of_cups;
+            case 'card_name_three_of_cups': return AppLocalizations.of(context)!.card_name_three_of_cups;
+            case 'card_name_four_of_cups': return AppLocalizations.of(context)!.card_name_four_of_cups;
+            case 'card_name_five_of_cups': return AppLocalizations.of(context)!.card_name_five_of_cups;
+            case 'card_name_six_of_cups': return AppLocalizations.of(context)!.card_name_six_of_cups;
+            case 'card_name_seven_of_cups': return AppLocalizations.of(context)!.card_name_seven_of_cups;
+            case 'card_name_eight_of_cups': return AppLocalizations.of(context)!.card_name_eight_of_cups;
+            case 'card_name_nine_of_cups': return AppLocalizations.of(context)!.card_name_nine_of_cups;
+            case 'card_name_ten_of_cups': return AppLocalizations.of(context)!.card_name_ten_of_cups;
+            case 'card_name_page_of_cups': return AppLocalizations.of(context)!.card_name_page_of_cups;
+            case 'card_name_knight_of_cups': return AppLocalizations.of(context)!.card_name_knight_of_cups;
+            case 'card_name_queen_of_cups': return AppLocalizations.of(context)!.card_name_queen_of_cups;
+            case 'card_name_king_of_cups': return AppLocalizations.of(context)!.card_name_king_of_cups;
+            case 'card_name_ace_of_swords': return AppLocalizations.of(context)!.card_name_ace_of_swords;
+            case 'card_name_two_of_swords': return AppLocalizations.of(context)!.card_name_two_of_swords;
+            case 'card_name_three_of_swords': return AppLocalizations.of(context)!.card_name_three_of_swords;
+            case 'card_name_four_of_swords': return AppLocalizations.of(context)!.card_name_four_of_swords;
+            case 'card_name_five_of_swords': return AppLocalizations.of(context)!.card_name_five_of_swords;
+            case 'card_name_six_of_swords': return AppLocalizations.of(context)!.card_name_six_of_swords;
+            case 'card_name_seven_of_swords': return AppLocalizations.of(context)!.card_name_seven_of_swords;
+            case 'card_name_eight_of_swords': return AppLocalizations.of(context)!.card_name_eight_of_swords;
+            case 'card_name_nine_of_swords': return AppLocalizations.of(context)!.card_name_nine_of_swords;
+            case 'card_name_ten_of_swords': return AppLocalizations.of(context)!.card_name_ten_of_swords;
+            case 'card_name_page_of_swords': return AppLocalizations.of(context)!.card_name_page_of_swords;
+            case 'card_name_knight_of_swords': return AppLocalizations.of(context)!.card_name_knight_of_swords;
+            case 'card_name_queen_of_swords': return AppLocalizations.of(context)!.card_name_queen_of_swords;
+            case 'card_name_king_of_swords': return AppLocalizations.of(context)!.card_name_king_of_swords;
+            case 'card_name_ace_of_pentacles': return AppLocalizations.of(context)!.card_name_ace_of_pentacles;
+            case 'card_name_two_of_pentacles': return AppLocalizations.of(context)!.card_name_two_of_pentacles;
+            case 'card_name_three_of_pentacles': return AppLocalizations.of(context)!.card_name_three_of_pentacles;
+            case 'card_name_four_of_pentacles': return AppLocalizations.of(context)!.card_name_four_of_pentacles;
+            case 'card_name_five_of_pentacles': return AppLocalizations.of(context)!.card_name_five_of_pentacles;
+            case 'card_name_six_of_pentacles': return AppLocalizations.of(context)!.card_name_six_of_pentacles;
+            case 'card_name_seven_of_pentacles': return AppLocalizations.of(context)!.card_name_seven_of_pentacles;
+            case 'card_name_eight_of_pentacles': return AppLocalizations.of(context)!.card_name_eight_of_pentacles;
+            case 'card_name_nine_of_pentacles': return AppLocalizations.of(context)!.card_name_nine_of_pentacles;
+            case 'card_name_ten_of_pentacles': return AppLocalizations.of(context)!.card_name_ten_of_pentacles;
+            case 'card_name_page_of_pentacles': return AppLocalizations.of(context)!.card_name_page_of_pentacles;
+            case 'card_name_knight_of_pentacles': return AppLocalizations.of(context)!.card_name_knight_of_pentacles;
+            case 'card_name_queen_of_pentacles': return AppLocalizations.of(context)!.card_name_queen_of_pentacles;
+            case 'card_name_king_of_pentacles': return AppLocalizations.of(context)!.card_name_king_of_pentacles;
+            default: return cardName;
+          }
+        }
+        return cardName;
+      }
+
+      List<String?> safeFlippedCards = List.generate(5, (i) {
+        final card = _flippedCards[i];
+        if (card != null && CardTranslations.cards.contains(card)) {
+          return card;
+        } else {
+          return '';
+        }
+      });
+
+      // Логируем переведённые карты
+      debugPrint('[FiveCardPrompt] translated cards:');
+      debugPrint('[FiveCardPrompt] pastCard: "'+getCardTranslation(safeFlippedCards[0])+'"');
+      debugPrint('[FiveCardPrompt] presentCard: "'+getCardTranslation(safeFlippedCards[1])+'"');
+      debugPrint('[FiveCardPrompt] hiddenCard: "'+getCardTranslation(safeFlippedCards[2])+'"');
+      debugPrint('[FiveCardPrompt] adviceCard: "'+getCardTranslation(safeFlippedCards[3])+'"');
+      debugPrint('[FiveCardPrompt] outcomeCard: "'+getCardTranslation(safeFlippedCards[4])+'"');
+
+      String prompt = AppLocalizations.of(context)!.five_cards_screen_prompt(
+        getCardTranslation(safeFlippedCards[3]), // adviceCard
+        getCardTranslation(safeFlippedCards[2]), // hiddenCard
+        getCardTranslation(safeFlippedCards[4]), // outcomeCard
+        getCardTranslation(safeFlippedCards[0]), // pastCard
+        getCardTranslation(safeFlippedCards[1]), // presentCard
+        actualUserName,                          // userName
+        _userQuestion,                           // userQuestion
+      );
+
+      debugPrint('[FiveCardPrompt] PROMPT RESULT:\n' + prompt);
+
+      final promptEndTime = DateTime.now();
+      debugPrint('[FiveCard] Prompt formation completed at ${promptEndTime.toIso8601String()}, duration: ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
+
+      final openaiStartTime = DateTime.now();
+      debugPrint('[FiveCard] Starting OpenAI request at ${openaiStartTime.toIso8601String()}');
+      
+      final response = await TranslationService().getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+      
+      final openaiEndTime = DateTime.now();
+      debugPrint('[FiveCard] OpenAI response received at ${openaiEndTime.toIso8601String()}, duration: ${openaiEndTime.difference(openaiStartTime).inMilliseconds}ms');
+      
+      if (mounted) {
+        setState(() {
+          _openAiAnswer = response;
+          _showAdAndNewSpread = true;
+          _isLoadingAnswer = false;
+        });
+        final totalTime = DateTime.now().difference(startTime);
+        debugPrint('[FiveCard] Answer ready, loading indicator hidden. Total time: ${totalTime.inMilliseconds}ms');
+      }
+    } catch (e) {
+      final errorTime = DateTime.now();
+      debugPrint('[FiveCard] Error occurred at ${errorTime.toIso8601String()}: $e');
+      
+      if (mounted) {
+        setState(() {
+          if (e.toString().contains('NO_INTERNET')) {
+            _openAiAnswer = AppLocalizations.of(context)!.no_internet_error;
+          } else {
+            _openAiAnswer = AppLocalizations.of(context)!.five_cards_screen_error_getting_value;
+          }
+          _showAdAndNewSpread = true;
+          _isLoadingAnswer = false;
+        });
+        debugPrint('[FiveCard] Error occurred, loading indicator hidden');
+      }
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _loadLanguage();
     _loadUserName();
+    // Добавляем слушатель изменений языка
+    LanguageService().addListener(_onLanguageChanged);
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
+  }
+
+  void _onLanguageChanged() {
+    // Принудительно обновляем UI при смене языка
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _loadLanguage() async {
@@ -71,6 +291,8 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
     if (userText.isEmpty) return;
     setState(() {
       _isLoading = true;
+      // Сохраняем вопрос пользователя
+      _userQuestion = userText;
       _messages.add(_ChatMessage(text: userText, isUser: true));
       _questionController.clear();
       _questionSent = true;
@@ -78,11 +300,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: _languageCode == 'ru'
-            ? 'Ваш запрос принят. Пожалуйста, откройте карты'
-            : _languageCode == 'nl'
-                ? 'Uw verzoek is ontvangen. Open de kaarten alstublieft'
-                : 'Your request has been received. Please open the cards',
+        text: AppLocalizations.of(context)!.five_cards_screen_request_accepted,
         isUser: false,
       ));
       // Случайно выбираем 5 карт
@@ -96,43 +314,41 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
   }
 
   void _handleSeeMeaning() async {
+    final startTime = DateTime.now();
+    debugPrint('[FiveCard] _handleSeeMeaning: starting at ${startTime.toIso8601String()}');
+    
+    // Скрываем кнопку сразу
     setState(() {
       _showSeeMeaningButton = false;
     });
-    // Формируем промт для OpenAI
-    final cards = _flippedCards.whereType<String>().toList();
-    String prompt = '';
-    if (_languageCode == 'ru') {
-      prompt = 'Сделай для ${_userName.isNotEmpty ? _userName : 'пользователя'}. расклад на те пять карт что выпали: ${cards.join(', ')}';
-    } else if (_languageCode == 'nl') {
-      prompt = 'Maak voor ${_userName.isNotEmpty ? _userName : 'de gebruiker'} een legging op deze vijf kaarten: ${cards.join(', ')}';
-    } else {
-      prompt = 'Make a tarot reading for ${_userName.isNotEmpty ? _userName : 'the user'} on these five cards: ${cards.join(', ')}';
-    }
 
+    // Запускаем загрузку описания карт параллельно с показом рекламы
+    _loadCardsDescription();
+
+    // Показываем рекламу параллельно
     try {
-      final response = await TranslationService().getTranslatedText(
-        text: prompt,
-        targetLanguageCode: _languageCode,
-        isTarotReading: true,
-      );
-      setState(() {
-        _openAiAnswer = response;
-        _showAdAndNewSpread = true;
-      });
-    } catch (e) {
-      setState(() {
-        _openAiAnswer = _languageCode == 'ru'
-            ? 'Ошибка при получении значения расклада. Попробуйте ещё раз.'
-            : _languageCode == 'nl'
-                ? 'Fout bij het ophalen van de betekenis. Probeer het opnieuw.'
-                : 'Error getting the spread meaning. Please try again.';
-        _showAdAndNewSpread = true;
-      });
+      final adStartTime = DateTime.now();
+      debugPrint('[FiveCard] Starting ad loading at ${adStartTime.toIso8601String()}');
+      
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      if (isLoaded) {
+        await Appodeal.show(AppodealAdType.Interstitial);
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[FiveCard] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      } else {
+        await Appodeal.cache(AppodealAdType.Interstitial);
+        final adEndTime = DateTime.now();
+        debugPrint('[FiveCard] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+      }
+    } catch (e, st) {
+      final adEndTime = DateTime.now();
+      debugPrint('[FiveCard] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
     }
   }
 
   void _showInfoDialog() {
+    final loc = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -146,9 +362,9 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Что такое расклад на 5 карт?',
-                style: TextStyle(
+              Text(
+                loc.five_cards_spread_screen_what_is_five_cards_dialog,
+                style: const TextStyle(
                   color: Color(0xFFDBC195),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -156,9 +372,9 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Расклад на 5 карт позволяет получить более глубокий анализ ситуации. Каждая карта отвечает за отдельный аспект: прошлое, настоящее, будущее, совет и скрытые влияния.',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              Text(
+                loc.five_cards_spread_screen_five_cards_explanation_dialog,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 24),
@@ -172,9 +388,9 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    'Понятно',
-                    style: TextStyle(
+                  child: Text(
+                    loc.five_cards_spread_screen_understand_button,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -222,6 +438,12 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
 
   Widget _buildFiveCards() {
     final allFlipped = _cardFlipped.every((f) => f);
+    
+    // Логируем для отладки
+    debugPrint('[FiveCardUI] Building five cards UI');
+    debugPrint('[FiveCardUI] _flippedCards: $_flippedCards');
+    debugPrint('[FiveCardUI] _userName: $_userName');
+    
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
@@ -302,16 +524,12 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFDBC195),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(24),
                           ),
                           elevation: 0,
                         ),
                         child: Text(
-                          _languageCode == 'ru'
-                              ? 'Узнать значение'
-                              : _languageCode == 'nl'
-                                  ? 'Bekijk betekenis'
-                                  : 'See meaning',
+                          AppLocalizations.of(context)!.seeMeaning,
                           style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -330,7 +548,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ..._suggestedQuestions.map((q) => _buildSuggestionText(q)),
+        ..._getTranslatedSuggestedQuestions().map((q) => _buildSuggestionText(q)),
       ],
     );
   }
@@ -358,6 +576,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
             ),
             child: Text(
               question,
+              textAlign: TextAlign.right,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -368,7 +587,6 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
@@ -381,11 +599,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
         ),
         centerTitle: true,
         title: Text(
-          _languageCode == 'ru'
-              ? '5 карт в раскладе'
-              : _languageCode == 'nl'
-                  ? '5-kaart legging'
-                  : '5-Card Spread',
+          AppLocalizations.of(context)!.fiveCardsInSpread,
           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
@@ -440,43 +654,69 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                           const SizedBox(height: 24),
                           _buildDialogMessages(),
                           if (_showCards) _buildFiveCards(),
-                          if (_openAiAnswer != null) ...[
-                            const SizedBox(height: 24),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(vertical: 6),
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF23272F).withOpacity(0.85),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16),
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(16),
+                                                      if (_isLoadingAnswer) ...[
+                              const SizedBox(height: 24),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF23272F).withOpacity(0.85),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(16),
+                                      topRight: Radius.circular(16),
+                                      bottomLeft: Radius.circular(4),
+                                      bottomRight: Radius.circular(16),
+                                    ),
+                                    border: Border.all(color: Colors.white24),
                                   ),
-                                  border: Border.all(color: Colors.white24),
-                                ),
-                                child: Text(
-                                  _openAiAnswer!,
-                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Text(
+                                        AppLocalizations.of(context)!.analyzing_cards,
+                                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
+                            if (_openAiAnswer != null) ...[
+                              const SizedBox(height: 24),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF23272F).withOpacity(0.85),
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(16),
+                                      topRight: Radius.circular(16),
+                                      bottomLeft: Radius.circular(4),
+                                      bottomRight: Radius.circular(16),
+                                    ),
+                                    border: Border.all(color: Colors.white24),
+                                  ),
+                                  child: Text(
+                                    _openAiAnswer!,
+                                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                                  ),
+                                ),
+                              ),
                             const SizedBox(height: 24),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(
-                                'assets/images/banner_ad.png',
-                                fit: BoxFit.fitWidth,
-                                width: double.infinity,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return const Center(
-                                    child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                  );
-                                },
-                              ),
-                            ),
+                            AdPromoBlock(),
                             const SizedBox(height: 18),
                             Center(
                               child: SizedBox(
@@ -489,17 +729,31 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(24),
                                     ),
                                     elevation: 0,
                                   ),
                                   child: Text(
-                                    _languageCode == 'ru'
-                                        ? 'Сделать новый расклад'
-                                        : _languageCode == 'nl'
-                                            ? 'Nieuwe legging maken'
-                                            : 'New spread',
+                                    AppLocalizations.of(context)!.makeNewSpread,
                                     style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                            Center(
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(maxWidth: 420),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                                  child: Text(
+                                    AppLocalizations.of(context)!.appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -508,6 +762,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                           const SizedBox(height: 18),
                           _buildSuggestedQuestions(),
                           const SizedBox(height: 24),
+                          SizedBox(height: 10),
                         ],
                       ),
                     ),
@@ -534,11 +789,7 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                         style: const TextStyle(color: Colors.white, fontSize: 18),
                         cursorColor: Color(0xFFDBC195),
                         decoration: InputDecoration(
-                          hintText: _languageCode == 'ru'
-                              ? 'Введите ваш вопрос...'
-                              : _languageCode == 'nl'
-                                  ? 'Voer uw vraag in...'
-                                  : 'Enter your question...',
+                          hintText: AppLocalizations.of(context)!.enterYourQuestion,
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.08),
@@ -563,11 +814,13 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
                       onPressed: _isLoading ? null : _handleGetAnswer,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        padding: const EdgeInsets.all(16),
+                        elevation: 6,
+                        shadowColor: Colors.black.withOpacity(0.18),
+                        minimumSize: const Size(54, 54),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(24),
                         ),
-                        minimumSize: const Size(48, 48),
+                        padding: EdgeInsets.zero,
                       ),
                       child: _isLoading
                           ? const SizedBox(
@@ -588,6 +841,8 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
 
   @override
   void dispose() {
+    // Удаляем слушатель при уничтожении виджета
+    LanguageService().removeListener(_onLanguageChanged);
     _questionController.dispose();
     super.dispose();
   }

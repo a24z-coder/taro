@@ -115,7 +115,7 @@ class _LanguageSelectionOnboardingScreenState extends State<LanguageSelectionOnb
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
-        title: const Text('Language', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.language_selection_screen_title, style: const TextStyle(color: Colors.white)),
       ),
       extendBodyBehindAppBar: true,
       body: Stack(
@@ -146,7 +146,7 @@ class _LanguageSelectionOnboardingScreenState extends State<LanguageSelectionOnb
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(isSelected ? 0.22 : 0.13),
-                        borderRadius: BorderRadius.circular(22),
+                        borderRadius: BorderRadius.circular(24),
                         border: Border.all(
                           color: isSelected ? Colors.amber : Colors.white,
                           width: isSelected ? 2.2 : 1.2,

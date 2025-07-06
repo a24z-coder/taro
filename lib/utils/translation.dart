@@ -11,9 +11,8 @@ final Map<String, Map<String, String>> translations = {
 };
 
 String tr(String key) {
-  final lang = LanguageService().currentLanguageCode;
-  if (translations.containsKey(key) && translations[key]!.containsKey(lang)) {
-    return translations[key]![lang]!;
+  if (translations.containsKey(key) && translations[key]!.containsKey(LanguageService().currentLanguageCode)) {
+    return translations[key]![LanguageService().currentLanguageCode]!;
   }
   // fallback: если нет перевода — возвращаем ключ (или дефолтный язык)
   return translations[key]?["ru-RU"] ?? key;

@@ -9,6 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
+import '../widgets/ad_promo_block.dart';
+import 'package:flutter/foundation.dart';
+import 'package:tarot_ai/l10n/app_localizations.dart';
+import 'package:tarot_ai/services/user_service.dart';
+import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 
 class CardOfTheDayScreen extends StatefulWidget {
   const CardOfTheDayScreen({super.key});
@@ -20,6 +25,7 @@ class CardOfTheDayScreen extends StatefulWidget {
 class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
   final TranslationService translationService = TranslationService();
   String _languageCode = 'en';
+  String? _userName;
   String? description;
   String? cardName;
   String? cardImage;
@@ -27,11 +33,17 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
   bool isError = false;
   String errorMessage = '';
   bool canGetNewCard = true;
+  
+  // Переменные для параллельной загрузки
+  bool _isLoadingNewDescription = false;
+  String? _newDescription;
+  Future<String>? _descriptionFuture;
 
   @override
   void initState() {
     super.initState();
     _loadLanguage();
+    _loadUserName();
     _setCard();
   }
 
@@ -47,6 +59,13 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
         errorMessage = e.toString();
       });
     }
+  }
+
+  Future<void> _loadUserName() async {
+    await UserService().loadUserName();
+    setState(() {
+      _userName = UserService().userName;
+    });
   }
 
   Future<void> _setCard() async {
@@ -72,7 +91,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
       final String imagePath = fileName != null ? 'assets/cards/$fileName' : '';
 
       final translatedCardName = await translationService.getTranslatedText(
-        text: 'Translate the tarot card name "$randomCardName" to $_languageCode. The response must contain only the translated name, without any additional text or punctuation.',
+        text: AppLocalizations.of(context)!.card_of_the_day_screen_translate_card_name_prompt(randomCardName, _languageCode),
         targetLanguageCode: _languageCode,
         isTarotReading: false,
       );
@@ -89,7 +108,11 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
     } catch (e) {
       setState(() {
         isError = true;
-        errorMessage = e.toString();
+        if (e.toString().contains('NO_INTERNET')) {
+          errorMessage = AppLocalizations.of(context)!.no_internet_error;
+        } else {
+          errorMessage = e.toString();
+        }
         isLoading = false;
       });
     }
@@ -109,8 +132,12 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
         return;
       }
 
-      final prompt =
-          'Generate a short, mystical, and insightful tarot card description for "$cardName" in $_languageCode. Include relevant emojis to enhance the mystical feel. The description should be about the meaning of the card for the day. Here is an example of the desired format and style: "✨ Карта дня: ${cardName}\n\nЭта карта символизирует основные энергии и влияния, которые будут сопровождать вас сегодня. Она предлагает вам обратить внимание на определенные аспекты вашей жизни и может указывать на возможности для роста и развития.\n\n🌟 Прислушайтесь к своему внутреннему голосу и будьте открыты для новых идей и возможностей, которые могут появиться в течение дня."';
+      final translatedCardName = CardTranslations.getTranslation(cardName ?? '', AppLocalizations.of(context)!);
+
+      final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
+        translatedCardName,
+        _userName ?? '',
+      );
 
       final openAIDescription = await translationService.getTranslatedText(
         text: prompt,
@@ -131,6 +158,83 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
     }
   }
 
+  // Метод для параллельной загрузки нового описания
+  Future<String> _loadNewDescription() async {
+    try {
+      final translatedCardName = CardTranslations.getTranslation(cardName ?? '', AppLocalizations.of(context)!);
+      
+      final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
+        translatedCardName,
+        _userName ?? '',
+      );
+
+      final openAIDescription = await translationService.getTranslatedText(
+        text: prompt,
+        targetLanguageCode: _languageCode,
+        isTarotReading: true,
+      );
+
+      return openAIDescription;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  // Метод для показа рекламы и параллельной загрузки описания
+  Future<void> _showAdAndLoadDescription() async {
+    setState(() {
+      _isLoadingNewDescription = true;
+      _newDescription = null;
+    });
+
+    // Начинаем загрузку описания параллельно
+    _descriptionFuture = _loadNewDescription();
+
+    try {
+      // Показываем рекламу
+      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+      debugPrint('[CardOfTheDayScreen] Appodeal Interstitial loaded: $isLoaded');
+      
+      if (isLoaded) {
+        debugPrint('[CardOfTheDayScreen] Showing Appodeal Interstitial ad');
+        await Appodeal.show(AppodealAdType.Interstitial);
+        debugPrint('[CardOfTheDayScreen] Appodeal Interstitial ad shown');
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      } else {
+        debugPrint('[CardOfTheDayScreen] Appodeal Interstitial not loaded, caching now');
+        await Appodeal.cache(AppodealAdType.Interstitial);
+      }
+
+      // Ждем завершения загрузки описания (если еще не завершилось)
+      final newDescription = await _descriptionFuture;
+      
+      if (newDescription != null) {
+        setState(() {
+          description = newDescription;
+          _isLoadingNewDescription = false;
+          _newDescription = null;
+          _descriptionFuture = null;
+        });
+
+        // Сохраняем новое описание
+        final prefs = await SharedPreferences.getInstance();
+        final today = DateTime.now().toIso8601String().split('T')[0];
+        final descriptionKey = 'card_description_$today';
+        await prefs.setString(descriptionKey, newDescription);
+      }
+
+    } catch (e, st) {
+      debugPrint('[CardOfTheDayScreen] ERROR showing ad or loading description: $e\n$st');
+      setState(() {
+        _isLoadingNewDescription = false;
+        _newDescription = null;
+        _descriptionFuture = null;
+        isError = true;
+        errorMessage = e.toString();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final langCode = LanguageService().currentLanguageCode;
@@ -144,7 +248,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
-        title: const Text('Карта дня', style: TextStyle(color: Colors.white)),
+        title: Text(AppLocalizations.of(context)!.card_of_the_day_screen_title, style: const TextStyle(color: Colors.white)),
       ),
       backgroundColor: Colors.transparent,
       body: isLoading
@@ -168,9 +272,9 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Error loading card',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      Text(
+                        AppLocalizations.of(context)!.card_of_the_day_screen_error_loading_card,
+                        style: const TextStyle(color: Colors.white, fontSize: 18),
                       ),
                       const SizedBox(height: 8),
                       Text(
@@ -192,7 +296,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                         ),
                         const Center(
                           child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xDBC195)),
+                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFDBC195)),
                           ),
                         ),
                       ],
@@ -228,7 +332,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                                   height: 44,
                                   decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(0.35),
-                                    borderRadius: BorderRadius.circular(22),
+                                    borderRadius: BorderRadius.circular(24),
                                     border: Border.all(color: Colors.white.withOpacity(0.85), width: 1.2),
                                     boxShadow: [
                                       BoxShadow(
@@ -240,45 +344,64 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                                   ),
                                   alignment: Alignment.center,
                                   child: Text(
-                                    cardName ?? '',
+                                    CardTranslations.getTranslation(cardName ?? '', AppLocalizations.of(context)!),
                                     style: headingStyleForLang(langCode, 20, color: Colors.white),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),
                               const SizedBox(height: 18),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.35),
-                                    borderRadius: BorderRadius.circular(16),
-                                    border: Border.all(color: Colors.white12),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                                  child: Text(
-                                    description ?? '',
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                    textAlign: TextAlign.left,
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.35),
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(color: Colors.white12),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                                      child: Text(
+                                        description ?? '',
+                                        style: bodyStyleForLang(langCode, 16, color: Colors.white),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               const SizedBox(height: 32),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.asset(
-                                  'assets/images/banner_ad.png',
-                                  fit: BoxFit.fitWidth,
-                                  width: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return const Center(
-                                      child: Icon(Icons.broken_image, color: Colors.white70, size: 50),
-                                    );
-                                  },
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                                    child: AdPromoBlock(),
+                                  ),
                                 ),
                               ),
-                              const SizedBox(height: 18),
+
+
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(maxWidth: 420),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 0),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.app_uses_ai_for_entertainment_purposes,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white60,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
