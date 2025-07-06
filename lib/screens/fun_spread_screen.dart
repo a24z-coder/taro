@@ -353,9 +353,9 @@ class _FunSpreadScreenState extends State<FunSpreadScreen> {
                               height: 54,
                               child: ElevatedButton.icon(
                                 icon: const Icon(Icons.share, color: Color(0xFFDBC195)),
-                                label: const Text(
-                                  'Поделиться',
-                                  style: TextStyle(
+                                label: Text(
+                                  AppLocalizations.of(context)!.fun_share_button,
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
@@ -382,9 +382,9 @@ class _FunSpreadScreenState extends State<FunSpreadScreen> {
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                                   elevation: 0,
                                 ),
-                                child: const Text(
-                                  'Новый расклад',
-                                  style: TextStyle(
+                                child: Text(
+                                  AppLocalizations.of(context)!.fun_new_spread_button,
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
