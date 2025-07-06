@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140390121261",
+    "project_id": "tarot-ai-app-com",
+    "storage_bucket": "tarot-ai-app-com.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140390121261:android:0b8a4172f6e0f529e95da4",
+        "android_client_info": {
+          "package_name": "com.tarotaiapp.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcWQMTDqI9fKp7aVxAffDhGaZ90OumQQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

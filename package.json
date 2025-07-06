@@ -1,0 +1,16 @@
+{
+  "name": "tarot-ai-test",
+  "version": "1.0.0",
+  "description": "Test function for Tarot AI Firebase functions",
+  "main": "testFunction.js",
+  "scripts": {
+    "test": "node testFunction.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.11.0",
+    "firebase": "^10.7.0"
+  },
+  "keywords": ["firebase", "functions", "test"],
+  "author": "",
+  "license": "ISC"
+} 

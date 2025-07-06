@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Смотреть рекламу</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://yastatic.net/pcode/adfox/loader.js"></script>
+</head>
+<body>
+  <h1>🎁 Получите ваш Таро-расклад</h1>
+  <p>Пожалуйста, досмотрите рекламу до конца</p>
+  <div id="status">⏳ Загружаем рекламу...</div>
+
+  <script>
+    window.onload = () => {
+      window.yaContextCb = window.yaContextCb || [];
+      window.yaContextCb.push(() => {
+        const platform = Ya.Context.AdvManager.getPlatform();
+
+        Ya.Context.AdvManager.render({
+          blockId: platform === 'desktop' ? 'R-A-4178257-16' : 'R-A-4178257-17',
+          type: 'rewarded',
+          platform: platform,
+          onRewarded: handleRewarded
+        });
+      });
+    };
+
+    function handleRewarded(isRewarded) {
+      const statusEl = document.getElementById("status");
+
+      if (!isRewarded) {
+        statusEl.innerText = "❌ Вы не досмотрели рекламу. Попробуйте снова.";
+        return;
+      }
+
+      statusEl.innerText = "✅ Реклама просмотрена, переходим к раскладу...";
+      // Переход обратно в Tilda
+      window.location.href = "https://картытароуэйта.рф/sochetanie#rewarded";
+    }
+  </script>
+</body>
+</html>
