@@ -501,5 +501,7 @@
   "month_november": "November",
   "month_december": "Dezember",
   "main_screen_suggest_spread": "Welche Legung sollen wir hinzufügen? Schreiben Sie uns.",
-  "main_screen_disclaimer": "Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann."
+  "main_screen_disclaimer": "Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.",
+  "fun_share_button": "Teilen",
+  "fun_new_spread_button": "Neues Legen"
 }

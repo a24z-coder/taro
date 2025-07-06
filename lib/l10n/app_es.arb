@@ -502,5 +502,7 @@
   "month_september": "Septiembre",
   "month_october": "Octubre",
   "month_november": "Noviembre",
-  "month_december": "Diciembre"
+  "month_december": "Diciembre",
+  "fun_share_button": "Compartir",
+  "fun_new_spread_button": "Nueva tirada"
 }

@@ -502,5 +502,7 @@
   "month_october": "október",
   "month_november": "november",
   "month_december": "december",
-  "main_screen_disclaimer": "Az alkalmazás az MI-t kizárólag szórakoztatási célokra használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez."
+  "main_screen_disclaimer": "Az alkalmazás az MI-t kizárólag szórakoztatási célokra használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.",
+  "fun_share_button": "Megosztás",
+  "fun_new_spread_button": "Új leosztás"
 }

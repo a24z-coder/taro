@@ -502,5 +502,7 @@
   "month_september": "Сентябрь",
   "month_october": "Октябрь",
   "month_november": "Ноябрь",
-  "month_december": "Декабрь"
+  "month_december": "Декабрь",
+  "fun_share_button": "Поделиться",
+  "fun_new_spread_button": "Новый расклад"
 }

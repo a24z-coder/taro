@@ -502,5 +502,7 @@
   "month_september": "9월",
   "month_october": "10월",
   "month_november": "11월",
-  "month_december": "12월"
+  "month_december": "12월",
+  "fun_share_button": "공유",
+  "fun_new_spread_button": "새로운 스프레드"
 }

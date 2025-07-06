@@ -501,5 +501,7 @@
   "month_november": "novembris",
   "month_december": "decembris",
   "main_screen_suggest_spread": "Kādu izklājumu pievienot? Rakstiet mums",
-  "main_screen_disclaimer": "Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Ja nepieciešams, konsultējieties ar speciālistu."
+  "main_screen_disclaimer": "Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Ja nepieciešams, konsultējieties ar speciālistu.",
+  "fun_share_button": "Dalīties",
+  "fun_new_spread_button": "Jauns izklājums"
 }

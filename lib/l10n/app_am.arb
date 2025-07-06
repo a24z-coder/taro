@@ -502,5 +502,7 @@
   "month_december": "ዲሴምበር",
   "self_growth_balance_prompt": "አንተ ተሞክሮ ያለው ታሮሎጂ ኮች ነህ። ተጠቃሚው {userName} ጠየቀ፡ «{userQuestion}»። ከሰባት ካርዶች «ራስን ማሻሻል እና ሚዛን» ቅርጸ ተንቀሳቃሽ አድርግ። ካርዶቹ እንደዚህ ተሰጥተዋል፡ ዋና ነገር — {coreCard}፤ አዕምሮ — {mindCard}፤ ስሜቶች — {emotionCard}፤ ሰውነት — {bodyCard}፤ ሀብት — {strengthCard}፤ እንቅፋት — {challengeCard}፤ ምክር — {adviceCard}። በ{userName} ስም የተጠቃሚውን ፆታ ውስን አውቅ እና በትክክለኛ መጨረሻዎችና ስምንት ተጠቀም። በንቁ እና የሚደግፍ መንገድ ተናገር፣ ስም {userName} ቢያንስ አራት ጊዜ አስታውስ እና እያንዳንዱን ካርድ ከጥያቄው ጋር አገናኝ። አዋጅን እና ቅርጸትን ጠብቅ፡\n\n1) በ{userName} ስም ሰላምታ።\n\n2) ርዕስ፡ ቅርጸ ተንቀሳቃሽ፡ {coreCard} | {mindCard} | {emotionCard} | {bodyCard} | {strengthCard} | {challengeCard} | {adviceCard}።\n\n3) {coreCard} — የ{userName} ዋና የራስ ማሻሻል ዓላማ አግለጽ።\n\n4) {mindCard} — አዕምሮን እንዴት እንደሚያስተካክል እና ምን እንደሚማር አስረዳ።\n\n5) {emotionCard} — የስሜት ሀብት እና ተነሳሽነትን አሳይ።\n\n6) {bodyCard} — ሰውነትን እና ኃይልን እንዴት እንደሚያሳድግ አሳይ።\n\n7) {strengthCard} — ውስጣዊ ችሎታ ወይም ውጫዊ ድጋፍ አሳይ።\n\n8) {challengeCard} — ዋና የሚዛን እንቅፋት እና ምክንያቱን አሳይ።\n\n9) {adviceCard} — ሁሉንም ገጽታዎች የሚያገናኝ ተግባራዊ እርምጃ አቅርብ።\n\n10) መጨረሻ፡ የሚያነሳሳ አፊርሜሽን እና የሚያማርር አማራጭ ከ2–3 ኢሞጂዎች ጋር።\n\nመስፈርቶች፡ እያንዳንዱ ነጥብ 2–3 ዓረፍተ ነገሮች፤ በነጥቦች መካከል ድርብ መስመር ለውጥ አድርግ (\\n\\n)፤ ምልክቶችን *, # ወይም ሌላ ማስተካከያ አትጠቀም።",
   "main_screen_suggest_spread": "ምን ዓይነት ቅርጸ ተንቀሳቃሽ ማክም ነው? እባክዎ ይጻፉልን",
-  "main_screen_disclaimer": "መተግበሪያው የአርቲፊሻል ኢንተሊጀንስ (AI) በመዝናኛ አላማ ብቻ እንደሚጠቀም ነው። የራስዎን ውሳኔ ምክንያት አንደኛ አይደለንም። አስፈላጊ ከሆነ ከባለሙያ ጋር ይመከራሉ።"
+  "main_screen_disclaimer": "መተግበሪያው የአርቲፊሻል ኢንተሊጀንስ (AI) በመዝናኛ አላማ ብቻ እንደሚጠቀም ነው። የራስዎን ውሳኔ ምክንያት አንደኛ አይደለንም። አስፈላጊ ከሆነ ከባለሙያ ጋር ይመከራሉ።",
+  "fun_share_button": "አጋራ",
+  "fun_new_spread_button": "አዲስ ቅድመ አሰራር"
 }

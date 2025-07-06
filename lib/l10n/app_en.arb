@@ -503,5 +503,7 @@
   "month_september": "September",
   "month_october": "October",
   "month_november": "November",
-  "month_december": "December"
+  "month_december": "December",
+  "fun_share_button": "Share",
+  "fun_new_spread_button": "New spread"
 }

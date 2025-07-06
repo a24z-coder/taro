@@ -501,5 +501,7 @@
   "month_november": "novembre",
   "month_december": "dicembre",
   "main_screen_suggest_spread": "Quale stesa aggiungere? Scrivici",
-  "main_screen_disclaimer": "L'app utilizza l'IA esclusivamente a scopo di intrattenimento. Non ci assumiamo responsabilità per le decisioni da te prese. Se necessario, consulta uno specialista."
+  "main_screen_disclaimer": "L'app utilizza l'IA esclusivamente a scopo di intrattenimento. Non ci assumiamo responsabilità per le decisioni da te prese. Se necessario, consulta uno specialista.",
+  "fun_share_button": "Condividi",
+  "fun_new_spread_button": "Nuova lettura"
 }

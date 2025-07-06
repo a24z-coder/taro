@@ -501,5 +501,7 @@
   "month_november": "Novembro",
   "month_december": "Decembro",
   "main_screen_suggest_spread": "Que tirada engadir? Escríbenos",
-  "main_screen_disclaimer": "A aplicación utiliza a IA exclusivamente con fins de entretemento. Non nos facemos responsables polas decisións que tome. Se é necesario, consulte cun especialista."
+  "main_screen_disclaimer": "A aplicación utiliza a IA exclusivamente con fins de entretemento. Non nos facemos responsables polas decisións que tome. Se é necesario, consulte cun especialista.",
+  "fun_share_button": "Compartir",
+  "fun_new_spread_button": "Nova extensión"
 }

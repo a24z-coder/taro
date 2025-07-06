@@ -502,5 +502,7 @@
   "month_september": "Септембар",
   "month_october": "Октобар",
   "month_november": "Новембар",
-  "month_december": "Децембар"
+  "month_december": "Децембар",
+  "fun_share_button": "Подели се",
+  "fun_new_spread_button": "Ново распоређивање"
 }

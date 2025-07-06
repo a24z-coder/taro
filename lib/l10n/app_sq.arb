@@ -502,5 +502,7 @@
   "month_september": "shtator",
   "month_october": "tetor",
   "month_november": "nëntor",
-  "month_december": "dhjetor"
+  "month_december": "dhjetor",
+  "fun_share_button": "Ndaj",
+  "fun_new_spread_button": "Shpërndarje e re"
 }

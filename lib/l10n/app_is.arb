@@ -502,5 +502,7 @@
   "month_september": "september",
   "month_october": "október",
   "month_november": "nóvember",
-  "month_december": "desember"
+  "month_december": "desember",
+  "fun_share_button": "Deila",
+  "fun_new_spread_button": "Ný útbreiðsla"
 }

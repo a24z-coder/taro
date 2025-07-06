@@ -502,5 +502,7 @@
   "month_september": "Syyskuu",
   "month_october": "Lokakuu",
   "month_november": "Marraskuu",
-  "month_december": "Joulukuu"
+  "month_december": "Joulukuu",
+  "fun_share_button": "Jaa",
+  "fun_new_spread_button": "Uusi levitys"
 }
