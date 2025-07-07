@@ -1793,4 +1793,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get month_december => 'ديسمبر';
+
+  @override
+  String get fun_share_button => 'مشاركة';
+
+  @override
+  String get fun_new_spread_button => 'توزيع جديد';
 }

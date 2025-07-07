@@ -1817,6 +1817,12 @@ class AppLocalizationsKy extends AppLocalizations {
 
   @override
   String get month_december => 'Декабрь';
+
+  @override
+  String get fun_share_button => 'Бөлүшүү';
+
+  @override
+  String get fun_new_spread_button => 'Жаңы жайгаштыруу';
 }
 
 /// The translations for Kirghiz Kyrgyz, as used in Kyrgyzstan (`ky_KG`).
@@ -3610,4 +3616,10 @@ class AppLocalizationsKyKg extends AppLocalizationsKy {
 
   @override
   String get month_december => 'Декабрь';
+
+  @override
+  String get fun_share_button => 'Бөлүшүү';
+
+  @override
+  String get fun_new_spread_button => 'Жаңы жайгаштыруу';
 }

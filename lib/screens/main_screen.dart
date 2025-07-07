@@ -21,6 +21,8 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/translation_service.dart';
+import 'dart:io';
+import 'package:tarot_ai/services/review_service.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -591,26 +593,8 @@ class _MainScreenState extends State<MainScreen> {
               _buildMenuItem(Icons.star_rate, AppLocalizations.of(context)!.main_screen_rate_app, () async {
                 try {
                   debugPrint('[MainScreen] Rate app button tapped');
-                  final inAppReview = InAppReview.instance;
-                  bool reviewRequested = false;
-                  if (await inAppReview.isAvailable()) {
-                    await inAppReview.requestReview();
-                    reviewRequested = true;
-                    debugPrint('[MainScreen] In-app review requested');
-                  }
-                  // Ждем 2 секунды — если окно не появилось, открываем Google Play
-                  await Future.delayed(const Duration(seconds: 2));
-                  if (!mounted) return;
-                  // Показываем SnackBar с подсказкой
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(AppLocalizations.of(context)!.main_screen_rate_hint),
-                      backgroundColor: Colors.black87,
-                      duration: Duration(seconds: 3),
-                    ),
-                  );
-                  // Открываем Google Play (в любом случае, чтобы повысить конверсию)
-                  await inAppReview.openStoreListing();
+                  await ReviewService().requestReviewWithFallback();
+                  await ReviewService().markAsRated();
                 } catch (error, stackTrace) {
                   debugPrint('[MainScreen] ERROR in rate app: $error');
                   debugPrint('[MainScreen] Stack trace: $stackTrace');

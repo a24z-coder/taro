@@ -1823,6 +1823,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get month_december => 'Décembre';
+
+  @override
+  String get fun_share_button => 'Partager';
+
+  @override
+  String get fun_new_spread_button => 'Nouveau tirage';
 }
 
 /// The translations for French, as used in Canada (`fr_CA`).
@@ -3644,6 +3650,12 @@ class AppLocalizationsFrCa extends AppLocalizationsFr {
 
   @override
   String get month_december => 'Décembre';
+
+  @override
+  String get fun_share_button => 'Partager';
+
+  @override
+  String get fun_new_spread_button => 'Nouveau tirage';
 }
 
 /// The translations for French, as used in France (`fr_FR`).
@@ -5465,4 +5477,10 @@ class AppLocalizationsFrFr extends AppLocalizationsFr {
 
   @override
   String get month_december => 'Décembre';
+
+  @override
+  String get fun_share_button => 'Partager';
+
+  @override
+  String get fun_new_spread_button => 'Nouveau tirage';
 }

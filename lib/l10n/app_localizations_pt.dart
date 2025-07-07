@@ -1817,6 +1817,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get month_december => 'Dezembro';
+
+  @override
+  String get fun_share_button => 'Compartilhar';
+
+  @override
+  String get fun_new_spread_button => 'Nova tiragem';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -3632,6 +3638,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get month_december => 'Dezembro';
+
+  @override
+  String get fun_share_button => 'Compartilhar';
+
+  @override
+  String get fun_new_spread_button => 'Nova tiragem';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -5447,4 +5459,10 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get month_december => 'Dezembro';
+
+  @override
+  String get fun_share_button => 'Partilhar';
+
+  @override
+  String get fun_new_spread_button => 'Nova tiragem';
 }

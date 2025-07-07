@@ -1818,4 +1818,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get month_december => 'Desember';
+
+  @override
+  String get fun_share_button => 'Bagikan';
+
+  @override
+  String get fun_new_spread_button => 'Sebaran baru';
 }

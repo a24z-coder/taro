@@ -1817,4 +1817,10 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String get month_december => 'Desembre';
+
+  @override
+  String get fun_share_button => 'Compartir';
+
+  @override
+  String get fun_new_spread_button => 'Nova tirada';
 }

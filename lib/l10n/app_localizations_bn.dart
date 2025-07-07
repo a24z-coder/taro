@@ -1796,6 +1796,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get month_december => 'ডিসেম্বর';
+
+  @override
+  String get fun_share_button => 'শেয়ার করুন';
+
+  @override
+  String get fun_new_spread_button => 'নতুন স্প্রেড';
 }
 
 /// The translations for Bengali Bangla, as used in Bangladesh (`bn_BD`).
@@ -3568,4 +3574,10 @@ class AppLocalizationsBnBd extends AppLocalizationsBn {
 
   @override
   String get month_december => 'ডিসেম্বর';
+
+  @override
+  String get fun_share_button => 'শেয়ার করুন';
+
+  @override
+  String get fun_new_spread_button => 'নতুন স্প্রেড';
 }

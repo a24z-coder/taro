@@ -40,31 +40,21 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
 
   Future<void> _loadProducts() async {
     print('[OnboardingFinalScreen] _loadProducts called');
-    // Заглушка: возвращаем статичные цены, чтобы не падало
-    print('[OnboardingFinalScreen] before setState');
+    final response = await InAppPurchase.instance.queryProductDetails(_kIds);
+    ProductDetails? yearly;
+    ProductDetails? monthly;
+    for (final p in response.productDetails) {
+      if (p.id == 'tarot_yearly') yearly = p;
+      if (p.id == 'tarot_monthly') monthly = p;
+    }
     setState(() {
-      _yearlyPrice = AppLocalizations.of(context)!.onboarding_final_screen_yearly_price;
-      _yearlyMonthPrice = AppLocalizations.of(context)!.onboarding_final_screen_yearly_month_price;
-      _monthlyPrice = AppLocalizations.of(context)!.onboarding_final_screen_monthly_price;
-      _monthlyMonthPrice = AppLocalizations.of(context)!.onboarding_final_screen_monthly_month_price;
+      _yearlyPrice = yearly?.price ?? '';
+      _yearlyMonthPrice = yearly != null ? _getPerMonth(yearly) : '';
+      _monthlyPrice = monthly?.price ?? '';
+      _monthlyMonthPrice = monthly?.price ?? '';
       _iapLoading = false;
-      print('[OnboardingFinalScreen] inside setState, _iapLoading = false');
+      _products = response.productDetails;
     });
-    // Для реального IAP:
-    // final response = await InAppPurchase.instance.queryProductDetails(_kIds);
-    // ProductDetails? yearly;
-    // ProductDetails? monthly;
-    // for (final p in response.productDetails) {
-    //   if (p.id == 'tarot_yearly') yearly = p;
-    //   if (p.id == 'tarot_monthly') monthly = p;
-    // }
-    // setState(() {
-    //   _yearlyPrice = yearly?.price ?? '';
-    //   _yearlyMonthPrice = yearly != null ? _getPerMonth(yearly) : '';
-    //   _monthlyPrice = monthly?.price ?? '';
-    //   _monthlyMonthPrice = monthly?.price ?? '';
-    //   _iapLoading = false;
-    // });
   }
 
   String _getPerMonth(ProductDetails yearly) {
@@ -91,28 +81,28 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
   }
 
   Future<void> _onBuy() async {
-    // TODO: Реализовать покупку через in_app_purchase
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('onboarding_complete', true);
-    final plan = _selectedPlan == 0 ? AppLocalizations.of(context)!.onboarding_final_screen_yearly_plan : AppLocalizations.of(context)!.onboarding_final_screen_free_trial;
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(AppLocalizations.of(context)!.onboarding_final_screen_purchase_title),
-        content: Text(AppLocalizations.of(context)!.onboarding_final_screen_test_stub_message(plan)),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (_) => const MainScreen()),
-              );
-            },
-            child: Text(AppLocalizations.of(context)!.onboarding_final_screen_ok_button),
-          ),
-        ],
-      ),
-    );
+    final productId = _selectedPlan == 0 ? 'tarot_yearly' : 'tarot_monthly';
+    final product = _products.firstWhere((p) => p.id == productId, orElse: () => null);
+    if (product == null) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Ошибка'),
+          content: Text('Тариф не найден. Попробуйте позже.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    final purchaseParam = PurchaseParam(productDetails: product);
+    await InAppPurchase.instance.buyNonConsumable(purchaseParam: purchaseParam);
+    // После успешной покупки можно завершить онбординг
+    // (реальный переход делайте в слушателе покупок)
   }
 
   @override

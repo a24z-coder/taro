@@ -1819,6 +1819,12 @@ class AppLocalizationsTa extends AppLocalizations {
 
   @override
   String get month_december => 'டிசம்பர்';
+
+  @override
+  String get fun_share_button => 'பகிர்';
+
+  @override
+  String get fun_new_spread_button => 'புதிய பரப்பு';
 }
 
 /// The translations for Tamil, as used in India (`ta_IN`).
@@ -3636,4 +3642,10 @@ class AppLocalizationsTaIn extends AppLocalizationsTa {
 
   @override
   String get month_december => 'டிசம்பர்';
+
+  @override
+  String get fun_share_button => 'பகிர்';
+
+  @override
+  String get fun_new_spread_button => 'புதிய பரப்பு';
 }

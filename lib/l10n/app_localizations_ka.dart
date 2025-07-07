@@ -1821,6 +1821,12 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String get month_december => 'დეკემბერი';
+
+  @override
+  String get fun_share_button => 'გაზიარება';
+
+  @override
+  String get fun_new_spread_button => 'ახალი გაშლა';
 }
 
 /// The translations for Georgian, as used in Georgia (`ka_GE`).
@@ -3640,4 +3646,10 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String get month_december => 'დეკემბერი';
+
+  @override
+  String get fun_share_button => 'გაზიარება';
+
+  @override
+  String get fun_new_spread_button => 'ახალი გაშლა';
 }

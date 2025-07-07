@@ -1804,6 +1804,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get month_december => 'december';
+
+  @override
+  String get fun_share_button => 'Dela';
+
+  @override
+  String get fun_new_spread_button => 'Ny spridning';
 }
 
 /// The translations for Swedish, as used in Sweden (`sv_SE`).
@@ -3606,4 +3612,10 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String get month_december => 'december';
+
+  @override
+  String get fun_share_button => 'Dela';
+
+  @override
+  String get fun_new_spread_button => 'Ny spridning';
 }

@@ -1813,4 +1813,10 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get month_december => 'Decembrie';
+
+  @override
+  String get fun_share_button => 'Partajează';
+
+  @override
+  String get fun_new_spread_button => 'Întindere nouă';
 }

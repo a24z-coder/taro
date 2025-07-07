@@ -9,6 +9,7 @@ import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import '../widgets/ad_promo_block.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:tarot_ai/services/review_service.dart';
 
 class FiveCardSpreadScreen extends StatefulWidget {
   const FiveCardSpreadScreen({Key? key}) : super(key: key);
@@ -230,6 +231,24 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> {
         });
         final totalTime = DateTime.now().difference(startTime);
         debugPrint('[FiveCard] Answer ready, loading indicator hidden. Total time: ${totalTime.inMilliseconds}ms');
+        try {
+          // Проверяем, не оценил ли пользователь уже приложение
+          if (!await ReviewService().getStatistics().then((stats) => stats['hasRated'] ?? false)) {
+            final prefs = await SharedPreferences.getInstance();
+            int spreadCount = prefs.getInt('spread_count') ?? 0;
+            spreadCount++;
+            await prefs.setInt('spread_count', spreadCount);
+            // Показываем после 3-го расклада, потом через каждые 5 (8, 13, 18, 23...)
+            if (spreadCount == 3 || (spreadCount >= 8 && (spreadCount - 3) % 5 == 0)) {
+              if (await ReviewService().shouldRequestReview()) {
+                await ReviewService().requestReviewWithFallback();
+                await ReviewService().markAsRated();
+              }
+            }
+          }
+        } catch (e) {
+          debugPrint('[FiveCard] ReviewService error: $e');
+        }
       }
     } catch (e) {
       final errorTime = DateTime.now();

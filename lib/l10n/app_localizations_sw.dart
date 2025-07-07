@@ -1812,4 +1812,10 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get month_december => 'Desemba';
+
+  @override
+  String get fun_share_button => 'Shiriki';
+
+  @override
+  String get fun_new_spread_button => 'Kueneza mpya';
 }

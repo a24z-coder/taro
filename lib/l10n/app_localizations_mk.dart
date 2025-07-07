@@ -1811,6 +1811,12 @@ class AppLocalizationsMk extends AppLocalizations {
 
   @override
   String get month_december => 'декември';
+
+  @override
+  String get fun_share_button => 'Сподели';
+
+  @override
+  String get fun_new_spread_button => 'Ново распоредување';
 }
 
 /// The translations for Macedonian, as used in North Macedonia (`mk_MK`).
@@ -3620,4 +3626,10 @@ class AppLocalizationsMkMk extends AppLocalizationsMk {
 
   @override
   String get month_december => 'декември';
+
+  @override
+  String get fun_share_button => 'Сподели';
+
+  @override
+  String get fun_new_spread_button => 'Ново распоредување';
 }

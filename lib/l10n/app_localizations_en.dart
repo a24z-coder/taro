@@ -1802,6 +1802,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Share';
+
+  @override
+  String get fun_new_spread_button => 'New spread';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).
@@ -3603,6 +3609,12 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Share';
+
+  @override
+  String get fun_new_spread_button => 'New spread';
 }
 
 /// The translations for English, as used in the United States (`en_US`).
@@ -5404,4 +5416,10 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Share';
+
+  @override
+  String get fun_new_spread_button => 'New spread';
 }

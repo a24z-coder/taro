@@ -1814,4 +1814,10 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Cundivider';
+
+  @override
+  String get fun_new_spread_button => 'Nova spartiziun';
 }

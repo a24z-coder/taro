@@ -1826,4 +1826,10 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String get month_december => 'Disyembre';
+
+  @override
+  String get fun_share_button => 'Ibahagi';
+
+  @override
+  String get fun_new_spread_button => 'Bagong pagkalat';
 }

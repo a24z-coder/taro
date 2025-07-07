@@ -1814,4 +1814,10 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get month_december => 'желтоқсан';
+
+  @override
+  String get fun_share_button => 'Бөлісу';
+
+  @override
+  String get fun_new_spread_button => 'Жаңа тарату';
 }

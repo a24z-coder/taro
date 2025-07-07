@@ -1812,6 +1812,12 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get month_december => 'december';
+
+  @override
+  String get fun_share_button => 'Megosztás';
+
+  @override
+  String get fun_new_spread_button => 'Új leosztás';
 }
 
 /// The translations for Hungarian, as used in Hungary (`hu_HU`).
@@ -3622,4 +3628,10 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String get month_december => 'december';
+
+  @override
+  String get fun_share_button => 'Megosztás';
+
+  @override
+  String get fun_new_spread_button => 'Új leosztás';
 }

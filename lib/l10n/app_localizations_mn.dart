@@ -1811,6 +1811,12 @@ class AppLocalizationsMn extends AppLocalizations {
 
   @override
   String get month_december => 'Арван хоёрдугаар сар';
+
+  @override
+  String get fun_share_button => 'Хуваалцах';
+
+  @override
+  String get fun_new_spread_button => 'Шинэ тархалт';
 }
 
 /// The translations for Mongolian, as used in Mongolia (`mn_MN`).
@@ -3620,4 +3626,10 @@ class AppLocalizationsMnMn extends AppLocalizationsMn {
 
   @override
   String get month_december => 'арван хоёрдугаар сар';
+
+  @override
+  String get fun_share_button => 'Хуваалцах';
+
+  @override
+  String get fun_new_spread_button => 'Шинэ тархалт';
 }

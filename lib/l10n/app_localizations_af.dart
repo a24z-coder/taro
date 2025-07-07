@@ -1816,4 +1816,10 @@ class AppLocalizationsAf extends AppLocalizations {
 
   @override
   String get month_december => 'Desember';
+
+  @override
+  String get fun_share_button => 'Deel';
+
+  @override
+  String get fun_new_spread_button => 'Nuwe uitleg';
 }

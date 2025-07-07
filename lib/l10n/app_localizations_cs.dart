@@ -1807,6 +1807,12 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get month_december => 'Prosinec';
+
+  @override
+  String get fun_share_button => 'Sdílet';
+
+  @override
+  String get fun_new_spread_button => 'Nové rozložení';
 }
 
 /// The translations for Czech, as used in the Czechia Czech Republic (`cs_CZ`).
@@ -3612,4 +3618,10 @@ class AppLocalizationsCsCz extends AppLocalizationsCs {
 
   @override
   String get month_december => 'Prosinec';
+
+  @override
+  String get fun_share_button => 'Sdílet';
+
+  @override
+  String get fun_new_spread_button => 'Nové rozložení';
 }

@@ -1809,6 +1809,12 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get month_december => 'Grudzień';
+
+  @override
+  String get fun_share_button => 'Udostępnij';
+
+  @override
+  String get fun_new_spread_button => 'Nowe rozłożenie';
 }
 
 /// The translations for Polish, as used in Poland (`pl_PL`).
@@ -3617,4 +3623,10 @@ class AppLocalizationsPlPl extends AppLocalizationsPl {
 
   @override
   String get month_december => 'Grudzień';
+
+  @override
+  String get fun_share_button => 'Udostępnij';
+
+  @override
+  String get fun_new_spread_button => 'Nowe rozłożenie';
 }

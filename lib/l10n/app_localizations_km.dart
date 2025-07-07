@@ -1813,6 +1813,12 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get month_december => 'ធ្នូ';
+
+  @override
+  String get fun_share_button => 'ចែករំលែក';
+
+  @override
+  String get fun_new_spread_button => 'ការចែកចាយថ្មី';
 }
 
 /// The translations for Khmer Central Khmer, as used in Cambodia (`km_KH`).
@@ -3624,4 +3630,10 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String get month_december => 'ខែធ្នូ';
+
+  @override
+  String get fun_share_button => 'ចែករំលែក';
+
+  @override
+  String get fun_new_spread_button => 'ការចែកចាយថ្មី';
 }

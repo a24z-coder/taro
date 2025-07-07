@@ -1798,4 +1798,10 @@ class AppLocalizationsPa extends AppLocalizations {
 
   @override
   String get month_december => 'ਦਸੰਬਰ';
+
+  @override
+  String get fun_share_button => 'ਸ਼ੇਅਰ ਕਰੋ';
+
+  @override
+  String get fun_new_spread_button => 'ਨਵਾਂ ਸਪ੍ਰੈਡ';
 }

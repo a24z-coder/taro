@@ -1807,4 +1807,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get month_december => 'Tháng Mười Hai';
+
+  @override
+  String get fun_share_button => 'Chia sẻ';
+
+  @override
+  String get fun_new_spread_button => 'Sự lan tỏa mới';
 }

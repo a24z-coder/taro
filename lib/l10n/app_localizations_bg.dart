@@ -1819,4 +1819,10 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get month_december => 'Декабрь';
+
+  @override
+  String get fun_share_button => 'Сподели';
+
+  @override
+  String get fun_new_spread_button => 'Ново разкриване';
 }

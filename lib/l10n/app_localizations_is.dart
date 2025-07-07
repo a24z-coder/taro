@@ -1813,6 +1813,12 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String get month_december => 'desember';
+
+  @override
+  String get fun_share_button => 'Deila';
+
+  @override
+  String get fun_new_spread_button => 'Ný útbreiðsla';
 }
 
 /// The translations for Icelandic, as used in Iceland (`is_IS`).
@@ -3624,4 +3630,10 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String get month_december => 'desember';
+
+  @override
+  String get fun_share_button => 'Deila';
+
+  @override
+  String get fun_new_spread_button => 'Ný útbreiðsla';
 }

@@ -1817,6 +1817,12 @@ class AppLocalizationsGl extends AppLocalizations {
 
   @override
   String get month_december => 'Decembro';
+
+  @override
+  String get fun_share_button => 'Compartir';
+
+  @override
+  String get fun_new_spread_button => 'Nova extensión';
 }
 
 /// The translations for Galician, as used in Spain (`gl_ES`).
@@ -3632,4 +3638,10 @@ class AppLocalizationsGlEs extends AppLocalizationsGl {
 
   @override
   String get month_december => 'Decembro';
+
+  @override
+  String get fun_share_button => 'Compartir';
+
+  @override
+  String get fun_new_spread_button => 'Nova extensión';
 }

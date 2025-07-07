@@ -1809,6 +1809,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get month_december => 'декабря';
+
+  @override
+  String get fun_share_button => 'Поделиться';
+
+  @override
+  String get fun_new_spread_button => 'Новый расклад';
 }
 
 /// The translations for Russian, as used in Russian Federation (`ru_RU`).
@@ -3616,4 +3622,10 @@ class AppLocalizationsRuRu extends AppLocalizationsRu {
 
   @override
   String get month_december => 'Декабрь';
+
+  @override
+  String get fun_share_button => 'Поделиться';
+
+  @override
+  String get fun_new_spread_button => 'Новый расклад';
 }

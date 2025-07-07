@@ -1801,4 +1801,10 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get month_december => 'دسامبر';
+
+  @override
+  String get fun_share_button => 'اشتراک‌گذاری';
+
+  @override
+  String get fun_new_spread_button => 'گسترش جدید';
 }

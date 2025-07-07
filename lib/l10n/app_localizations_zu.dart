@@ -1822,4 +1822,10 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String get month_december => 'uDisemba';
+
+  @override
+  String get fun_share_button => 'Yabelana';
+
+  @override
+  String get fun_new_spread_button => 'Ukusabalala okusha';
 }

@@ -1814,6 +1814,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Delen';
+
+  @override
+  String get fun_new_spread_button => 'Nieuwe uitleg';
 }
 
 /// The translations for Dutch Flemish, as used in Netherlands (`nl_NL`).
@@ -3626,4 +3632,10 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Delen';
+
+  @override
+  String get fun_new_spread_button => 'Nieuwe uitleg';
 }

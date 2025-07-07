@@ -1782,6 +1782,12 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get month_december => 'דצמבר';
+
+  @override
+  String get fun_share_button => 'שתף';
+
+  @override
+  String get fun_new_spread_button => 'פיזור חדש';
 }
 
 /// The translations for Hebrew, as used in Israel (`he_IL`).
@@ -3541,4 +3547,10 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String get month_december => 'דצמבר';
+
+  @override
+  String get fun_share_button => 'שתף';
+
+  @override
+  String get fun_new_spread_button => 'פיזור חדש';
 }

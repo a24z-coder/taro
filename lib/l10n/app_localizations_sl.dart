@@ -1812,4 +1812,10 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get month_december => 'December';
+
+  @override
+  String get fun_share_button => 'Deli';
+
+  @override
+  String get fun_new_spread_button => 'Nova razporeditev';
 }

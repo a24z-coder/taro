@@ -1808,6 +1808,12 @@ class AppLocalizationsMr extends AppLocalizations {
 
   @override
   String get month_december => 'डिसेंबर';
+
+  @override
+  String get fun_share_button => 'शेअर करा';
+
+  @override
+  String get fun_new_spread_button => 'नवीन स्प्रेड';
 }
 
 /// The translations for Marathi, as used in India (`mr_IN`).
@@ -3614,4 +3620,10 @@ class AppLocalizationsMrIn extends AppLocalizationsMr {
 
   @override
   String get month_december => 'डिसेंबर';
+
+  @override
+  String get fun_share_button => 'शेअर करा';
+
+  @override
+  String get fun_new_spread_button => 'नवीन स्प्रेड';
 }

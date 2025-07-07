@@ -1813,6 +1813,12 @@ class AppLocalizationsNo extends AppLocalizations {
 
   @override
   String get month_december => 'desember';
+
+  @override
+  String get fun_share_button => 'Del';
+
+  @override
+  String get fun_new_spread_button => 'Ny spredning';
 }
 
 /// The translations for Norwegian, as used in Norway (`no_NO`).
@@ -3624,4 +3630,10 @@ class AppLocalizationsNoNo extends AppLocalizationsNo {
 
   @override
   String get month_december => 'desember';
+
+  @override
+  String get fun_share_button => 'Del';
+
+  @override
+  String get fun_new_spread_button => 'Ny spredning';
 }

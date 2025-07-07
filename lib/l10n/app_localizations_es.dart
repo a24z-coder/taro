@@ -1813,6 +1813,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get month_december => 'Diciembre';
+
+  @override
+  String get fun_share_button => 'Compartir';
+
+  @override
+  String get fun_new_spread_button => 'Nueva tirada';
 }
 
 /// The translations for Spanish Castilian, as used in Spain (`es_ES`).
@@ -3624,4 +3630,10 @@ class AppLocalizationsEsEs extends AppLocalizationsEs {
 
   @override
   String get month_december => 'Diciembre';
+
+  @override
+  String get fun_share_button => 'Compartir';
+
+  @override
+  String get fun_new_spread_button => 'Nueva tirada';
 }

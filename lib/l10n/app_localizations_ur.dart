@@ -1805,4 +1805,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get month_december => 'دسمبر';
+
+  @override
+  String get fun_share_button => 'شیئر کریں';
+
+  @override
+  String get fun_new_spread_button => 'نیا پھیلاؤ';
 }

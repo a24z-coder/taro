@@ -1806,6 +1806,12 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get month_december => 'डिसेम्बर';
+
+  @override
+  String get fun_share_button => 'साझेदारी गर्नुहोस्';
+
+  @override
+  String get fun_new_spread_button => 'नयाँ फैलाव';
 }
 
 /// The translations for Nepali, as used in Nepal (`ne_NP`).
@@ -3610,4 +3616,10 @@ class AppLocalizationsNeNp extends AppLocalizationsNe {
 
   @override
   String get month_december => 'डिसेम्बर';
+
+  @override
+  String get fun_share_button => 'साझेदारी गर्नुहोस्';
+
+  @override
+  String get fun_new_spread_button => 'नयाँ फैलाव';
 }

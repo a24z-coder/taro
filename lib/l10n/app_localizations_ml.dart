@@ -1820,6 +1820,12 @@ class AppLocalizationsMl extends AppLocalizations {
 
   @override
   String get month_december => 'ഡിസംബർ';
+
+  @override
+  String get fun_share_button => 'പങ്കുവെയ്ക്കുക';
+
+  @override
+  String get fun_new_spread_button => 'പുതിയ സ്പ്രെഡ്';
 }
 
 /// The translations for Malayalam, as used in India (`ml_IN`).
@@ -3638,4 +3644,10 @@ class AppLocalizationsMlIn extends AppLocalizationsMl {
 
   @override
   String get month_december => 'ഡിസംബർ';
+
+  @override
+  String get fun_share_button => 'പങ്കുവെയ്ക്കുക';
+
+  @override
+  String get fun_new_spread_button => 'പുതിയ സ്പ്രെഡ്';
 }

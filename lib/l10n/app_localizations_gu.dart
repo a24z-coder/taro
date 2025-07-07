@@ -1805,4 +1805,10 @@ class AppLocalizationsGu extends AppLocalizations {
 
   @override
   String get month_december => 'ડિસેમ્બર';
+
+  @override
+  String get fun_share_button => 'શેર કરો';
+
+  @override
+  String get fun_new_spread_button => 'નવું સ્પ્રેડ';
 }

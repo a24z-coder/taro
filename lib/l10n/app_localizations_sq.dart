@@ -1822,4 +1822,10 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String get month_december => 'dhjetor';
+
+  @override
+  String get fun_share_button => 'Ndaj';
+
+  @override
+  String get fun_new_spread_button => 'Shpërndarje e re';
 }

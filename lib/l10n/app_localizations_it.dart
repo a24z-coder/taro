@@ -1814,6 +1814,12 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get month_december => 'Dicembre';
+
+  @override
+  String get fun_share_button => 'Condividi';
+
+  @override
+  String get fun_new_spread_button => 'Nuova lettura';
 }
 
 /// The translations for Italian, as used in Italy (`it_IT`).
@@ -3612,4 +3618,10 @@ class AppLocalizationsItIt extends AppLocalizationsIt {
 
   @override
   String get month_december => 'dicembre';
+
+  @override
+  String get fun_share_button => 'Condividi';
+
+  @override
+  String get fun_new_spread_button => 'Nuova lettura';
 }

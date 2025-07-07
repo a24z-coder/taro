@@ -1711,6 +1711,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get month_december => '十二月';
+
+  @override
+  String get fun_share_button => '分享';
+
+  @override
+  String get fun_new_spread_button => '新牌阵';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -3420,6 +3426,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get month_december => '十二月';
+
+  @override
+  String get fun_share_button => '分享';
+
+  @override
+  String get fun_new_spread_button => '新牌阵';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -5127,6 +5139,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get month_december => '十二月';
+
+  @override
+  String get fun_share_button => '分享';
+
+  @override
+  String get fun_new_spread_button => '新牌陣';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6835,4 +6853,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get month_december => '十二月';
+
+  @override
+  String get fun_share_button => '分享';
+
+  @override
+  String get fun_new_spread_button => '新牌陣';
 }

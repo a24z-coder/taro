@@ -1806,6 +1806,12 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String get month_december => 'dekabr';
+
+  @override
+  String get fun_share_button => 'Paylaş';
+
+  @override
+  String get fun_new_spread_button => 'Yeni açılım';
 }
 
 /// The translations for Azerbaijani, as used in Azerbaijan (`az_AZ`).
@@ -3610,4 +3616,10 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String get month_december => 'dekabr';
+
+  @override
+  String get fun_share_button => 'Paylaş';
+
+  @override
+  String get fun_new_spread_button => 'Yeni açılım';
 }

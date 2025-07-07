@@ -1821,4 +1821,10 @@ class AppLocalizationsLt extends AppLocalizations {
 
   @override
   String get month_december => 'gruodis';
+
+  @override
+  String get fun_share_button => 'Dalintis';
+
+  @override
+  String get fun_new_spread_button => 'Naujas išdėstymas';
 }

@@ -1826,6 +1826,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get month_december => 'Dezember';
+
+  @override
+  String get fun_share_button => 'Teilen';
+
+  @override
+  String get fun_new_spread_button => 'Neues Legen';
 }
 
 /// The translations for German, as used in Germany (`de_DE`).
@@ -3646,4 +3652,10 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String get month_december => 'Dezember';
+
+  @override
+  String get fun_share_button => 'Teilen';
+
+  @override
+  String get fun_new_spread_button => 'Neues Legen';
 }

@@ -1805,6 +1805,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get month_december => 'दिसंबर';
+
+  @override
+  String get fun_share_button => 'साझा करें';
+
+  @override
+  String get fun_new_spread_button => 'नया फैलाव';
 }
 
 /// The translations for Hindi, as used in India (`hi_IN`).
@@ -3586,4 +3592,10 @@ class AppLocalizationsHiIn extends AppLocalizationsHi {
 
   @override
   String get month_december => 'दिसंबर';
+
+  @override
+  String get fun_share_button => 'साझा करें';
+
+  @override
+  String get fun_new_spread_button => 'नया फैलाव';
 }

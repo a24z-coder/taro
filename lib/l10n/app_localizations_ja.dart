@@ -1744,6 +1744,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get month_december => '12月';
+
+  @override
+  String get fun_share_button => '共有';
+
+  @override
+  String get fun_new_spread_button => '新しいスプレッド';
 }
 
 /// The translations for Japanese, as used in Japan (`ja_JP`).
@@ -3465,4 +3471,10 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String get month_december => '12月';
+
+  @override
+  String get fun_share_button => '共有';
+
+  @override
+  String get fun_new_spread_button => '新しいスプレッド';
 }

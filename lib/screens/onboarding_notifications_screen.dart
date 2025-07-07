@@ -8,7 +8,8 @@ class OnboardingNotificationsScreen extends StatelessWidget {
   const OnboardingNotificationsScreen({Key? key}) : super(key: key);
 
   Future<void> _requestNotificationPermission(BuildContext context) async {
-    // await FirebaseMessaging.instance.requestPermission();
+    // Запрашиваем разрешение на уведомления
+    await FirebaseMessaging.instance.requestPermission();
     // Можно обработать статус, если нужно
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const OnboardingFinalScreen()),

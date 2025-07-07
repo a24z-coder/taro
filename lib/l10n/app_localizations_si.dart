@@ -1811,6 +1811,12 @@ class AppLocalizationsSi extends AppLocalizations {
 
   @override
   String get month_december => 'දෙසැම්බර්';
+
+  @override
+  String get fun_share_button => 'බෙදාගන්න';
+
+  @override
+  String get fun_new_spread_button => 'නව පැතිරීම';
 }
 
 /// The translations for Sinhala Sinhalese, as used in Sri Lanka (`si_LK`).
@@ -3620,4 +3626,10 @@ class AppLocalizationsSiLk extends AppLocalizationsSi {
 
   @override
   String get month_december => 'දෙසැම්බර්';
+
+  @override
+  String get fun_share_button => 'බෙදාගන්න';
+
+  @override
+  String get fun_new_spread_button => 'නව පැතිරීම';
 }

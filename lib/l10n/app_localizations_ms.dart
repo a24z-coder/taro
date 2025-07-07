@@ -1816,6 +1816,12 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get month_december => 'Disember';
+
+  @override
+  String get fun_share_button => 'Kongsi';
+
+  @override
+  String get fun_new_spread_button => 'Sebaran baharu';
 }
 
 /// The translations for Malay, as used in Malaysia (`ms_MY`).
@@ -3630,4 +3636,10 @@ class AppLocalizationsMsMy extends AppLocalizationsMs {
 
   @override
   String get month_december => 'Disember';
+
+  @override
+  String get fun_share_button => 'Kongsi';
+
+  @override
+  String get fun_new_spread_button => 'Sebaran baharu';
 }

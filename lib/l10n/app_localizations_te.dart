@@ -1811,6 +1811,12 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get month_december => 'డిసెంబర్';
+
+  @override
+  String get fun_share_button => 'షేర్ చేయండి';
+
+  @override
+  String get fun_new_spread_button => 'కొత్త స్ప్రెడ్';
 }
 
 /// The translations for Telugu, as used in India (`te_IN`).
@@ -3620,4 +3626,10 @@ class AppLocalizationsTeIn extends AppLocalizationsTe {
 
   @override
   String get month_december => 'డిసెంబర్';
+
+  @override
+  String get fun_share_button => 'షేర్ చేయండి';
+
+  @override
+  String get fun_new_spread_button => 'కొత్త స్ప్రెడ్';
 }

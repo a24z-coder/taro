@@ -161,6 +161,8 @@ class PurchaseService extends ChangeNotifier {
         _errorMessage = null;
         
         debugPrint('[PurchaseService] Purchase verified and saved');
+        debugPrint('[PurchaseService] User is now subscribed: $_isSubscribed');
+        debugPrint('[PurchaseService] Subscription expires: $_subscriptionExpiryDate');
       } else {
         debugPrint('[PurchaseService] Purchase verification failed');
         _errorMessage = 'Purchase verification failed';

@@ -1750,6 +1750,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get month_december => '12월';
+
+  @override
+  String get fun_share_button => '공유';
+
+  @override
+  String get fun_new_spread_button => '새로운 스프레드';
 }
 
 /// The translations for Korean, as used in Republic of Korea (`ko_KR`).
@@ -3498,4 +3504,10 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String get month_december => '12월';
+
+  @override
+  String get fun_share_button => '공유';
+
+  @override
+  String get fun_new_spread_button => '새로운 스프레드';
 }

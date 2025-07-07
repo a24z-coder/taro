@@ -3356,6 +3356,18 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Декабрь'**
   String get month_december;
+
+  /// No description provided for @fun_share_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Поделиться'**
+  String get fun_share_button;
+
+  /// No description provided for @fun_new_spread_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Новый расклад'**
+  String get fun_new_spread_button;
 }
 
 class _AppLocalizationsDelegate

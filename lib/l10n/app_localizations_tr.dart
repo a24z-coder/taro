@@ -1800,6 +1800,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get month_december => 'Aralık';
+
+  @override
+  String get fun_share_button => 'Paylaş';
+
+  @override
+  String get fun_new_spread_button => 'Yeni yayılım';
 }
 
 /// The translations for Turkish, as used in Turkey (`tr_TR`).
@@ -3598,4 +3604,10 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String get month_december => 'Aralık';
+
+  @override
+  String get fun_share_button => 'Paylaş';
+
+  @override
+  String get fun_new_spread_button => 'Yeni yayılım';
 }

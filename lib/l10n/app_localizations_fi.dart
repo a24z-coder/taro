@@ -1808,6 +1808,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get month_december => 'Joulukuu';
+
+  @override
+  String get fun_share_button => 'Jaa';
+
+  @override
+  String get fun_new_spread_button => 'Uusi levitys';
 }
 
 /// The translations for Finnish, as used in Finland (`fi_FI`).
@@ -3614,4 +3620,10 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String get month_december => 'Joulukuu';
+
+  @override
+  String get fun_share_button => 'Jaa';
+
+  @override
+  String get fun_new_spread_button => 'Uusi levitys';
 }

@@ -1824,6 +1824,12 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String get month_december => 'ဒီဇင်ဘာ';
+
+  @override
+  String get fun_share_button => 'မျှဝေပါ';
+
+  @override
+  String get fun_new_spread_button => 'အသစ်ဖြန့်ချမှု';
 }
 
 /// The translations for Burmese, as used in Myanmar (`my_MM`).
@@ -3646,4 +3652,10 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String get month_december => 'ဒီဇင်ဘာ';
+
+  @override
+  String get fun_share_button => 'မျှဝေပါ';
+
+  @override
+  String get fun_new_spread_button => 'အသစ်ဖြန့်ချမှု';
 }

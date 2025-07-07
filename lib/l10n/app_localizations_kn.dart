@@ -1815,6 +1815,12 @@ class AppLocalizationsKn extends AppLocalizations {
 
   @override
   String get month_december => 'ಡಿಸೆಂಬರ್';
+
+  @override
+  String get fun_share_button => 'ಹಂಚಿಕೊಳ್ಳಿ';
+
+  @override
+  String get fun_new_spread_button => 'ಹೊಸ ಸ್ಪ್ರೆಡ್';
 }
 
 /// The translations for Kannada, as used in India (`kn_IN`).
@@ -3628,4 +3634,10 @@ class AppLocalizationsKnIn extends AppLocalizationsKn {
 
   @override
   String get month_december => 'ಡಿಸೆಂಬರ್';
+
+  @override
+  String get fun_share_button => 'ಹಂಚಿಕೊಳ್ಳಿ';
+
+  @override
+  String get fun_new_spread_button => 'ಹೊಸ ಸ್ಪ್ರೆಡ್';
 }

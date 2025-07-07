@@ -1822,6 +1822,12 @@ class AppLocalizationsHy extends AppLocalizations {
 
   @override
   String get month_december => 'դեկտեմբեր';
+
+  @override
+  String get fun_share_button => 'Կիսվել';
+
+  @override
+  String get fun_new_spread_button => 'Նոր բացում';
 }
 
 /// The translations for Armenian, as used in Armenia (`hy_AM`).
@@ -3642,4 +3648,10 @@ class AppLocalizationsHyAm extends AppLocalizationsHy {
 
   @override
   String get month_december => 'Դեկտեմբեր';
+
+  @override
+  String get fun_share_button => 'Կիսվել';
+
+  @override
+  String get fun_new_spread_button => 'Նոր բացում';
 }

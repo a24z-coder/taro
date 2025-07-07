@@ -1799,6 +1799,12 @@ class AppLocalizationsLo extends AppLocalizations {
 
   @override
   String get month_december => 'ທັນວາ';
+
+  @override
+  String get fun_share_button => 'ແບ່ງປັນ';
+
+  @override
+  String get fun_new_spread_button => 'ການແຜ່ຂະຫຍາຍໃໝ່';
 }
 
 /// The translations for Lao, as used in the Lao People's Democratic Republic (`lo_LA`).
@@ -3596,4 +3602,10 @@ class AppLocalizationsLoLa extends AppLocalizationsLo {
 
   @override
   String get month_december => 'ທັນວາ';
+
+  @override
+  String get fun_share_button => 'ແບ່ງປັນ';
+
+  @override
+  String get fun_new_spread_button => 'ການແຜ່ຂະຫຍາຍໃໝ່';
 }
