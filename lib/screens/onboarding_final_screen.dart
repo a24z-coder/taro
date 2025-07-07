@@ -127,140 +127,129 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
               child: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const SizedBox(height: 64),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            loc.onboarding_final_title,
-                            style: headingStyleForLang(langCode, size.width * 0.09, color: accentColor),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(height: size.height * 0.06),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          loc.onboarding_final_title,
+                          style: headingStyleForLang(langCode, size.width * 0.09, color: accentColor),
+                        ),
+                      ),
+                      Text(
+                        loc.onboarding_final_subtitle,
+                        style: bodyStyleForLang(langCode, 17, color: Colors.white),
+                        textAlign: TextAlign.left,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/icons/no_ads.png', width: 26, height: 26),
+                                const SizedBox(width: 10),
+                                Text(
+                                  loc.onboarding_final_benefits.split('\n')[0],
+                                  style: bodyStyleForLang(langCode, 16, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/icons/unlimited_spreads.png', width: 26, height: 26),
+                                const SizedBox(width: 10),
+                                Text(
+                                  loc.onboarding_final_benefits.split('\n')[1],
+                                  style: bodyStyleForLang(langCode, 16, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset('assets/icons/unlimited_learning.png', width: 26, height: 26),
+                                const SizedBox(width: 10),
+                                Text(
+                                  loc.onboarding_final_benefits.split('\n')[2],
+                                  style: bodyStyleForLang(langCode, 16, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      _buildPlanOption(
+                        selected: _selectedPlan == 0,
+                        title: loc.onboarding_final_yearly,
+                        badge: loc.onboarding_final_badge,
+                        price: _yearlyPrice,
+                        subPrice: _yearlyMonthPrice,
+                        onTap: () => setState(() => _selectedPlan = 0),
+                        langCode: langCode,
+                      ),
+                      _buildPlanOption(
+                        selected: _selectedPlan == 1,
+                        title: loc.onboarding_final_trial,
+                        price: _monthlyPrice,
+                        subPrice: _monthlyMonthPrice,
+                        onTap: () => setState(() => _selectedPlan = 1),
+                        langCode: langCode,
+                      ),
+                      Text(
+                        loc.onboarding_final_note,
+                        style: bodyStyleForLang(langCode, 12, color: Colors.white.withOpacity(0.8)),
+                        textAlign: TextAlign.center,
+                      ),
+                      ElevatedButton(
+                        onPressed: _onBuy,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: accentColor,
+                          foregroundColor: Colors.black,
+                          minimumSize: Size(double.infinity, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
                           ),
+                          shadowColor: accentColor.withOpacity(0.5),
+                          elevation: 16,
                         ),
-                        const SizedBox(height: 20),
-                        Text(
-                          loc.onboarding_final_subtitle,
-                          style: bodyStyleForLang(langCode, 17, color: Colors.white),
-                          textAlign: TextAlign.left,
+                        child: Text(
+                          _selectedPlan == 0 ? loc.onboarding_final_choose_yearly : loc.onboarding_final_choose_trial,
+                          style: headingStyleForLang(langCode, 17, color: Colors.black),
                         ),
-                        const SizedBox(height: 28),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/no_ads.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[0],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 18),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/unlimited_spreads.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[1],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 18),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/unlimited_learning.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[2],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                      ),
+                      Text(
+                        loc.onboarding_final_or,
+                        style: bodyStyleForLang(langCode, 14, color: Colors.white.withOpacity(0.8)),
+                      ),
+                      GestureDetector(
+                        onTap: _onContinueWithAds,
+                        child: Text(
+                          loc.onboarding_final_continue_ads,
+                          style: headingStyleForLang(langCode, 20, color: Colors.white),
                         ),
-                        const SizedBox(height: 28),
-                        _buildPlanOption(
-                          selected: _selectedPlan == 0,
-                          title: loc.onboarding_final_yearly,
-                          badge: loc.onboarding_final_badge,
-                          price: _yearlyPrice,
-                          subPrice: _yearlyMonthPrice,
-                          onTap: () => setState(() => _selectedPlan = 0),
-                          langCode: langCode,
-                        ),
-                        const SizedBox(height: 18),
-                        _buildPlanOption(
-                          selected: _selectedPlan == 1,
-                          title: loc.onboarding_final_trial,
-                          price: _monthlyPrice,
-                          subPrice: _monthlyMonthPrice,
-                          onTap: () => setState(() => _selectedPlan = 1),
-                          langCode: langCode,
-                        ),
-                        const SizedBox(height: 18),
-                        Text(
-                          loc.onboarding_final_note,
-                          style: bodyStyleForLang(langCode, 12, color: Colors.white.withOpacity(0.8)),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          AppLocalizations.of(context)!.disclaimer_text,
                           textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: _onBuy,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: accentColor,
-                            foregroundColor: Colors.black,
-                            minimumSize: Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            shadowColor: accentColor.withOpacity(0.5),
-                            elevation: 16,
-                          ),
-                          child: Text(
-                            _selectedPlan == 0 ? loc.onboarding_final_choose_yearly : loc.onboarding_final_choose_trial,
-                            style: headingStyleForLang(langCode, 17, color: Colors.black),
+                          style: const TextStyle(
+                            fontSize: 9,
+                            color: Colors.white60,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        const SizedBox(height: 18),
-                        Text(
-                          loc.onboarding_final_or,
-                          style: bodyStyleForLang(langCode, 14, color: Colors.white.withOpacity(0.8)),
-                        ),
-                        const SizedBox(height: 12),
-                        GestureDetector(
-                          onTap: _onContinueWithAds,
-                          child: Text(
-                            loc.onboarding_final_continue_ads,
-                            style: headingStyleForLang(langCode, 20, color: Colors.white),
-                          ),
-                        ),
-                        const SizedBox(height: 24),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: Text(
-                            AppLocalizations.of(context)!.disclaimer_text,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 9,
-                              color: Colors.white60,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
