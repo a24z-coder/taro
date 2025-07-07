@@ -379,7 +379,8 @@ class AppLocalizationsFil extends AppLocalizations {
       'Ilagay ang iyong tanong...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Ang spread na \"Pag-unlad sa Sarili at Balanse\" ay binubuo ng 7 mga card na nakaayos sa hugis ng bilog. Bawat card ay sumasagisag sa isang partikular na aspeto ng iyong espiritwal na paglago at panloob na pagkakaisa.';
 
   @override
@@ -991,7 +992,9 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Gumawa ng spread para kay $userName tungkol sa self-development at balanse gamit ang tatlong card na ito: $cards';
   }
 
@@ -1017,13 +1020,17 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Ilarawan ang pangkalahatang kahulugan ng Tarot card na \"$cardName\" sa wikang $lang. Isama ang kasaysayan, simbolismo, at mga pangunahing kahulugan.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Ilarawan ang baligtad na kahulugan ng Tarot card na \"$cardName\" sa wikang $lang. Isama ang mga kabaligtarang kahulugan at mga babala.';
   }
 
@@ -1060,13 +1067,17 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Isalin ang pangalan ng Tarot card na \"$cardName\" sa $languageCode. Ang sagot ay dapat maglaman lamang ng isinaling pangalan, walang karagdagang teksto o bantas.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ikaw ay isang propesyonal na tarologo. Sumulat ng isang nakaka-inspire na mensahe na \"Karta ng Araw\" sa wikang ito para sa gumagamit na si $name. Sundin ang istruktura at haba.\n🌟 $name, ang iyong karta ng araw ay $cardName!\n🔑 Mga Susing Salita: <ilista ang 3–5 maikling keywords>\n🃏 Kahulugan (≈45–50 salita): ilarawan ang pangunahing enerhiya ng karta at kung paano ito magpapakita ngayon kay $name.\n💡 Payo (≈35–40 salita): magmungkahi ng isang tiyak na aksyon o saloobin na makakatulong kay $name na gamitin ang enerhiyang ito.\n✨ Afirmasyon (1 linya): positibong pahayag na nagsisimula sa \"Ako…\".\nMga kinakailangan: kabuuang haba na 120–150 salita, mainit na esoterikong tono, 3–4 na tematikong emoji, walang mga listahan sa HTML/Markdown; paghiwalayin ang mga talata gamit ang dobleng line break (\\n\\n).';
   }
 
@@ -1287,19 +1298,20 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang bihasang tarot reader. Ang gumagamit na si $userName ay nagtatanong: \"$userQuestion\". Sagutin gamit ang \"Celtic Cross\" na spread (klasikong Waite na layout). Ang mga baraha ay inilagay ng ganito: sitwasyon - $situationCard; hamon - $challengeCard; subconscious - $subconsciousCard; kamakailang nakaraan - $pastCard; kamalayan - $consciousCard; malapit na hinaharap - $hiddenCard; panloob na sarili - $selfCard; kapaligiran - $environmentCard; mga pag-asa o takot - $hopesCard; kinalabasan - $outcomeCard. Banggitin ang pangalan ni $userName ng hindi bababa sa anim na beses at siguraduhing iugnay ang bawat baraha sa tanong. Sundin ang istruktura:\n1) Pagbati kay $userName.\n2) Pamagat: Spread: sitwasyon ($situationCard) / hamon ($challengeCard) / subconscious ($subconsciousCard) / kamakailang nakaraan ($pastCard) / kamalayan ($consciousCard) / malapit na hinaharap ($hiddenCard) / panloob na sarili ($selfCard) / kapaligiran ($environmentCard) / pag-asa/takot ($hopesCard) / kinalabasan ($outcomeCard).\n3) Sitwasyon — $situationCard (45-55 salita): tatlong mahahalagang salita, simbolismo ng baraha at kasalukuyang kalagayan tungkol sa tanong ni $userName na \"$userQuestion\".\n4) Hamon — $challengeCard (45-55 salita): pangunahing hadlang o tulong para kay $userName.\n5) Subconscious — $subconsciousCard (45-55 salita): mga nakatagong motibo o enerhiya na nakakaapekto kay $userName.\n6) Kamakailang nakaraan — $pastCard (45-55 salita): mga pangyayaring nagdala kay $userName sa kasalukuyang sitwasyon.\n7) Kamalayan — $consciousCard (45-55 salita): mga layunin, inaasahan o mga bagay na alam ni $userName.\n8) Malapit na hinaharap — $hiddenCard (45-55 salita): posibleng pag-unlad sa mga susunod na linggo.\n9) Panloob na sarili — $selfCard (45-55 salita): kalagayan, mga yaman ni $userName.\n10) Kapaligiran — $environmentCard (45-55 salita): impluwensya ng mga tao at mga pangyayari.\n11) Mga pag-asa / takot — $hopesCard (45-55 salita): mga inaasahan o pangamba ni $userName.\n12) Kinalabasan — $outcomeCard (45-55 salita): posibleng resulta kung isasaalang-alang ang payo ng spread.\n13) Konklusyon: magiliw na suporta at positibong affirmasyon (30-35 salita) para kay $userName.\nMga kinakailangan: kabuuang haba 400-500 salita, buhay na usapan na tono, 4-6 esoterikong emoji; bawat bahagi ay paghiwalayin ng dalawang linya ng espasyo (\n); huwag gumamit ng simbolo *, # o ibang markup; isulat lamang sa simpleng teksto.';
   }
 
@@ -1316,11 +1328,12 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang bihasang tarot reader. Ang gumagamit na si $userName ay nagtatanong: \"$userQuestion\". Sagutin gamit ang spread na \"Nakaraan - Kasalukuyan - Hinaharap\". Ang mga baraha ay inilagay ng ganito: nakaraan - $pastCard; kasalukuyan - $presentCard; hinaharap - $hiddenCard. Banggitin ang pangalan ni $userName ng hindi bababa sa apat na beses at siguraduhing iugnay ang kahulugan ng mga baraha sa tanong. Sundin ang istruktura:\n1) Pagbati kay $userName.\n2) Pamagat: Spread: Nakaraan ($pastCard) - Kasalukuyan ($presentCard) - Hinaharap ($hiddenCard).\n3) BAHAGI NG NAKARAAN — $pastCard (40-50 salita): tatlong mahahalagang salita, simbolismo ng baraha at paliwanag kung paano nakakaapekto ang mga nakaraang pangyayari sa kinalabasan ng tanong ni $userName na \"$userQuestion\".\n4) BAHAGI NG KASALUKUYAN — $presentCard (40-50 salita): mahahalagang salita, simbolismo ng baraha at mga kasalukuyang salik na nakakaapekto sa sagot sa tanong ni $userName.\n5) BAHAGI NG HINAHARAP — $hiddenCard (40-50 salita): mahahalagang salita, simbolismo ng baraha at posibleng senaryo ng pag-unlad ng sitwasyon tungkol sa tanong ni $userName.\n6) Kinalabasan: maikling payo, positibong affirmasyon (20-30 salita) at malinaw na buod ng mga posibilidad.\nMga kinakailangan: kabuuang haba 180-220 salita, mainit na esoterikong tono, 3-5 tematikong emoji; bawat bahagi ay paghiwalayin ng dalawang linya ng espasyo (\n); ipinagbabawal ang paggamit ng simbolo *, # o ibang mga tanda ng format; isulat lamang sa simpleng teksto.';
   }
 
@@ -1368,13 +1381,14 @@ class AppLocalizationsFil extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang may karanasang tarot reader. Ang user na $userName ay nagtatanong: \"$userQuestion\". Sagutin gamit ang \"5 cards\" spread. Ang mga card ay ibinibigay sa pagkakasunud-sunod: nakaraan - $pastCard; kasalukuyan - $presentCard; nakatago - $hiddenCard; payo - $adviceCard; resulta - $outcomeCard. Sumangguni sa $userName ng hindi bababa sa limang beses at tiyaking iugnay ang bawat card sa tanong. Sundin ang istruktura:\n\n1) Pagbati sa pangalan na $userName.\n\n2) Pamagat: Spread: nakaraan ($pastCard) / kasalukuyan ($presentCard) / nakatago ($hiddenCard) / payo ($adviceCard) / resulta ($outcomeCard).\n\n3) Nakaraan — $pastCard (45-55 salita): tatlong keyword, simbolismo ng card at impluwensya ng nakaraan sa $userQuestion para kay $userName.\n\n4) Kasalukuyan — $presentCard (45-55 salita): mga keyword, simbolismo at kasalukuyang estado ng tanong ni $userName.\n\n5) Nakatago — $hiddenCard (45-55 salita): kung ano ang hindi sinasadyang nakakaapekto sa sitwasyon ni $userName, na nakatuon sa simbolismo.\n\n6) Payo — $adviceCard (45-55 salita): praktikal na aksyon para kay $userName, batay sa mga imahe ng card.\n\n7) Resulta — $outcomeCard (45-55 salita): malamang na senaryo kung susundin ang payo, na nakikipag-usap kay $userName.\n\n8) Konklusyon: magiliw na suporta at positibong pagpapatibay (25-30 salita) para kay $userName.\n\nMga kinakailangan: kabuuang dami 230-260 salita, buhay na tono ng pag-uusap, 3-5 esoteric emoji; paghiwalayin ang bawat bloke ng dobleng line break (\\n\\n); huwag gumamit ng mga simbolo *, # o iba pang markup; sumulat lamang ng plain text.';
   }
 
@@ -1385,7 +1399,8 @@ class AppLocalizationsFil extends AppLocalizations {
   String get makeNewSpread => 'Gumawa ng bagong layout';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Ang app ay gumagamit ng AI para lamang sa libangan. Hindi kami mananagot sa mga desisyong gagawin mo. Kung kinakailangan, kumonsulta sa isang espesyalista.';
 
   @override
@@ -1393,8 +1408,13 @@ class AppLocalizationsFil extends AppLocalizations {
       'Natanggap ang iyong kahilingan. Mangyaring buksan ang mga baraha.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Ikaw ay isang bihasang tarot reader. Ang user na si $userName ay nagtatanong: «$userQuestion». Sagutin gamit ang love spread na may tatlong baraha. Ang mga baraha ay ganito: damdamin ni $userName — $youCard; damdamin ng partner — $partnerCard; dinamika o potensyal ng relasyon — $dynamicCard. Banggitin ang pangalan ni $userName ng hindi bababa sa tatlong beses at iugnay ang bawat baraha sa tanong. Sundin ang istruktura:\n1) Pagbati kay $userName.\n2) Pamagat: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 salita: ilarawan kung ano ang sinasabi ng baraha tungkol sa damdamin at inaasahan ni $userName.\n4) $partnerCard — 40–50 salita: ipaliwanag ang emosyon at intensyon ng partner tungkol sa tanong ni $userName.\n5) $dynamicCard — 40–50 salita: ipakita kung paano nagkakaugnay ang dalawang enerhiya at kung saan maaaring humantong ang relasyon.\n6) Konklusyon: mainit na payo at positibong affirmasyon (20–25 salita) para kay $userName.\nMga kinakailangan: kabuuang 150–180 salita, magiliw at romantikong tono, 2–4 na tematikong emoji; paghiwalayin ang mga talata gamit ang dobleng line break (\\n\\n); iwasan ang simbolong *, # at anumang markup.';
   }
 
@@ -1402,7 +1422,8 @@ class AppLocalizationsFil extends AppLocalizations {
   String get loveSpread => 'Love spread';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Ang app ay gumagamit ng AI para lamang sa libangan. Hindi kami mananagot sa mga desisyong gagawin mo. Kung kinakailangan, kumonsulta sa isang espesyalista.';
 
   @override
@@ -1483,7 +1504,8 @@ class AppLocalizationsFil extends AppLocalizations {
   String get monthlyForecast => 'Buwanang hula';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Ginagamit ang app ng AI para lamang sa libangan. Hindi kami mananagot sa mga desisyong iyong gagawin. Kung kinakailangan, kumonsulta sa isang espesyalista.';
 
   @override
@@ -1508,7 +1530,8 @@ class AppLocalizationsFil extends AppLocalizations {
       'Error sa pagkuha ng halaga ng pagbasa. Subukang muli.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Ginagamit ang app ng AI para lamang sa layuning panglibangan. Hindi kami mananagot sa mga desisyong iyong gagawin. Kung kinakailangan, kumonsulta sa isang espesyalista.';
 
   @override
@@ -1738,48 +1761,60 @@ class AppLocalizationsFil extends AppLocalizations {
       'Paano makakahanap ng pagkakaisa sa buhay?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang bihasang tarot coach. Ang gumagamit na si $userName ay nagtatanong: «$userQuestion». Gumawa ng tatlong-card na pagbasa tungkol sa karera at pananalapi. Ang mga card ay nakaayos bilang: 1) sitwasyon — $situationCard; 2) hadlang o mahalagang oportunidad — $challengeCard; 3) payo at potensyal — $adviceCard. Tukuyin ang kasarian ng gumagamit base sa pangalang $userName at gamitin ang tamang mga panghuli at panghalip. Magsalita kay $userName nang magiliw at diretso sa punto: ipakita kung nasaan siya, ano ang humahadlang sa paglago (o anong pagkakataon ang mahalagang mapansin) at anong praktikal na hakbang ang magdadala sa nais na kita. Banggitin ang pangalan ni $userName ng hindi bababa sa tatlong beses. Sundin ang istruktura:\n1) Pagbati — 1 pangungusap.\n2) Pamagat: Pagbasa: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 salita: ilarawan ang kasalukuyang kalagayan ni $userName (trabaho, negosyo o pangkalahatang pinansyal na kalagayan) at ang simbolismo ng card.\n4) $challengeCard — 45–55 salita: ipaliwanag ang pangunahing hadlang o di-kilalang oportunidad; ipakita kung paano ito makikita sa card at sa tanong ni $userName.\n5) $adviceCard — 45–55 salita: magmungkahi ng tiyak na aksyon (halimbawa, repasuhin ang badyet, humiling ng pagtaas, pag-aralan ang bagong kakayahan) at ilarawan ang posibleng resulta.\n6) Wakas — 20–25 salita: magiliw na konklusyon, positibong pahayag at 2 business emojis.\nPangunahing kinakailangan: kabuuang 160–185 salita, malinaw at propesyonal na tono nang walang jargon, 2–3 emojis; hatiin ang mga talata gamit ang dobleng \\n\\n; huwag gumamit ng *, # o ibang markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang bihasang tarot reader. Ang gumagamit na si $userName ay nagtatanong: «$userQuestion». Gumawa ng tatlong-card na pagbasa na \"Mga Bentahe at Disbentahe\". Ang mga card ay nakaayos bilang: bentahe — $proCard; disbentahe — $conCard; payo/konklusyon — $adviceCard. Tukuyin ang kasarian ng gumagamit base sa pangalang $userName at gamitin ang tamang mga panghuli at panghalip. Banggitin ang pangalan ni $userName ng hindi bababa sa tatlong beses at iugnay ang bawat card sa tanong. Sundin ang istruktura:\n1) Pagbati kay $userName.\n2) Pamagat: Pagbasa: $proCard | $conCard | $adviceCard.\n3) Mga Bentahe: $proCard — 45–55 salita. Ilarawan ang mga pangunahing benepisyo o positibong yaman na dala ng card sa sitwasyon ni $userName.\n4) Mga Disbentahe: $conCard — 45–55 salita. Ilarawan ang mga panganib, nakatagong gastos o kahinaan ng desisyon para kay $userName.\n5) Payo: $adviceCard — 45–55 salita. Timbangin ang mga bentahe at disbentahe, magmungkahi ng isang tiyak na aksyon (pandiwa + bagay) at ipaliwanag kung paano ito magbabago ng resulta para kay $userName.\n6) Konklusyon — isang salita \"Oo\" o \"Hindi\", pagkatapos ay 1 pangungusap na paliwanag at nakakaengganyong pahayag (20–25 salita) na may 1–2 emojis.\nPangunahing kinakailangan: kabuuang 150–180 salita, magiliw at kolokyal na tono; bawat bahagi ay paghiwalayin gamit ang dobleng \\n\\n; walang *, # o ibang markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang propesyonal na tarot reader. Ang gumagamit na si $userName ay nagtatanong: «$userQuestion». Gumawa ng \"Gulong ng Buwan\" na pagbasa para sa $month. Ang mga card ay nakaayos ayon sa pagkakasunod: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Tukuyin ang kasarian ni $userName base sa pangalan at gamitin ang tamang mga panghuli at panghalip. Banggitin ang pangalan ng hindi bababa sa limang beses, ngunit **huwag ilagay ito pagkatapos ng bawat petsa** — gamitin lamang sa loob ng mga payo. Gamitin ang kalendaryong petsa: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (kung 30 araw ang buwan, ang ika-12 card ay para sa ika-30 araw). Format:\n1) Pagbati kay $userName (1–2 pangungusap).\n2) Maikling panimula tungkol sa layunin ng pagbasa (1 pangungusap).\n3–14) Para sa bawat card, gamitin ang linya na \"1–3 $month — $card1\" (walang pangalan): pagkatapos ay 2–3 pangungusap tungkol sa pangunahing enerhiya ng panahon at praktikal na payo, na natural na binabanggit si $userName.\n15) Konklusyon: pangkalahatang payo para sa buwan (mga 40 salita) at nakaka-inspire na pahayag na may 2–3 emojis.\nPangunahing kinakailangan: kabuuang 360–400 salita; magiliw at nakaka-motivate na tono; hatiin ang mga bahagi gamit ang dobleng \\n\\n; walang *, #, listahan o teknikal na marka.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ikaw ay isang bihasang tarot coach. Ang gumagamit na si $userName ay nagtatanong: «$userQuestion». Gumawa ng \"Pag-unlad sa Sarili at Balanse\" na pagbasa gamit ang pitong card. Ang mga card ay nakaayos bilang: puso — $coreCard; isipan — $mindCard; emosyon — $emotionCard; katawan — $bodyCard; lakas — $strengthCard; hadlang — $challengeCard; payo — $adviceCard. Tukuyin ang kasarian ng gumagamit base sa pangalang $userName at gamitin ang tamang mga panghuli at panghalip. Magsalita nang buhay at sumusuporta, banggitin ang pangalan ni $userName ng hindi bababa sa apat na beses at siguraduhing iugnay ang bawat card sa tanong. Sundin ang istruktura at format:\n1) Pagbati kay $userName.\n2) Pamagat: Pagbasa: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — ilarawan ang pangunahing pokus ng pag-unlad ni $userName sa sarili.\n4) $mindCard — ipaliwanag kung paano ayusin ang pag-iisip at ano ang dapat matutunan.\n5) $emotionCard — ilarawan ang emosyonal na yaman at motibasyon.\n6) $bodyCard — magbigay ng payo kung paano alagaan ang katawan at enerhiya.\n7) $strengthCard — ipakita ang panloob na regalo o panlabas na suporta.\n8) $challengeCard — tukuyin ang pangunahing disbalanse at mga dahilan nito.\n9) $adviceCard — magmungkahi ng tiyak na aksyon na pinagsasama ang lahat ng aspeto.\n10) Wakas: nakaka-inspire na pahayag at mainit na paalam na may 2–3 emojis.\nKinakailangan: bawat punto ay 2–3 pangungusap; paghiwalayin ang mga bahagi gamit ang dobleng \\n\\n; huwag gumamit ng *, # o ibang markup.';
   }
 

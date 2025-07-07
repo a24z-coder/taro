@@ -366,7 +366,8 @@ class AppLocalizationsHe extends AppLocalizations {
   String get pros_cons_spread_screen_enter_question_hint => 'הקלד את שאלתך...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'פיזור \"התפתחות עצמית ואיזון\" מורכב מ-7 קלפים, הממוקמים בצורת מעגל. כל קלף מסמל היבט מסוים של הצמיחה הרוחנית וההרמוניה הפנימית שלך.';
 
   @override
@@ -965,7 +966,9 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'עשה עבור $userName פירוש להתפתחות עצמית ואיזון עם שלוש הקלפים האלה: $cards';
   }
 
@@ -990,13 +993,17 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'תאר את המשמעות הכללית של קלף הטארוט \"$cardName\" בשפה $lang. כלול היסטוריה, סמליות ומשמעויות עיקריות.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'תאר את המשמעות ההפוכה של קלף הטארוט \"$cardName\" בשפה $lang. כלול משמעויות הפוכות ואזהרות.';
   }
 
@@ -1031,13 +1038,17 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'תרגם את שם הקלף טארוט \"$cardName\" ל-$languageCode. התשובה צריכה להכיל רק את השם המתורגם, ללא טקסט נוסף או סימני פיסוק.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'אתה טארולוג מקצועי. כתוב מסר מעורר השראה \"קלף היום\" בשפת הבקשה הזו עבור המשתמש $name. שמור על המבנה והנפח.\n🌟 $name, קלף היום שלך הוא $cardName!\n🔑 מילות מפתח מרכזיות: <ציין 3–5 מילות מפתח קצרות>\n🃏 משמעות (≈45–50 מילים): תאר את האנרגיה העיקרית של הקלף וכיצד היא תתבטא היום אצל $name.\n💡 עצה (≈35–40 מילים): הצע פעולה או גישה ספציפית שתעזור ל-$name לנצל את האנרגיה הזו.\n✨ אישור חיובי (שורה אחת): אמירה חיובית שמתחילה ב\"אני…\".\nדרישות: אורך כולל 120–150 מילים, טון אזוטרי חם, 3–4 אימוג\'ים בנושא, ללא רשימות ב-HTML/Markdown; הפרד פסקאות בהפסקת שורה כפולה (\\n\\n).';
   }
 
@@ -1253,19 +1264,20 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"צלב קלטי\" (הסכמה הקלאסית של וייט). הקלפים הועברו כך: מצב - $situationCard; אתגר - $challengeCard; תת מודע - $subconsciousCard; עבר קרוב - $pastCard; מודע - $consciousCard; עתיד קרוב - $hiddenCard; אני פנימי - $selfCard; סביבה - $environmentCard; תקוות או פחדים - $hopesCard; תוצאה - $outcomeCard. הזכר את השם $userName לפחות שש פעמים וחייב לקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: מצב ($situationCard) / אתגר ($challengeCard) / תת מודע ($subconsciousCard) / עבר קרוב ($pastCard) / מודע ($consciousCard) / עתיד קרוב ($hiddenCard) / אני פנימי ($selfCard) / סביבה ($environmentCard) / תקוות/פחדים ($hopesCard) / תוצאה ($outcomeCard).\n3) מצב — $situationCard (45-55 מילים): שלוש מילים מפתח, סמליות הקלף ומצב נוכחי לגבי השאלה $userQuestion עבור $userName.\n4) אתגר — $challengeCard (45-55 מילים): המכשול המרכזי או העזרה עבור $userName.\n5) תת מודע — $subconsciousCard (45-55 מילים): מניעים נסתרים או אנרגיות המשפיעות על $userName.\n6) עבר קרוב — $pastCard (45-55 מילים): אירועים שהובילו את $userName למצב הנוכחי.\n7) מודע — $consciousCard (45-55 מילים): מטרות, ציפיות או מה ש-$userName מודע לו.\n8) עתיד קרוב — $hiddenCard (45-55 מילים): התפתחות צפויה בשבועות הקרובים.\n9) אני פנימי — $selfCard (45-55 מילים): מצב, משאבים של $userName.\n10) סביבה — $environmentCard (45-55 מילים): השפעת אנשים ונסיבות.\n11) תקוות / פחדים — $hopesCard (45-55 מילים): ציפיות או חששות של $userName.\n12) תוצאה — $outcomeCard (45-55 מילים): תוצאה סבירה בהתחשב בעצת הפריסה.\n13) סיכום: תמיכה ידידותית ואישור חיובי (30-35 מילים) ל-$userName.\nדרישות: אורך כולל 400-500 מילים, טון שיחה חי ודינמי, 4-6 אימוג\'ים אזוטריים; הפרד כל בלוק בשורה ריקה כפולה (\n); אל תשתמש בסימני *, # או סימוני עיצוב אחרים; כתוב טקסט פשוט בלבד.';
   }
 
@@ -1281,11 +1293,12 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"עבר - הווה - עתיד\". הקלפים הועברו כך: עבר - $pastCard; הווה - $presentCard; עתיד - $hiddenCard. הזכר את השם $userName לפחות ארבע פעמים וחייב לקשר את משמעות הקלפים לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: עבר ($pastCard) - הווה ($presentCard) - עתיד ($hiddenCard).\n3) בלוק עבר — $pastCard (40-50 מילים): שלוש מילים מפתח, סמליות הקלף והסבר כיצד עובדות העבר משפיעות על תוצאת השאלה $userQuestion עבור $userName.\n4) בלוק הווה — $presentCard (40-50 מילים): מילים מפתח, סמליות הקלף והגורמים הנוכחיים המשפיעים על התשובה לשאלה $userQuestion.\n5) בלוק עתיד — $hiddenCard (40-50 מילים): מילים מפתח, סמליות הקלף ותסריט סביר להתפתחות המצב לגבי השאלה של $userName.\n6) סיכום: עצה קצרה, אישור חיובי (20-30 מילים) וסיכום ברור של הסיכויים.\nדרישות: אורך כולל 180-220 מילים, טון אזוטרי חם, 3-5 אימוג\'ים נושאיים; הפרד כל בלוק בשורה ריקה כפולה (\n); אסור להשתמש בסימני *, # או סימוני עיצוב אחרים; כתוב טקסט פשוט בלבד.';
   }
 
@@ -1333,13 +1346,14 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא טארוט מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"5 קלפים\". הקלפים ניתנים לפי הסדר: עבר - $pastCard; הווה - $presentCard; עתיד - $hiddenCard; סיבה - $adviceCard; תוצאה אפשרית - $outcomeCard. הסבר את המשמעות של כל קלף והסבר את המשמעות המשולבת שלהם.';
   }
 
@@ -1350,7 +1364,8 @@ class AppLocalizationsHe extends AppLocalizations {
   String get makeNewSpread => 'לעשות פיזור חדש';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'האפליקציה משתמשת בבינה מלאכותית אך ורק למטרות בידור. אנו לא נושאים באחריות להחלטות שקיבלת. במידת הצורך פנה למומחה.';
 
   @override
@@ -1358,8 +1373,13 @@ class AppLocalizationsHe extends AppLocalizations {
       'הבקשה שלך התקבלה. אנא פתח את הקלפים';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: «$userQuestion». השב בעזרת פריסת אהבה משלוש קלפים. הקלפים הם כך: רגשות $userName — $youCard; רגשות השותף — $partnerCard; דינמיקה או פוטנציאל הקשר — $dynamicCard. הזכר את השם $userName לפחות שלוש פעמים וקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 מילים: תאר מה הקלף אומר על רגשות והציפיות של $userName.\n4) $partnerCard — 40–50 מילים: חשוף את הרגשות והכוונות של השותף לגבי השאלה של $userName.\n5) $dynamicCard — 40–50 מילים: הצג כיצד שתי האנרגיות האלה מתקשרות ולאן הקשר יכול להוביל.\n6) סיכום: עצה חמה ואישור חיובי (20–25 מילים) עבור $userName.\nדרישות: אורך כולל 150–180 מילים, טון ידידותי ורומנטי, 2–4 אימוג\'ים בנושא; הפרד פסקאות בשתי שורות ריקות (\\n\\n); הימנע מסמלים *, # וכל סימון.';
   }
 
@@ -1367,7 +1387,8 @@ class AppLocalizationsHe extends AppLocalizations {
   String get loveSpread => 'פריסת אהבה';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית אך ורק למטרות בידור. אנו לא נושאים באחריות להחלטות שקיבלת. במידת הצורך פנה למומחה.';
 
   @override
@@ -1448,7 +1469,8 @@ class AppLocalizationsHe extends AppLocalizations {
   String get monthlyForecast => 'תחזית חודשית';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית למטרות בידור בלבד. אנו לא אחראים להחלטות שתקבלו. במידת הצורך פנו למומחה.';
 
   @override
@@ -1472,7 +1494,8 @@ class AppLocalizationsHe extends AppLocalizations {
       'שגיאה בקבלת ערך הפריסה. נסה שוב.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית למטרות בידור בלבד. איננו אחראים על ההחלטות שאתה מקבל. במידת הצורך פנה למומחה.';
 
   @override
@@ -1695,48 +1718,60 @@ class AppLocalizationsHe extends AppLocalizations {
       'איך למצוא הרמוניה בחיים?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים ומאמן מנוסה. המשתמש $userName שואל: «$userQuestion». עשה פריסה של שלוש קלפים לקריירה וכספים. הקלפים מועברים כך: 1) מצב — $situationCard; 2) מכשול או הזדמנות מרכזית — $challengeCard; 3) עצה ופוטנציאל — $adviceCard. קבע את מין המשתמש לפי השם $userName ופנה אליו עם סיומות וכינויים נכונים. דבר עם $userName בחברותיות ובענייניות: הראה איפה הוא עומד, מה חוסם את הצמיחה (או איזו הזדמנות חשוב לשים לב אליה) ואיזה צעד מעשי יוביל להכנסה הרצויה. הזכר את השם $userName לפחות שלוש פעמים. שמור על המבנה:\n1) ברכה — משפט אחד.\n2) כותרת: פריסה: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 מילים: תאר את המצב הנוכחי של $userName (עבודה, עסק או רקע כלכלי כללי) ואת הסמליות של הקלף.\n4) $challengeCard — 45–55 מילים: חשוף את המחסום העיקרי או הזדמנות לא ברורה; ציין כיצד זה משתקף בקלף ובשאלה של $userName.\n5) $adviceCard — 45–55 מילים: הצע פעולה קונקרטית (למשל, לבדוק מחדש את התקציב, לבקש העלאה, ללמוד מיומנות חדשה) ותאר את התוצאה האפשרית.\n6) סיום — 20–25 מילים: מסקנה ידידותית, אמירה חיובית ו-2 אימוג\'ים עסקיים.\nדרישות: אורך כולל 160–185 מילים, טון ברור ועסקי ללא סלנג, 2–3 אימוג\'ים; הפרד פסקאות עם שורה ריקה כפולה \\n\\n; אל תשתמש ב-*, # או סימני עיצוב אחרים.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים מנוסה. המשתמש $userName שואל: «$userQuestion». עשה פריסת \"בעד ונגד\" משלושה קלפים. הקלפים מועברים כך: יתרונות — $proCard; חסרונות — $conCard; עצה/סיכום — $adviceCard. קבע את מין המשתמש לפי השם $userName ופנה אליו עם סיומות וכינויים נכונים. הזכר את השם $userName לפחות שלוש פעמים וקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: $proCard | $conCard | $adviceCard.\n3) יתרונות: $proCard — 45–55 מילים. חשוף את היתרונות המרכזיים או המשאבים החיוביים שהקלף מביא למצב של $userName.\n4) חסרונות: $conCard — 45–55 מילים. תאר סיכונים, עלויות נסתרות או נקודות תורפה של ההחלטה עבור $userName.\n5) עצה: $adviceCard — 45–55 מילים. שקול את היתרונות והחסרונות, הצע פעולה קונקרטית אחת (פועל + מושא) ואמר כיצד זה ישנה את התוצאה עבור $userName.\n6) סיכום — במילה אחת \"כן\" או \"לא\", אחריה משפט הסבר ואמירה מעודדת (20–25 מילים) עם 1–2 אימוג\'ים.\nדרישות: אורך כולל 150–180 מילים, טון ידידותי ושיחתי; הפרד כל בלוק עם שורה ריקה כפולה \\n\\n; ללא סימני *, # או עיצוב אחר.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים מקצועי. המשתמש $userName שואל: «$userQuestion». הרכב פריסת \"גלגל החודש\" ל-$month. הקלפים לפי הסדר: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. קבע את מין $userName לפי השם והשתמש בסיומות וכינויים נכונים. הזכר את השם לפחות חמש פעמים, אך **אל תכניס אותו אחרי כל תאריך** — הזכר אותו רק בתוך הטקסט של העצות. השתמש ברשת לוח שנה של תאריכים: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (אם בחודש יש 30 ימים — הקלף ה-12 שייך גם ליום ה-30). פורמט:\n1) ברכה בשם $userName (1–2 משפטים).\n2) הקדמה קצרה על מטרת הפריסה (משפט אחד).\n3–14) עבור כל קלף השתמש בשורה כמו \"1–3 $month — $card1\" (ללא שם): לאחר מכן 2–3 משפטים על האנרגיה המרכזית של התקופה ועצה מעשית, תוך הזכרת $userName באופן טבעי.\n15) סיכום: עצה כללית לחודש (כ-40 מילים) ואמירה מעוררת השראה עם 2–3 אימוג\'ים.\nדרישות: סך הכל 360–400 מילים; טון ידידותי ומעורר מוטיבציה; הפרד בלוקים עם שורה ריקה כפולה \\n\\n; ללא סימני *, #, רשימות או הערות טכניות.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים ומאמן מנוסה. המשתמש $userName שואל: «$userQuestion». עשה פריסת \"התפתחות עצמית ואיזון\" משבעה קלפים. הקלפים ניתנים כך: ליבה — $coreCard; שכל — $mindCard; רגשות — $emotionCard; גוף — $bodyCard; משאב — $strengthCard; חסם — $challengeCard; עצה — $adviceCard. קבע את מין המשתמש לפי השם $userName ופנה אליו עם סיומות וכינויים נכונים. דבר בחיות ותמיכה, הזכר את השם $userName לפחות ארבע פעמים וחייב לקשר כל קלף לשאלה. שמור על המבנה והפורמט:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — תאר את המוקד המרכזי של ההתפתחות העצמית של $userName.\n4) $mindCard — ספר כיצד לכוון את המחשבה ומה ללמוד.\n5) $emotionCard — חשוף את המשאב הרגשי והמוטיבציה.\n6) $bodyCard — הצע כיצד לטפל בגוף ובאנרגיה.\n7) $strengthCard — הצג מתנה פנימית או תמיכה חיצונית.\n8) $challengeCard — ציין את חוסר האיזון המרכזי וסיבותיו.\n9) $adviceCard — הצע פעולה קונקרטית שמאחדת את כל ההיבטים.\n10) סיום: אמירה מעוררת השראה וברכת דרך חמה עם 2–3 אימוג\'ים.\nדרישות: כל סעיף 2–3 משפטים; הפרד בין סעיפים עם שורה ריקה כפולה \\n\\n; אל תשתמש ב-*, # או סימני עיצוב אחרים.';
   }
 
@@ -2152,7 +2187,8 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
   String get pros_cons_spread_screen_enter_question_hint => 'הקלד את שאלתך...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'פיזור \"התפתחות עצמית ואיזון\" מורכב מ-7 קלפים, הממוקמים בצורת מעגל. כל קלף מסמל היבט מסוים של הצמיחה הרוחנית וההרמוניה הפנימית שלך.';
 
   @override
@@ -2751,7 +2787,9 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'עשה עבור $userName פירוש להתפתחות עצמית ואיזון עם שלוש הקלפים האלה: $cards';
   }
 
@@ -2776,13 +2814,17 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'תאר את המשמעות הכללית של קלף הטארוט \"$cardName\" בשפה $lang. כלול היסטוריה, סמליות ומשמעויות עיקריות.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'תאר את המשמעות ההפוכה של קלף הטארוט \"$cardName\" בשפה $lang. כלול משמעויות הפוכות ואזהרות.';
   }
 
@@ -2817,13 +2859,17 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'תרגם את שם הקלף טארוט \"$cardName\" ל-$languageCode. התשובה צריכה להכיל רק את השם המתורגם, ללא טקסט נוסף או סימני פיסוק.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'אתה טארולוג מקצועי. כתוב מסר מעורר השראה \"קלף היום\" בשפת הבקשה הזו עבור המשתמש $name. שמור על המבנה והנפח.\n🌟 $name, קלף היום שלך הוא $cardName!\n🔑 מילות מפתח מרכזיות: <ציין 3–5 מילות מפתח קצרות>\n🃏 משמעות (≈45–50 מילים): תאר את האנרגיה העיקרית של הקלף וכיצד היא תתבטא היום אצל $name.\n💡 עצה (≈35–40 מילים): הצע פעולה או גישה ספציפית שתעזור ל-$name לנצל את האנרגיה הזו.\n✨ אישור חיובי (שורה אחת): אמירה חיובית שמתחילה ב\"אני…\".\nדרישות: אורך כולל 120–150 מילים, טון אזוטרי חם, 3–4 אימוג\'ים בנושא, ללא רשימות ב-HTML/Markdown; הפרד פסקאות בהפסקת שורה כפולה (\\n\\n).';
   }
 
@@ -3039,19 +3085,20 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"צלב קלטי\" (הסכמה הקלאסית של וייט). הקלפים הועברו כך: מצב - $situationCard; אתגר - $challengeCard; תת מודע - $subconsciousCard; עבר קרוב - $pastCard; מודע - $consciousCard; עתיד קרוב - $hiddenCard; אני פנימי - $selfCard; סביבה - $environmentCard; תקוות או פחדים - $hopesCard; תוצאה - $outcomeCard. הזכר את השם $userName לפחות שש פעמים וחייב לקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: מצב ($situationCard) / אתגר ($challengeCard) / תת מודע ($subconsciousCard) / עבר קרוב ($pastCard) / מודע ($consciousCard) / עתיד קרוב ($hiddenCard) / אני פנימי ($selfCard) / סביבה ($environmentCard) / תקוות/פחדים ($hopesCard) / תוצאה ($outcomeCard).\n3) מצב — $situationCard (45-55 מילים): שלוש מילים מפתח, סמליות הקלף ומצב נוכחי לגבי השאלה $userQuestion עבור $userName.\n4) אתגר — $challengeCard (45-55 מילים): המכשול המרכזי או העזרה עבור $userName.\n5) תת מודע — $subconsciousCard (45-55 מילים): מניעים נסתרים או אנרגיות המשפיעות על $userName.\n6) עבר קרוב — $pastCard (45-55 מילים): אירועים שהובילו את $userName למצב הנוכחי.\n7) מודע — $consciousCard (45-55 מילים): מטרות, ציפיות או מה ש-$userName מודע לו.\n8) עתיד קרוב — $hiddenCard (45-55 מילים): התפתחות צפויה בשבועות הקרובים.\n9) אני פנימי — $selfCard (45-55 מילים): מצב, משאבים של $userName.\n10) סביבה — $environmentCard (45-55 מילים): השפעת אנשים ונסיבות.\n11) תקוות / פחדים — $hopesCard (45-55 מילים): ציפיות או חששות של $userName.\n12) תוצאה — $outcomeCard (45-55 מילים): תוצאה סבירה בהתחשב בעצת הפריסה.\n13) סיכום: תמיכה ידידותית ואישור חיובי (30-35 מילים) ל-$userName.\nדרישות: אורך כולל 400-500 מילים, טון שיחה חי ודינמי, 4-6 אימוג\'ים אזוטריים; הפרד כל בלוק בשורה ריקה כפולה (\n); אל תשתמש בסימני *, # או סימוני עיצוב אחרים; כתוב טקסט פשוט בלבד.';
   }
 
@@ -3067,11 +3114,12 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"עבר - הווה - עתיד\". הקלפים הועברו כך: עבר - $pastCard; הווה - $presentCard; עתיד - $hiddenCard. הזכר את השם $userName לפחות ארבע פעמים וחייב לקשר את משמעות הקלפים לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: עבר ($pastCard) - הווה ($presentCard) - עתיד ($hiddenCard).\n3) בלוק עבר — $pastCard (40-50 מילים): שלוש מילים מפתח, סמליות הקלף והסבר כיצד עובדות העבר משפיעות על תוצאת השאלה $userQuestion עבור $userName.\n4) בלוק הווה — $presentCard (40-50 מילים): מילים מפתח, סמליות הקלף והגורמים הנוכחיים המשפיעים על התשובה לשאלה $userQuestion.\n5) בלוק עתיד — $hiddenCard (40-50 מילים): מילים מפתח, סמליות הקלף ותסריט סביר להתפתחות המצב לגבי השאלה של $userName.\n6) סיכום: עצה קצרה, אישור חיובי (20-30 מילים) וסיכום ברור של הסיכויים.\nדרישות: אורך כולל 180-220 מילים, טון אזוטרי חם, 3-5 אימוג\'ים נושאיים; הפרד כל בלוק בשורה ריקה כפולה (\n); אסור להשתמש בסימני *, # או סימוני עיצוב אחרים; כתוב טקסט פשוט בלבד.';
   }
 
@@ -3119,13 +3167,14 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא טארוט מנוסה. המשתמש $userName שואל: \"$userQuestion\". השב באמצעות פריסת \"5 קלפים\". הקלפים ניתנים לפי הסדר: עבר - $pastCard; הווה - $presentCard; עתיד - $hiddenCard; סיבה - $adviceCard; תוצאה אפשרית - $outcomeCard. הסבר את המשמעות של כל קלף והסבר את המשמעות המשולבת שלהם.';
   }
 
@@ -3136,7 +3185,8 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
   String get makeNewSpread => 'לעשות פיזור חדש';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'האפליקציה משתמשת בבינה מלאכותית אך ורק למטרות בידור. אנו לא נושאים באחריות להחלטות שקיבלת. במידת הצורך פנה למומחה.';
 
   @override
@@ -3144,8 +3194,13 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
       'הבקשה שלך התקבלה. אנא פתח את הקלפים';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'אתה טארולוג מנוסה. המשתמש $userName שואל: «$userQuestion». השב בעזרת פריסת אהבה משלוש קלפים. הקלפים הם כך: רגשות $userName — $youCard; רגשות השותף — $partnerCard; דינמיקה או פוטנציאל הקשר — $dynamicCard. הזכר את השם $userName לפחות שלוש פעמים וקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 מילים: תאר מה הקלף אומר על רגשות והציפיות של $userName.\n4) $partnerCard — 40–50 מילים: חשוף את הרגשות והכוונות של השותף לגבי השאלה של $userName.\n5) $dynamicCard — 40–50 מילים: הצג כיצד שתי האנרגיות האלה מתקשרות ולאן הקשר יכול להוביל.\n6) סיכום: עצה חמה ואישור חיובי (20–25 מילים) עבור $userName.\nדרישות: אורך כולל 150–180 מילים, טון ידידותי ורומנטי, 2–4 אימוג\'ים בנושא; הפרד פסקאות בשתי שורות ריקות (\\n\\n); הימנע מסמלים *, # וכל סימון.';
   }
 
@@ -3153,7 +3208,8 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
   String get loveSpread => 'פריסת אהבה';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית אך ורק למטרות בידור. אנו לא נושאים באחריות להחלטות שקיבלת. במידת הצורך פנה למומחה.';
 
   @override
@@ -3234,7 +3290,8 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
   String get monthlyForecast => 'תחזית חודשית';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית למטרות בידור בלבד. אנו לא אחראים להחלטות שתקבלו. במידת הצורך פנו למומחה.';
 
   @override
@@ -3258,7 +3315,8 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
       'שגיאה בקבלת ערך הפריסה. נסה שוב.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'האפליקציה משתמשת בבינה מלאכותית למטרות בידור בלבד. איננו אחראים על ההחלטות שאתה מקבל. במידת הצורך פנה למומחה.';
 
   @override
@@ -3481,34 +3539,45 @@ class AppLocalizationsHeIl extends AppLocalizationsHe {
       'איך למצוא הרמוניה בחיים?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים ומאמן מנוסה. המשתמש $userName שואל: «$userQuestion». עשה פריסה של שלוש קלפים לקריירה וכספים. הקלפים מועברים כך: 1) מצב — $situationCard; 2) מכשול או הזדמנות מרכזית — $challengeCard; 3) עצה ופוטנציאל — $adviceCard. קבע את מין המשתמש לפי השם $userName ופנה אליו עם סיומות וכינויים נכונים. דבר עם $userName בחברותיות ובענייניות: הראה איפה הוא עומד, מה חוסם את הצמיחה (או איזו הזדמנות חשוב לשים לב אליה) ואיזה צעד מעשי יוביל להכנסה הרצויה. הזכר את השם $userName לפחות שלוש פעמים. שמור על המבנה:\n1) ברכה — משפט אחד.\n2) כותרת: פריסה: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 מילים: תאר את המצב הנוכחי של $userName (עבודה, עסק או רקע כלכלי כללי) ואת הסמליות של הקלף.\n4) $challengeCard — 45–55 מילים: חשוף את המחסום העיקרי או הזדמנות לא ברורה; ציין כיצד זה משתקף בקלף ובשאלה של $userName.\n5) $adviceCard — 45–55 מילים: הצע פעולה קונקרטית (למשל, לבדוק מחדש את התקציב, לבקש העלאה, ללמוד מיומנות חדשה) ותאר את התוצאה האפשרית.\n6) סיום — 20–25 מילים: מסקנה ידידותית, אמירה חיובית ו-2 אימוג\'ים עסקיים.\nדרישות: אורך כולל 160–185 מילים, טון ברור ועסקי ללא סלנג, 2–3 אימוג\'ים; הפרד פסקאות עם שורה ריקה כפולה \\n\\n; אל תשתמש ב-*, # או סימני עיצוב אחרים.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא קלפים מנוסה. המשתמש $userName שואל: «$userQuestion». עשה פריסת \"בעד ונגד\" משלושה קלפים. הקלפים מועברים כך: יתרונות — $proCard; חסרונות — $conCard; עצה/סיכום — $adviceCard. קבע את מין המשתמש לפי השם $userName ופנה אליו עם סיומות וכינויים נכונים. הזכר את השם $userName לפחות שלוש פעמים וקשר כל קלף לשאלה. שמור על המבנה:\n1) ברכה בשם $userName.\n2) כותרת: פריסה: $proCard | $conCard | $adviceCard.\n3) יתרונות: $proCard — 45–55 מילים. חשוף את היתרונות המרכזיים או המשאבים החיוביים שהקלף מביא למצב של $userName.\n4) חסרונות: $conCard — 45–55 מילים. תאר סיכונים, עלויות נסתרות או נקודות תורפה של ההחלטה עבור $userName.\n5) עצה: $adviceCard — 45–55 מילים. שקול את היתרונות והחסרונות, הצע פעולה קונקרטית אחת (פועל + מושא) ואמר כיצד זה ישנה את התוצאה עבור $userName.\n6) סיכום — במילה אחת \"כן\" או \"לא\", אחריה משפט הסבר ואמירה מעודדת (20–25 מילים) עם 1–2 אימוג\'ים.\nדרישות: אורך כולל 150–180 מילים, טון ידידותי ושיחתי; הפרד כל בלוק עם שורה ריקה כפולה \\n\\n; ללא סימני *, # או עיצוב אחר.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'אתה קורא טארוט מקצועי. המשתמש $userName שואל: \"$userQuestion\". ערוך פריסת \"גלגל החודש\" עבור $month. הקלפים בסדר הבא: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. קבע את מגדר $userName לפי השם והשתמש בסיומות ובכינויים המתאימים. הזכר את השם לפחות חמש פעמים, אך **אל תכניס אותו אחרי כל תאריך** — רק בטקסט של העצות. השתמש ברשת התאריכים: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (אם החודש כולל 30 יום, הקלף ה-12 מתאים גם ל-30). פורמט:\n1) ברכה בשם $userName (1–2 משפטים).\n2) הקדמה קצרה על מטרת הפריסה (משפט אחד).\n3–14) לכל קלף, \"1–3 $month — $card1\" (ללא שם): ואז 2–3 משפטים על האנרגיה המרכזית של התקופה, ועצה אישית עבור $userName.\n15) סיום: עצה מרכזית לחודש (1–2 משפטים).\n\nהתשובה צריכה להיות כולה בעברית, בסגנון פשוט ושיחתי. הימנע מכל סימון, *, #, אימוג\'י, תגיות, html.';
   }
 

@@ -372,7 +372,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get pros_cons_spread_screen_enter_question_hint => 'Sorunuzu girin...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Öz Gelişim ve Denge\" açılımı, daire şeklinde yerleştirilmiş 7 karttan oluşur. Her kart, ruhsal gelişiminizin ve içsel uyumunuzun belirli bir yönünü simgeler.';
 
   @override
@@ -977,7 +978,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName için bu üç kartla kişisel gelişim ve denge açılımı yap: $cards';
   }
 
@@ -1002,13 +1005,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının genel anlamını $lang dilinde tanımlayın. Tarihçeyi, sembolizmi ve temel anlamları dahil edin.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının ters anlamını $lang dilinde açıklayın. Zıt anlamları ve uyarıları dahil edin.';
   }
 
@@ -1044,13 +1051,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" Tarot kartının adını $languageCode diline çevir. Yanıt sadece çevrilmiş isimden oluşmalı, ek metin veya noktalama işareti olmamalıdır.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Sen profesyonel bir tarot okuyucususun. Kullanıcı $name için bu isteğin dilinde ilham verici bir \"Günün Kartı\" mesajı yaz. Yapıyı ve uzunluğu koru.\n🌟 $name, günün kartın — $cardName!\n🔑 Anahtar kelimeler: <3–5 kısa anahtar kelime belirt>\n🃏 Anlamı (≈45–50 kelime): kartın temel enerjisini ve bugün $name üzerinde nasıl tezahür edeceğini açıkla.\n💡 Tavsiye (≈35–40 kelime): $name’in bu enerjiyi kullanmasına yardımcı olacak somut bir eylem veya tutum öner.\n✨ Onaylama (1 satır): \"Ben...\" ile başlayan olumlu bir ifade.\nGereksinimler: toplam uzunluk 120–150 kelime, sıcak ve ezoterik bir ton, 3–4 tematik emoji, HTML/Markdown listesi yok; paragrafları çift satır aralığı (\\n\\n) ile ayır.';
   }
 
@@ -1267,19 +1278,20 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"Kelt Haçı\" açılımı (Waite\'in klasik düzeni) ile cevap ver. Kartlar şu şekilde dağıtıldı: durum - $situationCard; meydan okuma - $challengeCard; bilinçaltı - $subconsciousCard; yakın geçmiş - $pastCard; bilinç - $consciousCard; yakın gelecek - $hiddenCard; iç benlik - $selfCard; çevre - $environmentCard; umutlar veya korkular - $hopesCard; sonuç - $outcomeCard. $userName ismini en az altı kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: durum ($situationCard) / meydan okuma ($challengeCard) / bilinçaltı ($subconsciousCard) / yakın geçmiş ($pastCard) / bilinç ($consciousCard) / yakın gelecek ($hiddenCard) / iç benlik ($selfCard) / çevre ($environmentCard) / umutlar/korkular ($hopesCard) / sonuç ($outcomeCard).\n3) Durum — $situationCard (45-55 kelime): üç anahtar kelime, kartın sembolizmi ve $userName için $userQuestion sorusundaki mevcut durum.\n4) Meydan okuma — $challengeCard (45-55 kelime): $userName için başlıca engel veya destek.\n5) Bilinçaltı — $subconsciousCard (45-55 kelime): $userName’yi etkileyen gizli motivasyonlar veya enerjiler.\n6) Yakın geçmiş — $pastCard (45-55 kelime): $userName’yi mevcut duruma getiren olaylar.\n7) Bilinç — $consciousCard (45-55 kelime): $userName’nin farkında olduğu hedefler, beklentiler veya durumlar.\n8) Yakın gelecek — $hiddenCard (45-55 kelime): önümüzdeki haftalarda olası gelişmeler.\n9) İç benlik — $selfCard (45-55 kelime): $userName’nin durumu ve kaynakları.\n10) Çevre — $environmentCard (45-55 kelime): insan ve koşulların etkisi.\n11) Umutlar / korkular — $hopesCard (45-55 kelime): $userName’nin beklentileri veya endişeleri.\n12) Sonuç — $outcomeCard (45-55 kelime): açılımın tavsiyesi göz önünde bulundurulduğunda olası sonuç.\n13) Kapanış: $userName için dostane destek ve pozitif bir onaylama (30-35 kelime).\nToplam 400-500 kelime, canlı ve samimi bir dil, 4-6 ezoterik emoji kullan; her bölüm çift satır boşlukla ayrılmış olsun.\nYıldız (*), diyez (#) veya başka işaretler kullanma; sadece düz metin yaz.';
   }
 
@@ -1295,11 +1307,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"Geçmiş - Şimdi - Gelecek\" açılımı ile cevap ver. Kartlar şu şekilde dağıtıldı: geçmiş - $pastCard; şimdi - $presentCard; gelecek - $hiddenCard. $userName ismini en az dört kez kullan ve kartların anlamlarını soruyla mutlaka ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: Geçmiş ($pastCard) - Şimdi ($presentCard) - Gelecek ($hiddenCard).\n3) GEÇMİŞ bloğu — $pastCard (40-50 kelime): üç anahtar kelime, kartın sembolizmi ve geçmişteki olayların $userName için $userQuestion sorusunun sonucuna etkisi.\n4) ŞİMDİ bloğu — $presentCard (40-50 kelime): anahtar kelimeler, kartın sembolizmi ve $userQuestion sorusunun cevabını etkileyen mevcut faktörler.\n5) GELECEK bloğu — $hiddenCard (40-50 kelime): anahtar kelimeler, kartın sembolizmi ve $userName için durumun olası gelişim senaryosu.\n6) Sonuç: kısa bir tavsiye, pozitif bir onaylama (20-30 kelime) ve şansların net bir özeti.\nToplam 180-220 kelime, sıcak ve ezoterik bir ton, 3-5 tematik emoji kullan; her bölüm çift satır boşlukla ayrılmış olsun.\nYıldız (*), diyez (#) veya başka işaretler kullanma; sadece düz metin yaz.';
   }
 
@@ -1347,13 +1360,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"5 kart\" açılımını kullanarak cevap ver. Kartlar sırayla verilir: geçmiş - $pastCard; şimdiki zaman - $presentCard; gizli - $hiddenCard; tavsiye - $adviceCard; sonuç - $outcomeCard. $userName\'e en az beş kez atıfta bulun ve her kartı soruyla ilişkilendirdiğinden emin ol. Yapıyı takip et:\n\n1) $userName adıyla selamlama.\n\n2) Başlık: Açılım: geçmiş ($pastCard) / şimdiki zaman ($presentCard) / gizli ($hiddenCard) / tavsiye ($adviceCard) / sonuç ($outcomeCard).\n\n3) Geçmiş — $pastCard (45-55 kelime): üç anahtar kelime, kartın sembolizmi ve geçmişin $userName için $userQuestion üzerindeki etkisi.\n\n4) Şimdiki zaman — $presentCard (45-55 kelime): anahtar kelimeler, sembolizm ve $userName\'in sorusunun mevcut durumu.\n\n5) Gizli — $hiddenCard (45-55 kelime): $userName\'in durumunu bilinçsizce etkileyen şey, sembolizme odaklanarak.\n\n6) Tavsiye — $adviceCard (45-55 kelime): kartın görsellerine dayalı $userName için pratik eylem.\n\n7) Sonuç — $outcomeCard (45-55 kelime): tavsiyeye uyulursa olası senaryo, $userName\'e hitap ederek.\n\n8) Sonuç: $userName için dostane destek ve olumlu onay (25-30 kelime).\n\nGereksinimler: toplam hacim 230-260 kelime, canlı konuşma tonu, 3-5 ezoterik emoji; her bloğu çift satır sonu (\\n\\n) ile ayır; *, # veya diğer işaretleme sembollerini kullanma; sadece düz metin yaz.';
   }
 
@@ -1364,7 +1378,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get makeNewSpread => 'Yeni açılım yap';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -1372,8 +1387,13 @@ class AppLocalizationsTr extends AppLocalizations {
       'Talebiniz alındı. Lütfen kartları açın.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName şöyle soruyor: «$userQuestion». Üç kartlık aşk açılımıyla cevap ver. Kartlar şöyle: $userName’in duyguları — $youCard; partnerin duyguları — $partnerCard; ilişkinin dinamiği veya potansiyeli — $dynamicCard. $userName ismini en az üç kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlaşma.\n2) Başlık: Açılım: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 kelime: kartın $userName’in duyguları ve beklentileri hakkında söylediklerini açıkla.\n4) $partnerCard — 40–50 kelime: partnerin $userName ile ilgili duygularını ve niyetlerini ortaya koy.\n5) $dynamicCard — 40–50 kelime: bu iki enerjinin nasıl etkileştiğini ve ilişkinin nereye varabileceğini göster.\n6) Sonuç: $userName için sıcak bir tavsiye ve olumlu bir onaylama (20–25 kelime).\nGereksinimler: toplam 150–180 kelime, samimi ve romantik ton, 2–4 tematik emoji; paragraflar çift satır aralığıyla (\\n\\n) ayrılacak; *, # ve herhangi bir işaretleme kullanılmayacak.';
   }
 
@@ -1381,7 +1401,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get loveSpread => 'Aşk açılımı';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -1462,7 +1483,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get monthlyForecast => 'Aylık tahmin';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -1487,7 +1509,8 @@ class AppLocalizationsTr extends AppLocalizations {
       'Açılım değeri alınırken hata oluştu. Lütfen tekrar deneyin.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanmaktadır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -1712,48 +1735,60 @@ class AppLocalizationsTr extends AppLocalizations {
       'Hayatta uyumu nasıl bulabilirim?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot koçusun. Kullanıcı $userName soruyor: «$userQuestion». Kariyer ve finans üzerine üç kartlık bir açılım yap. Kartlar şöyle verildi: 1) durum — $situationCard; 2) engel veya ana fırsat — $challengeCard; 3) tavsiye ve potansiyel — $adviceCard. $userName ismine göre kullanıcının cinsiyetini belirle ve doğru ekler ile zamirleri kullan. $userName ile dostane ve iş odaklı konuş: nerede durduğunu, büyümeyi neyin engellediğini (veya hangi fırsatın önemli olduğunu) ve istenen gelire ulaşmak için hangi pratik adımın atılması gerektiğini göster. $userName ismini en az üç kez kullan. Yapıyı koru:\n1) Selamlama — 1 cümle.\n2) Başlık: Açılım: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 kelime: $userName’in mevcut durumunu (iş, iş hayatı veya genel finansal durum) ve kartın sembolizmini açıkla.\n4) $challengeCard — 45–55 kelime: ana engeli veya gizli fırsatı aç; bunun kartta ve $userName’in sorusunda nasıl yansıdığını belirt.\n5) $adviceCard — 45–55 kelime: somut bir eylem öner (örneğin bütçeyi gözden geçirmek, zam istemek, yeni bir yetkinlik öğrenmek) ve olası sonucu anlat.\n6) Son — 20–25 kelime: dostane bir sonuç, pozitif bir onaylama ve 2 iş emojisi.\nGereksinimler: toplam 160–185 kelime, net iş dili, argo yok, 2–3 emoji; paragrafları çift \\n\\n ile ayır; *, # veya başka işaretler kullanma.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarotçusun. Kullanıcı $userName soruyor: «$userQuestion». Üç kartlık “Artılar ve Eksiler” açılımı yap. Kartlar şöyle: artılar — $proCard; eksiler — $conCard; tavsiye/sonuç — $adviceCard. $userName ismine göre kullanıcının cinsiyetini belirle ve doğru ekler ile zamirleri kullan. $userName ismini en az üç kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: $proCard | $conCard | $adviceCard.\n3) Artılar: $proCard — 45–55 kelime. Bu kartın $userName’in durumuna getirdiği başlıca faydaları veya olumlu kaynakları açıkla.\n4) Eksiler: $conCard — 45–55 kelime. Kararın $userName için taşıdığı riskleri, gizli maliyetleri veya zayıf noktaları anlat.\n5) Tavsiye: $adviceCard — 45–55 kelime. Artıları ve eksileri tart, somut bir eylem öner (fiil + nesne) ve bunun $userName için sonucu nasıl değiştireceğini söyle.\n6) Sonuç — tek kelime “Evet” veya “Hayır”, ardından 1 cümle gerekçe ve cesaret verici bir onaylama (20–25 kelime) ile 1–2 emoji.\nGereksinimler: toplam 150–180 kelime, samimi konuşma tonu; her blok çift \\n\\n ile ayrılır; *, # veya başka işaretler yok.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen profesyonel bir tarotçusun. Kullanıcı $userName soruyor: «$userQuestion». $month ayı için “Ayın Çarkı” açılımı yap. Kartlar sırayla: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName ismine göre cinsiyeti belirle ve doğru ekler ile zamirleri kullan. İsmi en az beş kez an, ancak **her tarihten sonra ismini ekleme** — sadece tavsiyeler içinde doğal şekilde kullan. Tarih takvimi şu şekilde: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ay 30 günse 12. kart da 30\'a ait). Format:\n1) $userName ismiyle selamlama (1–2 cümle).\n2) Açılımın amacı hakkında kısa giriş (1 cümle).\n3–14) Her kart için “1–3 $month — $card1” gibi satır (isim olmadan): ardından dönemin ana enerjisi ve pratik tavsiye, içinde $userName’i doğal şekilde an.\n15) Sonuç: ay için genel tavsiye (yaklaşık 40 kelime) ve ilham verici onaylama ile 2–3 emoji.\nGereksinimler: toplam 360–400 kelime; samimi, motive edici ton; bloklar çift \\n\\n ile ayrılır; *, #, liste veya teknik not yok.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot koçusun. Kullanıcı $userName soruyor: «$userQuestion». Yedi kartlık “Kişisel Gelişim ve Denge” açılımı yap. Kartlar şöyle: çekirdek — $coreCard; zihin — $mindCard; duygular — $emotionCard; beden — $bodyCard; kaynak — $strengthCard; engel — $challengeCard; tavsiye — $adviceCard. $userName ismine göre cinsiyeti belirle ve doğru ekler ile zamirleri kullan. Canlı ve destekleyici konuş, $userName ismini en az dört kez an ve her kartı soruyla ilişkilendir. Yapı ve formatı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName’in kişisel gelişimindeki ana odağı açıkla.\n4) $mindCard — düşünceyi nasıl ayarlayacağını ve ne öğrenmesi gerektiğini anlat.\n5) $emotionCard — duygusal kaynak ve motivasyonu aç.\n6) $bodyCard — bedene ve enerjiye nasıl bakacağını söyle.\n7) $strengthCard — içsel hediye veya dış desteği göster.\n8) $challengeCard — ana dengesizliği ve nedenlerini belirt.\n9) $adviceCard — tüm yönleri birleştiren somut bir eylem öner.\n10) Son — ilham verici onaylama ve sıcak bir dilek ile 2–3 emoji.\nGereksinimler: her madde 2–3 cümle; maddeler arasında çift \\n\\n; *, # veya başka işaret yok.';
   }
 
@@ -2176,7 +2211,8 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
   String get pros_cons_spread_screen_enter_question_hint => 'Sorunuzu girin...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Öz Gelişim ve Denge\" açılımı, daire şeklinde yerleştirilmiş 7 karttan oluşur. Her kart, ruhsal gelişiminizin ve içsel uyumunuzun belirli bir yönünü simgeler.';
 
   @override
@@ -2781,7 +2817,9 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName için bu üç kartla kişisel gelişim ve denge açılımı yap: $cards';
   }
 
@@ -2806,13 +2844,17 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının genel anlamını $lang dilinde tanımlayın. Tarihçeyi, sembolizmi ve temel anlamları dahil edin.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının ters anlamını $lang dilinde açıklayın. Zıt anlamları ve uyarıları dahil edin.';
   }
 
@@ -2848,13 +2890,17 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" Tarot kartının adını $languageCode diline çevir. Yanıt sadece çevrilmiş isimden oluşmalı, ek metin veya noktalama işareti olmamalıdır.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Sen profesyonel bir tarot okuyucususun. Kullanıcı $name için bu isteğin dilinde ilham verici bir \"Günün Kartı\" mesajı yaz. Yapıyı ve uzunluğu koru.\n🌟 $name, günün kartın — $cardName!\n🔑 Anahtar kelimeler: <3–5 kısa anahtar kelime belirt>\n🃏 Anlamı (≈45–50 kelime): kartın temel enerjisini ve bugün $name üzerinde nasıl tezahür edeceğini açıkla.\n💡 Tavsiye (≈35–40 kelime): $name’in bu enerjiyi kullanmasına yardımcı olacak somut bir eylem veya tutum öner.\n✨ Onaylama (1 satır): \"Ben...\" ile başlayan olumlu bir ifade.\nGereksinimler: toplam uzunluk 120–150 kelime, sıcak ve ezoterik bir ton, 3–4 tematik emoji, HTML/Markdown listesi yok; paragrafları çift satır aralığı (\\n\\n) ile ayır.';
   }
 
@@ -3071,19 +3117,20 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"Kelt Haçı\" açılımı (Waite\'in klasik düzeni) ile cevap ver. Kartlar şu şekilde dağıtıldı: durum - $situationCard; meydan okuma - $challengeCard; bilinçaltı - $subconsciousCard; yakın geçmiş - $pastCard; bilinç - $consciousCard; yakın gelecek - $hiddenCard; iç benlik - $selfCard; çevre - $environmentCard; umutlar veya korkular - $hopesCard; sonuç - $outcomeCard. $userName ismini en az altı kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: durum ($situationCard) / meydan okuma ($challengeCard) / bilinçaltı ($subconsciousCard) / yakın geçmiş ($pastCard) / bilinç ($consciousCard) / yakın gelecek ($hiddenCard) / iç benlik ($selfCard) / çevre ($environmentCard) / umutlar/korkular ($hopesCard) / sonuç ($outcomeCard).\n3) Durum — $situationCard (45-55 kelime): üç anahtar kelime, kartın sembolizmi ve $userName için $userQuestion sorusundaki mevcut durum.\n4) Meydan okuma — $challengeCard (45-55 kelime): $userName için başlıca engel veya destek.\n5) Bilinçaltı — $subconsciousCard (45-55 kelime): $userName’yi etkileyen gizli motivasyonlar veya enerjiler.\n6) Yakın geçmiş — $pastCard (45-55 kelime): $userName’yi mevcut duruma getiren olaylar.\n7) Bilinç — $consciousCard (45-55 kelime): $userName’nin farkında olduğu hedefler, beklentiler veya durumlar.\n8) Yakın gelecek — $hiddenCard (45-55 kelime): önümüzdeki haftalarda olası gelişmeler.\n9) İç benlik — $selfCard (45-55 kelime): $userName’nin durumu ve kaynakları.\n10) Çevre — $environmentCard (45-55 kelime): insan ve koşulların etkisi.\n11) Umutlar / korkular — $hopesCard (45-55 kelime): $userName’nin beklentileri veya endişeleri.\n12) Sonuç — $outcomeCard (45-55 kelime): açılımın tavsiyesi göz önünde bulundurulduğunda olası sonuç.\n13) Kapanış: $userName için dostane destek ve pozitif bir onaylama (30-35 kelime).\nToplam 400-500 kelime, canlı ve samimi bir dil, 4-6 ezoterik emoji kullan; her bölüm çift satır boşlukla ayrılmış olsun.\nYıldız (*), diyez (#) veya başka işaretler kullanma; sadece düz metin yaz.';
   }
 
@@ -3099,11 +3146,12 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"Geçmiş - Şimdi - Gelecek\" açılımı ile cevap ver. Kartlar şu şekilde dağıtıldı: geçmiş - $pastCard; şimdi - $presentCard; gelecek - $hiddenCard. $userName ismini en az dört kez kullan ve kartların anlamlarını soruyla mutlaka ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: Geçmiş ($pastCard) - Şimdi ($presentCard) - Gelecek ($hiddenCard).\n3) GEÇMİŞ bloğu — $pastCard (40-50 kelime): üç anahtar kelime, kartın sembolizmi ve geçmişteki olayların $userName için $userQuestion sorusunun sonucuna etkisi.\n4) ŞİMDİ bloğu — $presentCard (40-50 kelime): anahtar kelimeler, kartın sembolizmi ve $userQuestion sorusunun cevabını etkileyen mevcut faktörler.\n5) GELECEK bloğu — $hiddenCard (40-50 kelime): anahtar kelimeler, kartın sembolizmi ve $userName için durumun olası gelişim senaryosu.\n6) Sonuç: kısa bir tavsiye, pozitif bir onaylama (20-30 kelime) ve şansların net bir özeti.\nToplam 180-220 kelime, sıcak ve ezoterik bir ton, 3-5 tematik emoji kullan; her bölüm çift satır boşlukla ayrılmış olsun.\nYıldız (*), diyez (#) veya başka işaretler kullanma; sadece düz metin yaz.';
   }
 
@@ -3151,13 +3199,14 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName soruyor: \"$userQuestion\". \"5 kart\" açılımını kullanarak cevap ver. Kartlar sırayla verilir: geçmiş - $pastCard; şimdiki zaman - $presentCard; gizli - $hiddenCard; tavsiye - $adviceCard; sonuç - $outcomeCard. $userName\'e en az beş kez atıfta bulun ve her kartı soruyla ilişkilendirdiğinden emin ol. Yapıyı takip et:\n\n1) $userName adıyla selamlama.\n\n2) Başlık: Açılım: geçmiş ($pastCard) / şimdiki zaman ($presentCard) / gizli ($hiddenCard) / tavsiye ($adviceCard) / sonuç ($outcomeCard).\n\n3) Geçmiş — $pastCard (45-55 kelime): üç anahtar kelime, kartın sembolizmi ve geçmişin $userName için $userQuestion üzerindeki etkisi.\n\n4) Şimdiki zaman — $presentCard (45-55 kelime): anahtar kelimeler, sembolizm ve $userName\'in sorusunun mevcut durumu.\n\n5) Gizli — $hiddenCard (45-55 kelime): $userName\'in durumunu bilinçsizce etkileyen şey, sembolizme odaklanarak.\n\n6) Tavsiye — $adviceCard (45-55 kelime): kartın görsellerine dayalı $userName için pratik eylem.\n\n7) Sonuç — $outcomeCard (45-55 kelime): tavsiyeye uyulursa olası senaryo, $userName\'e hitap ederek.\n\n8) Sonuç: $userName için dostane destek ve olumlu onay (25-30 kelime).\n\nGereksinimler: toplam hacim 230-260 kelime, canlı konuşma tonu, 3-5 ezoterik emoji; her bloğu çift satır sonu (\\n\\n) ile ayır; *, # veya diğer işaretleme sembollerini kullanma; sadece düz metin yaz.';
   }
 
@@ -3168,7 +3217,8 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
   String get makeNewSpread => 'Yeni açılım yap';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -3176,8 +3226,13 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
       'Talebiniz alındı. Lütfen kartları açın.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Sen deneyimli bir tarot okuyucususun. Kullanıcı $userName şöyle soruyor: «$userQuestion». Üç kartlık aşk açılımıyla cevap ver. Kartlar şöyle: $userName’in duyguları — $youCard; partnerin duyguları — $partnerCard; ilişkinin dinamiği veya potansiyeli — $dynamicCard. $userName ismini en az üç kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlaşma.\n2) Başlık: Açılım: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 kelime: kartın $userName’in duyguları ve beklentileri hakkında söylediklerini açıkla.\n4) $partnerCard — 40–50 kelime: partnerin $userName ile ilgili duygularını ve niyetlerini ortaya koy.\n5) $dynamicCard — 40–50 kelime: bu iki enerjinin nasıl etkileştiğini ve ilişkinin nereye varabileceğini göster.\n6) Sonuç: $userName için sıcak bir tavsiye ve olumlu bir onaylama (20–25 kelime).\nGereksinimler: toplam 150–180 kelime, samimi ve romantik ton, 2–4 tematik emoji; paragraflar çift satır aralığıyla (\\n\\n) ayrılacak; *, # ve herhangi bir işaretleme kullanılmayacak.';
   }
 
@@ -3185,7 +3240,8 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
   String get loveSpread => 'Aşk açılımı';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -3266,7 +3322,8 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
   String get monthlyForecast => 'Aylık tahmin';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -3291,7 +3348,8 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
       'Açılım değeri alınırken hata oluştu. Lütfen tekrar deneyin.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Uygulama yapay zekayı yalnızca eğlence amaçlı kullanmaktadır. Aldığınız kararlardan biz sorumlu değiliz. Gerekirse bir uzmana danışın.';
 
   @override
@@ -3516,48 +3574,60 @@ class AppLocalizationsTrTr extends AppLocalizationsTr {
       'Hayatta uyumu nasıl bulabilirim?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot koçusun. Kullanıcı $userName soruyor: «$userQuestion». Kariyer ve finans üzerine üç kartlık bir açılım yap. Kartlar şöyle verildi: 1) durum — $situationCard; 2) engel veya ana fırsat — $challengeCard; 3) tavsiye ve potansiyel — $adviceCard. $userName ismine göre kullanıcının cinsiyetini belirle ve doğru ekler ile zamirleri kullan. $userName ile dostane ve iş odaklı konuş: nerede durduğunu, büyümeyi neyin engellediğini (veya hangi fırsatın önemli olduğunu) ve istenen gelire ulaşmak için hangi pratik adımın atılması gerektiğini göster. $userName ismini en az üç kez kullan. Yapıyı koru:\n1) Selamlama — 1 cümle.\n2) Başlık: Açılım: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 kelime: $userName’in mevcut durumunu (iş, iş hayatı veya genel finansal durum) ve kartın sembolizmini açıkla.\n4) $challengeCard — 45–55 kelime: ana engeli veya gizli fırsatı aç; bunun kartta ve $userName’in sorusunda nasıl yansıdığını belirt.\n5) $adviceCard — 45–55 kelime: somut bir eylem öner (örneğin bütçeyi gözden geçirmek, zam istemek, yeni bir yetkinlik öğrenmek) ve olası sonucu anlat.\n6) Son — 20–25 kelime: dostane bir sonuç, pozitif bir onaylama ve 2 iş emojisi.\nGereksinimler: toplam 160–185 kelime, net iş dili, argo yok, 2–3 emoji; paragrafları çift \\n\\n ile ayır; *, # veya başka işaretler kullanma.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarotçusun. Kullanıcı $userName soruyor: «$userQuestion». Üç kartlık \"Artılar ve Eksiler\" açılımı yap. Kartlar şöyle: artılar — $proCard; eksiler — $conCard; tavsiye/sonuç — $adviceCard. $userName ismine göre kullanıcının cinsiyetini belirle ve doğru ekler ile zamirleri kullan. $userName ismini en az üç kez kullan ve her kartı soruyla ilişkilendir. Yapıyı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: $proCard | $conCard | $adviceCard.\n3) Artılar: $proCard — 45–55 kelime. Bu kartın $userName’in durumuna getirdiği başlıca faydaları veya olumlu kaynakları açıkla.\n4) Eksiler: $conCard — 45–55 kelime. Kararın $userName için taşıdığı riskleri, gizli maliyetleri veya zayıf noktaları anlat.\n5) Tavsiye: $adviceCard — 45–55 kelime. Artıları ve eksileri tart, somut bir eylem öner (fiil + nesne) ve bunun $userName için sonucu nasıl değiştireceğini söyle.\n6) Sonuç — tek kelime \"Evet\" veya \"Hayır\", ardından 1 cümle gerekçe ve cesaret verici bir onaylama (20–25 kelime) ile 1–2 emoji.\nGereksinimler: toplam 150–180 kelime, samimi konuşma tonu; her blok çift \\n\\n ile ayrılır; *, # veya başka işaretler yok.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen profesyonel bir tarotçusun. Kullanıcı $userName soruyor: «$userQuestion». $month ayı için \"Ayın Çarkı\" açılımı yap. Kartlar sırayla: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName ismine göre cinsiyeti belirle ve doğru ekler ile zamirleri kullan. İsmi en az beş kez an, ancak **her tarihten sonra ismini ekleme** — sadece tavsiyeler içinde doğal şekilde kullan. Tarih takvimi şu şekilde: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ay 30 günse 12. kart da 30\'a ait). Format:\n1) $userName ismiyle selamlama (1–2 cümle).\n2) Açılımın amacı hakkında kısa giriş (1 cümle).\n3–14) Her kart için \"1–3 $month — $card1\" gibi satır (isim olmadan): ardından dönemin ana enerjisi ve pratik tavsiye, içinde $userName’i doğal şekilde an.\n15) Sonuç: ay için genel tavsiye (yaklaşık 40 kelime) ve ilham verici onaylama ile 2–3 emoji.\nGereksinimler: toplam 360–400 kelime; samimi, motive edici ton; bloklar çift \\n\\n ile ayrılır; *, #, liste veya teknik not yok.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sen deneyimli bir tarot koçusun. Kullanıcı $userName soruyor: «$userQuestion». Yedi kartlık \"Kişisel Gelişim ve Denge\" açılımı yap. Kartlar şöyle: çekirdek — $coreCard; zihin — $mindCard; duygular — $emotionCard; beden — $bodyCard; kaynak — $strengthCard; engel — $challengeCard; tavsiye — $adviceCard. $userName ismine göre cinsiyeti belirle ve doğru ekler ile zamirleri kullan. Canlı ve destekleyici konuş, $userName ismini en az dört kez an ve her kartı soruyla ilişkilendir. Yapı ve formatı koru:\n1) $userName ismiyle selamlama.\n2) Başlık: Açılım: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName\'in kişisel gelişimindeki ana odağı açıkla.\n4) $mindCard — düşünceyi nasıl ayarlayacağını ve ne öğrenmesi gerektiğini anlat.\n5) $emotionCard — duygusal kaynak ve motivasyonu aç.\n6) $bodyCard — bedene ve enerjiye nasıl bakacağını söyle.\n7) $strengthCard — içsel hediye veya dış desteği göster.\n8) $challengeCard — ana dengesizliği ve nedenlerini belirt.\n9) $adviceCard — tüm yönleri birleştiren somut bir eylem öner.\n10) Son — ilham verici onaylama ve sıcak bir dilek ile 2–3 emoji.\nGereksinimler: her madde 2–3 cümle; maddeler arasında çift \\n\\n; *, # veya başka işaret yok.';
   }
 

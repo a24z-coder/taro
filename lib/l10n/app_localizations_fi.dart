@@ -373,7 +373,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kirjoita kysymyksesi...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Itsensä kehittäminen ja tasapaino\" -luku koostuu 7 kortista, jotka on asetettu ympyrän muotoon. Jokainen kortti symboloi tiettyä puolta henkisestä kasvustasi ja sisäisestä harmoniastasi.';
 
   @override
@@ -982,7 +983,9 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Tee ${userName}ille itsekehitystä ja tasapainoa koskeva levitys näillä kolmella kortilla: $cards';
   }
 
@@ -1007,13 +1010,17 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Kuvaile kortin \"$cardName\" yleinen merkitys Tarotissa kielellä $lang. Sisällytä historia, symboliikka ja keskeiset merkitykset.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Kuvaile käännetyn Tarot-kortin \"$cardName\" merkitys kielellä $lang. Sisällytä vastakkaiset merkitykset ja varoitukset.';
   }
 
@@ -1049,13 +1056,17 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Käännä Tarot-kortin \"$cardName\" nimi kielelle $languageCode. Vastauksen tulee sisältää vain käännetty nimi ilman lisätekstiä tai välimerkkejä.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Olet ammattitaitoinen tarot-tulkitsija. Kirjoita inspiroiva \"Päivän kortti\" -viesti tämän pyynnön kielellä käyttäjälle $name. Noudata rakennetta ja pituutta.\n🌟 $name, päivän korttisi on $cardName!\n🔑 Avainsanat: <mainitse 3–5 lyhyttä avainsanaa>\n🃏 Merkitys (≈45–50 sanaa): kuvaile kortin pääenergiaa ja miten se ilmenee tänään ${name}lle.\n💡 Neuvo (≈35–40 sanaa): ehdota konkreettista toimintaa tai asennetta, joka auttaa $nameä hyödyntämään tätä energiaa.\n✨ Vahvistus (1 rivi): positiivinen lause, joka alkaa sanoilla \"Minä…\".\nVaadittu pituus: yhteensä 120–150 sanaa, lämmin esoteerinen sävy, 3–4 teemaan sopivaa emojia, ei HTML-/Markdown-listoja; kappaleet erotellaan kahdella rivinvaihdolla (\\n\\n).';
   }
 
@@ -1273,19 +1284,20 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-tulkitsija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa \"Kelttiristi\"-levityksellä (Waitein klassinen malli). Kortit ovat järjestettynä näin: tilanne - $situationCard; haaste - $challengeCard; alitajunta - $subconsciousCard; lähimenneisyys - $pastCard; tietoisuus - $consciousCard; lähitulevaisuus - $hiddenCard; sisäinen minä - $selfCard; ympäristö - $environmentCard; toiveet tai pelot - $hopesCard; lopputulos - $outcomeCard. Mainitse nimi $userName vähintään kuusi kertaa ja yhdistä jokainen kortti kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: tilanne ($situationCard) / haaste ($challengeCard) / alitajunta ($subconsciousCard) / lähimenneisyys ($pastCard) / tietoisuus ($consciousCard) / lähitulevaisuus ($hiddenCard) / sisäinen minä ($selfCard) / ympäristö ($environmentCard) / toiveet/pelot ($hopesCard) / lopputulos ($outcomeCard).\n3) Tilanne — $situationCard (45-55 sanaa): kolme avainsanaa, kortin symboliikka ja tämänhetkinen tilanne kysymyksessä $userQuestion käyttäjälle $userName.\n4) Haaste — $challengeCard (45-55 sanaa): tärkein este tai apu ${userName}lle.\n5) Alitajunta — $subconsciousCard (45-55 sanaa): piilevät motiivit tai energiat, jotka vaikuttavat ${userName}hin.\n6) Lähimenneisyys — $pastCard (45-55 sanaa): tapahtumat, jotka ovat johtaneet ${userName}n nykytilanteeseen.\n7) Tietoisuus — $consciousCard (45-55 sanaa): tavoitteet, odotukset tai se, mitä $userName tiedostaa.\n8) Lähitulevaisuus — $hiddenCard (45-55 sanaa): todennäköinen kehitys seuraavien viikkojen aikana.\n9) Sisäinen minä — $selfCard (45-55 sanaa): ${userName}n tila ja voimavarat.\n10) Ympäristö — $environmentCard (45-55 sanaa): ihmisten ja olosuhteiden vaikutus.\n11) Toiveet / pelot — $hopesCard (45-55 sanaa): ${userName}n odotukset tai pelot.\n12) Lopputulos — $outcomeCard (45-55 sanaa): todennäköinen tulos ottaen huomioon levityksen neuvot.\n13) Lopetus: ystävällinen tuki ja positiivinen vahvistus (30-35 sanaa) ${userName}lle.\nVaadittu kokonaispituus 400-500 sanaa, elävä ja keskusteleva sävy, 4-6 esoteerista emojia; erottele jokainen osio kahdella rivinvaihdolla (\n); älä käytä symboleita *, # tai muuta merkintää; kirjoita pelkkää tekstiä.';
   }
 
@@ -1302,11 +1314,12 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-tulkitsija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa \"Menneisyys - Nykyhetki - Tulevaisuus\" -levityksellä. Kortit ovat järjestettynä näin: menneisyys - $pastCard; nykyhetki - $presentCard; tulevaisuus - $hiddenCard. Mainitse nimi $userName vähintään neljä kertaa ja yhdistä korttien merkitykset kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: Menneisyys ($pastCard) - Nykyhetki ($presentCard) - Tulevaisuus ($hiddenCard).\n3) OSIO MENNEISYYS — $pastCard (40-50 sanaa): kolme avainsanaa, kortin symboliikka ja selitys siitä, miten menneet tapahtumat vaikuttavat kysymyksen $userQuestion lopputulokseen käyttäjälle $userName.\n4) OSIO NYKYHETKI — $presentCard (40-50 sanaa): avainsanat, kortin symboliikka ja nykyiset tekijät, jotka vaikuttavat vastaukseen kysymykseen $userQuestion.\n5) OSIO TULEVAISUUS — $hiddenCard (40-50 sanaa): avainsanat, kortin symboliikka ja todennäköinen kehityskulku tilanteessa kysymyksen $userName mukaan.\n6) Lopputulos: lyhyt neuvo, positiivinen vahvistus (20-30 sanaa) ja selkeä yhteenveto mahdollisuuksista.\nVaadittu kokonaispituus 180-220 sanaa, lämmin esoteerinen sävy, 3-5 teemaan sopivaa emojia; erottele jokainen osio kahdella rivinvaihdolla (\n); älä käytä symboleita *, # tai muita muotoiluja; kirjoita pelkkää tekstiä.';
   }
 
@@ -1354,13 +1367,14 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokeneita tarotlukija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa käyttäen \"5 kortin\" levitystä. Kortit annetaan järjestyksessä: menneisyys - $pastCard; nykyhetki - $presentCard; piilotettu - $hiddenCard; neuvo - $adviceCard; tulos - $outcomeCard. Viittaa $userName:ään vähintään viisi kertaa ja varmista, että yhdistät jokaisen kortin kysymykseen. Noudata rakennetta:\n\n1) Tervehdys nimellä $userName.\n\n2) Otsikko: Levitys: menneisyys ($pastCard) / nykyhetki ($presentCard) / piilotettu ($hiddenCard) / neuvo ($adviceCard) / tulos ($outcomeCard).\n\n3) Menneisyys — $pastCard (45-55 sanaa): kolme avainsanaa, kortin symboliikka ja menneisyyden vaikutus $userQuestion:iin $userName:lle.\n\n4) Nykyhetki — $presentCard (45-55 sanaa): avainsanat, symboliikka ja $userName:n kysymyksen nykyinen tila.\n\n5) Piilotettu — $hiddenCard (45-55 sanaa): mikä tietämättään vaikuttaa $userName:n tilanteeseen, keskittymällä symboliikkaan.\n\n6) Neuvo — $adviceCard (45-55 sanaa): käytännöllinen toiminta $userName:lle, perustuen kortin kuvakieliin.\n\n7) Tulos — $outcomeCard (45-55 sanaa): todennäköinen skenaario neuvoa noudattaessa, puhuen $userName:lle.\n\n8) Yhteenveto: ystävällinen tuki ja positiivinen vahvistus (25-30 sanaa) $userName:lle.\n\nVaatimukset: kokonaismäärä 230-260 sanaa, eloisa keskustelutonni, 3-5 esoteerista emojia; erota jokainen lohko kaksoisrivinvaihdolla (\\n\\n); älä käytä symboleja *, # tai muita merkintöjä; kirjoita vain tavallista tekstiä.';
   }
 
@@ -1371,7 +1385,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get makeNewSpread => 'Tee uusi levitys';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteyttä asiantuntijaan.';
 
   @override
@@ -1379,8 +1394,13 @@ class AppLocalizationsFi extends AppLocalizations {
       'Pyyntösi on vastaanotettu. Ole hyvä ja avaa kortit.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Olet kokenut tarot-lukija. Käyttäjä $userName kysyy: «$userQuestion». Vastaa kolmen kortin rakkauslukuilla. Kortit ovat seuraavat: ${userName}n tunteet — $youCard; kumppanin tunteet — $partnerCard; suhteen dynamiikka tai potentiaali — $dynamicCard. Mainitse nimi $userName vähintään kolme kertaa ja yhdistä jokainen kortti kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Luku: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 sanaa: kuvaa, mitä kortti kertoo ${userName}n tunteista ja odotuksista.\n4) $partnerCard — 40–50 sanaa: avaa kumppanin tunteita ja aikomuksia ${userName}n kysymykseen liittyen.\n5) $dynamicCard — 40–50 sanaa: näytä, miten nämä kaksi energiaa vuorovaikuttavat ja mihin suhteet voivat johtaa.\n6) Lopetus: lämmin neuvo ja positiivinen vahvistus (20–25 sanaa) ${userName}lle.\nVaadittu pituus yhteensä 150–180 sanaa, ystävällinen ja romanttinen sävy, 2–4 teemaan sopivaa emojia; kappaleet erotetaan kahdella rivinvaihdolla (\\n\\n); vältä merkkejä *, # ja muuta merkintää.';
   }
 
@@ -1388,7 +1408,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get loveSpread => 'Rakkausluku';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteyttä asiantuntijaan.';
 
   @override
@@ -1469,7 +1490,8 @@ class AppLocalizationsFi extends AppLocalizations {
   String get monthlyForecast => 'Kuukausiennuste';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteys asiantuntijaan.';
 
   @override
@@ -1494,7 +1516,8 @@ class AppLocalizationsFi extends AppLocalizations {
       'Virhe levityksen arvon hakemisessa. Yritä uudelleen.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteys asiantuntijaan.';
 
   @override
@@ -1720,48 +1743,60 @@ class AppLocalizationsFi extends AppLocalizations {
       'Kuinka löytää harmonia elämässä?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-valmentaja. Käyttäjä $userName kysyy: «$userQuestion». Tee kolmen kortin levitys uraan ja talouteen. Kortit ovat seuraavat: 1) tilanne — $situationCard; 2) este tai avainmahdollisuus — $challengeCard; 3) neuvo ja potentiaali — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Puhu $userName kanssa ystävällisesti ja asiallisesti: näytä, missä hän on nyt, mikä estää kasvua (tai mikä mahdollisuus on tärkeä huomata) ja mikä käytännön askel johtaa toivottuun tuloon. Mainitse nimi $userName vähintään kolme kertaa. Noudata rakennetta:\n1) Tervehdys — 1 lause.\n2) Otsikko: Levitys: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 sanaa: kuvaa $userName nykytilannetta (työ, liiketoiminta tai yleinen taloudellinen tausta) ja kortin symboliikkaa.\n4) $challengeCard — 45–55 sanaa: avaa pääasiallinen este tai piilevä mahdollisuus; kerro, miten se heijastuu kortissa ja $userName kysymyksessä.\n5) $adviceCard — 45–55 sanaa: ehdota konkreettista toimenpidettä (esim. budjetin tarkistaminen, palkankorotuksen pyytäminen, uuden taidon opiskelu) ja kuvaa mahdollinen tulos.\n6) Loppu — 20–25 sanaa: ystävällinen yhteenveto, positiivinen vahvistus ja 2 bisnes-emojia.\nVaadittu kokonaispituus 160–185 sanaa, selkeä liiketoimintatyyli ilman slangia, 2–3 emojia; kappaleet erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-ammattilainen. Käyttäjä $userName kysyy: «$userQuestion». Tee kolmen kortin \"Plussat ja miinukset\" -levitys. Kortit ovat: plussat — $proCard; miinukset — $conCard; neuvo/lopputulos — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Mainitse nimi $userName vähintään kolme kertaa ja yhdistä jokainen kortti hänen kysymykseensä. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: $proCard | $conCard | $adviceCard.\n3) Plussat: $proCard — 45–55 sanaa. Kuvaa tärkeimmät hyödyt tai positiiviset resurssit, joita tämä kortti tuo $userName tilanteeseen.\n4) Miinukset: $conCard — 45–55 sanaa. Kuvaile riskit, piilevät kustannukset tai heikkoudet ratkaisussa $userName kannalta.\n5) Neuvo: $adviceCard — 45–55 sanaa. Punnitse plussat ja miinukset, ehdota yksi konkreettinen toimenpide (verbi + objekti) ja kerro, miten se muuttaa lopputulosta $userName kannalta.\n6) Lopputulos — yhdellä sanalla \"Kyllä\" tai \"Ei\", sitten 1 perustelulause ja rohkaiseva vahvistus (20–25 sanaa) 1–2 emojilla.\nVaadittu kokonaispituus 150–180 sanaa, ystävällinen ja keskusteleva tyyli; jokainen osa erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet ammattitaitoinen tarot-lukija. Käyttäjä $userName kysyy: «$userQuestion». Tee \"Kuukauden pyörä\" -levitys kuukaudelle $month. Kortit ovat järjestyksessä: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Määritä $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Mainitse nimi vähintään viisi kertaa, mutta **älä lisää sitä jokaisen päivämäärän jälkeen** — muista se vain neuvojen yhteydessä. Käytä kalenterin päivämääräjakoa: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (jos kuukaudessa on 30 päivää, 12. kortti liittyy myös 30. päivään). Muotoilu:\n1) Tervehdys nimellä $userName (1–2 lausetta).\n2) Lyhyt johdanto levityksen tarkoituksesta (1 lause).\n3–14) Jokaiselle kortille käytä riviä \"1–3 $month — $card1\" (ilman nimeä): sen jälkeen 2–3 lausetta avainenergian ja käytännön neuvon kuvaamiseksi, mainiten $userName luontevasti.\n15) Lopuksi: yleinen neuvo kuukaudelle (noin 40 sanaa) ja inspiroiva vahvistus 2–3 emojilla.\nVaadittu kokonaispituus 360–400 sanaa; ystävällinen, motivoiva tyyli; osiot erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, #, listoja tai teknisiä merkintöjä.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-valmentaja. Käyttäjä $userName kysyy: «$userQuestion». Tee seitsemän kortin \"Itsensä kehitys ja tasapaino\" -levitys. Kortit ovat: ydin — $coreCard; mieli — $mindCard; tunteet — $emotionCard; keho — $bodyCard; voimavara — $strengthCard; este — $challengeCard; neuvo — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Puhu elävästi ja kannustavasti, mainitse nimi $userName vähintään neljä kertaa ja yhdistä jokainen kortti hänen kysymykseensä. Noudata rakennetta ja muotoilua:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — kuvaa $userName pääasiallista itsekehityksen painopistettä.\n4) $mindCard — kerro, miten asennoitua ja mitä oppia.\n5) $emotionCard — avaa emotionaalinen voimavara ja motivaatio.\n6) $bodyCard — neuvo, miten huolehtia kehosta ja energiasta.\n7) $strengthCard — näytä sisäinen lahja tai ulkoinen tuki.\n8) $challengeCard — osoita keskeinen epätasapaino ja sen syyt.\n9) $adviceCard — ehdota konkreettista toimenpidettä, joka yhdistää kaikki osa-alueet.\n10) Loppu: inspiroiva vahvistus ja lämmin kannustus 2–3 emojilla.\nJokainen kohta 2–3 lausetta; kohdat erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 
@@ -2185,7 +2220,8 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
       'Kirjoita kysymyksesi...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Itsensä kehittäminen ja tasapaino\" -luku koostuu 7 kortista, jotka on asetettu ympyrän muotoon. Jokainen kortti symboloi tiettyä puolta henkisestä kasvustasi ja sisäisestä harmoniastasi.';
 
   @override
@@ -2794,7 +2830,9 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Tee ${userName}ille itsekehitystä ja tasapainoa koskeva levitys näillä kolmella kortilla: $cards';
   }
 
@@ -2819,13 +2857,17 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Kuvaile kortin \"$cardName\" yleinen merkitys Tarotissa kielellä $lang. Sisällytä historia, symboliikka ja keskeiset merkitykset.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Kuvaile käännetyn Tarot-kortin \"$cardName\" merkitys kielellä $lang. Sisällytä vastakkaiset merkitykset ja varoitukset.';
   }
 
@@ -2861,13 +2903,17 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Käännä Tarot-kortin \"$cardName\" nimi kielelle $languageCode. Vastauksen tulee sisältää vain käännetty nimi ilman lisätekstiä tai välimerkkejä.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Olet ammattitaitoinen tarot-tulkitsija. Kirjoita inspiroiva \"Päivän kortti\" -viesti tämän pyynnön kielellä käyttäjälle $name. Noudata rakennetta ja pituutta.\n🌟 $name, päivän korttisi on $cardName!\n🔑 Avainsanat: <mainitse 3–5 lyhyttä avainsanaa>\n🃏 Merkitys (≈45–50 sanaa): kuvaile kortin pääenergiaa ja miten se ilmenee tänään ${name}lle.\n💡 Neuvo (≈35–40 sanaa): ehdota konkreettista toimintaa tai asennetta, joka auttaa $nameä hyödyntämään tätä energiaa.\n✨ Vahvistus (1 rivi): positiivinen lause, joka alkaa sanoilla \"Minä…\".\nVaadittu pituus: yhteensä 120–150 sanaa, lämmin esoteerinen sävy, 3–4 teemaan sopivaa emojia, ei HTML-/Markdown-listoja; kappaleet erotellaan kahdella rivinvaihdolla (\\n\\n).';
   }
 
@@ -3085,19 +3131,20 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-tulkitsija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa \"Kelttiristi\"-levityksellä (Waitein klassinen malli). Kortit ovat järjestettynä näin: tilanne - $situationCard; haaste - $challengeCard; alitajunta - $subconsciousCard; lähimenneisyys - $pastCard; tietoisuus - $consciousCard; lähitulevaisuus - $hiddenCard; sisäinen minä - $selfCard; ympäristö - $environmentCard; toiveet tai pelot - $hopesCard; lopputulos - $outcomeCard. Mainitse nimi $userName vähintään kuusi kertaa ja yhdistä jokainen kortti kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: tilanne ($situationCard) / haaste ($challengeCard) / alitajunta ($subconsciousCard) / lähimenneisyys ($pastCard) / tietoisuus ($consciousCard) / lähitulevaisuus ($hiddenCard) / sisäinen minä ($selfCard) / ympäristö ($environmentCard) / toiveet/pelot ($hopesCard) / lopputulos ($outcomeCard).\n3) Tilanne — $situationCard (45-55 sanaa): kolme avainsanaa, kortin symboliikka ja tämänhetkinen tilanne kysymyksessä $userQuestion käyttäjälle $userName.\n4) Haaste — $challengeCard (45-55 sanaa): tärkein este tai apu ${userName}lle.\n5) Alitajunta — $subconsciousCard (45-55 sanaa): piilevät motiivit tai energiat, jotka vaikuttavat ${userName}hin.\n6) Lähimenneisyys — $pastCard (45-55 sanaa): tapahtumat, jotka ovat johtaneet ${userName}n nykytilanteeseen.\n7) Tietoisuus — $consciousCard (45-55 sanaa): tavoitteet, odotukset tai se, mitä $userName tiedostaa.\n8) Lähitulevaisuus — $hiddenCard (45-55 sanaa): todennäköinen kehitys seuraavien viikkojen aikana.\n9) Sisäinen minä — $selfCard (45-55 sanaa): ${userName}n tila ja voimavarat.\n10) Ympäristö — $environmentCard (45-55 sanaa): ihmisten ja olosuhteiden vaikutus.\n11) Toiveet / pelot — $hopesCard (45-55 sanaa): ${userName}n odotukset tai pelot.\n12) Lopputulos — $outcomeCard (45-55 sanaa): todennäköinen tulos ottaen huomioon levityksen neuvot.\n13) Lopetus: ystävällinen tuki ja positiivinen vahvistus (30-35 sanaa) ${userName}lle.\nVaadittu kokonaispituus 400-500 sanaa, elävä ja keskusteleva sävy, 4-6 esoteerista emojia; erottele jokainen osio kahdella rivinvaihdolla (\n); älä käytä symboleita *, # tai muuta merkintää; kirjoita pelkkää tekstiä.';
   }
 
@@ -3114,11 +3161,12 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-tulkitsija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa \"Menneisyys - Nykyhetki - Tulevaisuus\" -levityksellä. Kortit ovat järjestettynä näin: menneisyys - $pastCard; nykyhetki - $presentCard; tulevaisuus - $hiddenCard. Mainitse nimi $userName vähintään neljä kertaa ja yhdistä korttien merkitykset kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: Menneisyys ($pastCard) - Nykyhetki ($presentCard) - Tulevaisuus ($hiddenCard).\n3) OSIO MENNEISYYS — $pastCard (40-50 sanaa): kolme avainsanaa, kortin symboliikka ja selitys siitä, miten menneet tapahtumat vaikuttavat kysymyksen $userQuestion lopputulokseen käyttäjälle $userName.\n4) OSIO NYKYHETKI — $presentCard (40-50 sanaa): avainsanat, kortin symboliikka ja nykyiset tekijät, jotka vaikuttavat vastaukseen kysymykseen $userQuestion.\n5) OSIO TULEVAISUUS — $hiddenCard (40-50 sanaa): avainsanat, kortin symboliikka ja todennäköinen kehityskulku tilanteessa kysymyksen $userName mukaan.\n6) Lopputulos: lyhyt neuvo, positiivinen vahvistus (20-30 sanaa) ja selkeä yhteenveto mahdollisuuksista.\nVaadittu kokonaispituus 180-220 sanaa, lämmin esoteerinen sävy, 3-5 teemaan sopivaa emojia; erottele jokainen osio kahdella rivinvaihdolla (\n); älä käytä symboleita *, # tai muita muotoiluja; kirjoita pelkkää tekstiä.';
   }
 
@@ -3166,13 +3214,14 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokeneita tarotlukija. Käyttäjä $userName kysyy: \"$userQuestion\". Vastaa käyttäen \"5 kortin\" levitystä. Kortit annetaan järjestyksessä: menneisyys - $pastCard; nykyhetki - $presentCard; piilotettu - $hiddenCard; neuvo - $adviceCard; tulos - $outcomeCard. Viittaa $userName:ään vähintään viisi kertaa ja varmista, että yhdistät jokaisen kortin kysymykseen. Noudata rakennetta:\n\n1) Tervehdys nimellä $userName.\n\n2) Otsikko: Levitys: menneisyys ($pastCard) / nykyhetki ($presentCard) / piilotettu ($hiddenCard) / neuvo ($adviceCard) / tulos ($outcomeCard).\n\n3) Menneisyys — $pastCard (45-55 sanaa): kolme avainsanaa, kortin symboliikka ja menneisyyden vaikutus $userQuestion:iin $userName:lle.\n\n4) Nykyhetki — $presentCard (45-55 sanaa): avainsanat, symboliikka ja $userName:n kysymyksen nykyinen tila.\n\n5) Piilotettu — $hiddenCard (45-55 sanaa): mikä tietämättään vaikuttaa $userName:n tilanteeseen, keskittymällä symboliikkaan.\n\n6) Neuvo — $adviceCard (45-55 sanaa): käytännöllinen toiminta $userName:lle, perustuen kortin kuvakieliin.\n\n7) Tulos — $outcomeCard (45-55 sanaa): todennäköinen skenaario neuvoa noudattaessa, puhuen $userName:lle.\n\n8) Yhteenveto: ystävällinen tuki ja positiivinen vahvistus (25-30 sanaa) $userName:lle.\n\nVaatimukset: kokonaismäärä 230-260 sanaa, eloisa keskustelutonni, 3-5 esoteerista emojia; erota jokainen lohko kaksoisrivinvaihdolla (\\n\\n); älä käytä symboleja *, # tai muita merkintöjä; kirjoita vain tavallista tekstiä.';
   }
 
@@ -3183,7 +3232,8 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
   String get makeNewSpread => 'Tee uusi levitys';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteyttä asiantuntijaan.';
 
   @override
@@ -3191,8 +3241,13 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
       'Pyyntösi on vastaanotettu. Ole hyvä ja avaa kortit.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Olet kokenut tarot-lukija. Käyttäjä $userName kysyy: «$userQuestion». Vastaa kolmen kortin rakkauslukuilla. Kortit ovat seuraavat: ${userName}n tunteet — $youCard; kumppanin tunteet — $partnerCard; suhteen dynamiikka tai potentiaali — $dynamicCard. Mainitse nimi $userName vähintään kolme kertaa ja yhdistä jokainen kortti kysymykseen. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Luku: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 sanaa: kuvaa, mitä kortti kertoo ${userName}n tunteista ja odotuksista.\n4) $partnerCard — 40–50 sanaa: avaa kumppanin tunteita ja aikomuksia ${userName}n kysymykseen liittyen.\n5) $dynamicCard — 40–50 sanaa: näytä, miten nämä kaksi energiaa vuorovaikuttavat ja mihin suhteet voivat johtaa.\n6) Lopetus: lämmin neuvo ja positiivinen vahvistus (20–25 sanaa) ${userName}lle.\nVaadittu pituus yhteensä 150–180 sanaa, ystävällinen ja romanttinen sävy, 2–4 teemaan sopivaa emojia; kappaleet erotetaan kahdella rivinvaihdolla (\\n\\n); vältä merkkejä *, # ja muuta merkintää.';
   }
 
@@ -3200,7 +3255,8 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
   String get loveSpread => 'Rakkausluku';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteyttä asiantuntijaan.';
 
   @override
@@ -3281,7 +3337,8 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
   String get monthlyForecast => 'Kuukausiennuste';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteys asiantuntijaan.';
 
   @override
@@ -3306,7 +3363,8 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
       'Virhe levityksen arvon hakemisessa. Yritä uudelleen.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Sovellus käyttää tekoälyä ainoastaan viihdetarkoituksiin. Emme ole vastuussa tekemistäsi päätöksistä. Tarvittaessa ota yhteys asiantuntijaan.';
 
   @override
@@ -3532,48 +3590,60 @@ class AppLocalizationsFiFi extends AppLocalizationsFi {
       'Kuinka löytää harmonia elämässä?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-valmentaja. Käyttäjä $userName kysyy: «$userQuestion». Tee kolmen kortin levitys uraan ja talouteen. Kortit ovat seuraavat: 1) tilanne — $situationCard; 2) este tai avainmahdollisuus — $challengeCard; 3) neuvo ja potentiaali — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Puhu $userName kanssa ystävällisesti ja asiallisesti: näytä, missä hän on nyt, mikä estää kasvua (tai mikä mahdollisuus on tärkeä huomata) ja mikä käytännön askel johtaa toivottuun tuloon. Mainitse nimi $userName vähintään kolme kertaa. Noudata rakennetta:\n1) Tervehdys — 1 lause.\n2) Otsikko: Levitys: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 sanaa: kuvaa $userName nykytilannetta (työ, liiketoiminta tai yleinen taloudellinen tausta) ja kortin symboliikkaa.\n4) $challengeCard — 45–55 sanaa: avaa pääasiallinen este tai piilevä mahdollisuus; kerro, miten se heijastuu kortissa ja $userName kysymyksessä.\n5) $adviceCard — 45–55 sanaa: ehdota konkreettista toimenpidettä (esim. budjetin tarkistaminen, palkankorotuksen pyytäminen, uuden taidon opiskelu) ja kuvaa mahdollinen tulos.\n6) Loppu — 20–25 sanaa: ystävällinen yhteenveto, positiivinen vahvistus ja 2 bisnes-emojia.\nVaadittu kokonaispituus 160–185 sanaa, selkeä liiketoimintatyyli ilman slangia, 2–3 emojia; kappaleet erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-ammattilainen. Käyttäjä $userName kysyy: «$userQuestion». Tee kolmen kortin \"Plussat ja miinukset\" -levitys. Kortit ovat: plussat — $proCard; miinukset — $conCard; neuvo/lopputulos — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Mainitse nimi $userName vähintään kolme kertaa ja yhdistä jokainen kortti hänen kysymykseensä. Noudata rakennetta:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: $proCard | $conCard | $adviceCard.\n3) Plussat: $proCard — 45–55 sanaa. Kuvaa tärkeimmät hyödyt tai positiiviset resurssit, joita tämä kortti tuo $userName tilanteeseen.\n4) Miinukset: $conCard — 45–55 sanaa. Kuvaile riskit, piilevät kustannukset tai heikkoudet ratkaisussa $userName kannalta.\n5) Neuvo: $adviceCard — 45–55 sanaa. Punnitse plussat ja miinukset, ehdota yksi konkreettinen toimenpide (verbi + objekti) ja kerro, miten se muuttaa lopputulosta $userName kannalta.\n6) Lopputulos — yhdellä sanalla \"Kyllä\" tai \"Ei\", sitten 1 perustelulause ja rohkaiseva vahvistus (20–25 sanaa) 1–2 emojilla.\nVaadittu kokonaispituus 150–180 sanaa, ystävällinen ja keskusteleva tyyli; jokainen osa erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet ammattitaitoinen tarot-lukija. Käyttäjä $userName kysyy: «$userQuestion». Tee \"Kuukauden pyörä\" -levitys kuukaudelle $month. Kortit ovat järjestyksessä: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Määritä $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Mainitse nimi vähintään viisi kertaa, mutta **älä lisää sitä jokaisen päivämäärän jälkeen** — muista se vain neuvojen yhteydessä. Käytä kalenterin päivämääräjakoa: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (jos kuukaudessa on 30 päivää, 12. kortti liittyy myös 30. päivään). Muotoilu:\n1) Tervehdys nimellä $userName (1–2 lausetta).\n2) Lyhyt johdanto levityksen tarkoituksesta (1 lause).\n3–14) Jokaiselle kortille käytä riviä \"1–3 $month — $card1\" (ilman nimeä): sen jälkeen 2–3 lausetta avainenergian ja käytännön neuvon kuvaamiseksi, mainiten $userName luontevasti.\n15) Lopuksi: yleinen neuvo kuukaudelle (noin 40 sanaa) ja inspiroiva vahvistus 2–3 emojilla.\nVaadittu kokonaispituus 360–400 sanaa; ystävällinen, motivoiva tyyli; osiot erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, #, listoja tai teknisiä merkintöjä.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Olet kokenut tarot-valmentaja. Käyttäjä $userName kysyy: «$userQuestion». Tee seitsemän kortin \"Itsensä kehitys ja tasapaino\" -levitys. Kortit ovat: ydin — $coreCard; mieli — $mindCard; tunteet — $emotionCard; keho — $bodyCard; voimavara — $strengthCard; este — $challengeCard; neuvo — $adviceCard. Määritä käyttäjän $userName sukupuoli nimen perusteella ja käytä oikeita päätteitä ja pronomineja. Puhu elävästi ja kannustavasti, mainitse nimi $userName vähintään neljä kertaa ja yhdistä jokainen kortti hänen kysymykseensä. Noudata rakennetta ja muotoilua:\n1) Tervehdys nimellä $userName.\n2) Otsikko: Levitys: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — kuvaa $userName pääasiallista itsekehityksen painopistettä.\n4) $mindCard — kerro, miten asennoitua ja mitä oppia.\n5) $emotionCard — avaa emotionaalinen voimavara ja motivaatio.\n6) $bodyCard — neuvo, miten huolehtia kehosta ja energiasta.\n7) $strengthCard — näytä sisäinen lahja tai ulkoinen tuki.\n8) $challengeCard — osoita keskeinen epätasapaino ja sen syyt.\n9) $adviceCard — ehdota konkreettista toimenpidettä, joka yhdistää kaikki osa-alueet.\n10) Loppu: inspiroiva vahvistus ja lämmin kannustus 2–3 emojilla.\nJokainen kohta 2–3 lausetta; kohdat erotetaan kahdella rivinvaihdolla \\n\\n; älä käytä *, # tai muuta merkintää.';
   }
 

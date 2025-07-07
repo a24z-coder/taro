@@ -671,7 +671,7 @@ class _FlipCardState extends State<FlipCard> with SingleTickerProviderStateMixin
         animation: _animation,
         builder: (context, child) {
           final rotation = _animation.value;
-          final isUnder = (ValueNotifier<bool>(rotation >= pi / 2)).value;
+          final isUnder = rotation >= pi / 2;
           return Transform(
             transform: Matrix4.identity()
               ..setEntry(3, 2, 0.001)

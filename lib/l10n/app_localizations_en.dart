@@ -373,7 +373,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter your question...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
 
   @override
@@ -978,7 +979,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Do a spread for $userName on self-development and balance with these three cards: $cards';
   }
 
@@ -1003,13 +1006,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and main meanings.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
   }
 
@@ -1044,13 +1051,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest today for $name.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
   }
 
@@ -1267,19 +1278,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite layout). The cards are assigned as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three key words, card symbolism, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or aid for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (40-50 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): the state and resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): $userName\'s expectations or fears.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the spread\'s advice.\n13) Conclusion: friendly support and a positive affirmation (30-35 words) for $userName.\nRequirements: total length 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use *, # or other markup; write only in plain text.';
   }
 
@@ -1296,11 +1308,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are assigned as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the card meanings to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three key words, card symbolism, and explanation of how past events influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): key words, card symbolism, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): key words, card symbolism, and the likely scenario for the situation regarding $userName\'s question.\n6) Conclusion: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total length 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use *, # or other formatting marks; write only in plain text.';
   }
 
@@ -1348,13 +1361,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
   }
 
@@ -1365,7 +1379,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get makeNewSpread => 'Make a new spread';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
 
   @override
@@ -1373,8 +1388,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Your request has been received. Please reveal the cards.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are as follows: $userName\'s feelings — $youCard; partner\'s feelings — $partnerCard; relationship dynamics or potential — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card reveals about ${userName}s feelings and expectations.\n4) $partnerCard — 40–50 words: explore the partner\'s emotions and intentions regarding ${userName}s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
   }
 
@@ -1382,7 +1402,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loveSpread => 'Love spread';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
 
   @override
@@ -1463,7 +1484,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get monthlyForecast => 'Monthly forecast';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
 
   @override
@@ -1488,7 +1510,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Error retrieving the spread value. Please try again.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
 
   @override
@@ -1715,48 +1738,60 @@ class AppLocalizationsEn extends AppLocalizations {
       'How to find harmony in life?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what chance is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe ${userName}s current position (work, business or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in ${userName}s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, ask for a raise, learn a new skill) and describe the possible outcome.\n6) Ending — 20–25 words: friendly conclusion, positive affirmation and 2 business emojis.\nRequirements: total length 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, # or other markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/result — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and link each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to ${userName}s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object) and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No\", then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total length 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, # or other markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread with seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak lively and supportively, mention the name $userName at least four times and definitely link each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of ${userName}s self-development.\n4) $mindCard — explain how to set the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Ending: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double line breaks (\\n\\n); do not use *, # or other markup.';
   }
 
@@ -2179,7 +2214,8 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
       'Enter your question...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
 
   @override
@@ -2784,7 +2820,9 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Do a spread for $userName on self-development and balance with these three cards: $cards';
   }
 
@@ -2809,13 +2847,17 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and key meanings.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
   }
 
@@ -2850,13 +2892,17 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest for $name today.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
   }
 
@@ -3073,19 +3119,20 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite scheme). The cards are laid out as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three key words, symbolism of the card, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or assistance for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (45-55 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): state, resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): expectations or fears of $userName.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the advice of the spread.\n13) Conclusion: friendly support and a positive affirmation (30-35 words) for $userName.\nRequirements: total length 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use symbols *, # or other markup; write only in plain text.';
   }
 
@@ -3102,11 +3149,12 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are laid out as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the meanings of the cards to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three key words, symbolism of the card, and explanation of how past facts influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): key words, symbolism of the card, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): key words, symbolism of the card, and the likely scenario of the situation\'s development regarding the question for $userName.\n6) Outcome: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total length 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use symbols *, # or other formatting marks; write only in plain text.';
   }
 
@@ -3154,13 +3202,14 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
   }
 
@@ -3171,7 +3220,8 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
   String get makeNewSpread => 'Make a new spread';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
 
   @override
@@ -3179,8 +3229,13 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
       'Your request has been received. Please reveal the cards.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are given as follows: $userName\'s feelings — $youCard; partner\'s feelings — $partnerCard; dynamics or potential of the relationship — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card reveals about ${userName}s feelings and expectations.\n4) $partnerCard — 40–50 words: explore the partner\'s emotions and intentions regarding ${userName}s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
   }
 
@@ -3188,7 +3243,8 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
   String get loveSpread => 'Love spread';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
 
   @override
@@ -3269,7 +3325,8 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
   String get monthlyForecast => 'Monthly forecast';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a specialist if necessary.';
 
   @override
@@ -3294,7 +3351,8 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
       'Error retrieving the spread value. Please try again.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
 
   @override
@@ -3521,48 +3579,60 @@ class AppLocalizationsEnGb extends AppLocalizationsEn {
       'How to find harmony in life?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what chance is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe ${userName}s current position (work, business or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in ${userName}s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, ask for a raise, learn a new skill) and describe the possible outcome.\n6) Ending — 20–25 words: friendly conclusion, positive affirmation and 2 business emojis.\nRequirements: total length 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, # or other markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/outcome — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and link each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to ${userName}s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object) and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No\", then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total length 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, # or other markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Create a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread of seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak lively and supportively, mention the name $userName at least four times and definitely link each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of ${userName}s self-development.\n4) $mindCard — explain how to set the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Ending: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double line breaks (\\n\\n); do not use *, # or other markup.';
   }
 
@@ -3986,7 +4056,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
       'Enter your question...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
 
   @override
@@ -4591,7 +4662,9 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Make a spread for $userName on self-development and balance with these three cards: $cards';
   }
 
@@ -4616,13 +4689,17 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and key meanings.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
   }
 
@@ -4657,13 +4734,17 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest today for $name.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
   }
 
@@ -4880,19 +4961,20 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite layout). The cards are assigned as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three keywords, symbolism of the card, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or aid for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (45-55 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): state, resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): expectations or fears of $userName.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the advice of the spread.\n13) Conclusion: friendly support and positive affirmation (30-35 words) for $userName.\nRequirements: total volume 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use *, #, or other markup; write only in plain text.';
   }
 
@@ -4909,11 +4991,12 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are assigned as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the card meanings to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three keywords, symbolism of the card, and explanation of how past facts influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): keywords, symbolism of the card, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): keywords, symbolism of the card, and the likely scenario of the situation\'s development regarding the question for $userName.\n6) Conclusion: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total volume 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use *, #, or other formatting marks; write only in plain text.';
   }
 
@@ -4961,13 +5044,14 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
   }
 
@@ -4978,7 +5062,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get makeNewSpread => 'Make a new spread';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
 
   @override
@@ -4986,8 +5071,13 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
       'Your request has been received. Please reveal the cards.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are given as follows: feelings of $userName — $youCard; feelings of the partner — $partnerCard; dynamics or potential of the relationship — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card says about $userName\'s feelings and expectations.\n4) $partnerCard — 40–50 words: reveal the partner\'s emotions and intentions regarding $userName\'s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
   }
 
@@ -4995,7 +5085,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get loveSpread => 'Love Spread';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
 
   @override
@@ -5076,7 +5167,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
   String get monthlyForecast => 'Monthly forecast';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
 
   @override
@@ -5101,7 +5193,8 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
       'Error retrieving the spread value. Please try again.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
 
   @override
@@ -5328,48 +5421,60 @@ class AppLocalizationsEnUs extends AppLocalizationsEn {
       'How to find harmony in life?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what opportunity is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe $userName\'s current position (work, business, or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in $userName\'s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, request a raise, learn a new skill) and describe the possible outcome.\n6) Finale — 20–25 words: friendly conclusion, positive affirmation, and 2 business emojis.\nRequirements: total volume 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, #, or other markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/outcome — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to $userName\'s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs, or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object), and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No,\" then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total volume 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, #, or other markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine $userName\'s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also applies to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists, or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread of seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak vividly and supportively, mention the name $userName at least four times and definitely connect each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of $userName\'s self-development.\n4) $mindCard — explain how to adjust the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Finale: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double \\n\\n; do not use *, #, or other markup.';
   }
 

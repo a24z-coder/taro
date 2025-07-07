@@ -375,7 +375,8 @@ class AppLocalizationsNl extends AppLocalizations {
       'Voer uw vraag in...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'De legging \"Zelfontwikkeling en balans\" bestaat uit 7 kaarten, gerangschikt in de vorm van een cirkel. Elke kaart symboliseert een bepaald aspect van jouw spirituele groei en innerlijke harmonie.';
 
   @override
@@ -981,7 +982,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Maak een legging voor $userName over zelfontwikkeling en balans met deze drie kaarten: $cards';
   }
 
@@ -1007,13 +1010,17 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschrijf de algemene betekenis van de Tarotkaart \"$cardName\" in de taal $lang. Voeg geschiedenis, symboliek en belangrijkste betekenissen toe.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschrijf de omgekeerde betekenis van de Tarotkaart \"$cardName\" in de taal $lang. Voeg tegengestelde betekenissen en waarschuwingen toe.';
   }
 
@@ -1050,13 +1057,17 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Vertaal de naam van de Tarotkaart \"$cardName\" naar $languageCode. Het antwoord mag alleen de vertaalde naam bevatten, zonder extra tekst of leestekens.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Je bent een professionele tarotist. Schrijf een inspirerende boodschap \"Kaart van de dag\" in de taal van dit verzoek voor gebruiker $name. Houd de structuur en lengte aan.\n🌟 $name, jouw kaart van de dag is $cardName!\n🔑 Kernwoorden: <noem 3–5 korte kernwoorden>\n🃏 Betekenis (≈45–50 woorden): beschrijf de hoofdenergie van de kaart en hoe deze zich vandaag zal manifesteren bij $name.\n💡 Advies (≈35–40 woorden): stel een concrete actie of mindset voor die $name helpt deze energie te benutten.\n✨ Affirmatie (1 regel): een positieve uitspraak die begint met \"Ik…\".\nVereisten: totale lengte 120–150 woorden, warme esoterische toon, 3–4 thematische emoji’s, geen lijsten in HTML/Markdown; paragrafen gescheiden door dubbele regelafbrekingen (\\n\\n).';
   }
 
@@ -1276,19 +1287,20 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: \"$userQuestion\". Beantwoord met de legging \"Keltisch kruis\" (klassiek Waite-schema). De kaarten zijn als volgt toegewezen: situatie - $situationCard; uitdaging - $challengeCard; onderbewuste - $subconsciousCard; recente verleden - $pastCard; bewuste - $consciousCard; nabije toekomst - $hiddenCard; innerlijke zelf - $selfCard; omgeving - $environmentCard; hoop of angst - $hopesCard; uitkomst - $outcomeCard. Noem de naam $userName minstens zes keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: situatie ($situationCard) / uitdaging ($challengeCard) / onderbewuste ($subconsciousCard) / recente verleden ($pastCard) / bewuste ($consciousCard) / nabije toekomst ($hiddenCard) / innerlijke zelf ($selfCard) / omgeving ($environmentCard) / hoop/angst ($hopesCard) / uitkomst ($outcomeCard).\n3) Situatie — $situationCard (45-55 woorden): drie kernwoorden, symboliek van de kaart en de huidige stand van zaken rond de vraag $userQuestion voor $userName.\n4) Uitdaging — $challengeCard (45-55 woorden): belangrijkste obstakel of hulp voor $userName.\n5) Onderbewuste — $subconsciousCard (45-55 woorden): verborgen motieven of energieën die $userName beïnvloeden.\n6) Recente verleden — $pastCard (45-55 woorden): gebeurtenissen die $userName naar de huidige situatie hebben geleid.\n7) Bewuste — $consciousCard (45-55 woorden): doelen, verwachtingen of wat $userName zich bewust is.\n8) Nabije toekomst — $hiddenCard (45-55 woorden): waarschijnlijke ontwikkeling in de komende weken.\n9) Innerlijke zelf — $selfCard (45-55 woorden): toestand, bronnen van $userName.\n10) Omgeving — $environmentCard (45-55 woorden): invloed van mensen en omstandigheden.\n11) Hoop / angst — $hopesCard (45-55 woorden): verwachtingen of angsten van $userName.\n12) Uitkomst — $outcomeCard (45-55 woorden): waarschijnlijke uitkomst rekening houdend met het advies van de legging.\n13) Afsluiting: vriendelijke steun en positieve affirmatie (30-35 woorden) voor $userName.\nVereisten: totale lengte 400-500 woorden, levendige, informele toon, 4-6 esoterische emoji’s; scheid elk blok met dubbele regelafbreking (\n); gebruik geen symbolen zoals *, # of andere markup; schrijf alleen in platte tekst.';
   }
 
@@ -1304,11 +1316,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: \"$userQuestion\". Beantwoord met de legging \"Verleden - Heden - Toekomst\". De kaarten zijn als volgt toegewezen: verleden - $pastCard; heden - $presentCard; toekomst - $hiddenCard. Noem de naam $userName minstens vier keer en verbind de betekenissen van de kaarten met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: Verleden ($pastCard) - Heden ($presentCard) - Toekomst ($hiddenCard).\n3) Blok VERLEDEN — $pastCard (40-50 woorden): drie kernwoorden, symboliek van de kaart en uitleg hoe het verleden de uitkomst van de vraag $userQuestion voor $userName beïnvloedt.\n4) Blok HEDEN — $presentCard (40-50 woorden): kernwoorden, symboliek van de kaart en huidige factoren die het antwoord op de vraag $userQuestion beïnvloeden.\n5) Blok TOEKOMST — $hiddenCard (40-50 woorden): kernwoorden, symboliek van de kaart en waarschijnlijke scenario’s voor de ontwikkeling van de situatie rond de vraag van $userName.\n6) Uitkomst: kort advies, positieve affirmatie (20-30 woorden) en duidelijke samenvatting van de kansen.\nVereisten: totale lengte 180-220 woorden, warme esoterische toon, 3-5 thematische emoji’s; scheid elk blok met dubbele regelafbreking (\n); gebruik geen symbolen zoals *, # of andere markup; schrijf alleen in platte tekst.';
   }
 
@@ -1356,13 +1369,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotlezer. De gebruiker $userName vraagt: \"$userQuestion\". Antwoord met de \"5 kaarten\" spread. De kaarten worden in volgorde gegeven: verleden - $pastCard; heden - $presentCard; verborgen - $hiddenCard; advies - $adviceCard; uitkomst - $outcomeCard. Spreek $userName minstens vijf keer aan en zorg ervoor dat je elke kaart met de vraag verbindt. Volg de structuur:\n\n1) Begroeting bij naam $userName.\n\n2) Titel: Spread: verleden ($pastCard) / heden ($presentCard) / verborgen ($hiddenCard) / advies ($adviceCard) / uitkomst ($outcomeCard).\n\n3) Verleden — $pastCard (45-55 woorden): drie sleutelwoorden, kaartsymboliek en de invloed van het verleden op $userQuestion voor $userName.\n\n4) Heden — $presentCard (45-55 woorden): sleutelwoorden, symboliek en de huidige staat van de vraag van $userName.\n\n5) Verborgen — $hiddenCard (45-55 woorden): wat onbewust de situatie van $userName beïnvloedt, met focus op symboliek.\n\n6) Advies — $adviceCard (45-55 woorden): praktische actie voor $userName, gebaseerd op de beelden van de kaart.\n\n7) Uitkomst — $outcomeCard (45-55 woorden): waarschijnlijk scenario als het advies wordt opgevolgd, gericht aan $userName.\n\n8) Conclusie: vriendelijke ondersteuning en positieve bevestiging (25-30 woorden) voor $userName.\n\nVereisten: totaal volume 230-260 woorden, levendige gesprekstoon, 3-5 esoterische emoji\'s; scheid elk blok met dubbele regelafbreking (\\n\\n); gebruik geen symbolen *, # of andere markering; schrijf alleen gewone tekst.';
   }
 
@@ -1373,7 +1387,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get makeNewSpread => 'Nieuwe legging maken';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -1381,8 +1396,13 @@ class AppLocalizationsNl extends AppLocalizations {
       'Uw verzoek is ontvangen. Open alstublieft de kaarten.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Je bent een ervaren tarotlezer. Gebruiker $userName vraagt: «$userQuestion». Beantwoord met behulp van een liefdeslegging van drie kaarten. De kaarten zijn als volgt: gevoelens van $userName — $youCard; gevoelens van de partner — $partnerCard; dynamiek of potentieel van de relatie — $dynamicCard. Noem de naam $userName minimaal drie keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 woorden: beschrijf wat de kaart zegt over de gevoelens en verwachtingen van $userName.\n4) $partnerCard — 40–50 woorden: onthul de emoties en intenties van de partner met betrekking tot de vraag van $userName.\n5) $dynamicCard — 40–50 woorden: laat zien hoe deze twee energieën samenwerken en waar de relatie toe kan leiden.\n6) Conclusie: een warme tip en positieve affirmatie (20–25 woorden) voor $userName.\nVereisten: totaal 150–180 woorden, vriendelijke romantische toon, 2–4 thematische emoji’s; paragrafen gescheiden door dubbele regeleinden (\\n\\n); vermijd symbolen *, # en enige opmaak.';
   }
 
@@ -1390,7 +1410,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get loveSpread => 'Liefdeslegging';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -1471,7 +1492,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get monthlyForecast => 'Maandelijkse voorspelling';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -1496,7 +1518,8 @@ class AppLocalizationsNl extends AppLocalizations {
       'Fout bij het ophalen van de legwaarde. Probeer het opnieuw.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die je neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -1726,48 +1749,60 @@ class AppLocalizationsNl extends AppLocalizations {
       'Hoe vind ik harmonie in het leven?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotcoach. Gebruiker $userName vraagt: «$userQuestion». Maak een legging van drie kaarten over carrière en financiën. De kaarten zijn als volgt: 1) situatie — $situationCard; 2) obstakel of belangrijke kans — $challengeCard; 3) advies en potentieel — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Spreek $userName vriendelijk en zakelijk aan: laat zien waar hij/zij staat, wat de groei blokkeert (of welke kans belangrijk is om te zien) en welke praktische stap leidt naar het gewenste inkomen. Noem de naam $userName minimaal drie keer. Volg de structuur:\n1) Groet — 1 zin.\n2) Titel: Legging: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 woorden: beschrijf de huidige situatie van $userName (werk, bedrijf of algemene financiële achtergrond) en de symboliek van de kaart.\n4) $challengeCard — 45–55 woorden: onthul de belangrijkste barrière of onopvallende kans; geef aan hoe dit zich weerspiegelt in de kaart en in de vraag van $userName.\n5) $adviceCard — 45–55 woorden: stel een concrete actie voor (bijvoorbeeld budget herzien, loonsverhoging vragen, nieuwe vaardigheid leren) en beschrijf het mogelijke resultaat.\n6) Slot — 20–25 woorden: een vriendelijke conclusie, positieve affirmatie en 2 zakelijke emoji’s.\nVereisten: totaal 160–185 woorden, heldere zakelijke toon zonder jargon, 2–3 emoji’s; paragrafen gescheiden door dubbele \\n\\n; geen gebruik van *, # of andere markeringen.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Voor en Tegen” van drie kaarten. De kaarten zijn als volgt: pluspunten — $proCard; minpunten — $conCard; advies/eindconclusie — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Noem de naam $userName minstens drie keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet aan $userName.\n2) Titel: Legging: $proCard | $conCard | $adviceCard.\n3) Pluspunten: $proCard — 45–55 woorden. Ontdek de belangrijkste voordelen of positieve bronnen die deze kaart in de situatie van $userName brengt.\n4) Minpunten: $conCard — 45–55 woorden. Beschrijf risico’s, verborgen kosten of zwakke punten van de oplossing voor $userName.\n5) Advies: $adviceCard — 45–55 woorden. Weeg de plus- en minpunten af, stel één concrete actie voor (werkwoord + object) en leg uit hoe dit de uitkomst voor $userName zal veranderen.\n6) Conclusie — één woord “Ja” of “Nee”, gevolgd door 1 zin met motivatie en een bemoedigende affirmatie (20–25 woorden) met 1–2 emoji’s.\nVereisten: totaal 150–180 woorden, vriendelijke, informele toon; elk blok gescheiden door dubbele \\n\\n; geen *, # of andere markeringen.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een professionele tarotist. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Wiel van de maand” voor $month. De kaarten zijn in volgorde: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Noem de naam minstens vijf keer, maar **niet na elke datum** — herinner het alleen binnen de adviezen. Gebruik de kalenderindeling: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (als de maand 30 dagen heeft, geldt de 12e kaart ook voor de 30e). Formaat:\n1) Groet aan $userName (1–2 zinnen).\n2) Korte introductie over het doel van de legging (1 zin).\n3–14) Voor elke kaart een regel als “1–3 $month — $card1” (zonder naam): daarna 2–3 zinnen over de kernenergie van die periode en praktisch advies, waarbij $userName op natuurlijke wijze wordt genoemd.\n15) Slot: algemeen advies voor de maand (ongeveer 40 woorden) en een inspirerende affirmatie met 2–3 emoji’s.\nVereisten: totaal 360–400 woorden; vriendelijke, motiverende toon; blokken gescheiden door dubbele \\n\\n; geen *, #, lijsten of technische notities.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotcoach. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Zelfontwikkeling en balans” van zeven kaarten. De kaarten zijn als volgt: kern — $coreCard; geest — $mindCard; emoties — $emotionCard; lichaam — $bodyCard; hulpbron — $strengthCard; blokkade — $challengeCard; advies — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Spreek levendig en ondersteunend, noem de naam $userName minstens vier keer en verbind elke kaart met de vraag. Volg structuur en formaat:\n1) Groet aan $userName.\n2) Titel: Legging: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — beschrijf de belangrijkste focus van $userName’s zelfontwikkeling.\n4) $mindCard — vertel hoe het denken af te stemmen en wat te leren.\n5) $emotionCard — onthul de emotionele hulpbron en motivatie.\n6) $bodyCard — geef tips voor zorg van lichaam en energie.\n7) $strengthCard — toon het innerlijke geschenk of externe steun.\n8) $challengeCard — benoem de belangrijkste disbalans en de oorzaken.\n9) $adviceCard — stel een concrete actie voor die alle aspecten verenigt.\n10) Slot: inspirerende affirmatie en warme aanmoediging met 2–3 emoji’s.\nVereisten: elk punt 2–3 zinnen; tussen punten dubbele \\n\\n; geen *, # of andere markeringen.';
   }
 
@@ -2193,7 +2228,8 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
       'Voer uw vraag in...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'De legging \"Zelfontwikkeling en balans\" bestaat uit 7 kaarten, gerangschikt in de vorm van een cirkel. Elke kaart symboliseert een bepaald aspect van jouw spirituele groei en innerlijke harmonie.';
 
   @override
@@ -2799,7 +2835,9 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Maak een legging voor $userName over zelfontwikkeling en balans met deze drie kaarten: $cards';
   }
 
@@ -2825,13 +2863,17 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschrijf de algemene betekenis van de Tarotkaart \"$cardName\" in de taal $lang. Voeg geschiedenis, symboliek en belangrijkste betekenissen toe.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschrijf de omgekeerde betekenis van de Tarotkaart \"$cardName\" in de taal $lang. Voeg tegengestelde betekenissen en waarschuwingen toe.';
   }
 
@@ -2868,13 +2910,17 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Vertaal de naam van de Tarotkaart \"$cardName\" naar $languageCode. Het antwoord mag alleen de vertaalde naam bevatten, zonder extra tekst of leestekens.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Je bent een professionele tarotist. Schrijf een inspirerende boodschap \"Kaart van de dag\" in de taal van dit verzoek voor gebruiker $name. Houd de structuur en lengte aan.\n🌟 $name, jouw kaart van de dag is $cardName!\n🔑 Kernwoorden: <noem 3–5 korte kernwoorden>\n🃏 Betekenis (≈45–50 woorden): beschrijf de hoofdenergie van de kaart en hoe deze zich vandaag zal manifesteren bij $name.\n💡 Advies (≈35–40 woorden): stel een concrete actie of mindset voor die $name helpt deze energie te benutten.\n✨ Affirmatie (1 regel): een positieve uitspraak die begint met \"Ik…\".\nVereisten: totale lengte 120–150 woorden, warme esoterische toon, 3–4 thematische emoji’s, geen lijsten in HTML/Markdown; paragrafen gescheiden door dubbele regelafbrekingen (\\n\\n).';
   }
 
@@ -3094,19 +3140,20 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: \"$userQuestion\". Beantwoord met de legging \"Keltisch kruis\" (klassiek Waite-schema). De kaarten zijn als volgt toegewezen: situatie - $situationCard; uitdaging - $challengeCard; onderbewuste - $subconsciousCard; recente verleden - $pastCard; bewuste - $consciousCard; nabije toekomst - $hiddenCard; innerlijke zelf - $selfCard; omgeving - $environmentCard; hoop of angst - $hopesCard; uitkomst - $outcomeCard. Noem de naam $userName minstens zes keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: situatie ($situationCard) / uitdaging ($challengeCard) / onderbewuste ($subconsciousCard) / recente verleden ($pastCard) / bewuste ($consciousCard) / nabije toekomst ($hiddenCard) / innerlijke zelf ($selfCard) / omgeving ($environmentCard) / hoop/angst ($hopesCard) / uitkomst ($outcomeCard).\n3) Situatie — $situationCard (45-55 woorden): drie kernwoorden, symboliek van de kaart en de huidige stand van zaken rond de vraag $userQuestion voor $userName.\n4) Uitdaging — $challengeCard (45-55 woorden): belangrijkste obstakel of hulp voor $userName.\n5) Onderbewuste — $subconsciousCard (45-55 woorden): verborgen motieven of energieën die $userName beïnvloeden.\n6) Recente verleden — $pastCard (45-55 woorden): gebeurtenissen die $userName naar de huidige situatie hebben geleid.\n7) Bewuste — $consciousCard (45-55 woorden): doelen, verwachtingen of wat $userName zich bewust is.\n8) Nabije toekomst — $hiddenCard (45-55 woorden): waarschijnlijke ontwikkeling in de komende weken.\n9) Innerlijke zelf — $selfCard (45-55 woorden): toestand, bronnen van $userName.\n10) Omgeving — $environmentCard (45-55 woorden): invloed van mensen en omstandigheden.\n11) Hoop / angst — $hopesCard (45-55 woorden): verwachtingen of angsten van $userName.\n12) Uitkomst — $outcomeCard (45-55 woorden): waarschijnlijke uitkomst rekening houdend met het advies van de legging.\n13) Afsluiting: vriendelijke steun en positieve affirmatie (30-35 woorden) voor $userName.\nVereisten: totale lengte 400-500 woorden, levendige, informele toon, 4-6 esoterische emoji’s; scheid elk blok met dubbele regelafbreking (\n); gebruik geen symbolen zoals *, # of andere markup; schrijf alleen in platte tekst.';
   }
 
@@ -3122,11 +3169,12 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: \"$userQuestion\". Beantwoord met de legging \"Verleden - Heden - Toekomst\". De kaarten zijn als volgt toegewezen: verleden - $pastCard; heden - $presentCard; toekomst - $hiddenCard. Noem de naam $userName minstens vier keer en verbind de betekenissen van de kaarten met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: Verleden ($pastCard) - Heden ($presentCard) - Toekomst ($hiddenCard).\n3) Blok VERLEDEN — $pastCard (40-50 woorden): drie kernwoorden, symboliek van de kaart en uitleg hoe het verleden de uitkomst van de vraag $userQuestion voor $userName beïnvloedt.\n4) Blok HEDEN — $presentCard (40-50 woorden): kernwoorden, symboliek van de kaart en huidige factoren die het antwoord op de vraag $userQuestion beïnvloeden.\n5) Blok TOEKOMST — $hiddenCard (40-50 woorden): kernwoorden, symboliek van de kaart en waarschijnlijke scenario’s voor de ontwikkeling van de situatie rond de vraag van $userName.\n6) Uitkomst: kort advies, positieve affirmatie (20-30 woorden) en duidelijke samenvatting van de kansen.\nVereisten: totale lengte 180-220 woorden, warme esoterische toon, 3-5 thematische emoji’s; scheid elk blok met dubbele regelafbreking (\n); gebruik geen symbolen zoals *, # of andere markup; schrijf alleen in platte tekst.';
   }
 
@@ -3174,13 +3222,14 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotlezer. De gebruiker $userName vraagt: \"$userQuestion\". Antwoord met de \"5 kaarten\" spread. De kaarten worden in volgorde gegeven: verleden - $pastCard; heden - $presentCard; verborgen - $hiddenCard; advies - $adviceCard; uitkomst - $outcomeCard. Spreek $userName minstens vijf keer aan en zorg ervoor dat je elke kaart met de vraag verbindt. Volg de structuur:\n\n1) Begroeting bij naam $userName.\n\n2) Titel: Spread: verleden ($pastCard) / heden ($presentCard) / verborgen ($hiddenCard) / advies ($adviceCard) / uitkomst ($outcomeCard).\n\n3) Verleden — $pastCard (45-55 woorden): drie sleutelwoorden, kaartsymboliek en de invloed van het verleden op $userQuestion voor $userName.\n\n4) Heden — $presentCard (45-55 woorden): sleutelwoorden, symboliek en de huidige staat van de vraag van $userName.\n\n5) Verborgen — $hiddenCard (45-55 woorden): wat onbewust de situatie van $userName beïnvloedt, met focus op symboliek.\n\n6) Advies — $adviceCard (45-55 woorden): praktische actie voor $userName, gebaseerd op de beelden van de kaart.\n\n7) Uitkomst — $outcomeCard (45-55 woorden): waarschijnlijk scenario als het advies wordt opgevolgd, gericht aan $userName.\n\n8) Conclusie: vriendelijke ondersteuning en positieve bevestiging (25-30 woorden) voor $userName.\n\nVereisten: totaal volume 230-260 woorden, levendige gesprekstoon, 3-5 esoterische emoji\'s; scheid elk blok met dubbele regelafbreking (\\n\\n); gebruik geen symbolen *, # of andere markering; schrijf alleen gewone tekst.';
   }
 
@@ -3191,7 +3240,8 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
   String get makeNewSpread => 'Nieuwe legging maken';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -3199,8 +3249,13 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
       'Uw verzoek is ontvangen. Open alstublieft de kaarten.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Je bent een ervaren tarotlezer. Gebruiker $userName vraagt: «$userQuestion». Beantwoord met behulp van een liefdeslegging van drie kaarten. De kaarten zijn als volgt: gevoelens van $userName — $youCard; gevoelens van de partner — $partnerCard; dynamiek of potentieel van de relatie — $dynamicCard. Noem de naam $userName minimaal drie keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet $userName persoonlijk.\n2) Titel: Legging: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 woorden: beschrijf wat de kaart zegt over de gevoelens en verwachtingen van $userName.\n4) $partnerCard — 40–50 woorden: onthul de emoties en intenties van de partner met betrekking tot de vraag van $userName.\n5) $dynamicCard — 40–50 woorden: laat zien hoe deze twee energieën samenwerken en waar de relatie toe kan leiden.\n6) Conclusie: een warme tip en positieve affirmatie (20–25 woorden) voor $userName.\nVereisten: totaal 150–180 woorden, vriendelijke romantische toon, 2–4 thematische emoji’s; paragrafen gescheiden door dubbele regeleinden (\\n\\n); vermijd symbolen *, # en enige opmaak.';
   }
 
@@ -3208,7 +3263,8 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
   String get loveSpread => 'Liefdeslegging';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -3289,7 +3345,8 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
   String get monthlyForecast => 'Maandelijkse voorspelling';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die u neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -3314,7 +3371,8 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
       'Fout bij het ophalen van de legwaarde. Probeer het opnieuw.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'De app gebruikt AI uitsluitend voor entertainmentdoeleinden. Wij zijn niet verantwoordelijk voor de beslissingen die je neemt. Raadpleeg indien nodig een specialist.';
 
   @override
@@ -3544,48 +3602,60 @@ class AppLocalizationsNlNl extends AppLocalizationsNl {
       'Hoe vind ik harmonie in het leven?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotcoach. Gebruiker $userName vraagt: «$userQuestion». Maak een legging van drie kaarten over carrière en financiën. De kaarten zijn als volgt: 1) situatie — $situationCard; 2) obstakel of belangrijke kans — $challengeCard; 3) advies en potentieel — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Spreek $userName vriendelijk en zakelijk aan: laat zien waar hij/zij staat, wat de groei blokkeert (of welke kans belangrijk is om te zien) en welke praktische stap leidt naar het gewenste inkomen. Noem de naam $userName minimaal drie keer. Volg de structuur:\n1) Groet — 1 zin.\n2) Titel: Legging: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 woorden: beschrijf de huidige situatie van $userName (werk, bedrijf of algemene financiële achtergrond) en de symboliek van de kaart.\n4) $challengeCard — 45–55 woorden: onthul de belangrijkste barrière of onopvallende kans; geef aan hoe dit zich weerspiegelt in de kaart en in de vraag van $userName.\n5) $adviceCard — 45–55 woorden: stel een concrete actie voor (bijvoorbeeld budget herzien, loonsverhoging vragen, nieuwe vaardigheid leren) en beschrijf het mogelijke resultaat.\n6) Slot — 20–25 woorden: een vriendelijke conclusie, positieve affirmatie en 2 zakelijke emoji’s.\nVereisten: totaal 160–185 woorden, heldere zakelijke toon zonder jargon, 2–3 emoji’s; paragrafen gescheiden door dubbele \\n\\n; geen gebruik van *, # of andere markeringen.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotist. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Voor en Tegen” van drie kaarten. De kaarten zijn als volgt: pluspunten — $proCard; minpunten — $conCard; advies/eindconclusie — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Noem de naam $userName minstens drie keer en verbind elke kaart met de vraag. Volg de structuur:\n1) Groet aan $userName.\n2) Titel: Legging: $proCard | $conCard | $adviceCard.\n3) Pluspunten: $proCard — 45–55 woorden. Ontdek de belangrijkste voordelen of positieve bronnen die deze kaart in de situatie van $userName brengt.\n4) Minpunten: $conCard — 45–55 woorden. Beschrijf risico’s, verborgen kosten of zwakke punten van de oplossing voor $userName.\n5) Advies: $adviceCard — 45–55 woorden. Weeg de plus- en minpunten af, stel één concrete actie voor (werkwoord + object) en leg uit hoe dit de uitkomst voor $userName zal veranderen.\n6) Conclusie — één woord “Ja” of “Nee”, gevolgd door 1 zin met motivatie en een bemoedigende affirmatie (20–25 woorden) met 1–2 emoji’s.\nVereisten: totaal 150–180 woorden, vriendelijke, informele toon; elk blok gescheiden door dubbele \\n\\n; geen *, # of andere markeringen.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een professionele tarotist. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Wiel van de maand” voor $month. De kaarten zijn in volgorde: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Noem de naam minstens vijf keer, maar **niet na elke datum** — herinner het alleen binnen de adviezen. Gebruik de kalenderindeling: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (als de maand 30 dagen heeft, geldt de 12e kaart ook voor de 30e). Formaat:\n1) Groet aan $userName (1–2 zinnen).\n2) Korte introductie over het doel van de legging (1 zin).\n3–14) Voor elke kaart een regel als “1–3 $month — $card1” (zonder naam): daarna 2–3 zinnen over de kernenergie van die periode en praktisch advies, waarbij $userName op natuurlijke wijze wordt genoemd.\n15) Slot: algemeen advies voor de maand (ongeveer 40 woorden) en een inspirerende affirmatie met 2–3 emoji’s.\nVereisten: totaal 360–400 woorden; vriendelijke, motiverende toon; blokken gescheiden door dubbele \\n\\n; geen *, #, lijsten of technische notities.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Je bent een ervaren tarotcoach. Gebruiker $userName vraagt: «$userQuestion». Maak een legging “Zelfontwikkeling en balans” van zeven kaarten. De kaarten zijn als volgt: kern — $coreCard; geest — $mindCard; emoties — $emotionCard; lichaam — $bodyCard; hulpbron — $strengthCard; blokkade — $challengeCard; advies — $adviceCard. Bepaal het geslacht van $userName op basis van de naam en gebruik de juiste uitgangen en voornaamwoorden. Spreek levendig en ondersteunend, noem de naam $userName minstens vier keer en verbind elke kaart met de vraag. Volg structuur en formaat:\n1) Groet aan $userName.\n2) Titel: Legging: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — beschrijf de belangrijkste focus van $userName’s zelfontwikkeling.\n4) $mindCard — vertel hoe het denken af te stemmen en wat te leren.\n5) $emotionCard — onthul de emotionele hulpbron en motivatie.\n6) $bodyCard — geef tips voor zorg van lichaam en energie.\n7) $strengthCard — toon het innerlijke geschenk of externe steun.\n8) $challengeCard — benoem de belangrijkste disbalans en de oorzaken.\n9) $adviceCard — stel een concrete actie voor die alle aspecten verenigt.\n10) Slot: inspirerende affirmatie en warme aanmoediging met 2–3 emoji’s.\nVereisten: elk punt 2–3 zinnen; tussen punten dubbele \\n\\n; geen *, # of andere markeringen.';
   }
 

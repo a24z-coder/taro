@@ -375,7 +375,8 @@ class AppLocalizationsCa extends AppLocalizations {
       'Introduïu la vostra pregunta...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'La tirada \"Autodesenvolupament i equilibri\" consta de 7 cartes disposades en forma de cercle. Cada carta simbolitza un aspecte determinat del teu creixement espiritual i harmonia interior.';
 
   @override
@@ -983,7 +984,9 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Fes per a $userName una tirada de desenvolupament personal i equilibri amb aquestes tres cartes: $cards';
   }
 
@@ -1009,13 +1012,17 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descriu el significat general de la carta del Tarot \"$cardName\" en l\'idioma $lang. Inclou la història, el simbolisme i els significats principals.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descriu el significat invertit de la carta del Tarot \"$cardName\" en l\'idioma $lang. Inclou els significats oposats i les advertències.';
   }
 
@@ -1051,13 +1058,17 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Traduir el nom de la carta del Tarot \"$cardName\" a $languageCode. La resposta ha de contenir només el nom traduït, sense text addicional ni signes de puntuació.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ets un tarotista professional. Escriu un missatge inspirador «Carta del dia» en l’idioma d’aquesta sol·licitud per a l’usuari $name. Mantingues l’estructura i la longitud.\n🌟 $name, la teva carta del dia és $cardName!\n🔑 Paraules clau: <indica 3–5 paraules clau curtes>\n🃏 Significat (≈45–50 paraules): descriu l’energia principal de la carta i com es manifestarà avui en $name.\n💡 Consell (≈35–40 paraules): proposa una acció concreta o una actitud que ajudi $name a aprofitar aquesta energia.\n✨ Afirmació (1 línia): una afirmació positiva que comenci amb «Jo…».\nRequisits: longitud total de 120–150 paraules, to càlid i esotèric, 3–4 emojis temàtics, sense llistes en HTML/Markdown; separa els paràgrafs amb doble salt de línia (\\n\\n).';
   }
 
@@ -1280,19 +1291,20 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista experimentat. L\'usuari $userName pregunta: \"$userQuestion\". Respon amb la tirada \"Creu Celta\" (esquema clàssic de Waite). Les cartes es distribueixen així: situació - $situationCard; repte - $challengeCard; subconscient - $subconsciousCard; passat recent - $pastCard; conscient - $consciousCard; futur proper - $hiddenCard; jo interior - $selfCard; entorn - $environmentCard; esperances o pors - $hopesCard; resultat - $outcomeCard. Menciona el nom $userName almenys sis vegades i relaciona cada carta amb la pregunta. Mantingues l\'estructura:\n1) Salutació per $userName.\n2) Títol: Tirada: situació ($situationCard) / repte ($challengeCard) / subconscient ($subconsciousCard) / passat recent ($pastCard) / conscient ($consciousCard) / futur proper ($hiddenCard) / jo interior ($selfCard) / entorn ($environmentCard) / esperances/por ($hopesCard) / resultat ($outcomeCard).\n3) Situació — $situationCard (45-55 paraules): tres paraules clau, simbolisme de la carta i l’estat actual de la qüestió $userQuestion per a $userName.\n4) Repte — $challengeCard (45-55 paraules): principal obstacle o ajuda per a $userName.\n5) Subconscient — $subconsciousCard (45-55 paraules): motius ocults o energies que influeixen en $userName.\n6) Passat recent — $pastCard (45-55 paraules): esdeveniments que han portat $userName a la situació actual.\n7) Conscient — $consciousCard (45-55 paraules): objectius, expectatives o allò que $userName és conscient.\n8) Futur proper — $hiddenCard (45-55 paraules): desenvolupament probable en les properes setmanes.\n9) Jo interior — $selfCard (45-55 paraules): estat, recursos de $userName.\n10) Entorn — $environmentCard (45-55 paraules): influència de persones i circumstàncies.\n11) Esperances / pors — $hopesCard (45-55 paraules): expectatives o temors de $userName.\n12) Resultat — $outcomeCard (45-55 paraules): resultat probable tenint en compte el consell de la tirada.\n13) Conclusió: suport amistós i afirmació positiva (30-35 paraules) per a $userName.\nPúblic total: 400-500 paraules, to viu i conversacional, 4-6 emojis esotèrics; separa cada bloc amb doble salt de línia (\n); no utilitzis símbols *, # ni cap altra marca; escriu només en text pla.';
   }
 
@@ -1309,11 +1321,12 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista experimentat. L\'usuari $userName pregunta: \"$userQuestion\". Respon amb la tirada \"Passat - Present - Futur\". Les cartes es distribueixen així: passat - $pastCard; present - $presentCard; futur - $hiddenCard. Menciona el nom $userName almenys quatre vegades i relaciona els significats de les cartes amb la pregunta. Mantingues l\'estructura:\n1) Salutació per $userName.\n2) Títol: Tirada: Passat ($pastCard) - Present ($presentCard) - Futur ($hiddenCard).\n3) Bloc PASSAT — $pastCard (40-50 paraules): tres paraules clau, simbolisme de la carta i explicació de com els fets passats influeixen en l’resultat de la qüestió $userQuestion per a $userName.\n4) Bloc PRESENT — $presentCard (40-50 paraules): paraules clau, simbolisme de la carta i factors actuals que influeixen en la resposta a la pregunta $userQuestion.\n5) Bloc FUTUR — $hiddenCard (40-50 paraules): paraules clau, simbolisme de la carta i escenari probable de desenvolupament de la situació respecte a la qüestió de $userName.\n6) Resultat: consell breu, afirmació positiva (20-30 paraules) i resum clar de les possibilitats.\nPúblic total: 180-220 paraules, to càlid i esotèric, 3-5 emojis temàtics; separa cada bloc amb doble salt de línia (\n); està prohibit utilitzar símbols *, # o altres marques; escriu només en text pla.';
   }
 
@@ -1361,13 +1374,14 @@ class AppLocalizationsCa extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un lector de tarot experimentat. L\'usuari $userName pregunta: \"$userQuestion\". Respon utilitzant l\'expansió \"5 cartes\". Les cartes es donen en ordre: passat - $pastCard; present - $presentCard; ocult - $hiddenCard; consell - $adviceCard; resultat - $outcomeCard. Fes referència a $userName almenys cinc vegades i assegura\'t de relacionar cada carta amb la pregunta. Segueix l\'estructura:\n\n1) Salutació per nom $userName.\n\n2) Títol: Expansió: passat ($pastCard) / present ($presentCard) / ocult ($hiddenCard) / consell ($adviceCard) / resultat ($outcomeCard).\n\n3) Passat — $pastCard (45-55 paraules): tres paraules clau, simbolisme de la carta i la influència del passat en $userQuestion per a $userName.\n\n4) Present — $presentCard (45-55 paraules): paraules clau, simbolisme i l\'estat actual de la pregunta de $userName.\n\n5) Ocult — $hiddenCard (45-55 paraules): el que inconscientment afecta la situació de $userName, centrant-se en el simbolisme.\n\n6) Consell — $adviceCard (45-55 paraules): acció pràctica per a $userName, basant-se en les imatges de la carta.\n\n7) Resultat — $outcomeCard (45-55 paraules): escenari probable si es segueix el consell, dirigint-se a $userName.\n\n8) Conclusió: suport amistós i afirmació positiva (25-30 paraules) per a $userName.\n\nRequisits: volum total 230-260 paraules, to conversacional viu, 3-5 emojis esotèrics; separa cada bloc amb salt de línia doble (\\n\\n); no utilitzis símbols *, # o altra marcatge; escriu només text pla.';
   }
 
@@ -1378,7 +1392,8 @@ class AppLocalizationsCa extends AppLocalizations {
   String get makeNewSpread => 'Fer una nova tirada';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'L\'aplicació utilitza la IA exclusivament amb finalitats d\'entreteniment. No ens fem responsables de les decisions que prenguis. Si cal, consulta un especialista.';
 
   @override
@@ -1386,8 +1401,13 @@ class AppLocalizationsCa extends AppLocalizations {
       'La teva sol·licitud ha estat acceptada. Si us plau, obre les cartes';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Ets un tarotista experimentat. L\'usuari $userName pregunta: «$userQuestion». Respon amb una tirada d\'amor de tres cartes. Les cartes són: sentiments de $userName — $youCard; sentiments de la parella — $partnerCard; dinàmica o potencial de la relació — $dynamicCard. Menciona el nom $userName almenys tres vegades i relaciona cada carta amb la pregunta. Segueix l\'estructura:\n1) Salutació pel nom $userName.\n2) Títol: Tirada: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 paraules: descriu què diu la carta sobre els sentiments i expectatives de $userName.\n4) $partnerCard — 40–50 paraules: revela les emocions i intencions de la parella respecte a la pregunta de $userName.\n5) $dynamicCard — 40–50 paraules: mostra com aquestes dues energies interactuen i a què poden portar la relació.\n6) Conclusió: consell càlid i afirmació positiva (20–25 paraules) per a $userName.\nRequisits: volum total de 150–180 paraules, to amistós i romàntic, 2–4 emojis temàtics; separa els paràgrafs amb doble salt de línia (\\n\\n); evita els símbols *, # i qualsevol tipus de format.';
   }
 
@@ -1395,7 +1415,8 @@ class AppLocalizationsCa extends AppLocalizations {
   String get loveSpread => 'Tirada d\'amor';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'L\'aplicació utilitza la IA exclusivament amb finalitats d\'entreteniment. No ens fem responsables de les decisions que prenguis. Si cal, consulta un especialista.';
 
   @override
@@ -1476,7 +1497,8 @@ class AppLocalizationsCa extends AppLocalizations {
   String get monthlyForecast => 'Predicció mensual';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'L\'aplicació utilitza IA exclusivament amb finalitats d\'entreteniment. No ens fem responsables de les decisions que prenguis. Si cal, consulta un especialista.';
 
   @override
@@ -1501,7 +1523,8 @@ class AppLocalizationsCa extends AppLocalizations {
       'Error en obtenir el valor de la tirada. Torneu-ho a provar.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'L’aplicació utilitza IA exclusivament amb finalitats d’entreteniment. No ens fem responsables de les decisions que prengueu. Si cal, consulteu un especialista.';
 
   @override
@@ -1729,48 +1752,60 @@ class AppLocalizationsCa extends AppLocalizations {
       'Com trobar l’harmonia a la vida?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista-coach experimentat. L’usuari $userName pregunta: «$userQuestion». Fes una tirada de tres cartes sobre carrera i finances. Les cartes són: 1) situació — $situationCard; 2) obstacle o oportunitat clau — $challengeCard; 3) consell i potencial — $adviceCard. Determina el gènere de l’usuari segons el nom $userName i utilitza les terminacions i pronoms adequats. Parla amb $userName de manera amistosa i directa: mostra on es troba, què bloqueja el seu creixement (o quina oportunitat és important de notar) i quin pas pràctic el portarà a l’ingrés desitjat. Menciona el nom $userName almenys tres vegades. Segueix l’estructura:\n1) Salutació — 1 frase.\n2) Títol: Tirada: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 paraules: descriu la situació actual de $userName (feina, negoci o context financer general) i el simbolisme de la carta.\n4) $challengeCard — 45–55 paraules: revela la principal barrera o oportunitat oculta; indica com es reflecteix a la carta i en la pregunta de $userName.\n5) $adviceCard — 45–55 paraules: proposa una acció concreta (per exemple, revisar el pressupost, demanar un augment, aprendre una nova competència) i descriu el possible resultat.\n6) Final — 20–25 paraules: conclusió amistosa, afirmació positiva i 2 emojis de negocis.\nRequisits: volum total de 160–185 paraules, to clar i professional sense argot, 2–3 emojis; separa els paràgrafs amb doble salt de línia \\n\\n; no utilitzis *, # ni cap altra marca.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista experimentat. L’usuari $userName pregunta: «$userQuestion». Fes una tirada «Pros i Contres» de tres cartes. Les cartes són: pros — $proCard; contres — $conCard; consell/resultat — $adviceCard. Determina el gènere de l’usuari segons el nom $userName i utilitza les terminacions i pronoms adequats. Menciona el nom $userName almenys tres vegades i relaciona cada carta amb la seva pregunta. Segueix l’estructura:\n1) Salutació per nom $userName.\n2) Títol: Tirada: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 paraules. Explica els principals beneficis o recursos positius que aquesta carta aporta a la situació de $userName.\n4) Contres: $conCard — 45–55 paraules. Descriu els riscos, costos ocults o punts febles de la decisió per a $userName.\n5) Consell: $adviceCard — 45–55 paraules. Pesa els pros i contres, proposa una acció concreta (verb + objecte) i explica com canviarà el resultat per a $userName.\n6) Resultat — una paraula «Sí» o «No», seguida d’una frase justificativa i una afirmació encoratjadora (20–25 paraules) amb 1–2 emojis.\nRequisits: volum total de 150–180 paraules, to amistós i conversacional; separa cada bloc amb doble salt de línia \\n\\n; sense símbols *, # ni cap altra marca.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista professional. L’usuari $userName pregunta: «$userQuestion». Fes una tirada «Roda del mes» per a $month. Les cartes van en ordre: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determina el gènere de $userName segons el nom i utilitza les terminacions i pronoms adequats. Menciona el nom almenys cinc vegades, però **no el posis després de cada data** — recorda’l només dins dels consells. Utilitza la graella calendarística de dates: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (si el mes té 30 dies, la 12a carta també correspon al dia 30). Format:\n1) Salutació per nom $userName (1–2 frases).\n2) Breu introducció sobre l’objectiu de la tirada (1 frase).\n3–14) Per a cada carta, usa la línia «1–3 $month — $card1» (sense nom): després 2–3 frases sobre l’energia clau del període i un consell pràctic, mencionant $userName de manera natural.\n15) Conclusió: consell general per al mes (uns 40 paraules) i afirmació inspiradora amb 2–3 emojis.\nRequisits: total de 360–400 paraules; to amistós i motivador; separa els blocs amb doble salt de línia \\n\\n; sense símbols *, #, llistes ni marques tècniques.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ets un tarotista-coach experimentat. L’usuari $userName pregunta: «$userQuestion». Fes una tirada «Autodesenvolupament i equilibri» de set cartes. Les cartes són: nucli — $coreCard; ment — $mindCard; emocions — $emotionCard; cos — $bodyCard; recurs — $strengthCard; bloqueig — $challengeCard; consell — $adviceCard. Determina el gènere de l’usuari segons el nom $userName i utilitza les terminacions i pronoms adequats. Parla de manera viva i de suport, menciona el nom $userName almenys quatre vegades i relaciona cada carta amb la pregunta. Segueix l’estructura i format:\n1) Salutació per nom $userName.\n2) Títol: Tirada: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — descriu el focus principal de l’autodesenvolupament de $userName.\n4) $mindCard — explica com ajustar el pensament i què aprendre.\n5) $emotionCard — revela el recurs emocional i la motivació.\n6) $bodyCard — indica com cuidar el cos i l’energia.\n7) $strengthCard — mostra el do interior o suport extern.\n8) $challengeCard — assenyala el desequilibri clau i les seves causes.\n9) $adviceCard — proposa una acció concreta que integri tots els aspectes.\n10) Final: afirmació inspiradora i un missatge càlid amb 2–3 emojis.\nRequisits: cada punt 2–3 frases; separa els punts amb doble salt de línia \\n\\n; no utilitzis símbols *, # ni cap altra marca.';
   }
 

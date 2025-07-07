@@ -373,7 +373,8 @@ class AppLocalizationsIs extends AppLocalizations {
       'Sláðu inn spurninguna þína...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Kortalagið „Sjálfsþróun og jafnvægi\" samanstendur af 7 kortum, raðað í hring. Hvert kort táknar ákveðinn þátt af andlegum vexti þínum og innri samræmi.';
 
   @override
@@ -985,7 +986,9 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Gerðu fyrir $userName spádóm um sjálfsþroska og jafnvægi með þessum þremur kortum: $cards';
   }
 
@@ -1011,13 +1014,17 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Lýstu almenna merkingu Tarot-kortsins \"$cardName\" á tungumálinu $lang. Inniheldur sögu, táknfræði og helstu merkingar.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Lýstu öfugu merkingu Tarot-kortsins \"$cardName\" á $lang. Inniheldur andstæða merkingu og viðvaranir.';
   }
 
@@ -1053,13 +1060,17 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Þýddu nafn Tarot-spjaldsins \"$cardName\" á $languageCode. Svarið á aðeins að innihalda þýdda nafnið, án frekari texta eða greinarmerkja.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Þú ert faglegur tarotlæsari. Skrifaðu hvetjandi skilaboð „Dagskortið\" á tungumáli þessa fyrirspurnar fyrir notandann $name. Fylgdu uppbyggingu og lengd.\n🌟 $name, dagskortið þitt er $cardName!\n🔑 Lykilorð: <tilgreindu 3–5 stutt lykilorð>\n🃏 Merking (≈45–50 orð): lýstu helstu orku spilsins og hvernig hún birtist í dag fyrir $name.\n💡 Ráðlegging (≈35–40 orð): gefðu ákveðna aðgerð eða viðhorf sem hjálpar $name að nýta þessa orku.\n✨ Staðfesting (1 lína): jákvæð staðhæfing sem byrjar á „Ég…\".\nKröfur: heildarlengd 120–150 orð, hlýlegur dulspekilegur tónn, 3–4 þemaviðeigandi emoji, engir listar í HTML/Markdown; aðskilji málsgreinar með tvöföldum línuskiptingum (\\n\\n).';
   }
 
@@ -1278,19 +1289,20 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með „Keltneskum kross\" dreifingu (klassísk Waite skipulag). Spilin eru úthlutuð svona: aðstæður - $situationCard; áskorun - $challengeCard; dulvitund - $subconsciousCard; nýlegt liðna - $pastCard; meðvitund - $consciousCard; næsta framtíð - $hiddenCard; innra sjálf - $selfCard; umhverfi - $environmentCard; væntingar eða ótti - $hopesCard; niðurstaða - $outcomeCard. Nefndu nafnið $userName að minnsta kosti sex sinnum og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: aðstæður ($situationCard) / áskorun ($challengeCard) / dulvitund ($subconsciousCard) / nýlegt liðna ($pastCard) / meðvitund ($consciousCard) / næsta framtíð ($hiddenCard) / innra sjálf ($selfCard) / umhverfi ($environmentCard) / væntingar/ótti ($hopesCard) / niðurstaða ($outcomeCard).\n3) Aðstæður — $situationCard (45-55 orð): þrjú lykilorð, táknmynd spilsins og núverandi aðstæður varðandi spurninguna $userQuestion fyrir $userName.\n4) Áskorun — $challengeCard (45-55 orð): helsta hindrun eða hjálp fyrir $userName.\n5) Dulvitund — $subconsciousCard (45-55 orð): falin hvöt eða orka sem hefur áhrif á $userName.\n6) Nýlegt liðna — $pastCard (45-55 orð): atburðir sem leiddu $userName að núverandi stöðu.\n7) Meðvitund — $consciousCard (45-55 orð): markmið, væntingar eða það sem $userName gerir sér grein fyrir.\n8) Næsta framtíð — $hiddenCard (45-55 orð): líkleg þróun næstu vikur.\n9) Innra sjálf — $selfCard (45-55 orð): ástand og auðlindir $userName.\n10) Umhverfi — $environmentCard (45-55 orð): áhrif fólks og aðstæðna í kring.\n11) Væntingar / ótti — $hopesCard (45-55 orð): væntingar eða ótti $userName.\n12) Niðurstaða — $outcomeCard (45-55 orð): líkleg niðurstaða miðað við ráðleggingar dreifingarinnar.\n13) Samantekt: vingjarnlegur stuðningur og jákvæð staðfesting (30-35 orð) fyrir $userName.\nKröfur: heildarorðafjöldi 400-500 orð, líflegur samtalstónn, 4-6 dulspekileg emoji; aðskilji hvern hluta með tvöföldum línuskiptingum (\n); ekki nota *, # eða aðra merkimiða; skrifaðu aðeins í einföldum texta.';
   }
 
@@ -1307,11 +1319,12 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með dreifingu \"Fortíð - Núið - Framtíð\" dreifingu (klassísk Waite skipulag). Spilin eru úthlutuð svona: fortíð - $pastCard; núið - $presentCard; framtíð - $hiddenCard. Nefndu nafnið $userName að minnsta kosti fjórum sinnum og tengdu merkingu spilanna við spurninguna. Fylgdu uppbyggingunni:\n1) Kveðja til $userName.\n2) Fyrirsögn: Dreifing: Fortíð ($pastCard) - Núið ($presentCard) - Framtíð ($hiddenCard).\n3) HLUTI FORTÍÐAR — $pastCard (40-50 orð): þrjú lykilorð, tákn spilanna og útskýring á því hvernig fortíðaratburðir hafa áhrif á niðurstöðu spurningarinnar $userQuestion fyrir $userName.\n4) HLUTI NÚINS — $presentCard (40-50 orð): lykilorð, tákn spilanna og núverandi þættir sem hafa áhrif á svar við spurningunni $userQuestion.\n5) HLUTI FRAMTÍÐAR — $hiddenCard (40-50 orð): lykilorð, tákn spilanna og líkleg þróun málsins varðandi spurninguna fyrir $userName.\n6) Niðurstaða: stutt ráð, jákvæð staðfesting (20-30 orð) og skýr samantekt á möguleikum.\nKrafist: heildarorðafjöldi 180-220 orð, hlýr esóterískur tónn, 3-5 viðeigandi tákn; skildu hvern hluta með tveimur línubrotum (\\n); ekki nota * , # eða aðra merkingu; skrifaðu eingöngu einfaldan texta.';
   }
 
@@ -1359,13 +1372,14 @@ class AppLocalizationsIs extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarotlesari. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með \"5 spila\" útlögninni. Spilin eru gefin í röð: fortíð - $pastCard; nútíð - $presentCard; framtíð - $hiddenCard; ástæða - $adviceCard; mögulegur árangur - $outcomeCard. Útskýrðu merkingu hvers spils og útskýrðu sameinaða merkingu þeirra.';
   }
 
@@ -1376,7 +1390,8 @@ class AppLocalizationsIs extends AppLocalizations {
   String get makeNewSpread => 'Gera nýtt spil';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -1384,8 +1399,13 @@ class AppLocalizationsIs extends AppLocalizations {
       'Fyrirspurn þín hefur verið móttekin. Vinsamlegast opnaðu spilin';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\" Svaraðu með ástarlestur úr þremur spilum. Spilin eru eftirfarandi: tilfinningar $userName — $youCard; tilfinningar maka — $partnerCard; þróun eða möguleikar sambandsins — $dynamicCard. Notaðu nafnið $userName að minnsta kosti þrisvar sinnum og tengdu hvert spil við spurninguna. Fylgdu þessari uppbyggingu:\n1) Kveðja til $userName.\n2) Fyrirsögn: Lestur: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 orð: lýstu því hvað spilið segir um tilfinningar og væntingar $userName.\n4) $partnerCard — 40–50 orð: útskýrðu tilfinningar og áform maka varðandi spurninguna hjá $userName.\n5) $dynamicCard — 40–50 orð: sýndu hvernig þessi tvö orkuvirkni tengjast og hvert sambandið gæti leitt.\n6) Niðurlag: hlýtt ráð og jákvæð staðfesting (20–25 orð) fyrir $userName.\nKröfur: heildarorðafjöldi 150–180 orð, vingjarnlegur og rómantískur tónn, 2–4 viðeigandi emoji; aðskilji málsgreinar með tvöföldum línubilum (\\n\\n); forðastu * , # og aðra merkingu.';
   }
 
@@ -1393,7 +1413,8 @@ class AppLocalizationsIs extends AppLocalizations {
   String get loveSpread => 'Ástarlestur';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -1474,7 +1495,8 @@ class AppLocalizationsIs extends AppLocalizations {
   String get monthlyForecast => 'Mánaðarspá';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -1499,7 +1521,8 @@ class AppLocalizationsIs extends AppLocalizations {
       'Villa við að sækja gildi spádómsins. Reyndu aftur.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -1725,48 +1748,60 @@ class AppLocalizationsIs extends AppLocalizations {
       'Hvernig finn ég jafnvægi í lífinu?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what chance is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe ${userName}s current position (work, business or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in ${userName}s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, ask for a raise, learn a new skill) and describe the possible outcome.\n6) Ending — 20–25 words: friendly conclusion, positive affirmation and 2 business emojis.\nRequirements: total length 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, # or other markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarot-ráðgjafi. Notandinn $userName spyr: \"$userQuestion\" Gerðu \"Fyrir og á móti\" dreifingu úr þremur spilum. Spilin eru þannig: kostir — $proCard; gallar — $conCard; ráðlegging/niðurstaða — $adviceCard. Ákveddu kyn notandans út frá nafni $userName og notaðu rétta ending og fornöfn. Nefndu nafnið $userName að minnsta kosti þrisvar og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: $proCard | $conCard | $adviceCard.\n3) Kostir: $proCard — 45–55 orð. Lýstu helstu kostum eða jákvæðum auðlindum sem þetta spil færir í aðstæður $userName.\n4) Gallar: $conCard — 45–55 orð. Lýstu áhættu, falnum kostnaði eða veikleikum í ákvörðun $userName.\n5) Ráðlegging: $adviceCard — 45–55 orð. Vegðu kosti og galla, leggðu til eina ákveðna aðgerð (sögn + hlut), og segðu hvernig það mun breyta niðurstöðunni fyrir $userName.\n6) Niðurstaða — eitt orð \"Já\" eða \"Nei\", svo 1 setning með rökstuðningi og hvetjandi staðfestingu (20–25 orð) með 1–2 emojí.\nKrafa: heildarorðafjöldi 150–180 orð, vingjarnlegur og samtalslegur tónn; aðskilji hvern hluta með tvöföldu \\n\\n; án *, # eða annarra merkja.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert faglegur tarot-ráðgjafi. Notandinn $userName spyr: \"$userQuestion\" Gerðu \"Mánadagshjólið\" dreifingu fyrir $month. Spilin raðast þannig: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Ákveðu kyn $userName út frá nafni og notaðu réttar endingar og fornafn. Nefnaðu nafnið að minnsta kosti fimm sinnum, en **ekki setja það eftir hverja dagsetningu** — munaðu það bara innan ráðleggingatextans. **BANNAÐ að skrifa notandanafn eftir dagsetningabil. Eftir dagsetningar, tilgreindu bara mánuðinn.** Notaðu dagsetningagrind: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ef mánuðurinn hefur 30 daga — 12. spilið á við líka 30. dag). Snið:\n\n1) Kveðja með nafni $userName (1–2 setningar).\n\n2) Skrifaðu \'Spurningin þín:\' og síðan spurning notandans $userQuestion.\n\n3) Stutt kynning um tilgang dreifingarinnar (1 setning).\n\n4–15) Fyrir hvert spil notaðu línu eins og «1–3 $month — $card1» (án nafns): síðan 2–3 setningar um lyklaorku tímabilsins og praktísk ráðleggingar, nefnaðu $userName lífrænt. EKKI endurtaka spurning notandans í hverjum málsgrein. Alla dreifingin þarf að svara lífrænt spurningunni $userQuestion, en ekki vitna í hana stöðugt. Notaðu spurninguna \'Hvað ætti að einbeita sér að þessum dögum?\' bara í sumum málsgreinum þar sem það er viðeigandi.\n\n16) Niðurstaða: almenn ráðlegging fyrir mánuðinn (um 40 orð) og hvetjandi staðhæfing með 2–3 emoji.\n\nKröfur: samtals 360–400 orð; vinalegur, hvetjandi tónn; aðskildu blokka með tvöföldum \\n\\n; engin tákn *, #, listar eða tæknilegar athugasemdir.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarot-ráðgjafi. Notandinn $userName spyr: \"$userQuestion\" Gerðu \"Sjálfsþroski og jafnvægi\" dreifingu úr sjö spilum. Spilin eru þannig: kjarni — $coreCard; hugur — $mindCard; tilfinningar — $emotionCard; líkami — $bodyCard; auðlind — $strengthCard; hindrun — $challengeCard; ráðlegging — $adviceCard. Ákveddu kyn notandans út frá nafni $userName og notaðu rétta ending og fornöfn. Talaðu líflega og styðjandi, nefndu nafnið $userName að minnsta kosti fjórum sinnum og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu og sniði:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — lýstu aðaláherslu sjálfsþroska $userName.\n4) $mindCard — segðu frá hvernig á að stilla hugsun og hvað á að læra.\n5) $emotionCard — lýstu tilfinningalegum auðlindum og hvatningu.\n6) $bodyCard — gefðu ráð um hvernig á að hugsa um líkama og orku.\n7) $strengthCard — sýndu innri gjöf eða ytri stuðning.\n8) $challengeCard — tilgreindu helstu ójafnvægi og orsakir þess.\n9) $adviceCard — leggðu til ákveðna aðgerð sem tengir alla þætti saman.\n10) Niðurstaða: hvetjandi staðfesting og hlý ráð með 2–3 emojíum.\nKrafa: hver liður 2–3 setningar; aðskilji liði með tvöföldu \\n\\n; ekki nota *, # eða önnur merki.';
   }
 
@@ -2190,7 +2225,8 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
       'Sláðu inn spurninguna þína...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Kortalagið „Sjálfsþróun og jafnvægi\" samanstendur af 7 kortum, raðað í hring. Hvert kort táknar ákveðinn þátt af andlegum vexti þínum og innri samræmi.';
 
   @override
@@ -2802,7 +2838,9 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Gerðu fyrir $userName spádóm um sjálfsþroska og jafnvægi með þessum þremur kortum: $cards';
   }
 
@@ -2828,13 +2866,17 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Lýstu almenna merkingu Tarot-kortsins \"$cardName\" á tungumálinu $lang. Inniheldur sögu, táknfræði og helstu merkingar.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Lýstu öfugu merkingu Tarot-kortsins \"$cardName\" á $lang. Inniheldur andstæða merkingu og viðvaranir.';
   }
 
@@ -2870,13 +2912,17 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Þýddu nafn Tarot-spjaldsins \"$cardName\" á $languageCode. Svarið á aðeins að innihalda þýdda nafnið, án frekari texta eða greinarmerkja.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Þú ert faglegur tarotlæsari. Skrifaðu hvetjandi skilaboð „Dagskortið\" á tungumáli þessa fyrirspurnar fyrir notandann $name. Fylgdu uppbyggingu og lengd.\n🌟 $name, dagskortið þitt er $cardName!\n🔑 Lykilorð: <tilgreindu 3–5 stutt lykilorð>\n🃏 Merking (≈45–50 orð): lýstu helstu orku spilsins og hvernig hún birtist í dag fyrir $name.\n💡 Ráðlegging (≈35–40 orð): gefðu ákveðna aðgerð eða viðhorf sem hjálpar $name að nýta þessa orku.\n✨ Staðfesting (1 lína): jákvæð staðhæfing sem byrjar á „Ég…\".\nKröfur: heildarlengd 120–150 orð, hlýlegur dulspekilegur tónn, 3–4 þemaviðeigandi emoji, engir listar í HTML/Markdown; aðskilji málsgreinar með tvöföldum línuskiptingum (\\n\\n).';
   }
 
@@ -3095,19 +3141,20 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með „Keltneskum kross\" dreifingu (klassísk Waite skipulag). Spilin eru úthlutuð svona: aðstæður - $situationCard; áskorun - $challengeCard; dulvitund - $subconsciousCard; nýlegt liðna - $pastCard; meðvitund - $consciousCard; næsta framtíð - $hiddenCard; innra sjálf - $selfCard; umhverfi - $environmentCard; væntingar eða ótti - $hopesCard; niðurstaða - $outcomeCard. Nefndu nafnið $userName að minnsta kosti sex sinnum og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: aðstæður ($situationCard) / áskorun ($challengeCard) / dulvitund ($subconsciousCard) / nýlegt liðna ($pastCard) / meðvitund ($consciousCard) / næsta framtíð ($hiddenCard) / innra sjálf ($selfCard) / umhverfi ($environmentCard) / væntingar/ótti ($hopesCard) / niðurstaða ($outcomeCard).\n3) Aðstæður — $situationCard (45-55 orð): þrjú lykilorð, táknmynd spilsins og núverandi aðstæður varðandi spurninguna $userQuestion fyrir $userName.\n4) Áskorun — $challengeCard (45-55 orð): helsta hindrun eða hjálp fyrir $userName.\n5) Dulvitund — $subconsciousCard (45-55 orð): falin hvöt eða orka sem hefur áhrif á $userName.\n6) Nýlegt liðna — $pastCard (45-55 orð): atburðir sem leiddu $userName að núverandi stöðu.\n7) Meðvitund — $consciousCard (45-55 orð): markmið, væntingar eða það sem $userName gerir sér grein fyrir.\n8) Næsta framtíð — $hiddenCard (45-55 orð): líkleg þróun næstu vikur.\n9) Innra sjálf — $selfCard (45-55 orð): ástand og auðlindir $userName.\n10) Umhverfi — $environmentCard (45-55 orð): áhrif fólks og aðstæðna í kring.\n11) Væntingar / ótti — $hopesCard (45-55 orð): væntingar eða ótti $userName.\n12) Niðurstaða — $outcomeCard (45-55 orð): líkleg niðurstaða miðað við ráðleggingar dreifingarinnar.\n13) Samantekt: vingjarnlegur stuðningur og jákvæð staðfesting (30-35 orð) fyrir $userName.\nKröfur: heildarorðafjöldi 400-500 orð, líflegur samtalstónn, 4-6 dulspekileg emoji; aðskilji hvern hluta með tvöföldum línuskiptingum (\n); ekki nota *, # eða aðra merkimiða; skrifaðu aðeins í einföldum texta.';
   }
 
@@ -3124,11 +3171,12 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með dreifingu \"Fortíð - Núið - Framtíð\" dreifingu (klassísk Waite skipulag). Spilin eru úthlutuð svona: fortíð - $pastCard; núið - $presentCard; framtíð - $hiddenCard. Nefndu nafnið $userName að minnsta kosti fjórum sinnum og tengdu merkingu spilanna við spurninguna. Fylgdu uppbyggingunni:\n1) Kveðja til $userName.\n2) Fyrirsögn: Dreifing: Fortíð ($pastCard) - Núið ($presentCard) - Framtíð ($hiddenCard).\n3) HLUTI FORTÍÐAR — $pastCard (40-50 orð): þrjú lykilorð, tákn spilanna og útskýring á því hvernig fortíðaratburðir hafa áhrif á niðurstöðu spurningarinnar $userQuestion fyrir $userName.\n4) HLUTI NÚINS — $presentCard (40-50 orð): lykilorð, tákn spilanna og núverandi þættir sem hafa áhrif á svar við spurningunni $userQuestion.\n5) HLUTI FRAMTÍÐAR — $hiddenCard (40-50 orð): lykilorð, tákn spilanna og líkleg þróun málsins varðandi spurninguna fyrir $userName.\n6) Niðurstaða: stutt ráð, jákvæð staðfesting (20-30 orð) og skýr samantekt á möguleikum.\nKrafist: heildarorðafjöldi 180-220 orð, hlýr esóterískur tónn, 3-5 viðeigandi tákn; skildu hvern hluta með tveimur línubrotum (\\n); ekki nota * , # eða aðra merkingu; skrifaðu eingöngu einfaldan texta.';
   }
 
@@ -3176,13 +3224,14 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarotlesari. Notandinn $userName spyr: \"$userQuestion\". Svaraðu með \"5 spila\" útlögninni. Spilin eru gefin í röð: fortíð - $pastCard; nútíð - $presentCard; framtíð - $hiddenCard; ástæða - $adviceCard; mögulegur árangur - $outcomeCard. Útskýrðu merkingu hvers spils og útskýrðu sameinaða merkingu þeirra.';
   }
 
@@ -3193,7 +3242,8 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
   String get makeNewSpread => 'Gera nýtt spil';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -3201,8 +3251,13 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
       'Fyrirspurn þín hefur verið móttekin. Vinsamlegast opnaðu spilin';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Þú ert reyndur spákona. Notandinn $userName spyr: \"$userQuestion\" Svaraðu með ástarlestur úr þremur spilum. Spilin eru eftirfarandi: tilfinningar $userName — $youCard; tilfinningar maka — $partnerCard; þróun eða möguleikar sambandsins — $dynamicCard. Notaðu nafnið $userName að minnsta kosti þrisvar sinnum og tengdu hvert spil við spurninguna. Fylgdu þessari uppbyggingu:\n1) Kveðja til $userName.\n2) Fyrirsögn: Lestur: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 orð: lýstu því hvað spilið segir um tilfinningar og væntingar $userName.\n4) $partnerCard — 40–50 orð: útskýrðu tilfinningar og áform maka varðandi spurninguna hjá $userName.\n5) $dynamicCard — 40–50 orð: sýndu hvernig þessi tvö orkuvirkni tengjast og hvert sambandið gæti leitt.\n6) Niðurlag: hlýtt ráð og jákvæð staðfesting (20–25 orð) fyrir $userName.\nKröfur: heildarorðafjöldi 150–180 orð, vingjarnlegur og rómantískur tónn, 2–4 viðeigandi emoji; aðskilji málsgreinar með tvöföldum línubilum (\\n\\n); forðastu * , # og aðra merkingu.';
   }
 
@@ -3210,7 +3265,8 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
   String get loveSpread => 'Ástarlestur';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -3291,7 +3347,8 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
   String get monthlyForecast => 'Mánaðarspá';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á þeim ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -3316,7 +3373,8 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
       'Villa við að sækja gildi spádómsins. Reyndu aftur.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Forritið notar gervigreind eingöngu í skemmtunarskyni. Við berum ekki ábyrgð á ákvörðunum sem þú tekur. Leitaðu til sérfræðings ef þörf krefur.';
 
   @override
@@ -3542,48 +3600,60 @@ class AppLocalizationsIsIs extends AppLocalizationsIs {
       'Hvernig finn ég jafnvægi í lífinu?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarot-ráðgjafi. Notandinn $userName spyr: \"$userQuestion\" Gerðu þriggja spila dreifingu um feril og fjármál. Spilin eru þannig: 1) staða — $situationCard; 2) hindrun eða lykil tækifæri — $challengeCard; 3) ráðlegging og möguleiki — $adviceCard. Ákveddu kyn notandans út frá nafninu $userName og notaðu rétta beygingu og fornöfn. Talaðu við $userName vingjarnlega og beint: sýndu hvar hann stendur, hvað hindrar vöxt (eða hvaða tækifæri er mikilvægt að taka eftir) og hvaða hagnýt skref leiðir að æskilegum tekjum. Nefndu nafnið $userName að minnsta kosti þrisvar. Fylgdu uppsetningu:\n1) Kveðja — 1 setning.\n2) Fyrirsögn: Dreifing: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 orð: lýstu núverandi stöðu $userName (vinna, viðskipti eða almennur fjármálastaður) og táknmynd spilsins.\n4) $challengeCard — 45–55 orð: útskýrðu helstu hindrun eða óvænt tækifæri; bendu á hvernig það endurspeglast í spilinu og í spurningu $userName.\n5) $adviceCard — 45–55 orð: leggðu til ákveðið aðgerð (t.d. endurskoða fjárhagsáætlun, biðja um launahækkun, læra nýja færni) og lýstu mögulegum árangri.\n6) Lokaniðurstaða — 20–25 orð: vingjarnleg niðurstaða, jákvæð staðfesting og 2 viðskiptaemojí.\nKrafa: heildarorðafjöldi 160–185 orð, skýr og faglegur tónn án slangurs, 2–3 emojí; aðskilji málsgreinar með tvöföldum línuskiptingum \\n\\n; ekki nota *, # eða aðra merkimiða.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarot-ráðgjafi. Notandinn $userName spyr: „$userQuestion\" Gerðu „Fyrir og á móti\" dreifingu úr þremur spilum. Spilin eru þannig: kostir — $proCard; gallar — $conCard; ráðlegging/niðurstaða — $adviceCard. Ákveddu kyn notandans út frá nafni $userName og notaðu rétta ending og fornöfn. Nefndu nafnið $userName að minnsta kosti þrisvar og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: $proCard | $conCard | $adviceCard.\n3) Kostir: $proCard — 45–55 orð. Lýstu helstu kostum eða jákvæðum auðlindum sem þetta spil færir í aðstæður $userName.\n4) Gallar: $conCard — 45–55 orð. Lýstu áhættu, falnum kostnaði eða veikleikum í ákvörðun $userName.\n5) Ráðlegging: $adviceCard — 45–55 orð. Vegðu kosti og galla, leggðu til eina ákveðna aðgerð (sögn + hlut), og segðu hvernig það mun breyta niðurstöðunni fyrir $userName.\n6) Niðurstaða — eitt orð „Já\" eða „Nei\", svo 1 setning með rökstuðningi og hvetjandi staðfestingu (20–25 orð) með 1–2 emojí.\nKrafa: heildarorðafjöldi 150–180 orð, vingjarnlegur og samtalslegur tónn; aðskilji hvern hluta með tvöföldu \\n\\n; án *, # eða annarra merkja.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert faglegur tarot-ráðgjafi. Notandinn $userName spyr: „$userQuestion\" Gerðu „Mánadagshjólið\" dreifingu fyrir $month. Spilin raðast þannig: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Ákveddu kyn $userName út frá nafni og notaðu rétta ending og fornöfn. Nefndu nafnið að minnsta kosti fimm sinnum, en **ekki bæta því við eftir hvern dagsetningu** — nefndu það aðeins í ráðleggingatextanum. Notaðu dagsetningarsnið: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ef mánuðurinn er 30 dagar, þá gildir spil 12 líka fyrir dag 30). Snið:\n1) Kveðja með nafni $userName (1–2 setningar).\n2) Stutt inngangur um tilgang dreifingarinnar (1 setning).\n3–14) Fyrir hvert spil notaðu línu eins og „1–3 $month — $card1\" (án nafns): síðan 2–3 setningar um lykilorku tímabilsins og hagnýta ráðleggingu, þar sem $userName er nefndur á náttúrulegan hátt.\n15) Niðurstaða: almenn ráðlegging fyrir mánuðinn (um 40 orð) og hvetjandi staðfesting með 2–3 emojíum.\nKrafa: heildarorðafjöldi 360–400 orð; vingjarnlegur, hvetjandi tónn; aðskilji hluta með tvöföldu \\n\\n; án *, #, lista eða tæknilegra athugasemda.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Þú ert reyndur tarot-ráðgjafi. Notandinn $userName spyr: „$userQuestion\" Gerðu „Sjálfsþroski og jafnvægi\" dreifingu úr sjö spilum. Spilin eru þannig: kjarni — $coreCard; hugur — $mindCard; tilfinningar — $emotionCard; líkami — $bodyCard; auðlind — $strengthCard; hindrun — $challengeCard; ráðlegging — $adviceCard. Ákveddu kyn notandans út frá nafni $userName og notaðu rétta ending og fornöfn. Talaðu líflega og styðjandi, nefndu nafnið $userName að minnsta kosti fjórum sinnum og tengdu hvert spil við spurninguna. Fylgdu uppbyggingu og sniði:\n1) Kveðja með nafni $userName.\n2) Titill: Dreifing: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — lýstu aðaláherslu sjálfsþroska $userName.\n4) $mindCard — segðu frá hvernig á að stilla hugsun og hvað á að læra.\n5) $emotionCard — lýstu tilfinningalegum auðlindum og hvatningu.\n6) $bodyCard — gefðu ráð um hvernig á að hugsa um líkama og orku.\n7) $strengthCard — sýndu innri gjöf eða ytri stuðning.\n8) $challengeCard — tilgreindu helstu ójafnvægi og orsakir þess.\n9) $adviceCard — leggðu til ákveðna aðgerð sem tengir alla þætti saman.\n10) Niðurstaða: hvetjandi staðfesting og hlý ráð með 2–3 emojíum.\nKrafa: hver liður 2–3 setningar; aðskilji liði með tvöföldu \\n\\n; ekki nota *, # eða önnur merki.';
   }
 

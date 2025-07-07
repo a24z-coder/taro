@@ -375,7 +375,8 @@ class AppLocalizationsSl extends AppLocalizations {
       'Vnesite vaše vprašanje...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Razporeditev \"Samoizpopolnjevanje in ravnovesje\" je sestavljena iz 7 kart, razporejenih v obliki kroga. Vsaka karta simbolizira določen vidik vaše duhovne rasti in notranje harmonije.';
 
   @override
@@ -983,7 +984,9 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Naredi za $userName razporeditev za samorazvoj in ravnovesje s temi tremi kartami: $cards';
   }
 
@@ -1009,13 +1012,17 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Opisati splošni pomen tarot karte \"$cardName\" v jeziku $lang. Vključite zgodovino, simboliko in glavne pomene.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Opis obrnjenega pomena karte Tarota \"$cardName\" v jeziku $lang. Vključi nasprotne pomene in opozorila.';
   }
 
@@ -1050,13 +1057,17 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Prevedi ime tarot karte \"$cardName\" v $languageCode. Odgovor naj vsebuje samo prevedeno ime, brez dodatnega besedila ali ločil.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ti si profesionalni tarolog. Napiši navdihujoče sporočilo »Karta dneva« v jeziku tega povpraševanja za uporabnika $name. Upoštevaj strukturo in obseg.\n🌟 $name, tvoja karta dneva je $cardName!\n🔑 Ključne besede: <navedi 3–5 kratkih ključnih besed>\n🃏 Pomen (≈45–50 besed): opiši glavno energijo karte in kako se bo danes pokazala pri $name.\n💡 Nasvet (≈35–40 besed): predlagaj konkretno dejanje ali odnos, ki bo $name pomagal izkoristiti to energijo.\n✨ Afirmacija (1 vrstica): pozitivna trditev, ki se začne z »Jaz…«.\nZahteve: skupna dolžina 120–150 besed, topel ezoteričen ton, 3–4 tematski emojiji, brez seznamov v HTML/Markdown; odstavke loči z dvema prelomoma vrstice (\\n\\n).';
   }
 
@@ -1273,19 +1284,20 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si izkušen tarolog. Uporabnik $userName sprašuje: \"$userQuestion\". Odgovori z razporedom \"Keltski križ\" (klasična Waiteova shema). Karte so dodeljene tako: situacija - $situationCard; izziv - $challengeCard; podzavestno - $subconsciousCard; nedavna preteklost - $pastCard; zavestno - $consciousCard; bližnja prihodnost - $hiddenCard; notranje jaz - $selfCard; okolje - $environmentCard; upi ali strahovi - $hopesCard; izid - $outcomeCard. Ime $userName omeni vsaj šestkrat in nujno poveži vsako karto z vprašanjem. Sledi strukturi:\n1) Pozdrav po imenu $userName.\n2) Naslov: Razpored: situacija ($situationCard) / izziv ($challengeCard) / podzavestno ($subconsciousCard) / nedavna preteklost ($pastCard) / zavestno ($consciousCard) / bližnja prihodnost ($hiddenCard) / notranje jaz ($selfCard) / okolje ($environmentCard) / upi/strahovi ($hopesCard) / izid ($outcomeCard).\n3) Situacija — $situationCard (45-55 besed): tri ključne besede, simbolika karte in trenutno stanje glede vprašanja $userQuestion za $userName.\n4) Izziv — $challengeCard (45-55 besed): glavna ovira ali pomoč za $userName.\n5) Podzavestno — $subconsciousCard (45-55 besed): skriti motivi ali energije, ki vplivajo na $userName.\n6) Nedavna preteklost — $pastCard (45-55 besed): dogodki, ki so pripeljali $userName do sedanje situacije.\n7) Zavedno — $consciousCard (45-55 besed): cilji, pričakovanja ali to, kar $userName zaveda.\n8) Bližnja prihodnost — $hiddenCard (45-55 besed): verjetni razvoj v naslednjih tednih.\n9) Notranje jaz — $selfCard (45-55 besed): stanje, viri $userName.\n10) Okolje — $environmentCard (45-55 besed): vpliv ljudi in okoliščin.\n11) Upi / strahovi — $hopesCard (45-55 besed): pričakovanja ali skrbi $userName.\n12) Izid — $outcomeCard (45-55 besed): verjetni rezultat ob upoštevanju nasveta razporeda.\n13) Zaključek: prijateljska podpora in pozitivna afirmacija (30-35 besed) za $userName.\nZahteve: skupna dolžina 400-500 besed, živ in pogovoren ton, 4-6 ezoteričnih emojijev; vsak blok loči z dvema praznima vrsticama.\nPERSPEKTIVA 2:\nNalaganje karte ni uspelo\nPERSPEKTIVA 3:\nKeltski križ\nPERSPEKTIVA 4:\nVaša zahteva je sprejeta. Prosimo, odkrijte karte\nPERSPEKTIVA 5:\nTi si izkušen tarolog. Uporabnik $userName sprašuje: \"$userQuestion\". Odgovori z razporedom \"Preteklost - Sedanjost - Prihodnost\". Karte so dodeljene tako: preteklost - $pastCard; sedanjost - $presentCard; prihodnost - $hiddenCard. Ime $userName omeni vsaj štirikrat in nujno poveži pomen kart z vprašanjem. Sledi strukturi:\n1) Pozdrav po imenu $userName.\n2) Naslov: Razpored: Preteklost ($pastCard) - Sedanjost ($presentCard) - Prihodnost ($hiddenCard).\n3) BLOK PRETEKLOST — $pastCard (40-50 besed): tri ključne besede, simbolika karte in razlaga, kako pretekli dogodki vplivajo na izid vprašanja $userQuestion za $userName.\n4) BLOK SEDANJOST — $presentCard (40-50 besed): ključne besede, simbolika karte in trenutni dejavniki, ki vplivajo na odgovor na vprašanje $userQuestion.\n5) BLOK PRIHODNOST — $hiddenCard (40-50 besed): ključne besede, simbolika karte in verjeten scenarij razvoja situacije glede na vprašanje $userName.\n6) Izid: kratek nasvet, pozitivna afirmacija (20-30 besed) in jasno povzetek možnosti.\nZahteve: skupna dolžina 180-220 besed, topel ezoteričen ton, 3-5 tematskih emojijev; vsak blok loči z dvema praznima vrsticama; prepovedano je uporabljati *, # ali druge oblikovne znake; piši samo preprosto besedilo.';
   }
 
@@ -1302,11 +1314,12 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si izkušen tarolog. Uporabnik $userName sprašuje: \"$userQuestion\". Odgovori z razporedom \"Preteklost - Sedanjost - Prihodnost\". Karte so dodeljene tako: preteklost - $pastCard; sedanjost - $presentCard; prihodnost - $hiddenCard. Ime $userName omeni vsaj štirikrat in nujno poveži pomen kart z vprašanjem. Sledi strukturi:\n\n1) Pozdrav po imenu $userName.\n\n2) Naslov: Razpored: Preteklost ($pastCard) - Sedanjost ($presentCard) - Prihodnost ($hiddenCard).\n\n3) BLOK PRETEKLOST — $pastCard (40-50 besed): tri ključne besede, simbolika karte in razlaga, kako pretekli dogodki vplivajo na izid vprašanja $userQuestion za $userName.\n\n4) BLOK SEDANJOST — $presentCard (40-50 besed): ključne besede, simbolika karte in trenutni dejavniki, ki vplivajo na odgovor na vprašanje $userQuestion.\n\n5) BLOK PRIHODNOST — $hiddenCard (40-50 besed): ključne besede, simbolika karte in verjeten scenarij razvoja situacije glede na vprašanje $userName.\n\n6) Izid: kratek nasvet, pozitivna afirmacija (20-30 besed) in jasno povzetek možnosti.\n\nZahteve: skupna dolžina 180-220 besed, topel ezoteričen ton, 3-5 tematskih emojijev; vsak blok loči z dvema praznima vrsticama; prepovedano je uporabljati *, # ali druge oblikovne znake; piši samo preprosto besedilo.';
   }
 
@@ -1354,13 +1367,14 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ste izkušen bralec tarota. Uporabnik $userName vpraša: \"$userQuestion\". Odgovorite z razporeditvijo \"5 kartic\". Karte so podane po vrstnem redu: preteklost - $pastCard; sedanjost - $presentCard; prihodnost - $hiddenCard; razlog - $adviceCard; možni rezultat - $outcomeCard. Razložite pomen vsake karte in pojasnite njihov skupni pomen.';
   }
 
@@ -1371,7 +1385,8 @@ class AppLocalizationsSl extends AppLocalizations {
   String get makeNewSpread => 'Naredi novo razporeditev';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Aplikacija uporablja umetno inteligenco izključno za zabavne namene. Za vaše odločitve ne odgovarjamo. Po potrebi se obrnite na strokovnjaka.';
 
   @override
@@ -1379,8 +1394,13 @@ class AppLocalizationsSl extends AppLocalizations {
       'Vaš zahtevek je sprejet. Prosimo, odkrijte karte';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Si izkušen tarolog. Uporabnik $userName sprašuje: «$userQuestion». Odgovori z ljubezensko razporeditvijo iz treh kart. Karte so dane tako: občutki $userName — $youCard; občutki partnerja — $partnerCard; dinamika ali potencial odnosa — $dynamicCard. Ime $userName omeni vsaj trikrat in poveži vsako karto z vprašanjem. Sledi strukturi:\n1) Pozdrav po imenu $userName.\n2) Naslov: Razporeditev: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 besed: opiši, kaj karta pove o občutkih in pričakovanjih $userName.\n4) $partnerCard — 40–50 besed: razkrij čustva in namene partnerja glede vprašanja $userName.\n5) $dynamicCard — 40–50 besed: pokaži, kako ti dve energiji sodelujeta in kam lahko odnos vodi.\n6) Zaključek: topel nasvet in pozitivna afirmacija (20–25 besed) za $userName.\nZahteve: skupna dolžina 150–180 besed, prijateljski romantični ton, 2–4 tematske emojije; odstavke loči z dvema novima vrsticama (\\n\\n); izogibaj se simbolom *, # in kakršni koli oznaki.';
   }
 
@@ -1388,7 +1408,8 @@ class AppLocalizationsSl extends AppLocalizations {
   String get loveSpread => 'Ljubezenska razporeditev';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Aplikacija uporablja umetno inteligenco izključno za zabavne namene. Za vaše odločitve ne odgovarjamo. Po potrebi se obrnite na strokovnjaka.';
 
   @override
@@ -1469,7 +1490,8 @@ class AppLocalizationsSl extends AppLocalizations {
   String get monthlyForecast => 'Mesečna napoved';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Aplikacija uporablja umetno inteligenco izključno za zabavne namene. Za vaše odločitve ne odgovarjamo. Po potrebi se posvetujte s strokovnjakom.';
 
   @override
@@ -1494,7 +1516,8 @@ class AppLocalizationsSl extends AppLocalizations {
       'Napaka pri pridobivanju vrednosti razporeditve. Poskusite znova.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Aplikacija uporablja umetno inteligenco izključno za zabavne namene. Ne odgovarjamo za vaše odločitve. Po potrebi se obrnite na strokovnjaka.';
 
   @override
@@ -1724,48 +1747,60 @@ class AppLocalizationsSl extends AppLocalizations {
       'Kako najti harmonijo v življenju?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si izkušen tarot coach. Uporabnik $userName sprašuje: «$userQuestion». Naredi razpored iz treh kart za kariero in finance. Karte so podane tako: 1) situacija — $situationCard; 2) ovira ali ključna priložnost — $challengeCard; 3) nasvet in potencial — $adviceCard. Določi spol uporabnika glede na ime $userName in uporabi pravilne končnice ter zaimke. Govori z $userName prijateljsko in jedrnato: pokaži, kje stoji, kaj blokira rast (ali katero priložnost je pomembno opaziti) in kateri praktični korak bo pripeljal do želene prihodka. Ime $userName omeni vsaj trikrat. Upoštevaj strukturo:\n1) Pozdrav — 1 stavek.\n2) Naslov: Razpored: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 besed: opiši trenutno stanje $userName (delo, posel ali splošno finančno ozadje) in simboliko karte.\n4) $challengeCard — 45–55 besed: razkrij glavno oviro ali nevidno priložnost; navedi, kako se to odraža v karti in v vprašanju $userName.\n5) $adviceCard — 45–55 besed: predlagaj konkreten ukrep (npr. preglej proračun, zaprosi za povišico, pridobi novo kompetenco) in opiši možen rezultat.\n6) Zaključek — 20–25 besed: prijateljski sklep, pozitivna afirmacija in 2 poslovna emojija.\nZahteve: skupna dolžina 160–185 besed, jasen poslovni ton brez žargona, 2–3 emojiji; odstavke loči z dvema novima vrsticama \\n\\n; ne uporabljaj *, # ali druge oznake.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si izkušen tarot bralec. Uporabnik $userName sprašuje: «$userQuestion». Naredi razpored »Za in Proti« iz treh kart. Karte so podane tako: prednosti — $proCard; slabosti — $conCard; nasvet/zaključek — $adviceCard. Določi spol uporabnika glede na ime $userName in uporabi pravilne končnice ter zaimke. Ime $userName omeni vsaj trikrat in poveži vsako karto z vprašanjem. Upoštevaj strukturo:\n1) Pozdrav po imenu $userName.\n2) Naslov: Razpored: $proCard | $conCard | $adviceCard.\n3) Prednosti: $proCard — 45–55 besed. Razkrij glavne koristi ali pozitivne vire, ki jih ta karta prinaša v situacijo $userName.\n4) Slabosti: $conCard — 45–55 besed. Opiši tveganja, skrite stroške ali šibke točke rešitve za $userName.\n5) Nasvet: $adviceCard — 45–55 besed. Pretehtaj prednosti in slabosti, predlagaj en konkreten ukrep (glagol + predmet) in povej, kako bo to spremenilo izid za $userName.\n6) Zaključek — z eno besedo »Da« ali »Ne«, nato 1 stavek utemeljitve in spodbudna afirmacija (20–25 besed) z 1–2 emojijema.\nZahteve: skupna dolžina 150–180 besed, prijateljski pogovorni ton; vsak blok loči z dvema novima vrsticama \\n\\n; brez simbolov *, # ali drugih oznak.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si profesionalen tarot bralec. Uporabnik $userName sprašuje: «$userQuestion». Naredi razpored »Kolo meseca« za $month. Karte so v vrstnem redu: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Določi spol $userName glede na ime in uporabi pravilne končnice ter zaimke. Ime omeni vsaj petkrat, vendar **ga ne vstavljaj po vsaki datumu** — spomni se ga le znotraj nasvetov. Uporabi koledarsko mrežo datumov: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (če je v mesecu 30 dni — 12. karta prav tako velja za 30. dan). Format:\n1) Pozdrav po imenu $userName (1–2 stavka).\n2) Kratek uvod o namenu razporeda (1 stavek).\n3–14) Za vsako karto uporabi vrstico »1–3 $month — $card1« (brez imena): nato 2–3 stavke o ključni energiji obdobja in praktičnem nasvetu, kjer organsko omeni $userName.\n15) Zaključek: splošni nasvet za mesec (približno 40 besed) in navdihujoča afirmacija z 2–3 emojiji.\nZahteve: skupno 360–400 besed; prijateljski, motivacijski ton; bloke loči z dvema novima vrsticama \\n\\n; brez simbolov *, #, seznamov ali tehničnih oznak.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti si izkušen tarot coach. Uporabnik $userName sprašuje: «$userQuestion». Naredi razpored »Samo-razvoj in ravnovesje« iz sedmih kart. Karte so podane tako: jedro — $coreCard; um — $mindCard; čustva — $emotionCard; telo — $bodyCard; vir — $strengthCard; blokada — $challengeCard; nasvet — $adviceCard. Določi spol uporabnika glede na ime $userName in uporabi pravilne končnice ter zaimke. Govori živo in podpirajoče, ime $userName omeni vsaj štirikrat in vsako karto poveži z vprašanjem. Upoštevaj strukturo in format:\n1) Pozdrav po imenu $userName.\n2) Naslov: Razpored: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — opiši glavni fokus samo-razvoja $userName.\n4) $mindCard — povej, kako nastaviti miselnost in česa se učiti.\n5) $emotionCard — razkrij čustveni vir in motivacijo.\n6) $bodyCard — svetuj, kako skrbeti za telo in energijo.\n7) $strengthCard — pokaži notranji dar ali zunanjo podporo.\n8) $challengeCard — označi ključno neravnovesje in njegove vzroke.\n9) $adviceCard — predlagaj konkreten ukrep, ki združuje vse vidike.\n10) Zaključek: navdihujoča afirmacija in topla spodbuda z 2–3 emojiji.\nZahteve: vsak odstavek 2–3 stavke; med odstavki uporabi dve novi vrstici \\n\\n; ne uporabljaj simbolov *, # ali drugih oznak.';
   }
 

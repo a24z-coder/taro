@@ -355,7 +355,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get pros_cons_spread_screen_enter_question_hint => '질문을 입력하세요...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"자기계발과 균형\" 스프레드는 원형으로 배열된 7장의 카드로 구성되어 있습니다. 각 카드는 여러분의 영적 성장과 내면의 조화의 특정 측면을 상징합니다.';
 
   @override
@@ -946,7 +947,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName을(를) 위한 자기계발과 균형에 관한 다음 세 장의 카드로 전개를 해보세요: $cards';
   }
 
@@ -970,13 +973,17 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang 언어로 타로 카드 \"$cardName\"의 전체 의미를 설명하세요. 역사, 상징 및 주요 의미를 포함하세요.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '타로 카드 \"$cardName\"의 역방향 의미를 $lang 언어로 설명하세요. 반대 의미와 경고를 포함하세요.';
   }
 
@@ -1010,13 +1017,17 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '타로 카드 \"$cardName\" 이름을 $languageCode로 번역하세요. 답변에는 추가 텍스트나 구두점 없이 번역된 이름만 포함되어야 합니다.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '당신은 전문 타로리더입니다. 사용자 $name을(를) 위해 이 요청 언어로 영감을 주는 \"오늘의 카드\" 메시지를 작성하세요. 구조와 분량을 준수하세요.\n🌟 $name, 오늘의 카드는 $cardName입니다!\n🔑 핵심 단어: <3–5개의 짧은 키워드 입력>\n🃏 의미 (약 45–50단어): 카드의 주요 에너지와 오늘 $name에게 어떻게 나타날지 설명하세요.\n💡 조언 (약 35–40단어): $name이(가) 이 에너지를 활용할 수 있도록 구체적인 행동이나 마음가짐을 제안하세요.\n✨ 확언 (한 줄): \"나는…\"으로 시작하는 긍정적인 문장.\n요구사항: 전체 길이 120–150단어, 따뜻한 신비주의 톤, 3–4개의 관련 이모지, HTML/Markdown 목록 금지; 단락은 두 줄 바꿈(\\n\\n)으로 구분하세요.';
   }
 
@@ -1231,19 +1242,20 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: \"$userQuestion\". \"켈틱 크로스\" 스프레드(웨이트의 고전적 배열)로 답변하세요. 카드는 다음과 같이 배치되었습니다: 상황 - $situationCard; 도전 - $challengeCard; 잠재의식 - $subconsciousCard; 최근 과거 - $pastCard; 의식 - $consciousCard; 가까운 미래 - $hiddenCard; 내면의 자아 - $selfCard; 환경 - $environmentCard; 희망 또는 두려움 - $hopesCard; 결과 - $outcomeCard. $userName 이름을 최소 여섯 번 언급하고 각 카드를 질문과 반드시 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 스프레드: 상황 ($situationCard) / 도전 ($challengeCard) / 잠재의식 ($subconsciousCard) / 최근 과거 ($pastCard) / 의식 ($consciousCard) / 가까운 미래 ($hiddenCard) / 내면의 자아 ($selfCard) / 환경 ($environmentCard) / 희망/두려움 ($hopesCard) / 결과 ($outcomeCard).\n3) 상황 — $situationCard (45-55 단어): 세 가지 핵심 단어, 카드의 상징성, 그리고 $userName의 질문 $userQuestion에 대한 현재 상황.\n4) 도전 — $challengeCard (45-55 단어): $userName에게 가장 큰 장애물 또는 도움.\n5) 잠재의식 — $subconsciousCard (45-55 단어): $userName에게 영향을 미치는 숨겨진 동기나 에너지.\n6) 최근 과거 — $pastCard (45-55 단어): $userName를 현재 상황으로 이끈 사건들.\n7) 의식 — $consciousCard (45-55 단어): $userName가 인지하고 있는 목표, 기대 또는 상황.\n8) 가까운 미래 — $hiddenCard (45-55 단어): 앞으로 몇 주 내에 예상되는 전개.\n9) 내면의 자아 — $selfCard (45-55 단어): $userName의 상태와 자원.\n10) 환경 — $environmentCard (45-55 단어): 주변 사람들과 상황의 영향.\n11) 희망 / 두려움 — $hopesCard (45-55 단어): $userName의 기대 또는 걱정.\n12) 결과 — $outcomeCard (45-55 단어): 스프레드의 조언을 고려한 예상 결과.\n13) 결론: $userName에게 친근한 격려와 긍정적인 확언 (30-35 단어).\n요구사항: 전체 분량 400-500 단어, 생동감 있는 대화체, 4-6개의 신비로운 이모지 포함; 각 블록은 두 줄 띄어쓰기(\n)로 구분; *, # 또는 다른 마크업 사용 금지; 단순 텍스트로 작성.';
   }
 
@@ -1259,11 +1271,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: \"$userQuestion\". \"과거 - 현재 - 미래\" 스프레드로 답변하세요. 카드는 다음과 같이 배치되었습니다: 과거 - $pastCard; 현재 - $presentCard; 미래 - $hiddenCard. $userName 이름을 최소 네 번 언급하고 카드의 의미를 질문과 반드시 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 스프레드: 과거 ($pastCard) - 현재 ($presentCard) - 미래 ($hiddenCard).\n3) 과거 블록 — $pastCard (40-50 단어): 세 가지 핵심 단어, 카드의 상징성, 그리고 과거의 사실이 $userName의 질문 $userQuestion 결과에 어떻게 영향을 미치는지 설명.\n4) 현재 블록 — $presentCard (40-50 단어): 핵심 단어, 카드의 상징성, 그리고 $userName의 질문 $userQuestion에 대한 현재 영향을 주는 요소.\n5) 미래 블록 — $hiddenCard (40-50 단어): 핵심 단어, 카드의 상징성, 그리고 $userName의 상황이 앞으로 어떻게 전개될 가능성이 있는지.\n6) 결론: 짧은 조언, 긍정적인 확언 (20-30 단어), 그리고 명확한 기회 요약.\n요구사항: 전체 분량 180-220 단어, 따뜻한 신비로운 어조, 3-5개의 주제별 이모지 포함; 각 블록은 두 줄 띄어쓰기(\n)로 구분; *, # 또는 다른 마크업 사용 금지; 단순 텍스트로 작성.';
   }
 
@@ -1308,13 +1321,14 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName이 질문합니다: \"$userQuestion\". \"5장의 카드\" 스프레드를 사용하여 답변하세요. 카드는 순서대로 제공됩니다: 과거 - $pastCard; 현재 - $presentCard; 숨겨진 - $hiddenCard; 조언 - $adviceCard; 결과 - $outcomeCard. $userName에게 최소 5번 언급하고 각 카드를 질문과 연결하는 것을 반드시 하세요. 구조를 따르세요:\n\n1) $userName의 이름으로 인사.\n\n2) 제목: 스프레드: 과거 ($pastCard) / 현재 ($presentCard) / 숨겨진 ($hiddenCard) / 조언 ($adviceCard) / 결과 ($outcomeCard).\n\n3) 과거 — $pastCard (45-55단어): 세 개의 키워드, 카드의 상징성, 그리고 $userName의 $userQuestion에 대한 과거의 영향.\n\n4) 현재 — $presentCard (45-55단어): 키워드, 상징성, $userName의 질문의 현재 상태.\n\n5) 숨겨진 — $hiddenCard (45-55단어): $userName의 상황에 무의식적으로 영향을 미치는 것, 상징성에 집중하여.\n\n6) 조언 — $adviceCard (45-55단어): 카드의 이미지에 기반한 $userName을 위한 실용적인 행동.\n\n7) 결과 — $outcomeCard (45-55단어): 조언을 따를 경우의 가능한 시나리오, $userName에게 언급하여.\n\n8) 결론: $userName을 위한 친근한 지원과 긍정적인 확언 (25-30단어).\n\n요구사항: 총량 230-260단어, 생생한 대화체, 3-5개의 신비로운 이모지; 각 블록을 이중 줄바꿈 (\\n\\n)으로 구분; *, # 등의 기호나 다른 마크업을 사용하지 마세요; 평문으로만 작성하세요.';
   }
 
@@ -1325,15 +1339,21 @@ class AppLocalizationsKo extends AppLocalizations {
   String get makeNewSpread => '새 배열 만들기';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       '이 애플리케이션은 오락 목적으로만 인공지능을 사용합니다. 귀하가 내린 결정에 대해 당사는 책임을 지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
   String get requestReceivedPleaseOpenCards => '귀하의 요청이 접수되었습니다. 카드를 열어주세요.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: «$userQuestion». 세 장의 카드로 사랑 점을 답해주세요. 카드는 다음과 같습니다: $userName의 감정 — $youCard; 파트너의 감정 — $partnerCard; 관계의 역동성 또는 잠재력 — $dynamicCard. $userName의 이름을 최소 세 번 언급하고 각 카드를 질문과 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 점괘: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40~50 단어: 카드가 $userName의 감정과 기대에 대해 말하는 내용을 설명하세요.\n4) $partnerCard — 40~50 단어: $userName의 질문에 대한 파트너의 감정과 의도를 밝혀주세요.\n5) $dynamicCard — 40~50 단어: 이 두 에너지가 어떻게 상호작용하며 관계가 어디로 향할 수 있는지 보여주세요.\n6) 결론: $userName에게 따뜻한 조언과 긍정적인 확언(20~25 단어).\n요구사항: 전체 분량 150~180 단어, 친근하고 로맨틱한 어조, 2~4개의 관련 이모지 사용; 단락은 두 줄 바꿈(\\n\\n)으로 구분; *, # 및 모든 마크업 사용 금지.';
   }
 
@@ -1341,7 +1361,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get loveSpread => '사랑 점괘';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       '이 애플리케이션은 오락 목적으로만 인공지능을 사용합니다. 귀하가 내린 결정에 대해 당사는 책임을 지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
@@ -1422,7 +1443,8 @@ class AppLocalizationsKo extends AppLocalizations {
   String get monthlyForecast => '월간 예측';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 귀하가 내린 결정에 대해 당사는 책임지지 않습니다. 필요 시 전문가와 상담하십시오.';
 
   @override
@@ -1447,8 +1469,8 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 사용자의 결정에 대해 책임지지 않습니다. 필요 시 전문가와 상담하세요.';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 사용자의 결정에 대해 책임지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
   String get thematic_spreads_screen_title => '주제별 카드 배열';
@@ -1663,48 +1685,60 @@ class AppLocalizationsKo extends AppLocalizations {
       '삶에서 조화를 찾는 방법은 무엇일까요?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 코치입니다. 사용자 $userName님이 질문합니다: «$userQuestion». 경력과 재정에 관한 세 장의 카드 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 1) 상황 — $situationCard; 2) 장애물 또는 핵심 기회 — $challengeCard; 3) 조언과 잠재력 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. $userName님께 친근하고 명확하게 말하세요: 현재 위치, 성장을 막는 요소(또는 주목해야 할 기회), 원하는 수입으로 이끄는 실질적인 조치를 보여주세요. $userName님의 이름을 최소 세 번 언급하세요. 구조를 준수하세요:\n1) 인사 — 한 문장.\n2) 제목: 리딩: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 단어: $userName님의 현재 상황(직장, 사업 또는 전반적인 재정 상태)과 카드의 상징을 설명하세요.\n4) $challengeCard — 45–55 단어: 주요 장애물이나 숨겨진 기회를 밝히고, 그것이 카드와 $userName님의 질문에 어떻게 반영되는지 설명하세요.\n5) $adviceCard — 45–55 단어: 구체적인 행동(예: 예산 재검토, 승진 요청, 새로운 역량 학습)을 제안하고 가능한 결과를 설명하세요.\n6) 마무리 — 20–25 단어: 친근한 결론, 긍정적인 확언과 비즈니스 이모지 2개.\n요구사항: 총 160–185 단어, 명확하고 비즈니스 톤, 은어 사용 금지, 이모지 2–3개; 문단은 두 줄 바꿈으로 구분; *, # 등 기호나 다른 마크업 사용 금지.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 전문가입니다. 사용자 $userName님이 질문합니다: «$userQuestion». 세 장의 카드로 ‘찬반\' 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 찬성 — $proCard; 반대 — $conCard; 조언/결론 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. $userName님의 이름을 최소 세 번 언급하고 각 카드를 질문과 연결하세요. 구조를 준수하세요:\n1) $userName님 이름으로 인사.\n2) 제목: 리딩: $proCard | $conCard | $adviceCard.\n3) 찬성: $proCard — 45–55 단어. 이 카드가 $userName님의 상황에 가져다주는 주요 이점이나 긍정적 자원을 설명하세요.\n4) 반대: $conCard — 45–55 단어. $userName님 결정의 위험, 숨겨진 비용 또는 약점을 설명하세요.\n5) 조언: $adviceCard — 45–55 단어. 찬반을 저울질하고 구체적인 행동(동사 + 목적어)을 제안하며, 이것이 $userName님의 결과에 어떻게 영향을 미칠지 설명하세요.\n6) 결론 — 한 단어 \'예\' 또는 \'아니오\', 한 문장 이유와 격려의 확언(20–25 단어) 및 이모지 1–2개.\n요구사항: 총 150–180 단어, 친근하고 대화체 톤; 각 블록은 두 줄 바꿈으로 구분; *, # 등 마크업 사용 금지.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 전문 타로 리더입니다. 사용자 $userName님이 질문합니다: «$userQuestion». $month월 \'달의 수레바퀴\' 리딩을 작성하세요. 카드는 순서대로 배치됩니다: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName님의 이름으로 성별을 파악하고 올바른 어미와 대명사를 사용하세요. 이름은 최소 다섯 번 언급하되, 각 날짜 뒤에는 넣지 말고 조언 내에서 자연스럽게 언급하세요. 날짜는 다음과 같이 구분하세요: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (30일인 달은 12번째 카드가 30일에 해당). 형식:\n1) $userName님 이름으로 인사 (1–2 문장).\n2) 리딩 목적 간단 소개 (1 문장).\n3–14) 각 카드마다 “1–3 $month — $card1” 형식으로 날짜와 카드 이름만 쓰고, 2–3 문장으로 해당 기간의 핵심 에너지와 실용적인 조언을 $userName님을 자연스럽게 언급하며 설명하세요.\n15) 결론: 한 달 전체 조언(약 40단어)과 영감을 주는 확언, 이모지 2–3개.\n요구사항: 총 360–400 단어; 친근하고 동기 부여하는 톤; 블록은 두 줄 바꿈으로 구분; *, #, 목록, 기술적 표시 금지.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 코치입니다. 사용자 $userName님이 질문합니다: «$userQuestion». ‘자기계발과 균형\' 7장 카드 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 핵심 — $coreCard; 마음 — $mindCard; 감정 — $emotionCard; 몸 — $bodyCard; 자원 — $strengthCard; 장애 — $challengeCard; 조언 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. 생동감 있고 지지하는 어조로 말하며, $userName님의 이름을 최소 네 번 언급하고 각 카드를 질문과 연결하세요. 구조와 형식을 준수하세요:\n1) $userName님 이름으로 인사.\n2) 제목: 리딩: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName님의 자기계발의 주요 초점을 설명하세요.\n4) $mindCard — 사고방식을 조정하고 배워야 할 점을 이야기하세요.\n5) $emotionCard — 감정적 자원과 동기를 밝히세요.\n6) $bodyCard — 몸과 에너지를 돌보는 방법을 제안하세요.\n7) $strengthCard — 내면의 선물이나 외부 지원을 보여주세요.\n8) $challengeCard — 주요 불균형과 그 원인을 지적하세요.\n9) $adviceCard — 모든 측면을 아우르는 구체적인 행동을 제안하세요.\n10) 마무리 — 영감을 주는 확언과 따뜻한 격려, 이모지 2–3개.\n요구사항: 각 항목 2–3 문장; 항목 사이에 두 줄 바꿈; *, # 등 마크업 금지.';
   }
 
@@ -2109,7 +2143,8 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
   String get pros_cons_spread_screen_enter_question_hint => '질문을 입력하세요...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"자기계발과 균형\" 스프레드는 원형으로 배열된 7장의 카드로 구성되어 있습니다. 각 카드는 여러분의 영적 성장과 내면의 조화의 특정 측면을 상징합니다.';
 
   @override
@@ -2700,7 +2735,9 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName을(를) 위한 자기계발과 균형에 관한 다음 세 장의 카드로 전개를 해보세요: $cards';
   }
 
@@ -2724,13 +2761,17 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang 언어로 타로 카드 \"$cardName\"의 전체 의미를 설명하세요. 역사, 상징 및 주요 의미를 포함하세요.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '타로 카드 \"$cardName\"의 역방향 의미를 $lang 언어로 설명하세요. 반대 의미와 경고를 포함하세요.';
   }
 
@@ -2764,13 +2805,17 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '타로 카드 \"$cardName\" 이름을 $languageCode로 번역하세요. 답변에는 추가 텍스트나 구두점 없이 번역된 이름만 포함되어야 합니다.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '당신은 전문 타로리더입니다. 사용자 $name을(를) 위해 이 요청 언어로 영감을 주는 \"오늘의 카드\" 메시지를 작성하세요. 구조와 분량을 준수하세요.\n🌟 $name, 오늘의 카드는 $cardName입니다!\n🔑 핵심 단어: <3–5개의 짧은 키워드 입력>\n🃏 의미 (약 45–50단어): 카드의 주요 에너지와 오늘 $name에게 어떻게 나타날지 설명하세요.\n💡 조언 (약 35–40단어): $name이(가) 이 에너지를 활용할 수 있도록 구체적인 행동이나 마음가짐을 제안하세요.\n✨ 확언 (한 줄): \"나는…\"으로 시작하는 긍정적인 문장.\n요구사항: 전체 길이 120–150단어, 따뜻한 신비주의 톤, 3–4개의 관련 이모지, HTML/Markdown 목록 금지; 단락은 두 줄 바꿈(\\n\\n)으로 구분하세요.';
   }
 
@@ -2985,19 +3030,20 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: \"$userQuestion\". \"켈틱 크로스\" 스프레드(웨이트의 고전적 배열)로 답변하세요. 카드는 다음과 같이 배치되었습니다: 상황 - $situationCard; 도전 - $challengeCard; 잠재의식 - $subconsciousCard; 최근 과거 - $pastCard; 의식 - $consciousCard; 가까운 미래 - $hiddenCard; 내면의 자아 - $selfCard; 환경 - $environmentCard; 희망 또는 두려움 - $hopesCard; 결과 - $outcomeCard. $userName 이름을 최소 여섯 번 언급하고 각 카드를 질문과 반드시 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 스프레드: 상황 ($situationCard) / 도전 ($challengeCard) / 잠재의식 ($subconsciousCard) / 최근 과거 ($pastCard) / 의식 ($consciousCard) / 가까운 미래 ($hiddenCard) / 내면의 자아 ($selfCard) / 환경 ($environmentCard) / 희망/두려움 ($hopesCard) / 결과 ($outcomeCard).\n3) 상황 — $situationCard (45-55 단어): 세 가지 핵심 단어, 카드의 상징성, 그리고 $userName의 질문 $userQuestion에 대한 현재 상황.\n4) 도전 — $challengeCard (45-55 단어): $userName에게 가장 큰 장애물 또는 도움.\n5) 잠재의식 — $subconsciousCard (45-55 단어): $userName에게 영향을 미치는 숨겨진 동기나 에너지.\n6) 최근 과거 — $pastCard (45-55 단어): $userName를 현재 상황으로 이끈 사건들.\n7) 의식 — $consciousCard (45-55 단어): $userName가 인지하고 있는 목표, 기대 또는 상황.\n8) 가까운 미래 — $hiddenCard (45-55 단어): 앞으로 몇 주 내에 예상되는 전개.\n9) 내면의 자아 — $selfCard (45-55 단어): $userName의 상태와 자원.\n10) 환경 — $environmentCard (45-55 단어): 주변 사람들과 상황의 영향.\n11) 희망 / 두려움 — $hopesCard (45-55 단어): $userName의 기대 또는 걱정.\n12) 결과 — $outcomeCard (45-55 단어): 스프레드의 조언을 고려한 예상 결과.\n13) 결론: $userName에게 친근한 격려와 긍정적인 확언 (30-35 단어).\n요구사항: 전체 분량 400-500 단어, 생동감 있는 대화체, 4-6개의 신비로운 이모지 포함; 각 블록은 두 줄 띄어쓰기(\n)로 구분; *, # 또는 다른 마크업 사용 금지; 단순 텍스트로 작성.';
   }
 
@@ -3013,11 +3059,12 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: \"$userQuestion\". \"과거 - 현재 - 미래\" 스프레드로 답변하세요. 카드는 다음과 같이 배치되었습니다: 과거 - $pastCard; 현재 - $presentCard; 미래 - $hiddenCard. $userName 이름을 최소 네 번 언급하고 카드의 의미를 질문과 반드시 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 스프레드: 과거 ($pastCard) - 현재 ($presentCard) - 미래 ($hiddenCard).\n3) 과거 블록 — $pastCard (40-50 단어): 세 가지 핵심 단어, 카드의 상징성, 그리고 과거의 사실이 $userName의 질문 $userQuestion 결과에 어떻게 영향을 미치는지 설명.\n4) 현재 블록 — $presentCard (40-50 단어): 핵심 단어, 카드의 상징성, 그리고 $userName의 질문 $userQuestion에 대한 현재 영향을 주는 요소.\n5) 미래 블록 — $hiddenCard (40-50 단어): 핵심 단어, 카드의 상징성, 그리고 $userName의 상황이 앞으로 어떻게 전개될 가능성이 있는지.\n6) 결론: 짧은 조언, 긍정적인 확언 (20-30 단어), 그리고 명확한 기회 요약.\n요구사항: 전체 분량 180-220 단어, 따뜻한 신비로운 어조, 3-5개의 주제별 이모지 포함; 각 블록은 두 줄 띄어쓰기(\n)로 구분; *, # 또는 다른 마크업 사용 금지; 단순 텍스트로 작성.';
   }
 
@@ -3062,13 +3109,14 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName이 질문합니다: \"$userQuestion\". \"5장의 카드\" 스프레드를 사용하여 답변하세요. 카드는 순서대로 제공됩니다: 과거 - $pastCard; 현재 - $presentCard; 숨겨진 - $hiddenCard; 조언 - $adviceCard; 결과 - $outcomeCard. $userName에게 최소 5번 언급하고 각 카드를 질문과 연결하는 것을 반드시 하세요. 구조를 따르세요:\n\n1) $userName의 이름으로 인사.\n\n2) 제목: 스프레드: 과거 ($pastCard) / 현재 ($presentCard) / 숨겨진 ($hiddenCard) / 조언 ($adviceCard) / 결과 ($outcomeCard).\n\n3) 과거 — $pastCard (45-55단어): 세 개의 키워드, 카드의 상징성, 그리고 $userName의 $userQuestion에 대한 과거의 영향.\n\n4) 현재 — $presentCard (45-55단어): 키워드, 상징성, $userName의 질문의 현재 상태.\n\n5) 숨겨진 — $hiddenCard (45-55단어): $userName의 상황에 무의식적으로 영향을 미치는 것, 상징성에 집중하여.\n\n6) 조언 — $adviceCard (45-55단어): 카드의 이미지에 기반한 $userName을 위한 실용적인 행동.\n\n7) 결과 — $outcomeCard (45-55단어): 조언을 따를 경우의 가능한 시나리오, $userName에게 언급하여.\n\n8) 결론: $userName을 위한 친근한 지원과 긍정적인 확언 (25-30단어).\n\n요구사항: 총량 230-260단어, 생생한 대화체, 3-5개의 신비로운 이모지; 각 블록을 이중 줄바꿈 (\\n\\n)으로 구분; *, # 등의 기호나 다른 마크업을 사용하지 마세요; 평문으로만 작성하세요.';
   }
 
@@ -3079,15 +3127,21 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
   String get makeNewSpread => '새 배열 만들기';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       '이 애플리케이션은 오락 목적으로만 인공지능을 사용합니다. 귀하가 내린 결정에 대해 당사는 책임을 지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
   String get requestReceivedPleaseOpenCards => '귀하의 요청이 접수되었습니다. 카드를 열어주세요.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '당신은 경험 많은 타로 리더입니다. 사용자 $userName가 질문합니다: «$userQuestion». 세 장의 카드로 사랑 점을 답해주세요. 카드는 다음과 같습니다: $userName의 감정 — $youCard; 파트너의 감정 — $partnerCard; 관계의 역동성 또는 잠재력 — $dynamicCard. $userName의 이름을 최소 세 번 언급하고 각 카드를 질문과 연결하세요. 구조는 다음과 같습니다:\n1) $userName 이름으로 인사하기.\n2) 제목: 점괘: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40~50 단어: 카드가 $userName의 감정과 기대에 대해 말하는 내용을 설명하세요.\n4) $partnerCard — 40~50 단어: $userName의 질문에 대한 파트너의 감정과 의도를 밝혀주세요.\n5) $dynamicCard — 40~50 단어: 이 두 에너지가 어떻게 상호작용하며 관계가 어디로 향할 수 있는지 보여주세요.\n6) 결론: $userName에게 따뜻한 조언과 긍정적인 확언(20~25 단어).\n요구사항: 전체 분량 150~180 단어, 친근하고 로맨틱한 어조, 2~4개의 관련 이모지 사용; 단락은 두 줄 바꿈(\\n\\n)으로 구분; *, # 및 모든 마크업 사용 금지.';
   }
 
@@ -3095,7 +3149,8 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
   String get loveSpread => '사랑 점괘';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       '이 애플리케이션은 오락 목적으로만 인공지능을 사용합니다. 귀하가 내린 결정에 대해 당사는 책임을 지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
@@ -3176,7 +3231,8 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
   String get monthlyForecast => '월간 예측';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 귀하가 내린 결정에 대해 당사는 책임지지 않습니다. 필요 시 전문가와 상담하십시오.';
 
   @override
@@ -3201,8 +3257,8 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 사용자의 결정에 대해 책임지지 않습니다. 필요 시 전문가와 상담하세요.';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '이 애플리케이션은 오락 목적으로만 AI를 사용합니다. 사용자의 결정에 대해 책임지지 않습니다. 필요 시 전문가와 상담하세요.';
 
   @override
   String get thematic_spreads_screen_title => '주제별 카드 배열';
@@ -3417,48 +3473,60 @@ class AppLocalizationsKoKr extends AppLocalizationsKo {
       '삶에서 조화를 찾는 방법은 무엇일까요?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 코치입니다. 사용자 $userName님이 질문합니다: «$userQuestion». 경력과 재정에 관한 세 장의 카드 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 1) 상황 — $situationCard; 2) 장애물 또는 핵심 기회 — $challengeCard; 3) 조언과 잠재력 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. $userName님께 친근하고 명확하게 말하세요: 현재 위치, 성장을 막는 요소(또는 주목해야 할 기회), 원하는 수입으로 이끄는 실질적인 조치를 보여주세요. $userName님의 이름을 최소 세 번 언급하세요. 구조를 준수하세요:\n1) 인사 — 한 문장.\n2) 제목: 리딩: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 단어: $userName님의 현재 상황(직장, 사업 또는 전반적인 재정 상태)과 카드의 상징을 설명하세요.\n4) $challengeCard — 45–55 단어: 주요 장애물이나 숨겨진 기회를 밝히고, 그것이 카드와 $userName님의 질문에 어떻게 반영되는지 설명하세요.\n5) $adviceCard — 45–55 단어: 구체적인 행동(예: 예산 재검토, 승진 요청, 새로운 역량 학습)을 제안하고 가능한 결과를 설명하세요.\n6) 마무리 — 20–25 단어: 친근한 결론, 긍정적인 확언과 비즈니스 이모지 2개.\n요구사항: 총 160–185 단어, 명확하고 비즈니스 톤, 은어 사용 금지, 이모지 2–3개; 문단은 두 줄 바꿈으로 구분; *, # 등 기호나 다른 마크업 사용 금지.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 전문가입니다. 사용자 $userName님이 질문합니다: «$userQuestion». 세 장의 카드로 ‘찬반\' 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 찬성 — $proCard; 반대 — $conCard; 조언/결론 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. $userName님의 이름을 최소 세 번 언급하고 각 카드를 질문과 연결하세요. 구조를 준수하세요:\n1) $userName님 이름으로 인사.\n2) 제목: 리딩: $proCard | $conCard | $adviceCard.\n3) 찬성: $proCard — 45–55 단어. 이 카드가 $userName님의 상황에 가져다주는 주요 이점이나 긍정적 자원을 설명하세요.\n4) 반대: $conCard — 45–55 단어. $userName님 결정의 위험, 숨겨진 비용 또는 약점을 설명하세요.\n5) 조언: $adviceCard — 45–55 단어. 찬반을 저울질하고 구체적인 행동(동사 + 목적어)을 제안하며, 이것이 $userName님의 결과에 어떻게 영향을 미칠지 설명하세요.\n6) 결론 — 한 단어 \'예\' 또는 \'아니오\', 한 문장 이유와 격려의 확언(20–25 단어) 및 이모지 1–2개.\n요구사항: 총 150–180 단어, 친근하고 대화체 톤; 각 블록은 두 줄 바꿈으로 구분; *, # 등 마크업 사용 금지.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 전문 타로 리더입니다. 사용자 $userName님이 질문합니다: «$userQuestion». $month월 \'달의 수레바퀴\' 리딩을 작성하세요. 카드는 순서대로 배치됩니다: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName님의 이름으로 성별을 파악하고 올바른 어미와 대명사를 사용하세요. 이름은 최소 다섯 번 언급하되, 각 날짜 뒤에는 넣지 말고 조언 내에서 자연스럽게 언급하세요. 날짜는 다음과 같이 구분하세요: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (30일인 달은 12번째 카드가 30일에 해당). 형식:\n1) $userName님 이름으로 인사 (1–2 문장).\n2) 리딩 목적 간단 소개 (1 문장).\n3–14) 각 카드마다 “1–3 $month — $card1” 형식으로 날짜와 카드 이름만 쓰고, 2–3 문장으로 해당 기간의 핵심 에너지와 실용적인 조언을 $userName님을 자연스럽게 언급하며 설명하세요.\n15) 결론: 한 달 전체 조언(약 40단어)과 영감을 주는 확언, 이모지 2–3개.\n요구사항: 총 360–400 단어; 친근하고 동기 부여하는 톤; 블록은 두 줄 바꿈으로 구분; *, #, 목록, 기술적 표시 금지.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '당신은 경험 많은 타로 코치입니다. 사용자 $userName님이 질문합니다: «$userQuestion». ‘자기계발과 균형\' 7장 카드 리딩을 해주세요. 카드는 다음과 같이 배치됩니다: 핵심 — $coreCard; 마음 — $mindCard; 감정 — $emotionCard; 몸 — $bodyCard; 자원 — $strengthCard; 장애 — $challengeCard; 조언 — $adviceCard. $userName님의 이름으로 성별을 파악하여 올바른 어미와 대명사를 사용하세요. 생동감 있고 지지하는 어조로 말하며, $userName님의 이름을 최소 네 번 언급하고 각 카드를 질문과 연결하세요. 구조와 형식을 준수하세요:\n1) $userName님 이름으로 인사.\n2) 제목: 리딩: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName님의 자기계발의 주요 초점을 설명하세요.\n4) $mindCard — 사고방식을 조정하고 배워야 할 점을 이야기하세요.\n5) $emotionCard — 감정적 자원과 동기를 밝히세요.\n6) $bodyCard — 몸과 에너지를 돌보는 방법을 제안하세요.\n7) $strengthCard — 내면의 선물이나 외부 지원을 보여주세요.\n8) $challengeCard — 주요 불균형과 그 원인을 지적하세요.\n9) $adviceCard — 모든 측면을 아우르는 구체적인 행동을 제안하세요.\n10) 마무리 — 영감을 주는 확언과 따뜻한 격려, 이모지 2–3개.\n요구사항: 각 항목 2–3 문장; 항목 사이에 두 줄 바꿈; *, # 등 마크업 금지.';
   }
 

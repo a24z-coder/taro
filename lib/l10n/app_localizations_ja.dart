@@ -359,7 +359,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get pros_cons_spread_screen_enter_question_hint => '質問を入力してください...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '「自己成長とバランス」のスプレッドは、円形に配置された7枚のカードで構成されています。各カードはあなたの精神的成長と内なる調和の特定の側面を象徴しています。';
 
   @override
@@ -943,7 +944,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userNameのために、これらの3枚のカードで自己成長とバランスのスプレッドを作成してください：$cards';
   }
 
@@ -967,13 +970,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang語でタロットカード「$cardName」の全体的な意味を説明してください。歴史、象徴性、主な意味を含めてください。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'タロットカード「$cardName」の逆位置の意味を$langで説明してください。反対の意味や警告を含めてください。';
   }
 
@@ -1007,13 +1014,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'タロットカード「$cardName」の名前を$languageCodeに翻訳してください。回答には翻訳された名前のみを含め、追加のテキストや句読点は含めないでください。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'あなたはプロのタロットリーダーです。ユーザー$nameのために、このリクエストの言語で「今日のカード」のインスピレーションメッセージを書いてください。構成と分量を守ってください。\n🌟 $name、あなたの今日のカードは$cardNameです！\n🔑 キーワード：<3～5の短いキーワードを記入してください>\n🃏 意味（約45～50語）：カードの主なエネルギーと、それが今日$nameにどのように現れるかを説明してください。\n💡 アドバイス（約35～40語）：$nameがこのエネルギーを活かすための具体的な行動や心構えを提案してください。\n✨ アファメーション（一行）：「私は…」で始まるポジティブな宣言。\n要件：全体の長さは120～150語、温かみのあるエソテリックなトーン、3～4つのテーマに合った絵文字、HTML/Markdownのリストは使わず、段落は二重改行（\\n\\n）で区切ってください。';
   }
 
@@ -1228,19 +1239,20 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。「ケルト十字」スプレッド（ウェイト版のクラシックな配置）で答えてください。カードは次のように配置されています：状況 - $situationCard；挑戦 - $challengeCard；潜在意識 - $subconsciousCard；最近の過去 - $pastCard；顕在意識 - $consciousCard；近い未来 - $hiddenCard；内なる自己 - $selfCard；環境 - $environmentCard；希望または恐れ - $hopesCard；結果 - $outcomeCard。$userNameの名前を最低6回は言及し、各カードを質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：スプレッド：状況（$situationCard）／挑戦（$challengeCard）／潜在意識（$subconsciousCard）／最近の過去（$pastCard）／顕在意識（$consciousCard）／近い未来（$hiddenCard）／内なる自己（$selfCard）／環境（$environmentCard）／希望・恐れ（$hopesCard）／結果（$outcomeCard）。\n3) 状況 — $situationCard（45-55語）：3つのキーワード、カードの象徴性、$userNameの質問「$userQuestion」に対する現在の状況。\n4) 挑戦 — $challengeCard（45-55語）：$userNameにとっての主な障害または助け。\n5) 潜在意識 — $subconsciousCard（45-55語）：$userNameに影響を与える隠れた動機やエネルギー。\n6) 最近の過去 — $pastCard（45-55語）：$userNameを現在の状況に導いた出来事。\n7) 顕在意識 — $consciousCard（45-55語）：$userNameが認識している目標や期待。\n8) 近い未来 — $hiddenCard（45-55語）：今後数週間の予想される展開。\n9) 内なる自己 — $selfCard（45-55語）：$userNameの状態やリソース。\n10) 環境 — $environmentCard（45-55語）：人々や状況の影響。\n11) 希望・恐れ — $hopesCard（45-55語）：$userNameの期待や不安。\n12) 結果 — $outcomeCard（45-55語）：スプレッドの助言を考慮した場合の予想される結果。\n13) 結び：$userNameへの親しみやすい励ましとポジティブなアファメーション（30-35語）。\n要件：全体で400-500語、活き活きとした会話調、エゾテリックな絵文字4-6個；各ブロックは二重改行で区切ること。\n*, #などの記号やマークアップは使わず、テキストのみで記述してください。';
   }
 
@@ -1256,11 +1268,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。「過去 - 現在 - 未来」スプレッドで答えてください。カードは次のように配置されています：過去 - $pastCard；現在 - $presentCard；未来 - $hiddenCard。$userNameの名前を最低4回は言及し、カードの意味を質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：スプレッド：過去（$pastCard） - 現在（$presentCard） - 未来（$hiddenCard）。\n3) 過去ブロック — $pastCard（40-50語）：3つのキーワード、カードの象徴性、過去の事実が$userNameの質問「$userQuestion」の結果にどのように影響しているかの説明。\n4) 現在ブロック — $presentCard（40-50語）：キーワード、カードの象徴性、質問「$userQuestion」への答えに影響を与える現在の要因。\n5) 未来ブロック — $hiddenCard（40-50語）：キーワード、カードの象徴性、$userNameの質問に対する状況の予想される展開。\n6) 結果：短いアドバイス、ポジティブなアファメーション（20-30語）、明確なチャンスのまとめ。\n要件：全体で180-220語、温かみのあるエゾテリックなトーン、テーマに合った絵文字3-5個；各ブロックは二重改行で区切ること。\n*, #などの記号やマークアップは使わず、テキストのみで記述してください。';
   }
 
@@ -1306,13 +1319,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが質問します：「$userQuestion」。5枚のカードスプレッドを使用して答えてください。カードは順番に与えられます：過去 - $pastCard; 現在 - $presentCard; 隠れた - $hiddenCard; アドバイス - $adviceCard; 結果 - $outcomeCard。$userNameに少なくとも5回言及し、各カードを質問に関連付けることを必ず行ってください。構造に従ってください：\n\n1）$userNameの名前で挨拶。\n\n2）タイトル：スプレッド：過去（$pastCard）/ 現在（$presentCard）/ 隠れた（$hiddenCard）/ アドバイス（$adviceCard）/ 結果（$outcomeCard）。\n\n3）過去 — $pastCard（45-55語）：3つのキーワード、カードの象徴性、そして$userNameの$userQuestionに対する過去の影響。\n\n4）現在 — $presentCard（45-55語）：キーワード、象徴性、$userNameの質問の現在の状態。\n\n5）隠れた — $hiddenCard（45-55語）：$userNameの状況に無意識に影響を与えるもの、象徴性に焦点を当てて。\n\n6）アドバイス — $adviceCard（45-55語）：カードのイメージに基づいた$userNameのための実践的な行動。\n\n7）結果 — $outcomeCard（45-55語）：アドバイスに従った場合の可能性のあるシナリオ、$userNameに言及して。\n\n8）結論：$userNameのための友好的なサポートとポジティブな肯定（25-30語）。\n\n要件：総量230-260語、生き生きとした会話調、3-5の秘教的な絵文字; 各ブロックを二重改行（\\n\\n）で区切る; *, #などの記号やその他のマークアップを使用しない; プレーンテキストのみで書く。';
   }
 
@@ -1323,15 +1337,21 @@ class AppLocalizationsJa extends AppLocalizations {
   String get makeNewSpread => '新しいスプレッドを作成する';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。あなたの決定に対して当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
   String get requestReceivedPleaseOpenCards => 'ご依頼を受け付けました。どうぞカードを開いてください。';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。三枚のカードによる恋愛リーディングで答えてください。カードは次の通りです：$userNameの感情 — $youCard；パートナーの感情 — $partnerCard；関係のダイナミクスまたは可能性 — $dynamicCard。$userNameの名前を最低三回使い、各カードを質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：リーディング：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40〜50語：カードが$userNameの感情や期待について何を示しているか説明してください。\n4) $partnerCard — 40〜50語：$userNameに関するパートナーの感情や意図を明らかにしてください。\n5) $dynamicCard — 40〜50語：これら二つのエネルギーがどのように相互作用し、関係がどのような結果になるか示してください。\n6) 結論：$userNameへの温かいアドバイスとポジティブなアファメーション（20〜25語）。\n要件：全体で150〜180語、親しみやすくロマンチックなトーン、2〜4個のテーマに沿った絵文字；段落は二重改行（\\n\\n）で区切ること；*, #やその他のマークアップは避けること。';
   }
 
@@ -1339,7 +1359,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get loveSpread => '恋愛リーディング';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。あなたの決定に対して当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
@@ -1421,8 +1442,8 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          'アプリはエンターテインメント目的でのみAIを使用しています。お客様の判断に対して責任を負いかねます。必要に応じて専門家にご相談ください。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      'アプリはエンターテインメント目的でのみAIを使用しています。お客様の判断に対して責任を負いかねます。必要に応じて専門家にご相談ください。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -1445,7 +1466,8 @@ class AppLocalizationsJa extends AppLocalizations {
       'スプレッドの値を取得中にエラーが発生しました。もう一度お試しください。';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。お客様の決定について当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
@@ -1657,48 +1679,60 @@ class AppLocalizationsJa extends AppLocalizations {
       '人生で調和を見つけるにはどうすればいいですか？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットコーチです。ユーザー$userNameが「$userQuestion」と尋ねています。キャリアと財務に関する3枚のカードのリーディングを行ってください。カードは次の通りです：1) 状況 — $situationCard；2) 障害または重要なチャンス — $challengeCard；3) アドバイスと可能性 — $adviceCard。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。$userNameに親しみやすく、要点を押さえた話し方で：彼（彼女）がどこに立っているか、成長を妨げているもの（または見逃してはならないチャンス）、そして望む収入に導く実践的なステップを示してください。$userNameの名前を最低3回は言及してください。構成を守ってください：\n1) 挨拶 — 1文。\n2) タイトル：リーディング：$situationCard | $challengeCard | $adviceCard。\n3) $situationCard — 45〜55語：$userNameの現在の状況（仕事、ビジネス、または全体的な財務状況）とカードの象徴を説明。\n4) $challengeCard — 45〜55語：主な障害または見えにくいチャンスを解説し、それがカードと$userNameの質問にどう反映されているかを示す。\n5) $adviceCard — 45〜55語：具体的な行動（例：予算の見直し、昇給の要求、新しいスキルの習得）を提案し、可能な結果を説明。\n6) 結び — 20〜25語：親しみやすいまとめ、ポジティブなアファメーションとビジネス関連の絵文字2つ。\n要件：全体で160〜185語、明確でビジネスライクなトーン、スラングなし、絵文字2〜3個；段落は二重改行で区切ること；*、#などのマークアップは使わない。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。3枚のカードで「賛成と反対」のリーディングを行ってください。カードは次の通りです：賛成 — $proCard；反対 — $conCard；アドバイス／結論 — $adviceCard。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。$userNameの名前を最低3回言及し、各カードを質問に結びつけてください。構成を守ってください：\n1) $userNameへの挨拶。\n2) タイトル：リーディング：$proCard | $conCard | $adviceCard。\n3) 賛成：$proCard — 45〜55語。このカードが$userNameの状況にもたらす主な利益やポジティブな資源を解説。\n4) 反対：$conCard — 45〜55語。$userNameにとってのリスク、隠れたコスト、または弱点を説明。\n5) アドバイス：$adviceCard — 45〜55語。賛否を比較し、具体的な行動（動詞＋目的語）を提案し、それが$userNameの結果をどう変えるかを述べる。\n6) 結論 — 「はい」または「いいえ」の一語、その後に1文の理由と励ましのアファメーション（20〜25語）、絵文字1〜2個。\n要件：全体で150〜180語、親しみやすく会話調のトーン；各ブロックは二重改行で区切る；*、#などのマークアップは使わない。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたはプロのタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。$monthの「月の輪」リーディングを作成してください。カードは順に：1 — $card1、2 — $card2、3 — $card3、4 — $card4、5 — $card5、6 — $card6、7 — $card7、8 — $card8、9 — $card9、10 — $card10、11 — $card11、12 — $card12。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。名前は最低5回言及してくださいが、各日付の後には入れず、アドバイスの中で自然に使ってください。日付のカレンダー形式は次の通り：1–3、4–6、7–9、10–12、13–15、16–18、19–21、22–24、25–26、27–28、29–30、31（30日しかない月は12番目のカードも30日に対応）。形式：\n1) $userNameへの挨拶（1〜2文）。\n2) リーディングの目的の簡単な紹介（1文）。\n3〜14) 各カードについて「1–3 $month — $card1」のように日付とカード名を記載（名前は入れない）。続けて2〜3文でその期間の主要なエネルギーと実践的なアドバイスを述べ、$userNameを自然に言及。\n15) 総括：月全体のアドバイス（約40語）と励ましのアファメーション、絵文字2〜3個。\n要件：合計360〜400語；親しみやすくモチベーションを高めるトーン；ブロックは二重改行で区切る；*、#、リスト、技術的な注釈は使わない。';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットコーチです。ユーザー$userNameが「$userQuestion」と尋ねています。7枚のカードで「自己成長とバランス」のリーディングを行ってください。カードは次の通りです：核 — $coreCard；心 — $mindCard；感情 — $emotionCard；体 — $bodyCard；資源 — $strengthCard；障害 — $challengeCard；アドバイス — $adviceCard。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。生き生きと支援的に話し、$userNameの名前を最低4回言及し、各カードを質問に結びつけてください。構成とフォーマットを守ってください：\n1) $userNameへの挨拶。\n2) タイトル：リーディング：$coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard。\n3) $coreCard — $userNameの自己成長の主な焦点を説明。\n4) $mindCard — 思考の調整方法と学ぶべきことを語る。\n5) $emotionCard — 感情的な資源とモチベーションを明らかにする。\n6) $bodyCard — 体とエネルギーのケア方法を示す。\n7) $strengthCard — 内なる贈り物や外部の支援を示す。\n8) $challengeCard — 主要な不均衡とその原因を示す。\n9) $adviceCard — すべての側面を統合する具体的な行動を提案。\n10) 結び：励ましのアファメーションと温かいエール、絵文字2〜3個。\n要件：各項目2〜3文；項目間は二重改行で区切る；*、#などのマークアップは使わない。';
   }
 
@@ -2107,7 +2141,8 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
   String get pros_cons_spread_screen_enter_question_hint => '質問を入力してください...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '「自己成長とバランス」のスプレッドは、円形に配置された7枚のカードで構成されています。各カードはあなたの精神的成長と内なる調和の特定の側面を象徴しています。';
 
   @override
@@ -2691,7 +2726,9 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userNameのために、これらの3枚のカードで自己成長とバランスのスプレッドを作成してください：$cards';
   }
 
@@ -2715,13 +2752,17 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang語でタロットカード「$cardName」の全体的な意味を説明してください。歴史、象徴性、主な意味を含めてください。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'タロットカード「$cardName」の逆位置の意味を$langで説明してください。反対の意味や警告を含めてください。';
   }
 
@@ -2755,13 +2796,17 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'タロットカード「$cardName」の名前を$languageCodeに翻訳してください。回答には翻訳された名前のみを含め、追加のテキストや句読点は含めないでください。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'あなたはプロのタロットリーダーです。ユーザー$nameのために、このリクエストの言語で「今日のカード」のインスピレーションメッセージを書いてください。構成と分量を守ってください。\n🌟 $name、あなたの今日のカードは$cardNameです！\n🔑 キーワード：<3～5の短いキーワードを記入してください>\n🃏 意味（約45～50語）：カードの主なエネルギーと、それが今日$nameにどのように現れるかを説明してください。\n💡 アドバイス（約35～40語）：$nameがこのエネルギーを活かすための具体的な行動や心構えを提案してください。\n✨ アファメーション（一行）：「私は…」で始まるポジティブな宣言。\n要件：全体の長さは120～150語、温かみのあるエソテリックなトーン、3～4つのテーマに合った絵文字、HTML/Markdownのリストは使わず、段落は二重改行（\\n\\n）で区切ってください。';
   }
 
@@ -2976,19 +3021,20 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。「ケルト十字」スプレッド（ウェイト版のクラシックな配置）で答えてください。カードは次のように配置されています：状況 - $situationCard；挑戦 - $challengeCard；潜在意識 - $subconsciousCard；最近の過去 - $pastCard；顕在意識 - $consciousCard；近い未来 - $hiddenCard；内なる自己 - $selfCard；環境 - $environmentCard；希望または恐れ - $hopesCard；結果 - $outcomeCard。$userNameの名前を最低6回は言及し、各カードを質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：スプレッド：状況（$situationCard）／挑戦（$challengeCard）／潜在意識（$subconsciousCard）／最近の過去（$pastCard）／顕在意識（$consciousCard）／近い未来（$hiddenCard）／内なる自己（$selfCard）／環境（$environmentCard）／希望・恐れ（$hopesCard）／結果（$outcomeCard）。\n3) 状況 — $situationCard（45-55語）：3つのキーワード、カードの象徴性、$userNameの質問「$userQuestion」に対する現在の状況。\n4) 挑戦 — $challengeCard（45-55語）：$userNameにとっての主な障害または助け。\n5) 潜在意識 — $subconsciousCard（45-55語）：$userNameに影響を与える隠れた動機やエネルギー。\n6) 最近の過去 — $pastCard（45-55語）：$userNameを現在の状況に導いた出来事。\n7) 顕在意識 — $consciousCard（45-55語）：$userNameが認識している目標や期待。\n8) 近い未来 — $hiddenCard（45-55語）：今後数週間の予想される展開。\n9) 内なる自己 — $selfCard（45-55語）：$userNameの状態やリソース。\n10) 環境 — $environmentCard（45-55語）：人々や状況の影響。\n11) 希望・恐れ — $hopesCard（45-55語）：$userNameの期待や不安。\n12) 結果 — $outcomeCard（45-55語）：スプレッドの助言を考慮した場合の予想される結果。\n13) 結び：$userNameへの親しみやすい励ましとポジティブなアファメーション（30-35語）。\n要件：全体で400-500語、活き活きとした会話調、エゾテリックな絵文字4-6個；各ブロックは二重改行で区切ること。\n*, #などの記号やマークアップは使わず、テキストのみで記述してください。';
   }
 
@@ -3004,11 +3050,12 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。「過去 - 現在 - 未来」スプレッドで答えてください。カードは次のように配置されています：過去 - $pastCard；現在 - $presentCard；未来 - $hiddenCard。$userNameの名前を最低4回は言及し、カードの意味を質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：スプレッド：過去（$pastCard） - 現在（$presentCard） - 未来（$hiddenCard）。\n3) 過去ブロック — $pastCard（40-50語）：3つのキーワード、カードの象徴性、過去の事実が$userNameの質問「$userQuestion」の結果にどのように影響しているかの説明。\n4) 現在ブロック — $presentCard（40-50語）：キーワード、カードの象徴性、質問「$userQuestion」への答えに影響を与える現在の要因。\n5) 未来ブロック — $hiddenCard（40-50語）：キーワード、カードの象徴性、$userNameの質問に対する状況の予想される展開。\n6) 結果：短いアドバイス、ポジティブなアファメーション（20-30語）、明確なチャンスのまとめ。\n要件：全体で180-220語、温かみのあるエゾテリックなトーン、テーマに合った絵文字3-5個；各ブロックは二重改行で区切ること。\n*, #などの記号やマークアップは使わず、テキストのみで記述してください。';
   }
 
@@ -3054,13 +3101,14 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが質問します：「$userQuestion」。5枚のカードスプレッドを使用して答えてください。カードは順番に与えられます：過去 - $pastCard; 現在 - $presentCard; 隠れた - $hiddenCard; アドバイス - $adviceCard; 結果 - $outcomeCard。$userNameに少なくとも5回言及し、各カードを質問に関連付けることを必ず行ってください。構造に従ってください：\n\n1）$userNameの名前で挨拶。\n\n2）タイトル：スプレッド：過去（$pastCard）/ 現在（$presentCard）/ 隠れた（$hiddenCard）/ アドバイス（$adviceCard）/ 結果（$outcomeCard）。\n\n3）過去 — $pastCard（45-55語）：3つのキーワード、カードの象徴性、そして$userNameの$userQuestionに対する過去の影響。\n\n4）現在 — $presentCard（45-55語）：キーワード、象徴性、$userNameの質問の現在の状態。\n\n5）隠れた — $hiddenCard（45-55語）：$userNameの状況に無意識に影響を与えるもの、象徴性に焦点を当てて。\n\n6）アドバイス — $adviceCard（45-55語）：カードのイメージに基づいた$userNameのための実践的な行動。\n\n7）結果 — $outcomeCard（45-55語）：アドバイスに従った場合の可能性のあるシナリオ、$userNameに言及して。\n\n8）結論：$userNameのための友好的なサポートとポジティブな肯定（25-30語）。\n\n要件：総量230-260語、生き生きとした会話調、3-5の秘教的な絵文字; 各ブロックを二重改行（\\n\\n）で区切る; *, #などの記号やその他のマークアップを使用しない; プレーンテキストのみで書く。';
   }
 
@@ -3071,15 +3119,21 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
   String get makeNewSpread => '新しいスプレッドを作成する';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。あなたの決定に対して当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
   String get requestReceivedPleaseOpenCards => 'ご依頼を受け付けました。どうぞカードを開いてください。';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。三枚のカードによる恋愛リーディングで答えてください。カードは次の通りです：$userNameの感情 — $youCard；パートナーの感情 — $partnerCard；関係のダイナミクスまたは可能性 — $dynamicCard。$userNameの名前を最低三回使い、各カードを質問に関連付けてください。構成は以下の通りです：\n1) $userNameへの挨拶。\n2) タイトル：リーディング：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40〜50語：カードが$userNameの感情や期待について何を示しているか説明してください。\n4) $partnerCard — 40〜50語：$userNameに関するパートナーの感情や意図を明らかにしてください。\n5) $dynamicCard — 40〜50語：これら二つのエネルギーがどのように相互作用し、関係がどのような結果になるか示してください。\n6) 結論：$userNameへの温かいアドバイスとポジティブなアファメーション（20〜25語）。\n要件：全体で150〜180語、親しみやすくロマンチックなトーン、2〜4個のテーマに沿った絵文字；段落は二重改行（\\n\\n）で区切ること；*, #やその他のマークアップは避けること。';
   }
 
@@ -3087,7 +3141,8 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
   String get loveSpread => '恋愛リーディング';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。あなたの決定に対して当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
@@ -3169,8 +3224,8 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          'アプリはエンターテインメント目的でのみAIを使用しています。お客様の判断に対して責任を負いかねます。必要に応じて専門家にご相談ください。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      'アプリはエンターテインメント目的でのみAIを使用しています。お客様の判断に対して責任を負いかねます。必要に応じて専門家にご相談ください。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -3193,7 +3248,8 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
       'スプレッドの値を取得中にエラーが発生しました。もう一度お試しください。';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'このアプリはエンターテインメント目的でのみAIを使用しています。お客様の決定について当社は責任を負いません。必要に応じて専門家にご相談ください。';
 
   @override
@@ -3405,34 +3461,45 @@ class AppLocalizationsJaJp extends AppLocalizationsJa {
       '人生で調和を見つけるにはどうすればいいですか？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットコーチです。ユーザー$userNameが「$userQuestion」と尋ねています。キャリアと財務に関する3枚のカードのリーディングを行ってください。カードは次の通りです：1) 状況 — $situationCard；2) 障害または重要なチャンス — $challengeCard；3) アドバイスと可能性 — $adviceCard。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。$userNameに親しみやすく、要点を押さえた話し方で：彼（彼女）がどこに立っているか、成長を妨げているもの（または見逃してはならないチャンス）、そして望む収入に導く実践的なステップを示してください。$userNameの名前を最低3回は言及してください。構成を守ってください：\n1) 挨拶 — 1文。\n2) タイトル：リーディング：$situationCard | $challengeCard | $adviceCard。\n3) $situationCard — 45〜55語：$userNameの現在の状況（仕事、ビジネス、または全体的な財務状況）とカードの象徴を説明。\n4) $challengeCard — 45〜55語：主な障害または見えにくいチャンスを解説し、それがカードと$userNameの質問にどう反映されているかを示す。\n5) $adviceCard — 45〜55語：具体的な行動（例：予算の見直し、昇給の要求、新しいスキルの習得）を提案し、可能な結果を説明。\n6) 結び — 20〜25語：親しみやすいまとめ、ポジティブなアファメーションとビジネス関連の絵文字2つ。\n要件：全体で160〜185語、明確でビジネスライクなトーン、スラングなし、絵文字2〜3個；段落は二重改行で区切ること；*、#などのマークアップは使わない。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたは経験豊富なタロットリーダーです。ユーザー$userNameが「$userQuestion」と尋ねています。3枚のカードで「賛成と反対」のリーディングを行ってください。カードは次の通りです：賛成 — $proCard；反対 — $conCard；アドバイス／結論 — $adviceCard。$userNameの名前から性別を判断し、適切な語尾と代名詞を使ってください。$userNameの名前を最低3回言及し、各カードを質問に結びつけてください。構成を守ってください：\n1) $userNameへの挨拶。\n2) タイトル：リーディング：$proCard | $conCard | $adviceCard。\n3) 賛成：$proCard — 45〜55語。このカードが$userNameの状況にもたらす主な利益やポジティブな資源を解説。\n4) 反対：$conCard — 45〜55語。$userNameにとってのリスク、隠れたコスト、または弱点を説明。\n5) アドバイス：$adviceCard — 45〜55語。賛否を比較し、具体的な行動（動詞＋目的語）を提案し、それが$userNameの結果をどう変えるかを述べる。\n6) 結論 — 「はい」または「いいえ」の一語、その後に1文の理由と励ましのアファメーション（20〜25語）、絵文字1〜2個。\n要件：全体で150〜180語、親しみやすく会話調のトーン；各ブロックは二重改行で区切る；*、#などのマークアップは使わない。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'あなたはプロのタロットリーダーです。ユーザー$userNameが質問します：「$userQuestion」。$monthの「月の輪」リーディングを作成してください。カードは順番に並んでいます：1 — $card1、2 — $card2、3 — $card3、4 — $card4、5 — $card5、6 — $card6、7 — $card7、8 — $card8、9 — $card9、10 — $card10、11 — $card11、12 — $card12。名前から$userNameの性別を判断し、適切な語尾と代名詞を使用してください。名前を少なくとも5回言及してくださいが、**各日付の後に挿入しないでください** — アドバイスのテキスト内でのみ思い出してください。**日付範囲の後にユーザー名を書くことは禁止されています。日付の後には月のみを指定してください。** カレンダーの日付グリッドを使用してください：1–3、4–6、7–9、10–12、13–15、16–18、19–21、22–24、25–26、27–28、29–30、31（月が30日ある場合 — 12番目のカードも30日に適用されます）。フォーマット：\n\n1）$userNameの名前での挨拶（1–2文）。\n\n2）「あなたの質問：」と書き、その後ユーザーの質問$userQuestion。\n\n3）リーディングの目的についての簡単な紹介（1文）。\n\n4–15）各カードについて「1–3 $month — $card1」のような行を使用してください（名前なし）：その後、期間の主要なエネルギーと実践的なアドバイスについて2–3文、$userNameを有機的に言及してください。各段落でユーザーの質問を繰り返さないでください。全体のリーディングは$userQuestionの質問に有機的に答える必要がありますが、常に引用しないでください。「これらの日に何に集中すべきですか？」という質問は、適切な段落でのみ使用してください。\n\n16）結果：月の一般的なアドバイス（約40語）と2–3の絵文字によるインスピレーションを与える肯定。\n\n要件：合計360–400語；親しみやすく、モチベーションを与えるトーン；ブロックを二重\\n\\nで分離；*、#、リスト、または技術的な注記の記号なし。';
   }
 

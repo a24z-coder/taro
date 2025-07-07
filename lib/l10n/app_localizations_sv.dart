@@ -373,7 +373,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skriv in din fråga...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Läggningen \"Självutveckling och balans\" består av 7 kort som är placerade i en cirkel. Varje kort symboliserar en viss aspekt av din andliga tillväxt och inre harmoni.';
 
   @override
@@ -978,7 +979,9 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Gör en spridning för $userName om självutveckling och balans med dessa tre kort: $cards';
   }
 
@@ -1003,13 +1006,17 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beskriv den allmänna betydelsen av Tarotkortet \"$cardName\" på språket $lang. Inkludera historia, symbolik och huvudbetydelser.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beskriv den omvända betydelsen av Tarotkortet \"$cardName\" på språket $lang. Inkludera motsatta betydelser och varningar.';
   }
 
@@ -1044,13 +1051,17 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Översätt namnet på tarotkortet \"$cardName\" till $languageCode. Svaret ska endast innehålla den översatta titeln, utan extra text eller skiljetecken.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Du är en professionell tarotläsare. Skriv ett inspirerande meddelande \"Dagens kort\" på språket i denna förfrågan för användaren $name. Följ struktur och omfattning.\n🌟 $name, ditt dagens kort är $cardName!\n🔑 Nyckelord: <ange 3–5 korta nyckelord>\n🃏 Betydelse (≈45–50 ord): beskriv kortets huvudsakliga energi och hur den kommer att visa sig idag för $name.\n💡 Råd (≈35–40 ord): föreslå en konkret handling eller inställning som hjälper $name att använda denna energi.\n✨ Affirmation (1 rad): ett positivt påstående som börjar med \"Jag…\".\nKrav: total längd 120–150 ord, varm esoterisk ton, 3–4 tematiska emojis, inga listor i HTML/Markdown; stycken separeras med dubbla radbrytningar (\\n\\n).';
   }
 
@@ -1268,19 +1279,20 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med spridningen \"Keltiska korset\" (klassisk Waite-layout). Kortens placering är: situation - $situationCard; utmaning - $challengeCard; undermedvetet - $subconsciousCard; nyligen förflutet - $pastCard; medvetet - $consciousCard; nära framtid - $hiddenCard; inre jag - $selfCard; omgivning - $environmentCard; hopp eller rädslor - $hopesCard; slutresultat - $outcomeCard. Nämn namnet $userName minst sex gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsning till $userName.\n2) Rubrik: Spridning: situation ($situationCard) / utmaning ($challengeCard) / undermedvetet ($subconsciousCard) / nyligen förflutet ($pastCard) / medvetet ($consciousCard) / nära framtid ($hiddenCard) / inre jag ($selfCard) / omgivning ($environmentCard) / hopp/rädslor ($hopesCard) / slutresultat ($outcomeCard).\n3) Situation — $situationCard (45-55 ord): tre nyckelord, kortets symbolik och den aktuella situationen kring frågan $userQuestion för $userName.\n4) Utmaning — $challengeCard (45-55 ord): huvudsakligt hinder eller hjälp för $userName.\n5) Undermedvetet — $subconsciousCard (45-55 ord): dolda motiv eller energier som påverkar $userName.\n6) Nyligen förflutet — $pastCard (45-55 ord): händelser som lett $userName till den nuvarande situationen.\n7) Medvetet — $consciousCard (45-55 ord): mål, förväntningar eller vad $userName är medveten om.\n8) Nära framtid — $hiddenCard (45-55 ord): sannolik utveckling under de närmaste veckorna.\n9) Inre jag — $selfCard (45-55 ord): ${userName}s tillstånd och resurser.\n10) Omgivning — $environmentCard (45-55 ord): påverkan från människor och omständigheter.\n11) Hopp / rädslor — $hopesCard (45-55 ord): ${userName}s förväntningar eller farhågor.\n12) Slutresultat — $outcomeCard (45-55 ord): sannolikt resultat med hänsyn till spridningens råd.\n13) Avslutning: vänligt stöd och positiv affirmation (30-35 ord) för $userName.\nKrav: total längd 400-500 ord, levande samtalston, 4-6 esoteriska emojis; separera varje avsnitt med dubbla radbrytningar (\n); använd inte *, # eller annan markup; skriv endast vanlig text.';
   }
 
@@ -1297,11 +1309,12 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med spridningen \"Dåtid - Nutid - Framtid\". Kortens placering är: dåtid - $pastCard; nutid - $presentCard; framtid - $hiddenCard. Nämn namnet $userName minst fyra gånger och koppla kortens betydelser till frågan. Följ strukturen:\n1) Hälsning till $userName.\n2) Rubrik: Spridning: Dåtid ($pastCard) - Nutid ($presentCard) - Framtid ($hiddenCard).\n3) DÅTID — $pastCard (40-50 ord): tre nyckelord, kortets symbolik och förklaring av hur tidigare händelser påverkar utgången av frågan $userQuestion för $userName.\n4) NUTID — $presentCard (40-50 ord): nyckelord, kortets symbolik och aktuella faktorer som påverkar svaret på frågan $userQuestion.\n5) FRAMTID — $hiddenCard (40-50 ord): nyckelord, kortets symbolik och sannolik utveckling av situationen kring frågan för $userName.\n6) Slutsats: kort råd, positiv affirmation (20-30 ord) och tydlig sammanfattning av chanserna.\nKrav: total längd 180-220 ord, varm esoterisk ton, 3-5 tematiska emojis; separera varje avsnitt med dubbla radbrytningar (\n); använd inte *, # eller andra formateringssymboler; skriv endast vanlig text.';
   }
 
@@ -1349,13 +1362,14 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med hjälp av \"5-korts\"-läggningen. Korten ges i ordning: dåtid - $pastCard; nutid - $presentCard; framtid - $hiddenCard; orsak - $adviceCard; möjligt utfall - $outcomeCard. Förklara betydelsen av varje kort och hur deras kombinerade betydelse ser ut.';
   }
 
@@ -1366,7 +1380,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get makeNewSpread => 'Gör en ny läggning';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Vid behov, kontakta en specialist.';
 
   @override
@@ -1374,8 +1389,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Din förfrågan har mottagits. Vänligen lägg ut korten.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: «$userQuestion». Svara med hjälp av en kärleksläggning med tre kort. Korten är: känslor för $userName — $youCard; partnerns känslor — $partnerCard; dynamik eller potential i relationen — $dynamicCard. Nämn namnet $userName minst tre gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsa $userName vid namn.\n2) Rubrik: Lägga: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 ord: beskriv vad kortet säger om ${userName}s känslor och förväntningar.\n4) $partnerCard — 40–50 ord: förklara partnerns känslor och intentioner angående ${userName}s fråga.\n5) $dynamicCard — 40–50 ord: visa hur dessa två energier samspelar och vad relationen kan leda till.\n6) Avslutning: varm rådgivning och positiv affirmation (20–25 ord) för $userName.\nKrav: totalt 150–180 ord, vänlig och romantisk ton, 2–4 tematiska emojis; stycken separeras med dubbla radbrytningar (\\n\\n); undvik *, # och någon form av markup.';
   }
 
@@ -1383,7 +1403,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get loveSpread => 'Kärleksläggning';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Vid behov, kontakta en specialist.';
 
   @override
@@ -1464,7 +1485,8 @@ class AppLocalizationsSv extends AppLocalizations {
   String get monthlyForecast => 'Månadsprognos';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Kontakta en specialist vid behov.';
 
   @override
@@ -1489,7 +1511,8 @@ class AppLocalizationsSv extends AppLocalizations {
       'Fel vid hämtning av läggningsvärde. Försök igen.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Appen använder AI endast för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Kontakta en specialist vid behov.';
 
   @override
@@ -1716,48 +1739,60 @@ class AppLocalizationsSv extends AppLocalizations {
       'Hur hittar jag harmoni i livet?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotcoach. Användaren $userName frågar: «$userQuestion». Gör en tre-korts läggning om karriär och ekonomi. Korten är givna så här: 1) situation — $situationCard; 2) hinder eller nyckelmöjlighet — $challengeCard; 3) råd och potential — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Tala vänligt och sakligt med $userName: visa var hen står, vad som blockerar tillväxt (eller vilken chans som är viktig att se) och vilket praktiskt steg som leder till önskad inkomst. Nämn namnet $userName minst tre gånger. Följ strukturen:\n1) Hälsning — 1 mening.\n2) Rubrik: Läggning: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 ord: beskriv ${userName}s nuvarande läge (jobb, företag eller allmän ekonomisk bakgrund) och kortets symbolik.\n4) $challengeCard — 45–55 ord: förklara huvudhindret eller den dolda möjligheten; ange hur det speglas i kortet och i ${userName}s fråga.\n5) $adviceCard — 45–55 ord: föreslå en konkret handling (t.ex. se över budgeten, be om löneförhöjning, lära sig en ny kompetens) och beskriv möjlig utkomst.\n6) Avslutning — 20–25 ord: vänlig slutsats, positiv affirmation och 2 affärs-emojis.\nKrav: totalt 160–185 ord, klar och affärsmässig ton utan jargong, 2–3 emojis; stycken separeras med dubbla \\n\\n; använd inte *, # eller annan markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: «$userQuestion». Gör en tre-korts läggning \"För och emot\". Korten är givna så här: fördelar — $proCard; nackdelar — $conCard; råd/slutsats — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Nämn namnet $userName minst tre gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsning med namnet $userName.\n2) Rubrik: Läggning: $proCard | $conCard | $adviceCard.\n3) Fördelar: $proCard — 45–55 ord. Beskriv de främsta fördelarna eller positiva resurser som detta kort ger i ${userName}s situation.\n4) Nackdelar: $conCard — 45–55 ord. Beskriv risker, dolda kostnader eller svagheter i lösningen för $userName.\n5) Råd: $adviceCard — 45–55 ord. Väg för- och nackdelar, föreslå en konkret handling (verb + objekt) och förklara hur detta förändrar utgången för $userName.\n6) Slutsats — ett ord \"Ja\" eller \"Nej\", följt av 1 mening med motivering och en uppmuntrande affirmation (20–25 ord) med 1–2 emojis.\nKrav: totalt 150–180 ord, vänskaplig och samtalston; varje avsnitt separeras med dubbla \\n\\n; inga *, # eller annan markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en professionell tarotläsare. Användaren $userName frågar: «$userQuestion». Gör en \"Månadens hjul\"-läggning för $month. Korten är i ordning: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Bestäm ${userName}s kön utifrån namnet och använd rätt ändelser och pronomen. Nämn namnet minst fem gånger, men **inte efter varje datum** — nämn det bara naturligt i texten till råden. Använd kalenderindelning: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (om månaden har 30 dagar gäller den 12:e kortet även den 30:e). Format:\n1) Hälsning med namnet $userName (1–2 meningar).\n2) Kort introduktion om syftet med läggningen (1 mening).\n3–14) För varje kort, använd raden \"1–3 $month — $card1\" (utan namn): följt av 2–3 meningar om nyckelenergin för perioden och praktiskt råd, där $userName nämns naturligt.\n15) Slutsats: ett övergripande råd för månaden (ca 40 ord) och en inspirerande affirmation med 2–3 emojis.\nKrav: totalt 360–400 ord; vänlig, motiverande ton; avsnitt separeras med dubbla \\n\\n; inga *, #, listor eller tekniska markeringar.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotcoach. Användaren $userName frågar: «$userQuestion». Gör en läggning \"Självutveckling och balans\" med sju kort. Korten är givna så här: kärna — $coreCard; sinne — $mindCard; känslor — $emotionCard; kropp — $bodyCard; resurs — $strengthCard; blockering — $challengeCard; råd — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Tala livfullt och stödjande, nämn namnet $userName minst fyra gånger och koppla varje kort till frågan. Följ struktur och format:\n1) Hälsning med namnet $userName.\n2) Rubrik: Läggning: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — beskriv huvudfokus för ${userName}s självutveckling.\n4) $mindCard — berätta hur $userName kan ställa in sitt tänkande och vad hen bör lära sig.\n5) $emotionCard — avslöja känslomässig resurs och motivation.\n6) $bodyCard — ge tips om hur $userName kan ta hand om sin kropp och energi.\n7) $strengthCard — visa inre gåva eller yttre stöd.\n8) $challengeCard — identifiera nyckeldisbalans och dess orsaker.\n9) $adviceCard — föreslå en konkret handling som förenar alla aspekter.\n10) Avslutning: inspirerande affirmation och varmt avsked med 2–3 emojis.\nKrav: varje punkt 2–3 meningar; mellan punkterna dubbla \\n\\n; använd inte *, # eller annan markup.';
   }
 
@@ -2181,7 +2216,8 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
       'Skriv in din fråga...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Läggningen \"Självutveckling och balans\" består av 7 kort som är placerade i en cirkel. Varje kort symboliserar en viss aspekt av din andliga tillväxt och inre harmoni.';
 
   @override
@@ -2786,7 +2822,9 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Gör en spridning för $userName om självutveckling och balans med dessa tre kort: $cards';
   }
 
@@ -2811,13 +2849,17 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beskriv den allmänna betydelsen av Tarotkortet \"$cardName\" på språket $lang. Inkludera historia, symbolik och huvudbetydelser.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beskriv den omvända betydelsen av Tarotkortet \"$cardName\" på språket $lang. Inkludera motsatta betydelser och varningar.';
   }
 
@@ -2852,13 +2894,17 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Översätt namnet på tarotkortet \"$cardName\" till $languageCode. Svaret ska endast innehålla den översatta titeln, utan extra text eller skiljetecken.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Du är en professionell tarotläsare. Skriv ett inspirerande meddelande \"Dagens kort\" på språket i denna förfrågan för användaren $name. Följ struktur och omfattning.\n🌟 $name, ditt dagens kort är $cardName!\n🔑 Nyckelord: <ange 3–5 korta nyckelord>\n🃏 Betydelse (≈45–50 ord): beskriv kortets huvudsakliga energi och hur den kommer att visa sig idag för $name.\n💡 Råd (≈35–40 ord): föreslå en konkret handling eller inställning som hjälper $name att använda denna energi.\n✨ Affirmation (1 rad): ett positivt påstående som börjar med \"Jag…\".\nKrav: total längd 120–150 ord, varm esoterisk ton, 3–4 tematiska emojis, inga listor i HTML/Markdown; stycken separeras med dubbla radbrytningar (\\n\\n).';
   }
 
@@ -3076,19 +3122,20 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med spridningen \"Keltiska korset\" (klassisk Waite-layout). Kortens placering är: situation - $situationCard; utmaning - $challengeCard; undermedvetet - $subconsciousCard; nyligen förflutet - $pastCard; medvetet - $consciousCard; nära framtid - $hiddenCard; inre jag - $selfCard; omgivning - $environmentCard; hopp eller rädslor - $hopesCard; slutresultat - $outcomeCard. Nämn namnet $userName minst sex gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsning till $userName.\n2) Rubrik: Spridning: situation ($situationCard) / utmaning ($challengeCard) / undermedvetet ($subconsciousCard) / nyligen förflutet ($pastCard) / medvetet ($consciousCard) / nära framtid ($hiddenCard) / inre jag ($selfCard) / omgivning ($environmentCard) / hopp/rädslor ($hopesCard) / slutresultat ($outcomeCard).\n3) Situation — $situationCard (45-55 ord): tre nyckelord, kortets symbolik och den aktuella situationen kring frågan $userQuestion för $userName.\n4) Utmaning — $challengeCard (45-55 ord): huvudsakligt hinder eller hjälp för $userName.\n5) Undermedvetet — $subconsciousCard (45-55 ord): dolda motiv eller energier som påverkar $userName.\n6) Nyligen förflutet — $pastCard (45-55 ord): händelser som lett $userName till den nuvarande situationen.\n7) Medvetet — $consciousCard (45-55 ord): mål, förväntningar eller vad $userName är medveten om.\n8) Nära framtid — $hiddenCard (45-55 ord): sannolik utveckling under de närmaste veckorna.\n9) Inre jag — $selfCard (45-55 ord): ${userName}s tillstånd och resurser.\n10) Omgivning — $environmentCard (45-55 ord): påverkan från människor och omständigheter.\n11) Hopp / rädslor — $hopesCard (45-55 ord): ${userName}s förväntningar eller farhågor.\n12) Slutresultat — $outcomeCard (45-55 ord): sannolikt resultat med hänsyn till spridningens råd.\n13) Avslutning: vänligt stöd och positiv affirmation (30-35 ord) för $userName.\nKrav: total längd 400-500 ord, levande samtalston, 4-6 esoteriska emojis; separera varje avsnitt med dubbla radbrytningar (\n); använd inte *, # eller annan markup; skriv endast vanlig text.';
   }
 
@@ -3105,11 +3152,12 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med spridningen \"Dåtid - Nutid - Framtid\". Kortens placering är: dåtid - $pastCard; nutid - $presentCard; framtid - $hiddenCard. Nämn namnet $userName minst fyra gånger och koppla kortens betydelser till frågan. Följ strukturen:\n1) Hälsning till $userName.\n2) Rubrik: Spridning: Dåtid ($pastCard) - Nutid ($presentCard) - Framtid ($hiddenCard).\n3) DÅTID — $pastCard (40-50 ord): tre nyckelord, kortets symbolik och förklaring av hur tidigare händelser påverkar utgången av frågan $userQuestion för $userName.\n4) NUTID — $presentCard (40-50 ord): nyckelord, kortets symbolik och aktuella faktorer som påverkar svaret på frågan $userQuestion.\n5) FRAMTID — $hiddenCard (40-50 ord): nyckelord, kortets symbolik och sannolik utveckling av situationen kring frågan för $userName.\n6) Slutsats: kort råd, positiv affirmation (20-30 ord) och tydlig sammanfattning av chanserna.\nKrav: total längd 180-220 ord, varm esoterisk ton, 3-5 tematiska emojis; separera varje avsnitt med dubbla radbrytningar (\n); använd inte *, # eller andra formateringssymboler; skriv endast vanlig text.';
   }
 
@@ -3157,13 +3205,14 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: \"$userQuestion\". Svara med hjälp av \"5-korts\"-läggningen. Korten ges i ordning: dåtid - $pastCard; nutid - $presentCard; framtid - $hiddenCard; orsak - $adviceCard; möjligt utfall - $outcomeCard. Förklara betydelsen av varje kort och hur deras kombinerade betydelse ser ut.';
   }
 
@@ -3174,7 +3223,8 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
   String get makeNewSpread => 'Gör en ny läggning';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Vid behov, kontakta en specialist.';
 
   @override
@@ -3182,8 +3232,13 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
       'Din förfrågan har mottagits. Vänligen lägg ut korten.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: «$userQuestion». Svara med hjälp av en kärleksläggning med tre kort. Korten är: känslor för $userName — $youCard; partnerns känslor — $partnerCard; dynamik eller potential i relationen — $dynamicCard. Nämn namnet $userName minst tre gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsa $userName vid namn.\n2) Rubrik: Lägga: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 ord: beskriv vad kortet säger om ${userName}s känslor och förväntningar.\n4) $partnerCard — 40–50 ord: förklara partnerns känslor och intentioner angående ${userName}s fråga.\n5) $dynamicCard — 40–50 ord: visa hur dessa två energier samspelar och vad relationen kan leda till.\n6) Avslutning: varm rådgivning och positiv affirmation (20–25 ord) för $userName.\nKrav: totalt 150–180 ord, vänlig och romantisk ton, 2–4 tematiska emojis; stycken separeras med dubbla radbrytningar (\\n\\n); undvik *, # och någon form av markup.';
   }
 
@@ -3191,7 +3246,8 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
   String get loveSpread => 'Kärleksläggning';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Vid behov, kontakta en specialist.';
 
   @override
@@ -3272,7 +3328,8 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
   String get monthlyForecast => 'Månadsprognos';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Appen använder AI enbart för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Kontakta en specialist vid behov.';
 
   @override
@@ -3297,7 +3354,8 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
       'Fel vid hämtning av läggningsvärde. Försök igen.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Appen använder AI endast för underhållningsändamål. Vi ansvarar inte för de beslut du fattar. Kontakta en specialist vid behov.';
 
   @override
@@ -3524,48 +3582,60 @@ class AppLocalizationsSvSe extends AppLocalizationsSv {
       'Hur hittar jag harmoni i livet?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotcoach. Användaren $userName frågar: «$userQuestion». Gör en tre-korts läggning om karriär och ekonomi. Korten är givna så här: 1) situation — $situationCard; 2) hinder eller nyckelmöjlighet — $challengeCard; 3) råd och potential — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Tala vänligt och sakligt med $userName: visa var hen står, vad som blockerar tillväxt (eller vilken chans som är viktig att se) och vilket praktiskt steg som leder till önskad inkomst. Nämn namnet $userName minst tre gånger. Följ strukturen:\n1) Hälsning — 1 mening.\n2) Rubrik: Läggning: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 ord: beskriv ${userName}s nuvarande läge (jobb, företag eller allmän ekonomisk bakgrund) och kortets symbolik.\n4) $challengeCard — 45–55 ord: förklara huvudhindret eller den dolda möjligheten; ange hur det speglas i kortet och i ${userName}s fråga.\n5) $adviceCard — 45–55 ord: föreslå en konkret handling (t.ex. se över budgeten, be om löneförhöjning, lära sig en ny kompetens) och beskriv möjlig utkomst.\n6) Avslutning — 20–25 ord: vänlig slutsats, positiv affirmation och 2 affärs-emojis.\nKrav: totalt 160–185 ord, klar och affärsmässig ton utan jargong, 2–3 emojis; stycken separeras med dubbla \\n\\n; använd inte *, # eller annan markup.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotläsare. Användaren $userName frågar: «$userQuestion». Gör en tre-korts läggning \"För och emot\". Korten är givna så här: fördelar — $proCard; nackdelar — $conCard; råd/slutsats — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Nämn namnet $userName minst tre gånger och koppla varje kort till frågan. Följ strukturen:\n1) Hälsning med namnet $userName.\n2) Rubrik: Läggning: $proCard | $conCard | $adviceCard.\n3) Fördelar: $proCard — 45–55 ord. Beskriv de främsta fördelarna eller positiva resurser som detta kort ger i ${userName}s situation.\n4) Nackdelar: $conCard — 45–55 ord. Beskriv risker, dolda kostnader eller svagheter i lösningen för $userName.\n5) Råd: $adviceCard — 45–55 ord. Väg för- och nackdelar, föreslå en konkret handling (verb + objekt) och förklara hur detta förändrar utgången för $userName.\n6) Slutsats — ett ord \"Ja\" eller \"Nej\", följt av 1 mening med motivering och en uppmuntrande affirmation (20–25 ord) med 1–2 emojis.\nKrav: totalt 150–180 ord, vänskaplig och samtalston; varje avsnitt separeras med dubbla \\n\\n; inga *, # eller annan markup.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en professionell tarotläsare. Användaren $userName frågar: «$userQuestion». Gör en \"Månadens hjul\"-läggning för $month. Korten är i ordning: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Bestäm ${userName}s kön utifrån namnet och använd rätt ändelser och pronomen. Nämn namnet minst fem gånger, men **inte efter varje datum** — nämn det bara naturligt i texten till råden. Använd kalenderindelning: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (om månaden har 30 dagar gäller den 12:e kortet även den 30:e). Format:\n1) Hälsning med namnet $userName (1–2 meningar).\n2) Kort introduktion om syftet med läggningen (1 mening).\n3–14) För varje kort, använd raden \"1–3 $month — $card1\" (utan namn): följt av 2–3 meningar om nyckelenergin för perioden och praktiskt råd, där $userName nämns naturligt.\n15) Slutsats: ett övergripande råd för månaden (ca 40 ord) och en inspirerande affirmation med 2–3 emojis.\nKrav: totalt 360–400 ord; vänlig, motiverande ton; avsnitt separeras med dubbla \\n\\n; inga *, #, listor eller tekniska markeringar.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du är en erfaren tarotcoach. Användaren $userName frågar: «$userQuestion». Gör en läggning \"Självutveckling och balans\" med sju kort. Korten är givna så här: kärna — $coreCard; sinne — $mindCard; känslor — $emotionCard; kropp — $bodyCard; resurs — $strengthCard; blockering — $challengeCard; råd — $adviceCard. Bestäm användarens kön utifrån namnet $userName och använd rätt ändelser och pronomen. Tala livfullt och stödjande, nämn namnet $userName minst fyra gånger och koppla varje kort till frågan. Följ struktur och format:\n1) Hälsning med namnet $userName.\n2) Rubrik: Läggning: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — beskriv huvudfokus för ${userName}s självutveckling.\n4) $mindCard — berätta hur $userName kan ställa in sitt tänkande och vad hen bör lära sig.\n5) $emotionCard — avslöja känslomässig resurs och motivation.\n6) $bodyCard — ge tips om hur $userName kan ta hand om sin kropp och energi.\n7) $strengthCard — visa inre gåva eller yttre stöd.\n8) $challengeCard — identifiera nyckeldisbalans och dess orsaker.\n9) $adviceCard — föreslå en konkret handling som förenar alla aspekter.\n10) Avslutning: inspirerande affirmation och varmt avsked med 2–3 emojis.\nKrav: varje punkt 2–3 meningar; mellan punkterna dubbla \\n\\n; använd inte *, # eller annan markup.';
   }
 

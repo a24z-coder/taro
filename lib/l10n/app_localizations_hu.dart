@@ -375,7 +375,8 @@ class AppLocalizationsHu extends AppLocalizations {
       'Írja be a kérdését...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'A \"Önfejlesztés és egyensúly\" kirakás 7 kártyából áll, amelyek kör alakban helyezkednek el. Minden kártya a spirituális fejlődésed és belső harmóniád egy adott aspektusát szimbolizálja.';
 
   @override
@@ -981,7 +982,9 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Készíts $userName számára önfejlesztésre és egyensúlyra vonatkozó kirakást ezekkel a három kártyával: $cards';
   }
 
@@ -1006,13 +1009,17 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Írd le a \"$cardName\" Tarot kártya általános jelentését $lang nyelven. Tartalmazza a történetet, a szimbolikát és a fő jelentéseket.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Írd le a \"$cardName\" Tarot kártya fordított jelentését $lang nyelven. Tartalmazza az ellentétes jelentéseket és figyelmeztetéseket.';
   }
 
@@ -1048,13 +1055,17 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Fordítsd le a \"$cardName\" Tarot kártya nevét $languageCode nyelvre. A válasz csak a lefordított nevet tartalmazza, további szöveg vagy írásjelek nélkül.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Te profi tarotkártya-olvasó vagy. Írj egy inspiráló \"A nap kártyája\" üzenetet a kérés nyelvén a $name felhasználónak. Tartsd meg a szerkezetet és a terjedelmet.\n🌟 $name, a mai kártyád — $cardName!\n🔑 Kulcsszavak: <adj meg 3–5 rövid kulcsszót>\n🃏 Jelentés (≈45–50 szó): írd le a kártya fő energiáját és hogy ez hogyan fog megnyilvánulni ma $name számára.\n💡 Tanács (≈35–40 szó): javasolj konkrét cselekvést vagy hozzáállást, amely segít $name-nek kihasználni ezt az energiát.\n✨ Afirmáció (1 sor): pozitív állítás, amely \"Én…\"-nel kezdődik.\nKövetelmények: összhossz 120–150 szó, meleg ezoterikus hangvétel, 3–4 témába vágó emoji, semmilyen HTML/Markdown lista; a bekezdéseket dupla sortöréssel (\\n\\n) válaszd el.';
   }
 
@@ -1275,19 +1286,20 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Válaszolj a \"Kelta kereszt\" kirakással (Waite klasszikus sémája). A kártyák így vannak kiosztva: helyzet - $situationCard; kihívás - $challengeCard; tudatalatti - $subconsciousCard; közelmúlt - $pastCard; tudatos - $consciousCard; közeli jövő - $hiddenCard; belső én - $selfCard; környezet - $environmentCard; remények vagy félelmek - $hopesCard; eredmény - $outcomeCard. Emeld ki $userName nevét legalább hatszor, és minden kártyát köss a kérdéshez. Kövesd a struktúrát:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: helyzet ($situationCard) / kihívás ($challengeCard) / tudatalatti ($subconsciousCard) / közelmúlt ($pastCard) / tudatos ($consciousCard) / közeli jövő ($hiddenCard) / belső én ($selfCard) / környezet ($environmentCard) / remények/félelmek ($hopesCard) / eredmény ($outcomeCard).\n3) Helyzet — $situationCard (45-55 szó): három kulcsszó, a kártya szimbolikája és a jelenlegi helyzet a $userQuestion kérdés kapcsán $userName számára.\n4) Kihívás — $challengeCard (45-55 szó): a legfőbb akadály vagy segítség $userName számára.\n5) Tudatalatti — $subconsciousCard (45-55 szó): rejtett motivációk vagy energiák, amelyek hatnak $userName-re.\n6) Közelmúlt — $pastCard (45-55 szó): események, amelyek $userName-t a jelen helyzethez vezették.\n7) Tudatos — $consciousCard (45-55 szó): célok, elvárások vagy amit $userName tudatosan érzékel.\n8) Közeli jövő — $hiddenCard (45-55 szó): valószínű fejlemények a következő hetekben.\n9) Belső én — $selfCard (45-55 szó): $userName állapota, erőforrásai.\n10) Környezet — $environmentCard (45-55 szó): emberek és körülmények hatása.\n11) Remények / félelmek — $hopesCard (45-55 szó): $userName várakozásai vagy aggodalmai.\n12) Eredmény — $outcomeCard (45-55 szó): valószínű kimenetel a kirakás tanácsai alapján.\n13) Befejezés: barátságos támogatás és pozitív megerősítés (30-35 szó) $userName számára.\nA teljes szöveg 400-500 szó legyen, élő, beszélgetős hangvételű, 4-6 ezoterikus emoji használatával; minden blokkot dupla sortöréssel válassz el.\nNe használj *, # vagy más formázó jeleket; csak sima szöveget írj.';
   }
 
@@ -1305,11 +1317,12 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Válaszolj a \"Múlt - Jelen - Jövő\" kirakással. A kártyák így vannak kiosztva: múlt - $pastCard; jelen - $presentCard; jövő - $hiddenCard. Emeld ki $userName nevét legalább négyszer, és minden kártya jelentését kösd a kérdéshez. Kövesd a struktúrát:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: Múlt ($pastCard) - Jelen ($presentCard) - Jövő ($hiddenCard).\n3) MÚLT blokk — $pastCard (40-50 szó): három kulcsszó, a kártya szimbolikája és magyarázat, hogyan befolyásolják a múlt eseményei a $userQuestion kérdés válaszára $userName számára.\n4) JELEN blokk — $presentCard (40-50 szó): kulcsszavak, a kártya szimbolikája és a jelenlegi tényezők, amelyek hatnak a $userQuestion kérdés válaszára.\n5) JÖVŐ blokk — $hiddenCard (40-50 szó): kulcsszavak, a kártya szimbolikája és a valószínű fejlemények a $userName kérdésével kapcsolatban.\n6) Eredmény: rövid tanács, pozitív megerősítés (20-30 szó) és világos összefoglaló a lehetőségekről.\nA teljes szöveg 180-220 szó legyen, meleg, ezoterikus hangvételű, 3-5 témába illő emoji használatával; minden blokkot dupla sortöréssel válassz el.\nNe használj *, # vagy más formázó jeleket; csak sima szöveget írj.';
   }
 
@@ -1357,13 +1370,14 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ön tapasztalt tarotolvasó. A felhasználó $userName ezt kérdezi: \"$userQuestion\". Válaszoljon az \"5 lapos\" kirakással. A lapok sorrendben vannak megadva: múlt - $pastCard; jelen - $presentCard; jövő - $hiddenCard; ok - $adviceCard; lehetséges kimenetel - $outcomeCard. Magyarázza el minden egyes lap jelentését, és világítsa meg azok együttes jelentését.';
   }
 
@@ -1374,7 +1388,8 @@ class AppLocalizationsHu extends AppLocalizations {
   String get makeNewSpread => 'Új kirakás készítése';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -1382,8 +1397,13 @@ class AppLocalizationsHu extends AppLocalizations {
       'Kérelmét elfogadtuk. Kérjük, nyissa ki a kártyákat.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A $userName felhasználó azt kérdezi: \"$userQuestion\". Válaszolj egy háromkártyás szerelmi kirakással. A kártyák a következők: $userName érzései — $youCard; a partner érzései — $partnerCard; a kapcsolat dinamikája vagy potenciálja — $dynamicCard. Említsd meg $userName nevét legalább háromszor, és minden kártyát kapcsolj a kérdéshez. Tartsd be a következő szerkezetet:\n1) Köszöntés $userName névvel.\n2) Cím: Kirakás: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 szó: írd le, mit mond a kártya $userName érzéseiről és elvárásairól.\n4) $partnerCard — 40–50 szó: fejtsd ki a partner érzelmeit és szándékait $userName kérdésével kapcsolatban.\n5) $dynamicCard — 40–50 szó: mutasd be, hogyan hatnak egymásra ezek a két energia, és hová vezethet a kapcsolat.\n6) Befejezés: meleg tanács és pozitív megerősítés (20–25 szó) $userName számára.\nKövetelmények: összesen 150–180 szó, barátságos, romantikus hangvétel, 2–4 témába illő emoji; bekezdéseket válassz el dupla sortöréssel (\\n\\n); kerüld a *, # és bármilyen jelölést.';
   }
 
@@ -1391,7 +1411,8 @@ class AppLocalizationsHu extends AppLocalizations {
   String get loveSpread => 'Szerelmi kirakás';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -1472,7 +1493,8 @@ class AppLocalizationsHu extends AppLocalizations {
   String get monthlyForecast => 'Havi előrejelzés';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztatási célokra használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -1497,7 +1519,8 @@ class AppLocalizationsHu extends AppLocalizations {
       'Hiba történt a kirakás értékének lekérésekor. Kérjük, próbálja újra.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -1724,48 +1747,60 @@ class AppLocalizationsHu extends AppLocalizations {
       'Hogyan találhatok harmóniát az életben?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot-coach vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts háromkártyás kirakást a karrier és a pénzügyek témájában. A kártyák a következők: 1) helyzet — $situationCard; 2) akadály vagy kulcsfontosságú lehetőség — $challengeCard; 3) tanács és potenciál — $adviceCard. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Beszélj $userName-hez barátságosan és lényegre törően: mutasd meg, hol áll, mi akadályozza a fejlődést (vagy melyik esélyt fontos észrevenni), és milyen gyakorlati lépés vezet a kívánt jövedelemhez. Említsd meg $userName nevét legalább háromszor. Tartsd be a következő szerkezetet:\n1) Üdvözlés — 1 mondat.\n2) Cím: Kirakás: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 szó: írd le $userName jelenlegi helyzetét (munka, üzlet vagy általános pénzügyi háttér) és a kártya szimbolikáját.\n4) $challengeCard — 45–55 szó: fejtsd ki a fő akadályt vagy rejtett lehetőséget; mutasd meg, hogyan tükröződik ez a kártyán és $userName kérdésében.\n5) $adviceCard — 45–55 szó: javasolj konkrét lépést (például költségvetés átnézése, fizetésemelés kérése, új készség elsajátítása), és írd le a lehetséges eredményt.\n6) Befejezés — 20–25 szó: barátságos összegzés, pozitív megerősítés és 2 üzleti emoji.\nKövetelmények: összesen 160–185 szó, világos, üzleti hangnem, zsargon nélkül, 2–3 emoji; bekezdéseket válassz el dupla \\n\\n-vel; ne használj *, # vagy más jelölést.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot-olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts háromkártyás \"Érvek és ellenérvek\" kirakást. A kártyák a következők: előnyök — $proCard; hátrányok — $conCard; tanács/összegzés — $adviceCard. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Említsd meg $userName nevét legalább háromszor, és minden kártyát kapcsolj a kérdéshez. Tartsd be a következő szerkezetet:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: $proCard | $conCard | $adviceCard.\n3) Előnyök: $proCard — 45–55 szó. Fejtsd ki a fő előnyöket vagy pozitív erőforrásokat, amelyeket ez a kártya hoz $userName helyzetébe.\n4) Hátrányok: $conCard — 45–55 szó. Írd le a kockázatokat, rejtett költségeket vagy gyenge pontokat $userName döntésében.\n5) Tanács: $adviceCard — 45–55 szó. Mérlegeld az előnyöket és hátrányokat, javasolj egy konkrét lépést (ige + tárgy), és mondd el, hogyan változtatja meg ez $userName helyzetét.\n6) Összegzés — egy szó: \"Igen\" vagy \"Nem\", majd 1 mondatos indoklás és bátorító megerősítés (20–25 szó) 1–2 emoji kíséretében.\nKövetelmények: összesen 150–180 szó, barátságos, beszélgetős hangnem; minden blokkot válassz el dupla \\n\\n-vel; ne használj *, # vagy más jelölést.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te profi tarot-olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts \"A hónap kereke\" kirakást $month hónapra. A kártyák sorrendben: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Említsd meg a nevet legalább ötször, de **ne tedd be minden dátum után** — csak a tanácsok szövegében. Használd a naptári dátumok hálóját: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ha a hónap 30 napos, a 12. kártya a 30-hoz tartozik). Formátum:\n1) Üdvözlés $userName névvel (1–2 mondat).\n2) Rövid bevezetés a kirakás céljáról (1 mondat).\n3–14) Minden kártyához egy sor \"1–3 $month — $card1\" (név nélkül): majd 2–3 mondat a periódus kulcsenergiájáról és gyakorlati tanács, amelyben természetesen megjelenik $userName neve.\n15) Összegzés: általános tanács a hónapra (kb. 40 szó) és inspiráló megerősítés 2–3 emojival.\nKövetelmények: összesen 360–400 szó; barátságos, motiváló hangnem; blokkokat válassz el dupla \\n\\n-vel; ne használj *, #, listákat vagy technikai jelöléseket.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot-coach vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts \"Önfejlesztés és egyensúly\" kirakást hét kártyával. A kártyák a következők: mag — $coreCard; elme — $mindCard; érzelmek — $emotionCard; test — $bodyCard; erőforrás — $strengthCard; blokk — $challengeCard; tanács — $adviceCard. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Beszélj élénken és támogatóan, említsd meg $userName nevét legalább négyszer, és minden kártyát kapcsolj a kérdéshez. Tartsd be a szerkezetet és formátumot:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — írd le $userName önfejlesztésének fő fókuszát.\n4) $mindCard — meséld el, hogyan állítsa be gondolkodását és mit tanuljon.\n5) $emotionCard — fejtsd ki az érzelmi erőforrást és motivációt.\n6) $bodyCard — adj tanácsot a test és energia ápolására.\n7) $strengthCard — mutasd meg a belső ajándékot vagy külső támogatást.\n8) $challengeCard — jelöld meg a fő egyensúlyhiányt és okait.\n9) $adviceCard — javasolj konkrét lépést, amely mindezeket az aspektusokat összekapcsolja.\n10) Befejezés: inspiráló megerősítés és meleg búcsú 2–3 emojival.\nKövetelmények: minden pont 2–3 mondat; pontok között dupla \\n\\n; ne használj *, # vagy más jelölést.';
   }
 
@@ -2191,7 +2226,8 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
       'Írja be a kérdését...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'A \"Önfejlesztés és egyensúly\" kirakás 7 kártyából áll, amelyek kör alakban helyezkednek el. Minden kártya a spirituális fejlődésed és belső harmóniád egy adott aspektusát szimbolizálja.';
 
   @override
@@ -2797,7 +2833,9 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Készíts $userName számára önfejlesztésre és egyensúlyra vonatkozó kirakást ezekkel a három kártyával: $cards';
   }
 
@@ -2822,13 +2860,17 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Írd le a \"$cardName\" Tarot kártya általános jelentését $lang nyelven. Tartalmazza a történetet, a szimbolikát és a fő jelentéseket.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Írd le a \"$cardName\" Tarot kártya fordított jelentését $lang nyelven. Tartalmazza az ellentétes jelentéseket és figyelmeztetéseket.';
   }
 
@@ -2864,13 +2906,17 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Fordítsd le a \"$cardName\" Tarot kártya nevét $languageCode nyelvre. A válasz csak a lefordított nevet tartalmazza, további szöveg vagy írásjelek nélkül.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Te profi tarotkártya-olvasó vagy. Írj egy inspiráló \"A nap kártyája\" üzenetet a kérés nyelvén a $name felhasználónak. Tartsd meg a szerkezetet és a terjedelmet.\n🌟 $name, a mai kártyád — $cardName!\n🔑 Kulcsszavak: <adj meg 3–5 rövid kulcsszót>\n🃏 Jelentés (≈45–50 szó): írd le a kártya fő energiáját és hogy ez hogyan fog megnyilvánulni ma $name számára.\n💡 Tanács (≈35–40 szó): javasolj konkrét cselekvést vagy hozzáállást, amely segít $name-nek kihasználni ezt az energiát.\n✨ Afirmáció (1 sor): pozitív állítás, amely \"Én…\"-nel kezdődik.\nKövetelmények: összhossz 120–150 szó, meleg ezoterikus hangvétel, 3–4 témába vágó emoji, semmilyen HTML/Markdown lista; a bekezdéseket dupla sortöréssel (\\n\\n) válaszd el.';
   }
 
@@ -3091,19 +3137,20 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Válaszolj a \"Kelta kereszt\" kirakással (Waite klasszikus sémája). A kártyák így vannak kiosztva: helyzet - $situationCard; kihívás - $challengeCard; tudatalatti - $subconsciousCard; közelmúlt - $pastCard; tudatos - $consciousCard; közeli jövő - $hiddenCard; belső én - $selfCard; környezet - $environmentCard; remények vagy félelmek - $hopesCard; eredmény - $outcomeCard. Emeld ki $userName nevét legalább hatszor, és minden kártyát köss a kérdéshez. Kövesd a struktúrát:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: helyzet ($situationCard) / kihívás ($challengeCard) / tudatalatti ($subconsciousCard) / közelmúlt ($pastCard) / tudatos ($consciousCard) / közeli jövő ($hiddenCard) / belső én ($selfCard) / környezet ($environmentCard) / remények/félelmek ($hopesCard) / eredmény ($outcomeCard).\n3) Helyzet — $situationCard (45-55 szó): három kulcsszó, a kártya szimbolikája és a jelenlegi helyzet a $userQuestion kérdés kapcsán $userName számára.\n4) Kihívás — $challengeCard (45-55 szó): a legfőbb akadály vagy segítség $userName számára.\n5) Tudatalatti — $subconsciousCard (45-55 szó): rejtett motivációk vagy energiák, amelyek hatnak $userName-re.\n6) Közelmúlt — $pastCard (45-55 szó): események, amelyek $userName-t a jelen helyzethez vezették.\n7) Tudatos — $consciousCard (45-55 szó): célok, elvárások vagy amit $userName tudatosan érzékel.\n8) Közeli jövő — $hiddenCard (45-55 szó): valószínű fejlemények a következő hetekben.\n9) Belső én — $selfCard (45-55 szó): $userName állapota, erőforrásai.\n10) Környezet — $environmentCard (45-55 szó): emberek és körülmények hatása.\n11) Remények / félelmek — $hopesCard (45-55 szó): $userName várakozásai vagy aggodalmai.\n12) Eredmény — $outcomeCard (45-55 szó): valószínű kimenetel a kirakás tanácsai alapján.\n13) Befejezés: barátságos támogatás és pozitív megerősítés (30-35 szó) $userName számára.\nA teljes szöveg 400-500 szó legyen, élő, beszélgetős hangvételű, 4-6 ezoterikus emoji használatával; minden blokkot dupla sortöréssel válassz el.\nNe használj *, # vagy más formázó jeleket; csak sima szöveget írj.';
   }
 
@@ -3121,11 +3168,12 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Válaszolj a \"Múlt - Jelen - Jövő\" kirakással. A kártyák így vannak kiosztva: múlt - $pastCard; jelen - $presentCard; jövő - $hiddenCard. Emeld ki $userName nevét legalább négyszer, és minden kártya jelentését kösd a kérdéshez. Kövesd a struktúrát:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: Múlt ($pastCard) - Jelen ($presentCard) - Jövő ($hiddenCard).\n3) MÚLT blokk — $pastCard (40-50 szó): három kulcsszó, a kártya szimbolikája és magyarázat, hogyan befolyásolják a múlt eseményei a $userQuestion kérdés válaszára $userName számára.\n4) JELEN blokk — $presentCard (40-50 szó): kulcsszavak, a kártya szimbolikája és a jelenlegi tényezők, amelyek hatnak a $userQuestion kérdés válaszára.\n5) JÖVŐ blokk — $hiddenCard (40-50 szó): kulcsszavak, a kártya szimbolikája és a valószínű fejlemények a $userName kérdésével kapcsolatban.\n6) Eredmény: rövid tanács, pozitív megerősítés (20-30 szó) és világos összefoglaló a lehetőségekről.\nA teljes szöveg 180-220 szó legyen, meleg, ezoterikus hangvételű, 3-5 témába illő emoji használatával; minden blokkot dupla sortöréssel válassz el.\nNe használj *, # vagy más formázó jeleket; csak sima szöveget írj.';
   }
 
@@ -3173,13 +3221,14 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ön tapasztalt tarotolvasó. A felhasználó $userName ezt kérdezi: \"$userQuestion\". Válaszoljon az \"5 lapos\" kirakással. A lapok sorrendben vannak megadva: múlt - $pastCard; jelen - $presentCard; jövő - $hiddenCard; ok - $adviceCard; lehetséges kimenetel - $outcomeCard. Magyarázza el minden egyes lap jelentését, és világítsa meg azok együttes jelentését.';
   }
 
@@ -3190,7 +3239,8 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
   String get makeNewSpread => 'Új kirakás készítése';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -3198,8 +3248,13 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
       'Kérelmét elfogadtuk. Kérjük, nyissa ki a kártyákat.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Te tapasztalt tarot olvasó vagy. A $userName felhasználó azt kérdezi: \"$userQuestion\". Válaszolj egy háromkártyás szerelmi kirakással. A kártyák a következők: $userName érzései — $youCard; a partner érzései — $partnerCard; a kapcsolat dinamikája vagy potenciálja — $dynamicCard. Említsd meg $userName nevét legalább háromszor, és minden kártyát kapcsolj a kérdéshez. Tartsd be a következő szerkezetet:\n1) Köszöntés $userName névvel.\n2) Cím: Kirakás: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 szó: írd le, mit mond a kártya $userName érzéseiről és elvárásairól.\n4) $partnerCard — 40–50 szó: fejtsd ki a partner érzelmeit és szándékait $userName kérdésével kapcsolatban.\n5) $dynamicCard — 40–50 szó: mutasd be, hogyan hatnak egymásra ezek a két energia, és hová vezethet a kapcsolat.\n6) Befejezés: meleg tanács és pozitív megerősítés (20–25 szó) $userName számára.\nKövetelmények: összesen 150–180 szó, barátságos, romantikus hangvétel, 2–4 témába illő emoji; bekezdéseket válassz el dupla sortöréssel (\\n\\n); kerüld a *, # és bármilyen jelölést.';
   }
 
@@ -3207,7 +3262,8 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
   String get loveSpread => 'Szerelmi kirakás';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -3288,7 +3344,8 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
   String get monthlyForecast => 'Havi előrejelzés';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztatási célokra használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -3313,7 +3370,8 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
       'Hiba történt a kirakás értékének lekérésekor. Kérjük, próbálja újra.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Az alkalmazás az MI-t kizárólag szórakoztató céllal használja. Nem vállalunk felelősséget az Ön által hozott döntésekért. Szükség esetén forduljon szakemberhez.';
 
   @override
@@ -3540,48 +3598,60 @@ class AppLocalizationsHuHu extends AppLocalizationsHu {
       'Hogyan találhatok harmóniát az életben?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot-coach vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts háromkártyás kirakást a karrier és a pénzügyek témájában. A kártyák a következők: 1) helyzet — $situationCard; 2) akadály vagy kulcsfontosságú lehetőség — $challengeCard; 3) tanács és potenciál — $adviceCard. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Beszélj $userName-hez barátságosan és lényegre törően: mutasd meg, hol áll, mi akadályozza a fejlődést (vagy melyik esélyt fontos észrevenni), és milyen gyakorlati lépés vezet a kívánt jövedelemhez. Említsd meg $userName nevét legalább háromszor. Tartsd be a következő szerkezetet:\n1) Üdvözlés — 1 mondat.\n2) Cím: Kirakás: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 szó: írd le $userName jelenlegi helyzetét (munka, üzlet vagy általános pénzügyi háttér) és a kártya szimbolikáját.\n4) $challengeCard — 45–55 szó: fejtsd ki a fő akadályt vagy rejtett lehetőséget; mutasd meg, hogyan tükröződik ez a kártyán és $userName kérdésében.\n5) $adviceCard — 45–55 szó: javasolj konkrét lépést (például költségvetés átnézése, fizetésemelés kérése, új készség elsajátítása), és írd le a lehetséges eredményt.\n6) Befejezés — 20–25 szó: barátságos összegzés, pozitív megerősítés és 2 üzleti emoji.\nKövetelmények: összesen 160–185 szó, világos, üzleti hangnem, zsargon nélkül, 2–3 emoji; bekezdéseket válassz el dupla \\n\\n-vel; ne használj *, # vagy más jelölést.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te tapasztalt tarot-olvasó vagy. A felhasználó, $userName, azt kérdezi: \"$userQuestion\". Készíts háromkártyás \"Érvek és ellenérvek\" kirakást. A kártyák a következők: előnyök — $proCard; hátrányok — $conCard; tanács/összegzés — $adviceCard. Határozd meg $userName nemét a név alapján, és használd a megfelelő végződéseket és névmásokat. Említsd meg $userName nevét legalább háromszor, és minden kártyát kapcsolj a kérdéshez. Tartsd be a következő szerkezetet:\n1) Üdvözlés $userName névvel.\n2) Cím: Kirakás: $proCard | $conCard | $adviceCard.\n3) Előnyök: $proCard — 45–55 szó. Fejtsd ki a fő előnyöket vagy pozitív erőforrásokat, amelyeket ez a kártya hoz $userName helyzetébe.\n4) Hátrányok: $conCard — 45–55 szó. Írd le a kockázatokat, rejtett költségeket vagy gyenge pontokat $userName döntésében.\n5) Tanács: $adviceCard — 45–55 szó. Mérlegeld az előnyöket és hátrányokat, javasolj egy konkrét lépést (ige + tárgy), és mondd el, hogyan változtatja meg ez $userName helyzetét.\n6) Összegzés — egy szó: \"Igen\" vagy \"Nem\", majd 1 mondatos indoklás és bátorító megerősítés (20–25 szó) 1–2 emoji kíséretében.\nKövetelmények: összesen 150–180 szó, barátságos, beszélgetős hangnem; minden blokkot válassz el dupla \\n\\n-vel; ne használj *, # vagy más jelölést.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Te egy tapasztalt tarot coach vagy. A felhasználó $userName kérdezi: \"$userQuestion\". Készíts egy \"Személyes fejlődés és egyensúly\" kártyavetést hét kártyával. A kártyák a következő sorrendben vannak elrendezve: mag — $coreCard; elme — $mindCard; érzések — $emotionCard; test — $bodyCard; erőforrás — $strengthCard; blokkolás — $challengeCard; tanács — $adviceCard. Határozd meg a felhasználó nemét a $userName név alapján, és használj megfelelő végződéseket és névmásokat. Beszélj élénken és támogatóan, említsd meg a $userName nevet legalább négyszer, és kössd össze minden kártyát a kérdéssel. Tartsd be a struktúrát és formátumot:\n1) Üdvözlés a $userName névvel.\n2) Cím: Vetés: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — írd le $userName személyes fejlődésének fő fókuszát.\n4) $mindCard — beszélj arról, hogyan állítsd be a gondolkodást és mit kell tanulni.\n5) $emotionCard — fedezd fel az érzelmi erőforrást és motivációt.\n6) $bodyCard — javaslatok a test és energia gondozására.\n7) $strengthCard — mutasd meg a belső ajándékot vagy külső támogatást.\n8) $challengeCard — azonosítsd a fő egyensúlyhiányt és okait.\n9) $adviceCard — javasolj egy konkrét cselekvést, amely összeköti az összes aspektust.\n10) Zárás: inspiráló megerősítés és meleg búcsú 2–3 emojival.\nKövetelmények: minden pont 2–3 mondat; a pontok között dupla sortörés \\n\\n; ne használj *, # vagy más jelöléseket.';
   }
 

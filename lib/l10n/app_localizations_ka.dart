@@ -375,7 +375,8 @@ class AppLocalizationsKa extends AppLocalizations {
       'შეიყვანეთ თქვენი კითხვა...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'განლაგება \"თავის განვითარება და ბალანსი\" შედგება 7 ბარათისგან, რომლებიც განლაგებულია წრის ფორმით. თითოეული ბარათი სიმბოლიზირებს თქვენს სულიერ ზრდასა და შინაგან ჰარმონიას.';
 
   @override
@@ -987,7 +988,9 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'შეასრულე $userName-ისთვის თვითგანვითარებისა და ბალანსის განლაგება ამ სამ კარტზე: $cards';
   }
 
@@ -1013,13 +1016,17 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'აღწერე ტარო ბარათის \"$cardName\" ზოგადი მნიშვნელობა $lang ენაზე. ჩართე ისტორია, სიმბოლიზმი და ძირითადი მნიშვნელობები.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'აღწერე ტარო ბარათის \"$cardName\" გადატრიალებულ მნიშვნელობას $lang ენაზე. ჩართე საპირისპირო მნიშვნელობები და გაფრთხილებები.';
   }
 
@@ -1057,13 +1064,17 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'გაათარგმნე ტაროს ბარათის \"$cardName\" დასახელება $languageCode ენაზე. პასუხი უნდა შეიცავდეს მხოლოდ თარგმნილ დასახელებას, დამატებითი ტექსტის ან ნიშნების გარეშე.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'შენ პროფესიონალი ტაროლოგი ხარ. დაწერე შთამაგონებელი შეტყობინება \"დღის ბარათი\" ამ მოთხოვნის ენაზე მომხმარებლისთვის $name. დაიცავი სტრუქტურა და მოცულობა.\n🌟 $name, შენი დღის ბარათია — $cardName!\n🔑 ძირითადი სიტყვები: <ჩაწერე 3–5 მოკლე საკვანძო სიტყვა>\n🃏 მნიშვნელობა (დაახლოებით 45–50 სიტყვა): აღწერე ბარათის ძირითადი ენერგია და როგორ გამოჩნდება ის დღეს $name-სთვის.\n💡 რჩევა (დაახლოებით 35–40 სიტყვა): შესთავაზე კონკრეტული მოქმედება ან განწყობა, რომელიც დაეხმარება $name-ს ამ ენერგიის გამოყენებაში.\n✨ აფირმაცია (1 სტრიქონი): პოზიტიური განცხადება, რომელიც იწყება სიტყვით „მე…\".';
   }
 
@@ -1281,19 +1292,20 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილი ტაროლოგი. მომხმარებელი $userName ეკითხება: \"$userQuestion\". უპასუხე \"კელტური ჯვრის\" განლაგებით (უეიტის კლასიკური სქემა). ბარათები გადაცემულია ასე: სიტუაცია - $situationCard; გამოწვევა - $challengeCard; უგონო - $subconsciousCard; უახლესი წარსული - $pastCard; ცნობიერი - $consciousCard; უახლოესი მომავალი - $hiddenCard; შინაგანი მე - $selfCard; გარემო - $environmentCard; იმედები ან შიშები - $hopesCard; შედეგი - $outcomeCard. ახსენე სახელი $userName მინიმუმ ექვსჯერ და აუცილებლად დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: სიტუაცია ($situationCard) / გამოწვევა ($challengeCard) / უგონო ($subconsciousCard) / უახლესი წარსული ($pastCard) / ცნობიერი ($consciousCard) / უახლოესი მომავალი ($hiddenCard) / შინაგანი მე ($selfCard) / გარემო ($environmentCard) / იმედები/შიშები ($hopesCard) / შედეგი ($outcomeCard).\n3) სიტუაცია — $situationCard (45-55 სიტყვა): სამი ძირითადი სიტყვა, ბარათის სიმბოლიკა და მიმდინარე მდგომარეობა კითხვაზე $userQuestion $userName-სთვის.\n4) გამოწვევა — $challengeCard (45-55 სიტყვა): მთავარი დაბრკოლება ან დახმარება $userName-სთვის.\n5) უგონო — $subconsciousCard (45-55 სიტყვა): დამალული მოტივები ან ენერგიები, რომლებიც მოქმედებენ $userName-ზე.\n6) უახლესი წარსული — $pastCard (45-55 სიტყვა): მოვლენები, რომლებმაც $userName მიიყვანა ამჟამინდელ სიტუაციამდე.\n7) ცნობიერი — $consciousCard (45-55 სიტყვა): მიზნები, მოლოდინები ან ის, რასაც $userName აცნობიერებს.\n8) უახლოესი მომავალი — $hiddenCard (45-55 სიტყვა): სავარაუდო განვითარება უახლოეს კვირებში.\n9) შინაგანი მე — $selfCard (45-55 სიტყვა): $userName-ის მდგომარეობა, რესურსები.\n10) გარემო — $environmentCard (45-55 სიტყვა): ადამიანებისა და გარემოებების გავლენა.\n11) იმედები / შიშები — $hopesCard (45-55 სიტყვა): $userName-ის მოლოდინები ან შიშები.\n12) შედეგი — $outcomeCard (45-55 სიტყვა): სავარაუდო შედეგი განლაგების რჩევის გათვალისწინებით.\n13) დასკვნა: მეგობრული მხარდაჭერა და პოზიტიური აფირმაცია (30-35 სიტყვა) $userName-სთვის.\nმოთხოვნები: საერთო მოცულობა 400-500 სიტყვა, ცოცხალი, საუბრის სტილი, 4-6 ეგზოტერული ემოჯი; თითოეული ბლოკი გამოყოფილი იყოს ორჯერ ახალი ხაზით (\n); არ გამოიყენო სიმბოლოები *, # ან სხვა ფორმატირება; დაწერე მხოლოდ უბრალო ტექსტად.';
   }
 
@@ -1310,11 +1322,12 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილი ტაროლოგი. მომხმარებელი $userName ეკითხება: \"$userQuestion\". უპასუხე განლაგებით \"წარსული - აწმყო - მომავალი\". ბარათები გადაცემულია ასე: წარსული - $pastCard; აწმყო - $presentCard; მომავალი - $hiddenCard. ახსენე სახელი $userName მინიმუმ ოთხჯერ და აუცილებლად დაუკავშირე ბარათების მნიშვნელობები კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: წარსული ($pastCard) - აწმყო ($presentCard) - მომავალი ($hiddenCard).\n3) წარსულის ბლოკი — $pastCard (40-50 სიტყვა): სამი ძირითადი სიტყვა, ბარათის სიმბოლიკა და ახსნა, როგორ მოქმედებს წარსულის ფაქტები კითხვაზე $userQuestion $userName-სთვის.\n4) აწმყოს ბლოკი — $presentCard (40-50 სიტყვა): ძირითადი სიტყვები, ბარათის სიმბოლიკა და მიმდინარე ფაქტორები, რომლებიც გავლენას ახდენენ კითხვაზე $userQuestion.\n5) მომავლის ბლოკი — $hiddenCard (40-50 სიტყვა): ძირითადი სიტყვები, ბარათის სიმბოლიკა და სავარაუდო სცენარი სიტუაციის განვითარებისთვის კითხვაზე $userName.\n6) შედეგი: მოკლე რჩევა, პოზიტიური აფირმაცია (20-30 სიტყვა) და შანსების მკაფიო შეჯამება.\nმოთხოვნები: საერთო მოცულობა 180-220 სიტყვა, თბილი ეგზოტერული ტონი, 3-5 თემატური ემოჯი; თითოეული ბლოკი გამოყოფილი იყოს ორჯერ ახალი ხაზით (\n); აკრძალულია სიმბოლოების *, # ან სხვა ფორმატირება; დაწერე მხოლოდ უბრალო ტექსტად.';
   }
 
@@ -1362,13 +1375,14 @@ class AppLocalizationsKa extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'თქვენ გამოცდილი ტაროლოგი ხართ. მომხმარებელი $userName სვამს კითხვას: \"$userQuestion\". უპასუხეთ \"5 ბარათის\" განლაგებით. ბარათები მოცემულია შემდეგი თანმიმდევრობით: წარსული - $pastCard; აწმყო - $presentCard; მომავალი - $hiddenCard; მიზეზი - $adviceCard; შესაძლო შედეგი - $outcomeCard. ახსენით თითოეული ბარათის მნიშვნელობა და მათი კომბინირებული მნიშვნელობა.';
   }
 
@@ -1379,7 +1393,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get makeNewSpread => 'ახალი განლაგების გაკეთება';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისთვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -1387,8 +1402,13 @@ class AppLocalizationsKa extends AppLocalizations {
       'თქვენი მოთხოვნა მიღებულია. გთხოვთ, გახსენით ბარათები';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'თქვენ ხართ გამოცდილი ტაროლოგი. მომხმარებელი $userName სვამს კითხვას: «$userQuestion». უპასუხეთ სამ ბარათზე დაფუძნებული სიყვარულის განლაგებით. ბარათები ასეა განლაგებული: $userName-ის გრძნობები — $youCard; პარტნიორის გრძნობები — $partnerCard; ურთიერთობის დინამიკა ან პოტენციალი — $dynamicCard. დაასახელეთ $userName მინიმუმ სამჯერ და დაუკავშირეთ თითოეული ბარათი კითხვას. დაიცავით სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 სიტყვა: აღწერეთ, რას ამბობს ბარათი $userName-ის გრძნობებსა და მოლოდინებზე.\n4) $partnerCard — 40–50 სიტყვა: გააშუქეთ პარტნიორის ემოციები და განზრახვები $userName-ის მიმართ.\n5) $dynamicCard — 40–50 სიტყვა: აჩვენეთ, როგორ ურთიერთქმედებენ ეს ორი ენერგია და რასთან შეიძლება მიგვიყვანოს ურთიერთობები.\n6) დასკვნა: თბილი რჩევა და პოზიტიური აფირმაცია (20–25 სიტყვა) $userName-ისთვის.\nმოთხოვნები: საერთო მოცულობა 150–180 სიტყვა, მეგობრული რომანტიკული ტონი, 2–4 თემატური ემოჯი; აბზაცები გამოყოფილი იყოს ორმაგი ახალი ხაზით (\\n\\n); მოერიდეთ სიმბოლოებს *, # და ნებისმიერ მარკაპს.';
   }
 
@@ -1396,7 +1416,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get loveSpread => 'სიყვარულის განლაგება';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისთვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -1477,7 +1498,8 @@ class AppLocalizationsKa extends AppLocalizations {
   String get monthlyForecast => 'თვიური პროგნოზი';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისათვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -1502,7 +1524,8 @@ class AppLocalizationsKa extends AppLocalizations {
       'შეცდომა განლაგების მნიშვნელობის მიღებისას. სცადეთ კიდევ ერთხელ.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი გადაწყვეტილებების გამო. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -1733,48 +1756,60 @@ class AppLocalizationsKa extends AppLocalizations {
       'როგორ ვიპოვო ჰარმონია ცხოვრებაში?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგ-კოუჩი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე სამკარტიანი განლაგება კარიერასა და ფინანსებზე. ბარათები გადაცემულია ასე: 1) სიტუაცია — $situationCard; 2) დაბრკოლება ან მთავარი შესაძლებლობა — $challengeCard; 3) რჩევა და პოტენციალი — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ისაუბრე $userName-თან მეგობრულად და საქმიანად: აჩვენე, სად დგას, რა აფერხებს ზრდას (ან რა შანსი მნიშვნელოვანია შენიშნოს) და რა პრაქტიკულ ნაბიჯს მოუტანს სასურველ შემოსავალს. ახსენე $userName-ის სახელი მინიმუმ სამჯერ. დაიცავი სტრუქტურა:\n1) მისალმება — 1 წინადადება.\n2) სათაური: განლაგება: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 სიტყვა: აღწერე $userName-ის მიმდინარე მდგომარეობა (სამუშაო, ბიზნესი ან საერთო ფინანსური ფონდი) და ბარათის სიმბოლიკა.\n4) $challengeCard — 45–55 სიტყვა: გააშუქე მთავარი ბარიერი ან შეუმჩნეველი შესაძლებლობა; მიუთითე, როგორ აისახება ეს ბარათში და $userName-ის კითხვაში.\n5) $adviceCard — 45–55 სიტყვა: შესთავაზე კონკრეტული მოქმედება (მაგალითად, ბიუჯეტის გადახედვა, ხელფასის მომატების მოთხოვნა, ახალი კომპეტენციის შესწავლა) და აღწერე შესაძლო შედეგი.\n6) დასასრული — 20–25 სიტყვა: მეგობრული დასკვნა, პოზიტიური აფირმაცია და 2 საქმიანი ემოჯი.\nმოთხოვნები: საერთო მოცულობა 160–185 სიტყვა, ნათელი საქმიანი ტონი ჟარგონის გარეშე, 2–3 ემოჯი; აბზაცები გამოყოფილი იყოს ორმაგი \\n\\n-ით; არ გამოიყენო *, # და სხვა ნიშნები.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე სამკარტიანი განლაგება „დადებითი და უარყოფითი\" ბარათები გადაცემულია ასე: დადებითი — $proCard; უარყოფითი — $conCard; რჩევა/დასკვნა — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ახსენე $userName-ის სახელი მინიმუმ სამჯერ და დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება $userName-ის სახელით.\n2) სათაური: განლაგება: $proCard | $conCard | $adviceCard.\n3) დადებითი: $proCard — 45–55 სიტყვა. გააშუქე მთავარი სარგებელი ან დადებითი რესურსები, რომლებიც ეს ბარათი მოაქვს $userName-ის სიტუაციაში.\n4) უარყოფითი: $conCard — 45–55 სიტყვა. აღწერე რისკები, დაფარული ხარჯები ან სუსტი მხარეები გადაწყვეტილებისთვის $userName-ის შემთხვევაში.\n5) რჩევა: $adviceCard — 45–55 სიტყვა. შეაფასე დადებითი და უარყოფითი მხარეები, შესთავაზე ერთი კონკრეტული მოქმედება (ზმნა + ობიექტი) და უთხარი, როგორ შეცვლის ეს შედეგს $userName-ისთვის.\n6) დასკვნა — ერთი სიტყვით „დიახ\" ან „არა\"...';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგ-კოუჩი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე განლაგება „თავისუფალი განვითარება და ბალანსი\" შვიდი ბარათით. ბარათები გადაცემულია ასე: ბირთვი — $coreCard; გონება — $mindCard; ემოციები — $emotionCard; სხეული — $bodyCard; რესურსი — $strengthCard; დაბრკოლება — $challengeCard; რჩევა — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ისაუბრე ცოცხლად და მხნედ, ახსენე $userName-ის სახელი მინიმუმ ოთხჯერ და აუცილებლად დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა და ფორმატი:\n1) მისალმება $userName-ის სახელით.\n2) სათაური: განლაგება: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — აღწერე $userName-ის თვითგანვითარების მთავარი ფოკუსი.\n4) $mindCard — უთხარი, როგორ დაარეგულიროს აზროვნება და რას ისწავლოს.\n5) $emotionCard — გააშუქე ემოციური რესურსი და მოტივაცია.\n6) $bodyCard — ურჩიე, როგორ იზრუნოს სხეულსა და ენერგიაზე.\n7) $strengthCard — აჩვენე შინაგანი საჩუქარი ან გარე მხარდაჭერა.\n8) $challengeCard — მიუთითე მთავარი დისბალანსი და მისი მიზეზები.\n9) $adviceCard — შესთავაზე კონკრეტული მოქმედება, რომელიც აერთიანებს ყველა ასპექტს.\n10) დასასრული: მოტივაციური აფირმაცია და თბილი სურვილები 2–3 ემოჯით.\nმოთხოვნები: თითოეული პუნქტი 2–3 წინადადება; პუნქტებს შორის ორმაგი \\n\\n; არ გამოიყენო *, # ან სხვა ნიშნები.';
   }
 
@@ -2200,7 +2235,8 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
       'შეიყვანეთ თქვენი კითხვა...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'განლაგება \"თავის განვითარება და ბალანსი\" შედგება 7 ბარათისგან, რომლებიც განლაგებულია წრის ფორმით. თითოეული ბარათი სიმბოლიზირებს თქვენს სულიერ ზრდასა და შინაგან ჰარმონიას.';
 
   @override
@@ -2812,7 +2848,9 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'შეასრულე $userName-ისთვის თვითგანვითარებისა და ბალანსის განლაგება ამ სამ კარტზე: $cards';
   }
 
@@ -2838,13 +2876,17 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'აღწერე ტარო ბარათის \"$cardName\" ზოგადი მნიშვნელობა $lang ენაზე. ჩართე ისტორია, სიმბოლიზმი და ძირითადი მნიშვნელობები.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'აღწერე ტარო ბარათის \"$cardName\" გადატრიალებულ მნიშვნელობას $lang ენაზე. ჩართე საპირისპირო მნიშვნელობები და გაფრთხილებები.';
   }
 
@@ -2882,13 +2924,17 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'გაათარგმნე ტაროს ბარათის \"$cardName\" დასახელება $languageCode ენაზე. პასუხი უნდა შეიცავდეს მხოლოდ თარგმნილ დასახელებას, დამატებითი ტექსტის ან ნიშნების გარეშე.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'შენ პროფესიონალი ტაროლოგი ხარ. დაწერე შთამაგონებელი შეტყობინება \"დღის ბარათი\" ამ მოთხოვნის ენაზე მომხმარებლისთვის $name. დაიცავი სტრუქტურა და მოცულობა.\n🌟 $name, შენი დღის ბარათია — $cardName!\n🔑 ძირითადი სიტყვები: <ჩაწერე 3–5 მოკლე საკვანძო სიტყვა>\n🃏 მნიშვნელობა (დაახლოებით 45–50 სიტყვა): აღწერე ბარათის ძირითადი ენერგია და როგორ გამოჩნდება ის დღეს $name-სთვის.\n💡 რჩევა (დაახლოებით 35–40 სიტყვა): შესთავაზე კონკრეტული მოქმედება ან განწყობა, რომელიც დაეხმარება $name-ს ამ ენერგიის გამოყენებაში.\n✨ აფირმაცია (1 სტრიქონი): პოზიტიური განცხადება, რომელიც იწყება სიტყვით „მე…\".';
   }
 
@@ -3106,19 +3152,20 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილი ტაროლოგი. მომხმარებელი $userName ეკითხება: \"$userQuestion\". უპასუხე \"კელტური ჯვრის\" განლაგებით (უეიტის კლასიკური სქემა). ბარათები გადაცემულია ასე: სიტუაცია - $situationCard; გამოწვევა - $challengeCard; უგონო - $subconsciousCard; უახლესი წარსული - $pastCard; ცნობიერი - $consciousCard; უახლოესი მომავალი - $hiddenCard; შინაგანი მე - $selfCard; გარემო - $environmentCard; იმედები ან შიშები - $hopesCard; შედეგი - $outcomeCard. ახსენე სახელი $userName მინიმუმ ექვსჯერ და აუცილებლად დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: სიტუაცია ($situationCard) / გამოწვევა ($challengeCard) / უგონო ($subconsciousCard) / უახლესი წარსული ($pastCard) / ცნობიერი ($consciousCard) / უახლოესი მომავალი ($hiddenCard) / შინაგანი მე ($selfCard) / გარემო ($environmentCard) / იმედები/შიშები ($hopesCard) / შედეგი ($outcomeCard).\n3) სიტუაცია — $situationCard (45-55 სიტყვა): სამი ძირითადი სიტყვა, ბარათის სიმბოლიკა და მიმდინარე მდგომარეობა კითხვაზე $userQuestion $userName-სთვის.\n4) გამოწვევა — $challengeCard (45-55 სიტყვა): მთავარი დაბრკოლება ან დახმარება $userName-სთვის.\n5) უგონო — $subconsciousCard (45-55 სიტყვა): დამალული მოტივები ან ენერგიები, რომლებიც მოქმედებენ $userName-ზე.\n6) უახლესი წარსული — $pastCard (45-55 სიტყვა): მოვლენები, რომლებმაც $userName მიიყვანა ამჟამინდელ სიტუაციამდე.\n7) ცნობიერი — $consciousCard (45-55 სიტყვა): მიზნები, მოლოდინები ან ის, რასაც $userName აცნობიერებს.\n8) უახლოესი მომავალი — $hiddenCard (45-55 სიტყვა): სავარაუდო განვითარება უახლოეს კვირებში.\n9) შინაგანი მე — $selfCard (45-55 სიტყვა): $userName-ის მდგომარეობა, რესურსები.\n10) გარემო — $environmentCard (45-55 სიტყვა): ადამიანებისა და გარემოებების გავლენა.\n11) იმედები / შიშები — $hopesCard (45-55 სიტყვა): $userName-ის მოლოდინები ან შიშები.\n12) შედეგი — $outcomeCard (45-55 სიტყვა): სავარაუდო შედეგი განლაგების რჩევის გათვალისწინებით.\n13) დასკვნა: მეგობრული მხარდაჭერა და პოზიტიური აფირმაცია (30-35 სიტყვა) $userName-სთვის.\nმოთხოვნები: საერთო მოცულობა 400-500 სიტყვა, ცოცხალი, საუბრის სტილი, 4-6 ეგზოტერული ემოჯი; თითოეული ბლოკი გამოყოფილი იყოს ორჯერ ახალი ხაზით (\n); არ გამოიყენო სიმბოლოები *, # ან სხვა ფორმატირება; დაწერე მხოლოდ უბრალო ტექსტად.';
   }
 
@@ -3135,11 +3182,12 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილი ტაროლოგი. მომხმარებელი $userName ეკითხება: \"$userQuestion\". უპასუხე განლაგებით \"წარსული - აწმყო - მომავალი\". ბარათები გადაცემულია ასე: წარსული - $pastCard; აწმყო - $presentCard; მომავალი - $hiddenCard. ახსენე სახელი $userName მინიმუმ ოთხჯერ და აუცილებლად დაუკავშირე ბარათების მნიშვნელობები კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: წარსული ($pastCard) - აწმყო ($presentCard) - მომავალი ($hiddenCard).\n3) წარსულის ბლოკი — $pastCard (40-50 სიტყვა): სამი ძირითადი სიტყვა, ბარათის სიმბოლიკა და ახსნა, როგორ მოქმედებს წარსულის ფაქტები კითხვაზე $userQuestion $userName-სთვის.\n4) აწმყოს ბლოკი — $presentCard (40-50 სიტყვა): ძირითადი სიტყვები, ბარათის სიმბოლიკა და მიმდინარე ფაქტორები, რომლებიც გავლენას ახდენენ კითხვაზე $userQuestion.\n5) მომავლის ბლოკი — $hiddenCard (40-50 სიტყვა): ძირითადი სიტყვები, ბარათის სიმბოლიკა და სავარაუდო სცენარი სიტუაციის განვითარებისთვის კითხვაზე $userName.\n6) შედეგი: მოკლე რჩევა, პოზიტიური აფირმაცია (20-30 სიტყვა) და შანსების მკაფიო შეჯამება.\nმოთხოვნები: საერთო მოცულობა 180-220 სიტყვა, თბილი ეგზოტერული ტონი, 3-5 თემატური ემოჯი; თითოეული ბლოკი გამოყოფილი იყოს ორჯერ ახალი ხაზით (\n); აკრძალულია სიმბოლოების *, # ან სხვა ფორმატირება; დაწერე მხოლოდ უბრალო ტექსტად.';
   }
 
@@ -3187,13 +3235,14 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'თქვენ გამოცდილი ტაროლოგი ხართ. მომხმარებელი $userName სვამს კითხვას: \"$userQuestion\". უპასუხეთ \"5 ბარათის\" განლაგებით. ბარათები მოცემულია შემდეგი თანმიმდევრობით: წარსული - $pastCard; აწმყო - $presentCard; მომავალი - $hiddenCard; მიზეზი - $adviceCard; შესაძლო შედეგი - $outcomeCard. ახსენით თითოეული ბარათის მნიშვნელობა და მათი კომბინირებული მნიშვნელობა.';
   }
 
@@ -3204,7 +3253,8 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
   String get makeNewSpread => 'ახალი განლაგების გაკეთება';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისთვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -3212,8 +3262,13 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
       'თქვენი მოთხოვნა მიღებულია. გთხოვთ, გახსენით ბარათები';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'თქვენ ხართ გამოცდილი ტაროლოგი. მომხმარებელი $userName სვამს კითხვას: «$userQuestion». უპასუხეთ სამ ბარათზე დაფუძნებული სიყვარულის განლაგებით. ბარათები ასეა განლაგებული: $userName-ის გრძნობები — $youCard; პარტნიორის გრძნობები — $partnerCard; ურთიერთობის დინამიკა ან პოტენციალი — $dynamicCard. დაასახელეთ $userName მინიმუმ სამჯერ და დაუკავშირეთ თითოეული ბარათი კითხვას. დაიცავით სტრუქტურა:\n1) მისალმება სახელით $userName.\n2) სათაური: განლაგება: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 სიტყვა: აღწერეთ, რას ამბობს ბარათი $userName-ის გრძნობებსა და მოლოდინებზე.\n4) $partnerCard — 40–50 სიტყვა: გააშუქეთ პარტნიორის ემოციები და განზრახვები $userName-ის მიმართ.\n5) $dynamicCard — 40–50 სიტყვა: აჩვენეთ, როგორ ურთიერთქმედებენ ეს ორი ენერგია და რასთან შეიძლება მიგვიყვანოს ურთიერთობები.\n6) დასკვნა: თბილი რჩევა და პოზიტიური აფირმაცია (20–25 სიტყვა) $userName-ისთვის.\nმოთხოვნები: საერთო მოცულობა 150–180 სიტყვა, მეგობრული რომანტიკული ტონი, 2–4 თემატური ემოჯი; აბზაცები გამოყოფილი იყოს ორმაგი ახალი ხაზით (\\n\\n); მოერიდეთ სიმბოლოებს *, # და ნებისმიერ მარკაპს.';
   }
 
@@ -3221,7 +3276,8 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
   String get loveSpread => 'სიყვარულის განლაგება';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისთვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -3302,7 +3358,8 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
   String get monthlyForecast => 'თვიური პროგნოზი';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი მიღებული გადაწყვეტილებებისათვის. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -3327,7 +3384,8 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
       'შეცდომა განლაგების მნიშვნელობის მიღებისას. სცადეთ კიდევ ერთხელ.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'აპლიკაცია იყენებს ხელოვნურ ინტელექტს მხოლოდ გასართობი მიზნებისთვის. ჩვენ არ ვიღებთ პასუხისმგებლობას თქვენი გადაწყვეტილებების გამო. საჭიროების შემთხვევაში მიმართეთ სპეციალისტს.';
 
   @override
@@ -3558,48 +3616,60 @@ class AppLocalizationsKaGe extends AppLocalizationsKa {
       'როგორ ვიპოვო ჰარმონია ცხოვრებაში?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგ-კოუჩი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე სამკარტიანი განლაგება კარიერასა და ფინანსებზე. ბარათები გადაცემულია ასე: 1) სიტუაცია — $situationCard; 2) დაბრკოლება ან მთავარი შესაძლებლობა — $challengeCard; 3) რჩევა და პოტენციალი — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ისაუბრე $userName-თან მეგობრულად და საქმიანად: აჩვენე, სად დგას, რა აფერხებს ზრდას (ან რა შანსი მნიშვნელოვანია შენიშნოს) და რა პრაქტიკულ ნაბიჯს მოუტანს სასურველ შემოსავალს. ახსენე $userName-ის სახელი მინიმუმ სამჯერ. დაიცავი სტრუქტურა:\n1) მისალმება — 1 წინადადება.\n2) სათაური: განლაგება: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 სიტყვა: აღწერე $userName-ის მიმდინარე მდგომარეობა (სამუშაო, ბიზნესი ან საერთო ფინანსური ფონდი) და ბარათის სიმბოლიკა.\n4) $challengeCard — 45–55 სიტყვა: გააშუქე მთავარი ბარიერი ან შეუმჩნეველი შესაძლებლობა; მიუთითე, როგორ აისახება ეს ბარათში და $userName-ის კითხვაში.\n5) $adviceCard — 45–55 სიტყვა: შესთავაზე კონკრეტული მოქმედება (მაგალითად, ბიუჯეტის გადახედვა, ხელფასის მომატების მოთხოვნა, ახალი კომპეტენციის შესწავლა) და აღწერე შესაძლო შედეგი.\n6) დასასრული — 20–25 სიტყვა: მეგობრული დასკვნა, პოზიტიური აფირმაცია და 2 საქმიანი ემოჯი.\nმოთხოვნები: საერთო მოცულობა 160–185 სიტყვა, ნათელი საქმიანი ტონი ჟარგონის გარეშე, 2–3 ემოჯი; აბზაცები გამოყოფილი იყოს ორმაგი \\n\\n-ით; არ გამოიყენო *, # და სხვა ნიშნები.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე სამკარტიანი განლაგება „დადებითი და უარყოფითი\" ბარათები გადაცემულია ასე: დადებითი — $proCard; უარყოფითი — $conCard; რჩევა/დასკვნა — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ახსენე $userName-ის სახელი მინიმუმ სამჯერ და დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა:\n1) მისალმება $userName-ის სახელით.\n2) სათაური: განლაგება: $proCard | $conCard | $adviceCard.\n3) დადებითი: $proCard — 45–55 სიტყვა. გააშუქე მთავარი სარგებელი ან დადებითი რესურსები, რომლებიც ეს ბარათი მოაქვს $userName-ის სიტუაციაში.\n4) უარყოფითი: $conCard — 45–55 სიტყვა. აღწერე რისკები, დაფარული ხარჯები ან სუსტი მხარეები გადაწყვეტილებისთვის $userName-ის შემთხვევაში.\n5) რჩევა: $adviceCard — 45–55 სიტყვა. შეაფასე დადებითი და უარყოფითი მხარეები, შესთავაზე ერთი კონკრეტული მოქმედება (ზმნა + ობიექტი) და უთხარი, როგორ შეცვლის ეს შედეგს $userName-ისთვის.\n6) დასკვნა — ერთი სიტყვით „დიახ\" ან „არა\"...';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ პროფესიონალი ტაროლოგი. მომხმარებელი $userName ეკითხება: \"$userQuestion\". შეადგინე განლაგება \"თვიური ბორბალი\" $month-ზე. ბარათები მიდის შემდეგი რიგით: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და გამოიყენე სწორი დამთავრებები და ზმნები. ახსენე სახელი მინიმუმ ხუთჯერ, მაგრამ **არ ჩასვა ყოველ თარიღის შემდეგ** — გამოიყენე მხოლოდ რჩევების ტექსტში. გამოიყენე კალენდარული თარიღების ქსელი: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (თუ თვეში 30 დღეა, 12-ე ბარათი ასევე ეხება 30-ს). ფორმატი:\n1) მისალმება $userName-ის სახელით (1–2 წინადადება).\n2) მოკლე შესავალი განლაგების მიზნის შესახებ (1 წინადადება).\n3–14) თითოეული ბარათისთვის გამოიყენე სტრიქონი \"1–3 $month — $card1\" (სახელის გარეშე): შემდეგ 2–3 წინადადება პერიოდის ძირითადი ენერგიისა და პრაქტიკული რჩევის შესახებ, ორგანულად ახსენე $userName.\n15) დასკვნა: საერთო რჩევა თვეზე (დაახლოებით 40 სიტყვა) და მოტივაციური აფირმაცია 2–3 ემოჯით.\nმოთხოვნები: საერთო 360–400 სიტყვა; მეგობრული, მოტივაციური ტონი; ბლოკები გამოყოფილი ორმაგი \\n\\n-ით; არ გამოიყენო *, #, სია ან ტექნიკური ნიშნები.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'შენ ხარ გამოცდილ ტაროლოგ-კოუჩი. მომხმარებელი $userName ეკითხება: «$userQuestion». გააკეთე განლაგება „თავისუფალი განვითარება და ბალანსი\" შვიდი ბარათით. ბარათები გადაცემულია ასე: ბირთვი — $coreCard; გონება — $mindCard; ემოციები — $emotionCard; სხეული — $bodyCard; რესურსი — $strengthCard; დაბრკოლება — $challengeCard; რჩევა — $adviceCard. განსაზღვრე $userName-ის სქესი სახელის მიხედვით და მიმართე სწორ დამთავრებებითა და ზმნებით. ისაუბრე ცოცხლად და მხნედ, ახსენე $userName-ის სახელი მინიმუმ ოთხჯერ და აუცილებლად დაუკავშირე თითოეული ბარათი კითხვას. დაიცავი სტრუქტურა და ფორმატი:\n1) მისალმება $userName-ის სახელით.\n2) სათაური: განლაგება: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — აღწერე $userName-ის თვითგანვითარების მთავარი ფოკუსი.\n4) $mindCard — უთხარი, როგორ დაარეგულიროს აზროვნება და რას ისწავლოს.\n5) $emotionCard — გააშუქე ემოციური რესურსი და მოტივაცია.\n6) $bodyCard — ურჩიე, როგორ იზრუნოს სხეულსა და ენერგიაზე.\n7) $strengthCard — აჩვენე შინაგანი საჩუქარი ან გარე მხარდაჭერა.\n8) $challengeCard — მიუთითე მთავარი დისბალანსი და მისი მიზეზები.\n9) $adviceCard — შესთავაზე კონკრეტული მოქმედება, რომელიც აერთიანებს ყველა ასპექტს.\n10) დასასრული: მოტივაციური აფირმაცია და თბილი სურვილები 2–3 ემოჯით.\nმოთხოვნები: თითოეული პუნქტი 2–3 წინადადება; პუნქტებს შორის ორმაგი \\n\\n; არ გამოიყენო *, # ან სხვა ნიშნები.';
   }
 

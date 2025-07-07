@@ -375,7 +375,8 @@ class AppLocalizationsSw extends AppLocalizations {
       'Weka swali lako...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Mpangilio \"Maendeleo Binafsi na Usawa\" unajumuisha kadi 7, zilizopangwa kwa mduara. Kadi kila moja inaashiria kipengele fulani cha ukuaji wako wa kiroho na uwiano wa ndani.';
 
   @override
@@ -982,7 +983,9 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Fanya muundo wa maendeleo binafsi na usawa kwa $userName kwa kadi hizi tatu: $cards';
   }
 
@@ -1008,13 +1011,17 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Eleza maana ya jumla ya kadi ya Tarot \"$cardName\" kwa lugha ya $lang. Jumuisha historia, uashiriaji na maana kuu.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Eleza maana iliyogeuzwa ya kadi ya Tarot \"$cardName\" kwa lugha ya $lang. Jumuisha maana zinazopingana na onyo.';
   }
 
@@ -1050,13 +1057,17 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Tafsiri jina la kadi ya Tarot \"$cardName\" kwa $languageCode. Jibu linapaswa kuwa na jina lililotafsiriwa tu, bila maandishi au alama za ziada.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Wewe ni mtaalamu wa taroti. Andika ujumbe wa kuhamasisha \"Kadi ya Siku\" kwa lugha ya ombi hili kwa mtumiaji $name. Fuata muundo na urefu.\n🌟 $name, kadi yako ya siku ni $cardName!\n🔑 Maneno muhimu: <taja maneno 3–5 mafupi>\n🃏 Maana (≈maneno 45–50): eleza nguvu kuu ya kadi na jinsi itakavyoonekana leo kwa $name.\n💡 Ushauri (≈maneno 35–40): toa hatua maalum au mtazamo utakaomsaidia $name kutumia nguvu hii.\n✨ Thibitisho (mstari 1): kauli chanya inaanza na \"Mimi…\".\nMahitaji: urefu wa jumla wa maneno 120–150, mtindo wa kiroho na wa joto, emoji 3–4 zinazohusiana, usitumie orodha za HTML/Markdown; aya zitenganishwe kwa mistari miwili ya mapumziko (\\n\\n).';
   }
 
@@ -1276,19 +1287,20 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mchawi mwenye uzoefu wa taroti. Mtumiaji $userName anauliza: \"$userQuestion\". Jibu kwa kutumia muundo wa \"Msalaba wa Keltic\" (mpangilio wa kawaida wa Waite). Kadi zimepangwa kama ifuatavyo: hali - $situationCard; changamoto - $challengeCard; kisichoeleweka - $subconsciousCard; yaliyopita hivi karibuni - $pastCard; fahamu - $consciousCard; siku zijazo karibu - $hiddenCard; nafsi ya ndani - $selfCard; mazingira - $environmentCard; matumaini au hofu - $hopesCard; matokeo - $outcomeCard. Taja jina $userName angalau mara sita na hakikisha unahusisha kila kadi na swali. Fuata muundo:\n1) Salamu kwa jina $userName.\n2) Kichwa: Muundo: hali ($situationCard) / changamoto ($challengeCard) / kisichoeleweka ($subconsciousCard) / yaliyopita hivi karibuni ($pastCard) / fahamu ($consciousCard) / siku zijazo karibu ($hiddenCard) / nafsi ya ndani ($selfCard) / mazingira ($environmentCard) / matumaini/hofu ($hopesCard) / matokeo ($outcomeCard).\n3) Hali — $situationCard (maneno 45-55): maneno matatu muhimu, ishara za kadi na hali ya sasa kuhusu swali la $userQuestion kwa $userName.\n4) Changamoto — $challengeCard (maneno 45-55): kizuizi kikuu au msaada kwa $userName.\n5) Kisichoeleweka — $subconsciousCard (maneno 45-55): motisha au nguvu zilizofichwa zinazomgusa $userName.\n6) Yaliyopita hivi karibuni — $pastCard (maneno 45-55): matukio yaliyopelekea $userName katika hali ya sasa.\n7) Fahamu — $consciousCard (maneno 45-55): malengo, matarajio au kile $userName anachojua.\n8) Siku zijazo karibu — $hiddenCard (maneno 45-55): maendeleo yanayoweza kutokea wiki zijazo.\n9) Nafsi ya ndani — $selfCard (maneno 45-55): hali na rasilimali za $userName.\n10) Mazingira — $environmentCard (maneno 45-55): ushawishi wa watu na mazingira.\n11) Matumaini / hofu — $hopesCard (maneno 45-55): matarajio au hofu za $userName.\n12) Matokeo — $outcomeCard (maneno 45-55): matokeo yanayoweza kutokea kwa kuzingatia ushauri wa muundo.\n13) Hitimisho: msaada wa kirafiki na uthibitisho chanya (maneno 30-35) kwa $userName.\nMahitaji: jumla ya maneno 400-500, mtindo wa mazungumzo wenye uhai, emoji 4-6 za kiroho; toa kila sehemu kwa mistari miwili tupu (\n); usitumie alama *, # au muundo mwingine; andika kwa maandishi rahisi tu.';
   }
 
@@ -1305,11 +1317,12 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mchawi mwenye uzoefu wa taroti. Mtumiaji $userName anauliza: \"$userQuestion\". Jibu kwa kutumia muundo wa \"Yaliyopita - Sasa - Siku zijazo\". Kadi zimepangwa kama ifuatavyo: yaliyopita - $pastCard; sasa - $presentCard; siku zijazo - $hiddenCard. Taja jina $userName angalau mara nne na hakikisha unahusisha maana za kadi na swali. Fuata muundo:\n1) Salamu kwa jina $userName.\n2) Kichwa: Muundo: Yaliyopita ($pastCard) - Sasa ($presentCard) - Siku zijazo ($hiddenCard).\n3) SEHEMU YA YALIYOPITA — $pastCard (maneno 40-50): maneno matatu muhimu, ishara za kadi na maelezo ya jinsi matukio ya zamani yanavyoathiri matokeo ya swali la $userQuestion kwa $userName.\n4) SEHEMU YA SASA — $presentCard (maneno 40-50): maneno muhimu, ishara za kadi na mambo ya sasa yanayoathiri jibu la swali la $userQuestion.\n5) SEHEMU YA SIKU ZIJAZO — $hiddenCard (maneno 40-50): maneno muhimu, ishara za kadi na hali inayoweza kutokea kuhusu swali la $userName.\n6) Hitimisho: ushauri mfupi, uthibitisho chanya (maneno 20-30) na muhtasari wazi wa nafasi.\nMahitaji: jumla ya maneno 180-220, mtindo wa kiroho wenye joto, emoji 3-5 za mada; toa kila sehemu kwa mistari miwili tupu (\n); usiruhusu alama *, # au alama nyingine za muundo; andika kwa maandishi rahisi tu.';
   }
 
@@ -1357,13 +1370,14 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni msomaji wa tarot mwenye uzoefu. Mtumiaji $userName anauliza: \"$userQuestion\". Jibu kupitia mpangilio wa \"kadi 5\". Kadi zimepewa kwa mpangilio: zamani - $pastCard; sasa - $presentCard; baadaye - $hiddenCard; sababu - $adviceCard; matokeo yanayowezekana - $outcomeCard. Eleza maana ya kila kadi na eleza maana yao ya pamoja.';
   }
 
@@ -1374,7 +1388,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get makeNewSpread => 'Fanya ugawaji mpya';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Programu inatumia AI kwa madhumuni ya burudani tu. Hatubeba uwajibikaji kwa maamuzi uliyoyafanya. Ikiwa ni lazima, wasiliana na mtaalamu.';
 
   @override
@@ -1382,8 +1397,13 @@ class AppLocalizationsSw extends AppLocalizations {
       'Ombi lako limetambuliwa. Tafadhali fungua kadi.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Wewe ni mtaalamu wa taroti. Mtumiaji $userName anauliza: «$userQuestion». Jibu kwa kutumia ugawaji wa mapenzi wa kadi tatu. Kadi zimepangwa hivi: hisia za $userName — $youCard; hisia za mshirika — $partnerCard; mwelekeo au uwezo wa uhusiano — $dynamicCard. Taja jina $userName angalau mara tatu na uhusishe kila kadi na swali. Fuata muundo:\n1) Salamu kwa jina $userName.\n2) Kichwa: Ugawaji: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — maneno 40–50: eleza kile kadi inachosema kuhusu hisia na matarajio ya $userName.\n4) $partnerCard — maneno 40–50: funua hisia na nia za mshirika kuhusu swali la $userName.\n5) $dynamicCard — maneno 40–50: onyesha jinsi nguvu hizi mbili zinavyoshirikiana na zinaweza kuleta nini katika uhusiano.\n6) Hitimisho: ushauri wa joto na uthibitisho chanya (maneno 20–25) kwa $userName.\nMahitaji: jumla ya maneno 150–180, mtindo wa kirafiki na wa kimapenzi, emoji 2–4 zinazohusiana; aya zitatenganishwa kwa mistari miwili ya mapumziko (\\n\\n); epuka alama *, # na alama zozote za muundo.';
   }
 
@@ -1391,7 +1411,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get loveSpread => 'Ugawaji wa mapenzi';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Programu inatumia AI kwa madhumuni ya burudani tu. Hatubeba uwajibikaji kwa maamuzi uliyoyafanya. Ikiwa ni lazima, wasiliana na mtaalamu.';
 
   @override
@@ -1472,7 +1493,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get monthlyForecast => 'Utabiri wa mwezi';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Programu hutumia AI kwa madhumuni ya burudani tu. Hatubeba jukumu kwa maamuzi uliyofanya. Ikiwa ni lazima, wasiliana na mtaalamu.';
 
   @override
@@ -1497,7 +1519,8 @@ class AppLocalizationsSw extends AppLocalizations {
       'Kosa lilipotokea wakati wa kupata thamani ya muundo. Jaribu tena.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Programu inatumia AI kwa madhumuni ya burudani tu. Hatubeba dhamana kwa maamuzi uliyofanya. Ikiwa inahitajika, wasiliana na mtaalamu.';
 
   @override
@@ -1724,48 +1747,60 @@ class AppLocalizationsSw extends AppLocalizations {
       'Ninawezaje kupata mlingano katika maisha?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mshauri mtaalamu wa taroti. Mtumiaji $userName anauliza: «$userQuestion». Fanya ugawaji wa kadi tatu kuhusu kazi na fedha. Kadi zimepangwa hivi: 1) hali — $situationCard; 2) kikwazo au fursa kuu — $challengeCard; 3) ushauri na uwezo — $adviceCard. Tambua jinsia ya mtumiaji kwa jina $userName na tumia viambishi na viwakilishi sahihi. Zungumza na $userName kwa urafiki na kwa moja kwa moja: onyesha anapo simama, kinachozuia ukuaji (au fursa muhimu ya kugundua) na hatua halisi itakayomsaidia kupata kipato anachotaka. Taja jina $userName angalau mara tatu. Fuata muundo:\n1) Salamu — sentensi 1.\n2) Kichwa: Ugawaji: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — maneno 45–55: eleza hali ya sasa ya $userName (kazi, biashara au hali ya fedha kwa ujumla) na maana ya kadi.\n4) $challengeCard — maneno 45–55: funua kizuizi kikuu au fursa isiyoonekana; eleza jinsi inavyoonekana kwenye kadi na swali la $userName.\n5) $adviceCard — maneno 45–55: toa hatua maalum (mfano, angalia bajeti upya, omba ongezeko la mshahara, jifunze ujuzi mpya) na eleza matokeo yanayoweza kutokea.\n6) Mwisho — maneno 20–25: hitimisho la kirafiki, uthibitisho chanya na emoji 2 za kazi.\nMahitaji: jumla ya maneno 160–185, sauti wazi ya kibiashara bila maneno ya mtaani, emoji 2–3; toa aya kwa mistari miwili ya mapumziko \\n\\n; usitumie *, # au alama nyingine za muundo.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mshauri mtaalamu wa taroti. Mtumiaji $userName anauliza: «$userQuestion». Fanya ugawaji wa kadi tatu wa \"Kwa na Dhidi\". Kadi zimepangwa hivi: faida — $proCard; hasara — $conCard; ushauri/mwisho — $adviceCard. Tambua jinsia ya mtumiaji kwa jina $userName na tumia viambishi na viwakilishi sahihi. Taja jina $userName angalau mara tatu na uhusishe kila kadi na swali. Fuata muundo:\n1) Salamu kwa jina $userName.\n2) Kichwa: Ugawaji: $proCard | $conCard | $adviceCard.\n3) Faida: $proCard — maneno 45–55. Eleza manufaa makuu au rasilimali chanya zinazotolewa na kadi hii kwa hali ya $userName.\n4) Hasara: $conCard — maneno 45–55. Eleza hatari, gharama zilizofichwa au udhaifu wa uamuzi kwa $userName.\n5) Ushauri: $adviceCard — maneno 45–55. Linganisha faida na hasara, toa hatua moja maalum (kitenzi + kitu) na eleza jinsi itabadilisha matokeo kwa $userName.\n6) Mwisho — neno moja \"Ndiyo\" au \"Hapana\", kisha sentensi moja ya sababu na uthibitisho wa moyo (maneno 20–25) na emoji 1–2.\nMahitaji: jumla ya maneno 150–180, sauti ya kirafiki na ya mazungumzo; toa kila sehemu kwa mistari miwili ya mapumziko \\n\\n; usitumie *, # au alama nyingine za muundo.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mtaalamu wa taroti. Mtumiaji $userName anauliza: «$userQuestion». Tengeneza ugawaji wa \"Mzunguko wa Mwezi\" kwa $month. Kadi ziko kwa mpangilio: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Tambua jinsia ya $userName kwa jina na tumia viambishi na viwakilishi sahihi. Taja jina angalau mara tano, lakini usilitaje kila baada ya tarehe — litaje tu ndani ya ushauri. Tumia ratiba ya kalenda: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ikiwa mwezi una siku 30 — kadi ya 12 pia ni kwa tarehe 30). Muundo:\n1) Salamu kwa jina $userName (sentensi 1–2).\n2) Utangulizi mfupi kuhusu lengo la ugawaji (sentensi 1).\n3–14) Kwa kila kadi tumia mstari wa aina \"1–3 $month — $card1\" (bila jina): kisha sentensi 2–3 kuhusu nguvu kuu za kipindi na ushauri wa vitendo, ukitaja $userName kwa asili.\n15) Mwisho: ushauri wa jumla kwa mwezi (maneno ~40) na uthibitisho wa moyo na emoji 2–3.\nMahitaji: jumla ya maneno 360–400; sauti ya kirafiki, yenye motisha; toa sehemu kwa mistari miwili ya mapumziko \\n\\n; usitumie *, #, orodha au alama za kiufundi.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Wewe ni mshauri mtaalamu wa taroti. Mtumiaji $userName anauliza: «$userQuestion». Fanya ugawaji wa \"Maendeleo binafsi na usawa\" wa kadi saba. Kadi zimepangwa hivi: kiini — $coreCard; akili — $mindCard; hisia — $emotionCard; mwili — $bodyCard; rasilimali — $strengthCard; kizuizi — $challengeCard; ushauri — $adviceCard. Tambua jinsia ya mtumiaji kwa jina $userName na tumia viambishi na viwakilishi sahihi. Zungumza kwa nguvu na kwa kuhimiza, taja jina $userName angalau mara nne na hakikisha kuhusisha kila kadi na swali. Fuata muundo na muundo:\n1) Salamu kwa jina $userName.\n2) Kichwa: Ugawaji: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — eleza lengo kuu la maendeleo binafsi la $userName.\n4) $mindCard — eleza jinsi ya kuweka mawazo na nini cha kujifunza.\n5) $emotionCard — funua rasilimali ya hisia na motisha.\n6) $bodyCard — toa ushauri wa jinsi ya kutunza mwili na nguvu.\n7) $strengthCard — onyesha kipawa cha ndani au msaada wa nje.\n8) $challengeCard — eleza usawa usio sawa mkuu na sababu zake.\n9) $adviceCard — toa hatua maalum inayounganisha vipengele vyote.\n10) Mwisho: uthibitisho wa moyo na salamu za joto na emoji 2–3.\nMahitaji: kila kipengele sentensi 2–3; toa mapumziko ya mistari miwili \\n\\n kati ya vipengele; usitumie *, # au alama nyingine za muundo.';
   }
 

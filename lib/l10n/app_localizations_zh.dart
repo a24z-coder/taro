@@ -347,8 +347,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String
-      get self_development_balance_spread_screen_self_development_explanation =>
-          '\"自我提升与平衡\"牌阵由7张牌组成，排列成圆形。每张牌象征着你精神成长和内在和谐的某个方面。';
+  get self_development_balance_spread_screen_self_development_explanation =>
+      '\"自我提升与平衡\"牌阵由7张牌组成，排列成圆形。每张牌象征着你精神成长和内在和谐的某个方面。';
 
   @override
   String get card_meanings_screen_major_arcana => '大阿尔克那';
@@ -923,7 +923,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '为$userName做一个关于自我提升和平衡的三张牌牌阵：$cards';
   }
 
@@ -947,13 +949,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang语言描述塔罗牌\"\"$cardName\\\"的总体含义。包括历史、象征意义和主要含义。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang语言描述塔罗牌\"\"$cardName\\\"的逆位含义。包括相反的意义和警示。';
   }
 
@@ -987,13 +993,17 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '将塔罗牌名称 \"\"$cardName\\\" 翻译成 $languageCode。答案应仅包含翻译后的名称，不包含额外文本或标点符号。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '你是专业的塔罗牌读者。请为用户$name用该请求的语言写一条鼓舞人心的\"今日之牌\"信息。遵循结构和篇幅要求。\n🌟 $name，你的今日之牌是$cardName！\n🔑 关键词：<请列出3–5个简短关键词>\n🃏 含义（约45–50字）：描述这张牌的主要能量以及它今天如何在$name身上体现。\n💡 建议（约35–40字）：提出具体的行动或心态，帮助$name利用这股能量。\n✨ 肯定语（1行）：以\"我……\"开头的积极肯定句。\n要求：总长度120–150字，温暖的神秘语气，3–4个主题表情符号，不使用HTML/Markdown列表；段落用双换行分隔（\\n\\n）。';
   }
 
@@ -1206,19 +1216,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是经验丰富的塔罗师。用户 $userName 问道：\"$userQuestion\\\"。请用\"凯尔特十字\"牌阵（韦特经典布局）回答。牌面顺序为：现状 - $situationCard；挑战 - $challengeCard；潜意识 - $subconsciousCard；近期过去 - $pastCard；意识 - $consciousCard；近期未来 - $hiddenCard；内在自我 - $selfCard；环境 - $environmentCard；希望或恐惧 - $hopesCard；结果 - $outcomeCard。请至少提及 $userName 六次，并确保每张牌都与问题相关。结构如下：\n1) 向 $userName 打招呼。\n2) 标题：牌阵：现状（$situationCard）/ 挑战（$challengeCard）/ 潜意识（$subconsciousCard）/ 近期过去（$pastCard）/ 意识（$consciousCard）/ 近期未来（$hiddenCard）/ 内在自我（$selfCard）/ 环境（$environmentCard）/ 希望/恐惧（$hopesCard）/ 结果（$outcomeCard）。\n3) 现状 — $situationCard（45-55字）：三个关键词，牌面象征及当前关于 $userName 的问题 $userQuestion 的形势。\n4) 挑战 — $challengeCard（45-55字）：对 $userName 来说的主要障碍或帮助。\n5) 潜意识 — $subconsciousCard（45-55字）：影响 $userName 的隐藏动机或能量。\n6) 近期过去 — $pastCard（45-55字）：导致 $userName 现状的事件。\n7) 意识 — $consciousCard（45-55字）：$userName 的目标、期望或意识到的事物。\n8) 近期未来 — $hiddenCard（45-55字）：未来几周可能的发展。\n9) 内在自我 — $selfCard（45-55字）：$userName 的状态和资源。\n10) 环境 — $environmentCard（45-55字）：人际和环境的影响。\n11) 希望 / 恐惧 — $hopesCard（45-55字）：$userName 的期望或担忧。\n12) 结果 — $outcomeCard（45-55字）：结合牌阵建议的可能结果。\n13) 结语：对 $userName 的友好支持和积极肯定（30-35字）。\n要求：总字数400-500字，语气生动口语化，包含4-6个神秘主题表情符号；每个部分用双换行分隔\n；不使用 *、# 或其他格式符号；仅用纯文本书写。';
   }
 
@@ -1233,11 +1244,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是经验丰富的塔罗师。用户 $userName 问道：\"$userQuestion\"。请用\"过去 - 现在 - 未来\"牌阵回答。牌面顺序为：过去 - $pastCard；现在 - $presentCard；未来 - $hiddenCard。请至少提及 $userName 四次，并确保牌义与问题相关。结构如下：\n1) 向 $userName 打招呼。\n2) 标题：牌阵：过去（$pastCard）- 现在（$presentCard）- 未来（$hiddenCard）。\n3) 过去部分 — $pastCard（40-50字）：三个关键词，牌面象征及过去事件如何影响 $userName 的问题 $userQuestion 的结果。\n4) 现在部分 — $presentCard（40-50字）：关键词，牌面象征及当前影响 $userName 对问题 $userQuestion 回答的因素。\n5) 未来部分 — $hiddenCard（40-50字）：关键词，牌面象征及关于 $userName 问题的可能发展情景。\n6) 结论：简短建议，积极肯定（20-30字）及明确的机会总结。\n要求：总字数180-220字，语气温暖神秘，包含3-5个主题表情符号；每个部分用双换行分隔\n；禁止使用 *、# 或其他格式符号；仅用纯文本书写。';
   }
 
@@ -1281,13 +1293,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗牌占卜师。用户$userName问道：\"$userQuestion\"。请使用\"5张牌\"阵型回答。牌按顺序给出：过去 - $pastCard; 现在 - $presentCard; 隐藏 - $hiddenCard; 建议 - $adviceCard; 结果 - $outcomeCard。请至少五次提到$userName，并确保将每张牌与问题联系起来。请遵循以下结构：\n\n1）以$userName的名字问候。\n\n2）标题：阵型：过去（$pastCard）/ 现在（$presentCard）/ 隐藏（$hiddenCard）/ 建议（$adviceCard）/ 结果（$outcomeCard）。\n\n3）过去 — $pastCard（45-55字）：三个关键词，牌的象征意义，以及过去对$userName的$userQuestion的影响。\n\n4）现在 — $presentCard（45-55字）：关键词，象征意义，$userName问题的当前状态。\n\n5）隐藏 — $hiddenCard（45-55字）：无意识地影响$userName情况的因素，重点关注象征意义。\n\n6）建议 — $adviceCard（45-55字）：基于牌面图像的$userName的实用行动。\n\n7）结果 — $outcomeCard（45-55字）：如果遵循建议的可能情景，向$userName致辞。\n\n8）结论：对$userName的友好支持和积极肯定（25-30字）。\n\n要求：总字数230-260字，生动的对话语调，3-5个神秘表情符号；用双换行（\\n\\n）分隔每个块；不要使用*, #或其他标记符号；只写纯文本。';
   }
 
@@ -1299,15 +1312,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-          '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+      '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String get requestReceivedPleaseOpenCards => '您的请求已收到。请翻开牌卡。';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '你是一位经验丰富的塔罗牌读者。用户 $userName 问道：\"$userQuestion\"。请用三张牌的爱情牌阵回答。牌面如下：$userName 的感情 — $youCard；伴侣的感情 — $partnerCard；关系的动态或潜力 — $dynamicCard。请至少三次提及 $userName 的名字，并将每张牌与问题联系起来。结构如下：\n1) 以 $userName 的名字打招呼。\n2) 标题：牌阵：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40–50 字：描述这张牌对 $userName 的感情和期待的含义。\n4) $partnerCard — 40–50 字：揭示伴侣对 $userName 问题的情感和意图。\n5) $dynamicCard — 40–50 字：展示这两种能量如何互动以及关系可能的发展。\n6) 结语：给 $userName 温暖的建议和积极的肯定（20–25 字）。\n要求：总字数 150–180 字，友好浪漫的语气，2–4 个主题表情符号；段落用双换行分隔（\\n\\n）；避免使用 *、# 及任何格式标记。';
   }
 
@@ -1316,8 +1334,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String
-      get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-          '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+      '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String main_screen_greeting_with_name(Object name) {
@@ -1396,8 +1414,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          '本应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      '本应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -1421,8 +1439,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '本应用仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '本应用仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String get thematic_spreads_screen_title => '主题牌阵';
@@ -1624,48 +1642,60 @@ class AppLocalizationsZh extends AppLocalizations {
       '如何在生活中找到和谐？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗教练。用户$userName问道：\"$userQuestion\"。请做一个关于职业和财务的三张牌牌阵。牌的顺序是：1）现状 — $situationCard；2）障碍或关键机会 — $challengeCard；3）建议与潜力 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。以友好且专业的方式与$userName交流：指出他目前的位置，阻碍成长的因素（或需要注意的机会），以及实现理想收入的实际步骤。至少提及$userName三次。结构如下：\n1）问候 — 1句。\n2）标题：牌阵：$situationCard | $challengeCard | $adviceCard。\n3）$situationCard — 45–55字：描述$userName当前的状况（工作、业务或整体财务背景）及牌的象征意义。\n4）$challengeCard — 45–55字：揭示主要障碍或隐含机会；说明其如何反映在牌面和$userName的问题中。\n5）$adviceCard — 45–55字：提出具体行动（如重新审视预算、请求加薪、学习新技能）及可能的结果。\n6）结尾 — 20–25字：友好总结，积极肯定及两个商务表情符号。\n要求：总字数160–185字，清晰专业语气，无俚语，2–3个表情符号；段落用双换行分隔；不使用*、#等标记。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗师。用户$userName问道：\"$userQuestion\"。请做一个三张牌的\"利与弊\"牌阵。牌的顺序是：优点 — $proCard；缺点 — $conCard；建议/总结 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。至少提及$userName三次，并将每张牌与问题关联。结构如下：\n1）以$userName的名字问候。\n2）标题：牌阵：$proCard | $conCard | $adviceCard。\n3）优点：$proCard — 45–55字。揭示这张牌为$userName的情况带来的主要利益或积极资源。\n4）缺点：$conCard — 45–55字。描述对$userName方案的风险、隐性成本或弱点。\n5）建议：$adviceCard — 45–55字。权衡利弊，提出一个具体行动（动词+对象），并说明这将如何改变$userName的结果。\n6）总结 — 一个词\"是\"或\"否\"，随后一句理由和鼓励性肯定（20–25字），附1–2个表情符号。\n要求：总字数150–180字，友好口语语气；各部分用双换行分隔；不使用*、#或其他标记。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位专业塔罗师。用户$userName问道：\"$userQuestion\"。请做一个关于$month的\"月轮\"牌阵。牌按顺序为：1 — $card1，2 — $card2，3 — $card3，4 — $card4，5 — $card5，6 — $card6，7 — $card7，8 — $card8，9 — $card9，10 — $card10，11 — $card11，12 — $card12。根据$userName的名字判断性别，并使用正确的词尾和代词。至少提及$userName五次，但**不要在每个日期后都插入名字**，只在建议内容中自然提及。使用日期网格：1–3，4–6，7–9，10–12，13–15，16–18，19–21，22–24，25–26，27–28，29–30，31（如果月份有30天，第12张牌对应30号）。格式：\n1）以$userName的名字问候（1–2句）。\n2）简短介绍牌阵目的（1句）。\n3–14）每张牌用\"1–3 $month — $card1\"格式（不带名字）：随后2–3句描述该期间的主要能量和实用建议，自然提及$userName。\n15）总结：本月总体建议（约40字）及激励肯定，附2–3个表情符号。\n要求：总字数360–400字；友好激励语气；各部分用双换行分隔；不使用*、#、列表或技术标记。';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗教练。用户$userName问道：\"$userQuestion\"。请做一个七张牌的\"自我发展与平衡\"牌阵。牌的顺序是：核心 — $coreCard；思维 — $mindCard；情绪 — $emotionCard；身体 — $bodyCard；资源 — $strengthCard；阻碍 — $challengeCard；建议 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。语言生动且支持性强，至少提及$userName四次，且每张牌都要与问题相关。结构和格式如下：\n1）以$userName的名字问候。\n2）标题：牌阵：$coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard。\n3）$coreCard — 描述$userName自我发展的主要焦点。\n4）$mindCard — 说明如何调整思维及学习内容。\n5）$emotionCard — 揭示情绪资源和动力。\n6）$bodyCard — 提示如何照顾身体和能量。\n7）$strengthCard — 展示内在天赋或外部支持。\n8）$challengeCard — 指出主要失衡及其原因。\n9）$adviceCard — 提出整合各方面的具体行动。\n10）结尾：激励肯定和温暖祝福，附2–3个表情符号。\n要求：每点2–3句；各点间用双换行分隔；不使用*、#或其他标记。';
   }
 
@@ -2062,8 +2092,8 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String
-      get self_development_balance_spread_screen_self_development_explanation =>
-          '\"自我提升与平衡\"牌阵由7张牌组成，排列成圆形。每张牌象征着你精神成长和内在和谐的某个方面。';
+  get self_development_balance_spread_screen_self_development_explanation =>
+      '\"自我提升与平衡\"牌阵由7张牌组成，排列成圆形。每张牌象征着你精神成长和内在和谐的某个方面。';
 
   @override
   String get card_meanings_screen_major_arcana => '大阿尔克那';
@@ -2638,7 +2668,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '为$userName做一个关于自我提升和平衡的三张牌牌阵：$cards';
   }
 
@@ -2662,13 +2694,17 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang语言描述塔罗牌\"\"$cardName\\\"的总体含义。包括历史、象征意义和主要含义。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang语言描述塔罗牌\"\"$cardName\\\"的逆位含义。包括相反的意义和警示。';
   }
 
@@ -2702,13 +2738,17 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '将塔罗牌名称 \"\"$cardName\\\" 翻译成 $languageCode。答案应仅包含翻译后的名称，不包含额外文本或标点符号。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '你是专业的塔罗牌读者。请为用户$name用该请求的语言写一条鼓舞人心的\"今日之牌\"信息。遵循结构和篇幅要求。\n🌟 $name，你的今日之牌是$cardName！\n🔑 关键词：<请列出3–5个简短关键词>\n🃏 含义（约45–50字）：描述这张牌的主要能量以及它今天如何在$name身上体现。\n💡 建议（约35–40字）：提出具体的行动或心态，帮助$name利用这股能量。\n✨ 肯定语（1行）：以\"我……\"开头的积极肯定句。\n要求：总长度120–150字，温暖的神秘语气，3–4个主题表情符号，不使用HTML/Markdown列表；段落用双换行分隔（\\n\\n）。';
   }
 
@@ -2921,19 +2961,20 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是经验丰富的塔罗师。用户 $userName 问道：\"$userQuestion\\\"。请用\"凯尔特十字\"牌阵（韦特经典布局）回答。牌面顺序为：现状 - $situationCard；挑战 - $challengeCard；潜意识 - $subconsciousCard；近期过去 - $pastCard；意识 - $consciousCard；近期未来 - $hiddenCard；内在自我 - $selfCard；环境 - $environmentCard；希望或恐惧 - $hopesCard；结果 - $outcomeCard。请至少提及 $userName 六次，并确保每张牌都与问题相关。结构如下：\n1) 向 $userName 打招呼。\n2) 标题：牌阵：现状（$situationCard）/ 挑战（$challengeCard）/ 潜意识（$subconsciousCard）/ 近期过去（$pastCard）/ 意识（$consciousCard）/ 近期未来（$hiddenCard）/ 内在自我（$selfCard）/ 环境（$environmentCard）/ 希望/恐惧（$hopesCard）/ 结果（$outcomeCard）。\n3) 现状 — $situationCard（45-55字）：三个关键词，牌面象征及当前关于 $userName 的问题 $userQuestion 的形势。\n4) 挑战 — $challengeCard（45-55字）：对 $userName 来说的主要障碍或帮助。\n5) 潜意识 — $subconsciousCard（45-55字）：影响 $userName 的隐藏动机或能量。\n6) 近期过去 — $pastCard（45-55字）：导致 $userName 现状的事件。\n7) 意识 — $consciousCard（45-55字）：$userName 的目标、期望或意识到的事物。\n8) 近期未来 — $hiddenCard（45-55字）：未来几周可能的发展。\n9) 内在自我 — $selfCard（45-55字）：$userName 的状态和资源。\n10) 环境 — $environmentCard（45-55字）：人际和环境的影响。\n11) 希望 / 恐惧 — $hopesCard（45-55字）：$userName 的期望或担忧。\n12) 结果 — $outcomeCard（45-55字）：结合牌阵建议的可能结果。\n13) 结语：对 $userName 的友好支持和积极肯定（30-35字）。\n要求：总字数400-500字，语气生动口语化，包含4-6个神秘主题表情符号；每个部分用双换行分隔\n；不使用 *、# 或其他格式符号；仅用纯文本书写。';
   }
 
@@ -2948,11 +2989,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是经验丰富的塔罗师。用户 $userName 问道：\"$userQuestion\"。请用\"过去 - 现在 - 未来\"牌阵回答。牌面顺序为：过去 - $pastCard；现在 - $presentCard；未来 - $hiddenCard。请至少提及 $userName 四次，并确保牌义与问题相关。结构如下：\n1) 向 $userName 打招呼。\n2) 标题：牌阵：过去（$pastCard）- 现在（$presentCard）- 未来（$hiddenCard）。\n3) 过去部分 — $pastCard（40-50字）：三个关键词，牌面象征及过去事件如何影响 $userName 的问题 $userQuestion 的结果。\n4) 现在部分 — $presentCard（40-50字）：关键词，牌面象征及当前影响 $userName 对问题 $userQuestion 回答的因素。\n5) 未来部分 — $hiddenCard（40-50字）：关键词，牌面象征及关于 $userName 问题的可能发展情景。\n6) 结论：简短建议，积极肯定（20-30字）及明确的机会总结。\n要求：总字数180-220字，语气温暖神秘，包含3-5个主题表情符号；每个部分用双换行分隔\n；禁止使用 *、# 或其他格式符号；仅用纯文本书写。';
   }
 
@@ -2996,13 +3038,14 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗牌占卜师。用户$userName问道：\"$userQuestion\"。请使用\"5张牌\"阵型回答。牌按顺序给出：过去 - $pastCard; 现在 - $presentCard; 隐藏 - $hiddenCard; 建议 - $adviceCard; 结果 - $outcomeCard。请至少五次提到$userName，并确保将每张牌与问题联系起来。请遵循以下结构：\n\n1）以$userName的名字问候。\n\n2）标题：阵型：过去（$pastCard）/ 现在（$presentCard）/ 隐藏（$hiddenCard）/ 建议（$adviceCard）/ 结果（$outcomeCard）。\n\n3）过去 — $pastCard（45-55字）：三个关键词，牌的象征意义，以及过去对$userName的$userQuestion的影响。\n\n4）现在 — $presentCard（45-55字）：关键词，象征意义，$userName问题的当前状态。\n\n5）隐藏 — $hiddenCard（45-55字）：无意识地影响$userName情况的因素，重点关注象征意义。\n\n6）建议 — $adviceCard（45-55字）：基于牌面图像的$userName的实用行动。\n\n7）结果 — $outcomeCard（45-55字）：如果遵循建议的可能情景，向$userName致辞。\n\n8）结论：对$userName的友好支持和积极肯定（25-30字）。\n\n要求：总字数230-260字，生动的对话语调，3-5个神秘表情符号；用双换行（\\n\\n）分隔每个块；不要使用*, #或其他标记符号；只写纯文本。';
   }
 
@@ -3014,15 +3057,20 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-          '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+      '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String get requestReceivedPleaseOpenCards => '您的请求已收到。请翻开牌卡。';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '你是一位经验丰富的塔罗牌读者。用户 $userName 问道：\"$userQuestion\"。请用三张牌的爱情牌阵回答。牌面如下：$userName 的感情 — $youCard；伴侣的感情 — $partnerCard；关系的动态或潜力 — $dynamicCard。请至少三次提及 $userName 的名字，并将每张牌与问题联系起来。结构如下：\n1) 以 $userName 的名字打招呼。\n2) 标题：牌阵：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40–50 字：描述这张牌对 $userName 的感情和期待的含义。\n4) $partnerCard — 40–50 字：揭示伴侣对 $userName 问题的情感和意图。\n5) $dynamicCard — 40–50 字：展示这两种能量如何互动以及关系可能的发展。\n6) 结语：给 $userName 温暖的建议和积极的肯定（20–25 字）。\n要求：总字数 150–180 字，友好浪漫的语气，2–4 个主题表情符号；段落用双换行分隔（\\n\\n）；避免使用 *、# 及任何格式标记。';
   }
 
@@ -3031,8 +3079,8 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String
-      get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-          '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+      '该应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String main_screen_greeting_with_name(Object name) {
@@ -3111,8 +3159,8 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          '本应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      '本应用程序仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -3136,8 +3184,8 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '本应用仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '本应用仅将人工智能用于娱乐目的。我们不对您所做的决定负责。如有需要，请咨询专业人士。';
 
   @override
   String get thematic_spreads_screen_title => '主题牌阵';
@@ -3339,48 +3387,60 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
       '如何在生活中找到和谐？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗教练。用户$userName问道：\"$userQuestion\"。请做一个关于职业和财务的三张牌牌阵。牌的顺序是：1）现状 — $situationCard；2）障碍或关键机会 — $challengeCard；3）建议与潜力 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。以友好且专业的方式与$userName交流：指出他目前的位置，阻碍成长的因素（或需要注意的机会），以及实现理想收入的实际步骤。至少提及$userName三次。结构如下：\n1）问候 — 1句。\n2）标题：牌阵：$situationCard | $challengeCard | $adviceCard。\n3）$situationCard — 45–55字：描述$userName当前的状况（工作、业务或整体财务背景）及牌的象征意义。\n4）$challengeCard — 45–55字：揭示主要障碍或隐含机会；说明其如何反映在牌面和$userName的问题中。\n5）$adviceCard — 45–55字：提出具体行动（如重新审视预算、请求加薪、学习新技能）及可能的结果。\n6）结尾 — 20–25字：友好总结，积极肯定及两个商务表情符号。\n要求：总字数160–185字，清晰专业语气，无俚语，2–3个表情符号；段落用双换行分隔；不使用*、#等标记。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗师。用户$userName问道：\"$userQuestion\"。请做一个三张牌的\"利与弊\"牌阵。牌的顺序是：优点 — $proCard；缺点 — $conCard；建议/总结 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。至少提及$userName三次，并将每张牌与问题关联。结构如下：\n1）以$userName的名字问候。\n2）标题：牌阵：$proCard | $conCard | $adviceCard。\n3）优点：$proCard — 45–55字。揭示这张牌为$userName的情况带来的主要利益或积极资源。\n4）缺点：$conCard — 45–55字。描述对$userName方案的风险、隐性成本或弱点。\n5）建议：$adviceCard — 45–55字。权衡利弊，提出一个具体行动（动词+对象），并说明这将如何改变$userName的结果。\n6）总结 — 一个词\"是\"或\"否\"，随后一句理由和鼓励性肯定（20–25字），附1–2个表情符号。\n要求：总字数150–180字，友好口语语气；各部分用双换行分隔；不使用*、#或其他标记。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位专业塔罗师。用户$userName问道：\"$userQuestion\"。请做一个关于$month的\"月轮\"牌阵。牌按顺序为：1 — $card1，2 — $card2，3 — $card3，4 — $card4，5 — $card5，6 — $card6，7 — $card7，8 — $card8，9 — $card9，10 — $card10，11 — $card11，12 — $card12。根据$userName的名字判断性别，并使用正确的词尾和代词。至少提及$userName五次，但**不要在每个日期后都插入名字**，只在建议内容中自然提及。使用日期网格：1–3，4–6，7–9，10–12，13–15，16–18，19–21，22–24，25–26，27–28，29–30，31（如果月份有30天，第12张牌对应30号）。格式：\n1）以$userName的名字问候（1–2句）。\n2）简短介绍牌阵目的（1句）。\n3–14）每张牌用\"1–3 $month — $card1\"格式（不带名字）：随后2–3句描述该期间的主要能量和实用建议，自然提及$userName。\n15）总结：本月总体建议（约40字）及激励肯定，附2–3个表情符号。\n要求：总字数360–400字；友好激励语气；各部分用双换行分隔；不使用*、#、列表或技术标记。';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位经验丰富的塔罗教练。用户$userName问道：\"$userQuestion\"。请做一个七张牌的\"自我发展与平衡\"牌阵。牌的顺序是：核心 — $coreCard；思维 — $mindCard；情绪 — $emotionCard；身体 — $bodyCard；资源 — $strengthCard；阻碍 — $challengeCard；建议 — $adviceCard。根据$userName的名字判断性别，并使用正确的词尾和代词。语言生动且支持性强，至少提及$userName四次，且每张牌都要与问题相关。结构和格式如下：\n1）以$userName的名字问候。\n2）标题：牌阵：$coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard。\n3）$coreCard — 描述$userName自我发展的主要焦点。\n4）$mindCard — 说明如何调整思维及学习内容。\n5）$emotionCard — 揭示情绪资源和动力。\n6）$bodyCard — 提示如何照顾身体和能量。\n7）$strengthCard — 展示内在天赋或外部支持。\n8）$challengeCard — 指出主要失衡及其原因。\n9）$adviceCard — 提出整合各方面的具体行动。\n10）结尾：激励肯定和温暖祝福，附2–3个表情符号。\n要求：每点2–3句；各点间用双换行分隔；不使用*、#或其他标记。';
   }
 
@@ -3777,8 +3837,8 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String
-      get self_development_balance_spread_screen_self_development_explanation =>
-          '「自我成長與平衡」牌陣由7張牌組成，排列成圓形。每張牌象徵您靈性成長和內在和諧的特定面向。';
+  get self_development_balance_spread_screen_self_development_explanation =>
+      '「自我成長與平衡」牌陣由7張牌組成，排列成圓形。每張牌象徵您靈性成長和內在和諧的特定面向。';
 
   @override
   String get card_meanings_screen_major_arcana => '大阿爾克那牌';
@@ -4353,7 +4413,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '為 $userName 做一個關於自我成長和平衡的牌陣，使用這三張牌：$cards';
   }
 
@@ -4377,13 +4439,17 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang語言描述塔羅牌「$cardName」的整體意義。包括歷史、象徵和主要意義。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang語描述塔羅牌「$cardName」的逆位含義。包括相反的意義和警告。';
   }
 
@@ -4417,13 +4483,17 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '將塔羅牌「$cardName」的名稱翻譯成$languageCode。回答中只應包含翻譯後的名稱，無需額外文字或標點符號。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '你是一位專業的塔羅師。為用戶 $name 用此請求的語言撰寫一則鼓舞人心的「今日之卡」訊息。請遵循結構和字數要求。\n🌟 $name，你的今日之卡是 $cardName！\n🔑 關鍵詞：<請列出3–5個簡短的關鍵詞>\n🃏 含義（約45–50字）：描述此牌的主要能量，以及它今天將如何在 $name 身上展現。\n💡 建議（約35–40字）：提出具體的行動或心態，幫助 $name 利用這股能量。\n✨ 肯定語（1行）：以「我…」開頭的正面肯定句。\n要求：總字數120–150字，溫暖且帶有神秘色彩的語氣，使用3–4個主題相關的表情符號，禁止使用HTML/Markdown列表；段落請用雙換行分隔（\\n\\n）。';
   }
 
@@ -4636,19 +4706,20 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用「凱爾特十字」牌陣（韋特經典牌陣）回答。牌面分配如下：情況 - $situationCard；挑戰 - $challengeCard；潛意識 - $subconsciousCard；近期過去 - $pastCard；意識 - $consciousCard；近期未來 - $hiddenCard；內在自我 - $selfCard；環境 - $environmentCard；希望或恐懼 - $hopesCard；結果 - $outcomeCard。請至少六次提及 $userName 的名字，並務必將每張牌與問題連結。結構如下：\n1) 向 $userName 打招呼。\n2) 標題：牌陣：情況（$situationCard）／挑戰（$challengeCard）／潛意識（$subconsciousCard）／近期過去（$pastCard）／意識（$consciousCard）／近期未來（$hiddenCard）／內在自我（$selfCard）／環境（$environmentCard）／希望／恐懼（$hopesCard）／結果（$outcomeCard）。\n3) 情況 — $situationCard（45-55字）：三個關鍵詞、牌義象徵及 $userName 就問題 $userQuestion 的當前狀況。\n4) 挑戰 — $challengeCard（45-55字）：對 $userName 來說的主要障礙或助力。\n5) 潛意識 — $subconsciousCard（45-55字）：影響 $userName 的隱藏動機或能量。\n6) 近期過去 — $pastCard（45-55字）：導致 $userName 現狀的過去事件。\n7) 意識 — $consciousCard（45-55字）：$userName 的目標、期望或意識層面。\n8) 近期未來 — $hiddenCard（45-55字）：未來幾週可能的發展。\n9) 內在自我 — $selfCard（45-55字）：$userName 的狀態與資源。\n10) 環境 — $environmentCard（45-55字）：周圍人事物的影響。\n11) 希望／恐懼 — $hopesCard（45-55字）：$userName 的期待或擔憂。\n12) 結果 — $outcomeCard（45-55字）：根據牌陣建議的可能結果。\n13) 結語：對 $userName 的友善支持與正面肯定（30-35字）。\n要求：全文約400-500字，語氣生動親切，含4-6個神秘主題表情符號；每段間隔兩行空白；不使用 *、# 或其他標記；僅用純文字。';
   }
 
@@ -4663,11 +4734,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用「過去－現在－未來」牌陣回答。牌面分配如下：過去 - $pastCard；現在 - $presentCard；未來 - $hiddenCard。請至少四次提及 $userName 的名字，並務必將牌義與問題連結。結構如下：\n1) 向 $userName 打招呼。\n2) 標題：牌陣：過去（$pastCard）－現在（$presentCard）－未來（$hiddenCard）。\n3) 過去部分 — $pastCard（40-50字）：三個關鍵詞、牌義象徵，說明過去事件如何影響 $userName 就問題 $userQuestion 的結果。\n4) 現在部分 — $presentCard（40-50字）：關鍵詞、牌義象徵及當前因素，影響對 $userQuestion 的回答。\n5) 未來部分 — $hiddenCard（40-50字）：關鍵詞、牌義象徵及可能的發展情境，針對 $userName 的問題。\n6) 結論：簡短建議、正面肯定（20-30字）及明確的機會總結。\n要求：全文約180-220字，語氣溫暖神秘，含3-5個主題表情符號；每段間隔兩行空白；禁止使用 *、# 或其他格式符號；僅用純文字。';
   }
 
@@ -4711,13 +4783,14 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅牌占卜師。用戶$userName問道：\"$userQuestion\"。請使用\"5張牌\"陣型回答。牌按順序給出：過去 - $pastCard; 現在 - $presentCard; 隱藏 - $hiddenCard; 建議 - $adviceCard; 結果 - $outcomeCard。請至少五次提到$userName，並確保將每張牌與問題聯繫起來。請遵循以下結構：\n\n1）以$userName的名字問候。\n\n2）標題：陣型：過去（$pastCard）/ 現在（$presentCard）/ 隱藏（$hiddenCard）/ 建議（$adviceCard）/ 結果（$outcomeCard）。\n\n3）過去 — $pastCard（45-55字）：三個關鍵詞，牌的象徵意義，以及過去對$userName的$userQuestion的影響。\n\n4）現在 — $presentCard（45-55字）：關鍵詞，象徵意義，$userName問題的當前狀態。\n\n5）隱藏 — $hiddenCard（45-55字）：無意識地影響$userName情況的因素，重點關注象徵意義。\n\n6）建議 — $adviceCard（45-55字）：基於牌面圖像的$userName的實用行動。\n\n7）結果 — $outcomeCard（45-55字）：如果遵循建議的可能情景，向$userName致辭。\n\n8）結論：對$userName的友好支持和積極肯定（25-30字）。\n\n要求：總字數230-260字，生動的對話語調，3-5個神秘表情符號；用雙換行（\\n\\n）分隔每個塊；不要使用*, #或其他標記符號；只寫純文本。';
   }
 
@@ -4729,15 +4802,20 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-          '該應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定承擔任何責任。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+      '該應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定承擔任何責任。如有需要，請諮詢專業人士。';
 
   @override
   String get requestReceivedPleaseOpenCards => '您的請求已被接受。請翻開牌卡';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用三張牌的愛情牌陣來回答。牌面如下：$userName 的感情 — $youCard；伴侶的感情 — $partnerCard；關係的動態或潛力 — $dynamicCard。請至少三次提及 $userName 的名字，並將每張牌與問題相關聯。結構如下：\n1) 以 $userName 的名字打招呼。\n2) 標題：牌陣：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40–50 字：描述這張牌對 $userName 的感情和期望的啟示。\n4) $partnerCard — 40–50 字：揭示伴侶對 $userName 問題的情感和意圖。\n5) $dynamicCard — 40–50 字：展示這兩股能量如何互動，以及關係可能走向何方。\n6) 結語：給 $userName 溫暖的建議和積極的肯定（20–25 字）。\n要求：總字數 150–180 字，語氣友善浪漫，包含 2–4 個主題相關的表情符號；段落以雙換行符號 (\\n\\n) 分隔；避免使用 *、# 及任何標記。';
   }
 
@@ -4746,8 +4824,8 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String
-      get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-          '該應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定承擔任何責任。如有需要，請諮詢專業人士。';
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+      '該應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定承擔任何責任。如有需要，請諮詢專業人士。';
 
   @override
   String main_screen_greeting_with_name(Object name) {
@@ -4826,8 +4904,8 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          '本應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      '本應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -4851,8 +4929,8 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '本應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '本應用程式僅將人工智能用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String get thematic_spreads_screen_title => '主題牌陣';
@@ -5052,48 +5130,60 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
       '如何在生活中找到和諧？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅教練。用戶 $userName 問：「$userQuestion」。請做一個三張牌的職業與財務牌陣。牌的順序是：1) 情況 — $situationCard；2) 障礙或關鍵機會 — $challengeCard；3) 建議與潛力 — $adviceCard。根據 $userName 的名字判斷性別，並使用正確的詞尾和代詞。以友善且專業的語氣與 $userName 交流：指出他目前的位置，阻礙成長的因素（或需要注意的機會），以及能帶來理想收入的實際步驟。至少提及 $userName 三次。結構如下：\n1) 問候 — 一句話。\n2) 標題：牌陣：$situationCard | $challengeCard | $adviceCard。\n3) $situationCard — 45–55字：描述 $userName 當前的狀況（工作、事業或整體財務背景）及該牌的象徵意義。\n4) $challengeCard — 45–55字：揭示主要障礙或隱藏機會；說明它如何反映在牌面及 $userName 的問題中。\n5) $adviceCard — 45–55字：提出具體行動（例如重新檢視預算、申請加薪、學習新技能）並描述可能的結果。\n6) 結尾 — 20–25字：友善的總結，積極的肯定語及兩個商務表情符號。\n要求：總字數160–185字，語氣清晰專業無行話，包含2–3個表情符號；段落以雙換行分隔；不使用 *、# 或其他標記。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問：「$userQuestion」。請做一個三張牌的「利與弊」牌陣。牌的順序是：優點 — $proCard；缺點 — $conCard；建議/結論 — $adviceCard。根據 $userName 的名字判斷性別，並使用正確的詞尾和代詞。至少提及 $userName 三次，並將每張牌與問題相關聯。結構如下：\n1) 以 $userName 的名字打招呼。\n2) 標題：牌陣：$proCard | $conCard | $adviceCard。\n3) 優點：$proCard — 45–55字。說明這張牌為 $userName 的情況帶來的主要好處或正面資源。\n4) 缺點：$conCard — 45–55字。描述對 $userName 來說的風險、隱藏成本或弱點。\n5) 建議：$adviceCard — 45–55字。權衡利弊，提出一個具體行動（動詞+對象），並說明這將如何改變 $userName 的結果。\n6) 結論 — 用一個詞「是」或「否」，接著一句理由和一段鼓勵的肯定語（20–25字），附1–2個表情符號。\n要求：總字數150–180字，語氣友善口語；各部分以雙換行分隔；不使用 *、# 或其他標記。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位專業塔羅師。用戶 $userName 問：「$userQuestion」。請為 $month 做一個「月輪」牌陣。牌依序為：1 — $card1，2 — $card2，3 — $card3，4 — $card4，5 — $card5，6 — $card6，7 — $card7，8 — $card8，9 — $card9，10 — $card10，11 — $card11，12 — $card12。根據 $userName 的名字判斷性別，使用正確詞尾和代詞。至少提及 $userName 五次，但**不要在每個日期後面插入名字**，只在建議中自然提及。使用日曆日期分組：1–3、4–6、7–9、10–12、13–15、16–18、19–21、22–24、25–26、27–28、29–30、31（若該月有30天，則第12張牌對應30號）。格式：\n1) 以 $userName 的名字問候（1–2句）。\n2) 簡短說明牌陣目的（1句）。\n3–14) 每張牌用格式「1–3 $month — $card1」（不帶名字）：接著2–3句描述該時期的主要能量及實用建議，自然提及 $userName。\n15) 結論：本月總體建議（約40字）及鼓舞人心的肯定語，附2–3個表情符號。\n要求：總字數360–400字；語氣友善激勵；段落以雙換行分隔；不使用 *、#、列表或技術標記。';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅教練。用戶 $userName 問：「$userQuestion」。請做一個七張牌的「自我成長與平衡」牌陣。牌的順序是：核心 — $coreCard；心智 — $mindCard；情感 — $emotionCard；身體 — $bodyCard；資源 — $strengthCard；阻礙 — $challengeCard；建議 — $adviceCard。根據 $userName 的名字判斷性別，使用正確詞尾和代詞。語氣生動支持，至少提及 $userName 四次，並將每張牌與問題緊密連結。結構與格式：\n1) 以 $userName 的名字問候。\n2) 標題：牌陣：$coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard。\n3) $coreCard — 描述 $userName 自我成長的主要焦點。\n4) $mindCard — 談如何調整心態及學習內容。\n5) $emotionCard — 揭示情感資源與動力。\n6) $bodyCard — 建議如何照顧身體與能量。\n7) $strengthCard — 展示內在天賦或外部支持。\n8) $challengeCard — 指出主要失衡及其原因。\n9) $adviceCard — 提出整合各方面的具體行動。\n10) 結尾：鼓舞人心的肯定語與溫暖祝福，附2–3個表情符號。\n要求：每點2–3句；各點間以雙換行分隔；不使用 *、# 或其他標記。';
   }
 
@@ -5490,8 +5580,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String
-      get self_development_balance_spread_screen_self_development_explanation =>
-          '「自我成長與平衡」牌陣由7張牌組成，排列成圓形。每張牌象徵您靈性成長和內在和諧的特定面向。';
+  get self_development_balance_spread_screen_self_development_explanation =>
+      '「自我成長與平衡」牌陣由7張牌組成，排列成圓形。每張牌象徵您靈性成長和內在和諧的特定面向。';
 
   @override
   String get card_meanings_screen_major_arcana => '大阿爾克那';
@@ -6066,7 +6156,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '為 $userName 做一個關於自我成長和平衡的牌陣，使用這三張牌：$cards';
   }
 
@@ -6090,13 +6182,17 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '請用$lang語言描述塔羅牌「$cardName」的整體意義。包括歷史、象徵和主要含義。';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '用$lang語言描述塔羅牌「$cardName」的逆位含義。包括相反的意義和警示。';
   }
 
@@ -6130,13 +6226,17 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '將塔羅牌「$cardName」的名稱翻譯成$languageCode。答案應僅包含翻譯後的名稱，無需額外文字或標點符號。';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return '你是專業的塔羅牌占卜師。請用此請求的語言為用戶 $name 撰寫一則鼓舞人心的「今日之牌」訊息。請遵守結構和篇幅。\n🌟 $name，你的今日之牌是 $cardName！\n🔑 關鍵詞：<請列出3–5個簡短的關鍵詞>\n🃏 含義（約45–50字）：描述此牌的主要能量，以及它今天將如何在 $name 身上展現。\n💡 建議（約35–40字）：提出具體的行動或心態，幫助 $name 利用這股能量。\n✨ 肯定語（1行）：以「我…」開頭的正面肯定句。\n要求：全文長度120–150字，溫暖的神秘色彩語調，3–4個主題相關的表情符號，不使用HTML/Markdown清單；段落以雙換行分隔（\\n\\n）。';
   }
 
@@ -6349,19 +6449,20 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用「凱爾特十字」牌陣（韋特經典陣法）回答。牌面分配如下：情境 - $situationCard；挑戰 - $challengeCard；潛意識 - $subconsciousCard；近期過去 - $pastCard；意識 - $consciousCard；近期未來 - $hiddenCard；內在自我 - $selfCard；環境 - $environmentCard；希望或恐懼 - $hopesCard；結果 - $outcomeCard。請至少提及 $userName 六次，並務必將每張牌與問題連結。結構如下：\n1) 向 $userName 問候。\n2) 標題：牌陣：情境（$situationCard）／挑戰（$challengeCard）／潛意識（$subconsciousCard）／近期過去（$pastCard）／意識（$consciousCard）／近期未來（$hiddenCard）／內在自我（$selfCard）／環境（$environmentCard）／希望／恐懼（$hopesCard）／結果（$outcomeCard）。\n3) 情境 — $situationCard（45-55字）：三個關鍵詞、牌義象徵及 $userName 就問題 $userQuestion 的當前狀況。\n4) 挑戰 — $challengeCard（45-55字）：對 $userName 的主要阻礙或助力。\n5) 潛意識 — $subconsciousCard（45-55字）：影響 $userName 的隱藏動機或能量。\n6) 近期過去 — $pastCard（45-55字）：導致 $userName 現況的過往事件。\n7) 意識 — $consciousCard（45-55字）：$userName 的目標、期望或意識層面。\n8) 近期未來 — $hiddenCard（45-55字）：未來幾週的可能發展。\n9) 內在自我 — $selfCard（45-55字）：$userName 的狀態與資源。\n10) 環境 — $environmentCard（45-55字）：他人及環境對 $userName 的影響。\n11) 希望／恐懼 — $hopesCard（45-55字）：$userName 的期望或擔憂。\n12) 結果 — $outcomeCard（45-55字）：根據牌陣建議的可能結果。\n13) 結語：給 $userName 的友善支持與正面肯定（30-35字）。\n要求：全文約400-500字，語氣生動口語，含4-6個神秘主題表情符號；每段間隔兩行空行；不使用 *、# 或其他標記；僅用純文字。';
   }
 
@@ -6376,11 +6477,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用「過去－現在－未來」牌陣回答。牌面分配如下：過去 - $pastCard；現在 - $presentCard；未來 - $hiddenCard。請至少提及 $userName 四次，並務必將牌義與問題連結。結構如下：\n1) 向 $userName 問候。\n2) 標題：牌陣：過去（$pastCard）－現在（$presentCard）－未來（$hiddenCard）。\n3) 過去區塊 — $pastCard（40-50字）：三個關鍵詞、牌義象徵及過去事件如何影響 $userName 就問題 $userQuestion 的結果。\n4) 現在區塊 — $presentCard（40-50字）：關鍵詞、牌義象徵及當前因素如何影響問題 $userQuestion 的答案。\n5) 未來區塊 — $hiddenCard（40-50字）：關鍵詞、牌義象徵及 $userName 問題的可能發展情境。\n6) 結果：簡短建議、正面肯定（20-30字）及明確的機會總結。\n要求：全文約180-220字，語氣溫暖神秘，含3-5個主題表情符號；每段間隔兩行空行；禁止使用 *、# 或其他格式符號；僅用純文字。';
   }
 
@@ -6424,13 +6526,14 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是一位經驗豐富的塔羅牌占卜師。用戶$userName問道：\"$userQuestion\"。請使用\"5張牌\"陣型回答。牌按順序給出：過去 - $pastCard; 現在 - $presentCard; 隱藏 - $hiddenCard; 建議 - $adviceCard; 結果 - $outcomeCard。請至少五次提到$userName，並確保將每張牌與問題聯繫起來。請遵循以下結構：\n\n1）以$userName的名字問候。\n\n2）標題：陣型：過去（$pastCard）/ 現在（$presentCard）/ 隱藏（$hiddenCard）/ 建議（$adviceCard）/ 結果（$outcomeCard）。\n\n3）過去 — $pastCard（45-55字）：三個關鍵詞，牌的象徵意義，以及過去對$userName的$userQuestion的影響。\n\n4）現在 — $presentCard（45-55字）：關鍵詞，象徵意義，$userName問題的當前狀態。\n\n5）隱藏 — $hiddenCard（45-55字）：無意識地影響$userName情況的因素，重點關注象徵意義。\n\n6）建議 — $adviceCard（45-55字）：基於牌面圖像的$userName的實用行動。\n\n7）結果 — $outcomeCard（45-55字）：如果遵循建議的可能情景，向$userName致辭。\n\n8）結論：對$userName的友好支持和積極肯定（25-30字）。\n\n要求：總字數230-260字，生動的對話語調，3-5個神秘表情符號；用雙換行（\\n\\n）分隔每個塊；不要使用*, #或其他標記符號；只寫純文本。';
   }
 
@@ -6442,15 +6545,20 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-          '該應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+      '該應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String get requestReceivedPleaseOpenCards => '您的請求已被接受。請翻開牌卡。';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return '你是一位經驗豐富的塔羅師。用戶 $userName 問道：「$userQuestion」。請用三張牌的愛情牌陣來回答。牌面如下：$userName 的感情 — $youCard；伴侶的感情 — $partnerCard；關係的動態或潛力 — $dynamicCard。請至少三次提及 $userName 的名字，並將每張牌與問題連結。結構如下：\n1) 向 $userName 打招呼。\n2) 標題：牌陣：$youCard | $partnerCard | $dynamicCard。\n3) $youCard — 40–50 字：描述這張牌對 $userName 感情與期望的意義。\n4) $partnerCard — 40–50 字：揭示伴侶對 $userName 問題的情感與意圖。\n5) $dynamicCard — 40–50 字：說明這兩種能量如何互動及關係可能的發展。\n6) 結語：給 $userName 溫暖的建議與正面肯定（20–25 字）。\n要求：總字數 150–180 字，友善浪漫的語氣，2–4 個主題相關表情符號；段落以雙換行分隔（\\n\\n）；避免使用 *、# 及任何標記。';
   }
 
@@ -6459,8 +6567,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String
-      get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-          '該應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+      '該應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String main_screen_greeting_with_name(Object name) {
@@ -6539,8 +6647,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-          '本應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      '本應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
@@ -6564,8 +6672,8 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String
-      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-          '本應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      '本應用程式僅將人工智慧用於娛樂目的。我們不對您所做的決定負責。如有需要，請諮詢專業人士。';
 
   @override
   String get thematic_spreads_screen_title => '主題牌陣';
@@ -6766,48 +6874,60 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
       '如何在生活中找到和諧？';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是經驗豐富的塔羅教練。用戶 $userName 問：「$userQuestion」。請做一個三張牌的職業與財務牌陣。牌序為：1) 情況 — $situationCard；2) 障礙或關鍵機會 — $challengeCard；3) 建議與潛力 — $adviceCard。根據 $userName 的名字判斷性別，並使用正確的詞尾和代詞。以友善且專業的語氣與 $userName 交流：指出他目前的位置，阻礙成長的因素（或重要的機會），以及實際步驟如何帶來理想收入。至少提及 $userName 三次。結構如下：\n1) 問候 — 一句話。\n2) 標題：牌陣：$situationCard | $challengeCard | $adviceCard。\n3) $situationCard — 45–55 字：描述 $userName 當前的狀況（工作、事業或整體財務背景）及該牌的象徵意義。\n4) $challengeCard — 45–55 字：揭示主要障礙或隱藏機會；說明其如何反映在牌面及 $userName 的問題中。\n5) $adviceCard — 45–55 字：提出具體行動（如重新檢視預算、申請加薪、學習新技能）並描述可能結果。\n6) 結尾 — 20–25 字：友善總結，正面肯定及兩個商務表情符號。\n要求：總字數160–185字，語氣清晰專業無行話，含2–3個表情符號；段落以雙換行分隔；不使用 *、# 或其他標記。';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是經驗豐富的塔羅師。用戶 $userName 問：「$userQuestion」。請做一個三張牌的「利與弊」牌陣。牌序為：優點 — $proCard；缺點 — $conCard；建議/結論 — $adviceCard。根據 $userName 的名字判斷性別，並使用正確的詞尾和代詞。至少提及 $userName 三次，並將每張牌與問題相關聯。結構如下：\n1) 以 $userName 的名字打招呼。\n2) 標題：牌陣：$proCard | $conCard | $adviceCard。\n3) 優點：$proCard — 45–55 字。說明這張牌為 $userName 的情況帶來的主要利益或正面資源。\n4) 缺點：$conCard — 45–55 字。描述對 $userName 來說決策的風險、隱藏成本或弱點。\n5) 建議：$adviceCard — 45–55 字。權衡利弊，提出一個具體行動（動詞+對象），並說明如何改變 $userName 的結果。\n6) 結論 — 用一個詞「是」或「否」，接著一句理由和鼓勵肯定（20–25 字），含1–2個表情符號。\n要求：總字數150–180字，語氣友善口語；各段以雙換行分隔；不使用 *、# 或其他標記。';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是專業塔羅師。用戶 $userName 問：「$userQuestion」。請做一個「月份之輪」牌陣，針對 $month 月。牌序為：1 — $card1，2 — $card2，3 — $card3，4 — $card4，5 — $card5，6 — $card6，7 — $card7，8 — $card8，9 — $card9，10 — $card10，11 — $card11，12 — $card12。根據 $userName 的名字判斷性別，使用正確詞尾和代詞。至少提及 $userName 五次，但**不要在每個日期後面插入名字**，只在建議中自然提及。使用日期網格：1–3、4–6、7–9、10–12、13–15、16–18、19–21、22–24、25–26、27–28、29–30、31（若該月30天，則第12張牌對應30日）。格式：\n1) 以 $userName 的名字問候（1–2 句）。\n2) 簡短介紹牌陣目的（1 句）。\n3–14) 每張牌用「1–3 $month — $card1」格式（不含名字），接著2–3句描述該時期的主要能量與實用建議，自然提及 $userName。\n15) 結尾：整月總建議（約40字）及鼓舞肯定，含2–3個表情符號。\n要求：總字數360–400字；語氣友善激勵；段落以雙換行分隔；不使用 *、#、列表或技術標記。';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return '你是經驗豐富的塔羅教練。用戶 $userName 問：「$userQuestion」。請做一個七張牌的「自我成長與平衡」牌陣。牌序為：核心 — $coreCard；心智 — $mindCard；情感 — $emotionCard；身體 — $bodyCard；資源 — $strengthCard；阻礙 — $challengeCard；建議 — $adviceCard。根據 $userName 的名字判斷性別，使用正確詞尾和代詞。語氣生動支持，至少提及 $userName 四次，並將每張牌與問題相關聯。結構與格式：\n1) 以 $userName 的名字打招呼。\n2) 標題：牌陣：$coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard。\n3) $coreCard — 描述 $userName 自我成長的主要焦點。\n4) $mindCard — 談如何調整心態與學習內容。\n5) $emotionCard — 揭示情感資源與動力。\n6) $bodyCard — 提示如何照顧身體與能量。\n7) $strengthCard — 展示內在天賦或外在支持。\n8) $challengeCard — 指出主要失衡及其原因。\n9) $adviceCard — 提出整合各方面的具體行動。\n10) 結尾：鼓舞肯定與溫暖祝福，含2–3個表情符號。\n要求：每點2–3句；段落以雙換行分隔；不使用 *、# 或其他標記。';
   }
 

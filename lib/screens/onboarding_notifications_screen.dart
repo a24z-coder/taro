@@ -3,14 +3,41 @@ import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'onboarding_final_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/services/notification_service.dart';
+import 'dart:io';
 
 class OnboardingNotificationsScreen extends StatelessWidget {
   const OnboardingNotificationsScreen({Key? key}) : super(key: key);
 
   Future<void> _requestNotificationPermission(BuildContext context) async {
-    // Запрашиваем разрешение на уведомления
-    await FirebaseMessaging.instance.requestPermission();
-    // Можно обработать статус, если нужно
+    try {
+      print('Starting notification permission request...');
+      
+      // Для Android 13+ (API 33+) запрашиваем разрешение POST_NOTIFICATIONS
+      if (Platform.isAndroid) {
+        print('Platform is Android, requesting notification permission...');
+        final status = await Permission.notification.request();
+        print('Android notification permission status: $status');
+        
+        // Проверяем текущий статус разрешения
+        final currentStatus = await Permission.notification.status;
+        print('Current Android notification permission status: $currentStatus');
+      } else if (Platform.isIOS) {
+        print('Platform is iOS, proceeding with Firebase messaging...');
+      }
+      
+      // Инициализируем сервис уведомлений
+      print('Initializing notification service...');
+      await NotificationService().initialize();
+      
+    } catch (e) {
+      print('Error requesting notification permission: $e');
+      // Даже если произошла ошибка, продолжаем на следующий экран
+    }
+    
+    print('Navigating to final screen...');
+    // Переходим на следующий экран независимо от результата
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (_) => const OnboardingFinalScreen()),
     );

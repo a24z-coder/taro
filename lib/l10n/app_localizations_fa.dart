@@ -370,7 +370,8 @@ class AppLocalizationsFa extends AppLocalizations {
       'سؤال خود را وارد کنید...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'تاروت «خودتوسعه و تعادل» شامل ۷ کارت است که به شکل دایره چیده شده‌اند. هر کارت نماد جنبه‌ای خاص از رشد معنوی و هماهنگی درونی شماست.';
 
   @override
@@ -979,7 +980,9 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'برای $userName چیدمانی برای خودشناسی و تعادل با این سه کارت انجام بده: $cards';
   }
 
@@ -1004,13 +1007,17 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'توضیح معنای کلی کارت تاروت \"$cardName\" به زبان $lang. شامل تاریخچه، نمادگرایی و معانی اصلی باشد.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'توضیح معنی وارونه کارت تاروت \"$cardName\" به زبان $lang. شامل معانی مخالف و هشدارها باشد.';
   }
 
@@ -1045,13 +1052,17 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'نام کارت تاروت \"$cardName\" را به $languageCode ترجمه کن. پاسخ باید فقط شامل نام ترجمه شده باشد، بدون متن اضافی یا علائم نگارشی.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'تو یک تارولوگ حرفه‌ای هستی. یک پیام الهام‌بخش «کارت روز» به زبان این درخواست برای کاربر $name بنویس. ساختار و حجم را رعایت کن.\n🌟 $name، کارت روز تو — $cardName است!\n🔑 کلمات کلیدی: <۳–۵ کلمه کلیدی کوتاه را بنویس>\n🃏 معنا (حدود ۴۵–۵۰ کلمه): انرژی اصلی کارت را توصیف کن و اینکه چگونه امروز در $name ظاهر خواهد شد.\n💡 توصیه (حدود ۳۵–۴۰ کلمه): یک اقدام یا نگرش مشخص پیشنهاد کن که به $name کمک کند این انرژی را به کار گیرد.\n✨ تأییدیه (۱ خط): یک جمله مثبت که با «من...» شروع می‌شود.\nالزامات: طول کل ۱۲۰–۱۵۰ کلمه، لحن گرم و عرفانی، ۳–۴ ایموجی مرتبط، بدون فهرست در HTML/Markdown؛ پاراگراف‌ها با دو خط فاصله (\\n\\n) جدا شوند.';
   }
 
@@ -1268,19 +1279,20 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوژیست حرفه‌ای هستی. کاربر $userName می‌پرسد: \"$userQuestion\". با استفاده از گشایش \"صلیب سلتیک\" (طرح کلاسیک ویت) پاسخ بده. کارت‌ها به این صورت ارائه شده‌اند: وضعیت - $situationCard؛ چالش - $challengeCard؛ ناخودآگاه - $subconsciousCard؛ گذشته نزدیک - $pastCard؛ آگاهانه - $consciousCard؛ آینده نزدیک - $hiddenCard؛ خود درونی - $selfCard؛ محیط - $environmentCard؛ امیدها یا ترس‌ها - $hopesCard؛ نتیجه - $outcomeCard. نام $userName را حداقل شش بار بیاور و حتماً هر کارت را به سوال مرتبط کن. ساختار را رعایت کن:\n1) سلام و احوالپرسی با نام $userName.\n2) عنوان: گشایش: وضعیت ($situationCard) / چالش ($challengeCard) / ناخودآگاه ($subconsciousCard) / گذشته نزدیک ($pastCard) / آگاهانه ($consciousCard) / آینده نزدیک ($hiddenCard) / خود درونی ($selfCard) / محیط ($environmentCard) / امیدها/ترس‌ها ($hopesCard) / نتیجه ($outcomeCard).\n3) وضعیت — $situationCard (45-55 کلمه): سه کلمه کلیدی، نماد کارت و وضعیت فعلی سوال $userQuestion برای $userName.\n4) چالش — $challengeCard (45-55 کلمه): اصلی‌ترین مانع یا کمک برای $userName.\n5) ناخودآگاه — $subconsciousCard (45-55 کلمه): انگیزه‌ها یا انرژی‌های پنهان که بر $userName تأثیر می‌گذارند.\n6) گذشته نزدیک — $pastCard (45-55 کلمه): رویدادهایی که $userName را به وضعیت کنونی رسانده‌اند.\n7) آگاهانه — $consciousCard (45-55 کلمه): اهداف، انتظارات یا آنچه $userName آگاه است.\n8) آینده نزدیک — $hiddenCard (45-55 کلمه): روند محتمل در هفته‌های آینده.\n9) خود درونی — $selfCard (45-55 کلمه): وضعیت و منابع $userName.\n10) محیط — $environmentCard (45-55 کلمه): تأثیر افراد و شرایط.\n11) امیدها / ترس‌ها — $hopesCard (45-55 کلمه): انتظارات یا نگرانی‌های $userName.\n12) نتیجه — $outcomeCard (45-55 کلمه): نتیجه محتمل با در نظر گرفتن راهنمایی گشایش.\n13) پایان: حمایت دوستانه و تأیید مثبت (30-35 کلمه) برای $userName.\nنیازمندی‌ها: حجم کلی 400-500 کلمه، لحن زنده و محاوره‌ای، 4-6 ایموجی رازآمیز؛ هر بخش را با دو خط فاصله جدا کن.\nاز استفاده از نمادهای *، # یا هر نوع نشانه‌گذاری خودداری کن؛ فقط متن ساده بنویس.';
   }
 
@@ -1297,11 +1309,12 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوژیست حرفه‌ای هستی. کاربر $userName می‌پرسد: \"$userQuestion\". با گشایش \"گذشته - حال - آینده\" پاسخ بده. کارت‌ها به این صورت ارائه شده‌اند: گذشته - $pastCard؛ حال - $presentCard؛ آینده - $hiddenCard. نام $userName را حداقل چهار بار بیاور و حتماً معانی کارت‌ها را به سوال مرتبط کن. ساختار را رعایت کن:\n1) سلام و احوالپرسی با نام $userName.\n2) عنوان: گشایش: گذشته ($pastCard) - حال ($presentCard) - آینده ($hiddenCard).\n3) بخش گذشته — $pastCard (40-50 کلمه): سه کلمه کلیدی، نماد کارت و توضیح اینکه چگونه وقایع گذشته بر نتیجه سوال $userQuestion برای $userName تأثیر می‌گذارند.\n4) بخش حال — $presentCard (40-50 کلمه): کلمات کلیدی، نماد کارت و عوامل فعلی که بر پاسخ به سوال $userQuestion تأثیر دارند.\n5) بخش آینده — $hiddenCard (40-50 کلمه): کلمات کلیدی، نماد کارت و سناریوی محتمل پیشرفت وضعیت برای سوال $userName.\n6) نتیجه: توصیه کوتاه، تأیید مثبت (20-30 کلمه) و خلاصه‌ای روشن از فرصت‌ها.\nنیازمندی‌ها: حجم کلی 180-220 کلمه، لحن گرم و رازآمیز، 3-5 ایموجی موضوعی؛ هر بخش را با دو خط فاصله جدا کن.\nاز استفاده از نمادهای *، # یا هر نوع نشانه‌گذاری خودداری کن؛ فقط متن ساده بنویس.';
   }
 
@@ -1349,13 +1362,14 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوگ با تجربه هستی. کاربر $userName می‌پرسد: \"$userQuestion\". با استفاده از چیدمان \"5 کارت\" پاسخ بده. کارت‌ها به ترتیب ارائه شده‌اند: گذشته - $pastCard؛ حال - $presentCard؛ پنهان - $hiddenCard؛ توصیه - $adviceCard؛ نتیجه - $outcomeCard. حداقل پنج بار به $userName اشاره کن و حتماً هر کارت را به سؤال مرتبط کن. ساختار را رعایت کن:\n\n1) سلام با نام $userName.\n\n2) عنوان: چیدمان: گذشته ($pastCard) / حال ($presentCard) / پنهان ($hiddenCard) / توصیه ($adviceCard) / نتیجه ($outcomeCard).\n\n3) گذشته — $pastCard (45-55 کلمه): سه کلمه کلیدی، نماد کارت و تأثیر گذشته بر $userQuestion برای $userName.\n\n4) حال — $presentCard (45-55 کلمه): کلمات کلیدی، نماد و وضعیت فعلی سؤال $userName.\n\n5) پنهان — $hiddenCard (45-55 کلمه): آنچه ناخودآگاه بر وضعیت $userName تأثیر می‌گذارد، با تمرکز بر نماد.\n\n6) توصیه — $adviceCard (45-55 کلمه): اقدام عملی برای $userName، بر اساس تصاویر کارت.\n\n7) نتیجه — $outcomeCard (45-55 کلمه): سناریوی محتمل در صورت پیروی از توصیه، خطاب به $userName.\n\n8) نتیجه‌گیری: پشتیبانی دوستانه و تأیید مثبت (25-30 کلمه) برای $userName.\n\nنیازمندی‌ها: حجم کل 230-260 کلمه، لحن زنده و محاوره‌ای، 3-5 ایموجی رازآمیز؛ هر بخش را با دو خط فاصله جدا کن (\\n\\n)؛ از *، # یا نشانه‌گذاری دیگر استفاده نکن؛ فقط متن ساده بنویس.';
   }
 
@@ -1366,7 +1380,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get makeNewSpread => 'انجام تفسیر جدید';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'برنامه فقط برای اهداف سرگرمی از هوش مصنوعی استفاده می‌کند. ما مسئول تصمیماتی که شما می‌گیرید نیستیم. در صورت نیاز به یک متخصص مراجعه کنید.';
 
   @override
@@ -1374,8 +1389,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'درخواست شما دریافت شد. لطفاً کارت‌ها را باز کنید';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'تو یک تارولوگ با تجربه هستی. کاربر $userName می‌پرسد: «$userQuestion». با استفاده از یک فال عشقی سه کارته پاسخ بده. کارت‌ها به این صورت هستند: احساسات $userName — $youCard؛ احساسات شریک — $partnerCard؛ پویایی یا پتانسیل رابطه — $dynamicCard. نام $userName را حداقل سه بار بیاور و هر کارت را به سوال مرتبط کن. ساختار را رعایت کن:\n1) سلام به نام $userName.\n2) عنوان: فال: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — ۴۰–۵۰ کلمه: توضیح بده که کارت درباره احساسات و انتظارات $userName چه می‌گوید.\n4) $partnerCard — ۴۰–۵۰ کلمه: احساسات و نیت‌های شریک درباره سوال $userName را شرح بده.\n5) $dynamicCard — ۴۰–۵۰ کلمه: نشان بده چگونه این دو انرژی با هم تعامل دارند و رابطه به کجا می‌تواند برسد.\n6) نتیجه‌گیری: یک توصیه گرم و یک تأیید مثبت (۲۰–۲۵ کلمه) برای $userName.\nالزامات: حجم کلی ۱۵۰–۱۸۰ کلمه، لحن دوستانه و رمانتیک، ۲–۴ ایموجی مرتبط؛ پاراگراف‌ها را با دو خط جدید (\\n\\n) جدا کن؛ از نمادهای *، # و هر نوع نشانه‌گذاری خودداری کن.';
   }
 
@@ -1383,7 +1403,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get loveSpread => 'فال عشقی';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'برنامه فقط برای اهداف سرگرمی از هوش مصنوعی استفاده می‌کند. ما مسئول تصمیماتی که شما می‌گیرید نیستیم. در صورت نیاز به یک متخصص مراجعه کنید.';
 
   @override
@@ -1464,7 +1485,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get monthlyForecast => 'پیش‌بینی ماهانه';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'این برنامه از هوش مصنوعی صرفاً برای اهداف سرگرمی استفاده می‌کند. ما مسئول تصمیمات شما نیستیم. در صورت نیاز به متخصص مراجعه کنید.';
 
   @override
@@ -1488,7 +1510,8 @@ class AppLocalizationsFa extends AppLocalizations {
       'خطا در دریافت مقدار رَدیف. لطفاً دوباره تلاش کنید.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'این برنامه از هوش مصنوعی صرفاً برای اهداف سرگرمی استفاده می‌کند. ما مسئول تصمیمات شما نیستیم. در صورت نیاز به متخصص مراجعه کنید.';
 
   @override
@@ -1713,48 +1736,60 @@ class AppLocalizationsFa extends AppLocalizations {
       'چگونه می‌توانم در زندگی هماهنگی پیدا کنم؟';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوگ-کوچ حرفه‌ای هستی. کاربر $userName می‌پرسد: «$userQuestion». یک چیدمان سه کارتی برای شغل و مالی انجام بده. کارت‌ها به این صورت هستند: ۱) وضعیت — $situationCard؛ ۲) مانع یا فرصت کلیدی — $challengeCard؛ ۳) توصیه و پتانسیل — $adviceCard. جنسیت کاربر را بر اساس نام $userName تعیین کن و از ضمایر و پایان‌های درست استفاده کن. با $userName دوستانه و مستقیم صحبت کن: نشان بده کجای راه ایستاده، چه چیزی رشد را مسدود می‌کند (یا چه فرصتی مهم است که ببیند) و چه قدم عملی او را به درآمد مطلوب می‌رساند. نام $userName را حداقل سه بار بیاور. ساختار را رعایت کن:\n۱) سلام — یک جمله.\n۲) عنوان: چیدمان: $situationCard | $challengeCard | $adviceCard.\n۳) $situationCard — ۴۵ تا ۵۵ کلمه: وضعیت فعلی $userName (کار، کسب‌وکار یا وضعیت مالی کلی) و نماد کارت را توصیف کن.\n۴) $challengeCard — ۴۵ تا ۵۵ کلمه: مانع اصلی یا فرصت پنهان را باز کن؛ نشان بده چگونه در کارت و سؤال $userName منعکس شده است.\n۵) $adviceCard — ۴۵ تا ۵۵ کلمه: یک اقدام مشخص پیشنهاد بده (مثلاً بازنگری بودجه، درخواست افزایش حقوق، یادگیری مهارت جدید) و نتیجه ممکن را شرح بده.\n۶) پایان — ۲۰ تا ۲۵ کلمه: جمع‌بندی دوستانه، تأیید مثبت و دو ایموجی کاری.\nنیازمندی‌ها: حجم کل ۱۶۰ تا ۱۸۵ کلمه، لحن رسمی و روشن بدون اصطلاحات عامیانه، ۲ تا ۳ ایموجی؛ پاراگراف‌ها را با دو خط فاصله \\n\\n جدا کن؛ از *، # و نشانه‌گذاری دیگر استفاده نکن.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوگ حرفه‌ای هستی. کاربر $userName می‌پرسد: «$userQuestion». یک چیدمان «مزایا و معایب» با سه کارت انجام بده. کارت‌ها به این صورت هستند: مزایا — $proCard؛ معایب — $conCard؛ توصیه/نتیجه — $adviceCard. جنسیت کاربر را بر اساس نام $userName تعیین کن و از ضمایر و پایان‌های درست استفاده کن. نام $userName را حداقل سه بار بیاور و هر کارت را به سؤال مرتبط کن. ساختار را رعایت کن:\n۱) سلام به $userName.\n۲) عنوان: چیدمان: $proCard | $conCard | $adviceCard.\n۳) مزایا: $proCard — ۴۵ تا ۵۵ کلمه. مزایای اصلی یا منابع مثبت که این کارت به وضعیت $userName می‌آورد را شرح بده.\n۴) معایب: $conCard — ۴۵ تا ۵۵ کلمه. ریسک‌ها، هزینه‌های پنهان یا نقاط ضعف راه‌حل برای $userName را توصیف کن.\n۵) توصیه: $adviceCard — ۴۵ تا ۵۵ کلمه. مزایا و معایب را بسنج، یک اقدام مشخص (فعل + مفعول) پیشنهاد بده و بگو چگونه نتیجه را برای $userName تغییر می‌دهد.\n۶) نتیجه — یک کلمه «بله» یا «خیر»، سپس یک جمله دلیل و یک تأیید دلگرم‌کننده (۲۰ تا ۲۵ کلمه) با ۱ تا ۲ ایموجی.\nنیازمندی‌ها: حجم کل ۱۵۰ تا ۱۸۰ کلمه، لحن دوستانه و محاوره‌ای؛ هر بخش را با دو خط فاصله \\n\\n جدا کن؛ از *، # یا نشانه‌گذاری دیگر استفاده نکن.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوگ حرفه‌ای هستی. کاربر $userName می‌پرسد: «$userQuestion». یک چیدمان «چرخ ماه» برای $month بساز. کارت‌ها به ترتیب هستند: ۱ — $card1، ۲ — $card2، ۳ — $card3، ۴ — $card4، ۵ — $card5، ۶ — $card6، ۷ — $card7، ۸ — $card8، ۹ — $card9، ۱۰ — $card10، ۱۱ — $card11، ۱۲ — $card12. جنسیت $userName را بر اساس نام تعیین کن و از ضمایر و پایان‌های درست استفاده کن. نام را حداقل پنج بار بیاور، اما **بعد از هر تاریخ نام را نیاور** — فقط در متن توصیه‌ها به طور طبیعی یاد کن. از شبکه تقویمی تاریخ‌ها استفاده کن: ۱–۳، ۴–۶، ۷–۹، ۱۰–۱۲، ۱۳–۱۵، ۱۶–۱۸، ۱۹–۲۱، ۲۲–۲۴، ۲۵–۲۶، ۲۷–۲۸، ۲۹–۳۰، ۳۱ (اگر ماه ۳۰ روز دارد، کارت دوازدهم مربوط به روز ۳۰ است). قالب:\n۱) سلام به $userName (۱–۲ جمله).\n۲) مقدمه کوتاه درباره هدف چیدمان (۱ جمله).\n۳–۱۴) برای هر کارت خطی به شکل «۱–۳ $month — $card1» (بدون نام): سپس ۲–۳ جمله درباره انرژی کلیدی دوره و توصیه عملی، به طور طبیعی نام $userName را بیاور.\n۱۵) نتیجه: توصیه کلی برای ماه (حدود ۴۰ کلمه) و تأیید انگیزشی با ۲–۳ ایموجی.\nنیازمندی‌ها: مجموعاً ۳۶۰ تا ۴۰۰ کلمه؛ لحن دوستانه و انگیزشی؛ بخش‌ها را با دو خط فاصله \\n\\n جدا کن؛ از *، #، فهرست یا نشانه‌گذاری فنی استفاده نکن.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'تو یک تارولوگ-کوچ حرفه‌ای هستی. کاربر $userName می‌پرسد: «$userQuestion». یک چیدمان «خودتوسعه و تعادل» با هفت کارت انجام بده. کارت‌ها به این صورت هستند: هسته — $coreCard؛ ذهن — $mindCard؛ احساسات — $emotionCard؛ بدن — $bodyCard؛ منبع — $strengthCard؛ مانع — $challengeCard؛ توصیه — $adviceCard. جنسیت کاربر را بر اساس نام $userName تعیین کن و از ضمایر و پایان‌های درست استفاده کن. با زبانی زنده و حمایت‌کننده صحبت کن، نام $userName را حداقل چهار بار بیاور و حتماً هر کارت را به سؤال مرتبط کن. ساختار و قالب را رعایت کن:\n۱) سلام به $userName.\n۲) عنوان: چیدمان: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n۳) $coreCard — تمرکز اصلی خودتوسعه $userName را توصیف کن.\n۴) $mindCard — بگو چگونه ذهن را تنظیم کند و چه بیاموزد.\n۵) $emotionCard — منبع عاطفی و انگیزه را باز کن.\n۶) $bodyCard — راهنمایی کن چگونه از بدن و انرژی مراقبت کند.\n۷) $strengthCard — هدیه درونی یا حمایت بیرونی را نشان بده.\n۸) $challengeCard — عدم تعادل کلیدی و علت آن را مشخص کن.\n۹) $adviceCard — یک اقدام مشخص پیشنهاد بده که همه جنبه‌ها را در بر گیرد.\n۱۰) پایان: تأیید انگیزشی و آرزوی گرم با ۲–۳ ایموجی.\nنیازمندی‌ها: هر بخش ۲–۳ جمله؛ بین بخش‌ها دو خط فاصله \\n\\n بگذار؛ از *، # یا نشانه‌گذاری دیگر استفاده نکن.';
   }
 

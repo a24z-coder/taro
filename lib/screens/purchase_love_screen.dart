@@ -14,23 +14,85 @@ class PurchaseLoveScreen extends StatefulWidget {
 class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
   int _selectedPlan = 1; // 0 - yearly, 1 - monthly
   late PurchaseService _purchaseService;
+  bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
     _purchaseService = PurchaseService();
-    _initializePurchaseService();
+    _purchaseService.addListener(_onPurchaseServiceUpdate);
+    
+    // Добавляем отладочную информацию
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _debugProducts();
+    });
   }
 
-  Future<void> _initializePurchaseService() async {
-    await _purchaseService.initialize();
-    _purchaseService.addListener(_onPurchaseServiceUpdate);
+  void _debugProducts() {
+    print('[PurchaseLoveScreen] Debug products:');
+    print('[PurchaseLoveScreen] Monthly product: ${_purchaseService.monthlyProduct?.id} - ${_purchaseService.monthlyProduct?.price}');
+    print('[PurchaseLoveScreen] Yearly product: ${_purchaseService.yearlyProduct?.id} - ${_purchaseService.yearlyProduct?.price}');
+    print('[PurchaseLoveScreen] Store available: ${_purchaseService.isAvailable}');
+    print('[PurchaseLoveScreen] Loading: ${_purchaseService.isLoading}');
+    print('[PurchaseLoveScreen] Error: ${_purchaseService.errorMessage}');
   }
 
   void _onPurchaseServiceUpdate() {
     if (mounted) {
-      setState(() {});
+      setState(() {
+        _isLoading = _purchaseService.isLoading;
+      });
+      
+      // Если покупка успешна, показываем диалог
+      if (_purchaseService.isSubscribed) {
+        _showSuccessDialog();
+      }
+      
+      // Показываем ошибку, если есть
+      if (_purchaseService.errorMessage != null) {
+        _showErrorDialog(_purchaseService.errorMessage!);
+      }
     }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Ошибка'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showSuccessDialog() {
+    final loc = AppLocalizations.of(context)!;
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(loc.purchase_love_screen_title),
+        content: Text(loc.purchase_love_screen_test_message(
+          _selectedPlan == 0 ? loc.onboarding_final_yearly : loc.onboarding_final_trial_month,
+        )),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (_) => const MainScreen()),
+              );
+            },
+            child: Text(loc.purchase_love_screen_ok_button),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -39,62 +101,81 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
     super.dispose();
   }
 
-  void _onBuy() async {
-    final productId = _selectedPlan == 0 
-        ? 'tarot_ai_yearly' 
-        : 'tarot_ai_monthly';
-    
-    final success = await _purchaseService.purchaseSubscription(productId);
-    
-    if (success && mounted) {
-      final loc = AppLocalizations.of(context)!;
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(loc.purchase_love_screen_title),
-          content: Text(loc.purchase_love_screen_test_message(
-            _selectedPlan == 0 ? loc.onboarding_final_yearly : loc.onboarding_final_trial_month,
-          )),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const MainScreen()),
-                );
-              },
-              child: Text(loc.purchase_love_screen_ok_button),
-            ),
-          ],
-        ),
-      );
+  Future<void> _onBuy() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final productId = _selectedPlan == 0 ? 'tarot_ai_yearly' : 'tarot_ai_monthly';
+      final success = await _purchaseService.purchaseSubscription(productId);
+      
+      if (!success) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      _showErrorDialog('Ошибка покупки: $e');
     }
   }
 
   void _onRestorePurchases() async {
-    await _purchaseService.restorePurchases();
-    
-    if (_purchaseService.isSubscriptionActive() && mounted) {
-      final loc = AppLocalizations.of(context)!;
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(loc.purchase_love_screen_title),
-          content: const Text('Your subscription has been restored!'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const MainScreen()),
-                );
-              },
-              child: Text(loc.purchase_love_screen_ok_button),
-            ),
-          ],
-        ),
-      );
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await _purchaseService.restorePurchases();
+      
+      if (_purchaseService.isSubscriptionActive() && mounted) {
+        final loc = AppLocalizations.of(context)!;
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(loc.purchase_love_screen_title),
+            content: const Text('Your subscription has been restored!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (_) => const MainScreen()),
+                  );
+                },
+                child: Text(loc.purchase_love_screen_ok_button),
+              ),
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      _showErrorDialog('Ошибка восстановления: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
+  }
+
+  String _getYearlyPrice() {
+    return _purchaseService.getFormattedPrice('tarot_ai_yearly');
+  }
+
+  String _getYearlySubPrice() {
+    final monthlyPrice = _purchaseService.getYearlyMonthlyPrice();
+    return monthlyPrice.isNotEmpty ? '$monthlyPrice/mo' : '';
+  }
+
+  String _getMonthlyPrice() {
+    return _purchaseService.getFormattedPrice('tarot_ai_monthly');
+  }
+
+  String _getMonthlySubPrice() {
+    return _purchaseService.getFormattedPrice('tarot_ai_monthly');
   }
 
   @override
@@ -105,9 +186,9 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
     final accentColor = const Color(0xFFDBC195);
     
     // Get real prices from purchase service
-    final yearlyPrice = _purchaseService.getFormattedPrice('tarot_ai_yearly');
-    final yearlyMonthPrice = _purchaseService.getYearlyMonthlyPrice();
-    final monthlyPrice = _purchaseService.getFormattedPrice('tarot_ai_monthly');
+    final yearlyPrice = _getYearlyPrice();
+    final yearlyMonthPrice = _getYearlySubPrice();
+    final monthlyPrice = _getMonthlyPrice();
     final monthlyMonthPrice = monthlyPrice.isNotEmpty ? monthlyPrice : '';
     
     return Scaffold(
@@ -134,129 +215,140 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          if (_purchaseService.isLoading)
+          if (_isLoading)
             const Center(child: CircularProgressIndicator()),
-          if (!_purchaseService.isLoading)
+          if (!_isLoading)
             Positioned.fill(
               child: SafeArea(
-                child: Padding(
+                child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const SizedBox(height: 24),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            loc.purchase_love_screen_love_tariff_title,
-                            style: headingStyleForLang(langCode, size.width * 0.09, color: accentColor),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          loc.onboarding_final_subtitle,
-                          style: bodyStyleForLang(langCode, 17, color: Colors.white),
-                          textAlign: TextAlign.left,
-                        ),
-                        const SizedBox(height: 28),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/no_ads.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[0],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 18),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/unlimited_spreads.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[1],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 18),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/icons/unlimited_learning.png', width: 26, height: 26),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    loc.onboarding_final_benefits.split('\n')[2],
-                                    style: bodyStyleForLang(langCode, 16, color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 28),
-                        _buildPlanOption(
-                          selected: _selectedPlan == 0,
-                          title: loc.onboarding_final_yearly,
-                          badge: loc.onboarding_final_badge,
-                          price: yearlyPrice.isNotEmpty ? yearlyPrice : 'Loading...',
-                          subPrice: yearlyMonthPrice.isNotEmpty ? '$yearlyMonthPrice/month' : '',
-                          onTap: () => setState(() => _selectedPlan = 0),
-                        ),
-                        const SizedBox(height: 16),
-                        _buildPlanOption(
-                          selected: _selectedPlan == 1,
-                          title: loc.onboarding_final_trial_month,
-                          badge: loc.onboarding_final_badge,
-                          price: monthlyPrice.isNotEmpty ? monthlyPrice : 'Loading...',
-                          subPrice: monthlyMonthPrice.isNotEmpty ? '$monthlyMonthPrice/month' : '',
-                          onTap: () => setState(() => _selectedPlan = 1),
-                        ),
-                        const SizedBox(height: 32),
-                        if (_purchaseService.errorMessage != null)
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 16),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height - MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom,
+                    ),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(height: size.height * 0.04),
+                          Align(
+                            alignment: Alignment.centerLeft,
                             child: Text(
-                              _purchaseService.errorMessage!,
-                              style: const TextStyle(color: Colors.red, fontSize: 14),
-                              textAlign: TextAlign.center,
+                              loc.purchase_love_screen_love_tariff_title,
+                              style: headingStyleForLang(langCode, size.width * 0.08, color: accentColor),
                             ),
                           ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 54,
-                          child: ElevatedButton(
+                          const SizedBox(height: 8),
+                          Text(
+                            loc.onboarding_final_subtitle,
+                            style: bodyStyleForLang(langCode, 16, color: Colors.white),
+                            textAlign: TextAlign.left,
+                          ),
+                          const SizedBox(height: 16),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/icons/no_ads.png', width: 22, height: 22),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        loc.onboarding_final_benefits.split('\n')[0],
+                                        style: bodyStyleForLang(langCode, 14, color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/icons/unlimited_spreads.png', width: 22, height: 22),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        loc.onboarding_final_benefits.split('\n')[1],
+                                        style: bodyStyleForLang(langCode, 14, color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 8),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/icons/unlimited_learning.png', width: 22, height: 22),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        loc.onboarding_final_benefits.split('\n')[2],
+                                        style: bodyStyleForLang(langCode, 14, color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          _buildPlanOption(
+                            selected: _selectedPlan == 0,
+                            title: loc.onboarding_final_yearly,
+                            badge: loc.onboarding_final_badge,
+                            price: yearlyPrice.isNotEmpty ? yearlyPrice : 'Loading...',
+                            subPrice: yearlyMonthPrice.isNotEmpty ? '$yearlyMonthPrice/month' : '',
+                            onTap: () => setState(() => _selectedPlan = 0),
+                          ),
+                          const SizedBox(height: 12),
+                          _buildPlanOption(
+                            selected: _selectedPlan == 1,
+                            title: loc.onboarding_final_trial_month,
+                            badge: loc.onboarding_final_badge,
+                            price: monthlyPrice.isNotEmpty ? monthlyPrice : 'Loading...',
+                            subPrice: monthlyMonthPrice.isNotEmpty ? '$monthlyMonthPrice/month' : '',
+                            onTap: () => setState(() => _selectedPlan = 1),
+                          ),
+                          const SizedBox(height: 16),
+                          if (_purchaseService.errorMessage != null)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                _purchaseService.errorMessage!,
+                                style: const TextStyle(color: Colors.red, fontSize: 13),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ElevatedButton(
                             onPressed: _purchaseService.isAvailable ? _onBuy : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: accentColor,
+                              foregroundColor: Colors.black,
+                              minimumSize: Size(double.infinity, 48),
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                              elevation: 0,
+                              shadowColor: accentColor.withOpacity(0.5),
+                              elevation: 16,
                             ),
                             child: Text(
                               _selectedPlan == 0
                                   ? loc.onboarding_final_choose_yearly
                                   : loc.onboarding_final_choose_trial,
-                              style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                              style: headingStyleForLang(langCode, 16, color: Colors.black),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 18),
-                        Text(
-                          loc.onboarding_final_note,
-                          style: const TextStyle(color: Colors.white60, fontSize: 11),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                          const SizedBox(height: 12),
+                          Text(
+                            loc.onboarding_final_note,
+                            style: bodyStyleForLang(langCode, 11, color: Colors.white.withOpacity(0.8)),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: size.height * 0.02),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -276,30 +368,32 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
     required VoidCallback onTap,
   }) {
     final accentColor = const Color(0xFFDBC195);
+    final langCode = Localizations.localeOf(context).toLanguageTag();
+    
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+        margin: const EdgeInsets.symmetric(vertical: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
           color: selected ? Colors.white.withOpacity(0.13) : Colors.white.withOpacity(0.07),
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: selected ? accentColor : Colors.white24, width: 2),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: selected ? accentColor : Colors.white24, width: 1.5),
         ),
         child: Row(
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 16),
-              width: 28,
-              height: 28,
+              margin: const EdgeInsets.only(right: 12),
+              width: 24,
+              height: 24,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: selected ? accentColor : Colors.white38, width: 2),
+                border: Border.all(color: selected ? accentColor : Colors.white38, width: 1.5),
                 color: selected ? accentColor : Colors.transparent,
               ),
               child: selected
-                  ? const Icon(Icons.check, color: Colors.black, size: 18)
+                  ? const Icon(Icons.check, color: Colors.black, size: 16)
                   : null,
             ),
             Expanded(
@@ -308,22 +402,37 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18)),
-                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          title, 
+                          style: headingStyleForLang(langCode, 16, color: Colors.white),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           color: accentColor,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(badge, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 13)),
+                        child: Text(
+                          badge, 
+                          style: bodyStyleForLang(langCode, 11, color: Colors.black, fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  Text(price, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 4),
+                  Text(
+                    price, 
+                    style: bodyStyleForLang(langCode, 14, color: Colors.white),
+                  ),
                   if (subPrice.isNotEmpty)
-                    Text(subPrice, style: const TextStyle(color: Colors.white60, fontSize: 13)),
+                    Text(
+                      subPrice, 
+                      style: bodyStyleForLang(langCode, 13, color: Colors.white.withOpacity(0.8)),
+                    ),
                 ],
               ),
             ),

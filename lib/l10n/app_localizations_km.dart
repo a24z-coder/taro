@@ -377,7 +377,8 @@ class AppLocalizationsKm extends AppLocalizations {
       'បញ្ចូលសំណួររបស់អ្នក...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'ការបែងចែក \"ការអភិវឌ្ឍន៍ខ្លួនឯង និងសមតុល្យ\" មានប័ណ្ណចំនួន 7 ដែលត្រូវបានដាក់ក្នុងរាងមូល។ ប័ណ្ណនីមួយៗតំណាងឱ្យមុខងារពិសេសនៃការលូតលាស់ផ្លូវចិត្ត និងសមតុល្យខាងក្នុងរបស់អ្នក។';
 
   @override
@@ -986,7 +987,9 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'ធ្វើការបកស្រាយសម្រាប់ $userName អំពីការអភិវឌ្ឍខ្លួនឯង និងសមតុល្យតាមកាតទាំងបីនេះ៖ $cards';
   }
 
@@ -1012,13 +1015,17 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'ពិពណ៌នាអត្ថន័យទូទៅនៃកាតតារ៉ូ \"$cardName\" ជាភាសា $lang។ រួមបញ្ចូលប្រវត្តិ និមិត្តសញ្ញា និងអត្ថន័យសំខាន់ៗ។';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'ពិពណ៌នាអត្ថន័យត្រង់បញ្ច្រាសនៃកាតតារ៉ូ \"$cardName\" ជាភាសា $lang។ រួមបញ្ចូលអត្ថន័យផ្ទុយគ្នា និងការព្រមាន។';
   }
 
@@ -1053,13 +1060,17 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'បកប្រែឈ្មោះកាតតារ៉ូ \"$cardName\" ទៅជា $languageCode។ ចម្លើយគួរតែមានតែឈ្មោះដែលបានបកប្រែប៉ុណ្ណោះ ដោយគ្មានអត្ថបទបន្ថែម ឬសញ្ញាវិភាគ។';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'អ្នកជាតារ៉ូលូជំនាញ។ សូមសរសេរសារប្រសើរមួយ «កាតថ្ងៃ» ជាភាសានៃសំណើនេះសម្រាប់អ្នកប្រើ $name។ សូមគោរពរចនាសម្ព័ន្ធ និងទំហំ។\n🌟 $name កាតថ្ងៃរបស់អ្នកគឺ $cardName!\n🔑 ពាក្យគន្លឹះ៖ <បញ្ជាក់ពាក្យគន្លឹះខ្លី 3–5 ពាក្យ>\n🃏 អត្ថន័យ (ប្រហែល 45–50 ពាក្យ)៖ ពិពណ៌នាថាមពលសំខាន់នៃកាត និងរបៀបដែលវានឹងបង្ហាញខ្លួននៅថ្ងៃនេះសម្រាប់ $name។\n💡 គន្លឹះ (ប្រហែល 35–40 ពាក្យ)៖ ផ្តល់អំពីសកម្មភាពឬចិត្តវិជ្ជាដែលជួយ $name ប្រើប្រាស់ថាមពលនេះ។\n✨ ការបញ្ជាក់ (១ បន្ទាត់)៖ ពាក្យបញ្ជាក់វិជ្ជមានដែលចាប់ផ្តើមដោយ «ខ្ញុំ…»។\nតម្រូវការ៖ ប្រវែងសរុប 120–150 ពាក្យ សម្លេងអេសូតេរិចកក់ក្តៅ 3–4 អេមូជីប្រធានបទ មិនមានបញ្ជីក្នុង HTML/Markdown; ចែកបន្ទាត់ដោយការបញ្ច្រាសបន្ទាត់ពីរដង (\\n\\n)។';
   }
 
@@ -1278,19 +1289,20 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាអ្នកទស្សន៍កាតដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ \"$userQuestion\"។ សូមឆ្លើយតបដោយការបង្ហាញ \"ឆ្វេងក្រហមកែលត\" (រចនាសម្ព័ន្ធបុរាណរបស់វ៉េត)។ កាតត្រូវបានផ្តល់ជូនដូចខាងក្រោម៖ ស្ថានភាព - $situationCard; ការប្រឈមមុខ - $challengeCard; អាថ៌កំបាំងក្នុងចិត្ត - $subconsciousCard; អតីតកាលថ្មីៗ - $pastCard; ចិត្តស្មោះ - $consciousCard; អនាគតជិត - $hiddenCard; ខ្លួនខ្ញុំ - $selfCard; បរិយាកាស - $environmentCard; ការរំពឹងទុក ឬ ការភ័យខ្លាច - $hopesCard; លទ្ធផល - $outcomeCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់ប្រាំមួយដង ហើយត្រូវភ្ជាប់កាតនីមួយៗជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរសុខទុក្ខតាមឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ ស្ថានភាព ($situationCard) / ការប្រឈមមុខ ($challengeCard) / អាថ៌កំបាំងក្នុងចិត្ត ($subconsciousCard) / អតីតកាលថ្មីៗ ($pastCard) / ចិត្តស្មោះ ($consciousCard) / អនាគតជិត ($hiddenCard) / ខ្លួនខ្ញុំ ($selfCard) / បរិយាកាស ($environmentCard) / ការរំពឹងទុក/ការភ័យខ្លាច ($hopesCard) / លទ្ធផល ($outcomeCard)។\n3) ស្ថានភាព — $situationCard (45-55 ពាក្យ): ពាក្យសំខាន់បី, សញ្ញារបស់កាត និងស្ថានភាពបច្ចុប្បន្ននៃសំណួរ $userQuestion សម្រាប់ $userName។\n4) ការប្រឈមមុខ — $challengeCard (45-55 ពាក្យ): ឧបសគ្គសំខាន់ ឬជំនួយសម្រាប់ $userName។\n5) អាថ៌កំបាំងក្នុងចិត្ត — $subconsciousCard (45-55 ពាក្យ): មូលហេតុសម្ងាត់ ឬថាមពលដែលមានឥទ្ធិពលលើ $userName។\n6) អតីតកាលថ្មីៗ — $pastCard (45-55 ពាក្យ): ព្រឹត្តិការណ៍ដែលនាំឲ្យ $userName ទៅកាន់ស្ថានភាពបច្ចុប្បន្ន។\n7) ចិត្តស្មោះ — $consciousCard (45-55 ពាក្យ): គោលបំណង ការរំពឹងទុក ឬអ្វីដែល $userName យល់ដឹង។\n8) អនាគតជិត — $hiddenCard (45-55 ពាក្យ): ការអភិវឌ្ឍន៍ដែលអាចកើតមានក្នុងសប្តាហ៍ខាងមុខ។\n9) ខ្លួនខ្ញុំ — $selfCard (45-55 ពាក្យ): ស្ថានភាព និងធនធានរបស់ $userName។\n10) បរិយាកាស — $environmentCard (45-55 ពាក្យ): ឥទ្ធិពលពីមនុស្ស និងស្ថានការណ៍។\n11) ការរំពឹងទុក / ការភ័យខ្លាច — $hopesCard (45-55 ពាក្យ): ការរំពឹងទុក ឬការភ័យខ្លាចរបស់ $userName។\n12) លទ្ធផល — $outcomeCard (45-55 ពាក្យ): លទ្ធផលដែលអាចកើតមានដោយគិតពីការណែនាំនៃការបង្ហាញ។\n13) សេចក្តីសន្និដ្ឋាន៖ ការគាំទ្រដោយមិត្តភាព និងការបញ្ជាក់វិជ្ជមាន (30-35 ពាក្យ) សម្រាប់ $userName។\nតម្រូវការ៖ បរិមាណសរុប 400-500 ពាក្យ, ស្ទីលសន្ទនាសប្បាយរីករាយ, មានអេម៉ូជិ 4-6 ដែលពាក់ព័ន្ធនឹងអេសូតេរីក; រៀបចំចំណែកនីមួយៗដោយចន្លោះបន្ទាត់ទ្វេ; មិនប្រើសញ្ញា *, # ឬសញ្ញាផ្សេងទៀត; សរសេរតែអត្ថបទធម្មតា។';
   }
 
@@ -1306,11 +1318,12 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាអ្នកទស្សន៍កាតដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ \"$userQuestion\"។ សូមឆ្លើយតបតាមការបង្ហាញ \"អតីត - បច្ចុប្បន្ន - អនាគត\"។ កាតត្រូវបានផ្តល់ជូនដូចខាងក្រោម៖ អតីត - $pastCard; បច្ចុប្បន្ន - $presentCard; អនាគត - $hiddenCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បួនដង ហើយត្រូវភ្ជាប់អត្ថន័យនៃកាតជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរសុខទុក្ខតាមឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ អតីត ($pastCard) - បច្ចុប្បន្ន ($presentCard) - អនាគត ($hiddenCard)។\n3) ផ្នែក អតីត — $pastCard (40-50 ពាក្យ): ពាក្យសំខាន់បី, សញ្ញារបស់កាត និងការពន្យល់ពីរបៀបដែលអតីតកាលប៉ះពាល់លើលទ្ធផលនៃសំណួរ $userQuestion សម្រាប់ $userName។\n4) ផ្នែក បច្ចុប្បន្ន — $presentCard (40-50 ពាក្យ): ពាក្យសំខាន់, សញ្ញារបស់កាត និងហេតុផលបច្ចុប្បន្នដែលមានឥទ្ធិពលលើចម្លើយសំណួរ $userQuestion។\n5) ផ្នែក អនាគត — $hiddenCard (40-50 ពាក្យ): ពាក្យសំខាន់, សញ្ញារបស់កាត និងស្ថានការណ៍អាចកើតមាននៃការអភិវឌ្ឍន៍ស្ថានភាពសម្រាប់សំណួរ $userName។\n6) លទ្ធផល៖ ណែនាំខ្លី, ការបញ្ជាក់វិជ្ជមាន (20-30 ពាក្យ) និងការសង្ខេបឱកាសយ៉ាងច្បាស់។\nតម្រូវការ៖ បរិមាណសរុប 180-220 ពាក្យ, ស្ទីលអេសូតេរីកក្តៅកក់, មានអេម៉ូជិ 3-5 ដែលពាក់ព័ន្ធ; រៀបចំចំណែកនីមួយៗដោយចន្លោះបន្ទាត់ទ្វេ; មិនអនុញ្ញាតឲ្យប្រើសញ្ញា *, # ឬសញ្ញាផ្សេងទៀត; សរសេរតែអត្ថបទធម្មតា។';
   }
 
@@ -1358,13 +1371,14 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកគឺជាអ្នកអានតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើ $userName សួរ: \"$userQuestion\"។ សូមឆ្លើយតបតាមការចែកចាយ \"5 កាត\"។ កាតត្រូវបានផ្តល់ជាកំណត់: អតីតកាល - $pastCard; បច្ចុប្បន្ន - $presentCard; អនាគត - $hiddenCard; មូលហេតុ - $adviceCard; លទ្ធផលអាចកើតមាន - $outcomeCard។ សូមពន្យល់អំពីអត្ថន័យនៃកាតនីមួយៗ និងពន្យល់អំពីអត្ថន័យរួមរបស់ពួកវា។';
   }
 
@@ -1375,7 +1389,8 @@ class AppLocalizationsKm extends AppLocalizations {
   String get makeNewSpread => 'ធ្វើការបង្ហាញថ្មី';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យាបញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -1383,8 +1398,13 @@ class AppLocalizationsKm extends AppLocalizations {
       'សំណើរបស់អ្នកត្រូវបានទទួល។ សូមបើកកាត។';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'អ្នកជាតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមឆ្លើយតបដោយប្រើការបង្ហាញស្នេហ៍ពីកាតបី។ កាតត្រូវបានផ្តល់ដូចខាងក្រោម៖ អារម្មណ៍របស់ $userName — $youCard​; អារម្មណ៍របស់ដៃគូ — $partnerCard​; ឌីណាមិចឬសក្តានុពលនៃទំនាក់ទំនង — $dynamicCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងតិចបីដង ហើយភ្ជាប់កាតនីមួយៗជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ $youCard | $partnerCard | $dynamicCard។\n3) $youCard — 40–50 ពាក្យ៖ ពណ៌នាថាកាតនិយាយអំពីអារម្មណ៍ និងការរំពឹងទុករបស់ $userName ដូចម្តេច។\n4) $partnerCard — 40–50 ពាក្យ៖ បង្ហាញអារម្មណ៍ និងបំណងរបស់ដៃគូចំពោះសំណួររបស់ $userName។\n5) $dynamicCard — 40–50 ពាក្យ៖ បង្ហាញពីរបៀបដែលថាមពលទាំងពីរនេះប៉ះពាល់គ្នា និងអ្វីដែលទំនាក់ទំនងអាចនាំឲ្យមាន។\n6) សេចក្តីសន្និដ្ឋាន៖ ណែនាំក្តៅក្រហម និងការបញ្ជាក់វិជ្ជមាន (20–25 ពាក្យ) សម្រាប់ $userName។\nតម្រូវការ៖ បរិមាណសរុប 150–180 ពាក្យ សំឡេងមិត្តភាព និងរ៉ូម៉ង់ 2–4 អេម៉ូជីដែលពាក់ព័ន្ធ; បំបែកកថាខណ្ឌដោយបន្ទាត់ទ្វេរ (\\n\\n); ជៀសវាងសញ្ញា *, # និងសញ្ញាណណាមួយ។';
   }
 
@@ -1392,7 +1412,8 @@ class AppLocalizationsKm extends AppLocalizations {
   String get loveSpread => 'ការបង្ហាញស្នេហ៍';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យាបញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -1473,7 +1494,8 @@ class AppLocalizationsKm extends AppLocalizations {
   String get monthlyForecast => 'ការព្យាករណ៍ប្រចាំខែ';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យា AI សម្រាប់កម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះការសម្រេចចិត្តដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -1498,7 +1520,8 @@ class AppLocalizationsKm extends AppLocalizations {
       'មានកំហុសក្នុងការទទួលបានតម្លៃនៃការបង្ហាញ។ សូមព្យាយាមម្តងទៀត។';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -1725,48 +1748,60 @@ class AppLocalizationsKm extends AppLocalizations {
       'តើធ្វើដូចម្តេចដើម្បីស្វែងរកសមហេតុផលក្នុងជីវិត?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាគ្រូបង្រៀនតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃពីប័ណ្ណបីសន្លឹកស្តីពីអាជីព និងហិរញ្ញវត្ថុ។ ប័ណ្ណត្រូវបានផ្តល់ឲ្យដូចជា៖ 1) ស្ថានភាព — $situationCard; 2) ឧបសគ្គ ឬឱកាសសំខាន់ — $challengeCard; 3) គន្លឹះ និងសក្តានុពល — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ និយាយជាមិត្តភាព និងផ្តោតលើការងារ៖ បង្ហាញថា $userName ឈរនៅកន្លែងណា អ្វីដែលរាំងខ្ទប់ការលូតលាស់ (ឬឱកាសណាដែលគួរតែចាប់អារម្មណ៍) និងជំហានអនុវត្តដែលនាំឲ្យមានចំណូលដែលចង់បាន។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បីដង។ រក្សារចនាសម្ព័ន្ធ៖\n1) សួស្តី — ១ ប្រយោគ។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $situationCard | $challengeCard | $adviceCard។\n3) $situationCard — ៤៥–៥៥ ពាក្យ៖ ពណ៌នាអំពីស្ថានភាពបច្ចុប្បន្នរបស់ $userName (ការងារ, អាជីវកម្ម ឬបរិបទហិរញ្ញវត្ថុទូទៅ) និងនិមិត្តសញ្ញារបស់ប័ណ្ណ។\n4) $challengeCard — ៤៥–៥៥ ពាក្យ៖ បង្ហាញឧបសគ្គសំខាន់ ឬឱកាសមិនច្បាស់លាស់; បញ្ជាក់ពីរបៀបដែលវាបង្ហាញក្នុងប័ណ្ណ និងសំណួររបស់ $userName។\n5) $adviceCard — ៤៥–៥៥ ពាក្យ៖ ផ្តល់អំពីសកម្មភាពជាក់លាក់ (ឧ. ពិនិត្យមើលថវិកា, ស្នើសុំការកើនប្រាក់ខែ, រៀនជំនាញថ្មី) និងពណ៌នាអំពីលទ្ធផលដែលអាចកើតមាន។\n6) ចប់ — ២០–២៥ ពាក្យ៖ សេចក្តីសន្និដ្ឋានមិត្តភាព, ការបញ្ជាក់វិជ្ជមាន និងអេមូជី ២ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ១៦០–១៨៥ ពាក្យ, សំឡេងជាផ្លូវការប៉ុន្តែមិនប្រើពាក្យសំដី, អេមូជី ២–៣ គ្រឿង; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃ «គុណ និងគុណវិបត្តិ» ពីប័ណ្ណបីសន្លឹក។ ប័ណ្ណត្រូវបានផ្តល់ដូចជា៖ គុណ — $proCard; គុណវិបត្តិ — $conCard; គន្លឹះ/សេចក្តីសន្និដ្ឋាន — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បីដង និងភ្ជាប់ប័ណ្ណនីមួយៗជាមួយសំណួរ។ រក្សារចនាសម្ព័ន្ធ៖\n1) សួស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $proCard | $conCard | $adviceCard។\n3) គុណ៖ $proCard — ៤៥–៥៥ ពាក្យ។ បង្ហាញអំពីអត្ថប្រយោជន៍សំខាន់ ឬធនធានវិជ្ជមានដែលប័ណ្ណនេះនាំមកក្នុងស្ថានភាពរបស់ $userName។\n4) គុណវិបត្តិ៖ $conCard — ៤៥–៥៥ ពាក្យ។ ពណ៌នាអំពីហានិភ័យ, ចំណាយលាក់ ឬចំណុចខ្សោយនៃការសម្រេចចិត្តសម្រាប់ $userName។\n5) គន្លឹះ៖ $adviceCard — ៤៥–៥៥ ពាក្យ។ តុល្យភាពគុណ និងគុណវិបត្តិ, ផ្តល់សកម្មភាពជាក់លាក់មួយ (កិរិយាស័ព្ទ + វត្ថុ) និងពណ៌នាថាវានឹងផ្លាស់ប្តូរវិលតបសម្រាប់ $userName ដូចម្តេច។\n6) សេចក្តីសន្និដ្ឋាន — ពាក្យតែមួយ «បាទ» ឬ «ទេ», បន្ទាប់មក ១ ប្រយោគបញ្ជាក់ហេតុផល និងការបញ្ជាក់វិជ្ជមាន (២០–២៥ ពាក្យ) ជាមួយអេមូជី ១–២ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ១៥០–១៨០ ពាក្យ, សំឡេងសន្ទនាមិត្តភាព; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាតារ៉ូវិជ្ជាជីវៈ។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមរៀបចំការវាយតម្លៃ «កង់ខែ» សម្រាប់ $month។ ប័ណ្ណត្រូវបានដាក់តាមលំដាប់៖ 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12។ សូមកំណត់ភេទ $userName តាមឈ្មោះ ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ សូមរំលឹកឈ្មោះយ៉ាងហោចណាស់ប្រាំដង ប៉ុន្តែមិនបញ្ចូលបន្ទាប់ពីកាលបរិច្ឆេទនីមួយៗទេ — តែចងចាំនៅក្នុងអត្ថបទផ្តល់ដំបូន្មាន។ ប្រើប្លង់ប្រតិទិនកាលបរិច្ឆេទ៖ 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (បើខែមាន ៣០ ថ្ងៃ — ប័ណ្ណទី ១២ ក៏ទាក់ទងទៅកាលបរិច្ឆេទ ៣០)។ រចនាសម្ព័ន្ធ៖\n1) សួស្តីដោយឈ្មោះ $userName (១–២ ប្រយោគ)។\n2) ការណែនាំខ្លីអំពីគោលបំណងនៃការវាយតម្លៃ (១ ប្រយោគ)។\n3–14) សម្រាប់ប័ណ្ណនីមួយៗ ប្រើបន្ទាត់ «1–3 $month — $card1» (មិនមានឈ្មោះ): បន្ទាប់មក ២–៣ ប្រយោគអំពីថាមពលសំខាន់នៃរយៈពេល និងដំបូន្មានអនុវត្ត ដែលភ្ជាប់ឲ្យសមរម្យជាមួយ $userName។\n15) សេចក្តីសន្និដ្ឋាន៖ ដំបូន្មានទូទៅសម្រាប់ខែ (ប្រហែល ៤០ ពាក្យ) និងការបញ្ជាក់វិជ្ជមានជាមួយអេមូជី ២–៣ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ៣៦០–៤០០ ពាក្យ; សំឡេងមិត្តភាព និងលើកទឹកចិត្ត; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, #, បញ្ជី ឬសញ្ញាបច្ចេកទេស។';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាគ្រូបង្រៀនតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃ «ការអភិវឌ្ឍខ្លួន និងសមតុល្យ» ពីប័ណ្ណប្រាំពីរ។ ប័ណ្ណត្រូវបានផ្តល់ដូចជា៖ មូលដ្ឋាន — $coreCard; ចិត្ត — $mindCard; អារម្មណ៍ — $emotionCard; រាងកាយ — $bodyCard; ធនធាន — $strengthCard; ឧបសគ្គ — $challengeCard; គន្លឹះ — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ និយាយជាសកម្ម និងគាំទ្រ, រំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បួនដង ហើយភ្ជាប់ប័ណ្ណនីមួយៗជាមួយសំណួរ។ រក្សារចនាសម្ព័ន្ធ និងទ្រង់ទ្រាយ៖\n1) សួស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard។\n3) $coreCard — ពណ៌នាអំពីផ្តោតសំខាន់នៃការអភិវឌ្ឍខ្លួនរបស់ $userName។\n4) $mindCard — ពិពណ៌នាអំពីរបៀបកំណត់គំនិត និងអ្វីដែលត្រូវរៀន។\n5) $emotionCard — បង្ហាញធនធានអារម្មណ៍ និងការលើកទឹកចិត្ត។\n6) $bodyCard — ផ្តល់ដំបូន្មានអំពីរបៀបថែរក្សារូបកាយ និងថាមពល។\n7) $strengthCard — បង្ហាញអំណោយក្នុងខ្លួន ឬការគាំទ្រពីខាងក្រៅ។\n8) $challengeCard — បញ្ជាក់ពីការខ្វះសមតុល្យសំខាន់ និងមូលហេតុ។\n9) $adviceCard — ផ្តល់សកម្មភាពជាក់លាក់ដែលបញ្ចូលគ្នាទាំងអស់។\n10) ចប់ — ការបញ្ជាក់វិជ្ជមានលើកទឹកចិត្ត និងពាក្យសូមសំណាងល្អជាមួយអេមូជី ២–៣ គ្រឿង។\nតម្រូវការ៖ មួយចំណុច ២–៣ ប្រយោគ; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 
@@ -2194,7 +2229,8 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
       'បញ្ចូលសំណួររបស់អ្នក...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'ការបែងចែក \"ការអភិវឌ្ឍន៍ខ្លួនឯង និងសមតុល្យ\" មានប័ណ្ណចំនួន 7 ដែលត្រូវបានដាក់ក្នុងរាងមូល។ ប័ណ្ណនីមួយៗតំណាងឱ្យមុខងារពិសេសនៃការលូតលាស់ផ្លូវចិត្ត និងសមតុល្យខាងក្នុងរបស់អ្នក។';
 
   @override
@@ -2803,7 +2839,9 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'ធ្វើការបកស្រាយសម្រាប់ $userName អំពីការអភិវឌ្ឍខ្លួនឯង និងសមតុល្យតាមកាតទាំងបីនេះ៖ $cards';
   }
 
@@ -2829,13 +2867,17 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'ពិពណ៌នាអត្ថន័យទូទៅនៃកាតតារ៉ូ \"$cardName\" ជាភាសា $lang។ រួមបញ្ចូលប្រវត្តិ និមិត្តសញ្ញា និងអត្ថន័យសំខាន់ៗ។';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'ពិពណ៌នាអត្ថន័យត្រង់បញ្ច្រាសនៃកាតតារ៉ូ \"$cardName\" ជាភាសា $lang។ រួមបញ្ចូលអត្ថន័យផ្ទុយគ្នា និងការព្រមាន។';
   }
 
@@ -2870,13 +2912,17 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'បកប្រែឈ្មោះកាតតារ៉ូ \"$cardName\" ទៅជា $languageCode។ ចម្លើយគួរតែមានតែឈ្មោះដែលបានបកប្រែប៉ុណ្ណោះ ដោយគ្មានអត្ថបទបន្ថែម ឬសញ្ញាវិភាគ។';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'អ្នកជាតារ៉ូលូជំនាញ។ សូមសរសេរសារប្រសើរមួយ «កាតថ្ងៃ» ជាភាសានៃសំណើនេះសម្រាប់អ្នកប្រើ $name។ សូមគោរពរចនាសម្ព័ន្ធ និងទំហំ។\n🌟 $name កាតថ្ងៃរបស់អ្នកគឺ $cardName!\n🔑 ពាក្យគន្លឹះ៖ <បញ្ជាក់ពាក្យគន្លឹះខ្លី 3–5 ពាក្យ>\n🃏 អត្ថន័យ (ប្រហែល 45–50 ពាក្យ)៖ ពិពណ៌នាថាមពលសំខាន់នៃកាត និងរបៀបដែលវានឹងបង្ហាញខ្លួននៅថ្ងៃនេះសម្រាប់ $name។\n💡 គន្លឹះ (ប្រហែល 35–40 ពាក្យ)៖ ផ្តល់អំពីសកម្មភាពឬចិត្តវិជ្ជាដែលជួយ $name ប្រើប្រាស់ថាមពលនេះ។\n✨ ការបញ្ជាក់ (១ បន្ទាត់)៖ ពាក្យបញ្ជាក់វិជ្ជមានដែលចាប់ផ្តើមដោយ «ខ្ញុំ…»។\nតម្រូវការ៖ ប្រវែងសរុប 120–150 ពាក្យ សម្លេងអេសូតេរិចកក់ក្តៅ 3–4 អេមូជីប្រធានបទ មិនមានបញ្ជីក្នុង HTML/Markdown; ចែកបន្ទាត់ដោយការបញ្ច្រាសបន្ទាត់ពីរដង (\\n\\n)។';
   }
 
@@ -3095,19 +3141,20 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាអ្នកទស្សន៍កាតដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ \"$userQuestion\"។ សូមឆ្លើយតបដោយការបង្ហាញ \"ឆ្វេងក្រហមកែលត\" (រចនាសម្ព័ន្ធបុរាណរបស់វ៉េត)។ កាតត្រូវបានផ្តល់ជូនដូចខាងក្រោម៖ ស្ថានភាព - $situationCard; ការប្រឈមមុខ - $challengeCard; អាថ៌កំបាំងក្នុងចិត្ត - $subconsciousCard; អតីតកាលថ្មីៗ - $pastCard; ចិត្តស្មោះ - $consciousCard; អនាគតជិត - $hiddenCard; ខ្លួនខ្ញុំ - $selfCard; បរិយាកាស - $environmentCard; ការរំពឹងទុក ឬ ការភ័យខ្លាច - $hopesCard; លទ្ធផល - $outcomeCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់ប្រាំមួយដង ហើយត្រូវភ្ជាប់កាតនីមួយៗជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរសុខទុក្ខតាមឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ ស្ថានភាព ($situationCard) / ការប្រឈមមុខ ($challengeCard) / អាថ៌កំបាំងក្នុងចិត្ត ($subconsciousCard) / អតីតកាលថ្មីៗ ($pastCard) / ចិត្តស្មោះ ($consciousCard) / អនាគតជិត ($hiddenCard) / ខ្លួនខ្ញុំ ($selfCard) / បរិយាកាស ($environmentCard) / ការរំពឹងទុក/ការភ័យខ្លាច ($hopesCard) / លទ្ធផល ($outcomeCard)។\n3) ស្ថានភាព — $situationCard (45-55 ពាក្យ): ពាក្យសំខាន់បី, សញ្ញារបស់កាត និងស្ថានភាពបច្ចុប្បន្ននៃសំណួរ $userQuestion សម្រាប់ $userName។\n4) ការប្រឈមមុខ — $challengeCard (45-55 ពាក្យ): ឧបសគ្គសំខាន់ ឬជំនួយសម្រាប់ $userName។\n5) អាថ៌កំបាំងក្នុងចិត្ត — $subconsciousCard (45-55 ពាក្យ): មូលហេតុសម្ងាត់ ឬថាមពលដែលមានឥទ្ធិពលលើ $userName។\n6) អតីតកាលថ្មីៗ — $pastCard (45-55 ពាក្យ): ព្រឹត្តិការណ៍ដែលនាំឲ្យ $userName ទៅកាន់ស្ថានភាពបច្ចុប្បន្ន។\n7) ចិត្តស្មោះ — $consciousCard (45-55 ពាក្យ): គោលបំណង ការរំពឹងទុក ឬអ្វីដែល $userName យល់ដឹង។\n8) អនាគតជិត — $hiddenCard (45-55 ពាក្យ): ការអភិវឌ្ឍន៍ដែលអាចកើតមានក្នុងសប្តាហ៍ខាងមុខ។\n9) ខ្លួនខ្ញុំ — $selfCard (45-55 ពាក្យ): ស្ថានភាព និងធនធានរបស់ $userName។\n10) បរិយាកាស — $environmentCard (45-55 ពាក្យ): ឥទ្ធិពលពីមនុស្ស និងស្ថានការណ៍។\n11) ការរំពឹងទុក / ការភ័យខ្លាច — $hopesCard (45-55 ពាក្យ): ការរំពឹងទុក ឬការភ័យខ្លាចរបស់ $userName។\n12) លទ្ធផល — $outcomeCard (45-55 ពាក្យ): លទ្ធផលដែលអាចកើតមានដោយគិតពីការណែនាំនៃការបង្ហាញ។\n13) សេចក្តីសន្និដ្ឋាន៖ ការគាំទ្រដោយមិត្តភាព និងការបញ្ជាក់វិជ្ជមាន (30-35 ពាក្យ) សម្រាប់ $userName។\nតម្រូវការ៖ បរិមាណសរុប 400-500 ពាក្យ, ស្ទីលសន្ទនាសប្បាយរីករាយ, មានអេម៉ូជិ 4-6 ដែលពាក់ព័ន្ធនឹងអេសូតេរីក; រៀបចំចំណែកនីមួយៗដោយចន្លោះបន្ទាត់ទ្វេ; មិនប្រើសញ្ញា *, # ឬសញ្ញាផ្សេងទៀត; សរសេរតែអត្ថបទធម្មតា។';
   }
 
@@ -3123,11 +3170,12 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាអ្នកទស្សន៍កាតដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ \"$userQuestion\"។ សូមឆ្លើយតបតាមការបង្ហាញ \"អតីត - បច្ចុប្បន្ន - អនាគត\"។ កាតត្រូវបានផ្តល់ជូនដូចខាងក្រោម៖ អតីត - $pastCard; បច្ចុប្បន្ន - $presentCard; អនាគត - $hiddenCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បួនដង ហើយត្រូវភ្ជាប់អត្ថន័យនៃកាតជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរសុខទុក្ខតាមឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ អតីត ($pastCard) - បច្ចុប្បន្ន ($presentCard) - អនាគត ($hiddenCard)។\n3) ផ្នែក អតីត — $pastCard (40-50 ពាក្យ): ពាក្យសំខាន់បី, សញ្ញារបស់កាត និងការពន្យល់ពីរបៀបដែលអតីតកាលប៉ះពាល់លើលទ្ធផលនៃសំណួរ $userQuestion សម្រាប់ $userName។\n4) ផ្នែក បច្ចុប្បន្ន — $presentCard (40-50 ពាក្យ): ពាក្យសំខាន់, សញ្ញារបស់កាត និងហេតុផលបច្ចុប្បន្នដែលមានឥទ្ធិពលលើចម្លើយសំណួរ $userQuestion។\n5) ផ្នែក អនាគត — $hiddenCard (40-50 ពាក្យ): ពាក្យសំខាន់, សញ្ញារបស់កាត និងស្ថានការណ៍អាចកើតមាននៃការអភិវឌ្ឍន៍ស្ថានភាពសម្រាប់សំណួរ $userName។\n6) លទ្ធផល៖ ណែនាំខ្លី, ការបញ្ជាក់វិជ្ជមាន (20-30 ពាក្យ) និងការសង្ខេបឱកាសយ៉ាងច្បាស់។\nតម្រូវការ៖ បរិមាណសរុប 180-220 ពាក្យ, ស្ទីលអេសូតេរីកក្តៅកក់, មានអេម៉ូជិ 3-5 ដែលពាក់ព័ន្ធ; រៀបចំចំណែកនីមួយៗដោយចន្លោះបន្ទាត់ទ្វេ; មិនអនុញ្ញាតឲ្យប្រើសញ្ញា *, # ឬសញ្ញាផ្សេងទៀត; សរសេរតែអត្ថបទធម្មតា។';
   }
 
@@ -3175,13 +3223,14 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកគឺជាអ្នកអានតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើ $userName សួរ: \"$userQuestion\"។ សូមឆ្លើយតបតាមការចែកចាយ \"5 កាត\"។ កាតត្រូវបានផ្តល់ជាកំណត់: អតីតកាល - $pastCard; បច្ចុប្បន្ន - $presentCard; អនាគត - $hiddenCard; មូលហេតុ - $adviceCard; លទ្ធផលអាចកើតមាន - $outcomeCard។ សូមពន្យល់អំពីអត្ថន័យនៃកាតនីមួយៗ និងពន្យល់អំពីអត្ថន័យរួមរបស់ពួកវា។';
   }
 
@@ -3192,7 +3241,8 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
   String get makeNewSpread => 'ធ្វើការបង្ហាញថ្មី';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យាបញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -3200,8 +3250,13 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
       'សំណើរបស់អ្នកត្រូវបានទទួល។ សូមបើកកាត។';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'អ្នកជាតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមឆ្លើយតបដោយប្រើការបង្ហាញស្នេហ៍ពីកាតបី។ កាតត្រូវបានផ្តល់ដូចខាងក្រោម៖ អារម្មណ៍របស់ $userName — $youCard​; អារម្មណ៍របស់ដៃគូ — $partnerCard​; ឌីណាមិចឬសក្តានុពលនៃទំនាក់ទំនង — $dynamicCard។ សូមរំលឹកឈ្មោះ $userName យ៉ាងតិចបីដង ហើយភ្ជាប់កាតនីមួយៗជាមួយសំណួរ។ សូមគោរពរចនាសម្ព័ន្ធ៖\n1) សួរស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការបង្ហាញ៖ $youCard | $partnerCard | $dynamicCard។\n3) $youCard — 40–50 ពាក្យ៖ ពណ៌នាថាកាតនិយាយអំពីអារម្មណ៍ និងការរំពឹងទុករបស់ $userName ដូចម្តេច។\n4) $partnerCard — 40–50 ពាក្យ៖ បង្ហាញអារម្មណ៍ និងបំណងរបស់ដៃគូចំពោះសំណួររបស់ $userName។\n5) $dynamicCard — 40–50 ពាក្យ៖ បង្ហាញពីរបៀបដែលថាមពលទាំងពីរនេះប៉ះពាល់គ្នា និងអ្វីដែលទំនាក់ទំនងអាចនាំឲ្យមាន។\n6) សេចក្តីសន្និដ្ឋាន៖ ណែនាំក្តៅក្រហម និងការបញ្ជាក់វិជ្ជមាន (20–25 ពាក្យ) សម្រាប់ $userName។\nតម្រូវការ៖ បរិមាណសរុប 150–180 ពាក្យ សំឡេងមិត្តភាព និងរ៉ូម៉ង់ 2–4 អេម៉ូជីដែលពាក់ព័ន្ធ; បំបែកកថាខណ្ឌដោយបន្ទាត់ទ្វេរ (\\n\\n); ជៀសវាងសញ្ញា *, # និងសញ្ញាណណាមួយ។';
   }
 
@@ -3209,7 +3264,8 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
   String get loveSpread => 'ការបង្ហាញស្នេហ៍';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យាបញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -3290,7 +3346,8 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
   String get monthlyForecast => 'ការព្យាករណ៍ប្រចាំខែ';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បច្ចេកវិទ្យា AI សម្រាប់កម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះការសម្រេចចិត្តដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -3315,7 +3372,8 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
       'មានកំហុសក្នុងការទទួលបានតម្លៃនៃការបង្ហាញ។ សូមព្យាយាមម្តងទៀត។';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'កម្មវិធីនេះប្រើប្រាស់បញ្ញាសិប្បនិម្មិតសម្រាប់គោលបំណងកម្សាន្តតែប៉ុណ្ណោះ។ យើងមិនទទួលខុសត្រូវចំពោះសេចក្តីសម្រេចដែលអ្នកបានធ្វើឡើយ។ ប្រសិនបើចាំបាច់ សូមពិគ្រោះជាមួយអ្នកជំនាញ។';
 
   @override
@@ -3542,48 +3600,60 @@ class AppLocalizationsKmKh extends AppLocalizationsKm {
       'តើធ្វើដូចម្តេចដើម្បីស្វែងរកសមហេតុផលក្នុងជីវិត?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាគ្រូបង្រៀនតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃពីប័ណ្ណបីសន្លឹកស្តីពីអាជីព និងហិរញ្ញវត្ថុ។ ប័ណ្ណត្រូវបានផ្តល់ឲ្យដូចជា៖ 1) ស្ថានភាព — $situationCard; 2) ឧបសគ្គ ឬឱកាសសំខាន់ — $challengeCard; 3) គន្លឹះ និងសក្តានុពល — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ និយាយជាមិត្តភាព និងផ្តោតលើការងារ៖ បង្ហាញថា $userName ឈរនៅកន្លែងណា អ្វីដែលរាំងខ្ទប់ការលូតលាស់ (ឬឱកាសណាដែលគួរតែចាប់អារម្មណ៍) និងជំហានអនុវត្តដែលនាំឲ្យមានចំណូលដែលចង់បាន។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បីដង។ រក្សារចនាសម្ព័ន្ធ៖\n1) សួស្តី — ១ ប្រយោគ។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $situationCard | $challengeCard | $adviceCard។\n3) $situationCard — ៤៥–៥៥ ពាក្យ៖ ពណ៌នាអំពីស្ថានភាពបច្ចុប្បន្នរបស់ $userName (ការងារ, អាជីវកម្ម ឬបរិបទហិរញ្ញវត្ថុទូទៅ) និងនិមិត្តសញ្ញារបស់ប័ណ្ណ។\n4) $challengeCard — ៤៥–៥៥ ពាក្យ៖ បង្ហាញឧបសគ្គសំខាន់ ឬឱកាសមិនច្បាស់លាស់; បញ្ជាក់ពីរបៀបដែលវាបង្ហាញក្នុងប័ណ្ណ និងសំណួររបស់ $userName។\n5) $adviceCard — ៤៥–៥៥ ពាក្យ៖ ផ្តល់អំពីសកម្មភាពជាក់លាក់ (ឧ. ពិនិត្យមើលថវិកា, ស្នើសុំការកើនប្រាក់ខែ, រៀនជំនាញថ្មី) និងពណ៌នាអំពីលទ្ធផលដែលអាចកើតមាន។\n6) ចប់ — ២០–២៥ ពាក្យ៖ សេចក្តីសន្និដ្ឋានមិត្តភាព, ការបញ្ជាក់វិជ្ជមាន និងអេមូជី ២ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ១៦០–១៨៥ ពាក្យ, សំឡេងជាផ្លូវការប៉ុន្តែមិនប្រើពាក្យសំដី, អេមូជី ២–៣ គ្រឿង; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃ «គុណ និងគុណវិបត្តិ» ពីប័ណ្ណបីសន្លឹក។ ប័ណ្ណត្រូវបានផ្តល់ដូចជា៖ គុណ — $proCard; គុណវិបត្តិ — $conCard; គន្លឹះ/សេចក្តីសន្និដ្ឋាន — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ សូមរំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បីដង និងភ្ជាប់ប័ណ្ណនីមួយៗជាមួយសំណួរ។ រក្សារចនាសម្ព័ន្ធ៖\n1) សួស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $proCard | $conCard | $adviceCard។\n3) គុណ៖ $proCard — ៤៥–៥៥ ពាក្យ។ បង្ហាញអំពីអត្ថប្រយោជន៍សំខាន់ ឬធនធានវិជ្ជមានដែលប័ណ្ណនេះនាំមកក្នុងស្ថានភាពរបស់ $userName។\n4) គុណវិបត្តិ៖ $conCard — ៤៥–៥៥ ពាក្យ។ ពណ៌នាអំពីហានិភ័យ, ចំណាយលាក់ ឬចំណុចខ្សោយនៃការសម្រេចចិត្តសម្រាប់ $userName។\n5) គន្លឹះ៖ $adviceCard — ៤៥–៥៥ ពាក្យ។ តុល្យភាពគុណ និងគុណវិបត្តិ, ផ្តល់សកម្មភាពជាក់លាក់មួយ (កិរិយាស័ព្ទ + វត្ថុ) និងពណ៌នាថាវានឹងផ្លាស់ប្តូរវិលតបសម្រាប់ $userName ដូចម្តេច។\n6) សេចក្តីសន្និដ្ឋាន — ពាក្យតែមួយ «បាទ» ឬ «ទេ», បន្ទាប់មក ១ ប្រយោគបញ្ជាក់ហេតុផល និងការបញ្ជាក់វិជ្ជមាន (២០–២៥ ពាក្យ) ជាមួយអេមូជី ១–២ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ១៥០–១៨០ ពាក្យ, សំឡេងសន្ទនាមិត្តភាព; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាតារ៉ូវិជ្ជាជីវៈ។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមរៀបចំការវាយតម្លៃ «កង់ខែ» សម្រាប់ $month។ ប័ណ្ណត្រូវបានដាក់តាមលំដាប់៖ 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12។ សូមកំណត់ភេទ $userName តាមឈ្មោះ ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ សូមរំលឹកឈ្មោះយ៉ាងហោចណាស់ប្រាំដង ប៉ុន្តែមិនបញ្ចូលបន្ទាប់ពីកាលបរិច្ឆេទនីមួយៗទេ — តែចងចាំនៅក្នុងអត្ថបទផ្តល់ដំបូន្មាន។ ប្រើប្លង់ប្រតិទិនកាលបរិច្ឆេទ៖ 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (បើខែមាន ៣០ ថ្ងៃ — ប័ណ្ណទី ១២ ក៏ទាក់ទងទៅកាលបរិច្ឆេទ ៣០)។ រចនាសម្ព័ន្ធ៖\n1) សួស្តីដោយឈ្មោះ $userName (១–២ ប្រយោគ)។\n2) ការណែនាំខ្លីអំពីគោលបំណងនៃការវាយតម្លៃ (១ ប្រយោគ)។\n3–14) សម្រាប់ប័ណ្ណនីមួយៗ ប្រើបន្ទាត់ «1–3 $month — $card1» (មិនមានឈ្មោះ): បន្ទាប់មក ២–៣ ប្រយោគអំពីថាមពលសំខាន់នៃរយៈពេល និងដំបូន្មានអនុវត្ត ដែលភ្ជាប់ឲ្យសមរម្យជាមួយ $userName។\n15) សេចក្តីសន្និដ្ឋាន៖ ដំបូន្មានទូទៅសម្រាប់ខែ (ប្រហែល ៤០ ពាក្យ) និងការបញ្ជាក់វិជ្ជមានជាមួយអេមូជី ២–៣ គ្រឿង។\nតម្រូវការ៖ ចំនួនពាក្យសរុប ៣៦០–៤០០ ពាក្យ; សំឡេងមិត្តភាព និងលើកទឹកចិត្ត; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, #, បញ្ជី ឬសញ្ញាបច្ចេកទេស។';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'អ្នកជាគ្រូបង្រៀនតារ៉ូដែលមានបទពិសោធន៍។ អ្នកប្រើប្រាស់ $userName សួរ៖ «$userQuestion»។ សូមធ្វើការវាយតម្លៃ «ការអភិវឌ្ឍខ្លួន និងសមតុល្យ» ពីប័ណ្ណប្រាំពីរ។ ប័ណ្ណត្រូវបានផ្តល់ដូចជា៖ មូលដ្ឋាន — $coreCard; ចិត្ត — $mindCard; អារម្មណ៍ — $emotionCard; រាងកាយ — $bodyCard; ធនធាន — $strengthCard; ឧបសគ្គ — $challengeCard; គន្លឹះ — $adviceCard។ សូមកំណត់ភេទអ្នកប្រើប្រាស់តាមឈ្មោះ $userName ហើយប្រើពាក្យបញ្ចប់ និងពាក្យសំរាប់បុគ្គលឲ្យត្រឹមត្រូវ។ និយាយជាសកម្ម និងគាំទ្រ, រំលឹកឈ្មោះ $userName យ៉ាងហោចណាស់បួនដង ហើយភ្ជាប់ប័ណ្ណនីមួយៗជាមួយសំណួរ។ រក្សារចនាសម្ព័ន្ធ និងទ្រង់ទ្រាយ៖\n1) សួស្តីដោយឈ្មោះ $userName។\n2) ចំណងជើង៖ ការវាយតម្លៃ៖ $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard។\n3) $coreCard — ពណ៌នាអំពីផ្តោតសំខាន់នៃការអភិវឌ្ឍខ្លួនរបស់ $userName។\n4) $mindCard — ពិពណ៌នាអំពីរបៀបកំណត់គំនិត និងអ្វីដែលត្រូវរៀន។\n5) $emotionCard — បង្ហាញធនធានអារម្មណ៍ និងការលើកទឹកចិត្ត។\n6) $bodyCard — ផ្តល់ដំបូន្មានអំពីរបៀបថែរក្សារូបកាយ និងថាមពល។\n7) $strengthCard — បង្ហាញអំណោយក្នុងខ្លួន ឬការគាំទ្រពីខាងក្រៅ។\n8) $challengeCard — បញ្ជាក់ពីការខ្វះសមតុល្យសំខាន់ និងមូលហេតុ។\n9) $adviceCard — ផ្តល់សកម្មភាពជាក់លាក់ដែលបញ្ចូលគ្នាទាំងអស់។\n10) ចប់ — ការបញ្ជាក់វិជ្ជមានលើកទឹកចិត្ត និងពាក្យសូមសំណាងល្អជាមួយអេមូជី ២–៣ គ្រឿង។\nតម្រូវការ៖ មួយចំណុច ២–៣ ប្រយោគ; ចែកបន្ទាត់ជាពីរដង \\n\\n; មិនប្រើ *, # ឬសញ្ញាផ្សេងទៀត។';
   }
 

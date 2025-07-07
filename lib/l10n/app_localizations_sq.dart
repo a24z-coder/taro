@@ -378,7 +378,8 @@ class AppLocalizationsSq extends AppLocalizations {
       'Shkruani pyetjen tuaj...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Shpërndarja \"Vetëzhvillimi dhe balanca\" përbëhet nga 7 karta, të vendosura në formë rrethi. Çdo kartë simbolizon një aspekt të caktuar të rritjes suaj shpirtërore dhe harmonisë së brendshme.';
 
   @override
@@ -990,7 +991,9 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Bëj një shpërndarje për $userName për zhvillim personal dhe balancë me këto tre karta: $cards';
   }
 
@@ -1016,13 +1019,17 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Përshkruaj kuptimin e përgjithshëm të kartës së Taros \"$cardName\" në gjuhën $lang. Përfshi historinë, simbolikën dhe kuptimet kryesore.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Përshkruaj kuptimin e anuar të kartës Tarot \"$cardName\" në gjuhën $lang. Përfshi kuptimet e kundërta dhe paralajmërimet.';
   }
 
@@ -1058,13 +1065,17 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Përkthe emrin e kartës Tarot \"$cardName\" në $languageCode. Përgjigjja duhet të përmbajë vetëm emrin e përkthyer, pa tekst shtesë ose shenja pikësimi.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ti je një tarolog profesionist. Shkruaj një mesazh frymëzues «Karta e ditës» në gjuhën e këtij kërkese për përdoruesin $name. Respekto strukturën dhe volumin.\n🌟 $name, karta jote e ditës është $cardName!\n🔑 Fjalë kyçe: <shëno 3–5 fjalë kyçe të shkurtra>\n🃏 Kuptimi (≈45–50 fjalë): përshkruaj energjinë kryesore të kartës dhe si do të shfaqet sot tek $name.\n💡 Këshilla (≈35–40 fjalë): ofro një veprim konkret ose qëndrim që do t\'i ndihmojë $name të përdorë këtë energji.\n✨ Afirmim (1 rresht): një pohim pozitiv që fillon me «Unë…».\nKërkesat: gjatësi totale 120–150 fjalë, ton i ngrohtë ezoterik, 3–4 emoji tematike, pa lista në HTML/Markdown; paragrafët ndahen me dy herë ndërrim rreshti (\\n\\n).';
   }
 
@@ -1284,19 +1295,20 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog me përvojë. Përdoruesi $userName pyet: \"$userQuestion\". Përgjigju me shpërndarjen \"Kryqi Keltik\" (skema klasike e Waite). Kartat janë vendosur kështu: situata - $situationCard; sfida - $challengeCard; nënndërgjegjja - $subconsciousCard; e kaluara e afërt - $pastCard; ndërgjegjja - $consciousCard; e ardhmja e afërt - $hiddenCard; unë i brendshëm - $selfCard; mjedisi - $environmentCard; shpresat ose frikërat - $hopesCard; përfundimi - $outcomeCard. Përmend emrin $userName të paktën gjashtë herë dhe lidh çdo kartë me pyetjen. Respekto strukturën:\n1) Përshëndetje me emrin $userName.\n2) Titulli: Shpërndarja: situata ($situationCard) / sfida ($challengeCard) / nënndërgjegjja ($subconsciousCard) / e kaluara e afërt ($pastCard) / ndërgjegjja ($consciousCard) / e ardhmja e afërt ($hiddenCard) / unë i brendshëm ($selfCard) / mjedisi ($environmentCard) / shpresat/frikërat ($hopesCard) / përfundimi ($outcomeCard).\n3) Situata — $situationCard (45-55 fjalë): tre fjalë kyçe, simbolika e kartës dhe gjendja aktuale lidhur me pyetjen $userQuestion për $userName.\n4) Sfida — $challengeCard (45-55 fjalë): pengesa kryesore ose ndihma për $userName.\n5) Nënndërgjegjja — $subconsciousCard (45-55 fjalë): motivet e fshehura ose energjitë që ndikojnë në $userName.\n6) E kaluara e afërt — $pastCard (45-55 fjalë): ngjarjet që kanë çuar $userName në situatën aktuale.\n7) Ndërgjegjja — $consciousCard (45-55 fjalë): qëllimet, pritshmëritë ose ajo që $userName e di.\n8) E ardhmja e afërt — $hiddenCard (45-55 fjalë): zhvillimi i mundshëm në javët e ardhshme.\n9) Unë i brendshëm — $selfCard (45-55 fjalë): gjendja dhe burimet e $userName.\n10) Mjedisi — $environmentCard (45-55 fjalë): ndikimi i njerëzve dhe rrethanave.\n11) Shpresat / frikërat — $hopesCard (45-55 fjalë): pritshmëritë ose shqetësimet e $userName.\n12) Përfundimi — $outcomeCard (45-55 fjalë): rezultati i mundshëm duke marrë parasysh këshillat e shpërndarjes.\n13) Përfundim: mbështetje miqësore dhe afirmim pozitiv (30-35 fjalë) për $userName.\nKërkesat: volumi total 400-500 fjalë, ton i gjallë dhe bisedor, 4-6 emoji ezoterikë; secili bllok ndahet me dy rreshta bosh (\n); mos përdor simbole *, # ose ndonjë shenjë tjetër formatimi; shkruaj vetëm tekst të thjeshtë.';
   }
 
@@ -1313,11 +1325,12 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog me përvojë. Përdoruesi $userName pyet: \"$userQuestion\". Përgjigju me shpërndarjen \"E kaluara - E tashmja - E ardhmja\". Kartat janë vendosur kështu: e kaluara - $pastCard; e tashmja - $presentCard; e ardhmja - $hiddenCard. Përmend emrin $userName të paktën katër herë dhe lidh domethëniet e kartave me pyetjen. Respekto strukturën:\n1) Përshëndetje me emrin $userName.\n2) Titulli: Shpërndarja: E kaluara ($pastCard) - E tashmja ($presentCard) - E ardhmja ($hiddenCard).\n3) Blloku E KALUARA — $pastCard (40-50 fjalë): tre fjalë kyçe, simbolika e kartës dhe shpjegim se si faktet e kaluara ndikojnë në rezultatin e pyetjes $userQuestion për $userName.\n4) Blloku E TASHMJA — $presentCard (40-50 fjalë): fjalë kyçe, simbolika e kartës dhe faktorët aktualë që ndikojnë në përgjigjen për pyetjen $userQuestion.\n5) Blloku E ARDHMJA — $hiddenCard (40-50 fjalë): fjalë kyçe, simbolika e kartës dhe skenari i mundshëm i zhvillimit të situatës lidhur me pyetjen për $userName.\n6) Përfundim: këshillë e shkurtër, afirmim pozitiv (20-30 fjalë) dhe përmbledhje e qartë e mundësive.\nKërkesat: volumi total 180-220 fjalë, ton i ngrohtë ezoterik, 3-5 emoji tematike; secili bllok ndahet me dy rreshta bosh (\n); ndalohet përdorimi i simboleve *, # ose shenjave të tjera formatimi; shkruaj vetëm tekst të thjeshtë.';
   }
 
@@ -1365,13 +1378,14 @@ class AppLocalizationsSq extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ju jeni një lexues me përvojë i tarotit. Përdoruesi $userName pyet: \"$userQuestion\". Përgjigjuni përmes shtrirjes \"5 letra\". Letrat jepen me radhë: e kaluara - $pastCard; e tashmja - $presentCard; e ardhmja - $hiddenCard; arsyeja - $adviceCard; rezultati i mundshëm - $outcomeCard. Shpjegoni kuptimin e secilës letër dhe sqaroni kuptimin e tyre të kombinuar.';
   }
 
@@ -1382,7 +1396,8 @@ class AppLocalizationsSq extends AppLocalizations {
   String get makeNewSpread => 'Bëj një hapje të re';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Aplikacioni përdor IA-në vetëm për qëllime argëtuese. Ne nuk jemi përgjegjës për vendimet që merrni. Në rast nevoje, konsultohuni me një specialist.';
 
   @override
@@ -1390,8 +1405,13 @@ class AppLocalizationsSq extends AppLocalizations {
       'Kërkesa juaj është pranuar. Ju lutemi, hapni kartat';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Ti je një tarolog me përvojë. Përdoruesi $userName pyet: «$userQuestion». Përgjigju me ndihmën e një shpërndarjeje dashurie me tre karta. Kartat janë dhënë kështu: ndjenjat e $userName — $youCard; ndjenjat e partnerit — $partnerCard; dinamika ose potenciali i marrëdhënies — $dynamicCard. Përmend emrin $userName të paktën tre herë dhe lidh çdo kartë me pyetjen. Respekto strukturën:\n1) Përshëndetje me emrin $userName.\n2) Titulli: Shpërndarja: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 fjalë: përshkruaj çfarë tregon karta për ndjenjat dhe pritshmëritë e $userName.\n4) $partnerCard — 40–50 fjalë: zbulo emocionet dhe qëllimet e partnerit në lidhje me pyetjen e $userName.\n5) $dynamicCard — 40–50 fjalë: trego se si këto dy energji ndërveprojnë dhe ku mund të çojnë marrëdhëniet.\n6) Përfundim: këshillë e ngrohtë dhe afirmim pozitiv (20–25 fjalë) për $userName.\nKërkesat: volumi total 150–180 fjalë, ton miqësor romantik, 2–4 emoji tematikë; paragrafët ndahen me dy linja bosh (\\n\\n); shmang simbolat *, # dhe çdo shënim.';
   }
 
@@ -1399,7 +1419,8 @@ class AppLocalizationsSq extends AppLocalizations {
   String get loveSpread => 'Shpërndarje dashurie';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Aplikacioni përdor IA-në vetëm për qëllime argëtuese. Ne nuk jemi përgjegjës për vendimet që merrni. Në rast nevoje, konsultohuni me një specialist.';
 
   @override
@@ -1480,7 +1501,8 @@ class AppLocalizationsSq extends AppLocalizations {
   String get monthlyForecast => 'Parashikim mujor';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Aplikacioni përdor AI vetëm për qëllime argëtuese. Ne nuk jemi përgjegjës për vendimet që merrni. Në rast nevoje, konsultohuni me një specialist.';
 
   @override
@@ -1505,7 +1527,8 @@ class AppLocalizationsSq extends AppLocalizations {
       'Gabim gjatë marrjes së vlerës së shpërndarjes. Ju lutemi provoni përsëri.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Aplikacioni përdor AI vetëm për qëllime argëtuese. Ne nuk jemi përgjegjës për vendimet që merrni. Nëse është e nevojshme, konsultohuni me një specialist.';
 
   @override
@@ -1734,48 +1757,60 @@ class AppLocalizationsSq extends AppLocalizations {
       'Si të gjej harmoninë në jetë?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog-trajner me përvojë. Përdoruesi $userName pyet: «$userQuestion». Bëj një shpërndarje me tre karta për karrierën dhe financat. Kartat janë dhënë kështu: 1) situata — $situationCard; 2) pengesa ose mundësia kryesore — $challengeCard; 3) këshilla dhe potenciali — $adviceCard. Përcakto gjininë e përdoruesit sipas emrit $userName dhe përdor përfundimet dhe përemrat e duhura. Flit me $userName në mënyrë miqësore dhe të drejtpërdrejtë: trego ku ndodhet, çfarë bllokon rritjen (ose cilën mundësi është e rëndësishme të vëresh) dhe cili hap praktik do ta çojë drejt të ardhurave të dëshiruara. Përmend emrin $userName të paktën tre herë. Respekto strukturën:\n1) Përshëndetje — 1 fjali.\n2) Titulli: Shpërndarja: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 fjalë: përshkruaj gjendjen aktuale të $userName (punë, biznes ose sfondin e përgjithshëm financiar) dhe simbolikën e kartës.\n4) $challengeCard — 45–55 fjalë: zbulo pengesën kryesore ose mundësinë e padukshme; trego si reflektohet ajo në kartë dhe në pyetjen e $userName.\n5) $adviceCard — 45–55 fjalë: ofro një veprim konkret (p.sh., rishiko buxhetin, kërko ngritje, mëso një kompetencë të re) dhe përshkruaj rezultatin e mundshëm.\n6) Përfundimi — 20–25 fjalë: një përfundim miqësor, afirmim pozitiv dhe 2 emoji biznesi.\nKërkesat: volumi total 160–185 fjalë, ton i qartë dhe profesional pa zhargon, 2–3 emoji; paragrafët ndahen me dy herë \\n\\n; mos përdor *, # ose shenja të tjera.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog me përvojë. Përdoruesi $userName pyet: «$userQuestion». Bëj një shpërndarje “Pro dhe Kundër” me tre karta. Kartat janë dhënë kështu: përfitimet — $proCard; disavantazhet — $conCard; këshilla/fundi — $adviceCard. Përcakto gjininë e përdoruesit sipas emrit $userName dhe përdor përfundimet dhe përemrat e duhura. Përmend emrin $userName të paktën tre herë dhe lidh çdo kartë me pyetjen. Respekto strukturën:\n1) Përshëndetje me emrin $userName.\n2) Titulli: Shpërndarja: $proCard | $conCard | $adviceCard.\n3) Përfitimet: $proCard — 45–55 fjalë. Zbulo përfitimet kryesore ose burimet pozitive që kjo kartë sjell në situatën e $userName.\n4) Disavantazhet: $conCard — 45–55 fjalë. Përshkruaj rreziqet, kostot e fshehura ose dobësitë e zgjidhjes për $userName.\n5) Këshilla: $adviceCard — 45–55 fjalë. Vlerëso pro dhe kundrat, ofro një veprim konkret (folje + objekt) dhe thuaj si do të ndryshojë rezultatin për $userName.\n6) Përfundimi — një fjalë “Po” ose “Jo”, pastaj 1 fjali arsyetimi dhe një afirmim inkurajues (20–25 fjalë) me 1–2 emoji.\nKërkesat: volumi total 150–180 fjalë, ton miqësor dhe bisedor; çdo bllok ndahet me dy herë \\n\\n; pa *, # ose shenja të tjera.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog profesionist. Përdoruesi $userName pyet: «$userQuestion». Bëj një shpërndarje “Rrota e muajit” për $month. Kartat janë në rend: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Përcakto gjininë e $userName sipas emrit dhe përdor përfundimet dhe përemrat e duhura. Përmend emrin të paktën pesë herë, por mos e vendos pas çdo date — përmend vetëm brenda tekstit të këshillave. Përdor rrjetën kalendarike të datave: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (nëse muaji ka 30 ditë — karta e 12-të i përket gjithashtu datës 30). Formati:\n1) Përshëndetje me emrin $userName (1–2 fjali).\n2) Hyrje e shkurtër për qëllimin e shpërndarjes (1 fjali).\n3–14) Për çdo kartë përdor rreshtin “1–3 $month — $card1” (pa emrin): pastaj 2–3 fjalitë për energjinë kryesore të periudhës dhe këshillën praktike, duke përmendur në mënyrë organike $userName.\n15) Përfundimi: këshilla e përgjithshme për muajin (rreth 40 fjalë) dhe një afirmim frymëzues me 2–3 emoji.\nKërkesat: gjithsej 360–400 fjalë; ton miqësor dhe motivues; blloqet ndahen me dy herë \\n\\n; pa *, #, lista ose shenja teknike.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti je një tarolog-trajner me përvojë. Përdoruesi $userName pyet: «$userQuestion». Bëj një shpërndarje “Vetëzhvillim dhe balancë” me shtatë karta. Kartat janë dhënë kështu: bërthama — $coreCard; mendja — $mindCard; emocionet — $emotionCard; trupi — $bodyCard; burimi — $strengthCard; blloku — $challengeCard; këshilla — $adviceCard. Përcakto gjininë e përdoruesit sipas emrit $userName dhe përdor përfundimet dhe përemrat e duhura. Flit në mënyrë të gjallë dhe mbështetëse, përmend emrin $userName të paktën katër herë dhe lidh çdo kartë me pyetjen. Respekto strukturën dhe formatin:\n1) Përshëndetje me emrin $userName.\n2) Titulli: Shpërndarja: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — përshkruaj fokusin kryesor të vetëzhvillimit të $userName.\n4) $mindCard — trego si të rregullojë mendjen dhe çfarë të mësojë.\n5) $emotionCard — zbulo burimin emocional dhe motivimin.\n6) $bodyCard — këshillo si të kujdeset për trupin dhe energjinë.\n7) $strengthCard — trego dhuratën e brendshme ose mbështetjen e jashtme.\n8) $challengeCard — shëno disbalancën kryesore dhe arsyet e saj.\n9) $adviceCard — ofro një veprim konkret që bashkon të gjitha aspektet.\n10) Përfundimi: afirmim frymëzues dhe urim i ngrohtë me 2–3 emoji.\nKërkesat: çdo pikë 2–3 fjali; ndërmjet pikave vendos dy herë \\n\\n; mos përdor *, # ose shenja të tjera.';
   }
 

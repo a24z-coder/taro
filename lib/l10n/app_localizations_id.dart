@@ -377,7 +377,8 @@ class AppLocalizationsId extends AppLocalizations {
       'Masukkan pertanyaan Anda...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Penyebaran \"Pengembangan Diri dan Keseimbangan\" terdiri dari 7 kartu yang disusun dalam bentuk lingkaran. Setiap kartu melambangkan aspek tertentu dari pertumbuhan spiritual dan harmoni batin Anda.';
 
   @override
@@ -990,7 +991,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Buatkan pembacaan untuk $userName tentang pengembangan diri dan keseimbangan dengan tiga kartu ini: $cards';
   }
 
@@ -1015,13 +1018,17 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Jelaskan makna umum kartu Tarot \"$cardName\" dalam bahasa $lang. Sertakan sejarah, simbolisme, dan makna utama.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Jelaskan arti terbalik dari kartu Tarot \"$cardName\" dalam bahasa $lang. Sertakan makna yang berlawanan dan peringatan.';
   }
 
@@ -1056,13 +1063,17 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Terjemahkan nama kartu Tarot \"$cardName\" ke dalam $languageCode. Jawaban harus hanya berisi nama yang diterjemahkan, tanpa teks tambahan atau tanda baca.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Kamu adalah seorang tarot profesional. Tulis pesan inspiratif \"Kartu Hari Ini\" dalam bahasa permintaan ini untuk pengguna $name. Ikuti struktur dan panjang teks.\n🌟 $name, kartu harimu adalah $cardName!\n🔑 Kata kunci utama: <sebutkan 3–5 kata kunci singkat>\n🃏 Makna (≈45–50 kata): jelaskan energi utama kartu dan bagaimana energi itu akan muncul hari ini pada $name.\n💡 Saran (≈35–40 kata): berikan tindakan atau sikap konkret yang membantu $name memanfaatkan energi ini.\n✨ Afirmasi (1 baris): pernyataan positif yang dimulai dengan \"Saya…\".\nPersyaratan: panjang total 120–150 kata, nada hangat dan esoterik, 3–4 emoji tematik, tanpa daftar dalam HTML/Markdown; pisahkan paragraf dengan dua baris baru (\\n\\n).';
   }
 
@@ -1282,19 +1293,20 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Kamu adalah seorang tarot reader berpengalaman. Pengguna $userName bertanya: \"$userQuestion\". Jawablah dengan spread \"Salib Celtic\" (skema klasik Waite). Kartu-kartu diberikan sebagai berikut: situasi - $situationCard; tantangan - $challengeCard; bawah sadar - $subconsciousCard; masa lalu baru-baru ini - $pastCard; sadar - $consciousCard; masa depan dekat - $hiddenCard; diri batin - $selfCard; lingkungan - $environmentCard; harapan atau ketakutan - $hopesCard; hasil akhir - $outcomeCard. Sebut nama $userName minimal enam kali dan pastikan menghubungkan setiap kartu dengan pertanyaan. Ikuti struktur:\n1) Salam dengan nama $userName.\n2) Judul: Spread: situasi ($situationCard) / tantangan ($challengeCard) / bawah sadar ($subconsciousCard) / masa lalu baru-baru ini ($pastCard) / sadar ($consciousCard) / masa depan dekat ($hiddenCard) / diri batin ($selfCard) / lingkungan ($environmentCard) / harapan/ketakutan ($hopesCard) / hasil akhir ($outcomeCard).\n3) Situasi — $situationCard (45-55 kata): tiga kata kunci, simbolisme kartu dan keadaan saat ini terkait pertanyaan $userQuestion untuk $userName.\n4) Tantangan — $challengeCard (45-55 kata): hambatan utama atau bantuan untuk $userName.\n5) Bawah sadar — $subconsciousCard (45-55 kata): motif tersembunyi atau energi yang memengaruhi $userName.\n6) Masa lalu baru-baru ini — $pastCard (45-55 kata): peristiwa yang membawa $userName ke situasi sekarang.\n7) Sadar — $consciousCard (45-55 kata): tujuan, harapan, atau apa yang disadari oleh $userName.\n8) Masa depan dekat — $hiddenCard (45-55 kata): perkembangan yang mungkin terjadi dalam beberapa minggu ke depan.\n9) Diri batin — $selfCard (45-55 kata): kondisi, sumber daya $userName.\n10) Lingkungan — $environmentCard (45-55 kata): pengaruh orang dan keadaan sekitar.\n11) Harapan / ketakutan — $hopesCard (45-55 kata): harapan atau kekhawatiran $userName.\n12) Hasil akhir — $outcomeCard (45-55 kata): hasil yang mungkin dengan mempertimbangkan nasihat spread.\n13) Penutup: dukungan ramah dan afirmasi positif (30-35 kata) untuk $userName.\nPersyaratan: total 400-500 kata, nada percakapan yang hidup, 4-6 emoji esoterik; setiap bagian dipisahkan dengan dua baris kosong (\n); jangan gunakan simbol *, # atau markup lain; tulis hanya dengan teks biasa.';
   }
 
@@ -1310,11 +1322,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Kamu adalah seorang tarot reader berpengalaman. Pengguna $userName bertanya: \"$userQuestion\". Jawablah dengan spread \"Masa Lalu - Masa Kini - Masa Depan\". Kartu-kartu diberikan sebagai berikut: masa lalu - $pastCard; masa kini - $presentCard; masa depan - $hiddenCard. Sebut nama $userName minimal empat kali dan pastikan menghubungkan makna kartu dengan pertanyaan. Ikuti struktur:\n1) Salam dengan nama $userName.\n2) Judul: Spread: Masa Lalu ($pastCard) - Masa Kini ($presentCard) - Masa Depan ($hiddenCard).\n3) BAGIAN MASA LALU — $pastCard (40-50 kata): tiga kata kunci, simbolisme kartu dan penjelasan bagaimana fakta masa lalu memengaruhi hasil pertanyaan $userQuestion untuk $userName.\n4) BAGIAN MASA KINI — $presentCard (40-50 kata): kata kunci, simbolisme kartu dan faktor saat ini yang memengaruhi jawaban atas pertanyaan $userQuestion.\n5) BAGIAN MASA DEPAN — $hiddenCard (40-50 kata): kata kunci, simbolisme kartu dan kemungkinan skenario perkembangan situasi terkait pertanyaan $userName.\n6) Kesimpulan: saran singkat, afirmasi positif (20-30 kata) dan ringkasan peluang yang jelas.\nPersyaratan: total 180-220 kata, nada esoterik hangat, 3-5 emoji bertema; setiap bagian dipisahkan dengan dua baris kosong (\n); dilarang menggunakan simbol *, # atau tanda format lainnya; tulis hanya dengan teks biasa.';
   }
 
@@ -1362,13 +1375,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Anda adalah pembaca tarot berpengalaman. Pengguna $userName bertanya: \"$userQuestion\". Jawab melalui penyebaran \"5 kartu\". Kartu diberikan secara berurutan: masa lalu - $pastCard; masa kini - $presentCard; masa depan - $hiddenCard; alasan - $adviceCard; hasil yang mungkin - $outcomeCard. Jelaskan arti setiap kartu dan arti gabungannya.';
   }
 
@@ -1379,7 +1393,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get makeNewSpread => 'Buat penyebaran baru';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Aplikasi menggunakan AI hanya untuk tujuan hiburan. Kami tidak bertanggung jawab atas keputusan yang Anda buat. Jika perlu, konsultasikan dengan ahli.';
 
   @override
@@ -1387,8 +1402,13 @@ class AppLocalizationsId extends AppLocalizations {
       'Permintaan Anda telah diterima. Silakan buka kartu.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Anda adalah seorang tarot reader yang berpengalaman. Pengguna $userName bertanya: «$userQuestion». Jawablah dengan menggunakan pembacaan cinta dari tiga kartu. Kartu-kartu tersebut adalah: perasaan $userName — $youCard; perasaan pasangan — $partnerCard; dinamika atau potensi hubungan — $dynamicCard. Sebut nama $userName minimal tiga kali dan hubungkan setiap kartu dengan pertanyaan. Ikuti struktur:\n1) Salam dengan nama $userName.\n2) Judul: Pembacaan: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 kata: jelaskan apa yang kartu katakan tentang perasaan dan harapan $userName.\n4) $partnerCard — 40–50 kata: ungkapkan emosi dan niat pasangan terkait pertanyaan $userName.\n5) $dynamicCard — 40–50 kata: tunjukkan bagaimana kedua energi ini berinteraksi dan apa yang mungkin terjadi dalam hubungan.\n6) Kesimpulan: saran hangat dan afirmasi positif (20–25 kata) untuk $userName.\nPersyaratan: total 150–180 kata, nada ramah dan romantis, 2–4 emoji bertema; pisahkan paragraf dengan baris kosong ganda (\\n\\n); hindari simbol *, #, dan format apapun.';
   }
 
@@ -1396,7 +1416,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get loveSpread => 'Pembacaan cinta';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Aplikasi ini menggunakan AI hanya untuk tujuan hiburan. Kami tidak bertanggung jawab atas keputusan yang Anda buat. Jika perlu, konsultasikan dengan ahli.';
 
   @override
@@ -1477,7 +1498,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get monthlyForecast => 'Ramalan bulanan';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Aplikasi ini menggunakan AI hanya untuk tujuan hiburan. Kami tidak bertanggung jawab atas keputusan yang Anda buat. Jika perlu, konsultasikan dengan ahli.';
 
   @override
@@ -1502,7 +1524,8 @@ class AppLocalizationsId extends AppLocalizations {
       'Kesalahan saat mengambil nilai pembacaan. Silakan coba lagi.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Aplikasi ini menggunakan AI hanya untuk tujuan hiburan. Kami tidak bertanggung jawab atas keputusan yang Anda buat. Jika perlu, konsultasikan dengan ahli.';
 
   @override
@@ -1730,48 +1753,60 @@ class AppLocalizationsId extends AppLocalizations {
       'Bagaimana menemukan harmoni dalam hidup?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Kamu adalah seorang tarolog-coach berpengalaman. Pengguna $userName bertanya: «$userQuestion». Buatlah pembacaan tiga kartu tentang karier dan keuangan. Kartu-kartu diberikan sebagai berikut: 1) situasi — $situationCard; 2) hambatan atau peluang utama — $challengeCard; 3) saran dan potensi — $adviceCard. Tentukan jenis kelamin pengguna berdasarkan nama $userName dan gunakan akhiran serta kata ganti yang tepat. Berbicaralah dengan $userName secara ramah dan langsung ke inti: tunjukkan posisi dia saat ini, apa yang menghambat pertumbuhan (atau peluang penting yang harus diperhatikan), dan langkah praktis apa yang akan membawa pada penghasilan yang diinginkan. Sebut nama $userName minimal tiga kali. Ikuti struktur:\n1) Salam pembuka — 1 kalimat.\n2) Judul: Pembacaan: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 kata: jelaskan posisi $userName saat ini (pekerjaan, bisnis, atau latar keuangan umum) dan simbolisme kartu.\n4) $challengeCard — 45–55 kata: ungkapkan hambatan utama atau peluang tersembunyi; jelaskan bagaimana hal itu tercermin dalam kartu dan pertanyaan $userName.\n5) $adviceCard — 45–55 kata: tawarkan tindakan konkret (misalnya, meninjau anggaran, meminta kenaikan gaji, mempelajari kompetensi baru) dan jelaskan hasil yang mungkin terjadi.\n6) Penutup — 20–25 kata: kesimpulan ramah, afirmasi positif, dan 2 emoji bisnis.\nPersyaratan: total 160–185 kata, nada bisnis yang jelas tanpa jargon, 2–3 emoji; paragraf dipisahkan dengan dua baris kosong (\\n\\n); jangan gunakan *, #, atau format lain.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Kamu adalah seorang tarolog berpengalaman. Pengguna $userName bertanya: «$userQuestion». Buatlah pembacaan \"Pro dan Kontra\" dengan tiga kartu. Kartu-kartu diberikan sebagai berikut: kelebihan — $proCard; kekurangan — $conCard; saran/hasil — $adviceCard. Tentukan jenis kelamin pengguna berdasarkan nama $userName dan gunakan akhiran serta kata ganti yang tepat. Sebut nama $userName minimal tiga kali dan kaitkan setiap kartu dengan pertanyaan. Ikuti struktur:\n1) Salam pembuka dengan nama $userName.\n2) Judul: Pembacaan: $proCard | $conCard | $adviceCard.\n3) Kelebihan: $proCard — 45–55 kata. Jelaskan manfaat utama atau sumber daya positif yang dibawa kartu ini ke situasi $userName.\n4) Kekurangan: $conCard — 45–55 kata. Gambarkan risiko, biaya tersembunyi, atau kelemahan keputusan untuk $userName.\n5) Saran: $adviceCard — 45–55 kata. Timbang kelebihan dan kekurangan, tawarkan satu tindakan konkret (kata kerja + objek), dan jelaskan bagaimana hal itu akan mengubah hasil bagi $userName.\n6) Kesimpulan — satu kata \"Ya\" atau \"Tidak\", kemudian 1 kalimat alasan dan afirmasi penyemangat (20–25 kata) dengan 1–2 emoji.\nPersyaratan: total 150–180 kata, nada percakapan ramah; setiap bagian dipisahkan dengan dua baris kosong (\\n\\n); tanpa simbol *, #, atau format lain.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Anda adalah pembaca tarot profesional. Pengguna $userName bertanya: «$userQuestion». Buatlah bacaan \"Roda Bulan\" untuk $month. Kartu disusun berurutan: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Tentukan jenis kelamin $userName berdasarkan nama dan gunakan akhiran dan kata ganti yang tepat. Sebutkan nama setidaknya lima kali, tetapi **jangan masukkan setelah setiap tanggal** — ingat hanya di dalam teks saran. **DILARANG menulis nama pengguna setelah rentang tanggal. Setelah tanggal, sebutkan hanya bulan.** Gunakan grid tanggal kalender: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (jika bulan memiliki 30 hari — kartu ke-12 juga berlaku untuk tanggal 30). Format:\n\n1) Salam dengan nama $userName (1–2 kalimat).\n\n2) Tulis \'Pertanyaan Anda:\' dan kemudian pertanyaan pengguna $userQuestion.\n\n3) Pengantar singkat tentang tujuan bacaan (1 kalimat).\n\n4–15) Untuk setiap kartu gunakan baris seperti «1–3 $month — $card1» (tanpa nama): kemudian 2–3 kalimat tentang energi kunci periode dan saran praktis, secara organik menyebutkan $userName. JANGAN ulangi pertanyaan pengguna di setiap paragraf. Seluruh bacaan harus secara organik menjawab pertanyaan $userQuestion, tetapi tidak mengutipnya terus-menerus. Gunakan pertanyaan \'Apa yang harus difokuskan pada hari-hari ini?\' hanya di beberapa paragraf yang sesuai.\n\n16) Hasil: saran umum untuk bulan (sekitar 40 kata) dan afirmasi yang menginspirasi dengan 2–3 emoji.\n\nPersyaratan: total 360–400 kata; nada ramah, memotivasi; pisahkan blok dengan \\n\\n ganda; tidak ada simbol *, #, daftar atau catatan teknis.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Kamu adalah tarolog-coach berpengalaman. Pengguna $userName bertanya: «$userQuestion». Buatlah pembacaan \"Pengembangan Diri dan Keseimbangan\" dengan tujuh kartu. Kartu-kartu diberikan sebagai berikut: inti — $coreCard; pikiran — $mindCard; emosi — $emotionCard; tubuh — $bodyCard; sumber daya — $strengthCard; hambatan — $challengeCard; saran — $adviceCard. Tentukan jenis kelamin pengguna berdasarkan nama $userName dan gunakan akhiran serta kata ganti yang tepat. Berbicaralah dengan hidup dan mendukung, sebut nama $userName minimal empat kali dan kaitkan setiap kartu dengan pertanyaan. Ikuti struktur dan format:\n1) Salam pembuka dengan nama $userName.\n2) Judul: Pembacaan: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — jelaskan fokus utama pengembangan diri $userName.\n4) $mindCard — ceritakan bagaimana mengatur pola pikir dan apa yang harus dipelajari.\n5) $emotionCard — ungkapkan sumber daya emosional dan motivasi.\n6) $bodyCard — berikan saran merawat tubuh dan energi.\n7) $strengthCard — tunjukkan hadiah batin atau dukungan eksternal.\n8) $challengeCard — tandai ketidakseimbangan utama dan penyebabnya.\n9) $adviceCard — tawarkan tindakan konkret yang menggabungkan semua aspek.\n10) Penutup: afirmasi inspiratif dan pesan hangat dengan 2–3 emoji.\nPersyaratan: setiap poin 2–3 kalimat; antar poin dipisahkan dengan dua baris kosong (\\n\\n); jangan gunakan simbol *, #, atau format lain.';
   }
 

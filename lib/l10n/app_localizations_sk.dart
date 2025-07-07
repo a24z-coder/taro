@@ -374,7 +374,8 @@ class AppLocalizationsSk extends AppLocalizations {
       'Zadajte vašu otázku...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Rozklad \"Sebarozvoj a rovnováha\" pozostáva zo 7 kariet usporiadaných do tvaru kruhu. Každá karta symbolizuje určitý aspekt vášho duchovného rastu a vnútornej harmónie.';
 
   @override
@@ -982,7 +983,9 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Urob rozklad na sebarozvoj a rovnováhu pre $userName podľa týchto troch kariet: $cards';
   }
 
@@ -1007,13 +1010,17 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Opíš všeobecný význam tarotovej karty \"$cardName\" v jazyku $lang. Zahrň históriu, symboliku a hlavné významy.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Opíš obrátený význam tarotovej karty \"$cardName\" v jazyku $lang. Zahrň opačné významy a varovania.';
   }
 
@@ -1048,13 +1055,17 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Prelož názov tarotovej karty \"$cardName\" do $languageCode. Odpoveď by mala obsahovať iba preložený názov, bez ďalšieho textu alebo interpunkcie.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Si profesionálny tarotista. Napíš inšpiratívnu správu \"Karta dňa\" v jazyku tohto dopytu pre používateľa $name. Dodrž štruktúru a rozsah.\n🌟 $name, tvoja karta dňa je $cardName!\n🔑 Kľúčové slová: <uveď 3–5 krátkych kľúčových slov>\n🃏 Význam (≈45–50 slov): opíš hlavnú energiu karty a ako sa dnes prejaví u $name.\n💡 Rada (≈35–40 slov): navrhni konkrétnu akciu alebo nastavenie, ktoré pomôže $name využiť túto energiu.\n✨ Afirmácia (1 riadok): pozitívne tvrdenie začínajúce slovom \"Ja…\".\nPožiadavky: celková dĺžka 120–150 slov, teplý ezoterický tón, 3–4 tematické emodži, žiadne zoznamy v HTML/Markdown; odstavce oddeluj dvojitým zalomením riadku (\\n\\n).';
   }
 
@@ -1272,19 +1283,20 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si skúsený tarológ. Používateľ $userName sa pýta: \"$userQuestion\". Odpovedz rozložením \"Keltský kríž\" (klasická schéma Waite). Karty sú pridelené takto: situácia - $situationCard; výzva - $challengeCard; podvedomie - $subconsciousCard; nedávna minulosť - $pastCard; vedomie - $consciousCard; blízka budúcnosť - $hiddenCard; vnútorné Ja - $selfCard; okolie - $environmentCard; nádeje alebo obavy - $hopesCard; výsledok - $outcomeCard. Spomeň meno $userName minimálne šesťkrát a vždy prepoj každú kartu s otázkou. Dodrž štruktúru:\n1) Privítanie podľa mena $userName.\n2) Nadpis: Rozklad: situácia ($situationCard) / výzva ($challengeCard) / podvedomie ($subconsciousCard) / nedávna minulosť ($pastCard) / vedomie ($consciousCard) / blízka budúcnosť ($hiddenCard) / vnútorné Ja ($selfCard) / okolie ($environmentCard) / nádeje/obavy ($hopesCard) / výsledok ($outcomeCard).\n3) Situácia — $situationCard (45-55 slov): tri kľúčové slová, symbolika karty a aktuálny stav vecí ohľadom otázky $userQuestion pre $userName.\n4) Výzva — $challengeCard (45-55 slov): hlavná prekážka alebo pomoc pre $userName.\n5) Podvedomie — $subconsciousCard (45-55 slov): skryté motívy alebo energie ovplyvňujúce $userName.\n6) Nedávna minulosť — $pastCard (45-55 slov): udalosti, ktoré priviedli $userName do súčasnej situácie.\n7) Vedomie — $consciousCard (45-55 slov): ciele, očakávania alebo to, čo si $userName uvedomuje.\n8) Blízka budúcnosť — $hiddenCard (45-55 slov): pravdepodobný vývoj v najbližších týždňoch.\n9) Vnútorné Ja — $selfCard (45-55 slov): stav, zdroje $userName.\n10) Okolie — $environmentCard (45-55 slov): vplyv ľudí a okolností.\n11) Nádeje / obavy — $hopesCard (45-55 slov): očakávania alebo obavy $userName.\n12) Výsledok — $outcomeCard (45-55 slov): pravdepodobný výsledok s ohľadom na radu rozkladu.\n13) Záver: priateľská podpora a pozitívna afirmácia (30-35 slov) pre $userName.\nPožiadavky: celkový rozsah 400-500 slov, živý hovorový tón, 4-6 ezoterických emodži; každý blok oddel dvojitým zalomením riadku (\n); nepoužívaj symboly *, # ani inú značkovaciu syntax; píš iba obyčajným textom.';
   }
 
@@ -1301,11 +1313,12 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si skúsený tarológ. Používateľ $userName sa pýta: \"$userQuestion\". Odpovedz rozložením \"Minulosť - Prítomnosť - Budúcnosť\". Karty sú pridelené takto: minulosť - $pastCard; prítomnosť - $presentCard; budúcnosť - $hiddenCard. Spomeň meno $userName aspoň štyrikrát a vždy prepoj význam kariet s otázkou. Dodrž štruktúru:\n1) Privítanie podľa mena $userName.\n2) Nadpis: Rozklad: Minulosť ($pastCard) - Prítomnosť ($presentCard) - Budúcnosť ($hiddenCard).\n3) Blok MINULOSŤ — $pastCard (40-50 slov): tri kľúčové slová, symbolika karty a vysvetlenie, ako minulé fakty ovplyvňujú výsledok otázky $userQuestion pre $userName.\n4) Blok PRÍTOMNOSŤ — $presentCard (40-50 slov): kľúčové slová, symbolika karty a aktuálne faktory ovplyvňujúce odpoveď na otázku $userQuestion.\n5) Blok BUDÚCNOSŤ — $hiddenCard (40-50 slov): kľúčové slová, symbolika karty a pravdepodobný scenár vývoja situácie ohľadom otázky $userName.\n6) Výsledok: krátka rada, pozitívna afirmácia (20-30 slov) a jasné zhrnutie šancí.\nPožiadavky: celkový rozsah 180-220 slov, teplý ezoterický tón, 3-5 tematických emodži; každý blok oddel dvojitým zalomením riadku (\n); zakázané používať symboly *, # alebo iné formátovacie znaky; píš iba obyčajným textom.';
   }
 
@@ -1353,13 +1366,14 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ste skúsený čitateľ tarotu. Používateľ $userName sa pýta: \"$userQuestion\". Odpovedzte pomocou rozloženia \"5 kariet\". Karty sú uvedené v poradí: minulosť - $pastCard; prítomnosť - $presentCard; budúcnosť - $hiddenCard; dôvod - $adviceCard; možný výsledok - $outcomeCard. Vysvetlite význam každej karty a objasnite ich kombinovaný význam.';
   }
 
@@ -1370,7 +1384,8 @@ class AppLocalizationsSk extends AppLocalizations {
   String get makeNewSpread => 'Urobiť nové rozloženie';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Aplikácia používa AI výhradne na zábavné účely. Nezodpovedáme za rozhodnutia, ktoré urobíte. V prípade potreby sa obráťte na odborníka.';
 
   @override
@@ -1378,8 +1393,13 @@ class AppLocalizationsSk extends AppLocalizations {
       'Váš dopyt bol prijatý. Prosím, otvorte karty';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Si skúsený tarológ. Používateľ $userName sa pýta: \"$userQuestion\". Odpovedz pomocou láskového rozkladu z troch kariet. Karty sú dané takto: city $userName — $youCard; city partnera — $partnerCard; dynamika alebo potenciál vzťahu — $dynamicCard. Spomeň meno $userName minimálne trikrát a spoj každú kartu s otázkou. Dodrž štruktúru:\n1) Pozdrav podľa mena $userName.\n2) Nadpis: Rozklad: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 slov: opíš, čo karta hovorí o citoch a očakávaniach $userName.\n4) $partnerCard — 40–50 slov: odhaľ emócie a úmysly partnera voči otázke $userName.\n5) $dynamicCard — 40–50 slov: ukáž, ako tieto dve energie spolupracujú a kam môžu vzťahy viesť.\n6) Záver: teplá rada a pozitívna afirmácia (20–25 slov) pre $userName.\nPožiadavky: celkový rozsah 150–180 slov, priateľský romantický tón, 2–4 tematické emodži; odstavce oddeluj dvojitým zalomením riadku (\\n\\n); vyhýbaj sa znakom *, # a akejkoľvek značkovej syntaxe.';
   }
 
@@ -1387,7 +1407,8 @@ class AppLocalizationsSk extends AppLocalizations {
   String get loveSpread => 'Láskový rozklad';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Aplikácia používa AI výhradne na zábavné účely. Nezodpovedáme za rozhodnutia, ktoré urobíte. V prípade potreby sa obráťte na odborníka.';
 
   @override
@@ -1468,7 +1489,8 @@ class AppLocalizationsSk extends AppLocalizations {
   String get monthlyForecast => 'Mesačný výhľad';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Aplikácia používa AI výlučne na zábavné účely. Nezodpovedáme za vaše rozhodnutia. V prípade potreby sa obráťte na odborníka.';
 
   @override
@@ -1493,7 +1515,8 @@ class AppLocalizationsSk extends AppLocalizations {
       'Chyba pri získavaní hodnoty výkladu. Skúste to znova.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Aplikácia používa AI výhradne na zábavné účely. Nezodpovedáme za rozhodnutia, ktoré urobíte. V prípade potreby sa obráťte na odborníka.';
 
   @override
@@ -1720,48 +1743,60 @@ class AppLocalizationsSk extends AppLocalizations {
       'Ako nájsť harmóniu v živote?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si skúsený tarológ-kouč. Používateľ $userName sa pýta: \"$userQuestion\". Urob rozklad z troch kariet na kariéru a financie. Karty sú zadané takto: 1) situácia — $situationCard; 2) prekážka alebo kľúčová príležitosť — $challengeCard; 3) rada a potenciál — $adviceCard. Urči pohlavie používateľa podľa mena $userName a oslovuj správnymi koncovkami a zámenami. Hovor s $userName priateľsky a vecne: ukáž, kde stojí, čo blokuje rast (alebo akú šancu je dôležité si všimnúť) a aký praktický krok ho privedie k želanému príjmu. Spomeň meno $userName minimálne trikrát. Dodrž štruktúru:\n1) Pozdrav — 1 veta.\n2) Nadpis: Rozklad: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 slov: opíš aktuálnu situáciu $userName (práca, biznis alebo celkový finančný kontext) a symboliku karty.\n4) $challengeCard — 45–55 slov: odhaľ hlavnú prekážku alebo nejasnú príležitosť; uveď, ako sa prejavuje v karte a v otázke $userName.\n5) $adviceCard — 45–55 slov: navrhni konkrétny krok (napríklad prehodnotiť rozpočet, požiadať o zvýšenie, naučiť sa novú zručnosť) a opíš možný výsledok.\n6) Záver — 20–25 slov: priateľské zhrnutie, pozitívna afirmácia a 2 pracovné emodži.\nPožiadavky: celkový rozsah 160–185 slov, jasný pracovný tón bez žargónu, 2–3 emodži; odstavce oddeluj dvojitým \\n\\n; nepoužívaj *, # ani inú značkovaciu syntax.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si skúsený tarológ. Používateľ $userName sa pýta: \"$userQuestion\". Urob rozklad \"Za a Proti\" z troch kariet. Karty sú zadané takto: plusy — $proCard; mínusy — $conCard; rada/výsledok — $adviceCard. Urči pohlavie používateľa podľa mena $userName a oslovuj správnymi koncovkami a zámenami. Spomeň meno $userName aspoň trikrát a prepoj každú kartu s otázkou. Dodrž štruktúru:\n1) Pozdrav podľa mena $userName.\n2) Nadpis: Rozklad: $proCard | $conCard | $adviceCard.\n3) Plusy: $proCard — 45–55 slov. Rozkry hlavné výhody alebo pozitívne zdroje, ktoré táto karta prináša do situácie $userName.\n4) Mínusy: $conCard — 45–55 slov. Opíš riziká, skryté náklady alebo slabé stránky riešenia pre $userName.\n5) Rada: $adviceCard — 45–55 slov. Zváž plusy a mínusy, navrhni jeden konkrétny krok (sloveso + objekt) a povedz, ako to zmení výsledok pre $userName.\n6) Výsledok — jedným slovom \"Áno\" alebo \"Nie\", potom 1 veta s odôvodnením a povzbudzujúca afirmácia (20–25 slov) s 1–2 emodži.\nPožiadavky: celkový rozsah 150–180 slov, priateľský hovorový tón; každý blok oddeluj dvojitým \\n\\n; bez *, # alebo inej značkovačky.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si profesionálny tarológ. Používateľ $userName sa pýta: \"$userQuestion\". Vytvor rozklad \"Koleso mesiaca\" na $month. Karty sú v poradí: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Urči pohlavie $userName podľa mena a používaj správne koncovky a zámená. Meno spomeň aspoň päťkrát, ale **nevložiť ho po každom dátume** — pripomeň si ho len v rámci rád. Použi kalendárnu sieť dátumov: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ak je v mesiaci 30 dní — 12. karta sa vzťahuje tiež na 30. deň). Formát:\n1) Pozdrav podľa mena $userName (1–2 vety).\n2) Krátke úvodné slovo o cieli rozkladu (1 veta).\n3–14) Pre každú kartu použi riadok \"1–3 $month — $card1\" (bez mena): potom 2–3 vety o kľúčovej energii obdobia a praktickej rade, prirodzene spomínajúc $userName.\n15) Záver: celková rada na mesiac (asi 40 slov) a inšpirujúca afirmácia s 2–3 emodži.\nPožiadavky: celkovo 360–400 slov; priateľský, motivačný tón; bloky oddeluj dvojitým \\n\\n; žiadne *, #, zoznamy alebo technické poznámky.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Si skúsený tarológ-kouč. Používateľ $userName sa pýta: \"$userQuestion\". Urob rozklad \"Sebarozvoj a rovnováha\" zo siedmich kariet. Karty sú zadané takto: jadro — $coreCard; myseľ — $mindCard; emócie — $emotionCard; telo — $bodyCard; zdroj — $strengthCard; blok — $challengeCard; rada — $adviceCard. Urči pohlavie používateľa podľa mena $userName a oslovuj správnymi koncovkami a zámenami. Hovor živo a podporujúco, spomeň meno $userName minimálne štyrikrát a určite prepoj každú kartu s otázkou. Dodrž štruktúru a formát:\n1) Pozdrav podľa mena $userName.\n2) Nadpis: Rozklad: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — opíš hlavný fokus sebarozvoja $userName.\n4) $mindCard — povedz, ako nastaviť myslenie a čo sa učiť.\n5) $emotionCard — odhaľ emocionálny zdroj a motiváciu.\n6) $bodyCard — poraď, ako sa starať o telo a energiu.\n7) $strengthCard — ukáž vnútorný dar alebo vonkajšiu podporu.\n8) $challengeCard — označ kľúčovú nerovnováhu a jej príčiny.\n9) $adviceCard — navrhni konkrétny krok, ktorý spojí všetky aspekty.\n10) Záver: inšpirujúca afirmácia a teplé rozlúčenie s 2–3 emodži.\nPožiadavky: každý bod 2–3 vety; medzi bodmi daj dvojitý \\n\\n; nepoužívaj *, # ani inú značkovaciu syntax.';
   }
 

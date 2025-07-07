@@ -375,7 +375,8 @@ class AppLocalizationsLv extends AppLocalizations {
       'Ievadiet savu jautājumu...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Izklājums \"Pašattīstība un līdzsvars\" sastāv no 7 kārtīm, kas izvietotas apļa formā. Katra kārts simbolizē noteiktu jūsu garīgās izaugsmes un iekšējās harmonijas aspektu.';
 
   @override
@@ -986,7 +987,9 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Izveido $userName pašattīstības un līdzsvara izklājumu ar šīm trim kārtīm: $cards';
   }
 
@@ -1011,13 +1014,17 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Apraksti kārts \"$cardName\" vispārējo nozīmi Tarotu valodā $lang. Iekļauj vēsturi, simboliku un galvenās nozīmes.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Apraksti apgriezto Tarot kārts \"$cardName\" nozīmi valodā $lang. Iekļauj pretējas nozīmes un brīdinājumus.';
   }
 
@@ -1053,13 +1060,17 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Taro kartes nosaukums \"$cardName\" $languageCode valodā';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Tu esi profesionāls tarologs. Uzraksti iedvesmojošu ziņojumu «Dienas kārts» šī pieprasījuma valodā lietotājam $name. Ievēro struktūru un apjomu.\n🌟 $name, tava dienas kārts ir $cardName!\n🔑 Atslēgvārdi: <norādi 3–5 īsus atslēgvārdus>\n🃏 Nozīme (≈45–50 vārdi): apraksti kārts galveno enerģiju un to, kā tā šodien izpaudīsies pie $name.\n💡 Padoms (≈35–40 vārdi): piedāvā konkrētu darbību vai noskaņojumu, kas palīdzēs $name izmantot šo enerģiju.\n✨ Afirmācija (1 rinda): pozitīvs apgalvojums, kas sākas ar «Es…».\nPrasības: kopējais garums 120–150 vārdu, silts ezotērisks tonis, 3–4 tematiskas emocijzīmes, bez sarakstiem HTML/Markdown; rindkopas atdala ar divām rindkopu pārejām (\\n\\n).';
   }
 
@@ -1278,19 +1289,20 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi pieredzējis tarologs. Lietotājs $userName jautā: \"$userQuestion\". Atbildi ar izkārtojumu \"Kelta krusts\" (klasiskā Veita shēma). Kārtis ir nodotas šādi: situācija - $situationCard; izaicinājums - $challengeCard; zemapziņa - $subconsciousCard; nesenā pagātne - $pastCard; apziņa - $consciousCard; tuvākā nākotne - $hiddenCard; iekšējais Es - $selfCard; vide - $environmentCard; cerības vai bailes - $hopesCard; rezultāts - $outcomeCard. Minē vārdu $userName vismaz sešas reizes un obligāti sasaisti katru kārti ar jautājumu. Ievēro struktūru:\n1) Sveiciens ar vārdu $userName.\n2) Virsraksts: Izkārtojums: situācija ($situationCard) / izaicinājums ($challengeCard) / zemapziņa ($subconsciousCard) / nesenā pagātne ($pastCard) / apziņa ($consciousCard) / tuvākā nākotne ($hiddenCard) / iekšējais Es ($selfCard) / vide ($environmentCard) / cerības/bailes ($hopesCard) / rezultāts ($outcomeCard).\n3) Situācija — $situationCard (45-55 vārdi): trīs galvenie atslēgas vārdi, kārts simbolika un pašreizējā situācija jautājumā $userQuestion lietotājam $userName.\n4) Izaicinājums — $challengeCard (45-55 vārdi): galvenais šķērslis vai palīdzība $userName.\n5) Zemapziņa — $subconsciousCard (45-55 vārdi): slēptie motīvi vai enerģijas, kas ietekmē $userName.\n6) Nesenā pagātne — $pastCard (45-55 vārdi): notikumi, kas noveduši $userName līdz pašreizējai situācijai.\n7) Apziņa — $consciousCard (45-55 vārdi): mērķi, cerības vai tas, ko $userName apzinās.\n8) Tuvākā nākotne — $hiddenCard (45-55 vārdi): iespējama attīstība nākamajās nedēļās.\n9) Iekšējais Es — $selfCard (45-55 vārdi): $userName stāvoklis, resursi.\n10) Vide — $environmentCard (45-55 vārdi): cilvēku un apstākļu ietekme.\n11) Cerības / bailes — $hopesCard (45-55 vārdi): $userName gaidas vai bažas.\n12) Rezultāts — $outcomeCard (45-55 vārdi): iespējams iznākums, ņemot vērā izkārtojuma padomu.\n13) Noslēgums: draudzīga atbalsta un pozitīva apstiprinājuma vārdi (30-35 vārdi) $userName.\nKopējais apjoms: 400-500 vārdi, dzīvīgs sarunvalodas tonis, 4-6 ezotēriskas emocijzīmes; katru bloku atdala ar divām tukšām rindām (\n); neizmanto simbolus *, # vai citas atzīmes; raksti tikai vienkāršu tekstu.';
   }
 
@@ -1307,11 +1319,12 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi pieredzējis tarologs. Lietotājs $userName jautā: \"$userQuestion\". Atbildi ar izkārtojumu \"Pagātne - Tagadne - Nākotne\". Kārtis ir nodotas šādi: pagātne - $pastCard; tagadne - $presentCard; nākotne - $hiddenCard. Minē vārdu $userName vismaz četras reizes un obligāti sasaisti kāršu nozīmes ar jautājumu. Ievēro struktūru:\n1) Sveiciens ar vārdu $userName.\n2) Virsraksts: Izkārtojums: Pagātne ($pastCard) - Tagadne ($presentCard) - Nākotne ($hiddenCard).\n3) BLOKS PAGĀTNE — $pastCard (40-50 vārdi): trīs galvenie atslēgas vārdi, kārts simbolika un skaidrojums, kā pagātnes notikumi ietekmē jautājuma $userQuestion iznākumu lietotājam $userName.\n4) BLOKS TAGADNE — $presentCard (40-50 vārdi): galvenie atslēgas vārdi, kārts simbolika un pašreizējie faktori, kas ietekmē atbildi uz jautājumu $userQuestion.\n5) BLOKS NĀKOTNE — $hiddenCard (40-50 vārdi): galvenie atslēgas vārdi, kārts simbolika un iespējams situācijas attīstības scenārijs jautājumā $userName.\n6) Rezultāts: īss padoms, pozitīva apstiprinājuma vārdi (20-30 vārdi) un skaidrs iespēju kopsavilkums.\nKopējais apjoms: 180-220 vārdi, silts ezotērisks tonis, 3-5 tematiskas emocijzīmes; katru bloku atdala ar divām tukšām rindām (\n); aizliegts izmantot simbolus *, # vai citas formatēšanas zīmes; raksti tikai vienkāršu tekstu.';
   }
 
@@ -1359,13 +1372,14 @@ class AppLocalizationsLv extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi pieredzējis tarota lasītājs. Lietotājs $userName jautā: \"$userQuestion\". Atbildi, izmantojot \"5 kāršu\" izkārtojumu. Kārtis ir dotas secībā: pagātne - $pastCard; tagadne - $presentCard; nākotne - $hiddenCard; iemesls - $adviceCard; iespējamais rezultāts - $outcomeCard. Izskaidro katras kārts nozīmi un noskaidro, kāda ir to kopējā nozīme.';
   }
 
@@ -1376,7 +1390,8 @@ class AppLocalizationsLv extends AppLocalizations {
   String get makeNewSpread => 'Veikt jaunu izklājumu';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Ja nepieciešams, konsultējieties ar speciālistu.';
 
   @override
@@ -1384,8 +1399,13 @@ class AppLocalizationsLv extends AppLocalizations {
       'Jūsu pieprasījums ir saņemts. Lūdzu, atklājiet kārtis';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Tu esi pieredzējis tarologs. Lietotājs $userName jautā: «$userQuestion». Atbildi, izmantojot mīlas izklājumu no trim kārtīm. Kārtis ir šādas: $userName jūtas — $youCard; partnera jūtas — $partnerCard; attiecību dinamika vai potenciāls — $dynamicCard. Minē $userName vārdu vismaz trīs reizes un sasaisti katru kārti ar jautājumu. Ievēro struktūru:\n1) Sveiciens, lietojot vārdu $userName.\n2) Virsraksts: Izklājums: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 vārdi: apraksti, ko kārts saka par $userName jūtām un cerībām.\n4) $partnerCard — 40–50 vārdi: atklāj partnera emocijas un nodomus attiecībā uz $userName jautājumu.\n5) $dynamicCard — 40–50 vārdi: parādi, kā šīs divas enerģijas mijiedarbojas un kādas attiecības varētu attīstīties.\n6) Noslēgums: sirsnīgs padoms un pozitīva apstiprinājuma frāze (20–25 vārdi) $userName.\nPrasības: kopējais apjoms 150–180 vārdi, draudzīgs romantisks tonis, 2–4 tematiskas emocijzīmes; rindkopas atdalīt ar divām jaunām rindām (\\n\\n); izvairīties no simboliem *, # un jebkādas marķēšanas.';
   }
 
@@ -1393,7 +1413,8 @@ class AppLocalizationsLv extends AppLocalizations {
   String get loveSpread => 'Mīlas izklājums';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Ja nepieciešams, konsultējieties ar speciālistu.';
 
   @override
@@ -1474,7 +1495,8 @@ class AppLocalizationsLv extends AppLocalizations {
   String get monthlyForecast => 'Mēneša prognoze';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Ja nepieciešams, konsultējieties ar speciālistu.';
 
   @override
@@ -1499,7 +1521,8 @@ class AppLocalizationsLv extends AppLocalizations {
       'Kļūda, iegūstot izklājuma vērtību. Mēģiniet vēlreiz.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Lietotne izmanto mākslīgo intelektu tikai izklaides nolūkos. Mēs neuzņemamies atbildību par jūsu pieņemtajiem lēmumiem. Vajadzības gadījumā konsultējieties ar speciālistu.';
 
   @override
@@ -1725,48 +1748,60 @@ class AppLocalizationsLv extends AppLocalizations {
       'Kā atrast harmoniju dzīvē?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi pieredzējis tarologs-koučs. Lietotājs $userName jautā: «$userQuestion». Izveido trīs kāršu izklājumu par karjeru un finansēm. Kārtis ir šādas: 1) situācija — $situationCard; 2) šķērslis vai galvenā iespēja — $challengeCard; 3) padoms un potenciāls — $adviceCard. Nosaki lietotāja dzimumu pēc vārda $userName un lieto pareizos galotņu un vietniekvārdus. Runā ar $userName draudzīgi un konkrēti: parādi, kur viņš atrodas, kas bloķē izaugsmi (vai kāda iespēja ir svarīgi pamanīt) un kāds praktisks solis vedīs pie vēlamā ienākuma. Minē vārdu $userName vismaz trīs reizes. Ievēro struktūru:\n1) Sveiciens — 1 teikums.\n2) Virsraksts: Izklājums: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 vārdi: apraksti pašreizējo $userName stāvokli (darbs, bizness vai kopējais finanšu fons) un kārts simboliku.\n4) $challengeCard — 45–55 vārdi: atklāj galveno barjeru vai nepamanāmu iespēju; norādi, kā tā atspoguļojas kārtī un $userName jautājumā.\n5) $adviceCard — 45–55 vārdi: piedāvā konkrētu rīcību (piemēram, pārskatīt budžetu, lūgt paaugstinājumu, apgūt jaunu kompetenci) un apraksti iespējamo rezultātu.\n6) Noslēgums — 20–25 vārdi: draudzīgs secinājums, pozitīva apstiprinājuma frāze un 2 biznesa emodži.\nPrasības: kopējais apjoms 160–185 vārdi, skaidrs biznesa tonis bez žargona, 2–3 emodži; rindkopas atdala ar dubultu \\n\\n; neizmanto *, # vai citas atzīmes.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi pieredzējis tarologs. Lietotājs $userName jautā: «$userQuestion». Izveido trīs kāršu izklājumu «Par un Pret». Kārtis ir šādas: plusi — $proCard; mīnusi — $conCard; padoms/rezultāts — $adviceCard. Nosaki lietotāja dzimumu pēc vārda $userName un lieto pareizos galotņu un vietniekvārdus. Minē vārdu $userName vismaz trīs reizes un sasaisti katru kārti ar jautājumu. Ievēro struktūru:\n1) Sveiciens, lietojot vārdu $userName.\n2) Virsraksts: Izklājums: $proCard | $conCard | $adviceCard.\n3) Plusi: $proCard — 45–55 vārdi. Atklāj galvenās priekšrocības vai pozitīvos resursus, ko šī kārts sniedz $userName situācijā.\n4) Mīnusi: $conCard — 45–55 vārdi. Apraksti riskus, slēptās izmaksas vai vājās vietas risinājumā $userName.\n5) Padoms: $adviceCard — 45–55 vārdi. Izvērtē plusus un mīnusus, piedāvā vienu konkrētu darbību (darbības vārds + objekts) un paskaidro, kā tas mainīs iznākumu $userName.\n6) Rezultāts — vienā vārdā «Jā» vai «Nē», pēc tam 1 teikums ar pamatojumu un iedrošinoša apstiprinājuma frāze (20–25 vārdi) ar 1–2 emodži.\nPrasības: kopējais apjoms 150–180 vārdi, draudzīgs sarunvalodas tonis; katru bloku atdala ar dubultu \\n\\n; bez simboliem *, # vai citām atzīmēm.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Tu esi profesionāls tarologs. Lietotājs $userName jautā: «$userQuestion». Izveido izklājumu «Mēneša rats» $month mēnesim. Kārtis pēc kārtas: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Nosaki $userName dzimumu pēc vārda un lieto pareizās galotnes un vietniekvārdus. Piemini vārdu vismaz 5 reizes, bet **neliec pēc katra datuma** — tikai padomos. Izmanto kalendāra režģi: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (ja mēnesī 30 dienas — 12. kārts arī 30. datumam). Formāts:\n\n1) Sveiciens pēc vārda $userName (1–2 teikumi).\n\n2) Īss ievads par izklājuma mērķi (1 teikums).\n\n3–14) Katrai kārtij rinda «1–3 $month — $card1» (bez vārda): pēc tam 2–3 teikumi par perioda galveno enerģiju un praktisku padomu, organiski pieminot $userName. NEatkārto jautājumu katrā rindkopā. Viss izklājums atbild uz $userQuestion, bet necitē to pastāvīgi. Jautājumu «Uz ko koncentrēties šajās dienās?» izmanto tikai dažās rindkopās, kur tas iederas.\n\n15) Kopsavilkums: kopīgs padoms mēnesim (ap 40 vārdiem) un iedvesmojoša afirmācija ar 2–3 emoji.\n\nPrasības: kopā 360–400 vārdi; draudzīgs, motivējošs tonis; blokus atdali ar dubultu \n\n; nekādu *, #, sarakstu vai tehnisku atzīmju.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ты опытный таролог-коуч. Пользователь $userName спрашивает: «$userQuestion». Сделай расклад «Саморазвитие и баланс» из семи карт. Карты даны так: ядро — $coreCard; разум — $mindCard; эмоции — $emotionCard; тело — $bodyCard; ресурс — $strengthCard; блок — $challengeCard; совет — $adviceCard. Определи пол пользователя по имени $userName и обращайся с правильными окончаниями и местоимениями. Говори живо и поддерживающе, упоминай имя $userName не меньше четырёх раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру и формат:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n\n3) $coreCard — опиши главный фокус саморазвития $userName.\n\n4) $mindCard — расскажи, как настроить мышление и чему учиться.\n\n5) $emotionCard — раскрой эмоциональный ресурс и мотивацию.\n\n6) $bodyCard — подскажи, как заботиться о теле и энергии.\n\n7) $strengthCard — покажи внутренний дар или внешнюю поддержку.\n\n8) $challengeCard — обозначь ключевой дисбаланс и его причины.\n\n9) $adviceCard — предложи конкретное действие, объединяющее все аспекты.\n\n10) Финал: вдохновляющая аффирмация и тёплое напутствие с 2–3 эмодзи.\n\nТребования: каждый пункт 2–3 предложения; между пунктами ставь двойной перевод строки (\\n\\n); не используй символы *, # или другую разметку.';
   }
 

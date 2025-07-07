@@ -1,5 +1,158 @@
 # Настройка In-App Purchases
 
+## Отладка и исправление проблем
+
+### Проверка текущего состояния
+
+1. **Проверьте логи в консоли:**
+   ```bash
+   flutter run --debug
+   ```
+   Ищите сообщения:
+   - `[PurchaseService] Store available: true/false`
+   - `[PurchaseService] Products loaded: ...`
+   - `[OnboardingFinalScreen] Debug products: ...`
+
+2. **Проверьте ID продуктов в коде:**
+   - В `lib/services/purchase_service.dart`: `tarot_ai_monthly`, `tarot_ai_yearly`
+   - В `lib/screens/onboarding_final_screen.dart`: те же ID
+
+### Пошаговая инструкция по исправлению
+
+#### Шаг 1: Проверьте настройки в Google Play Console
+
+1. Войдите в [Google Play Console](https://play.google.com/console)
+2. Выберите ваше приложение
+3. Перейдите в **Monetize** → **Products** → **Subscriptions**
+4. Убедитесь, что созданы продукты с ID:
+   - `tarot_ai_monthly`
+   - `tarot_ai_yearly`
+5. Проверьте статус продуктов (должны быть "Active")
+6. Убедитесь, что цены установлены
+
+#### Шаг 2: Проверьте настройки в App Store Connect
+
+1. Войдите в [App Store Connect](https://appstoreconnect.apple.com)
+2. Выберите ваше приложение
+3. Перейдите в **Features** → **In-App Purchases**
+4. Убедитесь, что созданы продукты с ID:
+   - `tarot_ai_monthly`
+   - `tarot_ai_yearly`
+5. Проверьте статус продуктов (должны быть "Ready to Submit" или "Approved")
+6. Убедитесь, что цены установлены
+
+#### Шаг 3: Проверьте тестовые аккаунты
+
+**Android:**
+1. В Google Play Console → **Setup** → **License Testing**
+2. Добавьте ваш email как тестовый аккаунт
+3. На устройстве войдите в Google Play с этим аккаунтом
+
+**iOS:**
+1. В App Store Connect → **Users and Access**
+2. Создайте Sandbox тестер аккаунт
+3. На устройстве войдите в App Store с этим аккаунтом
+
+#### Шаг 4: Проверьте билд приложения
+
+1. Убедитесь, что используете правильный bundle ID:
+   - Android: `com.tarotaiapp.com`
+   - iOS: `com.tarotaiapp.com`
+
+2. Проверьте, что в `android/app/build.gradle.kts`:
+   ```kotlin
+   applicationId = "com.tarotaiapp.com"
+   ```
+
+3. Проверьте, что в `ios/Runner/Info.plist`:
+   ```xml
+   <key>CFBundleIdentifier</key>
+   <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+   ```
+
+#### Шаг 5: Проверьте подписи приложения
+
+**Android:**
+1. Убедитесь, что используете правильный keystore
+2. Проверьте, что SHA-1 отпечаток добавлен в Google Play Console
+
+**iOS:**
+1. Убедитесь, что используете правильный provisioning profile
+2. Проверьте, что App ID настроен для in-app purchases
+
+#### Шаг 6: Тестирование
+
+1. **Очистите кэш приложения:**
+   ```bash
+   flutter clean
+   flutter pub get
+   ```
+
+2. **Пересоберите приложение:**
+   ```bash
+   flutter build apk --debug  # для Android
+   flutter build ios --debug  # для iOS
+   ```
+
+3. **Установите на устройство и протестируйте**
+
+### Частые проблемы и решения
+
+#### Проблема: "Store not available"
+**Решение:**
+- Проверьте интернет-соединение
+- Убедитесь, что Google Play Services обновлены (Android)
+- Проверьте, что App Store доступен (iOS)
+
+#### Проблема: "Products not found"
+**Решение:**
+- Проверьте правильность ID продуктов
+- Убедитесь, что продукты активны в консолях
+- Подождите 24 часа после создания продуктов
+
+#### Проблема: "Purchase failed"
+**Решение:**
+- Проверьте тестовые аккаунты
+- Убедитесь, что аккаунт не имеет активных подписок
+- Проверьте, что платежный метод настроен
+
+#### Проблема: "Billing unavailable"
+**Решение:**
+- Проверьте, что приложение подписано правильно
+- Убедитесь, что SHA-1 отпечаток добавлен в Google Play Console
+- Проверьте, что приложение опубликовано в тестовом канале
+
+### Команды для отладки
+
+```bash
+# Очистка и пересборка
+flutter clean
+flutter pub get
+flutter build apk --debug
+
+# Запуск с подробными логами
+flutter run --debug --verbose
+
+# Проверка зависимостей
+flutter doctor
+flutter pub deps
+```
+
+### Проверка в коде
+
+Добавьте эти отладочные вызовы в `lib/screens/onboarding_final_screen.dart`:
+
+```dart
+void _debugProducts() {
+  print('[OnboardingFinalScreen] Debug products:');
+  print('[OnboardingFinalScreen] Monthly product: ${_purchaseService.monthlyProduct?.id} - ${_purchaseService.monthlyProduct?.price}');
+  print('[OnboardingFinalScreen] Yearly product: ${_purchaseService.yearlyProduct?.id} - ${_purchaseService.yearlyProduct?.price}');
+  print('[OnboardingFinalScreen] Store available: ${_purchaseService.isAvailable}');
+  print('[OnboardingFinalScreen] Loading: ${_purchaseService.isLoading}');
+  print('[OnboardingFinalScreen] Error: ${_purchaseService.errorMessage}');
+}
+```
+
 ## Google Play Console
 
 ### 1. Создание продуктов

@@ -368,7 +368,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pros_cons_spread_screen_enter_question_hint => 'أدخل سؤالك...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'تشكيلة \"التنمية الذاتية والتوازن\" تتكون من 7 بطاقات مرتبة في شكل دائرة. كل بطاقة ترمز إلى جانب معين من نموك الروحي وتناغمك الداخلي.';
 
   @override
@@ -972,7 +973,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'قم بعمل توزيع لـ $userName للتنمية الذاتية والتوازن باستخدام هذه البطاقات الثلاث: $cards';
   }
 
@@ -997,13 +1000,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'صف المعنى العام لبطاقة التارو \"$cardName\" باللغة $lang. قم بتضمين التاريخ والرمزية والمعاني الرئيسية.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'صف معنى بطاقة التارو المقلوبة \"$cardName\" باللغة $lang. قم بتضمين المعاني المعاكسة والتحذيرات.';
   }
 
@@ -1037,13 +1044,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'ترجم اسم بطاقة التارو \"$cardName\" إلى $languageCode. يجب أن يحتوي الرد على الاسم المترجم فقط، بدون نص إضافي أو علامات ترقيم.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'أنت قارئ بطاقات محترف. اكتب رسالة ملهمة بعنوان «بطاقة اليوم» بلغة هذا الطلب للمستخدم $name. التزم بالهيكل والحجم.\n🌟 $name، بطاقتك لليوم هي $cardName!\n🔑 الكلمات المفتاحية: <اذكر 3–5 كلمات مفتاحية قصيرة>\n🃏 المعنى (≈45–50 كلمة): صف الطاقة الأساسية للبطاقة وكيف ستتجلى اليوم لدى $name.\n💡 النصيحة (≈35–40 كلمة): اقترح إجراءً محددًا أو موقفًا يساعد $name على استخدام هذه الطاقة.\n✨ التأكيد (سطر واحد): تأكيد إيجابي يبدأ بـ «أنا…».\nالمتطلبات: الطول الإجمالي 120–150 كلمة، نغمة دافئة وروحية، 3–4 رموز تعبيرية ذات صلة، لا قوائم بـ HTML/Markdown؛ افصل الفقرات بسطرين فارغين (\\n\\n).';
   }
 
@@ -1261,19 +1272,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ بطاقات تاروت محترف. المستخدم $userName يسأل: \"$userQuestion\". أجب بتوزيع \"الصليب السلتي\" (النموذج الكلاسيكي لوِيت). تم توزيع البطاقات كالتالي: الوضع - $situationCard؛ التحدي - $challengeCard؛ اللاوعي - $subconsciousCard؛ الماضي القريب - $pastCard؛ الوعي - $consciousCard؛ المستقبل القريب - $hiddenCard؛ الذات الداخلية - $selfCard؛ البيئة - $environmentCard؛ الآمال أو المخاوف - $hopesCard؛ النتيجة - $outcomeCard. اذكر اسم $userName على الأقل ست مرات وارتبط بكل بطاقة بالسؤال. اتبع الهيكل:\n1) تحية باسم $userName.\n2) العنوان: التوزيع: الوضع ($situationCard) / التحدي ($challengeCard) / اللاوعي ($subconsciousCard) / الماضي القريب ($pastCard) / الوعي ($consciousCard) / المستقبل القريب ($hiddenCard) / الذات الداخلية ($selfCard) / البيئة ($environmentCard) / الآمال/المخاوف ($hopesCard) / النتيجة ($outcomeCard).\n3) الوضع — $situationCard (45-55 كلمة): ثلاث كلمات مفتاحية، رمزية البطاقة والوضع الحالي للسؤال $userQuestion لـ $userName.\n4) التحدي — $challengeCard (45-55 كلمة): العقبة الرئيسية أو المساعدة لـ $userName.\n5) اللاوعي — $subconsciousCard (45-55 كلمة): الدوافع الخفية أو الطاقات التي تؤثر على $userName.\n6) الماضي القريب — $pastCard (45-55 كلمة): الأحداث التي أوصلت $userName إلى الوضع الحالي.\n7) الوعي — $consciousCard (45-55 كلمة): الأهداف، التوقعات أو ما يدركه $userName.\n8) المستقبل القريب — $hiddenCard (45-55 كلمة): التطور المحتمل في الأسابيع القادمة.\n9) الذات الداخلية — $selfCard (45-55 كلمة): الحالة، الموارد لدى $userName.\n10) البيئة — $environmentCard (45-55 كلمة): تأثير الأشخاص والظروف.\n11) الآمال / المخاوف — $hopesCard (45-55 كلمة): توقعات أو مخاوف $userName.\n12) النتيجة — $outcomeCard (45-55 كلمة): النتيجة المحتملة مع الأخذ بنصيحة التوزيع.\n13) الخاتمة: دعم ودي وتأكيد إيجابي (30-35 كلمة) لـ $userName.\nالمتطلبات: إجمالي 400-500 كلمة، نبرة حوارية حية، 4-6 رموز غامضة؛ افصل كل قسم بسطرين فارغين.\nلا تستخدم رموز * أو # أو أي تنسيق آخر؛ اكتب فقط نصًا بسيطًا.';
   }
 
@@ -1289,11 +1301,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ بطاقات تاروت محترف. المستخدم $userName يسأل: \"$userQuestion\". أجب من خلال توزيع \"الماضي - الحاضر - المستقبل\". تم توزيع البطاقات كالتالي: الماضي - $pastCard؛ الحاضر - $presentCard؛ المستقبل - $hiddenCard. اذكر اسم $userName على الأقل أربع مرات وارتبط بمعاني البطاقات بالسؤال. اتبع الهيكل:\n1) تحية باسم $userName.\n2) العنوان: التوزيع: الماضي ($pastCard) - الحاضر ($presentCard) - المستقبل ($hiddenCard).\n3) قسم الماضي — $pastCard (40-50 كلمة): ثلاث كلمات مفتاحية، رمزية البطاقة وشرح كيف تؤثر الوقائع الماضية على نتيجة السؤال $userQuestion لـ $userName.\n4) قسم الحاضر — $presentCard (40-50 كلمة): كلمات مفتاحية، رمزية البطاقة والعوامل الحالية التي تؤثر على الإجابة على السؤال $userQuestion.\n5) قسم المستقبل — $hiddenCard (40-50 كلمة): كلمات مفتاحية، رمزية البطاقة والسيناريو المحتمل لتطور الوضع حسب سؤال $userName.\n6) النتيجة: نصيحة قصيرة، تأكيد إيجابي (20-30 كلمة) وملخص واضح للفرص.\nالمتطلبات: إجمالي 180-220 كلمة، نبرة دافئة غامضة، 3-5 رموز موضوعية؛ افصل كل قسم بسطرين فارغين.\nلا تستخدم رموز * أو # أو أي تنسيق آخر؛ اكتب فقط نصًا بسيطًا.';
   }
 
@@ -1341,13 +1354,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ طاروت ذو خبرة. يسأل المستخدم $userName: \"$userQuestion\". أجب باستخدام انتشار \"5 بطاقات\". البطاقات معطاة بالترتيب: الماضي - $pastCard; الحاضر - $presentCard; المخفي - $hiddenCard; النصيحة - $adviceCard; النتيجة - $outcomeCard. أشر إلى $userName خمس مرات على الأقل وتأكد من ربط كل بطاقة بالسؤال. اتبع الهيكل:\n\n1) تحية بالاسم $userName.\n\n2) العنوان: الانتشار: الماضي ($pastCard) / الحاضر ($presentCard) / المخفي ($hiddenCard) / النصيحة ($adviceCard) / النتيجة ($outcomeCard).\n\n3) الماضي — $pastCard (45-55 كلمة): ثلاث كلمات مفتاحية، رمزية البطاقة وتأثير الماضي على $userQuestion لـ $userName.\n\n4) الحاضر — $presentCard (45-55 كلمة): كلمات مفتاحية، رمزية والحالة الحالية لسؤال $userName.\n\n5) المخفي — $hiddenCard (45-55 كلمة): ما يؤثر بلا وعي على موقف $userName، مع التركيز على الرمزية.\n\n6) النصيحة — $adviceCard (45-55 كلمة): إجراء عملي لـ $userName، بناءً على صور البطاقة.\n\n7) النتيجة — $outcomeCard (45-55 كلمة): سيناريو محتمل إذا تم اتباع النصيحة، مخاطبة $userName.\n\n8) الخلاصة: دعم ودود وتأكيد إيجابي (25-30 كلمة) لـ $userName.\n\nالمتطلبات: الحجم الإجمالي 230-260 كلمة، نبرة محادثة حية، 3-5 رموز تعبيرية باطنية؛ افصل كل كتلة بفاصل سطر مزدوج (\\n\\n)؛ لا تستخدم الرموز *, # أو أي ترميز آخر؛ اكتب نصًا عاديًا فقط.';
   }
 
@@ -1358,7 +1372,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get makeNewSpread => 'إجراء توزيع جديد';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'يستخدم التطبيق الذكاء الاصطناعي لأغراض ترفيهية فقط. نحن غير مسؤولين عن القرارات التي تتخذها. في حال الحاجة، يرجى استشارة مختص.';
 
   @override
@@ -1366,8 +1381,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'تم استلام طلبك. يرجى فتح البطاقات';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'أنت قارئ بطاقات تاروت متمرس. المستخدم $userName يسأل: «$userQuestion». أجب باستخدام توزيع حب مكون من ثلاث بطاقات. البطاقات موزعة كالتالي: مشاعر $userName — $youCard؛ مشاعر الشريك — $partnerCard؛ ديناميكية أو إمكانيات العلاقة — $dynamicCard. اذكر اسم $userName على الأقل ثلاث مرات واربط كل بطاقة بالسؤال. اتبع الهيكل التالي:\n1) تحية باسم $userName.\n2) العنوان: التوزيع: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 كلمة: صف ما تقوله البطاقة عن مشاعر وتوقعات $userName.\n4) $partnerCard — 40–50 كلمة: اكشف عن مشاعر ونوايا الشريك تجاه سؤال $userName.\n5) $dynamicCard — 40–50 كلمة: بيّن كيف تتفاعل هاتان الطاقتان وما يمكن أن تؤدي إليه العلاقة.\n6) الخاتمة: نصيحة دافئة وتأكيد إيجابي (20–25 كلمة) لـ $userName.\nالمتطلبات: إجمالي 150–180 كلمة، نبرة ودية رومانسية، 2–4 رموز تعبيرية ذات صلة؛ افصل الفقرات بسطرين فارغين (\\n\\n)؛ تجنب الرموز *، # وأي تنسيق.';
   }
 
@@ -1375,7 +1395,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loveSpread => 'توزيع الحب';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'يستخدم التطبيق الذكاء الاصطناعي لأغراض ترفيهية فقط. نحن غير مسؤولين عن القرارات التي تتخذها. في حال الحاجة، يرجى استشارة مختص.';
 
   @override
@@ -1456,7 +1477,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get monthlyForecast => 'التوقع الشهري';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'يستخدم التطبيق الذكاء الاصطناعي لأغراض ترفيهية فقط. نحن غير مسؤولين عن القرارات التي تتخذها. يرجى استشارة متخصص إذا لزم الأمر.';
 
   @override
@@ -1481,7 +1503,8 @@ class AppLocalizationsAr extends AppLocalizations {
       'حدث خطأ أثناء استرجاع قيمة التوزيع. حاول مرة أخرى.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'يستخدم التطبيق الذكاء الاصطناعي لأغراض ترفيهية فقط. نحن غير مسؤولين عن القرارات التي تتخذها. إذا لزم الأمر، استشر متخصصًا.';
 
   @override
@@ -1705,48 +1728,60 @@ class AppLocalizationsAr extends AppLocalizations {
       'كيف أجد الانسجام في الحياة؟';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ بطاقات تاروت ومدرب متمرس. المستخدم $userName يسأل: «$userQuestion». قم بعمل توزيع من ثلاث بطاقات عن المسار المهني والمال. البطاقات مرتبة كالتالي: 1) الوضع — $situationCard؛ 2) العقبة أو الفرصة الرئيسية — $challengeCard؛ 3) النصيحة والإمكانات — $adviceCard. حدّد جنس المستخدم بناءً على اسم $userName واستخدم النهايات والضمائر الصحيحة. تحدث مع $userName بودية ومباشرة: بيّن موقعه، ما الذي يعيق نموه (أو أي فرصة يجب ملاحظتها) وما هي الخطوة العملية التي ستقوده إلى الدخل المرغوب. اذكر اسم $userName على الأقل ثلاث مرات. اتبع الهيكل:\n1) تحية — جملة واحدة.\n2) العنوان: القراءة: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 كلمة: وصف الوضع الحالي لـ $userName (العمل، الأعمال أو الخلفية المالية العامة) ورمزية البطاقة.\n4) $challengeCard — 45–55 كلمة: كشف الحاجز الرئيسي أو الفرصة غير الواضحة؛ أشر كيف يظهر ذلك في البطاقة وفي سؤال $userName.\n5) $adviceCard — 45–55 كلمة: اقترح إجراءً محدداً (مثل مراجعة الميزانية، طلب ترقية، تعلم مهارة جديدة) ووصف النتيجة المحتملة.\n6) الخاتمة — 20–25 كلمة: استنتاج ودي، تأكيد إيجابي ورموز تعبيرية عمل ×2.\nالمتطلبات: الحجم الكلي 160–185 كلمة، نبرة واضحة ومهنية بدون مصطلحات عامية، 2–3 رموز تعبيرية؛ افصل الفقرات بسطرين فارغين \\n\\n؛ لا تستخدم *, # أو أي تنسيق آخر.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ بطاقات تاروت متمرس. المستخدم $userName يسأل: «$userQuestion». قم بعمل توزيع «الإيجابيات والسلبيات» من ثلاث بطاقات. البطاقات مرتبة كالتالي: الإيجابيات — $proCard؛ السلبيات — $conCard؛ النصيحة/النتيجة — $adviceCard. حدّد جنس المستخدم بناءً على اسم $userName واستخدم النهايات والضمائر الصحيحة. اذكر اسم $userName على الأقل ثلاث مرات واربط كل بطاقة بالسؤال. اتبع الهيكل:\n1) تحية باسم $userName.\n2) العنوان: القراءة: $proCard | $conCard | $adviceCard.\n3) الإيجابيات: $proCard — 45–55 كلمة. كشف الفوائد الرئيسية أو الموارد الإيجابية التي تجلبها هذه البطاقة لوضع $userName.\n4) السلبيات: $conCard — 45–55 كلمة. وصف المخاطر، التكاليف الخفية أو نقاط الضعف في القرار بالنسبة لـ $userName.\n5) النصيحة: $adviceCard — 45–55 كلمة. وزن الإيجابيات والسلبيات، اقترح إجراءً محدداً (فعل + مفعول به) ووضح كيف سيغير ذلك النتيجة لـ $userName.\n6) النتيجة — كلمة واحدة «نعم» أو «لا»، ثم جملة تبريرية وتأكيد مشجع (20–25 كلمة) مع 1–2 رمز تعبيري.\nالمتطلبات: الحجم الكلي 150–180 كلمة، نبرة ودية وعفوية؛ افصل كل قسم بسطرين فارغين \\n\\n؛ بدون رموز *, # أو تنسيق آخر.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت قارئ تاروت محترف. المستخدم $userName يسأل: «$userQuestion». قم بإعداد توزيع \"عجلة الشهر\" لشهر $month. البطاقات بالترتيب: 1 — $card1، 2 — $card2، 3 — $card3، 4 — $card4، 5 — $card5، 6 — $card6، 7 — $card7، 8 — $card8، 9 — $card9، 10 — $card10، 11 — $card11، 12 — $card12. حدد جنس $userName من الاسم واستخدم النهايات والضمائر الصحيحة. اذكر الاسم خمس مرات على الأقل، ولكن **لا تضعه بعد كل تاريخ** — فقط ضمن نص النصائح. **ممنوع كتابة اسم المستخدم بعد نطاق التواريخ. بعد التواريخ، اذكر الشهر فقط.** استخدم شبكة التواريخ: 1–3، 4–6، 7–9، 10–12، 13–15، 16–18، 19–21، 22–24، 25–26، 27–28، 29–30، 31 (إذا كان الشهر 30 يومًا، تنطبق البطاقة الثانية عشرة أيضًا على اليوم الثلاثين). التنسيق:\n\n1) تحية قصيرة لـ $userName.\n2) لكل نطاق تواريخ، قدم توقعًا مفصلًا باستخدام البطاقة المناسبة.\n3) في النهاية، أضف ملخصًا عامًا ونصائح للشهر.\n\nأجب بوضوح وبنية مفهومة ومفيدة.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'أنت مدرب تاروت متمرس. المستخدم $userName يسأل: «$userQuestion». قم بعمل توزيع «التنمية الذاتية والتوازن» بسبع بطاقات. البطاقات مرتبة كالتالي: النواة — $coreCard؛ العقل — $mindCard؛ المشاعر — $emotionCard؛ الجسد — $bodyCard؛ المورد — $strengthCard؛ الحاجز — $challengeCard؛ النصيحة — $adviceCard. حدد جنس المستخدم بناءً على اسم $userName واستخدم النهايات والضمائر الصحيحة. تحدث بطريقة حية ومشجعة، اذكر اسم $userName أربع مرات على الأقل واربط كل بطاقة بالسؤال. اتبع الهيكل والتنسيق:\n1) تحية باسم $userName.\n2) العنوان: التوزيع: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — وصف التركيز الرئيسي للتنمية الذاتية لـ $userName.\n4) $mindCard — تحدث عن كيفية ضبط التفكير وما يجب تعلمه.\n5) $emotionCard — اكتشف المورد العاطفي والدافع.\n6) $bodyCard — اقترح كيفية العناية بالجسد والطاقة.\n7) $strengthCard — أظهر الهدية الداخلية أو الدعم الخارجي.\n8) $challengeCard — حدد عدم التوازن الرئيسي وأسبابه.\n9) $adviceCard — اقترح إجراءً محدداً يجمع جميع الجوانب.\n10) الخاتمة: تأكيد ملهم ووداع دافئ مع 2–3 رموز تعبيرية.\nالمتطلبات: كل نقطة 2–3 جمل؛ افصل بين النقاط بسطرين فارغين \\n\\n؛ لا تستخدم رموز *, # أو تنسيق آخر.';
   }
 

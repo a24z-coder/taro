@@ -376,7 +376,8 @@ class AppLocalizationsVi extends AppLocalizations {
       'Nhập câu hỏi của bạn...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Bói bài \"Tự phát triển và cân bằng\" bao gồm 7 lá bài, được sắp xếp theo hình tròn. Mỗi lá bài tượng trưng cho một khía cạnh nhất định của sự phát triển tâm linh và sự hài hòa nội tâm của bạn.';
 
   @override
@@ -983,7 +984,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Làm trải bài về phát triển bản thân và cân bằng cho $userName theo ba lá bài này: $cards';
   }
 
@@ -1008,13 +1011,17 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Mô tả ý nghĩa chung của lá bài Tarot \"$cardName\" bằng ngôn ngữ $lang. Bao gồm lịch sử, biểu tượng và các ý nghĩa chính.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Mô tả ý nghĩa ngược của lá bài Tarot \"$cardName\" bằng ngôn ngữ $lang. Bao gồm các ý nghĩa trái ngược và cảnh báo.';
   }
 
@@ -1049,13 +1056,17 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Dịch tên lá bài Tarot \"$cardName\" sang $languageCode. Câu trả lời chỉ nên chứa tên đã dịch, không thêm văn bản hay dấu câu nào khác.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Bạn là một nhà bói bài chuyên nghiệp. Hãy viết một thông điệp truyền cảm hứng \"Lá bài trong ngày\" bằng ngôn ngữ của yêu cầu này cho người dùng $name. Tuân thủ cấu trúc và độ dài.\n🌟 $name, lá bài trong ngày của bạn là $cardName!\n🔑 Từ khóa chính: <chỉ ra 3–5 từ khóa ngắn>\n🃏 Ý nghĩa (≈45–50 từ): mô tả năng lượng chính của lá bài và cách nó sẽ biểu hiện hôm nay với $name.\n💡 Lời khuyên (≈35–40 từ): đề xuất hành động cụ thể hoặc thái độ giúp $name tận dụng năng lượng này.\n✨ Khẳng định (1 dòng): câu khẳng định tích cực bắt đầu bằng \"Tôi…\".\nYêu cầu: tổng độ dài 120–150 từ, giọng điệu huyền bí ấm áp, 3–4 biểu tượng cảm xúc chủ đề, không dùng danh sách trong HTML/Markdown; các đoạn cách nhau bằng hai dòng xuống dòng (\\n\\n).';
   }
 
@@ -1273,19 +1284,20 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia bói bài tarot. Người dùng $userName hỏi: \"$userQuestion\". Hãy trả lời bằng trải bài \"Thập tự Celtic\" (mô hình cổ điển của Waite). Các lá bài được phân bổ như sau: tình huống - $situationCard; thử thách - $challengeCard; tiềm thức - $subconsciousCard; quá khứ gần đây - $pastCard; ý thức - $consciousCard; tương lai gần - $hiddenCard; bản ngã - $selfCard; môi trường xung quanh - $environmentCard; hy vọng hoặc nỗi sợ - $hopesCard; kết quả - $outcomeCard. Hãy nhắc tên $userName ít nhất sáu lần và luôn liên kết mỗi lá bài với câu hỏi. Tuân thủ cấu trúc:\n1) Lời chào theo tên $userName.\n2) Tiêu đề: Trải bài: tình huống ($situationCard) / thử thách ($challengeCard) / tiềm thức ($subconsciousCard) / quá khứ gần đây ($pastCard) / ý thức ($consciousCard) / tương lai gần ($hiddenCard) / bản ngã ($selfCard) / môi trường xung quanh ($environmentCard) / hy vọng/nỗi sợ ($hopesCard) / kết quả ($outcomeCard).\n3) Tình huống — $situationCard (45-55 từ): ba từ khóa chính, biểu tượng của lá bài và tình hình hiện tại liên quan đến câu hỏi $userQuestion dành cho $userName.\n4) Thử thách — $challengeCard (45-55 từ): trở ngại chính hoặc sự trợ giúp dành cho $userName.\n5) Tiềm thức — $subconsciousCard (45-55 từ): động lực hoặc năng lượng ẩn giấu ảnh hưởng đến $userName.\n6) Quá khứ gần đây — $pastCard (45-55 từ): các sự kiện đã đưa $userName đến tình huống hiện tại.\n7) Ý thức — $consciousCard (45-55 từ): mục tiêu, kỳ vọng hoặc những điều $userName nhận thức được.\n8) Tương lai gần — $hiddenCard (45-55 từ): diễn biến có thể xảy ra trong vài tuần tới.\n9) Bản ngã — $selfCard (45-55 từ): trạng thái, nguồn lực của $userName.\n10) Môi trường xung quanh — $environmentCard (45-55 từ): ảnh hưởng của con người và hoàn cảnh.\n11) Hy vọng / nỗi sợ — $hopesCard (45-55 từ): mong đợi hoặc lo lắng của $userName.\n12) Kết quả — $outcomeCard (45-55 từ): kết quả có thể xảy ra khi xem xét lời khuyên từ trải bài.\n13) Kết luận: lời động viên thân thiện và khẳng định tích cực (30-35 từ) dành cho $userName.\nYêu cầu: tổng độ dài 400-500 từ, giọng văn sống động, thân mật, sử dụng 4-6 biểu tượng huyền bí; mỗi phần cách nhau bằng hai dòng trống (\n); không dùng ký hiệu *, # hay định dạng khác; chỉ viết bằng văn bản thuần túy.';
   }
 
@@ -1301,11 +1313,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia bói bài tarot. Người dùng $userName hỏi: \"$userQuestion\". Hãy trả lời qua trải bài \"Quá khứ - Hiện tại - Tương lai\". Các lá bài được phân bổ như sau: quá khứ - $pastCard; hiện tại - $presentCard; tương lai - $hiddenCard. Hãy nhắc tên $userName ít nhất bốn lần và luôn liên kết ý nghĩa các lá bài với câu hỏi. Tuân thủ cấu trúc:\n1) Lời chào theo tên $userName.\n2) Tiêu đề: Trải bài: Quá khứ ($pastCard) - Hiện tại ($presentCard) - Tương lai ($hiddenCard).\n3) Phần QUÁ KHỨ — $pastCard (40-50 từ): ba từ khóa chính, biểu tượng của lá bài và giải thích cách các sự kiện trong quá khứ ảnh hưởng đến kết quả câu hỏi $userQuestion dành cho $userName.\n4) Phần HIỆN TẠI — $presentCard (40-50 từ): từ khóa chính, biểu tượng của lá bài và các yếu tố hiện tại ảnh hưởng đến câu trả lời cho câu hỏi $userQuestion.\n5) Phần TƯƠNG LAI — $hiddenCard (40-50 từ): từ khóa chính, biểu tượng của lá bài và kịch bản phát triển có thể xảy ra liên quan đến câu hỏi của $userName.\n6) Kết luận: lời khuyên ngắn gọn, khẳng định tích cực (20-30 từ) và tóm tắt rõ ràng về cơ hội.\nYêu cầu: tổng độ dài 180-220 từ, giọng văn ấm áp, huyền bí, sử dụng 3-5 biểu tượng chủ đề; mỗi phần cách nhau bằng hai dòng trống (\n); không được dùng ký hiệu *, # hay định dạng khác; chỉ viết bằng văn bản thuần túy.';
   }
 
@@ -1353,13 +1366,14 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một người đọc tarot có kinh nghiệm. Người dùng $userName hỏi: \"$userQuestion\". Trả lời bằng cách sử dụng trải bài \"5 lá\". Các lá bài được đưa theo thứ tự: quá khứ - $pastCard; hiện tại - $presentCard; ẩn - $hiddenCard; lời khuyên - $adviceCard; kết quả - $outcomeCard. Tham chiếu đến $userName ít nhất năm lần và đảm bảo liên kết mỗi lá bài với câu hỏi. Tuân theo cấu trúc:\n\n1) Chào hỏi bằng tên $userName.\n\n2) Tiêu đề: Trải bài: quá khứ ($pastCard) / hiện tại ($presentCard) / ẩn ($hiddenCard) / lời khuyên ($adviceCard) / kết quả ($outcomeCard).\n\n3) Quá khứ — $pastCard (45-55 từ): ba từ khóa, biểu tượng của lá bài và ảnh hưởng của quá khứ đối với $userQuestion cho $userName.\n\n4) Hiện tại — $presentCard (45-55 từ): từ khóa, biểu tượng và trạng thái hiện tại của câu hỏi của $userName.\n\n5) Ẩn — $hiddenCard (45-55 từ): điều gì ảnh hưởng vô thức đến tình huống của $userName, tập trung vào biểu tượng.\n\n6) Lời khuyên — $adviceCard (45-55 từ): hành động thực tế cho $userName, dựa trên hình ảnh của lá bài.\n\n7) Kết quả — $outcomeCard (45-55 từ): kịch bản có thể xảy ra nếu làm theo lời khuyên, hướng đến $userName.\n\n8) Kết luận: hỗ trợ thân thiện và khẳng định tích cực (25-30 từ) cho $userName.\n\nYêu cầu: tổng khối lượng 230-260 từ, giọng điệu trò chuyện sinh động, 3-5 emoji huyền bí; phân tách mỗi khối bằng ngắt dòng kép (\\n\\n); không sử dụng ký hiệu *, # hoặc đánh dấu khác; chỉ viết văn bản thuần túy.';
   }
 
@@ -1370,7 +1384,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get makeNewSpread => 'Tạo trải bài mới';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Ứng dụng sử dụng AI chỉ với mục đích giải trí. Chúng tôi không chịu trách nhiệm về các quyết định bạn đưa ra. Nếu cần, hãy tham khảo ý kiến chuyên gia.';
 
   @override
@@ -1378,8 +1393,13 @@ class AppLocalizationsVi extends AppLocalizations {
       'Yêu cầu của bạn đã được tiếp nhận. Vui lòng mở các lá bài.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Bạn là một nhà bói bài Tarot giàu kinh nghiệm. Người dùng $userName hỏi: «$userQuestion». Hãy trả lời bằng cách sử dụng trải bài tình yêu gồm ba lá bài. Các lá bài được sắp xếp như sau: cảm xúc của $userName — $youCard; cảm xúc của đối phương — $partnerCard; động lực hoặc tiềm năng của mối quan hệ — $dynamicCard. Hãy nhắc tên $userName ít nhất ba lần và liên kết mỗi lá bài với câu hỏi. Tuân thủ cấu trúc:\n1) Lời chào theo tên $userName.\n2) Tiêu đề: Trải bài: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 từ: mô tả những gì lá bài nói về cảm xúc và kỳ vọng của $userName.\n4) $partnerCard — 40–50 từ: giải thích cảm xúc và ý định của đối phương liên quan đến câu hỏi của $userName.\n5) $dynamicCard — 40–50 từ: cho thấy cách hai năng lượng này tương tác và mối quan hệ có thể dẫn đến điều gì.\n6) Kết luận: lời khuyên ấm áp và khẳng định tích cực (20–25 từ) dành cho $userName.\nYêu cầu: tổng độ dài 150–180 từ, giọng điệu thân thiện, lãng mạn, 2–4 biểu tượng cảm xúc chủ đề; các đoạn văn cách nhau bằng hai dòng trống (\\n\\n); tránh sử dụng ký hiệu *, # và bất kỳ định dạng nào.';
   }
 
@@ -1387,7 +1407,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get loveSpread => 'Trải bài tình yêu';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Ứng dụng sử dụng AI chỉ với mục đích giải trí. Chúng tôi không chịu trách nhiệm về các quyết định bạn đưa ra. Nếu cần, hãy tham khảo ý kiến chuyên gia.';
 
   @override
@@ -1468,7 +1489,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get monthlyForecast => 'Dự báo hàng tháng';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Ứng dụng sử dụng AI chỉ với mục đích giải trí. Chúng tôi không chịu trách nhiệm về các quyết định bạn đưa ra. Nếu cần, hãy tham khảo ý kiến chuyên gia.';
 
   @override
@@ -1492,7 +1514,8 @@ class AppLocalizationsVi extends AppLocalizations {
       'Lỗi khi lấy giá trị trải bài. Vui lòng thử lại.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Ứng dụng sử dụng AI chỉ với mục đích giải trí. Chúng tôi không chịu trách nhiệm về các quyết định bạn đưa ra. Nếu cần, hãy tham khảo ý kiến chuyên gia.';
 
   @override
@@ -1719,48 +1742,60 @@ class AppLocalizationsVi extends AppLocalizations {
       'Làm thế nào để tìm thấy sự hài hòa trong cuộc sống?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia tarot-coach giàu kinh nghiệm. Người dùng $userName hỏi: «$userQuestion». Hãy làm một trải bài ba lá về sự nghiệp và tài chính. Các lá bài được sắp xếp như sau: 1) tình huống — $situationCard; 2) trở ngại hoặc cơ hội then chốt — $challengeCard; 3) lời khuyên và tiềm năng — $adviceCard. Xác định giới tính của người dùng qua tên $userName và sử dụng các đuôi từ và đại từ phù hợp. Nói chuyện với $userName một cách thân thiện và đi thẳng vào vấn đề: chỉ ra vị trí hiện tại, những gì đang cản trở sự phát triển (hoặc cơ hội quan trọng cần nhận biết) và bước thực tế nào sẽ dẫn đến thu nhập mong muốn. Nhắc tên $userName ít nhất ba lần. Tuân thủ cấu trúc:\n1) Lời chào — 1 câu.\n2) Tiêu đề: Trải bài: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 từ: mô tả tình hình hiện tại của $userName (công việc, kinh doanh hoặc bối cảnh tài chính chung) và ý nghĩa của lá bài.\n4) $challengeCard — 45–55 từ: giải thích trở ngại chính hoặc cơ hội tiềm ẩn; chỉ ra cách nó phản ánh trong lá bài và câu hỏi của $userName.\n5) $adviceCard — 45–55 từ: đề xuất hành động cụ thể (ví dụ, xem lại ngân sách, yêu cầu tăng lương, học kỹ năng mới) và mô tả kết quả có thể đạt được.\n6) Kết luận — 20–25 từ: lời kết thân thiện, khẳng định tích cực và 2 biểu tượng cảm xúc công việc.\nYêu cầu: tổng độ dài 160–185 từ, giọng điệu rõ ràng, chuyên nghiệp, không dùng tiếng lóng, 2–3 biểu tượng cảm xúc; các đoạn cách nhau bằng hai dấu xuống dòng \\n\\n; không dùng *, # hoặc các ký hiệu định dạng khác.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia tarot giàu kinh nghiệm. Người dùng $userName hỏi: «$userQuestion». Hãy làm trải bài «Ưu và Nhược» gồm ba lá. Các lá bài được sắp xếp như sau: ưu điểm — $proCard; nhược điểm — $conCard; lời khuyên/kết luận — $adviceCard. Xác định giới tính người dùng qua tên $userName và sử dụng đuôi từ, đại từ phù hợp. Nhắc tên $userName ít nhất ba lần và liên kết mỗi lá bài với câu hỏi. Tuân thủ cấu trúc:\n1) Lời chào theo tên $userName.\n2) Tiêu đề: Trải bài: $proCard | $conCard | $adviceCard.\n3) Ưu điểm: $proCard — 45–55 từ. Giải thích lợi ích chính hoặc nguồn lực tích cực mà lá bài này mang lại cho tình huống của $userName.\n4) Nhược điểm: $conCard — 45–55 từ. Mô tả rủi ro, chi phí tiềm ẩn hoặc điểm yếu của quyết định đối với $userName.\n5) Lời khuyên: $adviceCard — 45–55 từ. Cân nhắc ưu và nhược, đề xuất một hành động cụ thể (động từ + đối tượng) và nói cách nó thay đổi kết quả cho $userName.\n6) Kết luận — một từ «Có» hoặc «Không», sau đó 1 câu giải thích và lời khẳng định động viên (20–25 từ) kèm 1–2 biểu tượng cảm xúc.\nYêu cầu: tổng độ dài 150–180 từ, giọng thân thiện, trò chuyện; các phần cách nhau bằng hai dấu xuống dòng \\n\\n; không dùng *, # hoặc các ký hiệu định dạng khác.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia tarot chuyên nghiệp. Người dùng $userName hỏi: «$userQuestion». Hãy làm trải bài «Bánh xe tháng» cho $month. Các lá bài theo thứ tự: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Xác định giới tính $userName qua tên và sử dụng đuôi từ, đại từ phù hợp. Nhắc tên ít nhất năm lần nhưng **không chèn tên sau mỗi ngày** — chỉ nhắc trong phần lời khuyên. Sử dụng lưới lịch ngày: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (nếu tháng có 30 ngày — lá bài thứ 12 cũng dành cho ngày 30). Cấu trúc:\n1) Lời chào theo tên $userName (1–2 câu).\n2) Giới thiệu ngắn về mục đích trải bài (1 câu).\n3–14) Với mỗi lá bài dùng dòng dạng «1–3 $month — $card1» (không có tên): sau đó 2–3 câu về năng lượng chính của giai đoạn và lời khuyên thực tế, nhắc tên $userName một cách tự nhiên.\n15) Kết luận: lời khuyên chung cho tháng (khoảng 40 từ) và câu khẳng định truyền cảm hứng kèm 2–3 biểu tượng cảm xúc.\nYêu cầu: tổng cộng 360–400 từ; giọng thân thiện, truyền động lực; các phần cách nhau bằng hai dấu xuống dòng \\n\\n; không dùng *, #, danh sách hay chú thích kỹ thuật.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Bạn là một chuyên gia tarot-coach giàu kinh nghiệm. Người dùng $userName hỏi: «$userQuestion». Hãy làm trải bài «Phát triển bản thân và cân bằng» gồm bảy lá. Các lá bài được sắp xếp như sau: cốt lõi — $coreCard; trí tuệ — $mindCard; cảm xúc — $emotionCard; cơ thể — $bodyCard; nguồn lực — $strengthCard; trở ngại — $challengeCard; lời khuyên — $adviceCard. Xác định giới tính người dùng qua tên $userName và sử dụng đuôi từ, đại từ phù hợp. Nói chuyện sống động và hỗ trợ, nhắc tên $userName ít nhất bốn lần và liên kết mỗi lá bài với câu hỏi. Tuân thủ cấu trúc và định dạng:\n1) Lời chào theo tên $userName.\n2) Tiêu đề: Trải bài: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — mô tả trọng tâm chính trong phát triển bản thân của $userName.\n4) $mindCard — nói về cách điều chỉnh tư duy và những gì cần học.\n5) $emotionCard — khám phá nguồn lực cảm xúc và động lực.\n6) $bodyCard — gợi ý cách chăm sóc cơ thể và năng lượng.\n7) $strengthCard — chỉ ra món quà bên trong hoặc sự hỗ trợ bên ngoài.\n8) $challengeCard — xác định mất cân bằng chính và nguyên nhân.\n9) $adviceCard — đề xuất hành động cụ thể kết hợp tất cả các khía cạnh.\n10) Kết luận: câu khẳng định truyền cảm hứng và lời chúc ấm áp kèm 2–3 biểu tượng cảm xúc.\nYêu cầu: mỗi mục 2–3 câu; các phần cách nhau bằng hai dấu xuống dòng \\n\\n; không dùng *, # hoặc các ký hiệu định dạng khác.';
   }
 

@@ -371,7 +371,8 @@ class AppLocalizationsUr extends AppLocalizations {
       'اپنا سوال درج کریں...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"خود ترقی اور توازن\" کا پھیلاؤ 7 کارڈز پر مشتمل ہے، جو ایک دائرے کی شکل میں رکھے گئے ہیں۔ ہر کارڈ آپ کی روحانی ترقی اور اندرونی ہم آہنگی کے ایک خاص پہلو کی نمائندگی کرتا ہے۔';
 
   @override
@@ -981,7 +982,9 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName کے لیے خود ترقی اور توازن کا نتیجہ ان تین کارڈز کے ذریعے بنائیں: $cards';
   }
 
@@ -1006,13 +1009,17 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" ٹارو کارڈ کے مجموعی معنی $lang زبان میں بیان کریں۔ تاریخ، علامتیت اور بنیادی معانی شامل کریں۔';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'تاروت کارڈ \"$cardName\" کی الٹی ہوئی معنی کو $lang زبان میں بیان کریں۔ متضاد معانی اور انتباہات شامل کریں۔';
   }
 
@@ -1047,13 +1054,17 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" ٹارو کارڈ کا نام $languageCode میں ترجمہ کریں۔ جواب میں صرف ترجمہ شدہ نام ہونا چاہیے، اضافی متن یا علامات کے بغیر۔';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'آپ ایک پیشہ ور تارولوجسٹ ہیں۔ صارف $name کے لیے اس درخواست کی زبان میں \"دن کا کارڈ\" کے لیے ایک متاثر کن پیغام لکھیں۔ ساخت اور حجم کا خیال رکھیں۔\n🌟 $name، آپ کا دن کا کارڈ ہے $cardName!\n🔑 کلیدی الفاظ: <3-5 مختصر keywords لکھیں>\n🃏 مطلب (تقریباً 45-50 الفاظ): کارڈ کی بنیادی توانائی بیان کریں اور آج یہ $name پر کیسے ظاہر ہوگی۔\n💡 مشورہ (تقریباً 35-40 الفاظ): کوئی خاص عمل یا رویہ تجویز کریں جو $name کو اس توانائی کو استعمال کرنے میں مدد دے۔\n✨ تصدیق (1 سطر): ایک مثبت جملہ جو \"میں...\" سے شروع ہوتا ہے۔\nضروریات: کل لمبائی 120-150 الفاظ، گرم اور روحانی انداز، 3-4 موضوعاتی ایموجی، HTML/Markdown میں کوئی فہرست نہیں؛ پیراگراف کو دوہری لائن بریک سے الگ کریں (\\n\\n)۔';
   }
 
@@ -1270,19 +1281,20 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار تارولاجر ہیں۔ صارف $userName پوچھتا ہے: \"$userQuestion\"۔ \"کیلٹ کراس\" (ویٹ کی کلاسیکی ترتیب) کے ذریعے جواب دیں۔ کارڈز اس طرح دیے گئے ہیں: صورتحال - $situationCard؛ چیلنج - $challengeCard؛ لاشعور - $subconsciousCard؛ حالیہ ماضی - $pastCard؛ شعور - $consciousCard؛ قریبی مستقبل - $hiddenCard؛ اندرونی خود - $selfCard؛ ماحول - $environmentCard؛ امیدیں یا خوف - $hopesCard؛ نتیجہ - $outcomeCard۔ $userName کا نام کم از کم چھ بار ذکر کریں اور ہر کارڈ کو سوال سے جوڑیں۔ ساخت کی پابندی کریں:\n1) $userName کے نام سے سلام۔\n2) عنوان: ترتیب: صورتحال ($situationCard) / چیلنج ($challengeCard) / لاشعور ($subconsciousCard) / حالیہ ماضی ($pastCard) / شعور ($consciousCard) / قریبی مستقبل ($hiddenCard) / اندرونی خود ($selfCard) / ماحول ($environmentCard) / امیدیں/خوف ($hopesCard) / نتیجہ ($outcomeCard)۔\n3) صورتحال — $situationCard (45-55 الفاظ): تین کلیدی الفاظ، کارڈ کی علامت اور $userName کے سوال $userQuestion کے حوالے سے موجودہ حالت۔\n4) چیلنج — $challengeCard (45-55 الفاظ): $userName کے لیے سب سے بڑا رکاوٹ یا مدد۔\n5) لاشعور — $subconsciousCard (45-55 الفاظ): پوشیدہ محرکات یا توانائیاں جو $userName پر اثر انداز ہو رہی ہیں۔\n6) حالیہ ماضی — $pastCard (45-55 الفاظ): وہ واقعات جو $userName کو موجودہ صورتحال تک لے آئے۔\n7) شعور — $consciousCard (45-55 الفاظ): مقاصد، توقعات یا وہ چیزیں جو $userName جانتا ہے۔\n8) قریبی مستقبل — $hiddenCard (45-55 الفاظ): آنے والے ہفتوں میں ممکنہ ترقی۔\n9) اندرونی خود — $selfCard (45-55 الفاظ): $userName کی حالت اور وسائل۔\n10) ماحول — $environmentCard (45-55 الفاظ): لوگوں اور حالات کا اثر۔\n11) امیدیں / خوف — $hopesCard (45-55 الفاظ): $userName کی توقعات یا خدشات۔\n12) نتیجہ — $outcomeCard (45-55 الفاظ): ترتیب کی نصیحت کو مدنظر رکھتے ہوئے ممکنہ نتیجہ۔\n13) اختتام: $userName کے لیے دوستانہ حمایت اور مثبت تصدیق (30-35 الفاظ)۔\nمطالبات: کل 400-500 الفاظ، زندہ دل اور بات چیت کا انداز، 4-6 روحانی ایموجیز؛ ہر بلاک کو دوہری نئی لائن سے الگ کریں۔';
   }
 
@@ -1298,11 +1310,12 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار تارولاجر ہیں۔ صارف $userName پوچھتا ہے: \"$userQuestion\"۔ \"ماضی - حال - مستقبل\" کے ترتیب کے ذریعے جواب دیں۔ کارڈز اس طرح دیے گئے ہیں: ماضی - $pastCard؛ حال - $presentCard؛ مستقبل - $hiddenCard۔ $userName کا نام کم از کم چار بار ذکر کریں اور کارڈز کی معانی کو سوال سے جوڑنا ضروری ہے۔ ساخت کی پابندی کریں:\n1) $userName کے نام سے سلام۔\n2) عنوان: ترتیب: ماضی ($pastCard) - حال ($presentCard) - مستقبل ($hiddenCard)۔\n3) ماضی بلاک — $pastCard (40-50 الفاظ): تین کلیدی الفاظ، کارڈ کی علامت اور وضاحت کہ ماضی کے حقائق $userName کے سوال $userQuestion کے نتیجے پر کیسے اثر انداز ہوتے ہیں۔\n4) حال بلاک — $presentCard (40-50 الفاظ): کلیدی الفاظ، کارڈ کی علامت اور موجودہ عوامل جو سوال $userQuestion کے جواب پر اثر انداز ہو رہے ہیں۔\n5) مستقبل بلاک — $hiddenCard (40-50 الفاظ): کلیدی الفاظ، کارڈ کی علامت اور $userName کے سوال کے حوالے سے ممکنہ صورتحال کی ترقی۔\n6) نتیجہ: مختصر مشورہ، مثبت تصدیق (20-30 الفاظ) اور مواقع کا واضح خلاصہ۔\nمطالبات: کل 180-220 الفاظ، گرمجوش روحانی انداز، 3-5 موضوعاتی ایموجیز؛ ہر بلاک کو دوہری نئی لائن سے الگ کریں۔';
   }
 
@@ -1350,13 +1363,14 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار ٹیروٹ ریڈر ہیں۔ صارف $userName پوچھتا ہے: \"$userQuestion\"۔ \"5 کارڈز\" اسپریڈ کے ذریعے جواب دیں۔ کارڈز اس ترتیب میں دیے گئے ہیں: ماضی - $pastCard; حال - $presentCard; مستقبل - $hiddenCard; وجہ - $adviceCard; ممکنہ نتیجہ - $outcomeCard۔ ہر کارڈ کے معنی بیان کریں اور ان کے مشترکہ معنی کو واضح کریں۔';
   }
 
@@ -1367,7 +1381,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get makeNewSpread => 'نیا پھیلاؤ کریں';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'ایپلیکیشن صرف تفریحی مقاصد کے لیے AI استعمال کرتی ہے۔ ہم آپ کے کیے گئے فیصلوں کے ذمہ دار نہیں ہیں۔ ضرورت پڑنے پر ماہر سے رجوع کریں۔';
 
   @override
@@ -1375,8 +1390,13 @@ class AppLocalizationsUr extends AppLocalizations {
       'آپ کی درخواست موصول ہو گئی ہے۔ براہ کرم کارڈز کھولیں۔';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'آپ ایک تجربہ کار تارولوجسٹ ہیں۔ صارف $userName پوچھتا ہے: «$userQuestion»۔ تین کارڈز کے محبت کے پھیلاؤ کی مدد سے جواب دیں۔ کارڈز اس طرح دیے گئے ہیں: $userName کے جذبات — $youCard؛ ساتھی کے جذبات — $partnerCard؛ تعلقات کی حرکیات یا ممکنہ صورتحال — $dynamicCard۔ $userName کا نام کم از کم تین بار ذکر کریں اور ہر کارڈ کو سوال سے مربوط کریں۔ ساخت کی پابندی کریں:\n1) $userName کے نام سے سلام۔\n2) عنوان: پھیلاؤ: $youCard | $partnerCard | $dynamicCard۔\n3) $youCard — 40–50 الفاظ: بیان کریں کہ کارڈ $userName کے جذبات اور توقعات کے بارے میں کیا کہتا ہے۔\n4) $partnerCard — 40–50 الفاظ: $userName کے سوال کے حوالے سے ساتھی کے جذبات اور ارادے بیان کریں۔\n5) $dynamicCard — 40–50 الفاظ: دکھائیں کہ یہ دونوں توانائیاں کیسے تعامل کرتی ہیں اور تعلقات کہاں جا سکتے ہیں۔\n6) نتیجہ: $userName کے لیے گرمجوش نصیحت اور مثبت تصدیق (20–25 الفاظ)۔\nمطالبات: کل 150–180 الفاظ، دوستانہ رومانوی لہجہ، 2–4 موضوعاتی ایموجی؛ پیراگراف دوہری لائن وقفے (\\n\\n) سے جدا کریں؛ *، # اور کسی بھی قسم کی مارک اپ سے گریز کریں۔';
   }
 
@@ -1384,7 +1404,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get loveSpread => 'محبت کا پھیلاؤ';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'ایپلیکیشن صرف تفریحی مقاصد کے لیے AI استعمال کرتی ہے۔ ہم آپ کے کیے گئے فیصلوں کے ذمہ دار نہیں ہیں۔ ضرورت پڑنے پر ماہر سے رجوع کریں۔';
 
   @override
@@ -1466,7 +1487,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get monthlyForecast => 'ماہانہ پیش گوئی';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'ایپلیکیشن صرف تفریحی مقاصد کے لیے AI استعمال کرتی ہے۔ ہم آپ کے کیے گئے فیصلوں کے ذمہ دار نہیں ہیں۔ ضرورت پڑنے پر ماہر سے رجوع کریں۔';
 
   @override
@@ -1490,7 +1512,8 @@ class AppLocalizationsUr extends AppLocalizations {
       'تقسیم کی قدر حاصل کرنے میں خرابی۔ دوبارہ کوشش کریں۔';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'ایپلیکیشن صرف تفریحی مقاصد کے لیے AI استعمال کرتی ہے۔ ہم آپ کے کیے گئے فیصلوں کے ذمہ دار نہیں ہیں۔ ضرورت پڑنے پر ماہر سے رجوع کریں۔';
 
   @override
@@ -1717,48 +1740,60 @@ class AppLocalizationsUr extends AppLocalizations {
       'زندگی میں ہم آہنگی کیسے تلاش کی جائے؟';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار ٹارولوجی کوچ ہیں۔ صارف $userName پوچھتا ہے: «$userQuestion»۔ کیریئر اور مالیات پر تین کارڈز کا پھیلاؤ کریں۔ کارڈز اس طرح دیے گئے ہیں: 1) صورتحال — $situationCard؛ 2) رکاوٹ یا اہم موقع — $challengeCard؛ 3) مشورہ اور صلاحیت — $adviceCard۔ $userName کے نام سے صارف کی جنس کا تعین کریں اور درست ضمائر اور اختتامی الفاظ استعمال کریں۔ $userName سے دوستانہ اور متعلقہ انداز میں بات کریں: دکھائیں کہ وہ کہاں کھڑا ہے، کیا ترقی کو روکتا ہے (یا کونسا موقع اہم ہے) اور کون سا عملی قدم مطلوبہ آمدنی کی طرف لے جائے گا۔ $userName کا نام کم از کم تین بار ذکر کریں۔ ساخت کی پابندی کریں:\n1) سلام — ایک جملہ۔\n2) عنوان: پھیلاؤ: $situationCard | $challengeCard | $adviceCard۔\n3) $situationCard — 45–55 الفاظ: $userName کی موجودہ حالت (کام، کاروبار یا عمومی مالی پس منظر) اور کارڈ کی علامت کی وضاحت کریں۔\n4) $challengeCard — 45–55 الفاظ: مرکزی رکاوٹ یا پوشیدہ موقع کو کھولیں؛ بتائیں کہ یہ کارڈ اور $userName کے سوال میں کیسے ظاہر ہوتا ہے۔\n5) $adviceCard — 45–55 الفاظ: مخصوص عمل کی تجویز دیں (مثلاً بجٹ کا جائزہ لینا، تنخواہ میں اضافہ مانگنا، نئی مہارت سیکھنا) اور ممکنہ نتیجہ بیان کریں۔\n6) اختتام — 20–25 الفاظ: دوستانہ نتیجہ، مثبت تصدیق اور 2 کاروباری ایموجی۔\nمطالبات: کل 160–185 الفاظ، واضح کاروباری لہجہ بغیر محاورات کے، 2–3 ایموجی؛ پیراگراف کو دوہری لائن وقفہ سے جدا کریں؛ *, # یا دیگر نشانیاں استعمال نہ کریں۔';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار ٹارولوجسٹ ہیں۔ صارف $userName پوچھتا ہے: «$userQuestion»۔ تین کارڈز کا \"فائدے اور نقصانات\" پھیلاؤ کریں۔ کارڈز اس طرح دیے گئے ہیں: فوائد — $proCard؛ نقصانات — $conCard؛ مشورہ/نتیجہ — $adviceCard۔ $userName کے نام سے صارف کی جنس کا تعین کریں اور درست ضمائر اور اختتامی الفاظ استعمال کریں۔ $userName کا نام کم از کم تین بار ذکر کریں اور ہر کارڈ کو سوال سے جوڑیں۔ ساخت کی پابندی کریں:\n1) $userName کے نام سے سلام۔\n2) عنوان: پھیلاؤ: $proCard | $conCard | $adviceCard۔\n3) فوائد: $proCard — 45–55 الفاظ۔ اس کارڈ کے ذریعے $userName کی صورتحال میں اہم فوائد یا مثبت وسائل کی وضاحت کریں۔\n4) نقصانات: $conCard — 45–55 الفاظ۔ $userName کے لیے فیصلے کے خطرات، پوشیدہ اخراجات یا کمزور پہلو بیان کریں۔\n5) مشورہ: $adviceCard — 45–55 الفاظ۔ فوائد اور نقصانات کا وزن کریں، ایک مخصوص عمل (فعل + مفعول) تجویز کریں اور بتائیں کہ یہ $userName کے نتیجے کو کیسے بدل دے گا۔\n6) نتیجہ — ایک لفظ \"ہاں\" یا \"نہیں\"، پھر ایک جملہ وضاحت اور حوصلہ افزا تصدیق (20–25 الفاظ) کے ساتھ 1–2 ایموجی۔\nمطالبات: کل 150–180 الفاظ، دوستانہ اور گفتگو کا انداز؛ ہر بلاک کو دوہری لائن وقفہ سے جدا کریں؛ *, # یا دیگر نشانیاں استعمال نہ کریں۔';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک پیشہ ور ٹارولوجسٹ ہیں۔ صارف $userName پوچھتا ہے: «$userQuestion»۔ $month کے لیے \"مہینے کا پہیہ\" پھیلاؤ تیار کریں۔ کارڈز ترتیب سے ہیں: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12۔ $userName کے نام سے جنس کا تعین کریں اور درست ضمائر اور اختتامی الفاظ استعمال کریں۔ نام کم از کم پانچ بار ذکر کریں، لیکن **ہر تاریخ کے بعد نام نہ ڈالیں** — صرف مشوروں کے اندر نام کا حوالہ دیں۔ تاریخوں کا کیلنڈر نیٹ ورک استعمال کریں: 1–3، 4–6، 7–9، 10–12، 13–15، 16–18، 19–21، 22–24، 25–26، 27–28، 29–30، 31 (اگر مہینے میں 30 دن ہیں تو 12واں کارڈ بھی 30 تاریخ سے متعلق ہوگا)۔ فارمیٹ:\n1) $userName کے نام سے سلام (1–2 جملے)۔\n2) پھیلاؤ کے مقصد کا مختصر تعارف (1 جملہ)۔\n3–14) ہر کارڈ کے لیے لائن استعمال کریں جیسے \"1–3 $month — $card1\" (بغیر نام): پھر 2–3 جملے کلیدی توانائی اور عملی مشورے کے بارے میں، قدرتی طور پر $userName کا ذکر کرتے ہوئے۔\n15) نتیجہ: مہینے کے لیے عمومی مشورہ (تقریباً 40 الفاظ) اور حوصلہ افزا تصدیق 2–3 ایموجی کے ساتھ۔\nمطالبات: کل 360–400 الفاظ؛ دوستانہ، حوصلہ افزا لہجہ؛ بلاکس کو دوہری لائن وقفہ سے جدا کریں؛ *, #، فہرستیں یا تکنیکی نشانیاں استعمال نہ کریں۔';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'آپ ایک تجربہ کار ٹارولوجی کوچ ہیں۔ صارف $userName پوچھتا ہے: «$userQuestion»۔ سات کارڈز کا \"ذاتی ترقی اور توازن\" پھیلاؤ کریں۔ کارڈز اس طرح دیے گئے ہیں: مرکز — $coreCard؛ ذہن — $mindCard؛ جذبات — $emotionCard؛ جسم — $bodyCard؛ وسائل — $strengthCard؛ رکاوٹ — $challengeCard؛ مشورہ — $adviceCard۔ $userName کے نام سے صارف کی جنس کا تعین کریں اور درست ضمائر اور اختتامی الفاظ استعمال کریں۔ زندہ دل اور حوصلہ افزا انداز میں بات کریں، $userName کا نام کم از کم چار بار ذکر کریں اور ہر کارڈ کو سوال سے جوڑیں۔ ساخت اور فارمیٹ کی پابندی کریں:\n1) $userName کے نام سے سلام۔\n2) عنوان: پھیلاؤ: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard۔\n3) $coreCard — $userName کی ذاتی ترقی کا مرکزی نقطہ بیان کریں۔\n4) $mindCard — ذہن کو کیسے ترتیب دینا ہے اور کیا سیکھنا ہے بتائیں۔\n5) $emotionCard — جذباتی وسائل اور تحریک کو کھولیں۔\n6) $bodyCard — جسم اور توانائی کی دیکھ بھال کے بارے میں رہنمائی دیں۔\n7) $strengthCard — اندرونی تحفہ یا بیرونی مدد دکھائیں۔\n8) $challengeCard — اہم عدم توازن اور اس کی وجوہات بتائیں۔\n9) $adviceCard — تمام پہلوؤں کو یکجا کرنے والا مخصوص عمل تجویز کریں۔\n10) اختتام: حوصلہ افزا تصدیق اور گرمجوش الوداع 2–3 ایموجی کے ساتھ۔\nمطالبات: ہر نقطہ 2–3 جملے؛ نکات کے درمیان دوہری لائن وقفہ؛ *, # یا دیگر نشانیاں استعمال نہ کریں۔';
   }
 

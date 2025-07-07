@@ -373,7 +373,8 @@ class AppLocalizationsRo extends AppLocalizations {
       'Introduceți întrebarea dvs...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Spreading-ul \"Dezvoltare personală și echilibru\" constă din 7 cărți dispuse în formă de cerc. Fiecare carte simbolizează un anumit aspect al creșterii tale spirituale și al armoniei interioare.';
 
   @override
@@ -982,7 +983,9 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Fă pentru $userName un tiraj pentru dezvoltare personală și echilibru cu aceste trei cărți: $cards';
   }
 
@@ -1008,13 +1011,17 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descrie semnificația generală a cărții de Tarot \"$cardName\" în limba $lang. Include istoria, simbolismul și principalele semnificații.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descrie semnificația inversată a cărții de Tarot \"$cardName\" în limba $lang. Include semnificații opuse și avertismente.';
   }
 
@@ -1050,13 +1057,17 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Tradu numele cărții de Tarot \"$cardName\" în $languageCode. Răspunsul trebuie să conțină doar numele tradus, fără text suplimentar sau semne de punctuație.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ești un tarolog profesionist. Scrie un mesaj inspirațional Cartea zilei în limba acestei cereri pentru utilizatorul $name. Respectă structura și volumul.\n🌟 $name, cartea ta a zilei este $cardName!\n🔑 Cuvinte cheie: <indică 3–5 cuvinte cheie scurte>\n🃏 Semnificație (≈45–50 cuvinte): descrie energia principală a cărții și cum se va manifesta astăzi pentru $name.\n💡 Sfat (≈35–40 cuvinte): propune o acțiune concretă sau o atitudine care să ajute pe $name să folosească această energie.\n✨ Afirmatie (1 rând): o afirmație pozitivă care începe cu Eu….\nCerințe: lungime totală 120–150 de cuvinte, ton cald, ezoteric, 3–4 emoji tematice, fără liste în HTML/Markdown; paragrafe separate prin dublu salt de linie (\\n\\n).';
   }
 
@@ -1276,19 +1287,20 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarotist experimentat. Utilizatorul $userName întreabă: \"$userQuestion\". Răspunde cu tirajul \"Crucea Celtică\" (schema clasică Waite). Cărțile sunt așezate astfel: situația - $situationCard; provocarea - $challengeCard; subconștientul - $subconsciousCard; trecutul recent - $pastCard; conștientul - $consciousCard; viitorul apropiat - $hiddenCard; sinele interior - $selfCard; mediul - $environmentCard; speranțe sau temeri - $hopesCard; rezultat - $outcomeCard. Menționează numele $userName de cel puțin șase ori și leagă fiecare carte de întrebare. Respectă structura:\n1) Salutare adresată lui $userName.\n2) Titlu: Tiraj: situația ($situationCard) / provocarea ($challengeCard) / subconștientul ($subconsciousCard) / trecutul recent ($pastCard) / conștientul ($consciousCard) / viitorul apropiat ($hiddenCard) / sinele interior ($selfCard) / mediul ($environmentCard) / speranțe/temeri ($hopesCard) / rezultat ($outcomeCard).\n3) Situația — $situationCard (45-55 cuvinte): trei cuvinte cheie, simbolistica cărții și poziția actuală în legătură cu întrebarea $userQuestion pentru $userName.\n4) Provocarea — $challengeCard (45-55 cuvinte): principalul obstacol sau ajutor pentru $userName.\n5) Subconștientul — $subconsciousCard (45-55 cuvinte): motive ascunse sau energii care influențează pe $userName.\n6) Trecutul recent — $pastCard (45-55 cuvinte): evenimente care au condus $userName la situația actuală.\n7) Conștientul — $consciousCard (45-55 cuvinte): obiective, așteptări sau ceea ce $userName conștientizează.\n8) Viitorul apropiat — $hiddenCard (45-55 cuvinte): dezvoltarea probabilă în săptămânile următoare.\n9) Sinele interior — $selfCard (45-55 cuvinte): starea și resursele lui $userName.\n10) Mediul — $environmentCard (45-55 cuvinte): influența oamenilor și a circumstanțelor.\n11) Speranțe / temeri — $hopesCard (45-55 cuvinte): așteptările sau temerile lui $userName.\n12) Rezultatul — $outcomeCard (45-55 cuvinte): rezultatul probabil ținând cont de sfatul tirajului.\n13) Concluzie: susținere prietenoasă și afirmație pozitivă (30-35 cuvinte) pentru $userName.\nCerinte: volum total 400-500 cuvinte, ton viu și conversațional, 4-6 emoji esoterice; separă fiecare bloc prin două linii noi (\\n); nu folosi simboluri *, # sau alte marcaje; scrie doar text simplu.';
   }
 
@@ -1305,11 +1317,12 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarotist experimentat. Utilizatorul $userName întreabă: \"$userQuestion\". Răspunde prin tirajul \"Trecut - Prezent - Viitor\". Cărțile sunt așezate astfel: trecut - $pastCard; prezent - $presentCard; viitor - $hiddenCard. Menționează numele $userName de cel puțin patru ori și leagă semnificațiile cărților de întrebare. Respectă structura:\n1) Salutare adresată lui $userName.\n2) Titlu: Tiraj: Trecut ($pastCard) - Prezent ($presentCard) - Viitor ($hiddenCard).\n3) Blocul TRECUT — $pastCard (40-50 cuvinte): trei cuvinte cheie, simbolistica cărții și explicația modului în care faptele trecute influențează rezultatul întrebării $userQuestion pentru $userName.\n4) Blocul PREZENT — $presentCard (40-50 cuvinte): cuvinte cheie, simbolistica cărții și factorii actuali care influențează răspunsul la întrebarea $userQuestion.\n5) Blocul VIITOR — $hiddenCard (40-50 cuvinte): cuvinte cheie, simbolistica cărții și scenariul probabil de dezvoltare a situației legate de întrebarea lui $userName.\n6) Rezumat: sfat scurt, afirmație pozitivă (20-30 cuvinte) și o concluzie clară a șanselor.\nCerinte: volum total 180-220 cuvinte, ton cald și esoteric, 3-5 emoji tematice; separă fiecare bloc prin dublu newline (\\n); este interzisă folosirea simbolurilor *, # sau altor semne de formatare; scrie doar text simplu.';
   }
 
@@ -1357,13 +1370,14 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un cititor de tarot experimentat. Utilizatorul $userName întreabă: \"$userQuestion\". Răspunde folosind etalarea \"5 cărți\". Cărțile sunt date în ordine: trecut - $pastCard; prezent - $presentCard; viitor - $hiddenCard; motiv - $adviceCard; rezultat posibil - $outcomeCard. Explică semnificația fiecărei cărți și clarifică semnificația lor combinată.';
   }
 
@@ -1374,7 +1388,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get makeNewSpread => 'Fă o etalare nouă';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Aplicația folosește inteligența artificială exclusiv în scopuri de divertisment. Nu ne asumăm responsabilitatea pentru deciziile pe care le luați. Dacă este necesar, consultați un specialist.';
 
   @override
@@ -1382,8 +1397,13 @@ class AppLocalizationsRo extends AppLocalizations {
       'Cererea dvs. a fost primită. Vă rugăm să deschideți cărțile.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Ești un tarotist experimentat. Utilizatorul $userName întreabă: \"$userQuestion\". Răspunde folosind o etalare de dragoste cu trei cărți. Cărțile sunt așezate astfel: sentimentele lui $userName — $youCard; sentimentele partenerului — $partnerCard; dinamica sau potențialul relației — $dynamicCard. Menționează numele $userName de cel puțin trei ori și leagă fiecare carte de întrebare. Respectă structura:\n1) Salutare pe numele $userName.\n2) Titlu: Etalare: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 de cuvinte: descrie ce spune cartea despre sentimentele și așteptările lui $userName.\n4) $partnerCard — 40–50 de cuvinte: dezvăluie emoțiile și intențiile partenerului față de întrebarea lui $userName.\n5) $dynamicCard — 40–50 de cuvinte: arată cum interacționează aceste două energii și la ce pot duce relația.\n6) Concluzie: un sfat cald și o afirmație pozitivă (20–25 de cuvinte) pentru $userName.\nCerințe: volum total 150–180 de cuvinte, ton prietenos și romantic, 2–4 emoji tematice; paragrafe separate prin dublu newline (\\n\\n); evită simbolurile *, # și orice fel de markup.';
   }
 
@@ -1391,7 +1411,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get loveSpread => 'Etalare de dragoste';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Aplicația folosește inteligența artificială exclusiv în scopuri de divertisment. Nu ne asumăm responsabilitatea pentru deciziile pe care le luați. Dacă este necesar, consultați un specialist.';
 
   @override
@@ -1472,7 +1493,8 @@ class AppLocalizationsRo extends AppLocalizations {
   String get monthlyForecast => 'Previziune lunară';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Aplicația folosește inteligența artificială exclusiv în scopuri de divertisment. Nu ne asumăm responsabilitatea pentru deciziile pe care le luați. Dacă este necesar, consultați un specialist.';
 
   @override
@@ -1497,7 +1519,8 @@ class AppLocalizationsRo extends AppLocalizations {
       'Eroare la obținerea valorii etalării. Te rugăm să încerci din nou.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Aplicația folosește AI exclusiv în scopuri de divertisment. Nu ne asumăm responsabilitatea pentru deciziile pe care le iei. Dacă este necesar, consultă un specialist.';
 
   @override
@@ -1726,48 +1749,60 @@ class AppLocalizationsRo extends AppLocalizations {
       'Cum să găsesc armonia în viață?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarolog-coach experimentat. Utilizatorul $userName întreabă: «$userQuestion». Fă o etalare cu trei cărți despre carieră și finanțe. Cărțile sunt așezate astfel: 1) situația — $situationCard; 2) obstacolul sau oportunitatea cheie — $challengeCard; 3) sfatul și potențialul — $adviceCard. Determină genul utilizatorului după numele $userName și folosește terminațiile și pronumele corecte. Vorbește cu $userName prietenos și la obiect: arată-i unde se află, ce blochează creșterea (sau ce șansă importantă trebuie observată) și ce pas practic îl va duce la venitul dorit. Menționează numele $userName de cel puțin trei ori. Respectă structura:\n1) Salutare — 1 propoziție.\n2) Titlu: Etalare: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 cuvinte: descrie poziția actuală a lui $userName (muncă, afaceri sau context financiar general) și simbolistica cărții.\n4) $challengeCard — 45–55 cuvinte: dezvăluie principalul obstacol sau oportunitatea ascunsă; indică cum se reflectă aceasta în carte și în întrebarea lui $userName.\n5) $adviceCard — 45–55 cuvinte: propune o acțiune concretă (de exemplu, revizuirea bugetului, cererea unei măriri, învățarea unei noi competențe) și descrie rezultatul posibil.\n6) Final — 20–25 cuvinte: concluzie prietenoasă, afirmație pozitivă și 2 emoji de afaceri.\nCerințe: volum total 160–185 cuvinte, ton clar și profesional fără jargon, 2–3 emoji; paragrafe separate prin dublu \\n\\n; nu folosi *, # sau alte marcaje.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarolog experimentat. Utilizatorul $userName întreabă: «$userQuestion». Fă o etalare \"Pro și Contra\" cu trei cărți. Cărțile sunt așezate astfel: avantajele — $proCard; dezavantajele — $conCard; sfatul/concluzia — $adviceCard. Determină genul utilizatorului după numele $userName și folosește terminațiile și pronumele corecte. Menționează numele $userName de cel puțin trei ori și leagă fiecare carte de întrebare. Respectă structura:\n1) Salutare adresată lui $userName.\n2) Titlu: Etalare: $proCard | $conCard | $adviceCard.\n3) Avantaje: $proCard — 45–55 cuvinte. Dezvăluie principalele beneficii sau resurse pozitive pe care această carte le aduce în situația lui $userName.\n4) Dezavantaje: $conCard — 45–55 cuvinte. Descrie riscurile, costurile ascunse sau punctele slabe ale deciziei pentru $userName.\n5) Sfat: $adviceCard — 45–55 cuvinte. Cântărește avantajele și dezavantajele, propune o acțiune concretă (verb + obiect) și spune cum va schimba aceasta rezultatul pentru $userName.\n6) Concluzie — un singur cuvânt \"Da\" sau \"Nu\", apoi 1 propoziție justificativă și o afirmație încurajatoare (20–25 cuvinte) cu 1–2 emoji.\nCerințe: volum total 150–180 cuvinte, ton prietenos și conversațional; fiecare bloc separat prin dublu \\n\\n; fără simboluri *, # sau alte marcaje.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarolog profesionist. Utilizatorul $userName întreabă: «$userQuestion». Fă o etalare \\\"Roata lunii\\\" pentru $month. Cărțile sunt în ordine: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determină genul lui $userName după nume și folosește terminațiile și pronumele corecte. Menționează numele de cel puțin cinci ori, dar **nu-l insera după fiecare dată** — amintește-l doar în sfaturile din text. Folosește grila calendaristică a datelor: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (dacă luna are 30 de zile — a 12-a carte se referă tot la ziua 30). Format:\n1) Salutare adresată lui $userName (1–2 propoziții).\n2) Introducere scurtă despre scopul etalării (1 propoziție).\n3–14) Pentru fiecare carte folosește linia \\\"1–3 $month — $card1\\\" (fără nume): apoi 2–3 propoziții despre energia cheie a perioadei și sfatul practic, menționând natural pe $userName.\n15) Concluzie: sfat general pentru lună (aprox. 40 cuvinte) și afirmație inspirațională cu 2–3 emoji.\nCerințe: total 360–400 cuvinte; ton prietenos și motivant; blocuri separate prin dublu \\n\\n; fără simboluri *, #, liste sau note tehnice.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ești un tarolog-coach experimentat. Utilizatorul $userName întreabă: «$userQuestion». Fă o etalare \\\"Dezvoltare personală și echilibru\\\" cu șapte cărți. Cărțile sunt așezate astfel: nucleu — $coreCard; minte — $mindCard; emoții — $emotionCard; corp — $bodyCard; resursă — $strengthCard; blocaj — $challengeCard; sfat — $adviceCard. Determină genul utilizatorului după numele $userName și folosește terminațiile și pronumele corecte. Vorbește viu și susținător, menționează numele $userName de cel puțin patru ori și leagă fiecare carte de întrebare. Respectă structura și formatul:\n1) Salutare adresată lui $userName.\n2) Titlu: Etalare: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — descrie focusul principal al dezvoltării personale a lui $userName.\n4) $mindCard — povestește cum să-și ajusteze gândirea și ce să învețe.\n5) $emotionCard — dezvăluie resursa emoțională și motivația.\n6) $bodyCard — sugerează cum să aibă grijă de corp și energie.\n7) $strengthCard — arată darul interior sau sprijinul extern.\n8) $challengeCard — indică dezechilibrul cheie și cauzele lui.\n9) $adviceCard — propune o acțiune concretă care să unească toate aspectele.\n10) Final — afirmație inspirațională și urare caldă cu 2–3 emoji.\nCerințe: fiecare punct 2–3 propoziții; între puncte pune dublu \\n\\n; nu folosi *, # sau alte marcaje.';
   }
 

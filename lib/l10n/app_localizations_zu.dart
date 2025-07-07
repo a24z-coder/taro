@@ -378,7 +378,8 @@ class AppLocalizationsZu extends AppLocalizations {
       'Faka umbuzo wakho...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Ukusabalalisa \"Ukuzithuthukisa nokulinganisela\" kuqukethe amakhadi angu-7, abekwe ngendlela yesiyingi. Ikhadi ngalinye limelela uhlangothi oluthile lokukhula kwakho komoya nokuhlangana kwangaphakathi.';
 
   @override
@@ -988,7 +989,9 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Yenza isakhiwo sokuzithuthukisa nokulinganisela ku-$userName ngamakhadi amathathu alandelayo: $cards';
   }
 
@@ -1014,13 +1017,17 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Chaza inani elijwayelekile lekhadi leTarot elithi \"$cardName\" ngolimi $lang. Faka umlando, umehluko kanye nezincazelo eziyinhloko.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Chaza incazelo ephambene yekhadi le-Tarot elithi \"$cardName\" ngolimi $lang. Faka izincazelo eziphambene nezexwayiso.';
   }
 
@@ -1056,13 +1063,17 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Humusha igama lekhadi le-Tarot \"$cardName\" ku-$languageCode. Impendulo kufanele ibe negama elihunyushiwe kuphela, ngaphandle kombhalo owengeziwe noma izimpawu zokubhala.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ungumthakathi wamakhadi ochwepheshe. Bhala umlayezo okhuthazayo \"Ikhadi losuku\" ngolimi lolu sicelo somsebenzisi $name. Landela isakhiwo nobude.\n🌟 $name, ikhadi lakho losuku ngu-$cardName!\n🔑 Amagama angukhiye: <faka amagama angukhiye ama-3–5 amafushane>\n🃏 Incazelo (≈45–50 amazwi): chaza amandla ayinhloko ekhadi nokuthi azovela kanjani namuhla ku-$name.\n💡 Iseluleko (≈35–40 amazwi): phakamisa isenzo esithile noma umqondo ozosiza $name ukusebenzisa la mandla.\n✨ Isiqiniseko (umugqa owodwa): isitatimende esihle esiqala ngo \"Mina…\".\nIzidingo: ubude obuphelele bamagama angu-120–150, ithoni efudumele ye-esoteric, ama-emoji angu-3–4 ahambisanayo, akukho uhlu ku-HTML/Markdown; hlukanisa izigaba ngezikhala ezimbili zomugqa (\\n\\n).';
   }
 
@@ -1283,19 +1294,20 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumthakathi onolwazi. Umsebenzisi $userName ubuza: \"$userQuestion\". Phendula ngokuhlelwa kwe \"Ikhrosu le-Celtic\" (uhlelo lwakudala lukaWaite). Amakhadi adluliselwe kanje: isimo - $situationCard; inselelo - $challengeCard; okungaphansi kwengqondo - $subconsciousCard; esikhathini esedlule esiseduze - $pastCard; okwaziwayo - $consciousCard; ikusasa eliseduze - $hiddenCard; mina wangaphakathi - $selfCard; imvelo - $environmentCard; amathemba noma ukwesaba - $hopesCard; umphumela - $outcomeCard. Khuluma igama $userName okungenani izikhathi eziyisithupha futhi qinisekisa ukuthi uxhumanisa ikhadi ngalinye nombuzo. Landela isakhiwo:\n1) Sawubona $userName.\n2) Isihloko: Ukuhlelwa: isimo ($situationCard) / inselelo ($challengeCard) / okungaphansi kwengqondo ($subconsciousCard) / esikhathini esedlule esiseduze ($pastCard) / okwaziwayo ($consciousCard) / ikusasa eliseduze ($hiddenCard) / mina wangaphakathi ($selfCard) / imvelo ($environmentCard) / amathemba/ukwesaba ($hopesCard) / umphumela ($outcomeCard).\n3) Isimo — $situationCard (amagama angama-45-55): amagama amathathu abalulekile, uphawu lwekhadi nesimo samanje sombuzo $userQuestion ku-$userName.\n4) Inselelo — $challengeCard (amagama angama-45-55): isithiyo esikhulu noma usizo ku-$userName.\n5) Okungaphansi kwengqondo — $subconsciousCard (amagama angama-45-55): izizathu ezifihlekile noma amandla athinta $userName.\n6) Esikhathini esedlule esiseduze — $pastCard (amagama angama-45-55): izenzakalo eziholele $userName esimweni samanje.\n7) Okwaziwayo — $consciousCard (amagama angama-45-55): izinhloso, okulindelwe noma lokho $userName akwaziyo.\n8) Ikusasa eliseduze — $hiddenCard (amagama angama-45-55): ukuthuthuka okungenzeka emasontweni azayo.\n9) Mina wangaphakathi — $selfCard (amagama angama-45-55): isimo, izinsiza ku-$userName.\n10) Imvelo — $environmentCard (amagama angama-45-55): ithonya labantu nezimo.\n11) Amathemba / ukwesaba — $hopesCard (amagama angama-45-55): okulindelwe noma ukwesaba kuka-$userName.\n12) Umphumela — $outcomeCard (amagama angama-45-55): umphumela ongaba khona uma kuqondiswa izeluleko zokuhlelwa.\n13) Isiphetho: ukwesekwa ngokuzwelana kanye nokuqinisekiswa okuhle (amagama angama-30-35) ku-$userName.\nPhela: amazwi aphilayo, isitayela esikhululekile, ama-emoji angama-4-6 ezomlingo; hlukanisa isigaba ngasinye ngemigqa emibili engenalutho.';
   }
 
@@ -1312,11 +1324,12 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumthakathi onolwazi. Umsebenzisi $userName ubuza: \"$userQuestion\". Phendula ngokuhlelwa kwe \"Esikhathini Esedlule - Okwamanje - Ikusasa\". Amakhadi adluliselwe kanje: esikhathini esedlule - $pastCard; okwamanje - $presentCard; ikusasa - $hiddenCard. Khuluma igama $userName okungenani izikhathi ezine futhi qinisekisa ukuthi uxhumanisa incazelo yamakhadi nombuzo. Landela isakhiwo:\n1) Sawubona $userName.\n2) Isihloko: Ukuhlelwa: Esikhathini Esedlule ($pastCard) - Okwamanje ($presentCard) - Ikusasa ($hiddenCard).\n3) ISIGABA SESIKHATHI ESEDLULE — $pastCard (amagama angama-40-50): amagama amathathu abalulekile, uphawu lwekhadi kanye nencazelo yokuthi izenzakalo zangaphambilini zithinta kanjani umphumela wombuzo $userQuestion ku-$userName.\n4) ISIGABA SOKWAMANJE — $presentCard (amagama angama-40-50): amagama abalulekile, uphawu lwekhadi nezici zamanje ezithinta impendulo kumbuzo $userQuestion.\n5) ISIGABA SEKUSASA — $hiddenCard (amagama angama-40-50): amagama abalulekile, uphawu lwekhadi kanye nesimo esingase sibe khona sokuthuthuka kombuzo ku-$userName.\n6) Umphumela: iseluleko esifushane, ukuqinisekiswa okuhle (amagama angama-20-30) kanye nesifinyezo esicacile samathuba.\nPhela: isitayela esishisayo esinomoya wokomlingo, ama-emoji angama-3-5; hlukanisa isigaba ngasinye ngemigqa emibili engenalutho.';
   }
 
@@ -1364,13 +1377,14 @@ class AppLocalizationsZu extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumfundi we-tarot onolwazi. Umsebenzisi $userName ubuza: \"$userQuestion\". Phendula ngokusabalala \"kwekhadi eli-5\". Amakhadi anikezelwe ngokulandelana: esikhathini esedlule - $pastCard; manje - $presentCard; esikhathini esizayo - $hiddenCard; isizathu - $adviceCard; umphumela ongaba khona - $outcomeCard. Chaza incazelo yekhadi ngalinye bese uchaza incazelo yabo ehlanganisiwe.';
   }
 
@@ -1381,7 +1395,8 @@ class AppLocalizationsZu extends AppLocalizations {
   String get makeNewSpread => 'Yenza ukuhlaziywa okusha';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Uhlelo lokusebenza lusebenzisa i-AI ngenjongo yokuzijabulisa kuphela. Asibophezeleki ngezinketho ozenzile. Uma kudingeka, xhumana nochwepheshe.';
 
   @override
@@ -1389,8 +1404,13 @@ class AppLocalizationsZu extends AppLocalizations {
       'Isicelo sakho samukelwe. Sicela uvule amakhadi';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Uyingcweti ye-tarot. Umsebenzisi $userName ubuza: «$userQuestion». Phendula usebenzisa ukuhlolwa kothando kwamakhadi amathathu. Amakhadi anikezwe kanje: imizwa ka-$userName — $youCard; imizwa yomlingani — $partnerCard; amandla noma amathuba obudlelwano — $dynamicCard. Khuluma igama elithi $userName okungenani izikhathi ezintathu futhi uxhumanise ikhadi ngalinye nombuzo. Landela isakhiwo:\n1) Sawubona $userName.\n2) Isihloko: Ukuhlolwa: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — amazwi angama-40–50: chaza ukuthi ikhadi lisho ukuthini ngemizwa nokulindelwe kuka-$userName.\n4) $partnerCard — amazwi angama-40–50: veza imizwa nezinhloso zomlingani maqondana nombuzo ka-$userName.\n5) $dynamicCard — amazwi angama-40–50: bonisa ukuthi le mizwa emibili isebenza kanjani ndawonye nokuthi ubudlelwano bungaholela kuphi.\n6) Isiphetho: iseluleko esifudumele kanye nokuqinisekisa okuhle (amazwi angama-20–25) ku-$userName.\nIzidingo: inani eliphelele lamagama angu-150–180, ithoni enobungane nephusheni lothando, ama-emoji angu-2–4 ahambisanayo; hlukanisa izigaba ngezikhala ezimbili (\\n\\n); gwema izimpawu *, # noma noma yiziphi izimpawu zokuhlela.';
   }
 
@@ -1398,7 +1418,8 @@ class AppLocalizationsZu extends AppLocalizations {
   String get loveSpread => 'Ukuhlolwa kothando';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Uhlelo lokusebenza lusebenzisa i-AI ngenjongo yokuzijabulisa kuphela. Asibophezeleki ngezinketho ozenzile. Uma kudingeka, xhumana nochwepheshe.';
 
   @override
@@ -1479,7 +1500,8 @@ class AppLocalizationsZu extends AppLocalizations {
   String get monthlyForecast => 'Ukubikezela kwenyanga';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Uhlelo lokusebenza lusebenzisa i-AI ngenhloso yokuzijabulisa kuphela. Asibophezeleki ngezinqumo ozenzayo. Uma kudingeka, xhumana nochwepheshe.';
 
   @override
@@ -1504,7 +1526,8 @@ class AppLocalizationsZu extends AppLocalizations {
       'Iphutha ekutholeni inani lokuhlukaniswa. Zama futhi.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Uhlelo lokusebenza lusebenzisa i-AI ngenjongo yokuzijabulisa kuphela. Asibophezeleki ngezinqumo ozenzayo. Uma kudingeka, xhumana nochwepheshe.';
 
   @override
@@ -1734,48 +1757,60 @@ class AppLocalizationsZu extends AppLocalizations {
       'Ngingayithola kanjani inhlangano ekuphileni?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumeluleki we-tarot onolwazi. Umsebenzisi $userName ubuza: «$userQuestion». Yenza ukuhlolwa kwamakhadi amathathu ngomsebenzi nezimali. Amakhadi anikezwe kanje: 1) isimo — $situationCard; 2) isithiyo noma ithuba eliyinhloko — $challengeCard; 3) iseluleko namandla — $adviceCard. Thola ubulili bomsebenzisi ngokusekelwe egameni $userName futhi usebenzise izandiso ezifanele nezabizo. Khuluma no $userName ngobungane nangokucacile: bonisa lapho emi khona, yini evimba ukukhula (noma ithuba elibalulekile okufanele libonwe) kanye nesinyathelo esisebenzayo esizoholela emholweni ofunwayo. Shayela igama $userName okungenani izikhathi ezintathu. Landela isakhiwo:\n1) Ukubingelela — umusho owodwa.\n2) Isihloko: Ukuhlolwa: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — amazwi angu-45–55: chaza isimo samanje sika $userName (umsebenzi, ibhizinisi noma isimo sezimali jikelele) kanye nophawu lwekhadi.\n4) $challengeCard — amazwi angu-45–55: veza isithiyo esikhulu noma ithuba elingabonakali; chaza ukuthi libonakala kanjani ekhadini nasembuzweni ka $userName.\n5) $adviceCard — amazwi angu-45–55: phakamisa isenzo esithile (isb., ukubuyekeza ibhajethi, ukucela ukukhushulwa, ukufunda ikhono elisha) futhi uchaze umphumela ongaba khona.\n6) Isiphetho — amazwi angu-20–25: isifinyezo esinobungane, ukuqinisekiswa okuhle kanye nama-emoji amabili emsebenzini.\nIzidingo: inani eliphelele lamazwi 160–185, ithoni ecacile neyebhizinisi ngaphandle kwamagama angajwayelekile, ama-emoji angu-2–3; hlukanisa izigaba ngezikhala ezimbili \\n\\n; ungasebenzisi *, # noma ezinye izimpawu.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumeluleki we-tarot onolwazi. Umsebenzisi $userName ubuza: «$userQuestion». Yenza ukuhlolwa \"Okuhle Nokubi\" kwamakhadi amathathu. Amakhadi anikezwe kanje: okuhle — $proCard; okubi — $conCard; iseluleko/isiphetho — $adviceCard. Thola ubulili bomsebenzisi ngokusekelwe egameni $userName futhi usebenzise izandiso ezifanele nezabizo. Shayela igama $userName okungenani izikhathi ezintathu futhi uxhume ikhadi ngalinye nombuzo. Landela isakhiwo:\n1) Ukubingelela ngegama $userName.\n2) Isihloko: Ukuhlolwa: $proCard | $conCard | $adviceCard.\n3) Okuhle: $proCard — amazwi angu-45–55. Veza izinzuzo ezinkulu noma izinsiza ezinhle leli khadi eliletha esimweni sika $userName.\n4) Okubi: $conCard — amazwi angu-45–55. Chaza izingozi, izindleko ezifihliwe noma ubuthakathaka besinqumo sika $userName.\n5) Iseluleko: $adviceCard — amazwi angu-45–55. Linganisa okuhle nokubi, phakamisa isenzo esisodwa esithile (isenzo + into) futhi uchaze ukuthi kuzoshintsha kanjani umphumela ka $userName.\n6) Isiphetho — igama elilodwa \"Yebo\" noma \"Cha\", bese umusho owodwa ochaza isizathu kanye nokuqinisekisa okukhuthazayo (amazwi angu-20–25) nama-emoji angu-1–2.\nIzidingo: inani eliphelele lamazwi 150–180, ithoni yokukhuluma enobungane neyokuxoxa; hlukanisa izigaba ngezikhala ezimbili \\n\\n; ungasebenzisi *, # noma ezinye izimpawu.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumeluleki we-tarot ochwepheshe. Umsebenzisi $userName ubuza: «$userQuestion». Yenza ukuhlolwa \"Isondo Lenyanga\" ku-$month. Amakhadi alandelana kanje: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Thola ubulili buka $userName ngokusekelwe egameni futhi usebenzise izandiso ezifanele nezabizo. Shayela igama okungenani izikhathi ezinhlanu kodwa **ungalifaki ngemuva kwedethi ngayinye** — khumbula kuphela ngaphakathi kombhalo wezeluleko. Sebenzisa ishidi lekhalenda lamadethi: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (uma inyanga inezinsuku ezingama-30 — ikhadi lesi-12 liphathelene nosuku lwama-30). Ifomethi:\n1) Ukubingelela ngegama $userName (imisindo emi-1–2).\n2) Isingeniso esifushane ngenhloso yokuhlolwa (umusho owodwa).\n3–14) Ngekadi ngalinye sebenzisa umugqa othi \"1–3 $month — $card1\" (ngaphandle kwegama): bese imisho emi-2–3 mayelana namandla ayinhloko esikhathi kanye neseluleko esisebenzayo, ufake ngokwemvelo igama $userName.\n15) Isiphetho: iseluleko esijwayelekile senyanga (cishe amazwi angu-40) kanye nokuqinisekiswa okukhuthazayo nama-emoji angu-2–3.\nIzidingo: inani eliphelele lamazwi 360–400; ithoni enobungane, ekhuthazayo; hlukanisa izigaba ngezikhala ezimbili \\n\\n; ungasebenzisi *, #, izinhlu noma amanothi wezobuchwepheshe.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ungumeluleki we-tarot onolwazi. Umsebenzisi $userName ubuza: «$userQuestion». Yenza ukuhlolwa \"Ukuzithuthukisa Nokulinganisela\" kwamakhadi ayisikhombisa. Amakhadi anikezwe kanje: inhliziyo — $coreCard; ingqondo — $mindCard; imizwa — $emotionCard; umzimba — $bodyCard; umthombo — $strengthCard; isithiyo — $challengeCard; iseluleko — $adviceCard. Thola ubulili bomsebenzisi ngokusekelwe egameni $userName futhi usebenzise izandiso ezifanele nezabizo. Khuluma ngokuphila nangokweseka, shayela igama $userName okungenani izikhathi ezine futhi qinisekisa ukuthi ikhadi ngalinye lixhumene nombuzo. Landela isakhiwo nefomethi:\n1) Ukubingelela ngegama $userName.\n2) Isihloko: Ukuhlolwa: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — chaza ukugxila okuyinhloko kokuzithuthukisa kuka $userName.\n4) $mindCard — chaza ukuthi angalungisa kanjani umqondo nokufunda ini.\n5) $emotionCard — veza umthombo wemizwa nokugqugquzela.\n6) $bodyCard — nikeza izeluleko zokunakekela umzimba namandla.\n7) $strengthCard — bonisa isipho sangaphakathi noma ukwesekwa kwangaphandle.\n8) $challengeCard — chaza ukungalingani okuyinhloko nezimbangela zakhona.\n9) $adviceCard — phakamisa isenzo esithile esihlanganisa zonke izici.\n10) Isiphetho: ukuqinisekiswa okukhuthazayo kanye neseluleko esifudumele nama-emoji angu-2–3.\nIzidingo: isigaba ngasinye amazwi angu-2–3; hlukanisa izigaba ngezikhala ezimbili \\n\\n; ungasebenzisi *, # noma ezinye izimpawu.';
   }
 

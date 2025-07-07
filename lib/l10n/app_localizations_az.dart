@@ -372,7 +372,8 @@ class AppLocalizationsAz extends AppLocalizations {
       'Sualınızı daxil edin...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Özünüinkişaf və balans\" yayımı 7 kartdan ibarətdir və dairə şəklində yerləşdirilib. Hər bir kart sizin mənəvi inkişafınızın və daxili harmoniyanızın müəyyən bir aspektini simvollaşdırır.';
 
   @override
@@ -979,7 +980,9 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName üçün bu üç kartla özünüinkişaf və balans üzrə quraşdırma et: $cards';
   }
 
@@ -1004,13 +1007,17 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının ümumi mənasını $lang dilində təsvir et. Tarixçəsini, simvolizmini və əsas mənalarını daxil et.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının tərs mənasını $lang dilində təsvir edin. Əks mənaları və xəbərdarlıqları daxil edin.';
   }
 
@@ -1045,13 +1052,17 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" Tarot kartının adını $languageCode dilinə tərcümə et. Cavab yalnız tərcümə edilmiş ad olmalıdır, əlavə mətn və ya durğu işarələri olmadan.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Sən peşəkar taroçususan. İstifadəçi $name üçün bu sorğunun dilində ilhamverici «Günün kartı» mesajı yaz. Struktur və həcmə riayət et.\n🌟 $name, sənin günün kartı — $cardName!\n🔑 Əsas sözlər: <3–5 qısa açar sözləri qeyd et>\n🃏 Mənası (təxminən 45–50 söz): kartın əsas enerjisini və bu enerjinin bu gün $name üçün necə özünü göstərəcəyini təsvir et.\n💡 Məsləhət (təxminən 35–40 söz): $name-ə bu enerjidən istifadə etməyə kömək edəcək konkret hərəkət və ya əhval-ruhiyyə təklif et.\n✨ Afirmasiya (1 sətir): «Mən…» ilə başlayan pozitiv təsdiq.\nTələblər: ümumi uzunluq 120–150 söz, isti ezoterik ton, 3–4 mövzuya uyğun emojilər, HTML/Markdown siyahıları yoxdur; abzaslar ikiqat sətir fasiləsi ilə ayrılır (\\n\\n).';
   }
 
@@ -1270,19 +1281,20 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçu san. İstifadəçi $userName soruşur: \"$userQuestion\". \"Kelt xaçı\" (Waite klassik sxemi) yayımını cavablandır. Kartlar belə verilib: vəziyyət - $situationCard; çağırış - $challengeCard; şüursuz - $subconsciousCard; yaxın keçmiş - $pastCard; şüurlu - $consciousCard; yaxın gələcək - $hiddenCard; daxili Mən - $selfCard; ətraf - $environmentCard; ümidlər və ya qorxular - $hopesCard; nəticə - $outcomeCard. $userName adını ən azı altı dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur belədir:\n1) $userName adınla salamlaşma.\n2) Başlıq: Yayım: vəziyyət ($situationCard) / çağırış ($challengeCard) / şüursuz ($subconsciousCard) / yaxın keçmiş ($pastCard) / şüurlu ($consciousCard) / yaxın gələcək ($hiddenCard) / daxili Mən ($selfCard) / ətraf ($environmentCard) / ümidlər/qorxular ($hopesCard) / nəticə ($outcomeCard).\n3) Vəziyyət — $situationCard (45-55 söz): üç əsas söz, kartın simvolikası və $userName üçün $userQuestion sualına cari vəziyyət.\n4) Çağırış — $challengeCard (45-55 söz): $userName üçün əsas maneə və ya dəstək.\n5) Şüursuz — $subconsciousCard (45-55 söz): $userName üzərində təsir edən gizli motivlər və enerjilər.\n6) Yaxın keçmiş — $pastCard (45-55 söz): ${userName}i indiki vəziyyətə gətirən hadisələr.\n7) Şüurlu — $consciousCard (45-55 söz): ${userName}in məqsədləri, gözləntiləri və ya fərqində olduğu şeylər.\n8) Yaxın gələcək — $hiddenCard (45-55 söz): yaxın həftələrdə ehtimal olunan inkişaf.\n9) Daxili Mən — $selfCard (45-55 söz): ${userName}in vəziyyəti və resursları.\n10) Ətraf — $environmentCard (45-55 söz): insanların və şəraitin təsiri.\n11) Ümidlər / qorxular — $hopesCard (45-55 söz): ${userName}in gözləntiləri və ya narahatlıqları.\n12) Nəticə — $outcomeCard (45-55 söz): yayım məsləhətləri nəzərə alınaraq ehtimal olunan nəticə.\n13) Nəticə: $userName üçün dostyana dəstək və pozitiv təsdiq (30-35 söz).\nTələblər: ümumi həcm 400-500 söz, canlı, danışıq tərzi, 4-6 ezoterik emojilər; hər blok iki boş sətrə ayrılmalıdır (\n); * , # və digər işarələrdən istifadə etmə; sadəcə sadə mətnlə yaz.';
   }
 
@@ -1298,11 +1310,12 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçu san. İstifadəçi $userName soruşur: \"$userQuestion\". \"Keçmiş - İndiki - Gələcək\" yayımı ilə cavab ver. Kartlar belə verilib: keçmiş - $pastCard; indiki - $presentCard; gələcək - $hiddenCard. $userName adını ən azı dörd dəfə qeyd et və kartların mənalarını sualla əlaqələndir. Struktur belədir:\n1) $userName adınla salamlaşma.\n2) Başlıq: Yayım: Keçmiş ($pastCard) - İndiki ($presentCard) - Gələcək ($hiddenCard).\n3) KEÇMİŞ bloku — $pastCard (40-50 söz): üç əsas söz, kartın simvolikası və keçmiş faktların $userName üçün $userQuestion sualının nəticəsinə təsiri.\n4) İNDİKİ bloku — $presentCard (40-50 söz): əsas sözlər, kartın simvolikası və cari amillər, $userQuestion sualına təsir edən.\n5) GƏLƏCƏK bloku — $hiddenCard (40-50 söz): əsas sözlər, kartın simvolikası və $userName üçün vəziyyətin ehtimal olunan inkişaf ssenarisi.\n6) Nəticə: qısa məsləhət, pozitiv təsdiq (20-30 söz) və şansların aydın ümumiləşdirilməsi.\nTələblər: ümumi həcm 180-220 söz, isti ezoterik ton, 3-5 mövzuya uyğun emojilər; hər blok iki boş sətrə ayrılmalıdır (\n); * , # və digər formatlama işarələrindən istifadə qadağandır; sadəcə sadə mətnlə yaz.';
   }
 
@@ -1350,13 +1363,14 @@ class AppLocalizationsAz extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Siz təcrübəli tarot oxuyucususunuz. İstifadəçi $userName soruşur: \"$userQuestion\". \"5 kart\" yayılmasından istifadə edərək cavab verin. Kartlar sırayla verilir: keçmiş - $pastCard; indiki - $presentCard; gizli - $hiddenCard; məsləhət - $adviceCard; nəticə - $outcomeCard. $userName-ə ən azı beş dəfə istinad edin və hər kartı sualla əlaqələndirdiyinizə əmin olun. Strukturu izləyin:\n\n1) $userName adı ilə salamlayın.\n\n2) Başlıq: Yayılma: keçmiş ($pastCard) / indiki ($presentCard) / gizli ($hiddenCard) / məsləhət ($adviceCard) / nəticə ($outcomeCard).\n\n3) Keçmiş — $pastCard (45-55 söz): üç açar söz, kartın simvolizmi və keçmişin $userName üçün $userQuestion üzərindəki təsiri.\n\n4) İndiki — $presentCard (45-55 söz): açar sözlər, simvolizm və $userName-in sualının cari vəziyyəti.\n\n5) Gizli — $hiddenCard (45-55 söz): $userName-in vəziyyətinə şüursuzcasına təsir edən şey, simvolizmə diqqət yetirərək.\n\n6) Məsləhət — $adviceCard (45-55 söz): kartın şəkillərinə əsaslanan $userName üçün praktik hərəkət.\n\n7) Nəticə — $outcomeCard (45-55 söz): məsləhətə əməl edilsə ehtimal olunan ssenari, $userName-ə müraciət edərək.\n\n8) Nəticə: $userName üçün dostcasına dəstək və müsbət təsdiq (25-30 söz).\n\nTələblər: ümumi həcm 230-260 söz, canlı söhbət tonu, 3-5 ezoterik emoji; hər bloku ikiqat sətir kəsilməsi (\\n\\n) ilə ayırın; *, # və ya başqa işarələmə simvollarından istifadə etməyin; yalnız sadə mətn yazın.';
   }
 
@@ -1367,7 +1381,8 @@ class AppLocalizationsAz extends AppLocalizations {
   String get makeNewSpread => 'Yeni açılış et';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -1375,8 +1390,13 @@ class AppLocalizationsAz extends AppLocalizations {
       'Sizin sorğunuz qəbul edildi. Zəhmət olmasa, kartları açın';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Sən təcrübəli taro mütəxəssisisən. İstifadəçi $userName soruşur: «$userQuestion». Üç kartdan ibarət sevgi yayımı ilə cavab ver. Kartlar belədir: $userName-in hissləri — $youCard; tərəfdaşın hissləri — $partnerCard; münasibətlərin dinamikası və ya potensialı — $dynamicCard. $userName adını ən azı üç dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur belədir:\n1) $userName adla salamlaşma.\n2) Başlıq: Yayım: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 söz: kartın $userName-in hissləri və gözləntiləri haqqında nə dediyini təsvir et.\n4) $partnerCard — 40–50 söz: tərəfdaşın $userName ilə bağlı emosiyaları və niyyətlərini açıqlayın.\n5) $dynamicCard — 40–50 söz: bu iki enerjinin necə qarşılıqlı təsir etdiyini və münasibətlərin nəyə gətirib çıxara biləcəyini göstər.\n6) Nəticə: $userName üçün isti məsləhət və pozitiv təsdiq (20–25 söz).\nTələblər: ümumi həcm 150–180 söz, dostyana romantik ton, 2–4 mövzuya uyğun emojilər; abzaslar ikiqat yeni sətrlə (\\n\\n) ayrılır; *, # və hər hansı formatlaşdırmadan çəkin.';
   }
 
@@ -1384,7 +1404,8 @@ class AppLocalizationsAz extends AppLocalizations {
   String get loveSpread => 'Sevgi yayımı';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -1466,7 +1487,8 @@ class AppLocalizationsAz extends AppLocalizations {
   String get monthlyForecast => 'Aylıq proqnoz';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -1491,7 +1513,8 @@ class AppLocalizationsAz extends AppLocalizations {
       'Yayım dəyərinin alınmasında səhv baş verdi. Yenidən cəhd edin.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -1718,48 +1741,60 @@ class AppLocalizationsAz extends AppLocalizations {
       'Həyatda harmoniyanı necə tapmaq olar?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarot-koçsan. İstifadəçi $userName soruşur: «$userQuestion». Karyera və maliyyə mövzusunda üç kartlıq yayım et. Kartlar belə verilib: 1) vəziyyət — $situationCard; 2) maneə və ya əsas imkan — $challengeCard; 3) məsləhət və potensial — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və düzgün sonluqlar və əvəzliklərlə müraciət et. $userName ilə dostyana və işgüzar danış: onun harada dayandığını, inkişafı nə blokladığını (və ya hansı fürsətin vacib olduğunu) göstər və arzulanan gəlirə aparan praktik addımı bildir. $userName adını ən azı üç dəfə qeyd et. Struktur belə olsun:\n1) Salamlaşma — 1 cümlə.\n2) Başlıq: Yayım: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 söz: ${userName}nin hazırkı vəziyyətini (iş, biznes və ya ümumi maliyyə fonu) və kartın simvolikasını təsvir et.\n4) $challengeCard — 45–55 söz: əsas maneəni və ya görünməyən fürsəti açıqlayaraq, onun kartda və ${userName}nin sualında necə əks olunduğunu göstər.\n5) $adviceCard — 45–55 söz: konkret bir hərəkət təklif et (məsələn, büdcəni yenidən nəzərdən keçirmək, maaş artımı tələb etmək, yeni bacarıq öyrənmək) və mümkün nəticəni təsvir et.\n6) Son — 20–25 söz: dostyana nəticə, pozitiv təsdiq və 2 işgüzar emojilər.\nTələblər: ümumi həcmi 160–185 söz, aydın işgüzar ton, 2–3 emojilər; abzasları ikiqat \\n\\n ilə ayır; *, # və digər işarələrdən istifadə etmə.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçusan. İstifadəçi $userName soruşur: «$userQuestion». Üç kartlıq \"Lehinə və Əleyhinə\" yayımı et. Kartlar belə verilib: lehinə — $proCard; əleyhinə — $conCard; məsləhət/nəticə — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və düzgün sonluqlar və əvəzliklərlə müraciət et. $userName adını ən azı üç dəfə qeyd et və hər kartı onun sualı ilə əlaqələndir. Struktur belə olsun:\n1) $userName adından salamlaşma.\n2) Başlıq: Yayım: $proCard | $conCard | $adviceCard.\n3) Lehinə: $proCard — 45–55 söz. Bu kartın ${userName}nin vəziyyətinə gətirdiyi əsas faydaları və müsbət resursları açıqlayın.\n4) Əleyhinə: $conCard — 45–55 söz. $userName üçün qərarın risklərini, gizli xərclərini və zəif tərəflərini təsvir et.\n5) Məsləhət: $adviceCard — 45–55 söz. Lehinə və əleyhinəni qiymətləndir, konkret bir hərəkət təklif et (fel + obyekt) və bunun $userName üçün nəticəni necə dəyişəcəyini bildir.\n6) Nəticə — bir sözlə «Bəli» və ya «Xeyr», sonra 1 cümlə əsaslandırma və 20–25 sözlük ruhlandırıcı təsdiq, 1–2 emojilər ilə.\nTələblər: ümumi həcmi 150–180 söz, dostyana, danışıq tərzi; hər blok ikiqat \\n\\n ilə ayrılır; *, # və digər işarələrdən istifadə etmə.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Siz peşəkar tarotçusunuz. İstifadəçi $userName soruşur: «$userQuestion». $month üçün \'Ay çarxı\' açılımı tərtib edin. Kartlar ardıcıllıqla: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName-in cinsini ada görə müəyyən edin və düzgün sonluqları və əvəzlikləri istifadə edin. Adı ən azı beş dəfə qeyd edin, amma **hər tarixdən sonra yazmayın** — yalnız məsləhət mətnində qeyd edin. **İstifadəçi adını tarix aralığından sonra yazmaq QADAĞANDIR. Tarixlərdən sonra yalnız ayı göstərin.** Tarix şəbəkəsindən istifadə edin: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (əgər ay 30 gündürsə, 12-ci kart həm də 30-a aiddir). Format:\n\n1) $userName üçün qısa salam.\n2) Hər tarix aralığı üçün uyğun kartdan istifadə edərək ətraflı proqnoz verin.\n3) Sonda ay üçün ümumi xülasə və məsləhət əlavə edin.\n\nAydın, strukturlaşdırılmış və faydalı cavab verin.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarot məşqçisisən. İstifadəçi $userName soruşur: \"$userQuestion\". Yeddi kartla \"Özünüinkişaf və balans\" yayımı et. Kartlar belə düzülüb: nüvə — $coreCard; ağıl — $mindCard; emosiyalar — $emotionCard; bədən — $bodyCard; resurs — $strengthCard; blokaj — $challengeCard; məsləhət — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və uyğun sonluqlar və əvəzliklərlə müraciət et. Canlı və dəstəkləyici şəkildə danış, $userName adını ən azı dörd dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur və formatı qoruyun:\n1) $userName adından salamlaşma.\n2) Başlıq: Yayım: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName üçün özünüinkişafın əsas fokusunu təsvir et.\n4) $mindCard — düşüncəni necə tənzimləmək və nə öyrənmək lazım olduğunu danış.\n5) $emotionCard — emosional resurs və motivasiyanı kəşf et.\n6) $bodyCard — bədən və enerjiyə qayğı göstərmək üçün təklif et.\n7) $strengthCard — daxili hədiyyə və ya xarici dəstəyi göstər.\n8) $challengeCard — əsas disbalansı və onun səbəblərini müəyyən et.\n9) $adviceCard — bütün aspektləri birləşdirən konkret hərəkət təklif et.\n10) Nəticə: ilhamverici təsdiq və 2–3 emojilərlə isti vida.\nTələblər: hər bənd 2–3 cümlə; bəndlər arasında ikiqat sətir fasiləsi \\n\\n; *, # və digər işarələrdən istifadə etmə.';
   }
 
@@ -2182,7 +2217,8 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
       'Sualınızı daxil edin...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"Özünüinkişaf və balans\" yayımı 7 kartdan ibarətdir və dairə şəklində yerləşdirilib. Hər bir kart sizin mənəvi inkişafınızın və daxili harmoniyanızın müəyyən bir aspektini simvollaşdırır.';
 
   @override
@@ -2789,7 +2825,9 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName üçün bu üç kartla özünüinkişaf və balans üzrə quraşdırma et: $cards';
   }
 
@@ -2814,13 +2852,17 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının ümumi mənasını $lang dilində təsvir et. Tarixçəsini, simvolizmini və əsas mənalarını daxil et.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" Tarot kartının tərs mənasını $lang dilində təsvir edin. Əks mənaları və xəbərdarlıqları daxil edin.';
   }
 
@@ -2855,13 +2897,17 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" Tarot kartının adını $languageCode dilinə tərcümə et. Cavab yalnız tərcümə edilmiş ad olmalıdır, əlavə mətn və ya durğu işarələri olmadan.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Sən peşəkar taroçususan. İstifadəçi $name üçün bu sorğunun dilində ilhamverici «Günün kartı» mesajı yaz. Struktur və həcmə riayət et.\n🌟 $name, sənin günün kartı — $cardName!\n🔑 Əsas sözlər: <3–5 qısa açar sözləri qeyd et>\n🃏 Mənası (təxminən 45–50 söz): kartın əsas enerjisini və bu enerjinin bu gün $name üçün necə özünü göstərəcəyini təsvir et.\n💡 Məsləhət (təxminən 35–40 söz): $name-ə bu enerjidən istifadə etməyə kömək edəcək konkret hərəkət və ya əhval-ruhiyyə təklif et.\n✨ Afirmasiya (1 sətir): «Mən…» ilə başlayan pozitiv təsdiq.\nTələblər: ümumi uzunluq 120–150 söz, isti ezoterik ton, 3–4 mövzuya uyğun emojilər, HTML/Markdown siyahıları yoxdur; abzaslar ikiqat sətir fasiləsi ilə ayrılır (\\n\\n).';
   }
 
@@ -3080,19 +3126,20 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçu san. İstifadəçi $userName soruşur: \"$userQuestion\". \"Kelt xaçı\" (Waite klassik sxemi) yayımını cavablandır. Kartlar belə verilib: vəziyyət - $situationCard; çağırış - $challengeCard; şüursuz - $subconsciousCard; yaxın keçmiş - $pastCard; şüurlu - $consciousCard; yaxın gələcək - $hiddenCard; daxili Mən - $selfCard; ətraf - $environmentCard; ümidlər və ya qorxular - $hopesCard; nəticə - $outcomeCard. $userName adını ən azı altı dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur belədir:\n1) $userName adınla salamlaşma.\n2) Başlıq: Yayım: vəziyyət ($situationCard) / çağırış ($challengeCard) / şüursuz ($subconsciousCard) / yaxın keçmiş ($pastCard) / şüurlu ($consciousCard) / yaxın gələcək ($hiddenCard) / daxili Mən ($selfCard) / ətraf ($environmentCard) / ümidlər/qorxular ($hopesCard) / nəticə ($outcomeCard).\n3) Vəziyyət — $situationCard (45-55 söz): üç əsas söz, kartın simvolikası və $userName üçün $userQuestion sualına cari vəziyyət.\n4) Çağırış — $challengeCard (45-55 söz): $userName üçün əsas maneə və ya dəstək.\n5) Şüursuz — $subconsciousCard (45-55 söz): $userName üzərində təsir edən gizli motivlər və enerjilər.\n6) Yaxın keçmiş — $pastCard (45-55 söz): ${userName}i indiki vəziyyətə gətirən hadisələr.\n7) Şüurlu — $consciousCard (45-55 söz): ${userName}in məqsədləri, gözləntiləri və ya fərqində olduğu şeylər.\n8) Yaxın gələcək — $hiddenCard (45-55 söz): yaxın həftələrdə ehtimal olunan inkişaf.\n9) Daxili Mən — $selfCard (45-55 söz): ${userName}in vəziyyəti və resursları.\n10) Ətraf — $environmentCard (45-55 söz): insanların və şəraitin təsiri.\n11) Ümidlər / qorxular — $hopesCard (45-55 söz): ${userName}in gözləntiləri və ya narahatlıqları.\n12) Nəticə — $outcomeCard (45-55 söz): yayım məsləhətləri nəzərə alınaraq ehtimal olunan nəticə.\n13) Nəticə: $userName üçün dostyana dəstək və pozitiv təsdiq (30-35 söz).\nTələblər: ümumi həcm 400-500 söz, canlı, danışıq tərzi, 4-6 ezoterik emojilər; hər blok iki boş sətrə ayrılmalıdır (\n); * , # və digər işarələrdən istifadə etmə; sadəcə sadə mətnlə yaz.';
   }
 
@@ -3108,11 +3155,12 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçu san. İstifadəçi $userName soruşur: \"$userQuestion\". \"Keçmiş - İndiki - Gələcək\" yayımı ilə cavab ver. Kartlar belə verilib: keçmiş - $pastCard; indiki - $presentCard; gələcək - $hiddenCard. $userName adını ən azı dörd dəfə qeyd et və kartların mənalarını sualla əlaqələndir. Struktur belədir:\n1) $userName adınla salamlaşma.\n2) Başlıq: Yayım: Keçmiş ($pastCard) - İndiki ($presentCard) - Gələcək ($hiddenCard).\n3) KEÇMİŞ bloku — $pastCard (40-50 söz): üç əsas söz, kartın simvolikası və keçmiş faktların $userName üçün $userQuestion sualının nəticəsinə təsiri.\n4) İNDİKİ bloku — $presentCard (40-50 söz): əsas sözlər, kartın simvolikası və cari amillər, $userQuestion sualına təsir edən.\n5) GƏLƏCƏK bloku — $hiddenCard (40-50 söz): əsas sözlər, kartın simvolikası və $userName üçün vəziyyətin ehtimal olunan inkişaf ssenarisi.\n6) Nəticə: qısa məsləhət, pozitiv təsdiq (20-30 söz) və şansların aydın ümumiləşdirilməsi.\nTələblər: ümumi həcm 180-220 söz, isti ezoterik ton, 3-5 mövzuya uyğun emojilər; hər blok iki boş sətrə ayrılmalıdır (\n); * , # və digər formatlama işarələrindən istifadə qadağandır; sadəcə sadə mətnlə yaz.';
   }
 
@@ -3160,13 +3208,14 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Siz təcrübəli tarot oxuyucususunuz. İstifadəçi $userName soruşur: \"$userQuestion\". \"5 kart\" yayılmasından istifadə edərək cavab verin. Kartlar sırayla verilir: keçmiş - $pastCard; indiki - $presentCard; gizli - $hiddenCard; məsləhət - $adviceCard; nəticə - $outcomeCard. $userName-ə ən azı beş dəfə istinad edin və hər kartı sualla əlaqələndirdiyinizə əmin olun. Strukturu izləyin:\n\n1) $userName adı ilə salamlayın.\n\n2) Başlıq: Yayılma: keçmiş ($pastCard) / indiki ($presentCard) / gizli ($hiddenCard) / məsləhət ($adviceCard) / nəticə ($outcomeCard).\n\n3) Keçmiş — $pastCard (45-55 söz): üç açar söz, kartın simvolizmi və keçmişin $userName üçün $userQuestion üzərindəki təsiri.\n\n4) İndiki — $presentCard (45-55 söz): açar sözlər, simvolizm və $userName-in sualının cari vəziyyəti.\n\n5) Gizli — $hiddenCard (45-55 söz): $userName-in vəziyyətinə şüursuzcasına təsir edən şey, simvolizmə diqqət yetirərək.\n\n6) Məsləhət — $adviceCard (45-55 söz): kartın şəkillərinə əsaslanan $userName üçün praktik hərəkət.\n\n7) Nəticə — $outcomeCard (45-55 söz): məsləhətə əməl edilsə ehtimal olunan ssenari, $userName-ə müraciət edərək.\n\n8) Nəticə: $userName üçün dostcasına dəstək və müsbət təsdiq (25-30 söz).\n\nTələblər: ümumi həcm 230-260 söz, canlı söhbət tonu, 3-5 ezoterik emoji; hər bloku ikiqat sətir kəsilməsi (\\n\\n) ilə ayırın; *, # və ya başqa işarələmə simvollarından istifadə etməyin; yalnız sadə mətn yazın.';
   }
 
@@ -3177,7 +3226,8 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
   String get makeNewSpread => 'Yeni açılış et';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -3185,8 +3235,13 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
       'Sizin sorğunuz qəbul edildi. Zəhmət olmasa, kartları açın';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Sən təcrübəli taro mütəxəssisisən. İstifadəçi $userName soruşur: «$userQuestion». Üç kartdan ibarət sevgi yayımı ilə cavab ver. Kartlar belədir: $userName-in hissləri — $youCard; tərəfdaşın hissləri — $partnerCard; münasibətlərin dinamikası və ya potensialı — $dynamicCard. $userName adını ən azı üç dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur belədir:\n1) $userName adla salamlaşma.\n2) Başlıq: Yayım: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 söz: kartın $userName-in hissləri və gözləntiləri haqqında nə dediyini təsvir et.\n4) $partnerCard — 40–50 söz: tərəfdaşın $userName ilə bağlı emosiyaları və niyyətlərini açıqlayın.\n5) $dynamicCard — 40–50 söz: bu iki enerjinin necə qarşılıqlı təsir etdiyini və münasibətlərin nəyə gətirib çıxara biləcəyini göstər.\n6) Nəticə: $userName üçün isti məsləhət və pozitiv təsdiq (20–25 söz).\nTələblər: ümumi həcm 150–180 söz, dostyana romantik ton, 2–4 mövzuya uyğun emojilər; abzaslar ikiqat yeni sətrlə (\\n\\n) ayrılır; *, # və hər hansı formatlaşdırmadan çəkin.';
   }
 
@@ -3194,7 +3249,8 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
   String get loveSpread => 'Sevgi yayımı';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -3276,7 +3332,8 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
   String get monthlyForecast => 'Aylıq proqnoz';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -3301,7 +3358,8 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
       'Yayım dəyərinin alınmasında səhv baş verdi. Yenidən cəhd edin.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Tətbiq süni intellekti yalnız əyləncə məqsədləri üçün istifadə edir. Qəbul etdiyiniz qərarlara görə məsuliyyət daşımırıq. Lazım olduqda mütəxəssisə müraciət edin.';
 
   @override
@@ -3528,48 +3586,60 @@ class AppLocalizationsAzAz extends AppLocalizationsAz {
       'Həyatda harmoniyanı necə tapmaq olar?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarot-koçsan. İstifadəçi $userName soruşur: «$userQuestion». Karyera və maliyyə mövzusunda üç kartlıq yayım et. Kartlar belə verilib: 1) vəziyyət — $situationCard; 2) maneə və ya əsas imkan — $challengeCard; 3) məsləhət və potensial — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və düzgün sonluqlar və əvəzliklərlə müraciət et. $userName ilə dostyana və işgüzar danış: onun harada dayandığını, inkişafı nə blokladığını (və ya hansı fürsətin vacib olduğunu) göstər və arzulanan gəlirə aparan praktik addımı bildir. $userName adını ən azı üç dəfə qeyd et. Struktur belə olsun:\n1) Salamlaşma — 1 cümlə.\n2) Başlıq: Yayım: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 söz: ${userName}nin hazırkı vəziyyətini (iş, biznes və ya ümumi maliyyə fonu) və kartın simvolikasını təsvir et.\n4) $challengeCard — 45–55 söz: əsas maneəni və ya görünməyən fürsəti açıqlayaraq, onun kartda və ${userName}nin sualında necə əks olunduğunu göstər.\n5) $adviceCard — 45–55 söz: konkret bir hərəkət təklif et (məsələn, büdcəni yenidən nəzərdən keçirmək, maaş artımı tələb etmək, yeni bacarıq öyrənmək) və mümkün nəticəni təsvir et.\n6) Son — 20–25 söz: dostyana nəticə, pozitiv təsdiq və 2 işgüzar emojilər.\nTələblər: ümumi həcmi 160–185 söz, aydın işgüzar ton, 2–3 emojilər; abzasları ikiqat \\n\\n ilə ayır; *, # və digər işarələrdən istifadə etmə.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarotçusan. İstifadəçi $userName soruşur: «$userQuestion». Üç kartlıq \"Lehinə və Əleyhinə\" yayımı et. Kartlar belə verilib: lehinə — $proCard; əleyhinə — $conCard; məsləhət/nəticə — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və düzgün sonluqlar və əvəzliklərlə müraciət et. $userName adını ən azı üç dəfə qeyd et və hər kartı onun sualı ilə əlaqələndir. Struktur belə olsun:\n1) $userName adından salamlaşma.\n2) Başlıq: Yayım: $proCard | $conCard | $adviceCard.\n3) Lehinə: $proCard — 45–55 söz. Bu kartın ${userName}nin vəziyyətinə gətirdiyi əsas faydaları və müsbət resursları açıqlayın.\n4) Əleyhinə: $conCard — 45–55 söz. $userName üçün qərarın risklərini, gizli xərclərini və zəif tərəflərini təsvir et.\n5) Məsləhət: $adviceCard — 45–55 söz. Lehinə və əleyhinəni qiymətləndir, konkret bir hərəkət təklif et (fel + obyekt) və bunun $userName üçün nəticəni necə dəyişəcəyini bildir.\n6) Nəticə — bir sözlə «Bəli» və ya «Xeyr», sonra 1 cümlə əsaslandırma və 20–25 sözlük ruhlandırıcı təsdiq, 1–2 emojilər ilə.\nTələblər: ümumi həcmi 150–180 söz, dostyana, danışıq tərzi; hər blok ikiqat \\n\\n ilə ayrılır; *, # və digər işarələrdən istifadə etmə.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Siz peşəkar tarotçusunuz. İstifadəçi $userName soruşur: «$userQuestion». $month üçün \'Ay çarxı\' açılımı tərtib edin. Kartlar ardıcıllıqla: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. $userName-in cinsini ada görə müəyyən edin və düzgün sonluqları və əvəzlikləri istifadə edin. Adı ən azı beş dəfə qeyd edin, amma **hər tarixdən sonra yazmayın** — yalnız məsləhət mətnində qeyd edin. **İstifadəçi adını tarix aralığından sonra yazmaq QADAĞANDIR. Tarixlərdən sonra yalnız ayı göstərin.** Tarix şəbəkəsindən istifadə edin: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (əgər ay 30 gündürsə, 12-ci kart həm də 30-a aiddir). Format:\n\n1) $userName üçün qısa salam.\n2) Hər tarix aralığı üçün uyğun kartdan istifadə edərək ətraflı proqnoz verin.\n3) Sonda ay üçün ümumi xülasə və məsləhət əlavə edin.\n\nAydın, strukturlaşdırılmış və faydalı cavab verin.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Sən təcrübəli tarot məşqçisisən. İstifadəçi $userName soruşur: \"$userQuestion\". Yeddi kartla \"Özünüinkişaf və balans\" yayımı et. Kartlar belə düzülüb: nüvə — $coreCard; ağıl — $mindCard; emosiyalar — $emotionCard; bədən — $bodyCard; resurs — $strengthCard; blokaj — $challengeCard; məsləhət — $adviceCard. $userName adından istifadəçinin cinsini müəyyən et və uyğun sonluqlar və əvəzliklərlə müraciət et. Canlı və dəstəkləyici şəkildə danış, $userName adını ən azı dörd dəfə qeyd et və hər kartı sualla əlaqələndir. Struktur və formatı qoruyun:\n1) $userName adından salamlaşma.\n2) Başlıq: Yayım: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — $userName üçün özünüinkişafın əsas fokusunu təsvir et.\n4) $mindCard — düşüncəni necə tənzimləmək və nə öyrənmək lazım olduğunu danış.\n5) $emotionCard — emosional resurs və motivasiyanı kəşf et.\n6) $bodyCard — bədən və enerjiyə qayğı göstərmək üçün təklif et.\n7) $strengthCard — daxili hədiyyə və ya xarici dəstəyi göstər.\n8) $challengeCard — əsas disbalansı və onun səbəblərini müəyyən et.\n9) $adviceCard — bütün aspektləri birləşdirən konkret hərəkət təklif et.\n10) Nəticə: ilhamverici təsdiq və 2–3 emojilərlə isti vida.\nTələblər: hər bənd 2–3 cümlə; bəndlər arasında ikiqat sətir fasiləsi \\n\\n; *, # və digər işarələrdən istifadə etmə.';
   }
 

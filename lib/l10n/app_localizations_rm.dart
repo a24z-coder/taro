@@ -374,7 +374,8 @@ class AppLocalizationsRm extends AppLocalizations {
       'Scrivai vossa dumonda...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'La disposiziun \"Svilupp persunal e balans\" consista da 7 cartas, pia en furma da circul. Mintga carta simbolisescha in aspect specific da tia creschientscha spirituala e da tia armonia interna.';
 
   @override
@@ -982,7 +983,9 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Fa ina disposiziun per $userName per svilup persunal e balans cun quests trais cards: $cards';
   }
 
@@ -1007,13 +1010,17 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descriva la significaziun generala da la carta Tarot \"$cardName\" en la lingua $lang. Encluda istorgia, simbolissem e significaziuns principalas.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Descriva il significat girà da la carta da Tarot \"$cardName\" en la lingua $lang. Includa ils significats opposts e avertiments.';
   }
 
@@ -1049,13 +1056,17 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Translata il titel da la carta Taroc \"$cardName\" en $languageCode. La resposta sto cuntegner mo il titel translategià, senza text supplementar ni punctuaziun.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Ti es in tarolog professional. Scriva in messadi inspirant «Carta dal di» en la lingua da questa dumonda per l\'utilisader $name. Tegna la structura e la lunghezza.\n🌟 $name, tia carta dal di è $cardName!\n🔑 Parolas clau: <inditgescha 3–5 keywords curtas>\n🃏 Significaziun (≈45–50 pleds): descriva l\'energia principala da la carta e co ella sa mussa oz a $name.\n💡 Cussegl (≈35–40 pleds): propona in agid concret u in\'atgna attituda che gida a $name d\'utilisar questa energia.\n✨ Affirmaziun (1 lingia): in\'affirmaziun positiva che cumenza cun «Eu…».\nExigenzas: lunghezza totala 120–150 pleds, ton esoteric cordial, 3–4 emojias tematicas, naginas listas en HTML/Markdown; paragrafas separadas cun dus chars da return (\\n\\n).';
   }
 
@@ -1276,19 +1287,20 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog experient. L\'utilisader $userName dumonda: \"$userQuestion\". Respunda cun la disposiziun \"Crusch Celtica\" (la schema classica da Waite). Las cartas èn distribuìdas uschia: situaziun - $situationCard; sfida - $challengeCard; subcuschent - $subconsciousCard; passà recents - $pastCard; cuschent - $consciousCard; proxim futur - $hiddenCard; eu intern - $selfCard; ambient - $environmentCard; speranzas u temauns - $hopesCard; resultat - $outcomeCard. Menziona il num $userName almain sis giadas e colliuna mintga carta cun la dumonda. Observa la structura:\n1) Salidaziun per num $userName.\n2) Titel: Disposiziun: situaziun ($situationCard) / sfida ($challengeCard) / subcuschent ($subconsciousCard) / passà recents ($pastCard) / cuschent ($consciousCard) / proxim futur ($hiddenCard) / eu intern ($selfCard) / ambient ($environmentCard) / speranzas/temauns ($hopesCard) / resultat ($outcomeCard).\n3) Situaziun — $situationCard (45-55 pleds): trais pleds clavs, simbolica da la carta e la situaziun actuala per la dumonda $userQuestion per $userName.\n4) Sfida — $challengeCard (45-55 pleds): l\'impediment principal u l\'agid per $userName.\n5) Subcuschent — $subconsciousCard (45-55 pleds): motivs scondids u energias che influenzeschan $userName.\n6) Passà recents — $pastCard (45-55 pleds): eveniments che han manà $userName a la situaziun actuala.\n7) Cuschent — $consciousCard (45-55 pleds): finamiras, spetgas u quai che $userName è conscients.\n8) Proxim futur — $hiddenCard (45-55 pleds): svilup probabel en las proximas emnas.\n9) Eu intern — $selfCard (45-55 pleds): stadi, resursas da $userName.\n10) Ambient — $environmentCard (45-55 pleds): influenza da persunas e circumstanzas.\n11) Speranzas / temauns — $hopesCard (45-55 pleds): spetgas u temurs da $userName.\n12) Resultat — $outcomeCard (45-55 pleds): resultat probabel tenor ils cussegls da la disposiziun.\n13) Conclusiun: sustegn amicheivel e affirmaziun positiva (30-35 pleds) per $userName.\nPleds total: 400-500, ton viv e conversativ, 4-6 emojicons esoterics; mintga sectur separà cun duas lingias vides.';
   }
 
@@ -1305,11 +1317,12 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog experient. L\'utilisader $userName dumonda: \"$userQuestion\". Respunda cun la disposiziun \"Passà - Preschent - Futur\". Las cartas èn distribuìdas uschia: passà - $pastCard; preschent - $presentCard; futur - $hiddenCard. Menziona il num $userName almain quatter giadas e colliuna ils muments da las cartas cun la dumonda. Observa la structura:\n1) Salidaziun per num $userName.\n2) Titel: Disposiziun: Passà ($pastCard) - Preschent ($presentCard) - Futur ($hiddenCard).\n3) Sectur PASSÀ — $pastCard (40-50 pleds): trais pleds clavs, simbolica da la carta e explicaziun co ils fatgs passads influenzeschan il resultat da la dumonda $userQuestion per $userName.\n4) Sectur PRESCHENT — $presentCard (40-50 pleds): pleds clavs, simbolica da la carta e facturs actuals che influenzeschan la resposta a la dumonda $userQuestion.\n5) Sectur FUTUR — $hiddenCard (40-50 pleds): pleds clavs, simbolica da la carta e scenari probabel da svilup per la situaziun da $userName.\n6) Resultat: cussegl curt, affirmaziun positiva (20-30 pleds) e resumaziun clara dals schanzas.\nPleds total: 180-220, ton cordial esoteric, 3-5 emojicons tematics; mintga sectur separà cun duas lingias vides.';
   }
 
@@ -1357,13 +1370,14 @@ class AppLocalizationsRm extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in expert tarot reader. L\'utilisader $userName dumonda: \"$userQuestion\". Responda cun il spread \"5 charts\". Las charts èn dadas en urden: passà - $pastCard; present - $presentCard; futur - $hiddenCard; motiv - $adviceCard; resultat pussaivel - $outcomeCard. Explitgescha il muntada da mintga charta e clarifitgescha co lur muntada cumbinà è.';
   }
 
@@ -1374,7 +1388,8 @@ class AppLocalizationsRm extends AppLocalizations {
   String get makeNewSpread => 'Far ina nova distribuziun';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'L\'applicaziun dovra l\'IA mo per scopo da divertiment. Nus n\'assumain nagina responsabladad per las decisiuns che vus prendais. Sche necessari, consultai in spezialist.';
 
   @override
@@ -1382,8 +1397,13 @@ class AppLocalizationsRm extends AppLocalizations {
       'Vossa dumonda è vegnida acceptada. Per plaschair, avrai las cartas.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Ti es in tarolog experimentà. L\'utilisader $userName dumonda: «$userQuestion». Respunda cun in tirament d\'amur da trais cartas. Las cartas èn dadas uschia: sentiments da $userName — $youCard; sentiments dal partenari — $partnerCard; dinamica u potenzial da la relaziun — $dynamicCard. Menziona il num $userName almain trais giadas e relaschuna mintga carta cun la dumonda. Observa la structura:\n1) Salidaziun cun il num $userName.\n2) Titel: Tirament: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 pleds: descriva tge che la carta di davart ils sentiments e las spetgas da $userName.\n4) $partnerCard — 40–50 pleds: explitga las emziuns e las intensiuns dal partenari envers la dumonda da $userName.\n5) $dynamicCard — 40–50 pleds: mussa co quellas duas energias interagischan e tge che la relaziun po manar.\n6) Conclusiun: in cussegl cordial e ina affirmaziun positiva (20–25 pleds) per $userName.\nRequisits: in total da 150–180 pleds, in ton amicheivel e romantic, 2–4 emotschens tematics; separa ils paragraf cun duas lingias novas (\\n\\n); evita ils symbols *, # e mintga marcatura.';
   }
 
@@ -1391,7 +1411,8 @@ class AppLocalizationsRm extends AppLocalizations {
   String get loveSpread => 'Tirament d\'amur';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'L\'applicaziun dovra l\'IA mo per scopo da divertiment. Nus n\'assumain nagina responsabladad per las decisiuns che vus prendais. Sche necessari, consultai in spezialist.';
 
   @override
@@ -1472,7 +1493,8 @@ class AppLocalizationsRm extends AppLocalizations {
   String get monthlyForecast => 'Prognos mensil';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'L\'app duai l\'intelligenza artificiala mo per motivs da divertiment. Nus n\'acceptain nagina responsabladad per las decisiuns che vus prendet. Sche necessari, dumandai in spezialist.';
 
   @override
@@ -1497,7 +1519,8 @@ class AppLocalizationsRm extends AppLocalizations {
       'Errore tar la survegnida dal valur dal tir. Emprova puspè.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'L’applicaziun dovra l’intelligenza artificiala mo per scopo da divertiment. Nus na purtain betg responsabladad per las decisiuns che vus prendais. Sche necessari, consultai in spezialist.';
 
   @override
@@ -1726,48 +1749,60 @@ class AppLocalizationsRm extends AppLocalizations {
       'Co chattar armonia en la vita?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog-coach experimentà. L’utilisader $userName dumonda: «$userQuestion». Fa in tiradi da trais cartas per carriera e finanzas. Las cartas vegnan transmessas uschia: 1) situaziun — $situationCard; 2) impediment u schanza clau — $challengeCard; 3) cussegl e potenzial — $adviceCard. Determina il gener da l’utilisader tenor il num $userName e duvrar las terminaziuns e pronomens corrects. Discurra cun $userName amiaivel e direct: mussa nua ch’el/ella stat, tge che bloccà la creschientscha (u tge schanza impurtanta da vesair) e tge pass pratic che maina a la retschavida desiderada. Menziona il num $userName almain trais giadas. Tgna la structura:\n1) Salidada — 1 frasa.\n2) Titel: Tiradi: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 pleds: descriva la situaziun actuala da $userName (lavur, fatschenta u panorama finanzial general) e la simbolica da la carta.\n4) $challengeCard — 45–55 pleds: spiega il barat principal u ina schanza betg evidenta; inditga co quai sa mussa en la carta e en la dumonda da $userName.\n5) $adviceCard — 45–55 pleds: propona in’agir concret (per exempel revair il budget, dumandar in augment, emprender ina nova cumpetenza) e descriva il resultat pussibel.\n6) Final — 20–25 pleds: conclusiun amiaivla, affirmaziun positiva e 2 emojicons da fatschenta.\nExigenzas: total 160–185 pleds, ton cler e professiunal senza gergo, 2–3 emojicons; paragraf separads cun dus \\n\\n; betg duvrar *, # ni autras marcaziuns.\n\\n\\n';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog experimentà. L’utilisader $userName dumonda: «$userQuestion». Fa in tiradi «Per e Contra» da trais cartas. Las cartas vegnan transmessas uschia: avantatgs — $proCard; svantatgs — $conCard; cussegl/resultat — $adviceCard. Determina il gener da l’utilisader tenor il num $userName e duvrar las terminaziuns e pronomens corrects. Menziona il num $userName almain trais giadas e relaschuna mintga carta cun la dumonda. Tgna la structura:\n1) Salidada cun num $userName.\n2) Titel: Tiradi: $proCard | $conCard | $adviceCard.\n3) Avantatgs: $proCard — 45–55 pleds. Spiega ils principals avantatgs u resursas positivas che questa carta porta en la situaziun da $userName.\n4) Svantatgs: $conCard — 45–55 pleds. Descriva ils ristgs, custs occults u puncts debils da la decisiun per $userName.\n5) Cussegl: $adviceCard — 45–55 pleds. Pesegia avantatgs e svantatgs, propona in agir concret (verbi + object) e declera co quai midarà il resultat per $userName.\n6) Resultat — in pled «Gea» u «Na», suandà da 1 frasa da motivaziun e ina affirmaziun da sustegn (20–25 pleds) cun 1–2 emojicons.\nExigenzas: total 150–180 pleds, ton amiaivel e conversativ; mintga sectur separà cun dus \\n\\n; betg duvrar *, # ni autras marcaziuns.\n\\n\\n';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog professiunal. L’utilisader $userName dumonda: «$userQuestion». Fa in tiradi «Rotla da la maisa» per $month. Las cartas vegnan en l’orden: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determina il gener da $userName tenor il num e duvrar las terminaziuns e pronomens corrects. Menziona il num almain tschintg giadas, ma **betg suenter mintga data** — remembra el mo en il text dals cussegls. Dovra la griglia da datas dal calendar: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (sche il mais ha 30 dis — la 12avla carta pertutga er il 30avel di). Format:\n1) Salidada cun num $userName (1–2 frasas).\n2) Brev introducziun davart l’intent dal tiradi (1 frasa).\n3–14) Per mintga carta duvrar la lingia «1–3 $month — $card1» (senza num): suandà da 2–3 frasas davart l’energia clau dal temp e cussegl pratic, integrond $userName naturalmain.\n15) Resultat: cussegl general per il mais (circa 40 pleds) e ina affirmaziun inspiranta cun 2–3 emojicons.\nExigenzas: total 360–400 pleds; ton amiaivel e motivant; secturs separads cun dus \\n\\n; betg duvrar *, #, listas ni marcaziuns tecnicas.\n\\n\\n';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ti es in tarolog-coach experimentà. L’utilisader $userName dumonda: «$userQuestion». Fa in tiradi «Svilupp persunal e balans» da set cartas. Las cartas vegnan uschia: core — $coreCard; mente — $mindCard; emziuns — $emotionCard; corp — $bodyCard; resurs — $strengthCard; impediment — $challengeCard; cussegl — $adviceCard. Determina il gener da l’utilisader tenor il num $userName e duvrar las terminaziuns e pronomens corrects. Discurra viv e sustegnivlamain, menziunescha il num $userName almain quatter giadas e relaschuna mintga carta cun la dumonda. Tgna la structura e format:\n1) Salidada cun num $userName.\n2) Titel: Tiradi: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — descriva il focus principal dal svilup persunal da $userName.\n4) $mindCard — raquinta co ajustar la mentalitad e tge emprender.\n5) $emotionCard — spiega la resursa emotiva e la motivaziun.\n6) $bodyCard — cusseglia co curar il corp e l’energia.\n7) $strengthCard — mussa il don intern u sustegn extern.\n8) $challengeCard — inditga il disbalans clau e ses motivs.\n9) $adviceCard — propona in agir concret che unischa tut ils aspects.\n10) Final: affirmaziun inspiranta e bunamain cun 2–3 emojicons.\nExigenzas: mintga punct 2–3 frasas; tranter puncts dus \\n\\n; betg duvrar *, # ni autras marcaziuns.\n\\n\\n';
   }
 

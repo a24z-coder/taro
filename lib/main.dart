@@ -10,6 +10,7 @@ import 'dart:ui' as ui;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:tarot_ai/services/notification_service.dart';
 import 'dart:io';
 import 'firebase_options.dart';
 
@@ -224,6 +225,7 @@ class _SplashScreenState extends State<SplashScreen> {
         _initializeFirebase(),
         _initializeAppData(),
         _initializePurchaseService(),
+        _initializeNotificationService(),
       ]);
       debugPrint('[SplashScreen] Parallel initialization completed, elapsed: ${initStopwatch.elapsedMilliseconds}ms');
     } catch (error, stack) {
@@ -292,6 +294,19 @@ class _SplashScreenState extends State<SplashScreen> {
       debugPrint('[SplashScreen] PurchaseService initialized, elapsed: ${stopwatch.elapsedMilliseconds}ms');
     } catch (error, stack) {
       debugPrint('[SplashScreen] PurchaseService initialization error: $error\n$stack');
+    }
+  }
+
+  // Инициализация сервиса уведомлений
+  Future<void> _initializeNotificationService() async {
+    final stopwatch = Stopwatch()..start();
+    debugPrint('[SplashScreen] _initializeNotificationService: start');
+    
+    try {
+      await NotificationService().initialize();
+      debugPrint('[SplashScreen] NotificationService initialized, elapsed: ${stopwatch.elapsedMilliseconds}ms');
+    } catch (error, stack) {
+      debugPrint('[SplashScreen] NotificationService initialization error: $error\n$stack');
     }
   }
 

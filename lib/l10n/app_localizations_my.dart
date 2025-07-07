@@ -377,7 +377,8 @@ class AppLocalizationsMy extends AppLocalizations {
       'သင့်မေးခွန်းကို ထည့်ပါ...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"ကိုယ်တိုင်ဖွံ့ဖြိုးတိုးတက်မှုနှင့် ညီမျှမှု\" ကတ်စီစဉ်မှာ ကတ် ၇ လုံး ပါဝင်ပြီး လှည့်ပတ်ပုံစံဖြင့်ထားရှိသည်။ ကတ်တိုင်းသည် သင့်ရဲ့ စိတ်ပိုင်းဆိုင်ရာ တိုးတက်မှုနှင့် အတွင်းပိုင်း ညီမျှမှု၏ အချက်အလက်တစ်ခုကို ကိုယ်စားပြုသည်။';
 
   @override
@@ -992,7 +993,9 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName အတွက် ကိုယ်တိုင်ဖွံ့ဖြိုးတိုးတက်မှုနှင့် သင့်တင့်မှုအတွက် ဒီကတ်သုံးကတ်ဖြင့် ဖတ်ရှုမှု ပြုလုပ်ပါ: $cards';
   }
 
@@ -1018,13 +1021,17 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang ဘာသာစကားဖြင့် တာရိုကတ်ကတ် \"$cardName\" ၏ စုစုပေါင်းအဓိပ္ပါယ်ကို ဖော်ပြပါ။ သမိုင်း၊ သင်္ကေတများနှင့် အဓိကအဓိပ္ပါယ်များကို ပါဝင်စေရန်။';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" တာရိုကတ်၏ လှည့်ပြန်ထားသော အဓိပ္ပါယ်ကို $lang ဘာသာဖြင့် ဖော်ပြပါ။ ဆန့်ကျင်သော အဓိပ္ပါယ်များနှင့် သတိပေးချက်များကို ပါဝင်စေရန်။';
   }
 
@@ -1060,13 +1067,17 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" တာရိုကဒ်အမည်ကို $languageCode သို့ ဘာသာပြန်ပါ။ အဖြေတွင် ဘာသာပြန်ထားသော အမည်သာ ပါရှိရမည်၊ ထပ်ဆောင်းစာသား သို့မဟုတ် အမှတ်အသား မပါဝင်ရ။';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'သင်သည် ပရော်ဖက်ရှင်နယ် တာရိုလော့ဂ်ဖြစ်သည်။ $name အသုံးပြုသူအတွက် ဒီမေးခွန်းဘာသာစကားဖြင့် \"နေ့စဉ်ကဒ်\" အား စိတ်အားထက်သန်စေသောစာတမ်းရေးပါ။ ဖွဲ့စည်းမှုနှင့် အရွယ်အစားကိုလိုက်နာပါ။\n🌟 $name၊ သင့်နေ့စဉ်ကဒ်မှာ $cardName ဖြစ်ပါတယ်!\n🔑 အဓိကစကားလုံးများ - <3–5 ချုပ် Keywords ကို ဖော်ပြပါ>\n🃏 အဓိပ္ပါယ် (≈45–50 စကား): ကဒ်၏ အဓိကစွမ်းအင်နှင့် ယနေ့ $name တွင် ဘယ်လိုပေါ်လွင်မည်ကို ဖော်ပြပါ။\n💡 အကြံပြုချက် (≈35–40 စကား): $name အတွက် ဒီစွမ်းအင်ကို အသုံးချနိုင်ရန် အ konkret လုပ်ဆောင်ချက် သို့မဟုတ် စိတ်ထားတစ်ခုကို အကြံပြုပါ။\n✨ အတည်ပြုချက် (တန်းတစ်ကြောင်း): \"ကျွန်တော်/ကျွန်မ...\" ဖြင့် စတင်သော အပြုသဘောဆောင်သော အတည်ပြုချက်။\nလိုအပ်ချက်များ - စုစုပေါင်း စကား ၁၂၀–၁၅၀ ဖြစ်ရမည်၊ နွေးထွေးသော အာရုံစူးစိုက်မှုရှိသော အသံ၊ ၃–၄ ခုသော အဓိကအကြောင်းအရာ emoji များ၊ HTML/Markdown စာရင်းများ မပါဝင်ရ၊ ပုဒ်မများကို နှစ်ကြိမ်ကြောင်းပြန်၍ ခွဲပါ။';
   }
 
@@ -1285,19 +1296,20 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုကတ်ပညာရှင်ဖြစ်သည်။ အသုံးပြုသူ $userName က မေးမြန်းသည် - \"$userQuestion\"။ \"ကယ်လ်တ်စ်ခရစ်စ်\" (ဝေ့တ်၏ ရိုးရာဇယား) ဖြင့် ဖြေကြားပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည် - အခြေအနေ - $situationCard၊ စိန်ခေါ်မှု - $challengeCard၊ အတွင်းစိတ် - $subconsciousCard၊ မကြာသေးမီက အတိတ် - $pastCard၊ အသိအမှတ်ပြုမှု - $consciousCard၊ နီးစပ်သော အနာဂတ် - $hiddenCard၊ အတွင်းပိုင်း ကိုယ်တိုင် - $selfCard၊ ပတ်ဝန်းကျင် - $environmentCard၊ မျှော်လင့်ချက် သို့မဟုတ် ကြောက်ရွံ့မှုများ - $hopesCard၊ အဆုံးသတ် - $outcomeCard။ $userName အမည်ကို အနည်းဆုံး ခြောက်ကြိမ် ဖော်ပြပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n1) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ် - ရှင်းလင်းချက်: အခြေအနေ ($situationCard) / စိန်ခေါ်မှု ($challengeCard) / အတွင်းစိတ် ($subconsciousCard) / မကြာသေးမီက အတိတ် ($pastCard) / အသိအမှတ်ပြုမှု ($consciousCard) / နီးစပ်သော အနာဂတ် ($hiddenCard) / အတွင်းပိုင်း ကိုယ်တိုင် ($selfCard) / ပတ်ဝန်းကျင် ($environmentCard) / မျှော်လင့်ချက်/ကြောက်ရွံ့မှု ($hopesCard) / အဆုံးသတ် ($outcomeCard)။\n3) အခြေအနေ — $situationCard (စကား ၄၅-၅၅): သုံးလုံးသော အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName အတွက် $userQuestion ဆိုင်ရာ လက်ရှိ အခြေအနေ။\n4) စိန်ခေါ်မှု — $challengeCard (စကား ၄၅-၅၅): $userName အတွက် အဓိက အတားအဆီး သို့မဟုတ် အကူအညီ။\n5) အတွင်းစိတ် — $subconsciousCard (စကား ၄၅-၅၅): $userName ကို ထိခိုက်နေသော ဖုံးကွယ်သော အကြောင်းအရာများ သို့မဟုတ် စွမ်းအင်များ။\n6) မကြာသေးမီက အတိတ် — $pastCard (စကား ၄၅-၅၅): $userName ကို လက်ရှိ အခြေအနေသို့ ဦးတည်စေသော ဖြစ်ရပ်များ။\n7) အသိအမှတ်ပြုမှု — $consciousCard (စကား ၄၅-၅၅): $userName ၏ ရည်မှန်းချက်များ၊ မျှော်လင့်ချက်များ သို့မဟုတ် သိရှိထားသော အရာများ။\n8) နီးစပ်သော အနာဂတ် — $hiddenCard (စကား ၄၅-၅၅): နီးစပ်သော အပတ်များအတွင်း ဖြစ်နိုင်သော ဖွံ့ဖြိုးမှု။\n9) အတွင်းပိုင်း ကိုယ်တိုင် — $selfCard (စကား ၄၅-၅၅): $userName ၏ အခြေအနေ၊ အရင်းအမြစ်များ။\n10) ပတ်ဝန်းကျင် — $environmentCard (စကား ၄၅-၅၅): လူများနှင့် အခြေအနေများ၏ သက်ရောက်မှု။\n11) မျှော်လင့်ချက် / ကြောက်ရွံ့မှု — $hopesCard (စကား ၄၅-၅၅): $userName ၏ မျှော်လင့်ချက်များ သို့မဟုတ် ကြောက်ရွံ့မှုများ။\n12) အဆုံးသတ် — $outcomeCard (စကား ၄၅-၅၅): ရှင်းလင်းချက်အကြံပြုချက်များနှင့်အတူ ဖြစ်နိုင်သော ရလဒ်။\n13) နိဂုံးချုပ် - $userName အတွက် မိတ်ဆွေကဲ့သို့ ထောက်ခံမှုနှင့် အပေါင်းအသင်း အားပေးစကား (စကား ၃၀-၃၅)။\nစုစုပေါင်း စကား ၄၀၀-၅၀၀ ဖြစ်ရမည်၊ အသက်ဝင်သော စကားသံ၊ အာရုံစူးစိုက်မှုရှိသော အီမိုဂျီ ၄-၆ ခုပါဝင်ရမည်။ အပိုဒ်တိုင်းကို နှစ်ကြိမ် အကြားကွာခြားစေပါ (\n)။ *၊ # သို့မဟုတ် အခြား အမှတ်အသားများ မသုံးပါနှင့်။ ရိုးရှင်းသော စာသားဖြင့်သာ ရေးပါ။';
   }
 
@@ -1313,11 +1325,12 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုကတ်ပညာရှင်ဖြစ်သည်။ အသုံးပြုသူ $userName က မေးမြန်းသည် - \"$userQuestion\"။ \"အတိတ် - လက်ရှိ - အနာဂတ်\" ဇယားဖြင့် ဖြေကြားပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည် - အတိတ် - $pastCard၊ လက်ရှိ - $presentCard၊ အနာဂတ် - $hiddenCard။ $userName အမည်ကို အနည်းဆုံး လေးကြိမ် ဖော်ပြပြီး ကတ်များ၏ အဓိပ္ပာယ်များကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n1) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ် - ရှင်းလင်းချက်: အတိတ် ($pastCard) - လက်ရှိ ($presentCard) - အနာဂတ် ($hiddenCard)။\n3) အတိတ် အပိုင်း — $pastCard (စကား ၄၀-၅၀): သုံးလုံးသော အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName အတွက် $userQuestion ဆိုင်ရာ အတိတ် ဖြစ်ရပ်များ၏ သက်ရောက်မှု။\n4) လက်ရှိ အပိုင်း — $presentCard (စကား ၄၀-၅၀): အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userQuestion အပေါ် သက်ရောက်နေသော လက်ရှိ အခြေအနေများ။\n5) အနာဂတ် အပိုင်း — $hiddenCard (စကား ၄၀-၅၀): အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName ၏ မေးခွန်းအပေါ် ဖြစ်နိုင်သော အနာဂတ် ဖြစ်ရပ်များ။\n6) အဆုံးသတ် - အတိုချုံး အကြံပြုချက်၊ အပေါင်းအသင်းအားပေးစကား (စကား ၂၀-၃၀) နှင့် အခွင့်အလမ်းများ၏ ရှင်းလင်းချက်။\nစုစုပေါင်း စကား ၁၈၀-၂၂၀ ဖြစ်ရမည်၊ နွေးထွေးသော အာရုံစူးစိုက်မှုရှိသော စကားသံ၊ အကြောင်းအရာနှင့် သက်ဆိုင်သော အီမိုဂျီ ၃-၅ ခုပါဝင်ရမည်။ အပိုဒ်တိုင်းကို နှစ်ကြိမ် အကြားကွာခြားစေပါ (\n)။ *၊ # သို့မဟုတ် အခြား အမှတ်အသားများ မသုံးပါနှင့်။ ရိုးရှင်းသော စာသားဖြင့်သာ ရေးပါ။';
   }
 
@@ -1365,13 +1378,14 @@ class AppLocalizationsMy extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်သည် အတွေ့အကြုံရှိသော တာရိုက်ဖတ်သူဖြစ်သည်။ အသုံးပြုသူ $userName က မေးသည်- \"$userQuestion\"။ \"ကဒ် ၅ လုံး\" ဖြန့်ဖြူးမှုဖြင့် ဖြေကြားပါ။ ကဒ်များကို အစဉ်လိုက်ပေးထားသည်- အတိတ် - $pastCard; ယနေ့ - $presentCard; အနာဂတ် - $hiddenCard; အကြောင်း - $adviceCard; ဖြစ်နိုင်သောရလဒ် - $outcomeCard။ ကဒ်တစ်ခုချင်းစီ၏ အဓိပ္ပါယ်ကိုရှင်းပြပါ၊ ၎င်းတို့၏ပေါင်းစပ်အဓိပ္ပါယ်ကိုလည်းရှင်းပြပါ။';
   }
 
@@ -1382,7 +1396,8 @@ class AppLocalizationsMy extends AppLocalizations {
   String get makeNewSpread => 'ဖော်ပြချက်အသစ် ပြုလုပ်ရန်';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'အပလီကေးရှင်းသည် AI ကို ဖျော်ဖြေရေးရည်ရွယ်ချက်ဖြင့်သာ အသုံးပြုသည်။ သင်ယူသောဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -1390,8 +1405,13 @@ class AppLocalizationsMy extends AppLocalizations {
       'သင့်တောင်းဆိုမှုကို လက်ခံပြီးပါပြီ။ ကျေးဇူးပြု၍ ကတ်များကို ဖွင့်ပါ။';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'သင်သည် အတွေ့အကြုံရှိသော တာရိုလော့ဂ်ဖြစ်သည်။ အသုံးပြုသူ $userName သည် \" $userQuestion \" ဟု မေးမြန်းသည်။ သုံးကတ်ဖြင့် ချစ်ခြင်းမေတ္တာ ဖော်ပြချက်ဖြင့် ဖြေကြားပါ။ ကတ်များမှာ အောက်ပါအတိုင်းဖြစ်သည်။ $userName ၏ခံစားချက် — $youCard၊ မိတ်ဖက်၏ခံစားချက် — $partnerCard၊ ဆက်ဆံရေး၏ လှုပ်ရှားမှု သို့မဟုတ် အလားအလာ — $dynamicCard။ $userName ၏နာမည်ကို အနည်းဆုံး သုံးကြိမ်ဖော်ပြပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ-\n1) $userName ၏နာမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ်- ဖော်ပြချက်: $youCard | $partnerCard | $dynamicCard။\n3) $youCard — ၄၀–၅၀ စကားလုံး: ကတ်သည် $userName ၏ခံစားချက်နှင့် မျှော်လင့်ချက်များကို ဘယ်လိုဖော်ပြသည်ကို ဖေါ်ပြပါ။\n4) $partnerCard — ၄၀–၅၀ စကားလုံး: မိတ်ဖက်၏ စိတ်ခံစားမှုများနှင့် ရည်ရွယ်ချက်များကို $userName ၏မေးခွန်းနှင့် ပတ်သက်၍ ဖော်ပြပါ။\n5) $dynamicCard — ၄၀–၅၀ စကားလုံး: ဤနှစ်ခုသော စွမ်းအင်များသည် မည်သို့ ပေါင်းစပ်ပြီး ဆက်ဆံရေးကို မည်သို့ ဦးတည်စေသည်ကို ပြပါ။\n6) နိဂုံးချုပ်- $userName အတွက် နွေးထွေးသော အကြံဉာဏ်နှင့် အပေါင်းအသင်း အတည်ပြုချက် (၂၀–၂၅ စကားလုံး)။\nလိုအပ်ချက်များ- စုစုပေါင်း စကားလုံး ၁၅၀–၁၈၀၊ မိတ်ဆွေတစ်ယောက်လို ချစ်ခင်ရင်းနှီးသော အသံ၊ ၂–၄ ခုသော ခေါင်းစဉ်ဆိုင်ရာ အီမိုဂျီများ၊ ပုဒ်မများကို \\n\\n ဖြင့် ခွဲပါ၊ *, # နှင့် မည်သည့် အမှတ်အသားမျိုးကို မသုံးပါနှင့်။';
   }
 
@@ -1399,7 +1419,8 @@ class AppLocalizationsMy extends AppLocalizations {
   String get loveSpread => 'ချစ်ခြင်းမေတ္တာ ဖော်ပြချက်';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'အပလီကေးရှင်းသည် AI ကို ဖျော်ဖြေရေးရည်ရွယ်ချက်ဖြင့်သာ အသုံးပြုသည်။ သင်ယူသောဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -1480,7 +1501,8 @@ class AppLocalizationsMy extends AppLocalizations {
   String get monthlyForecast => 'တစ်လစာ ခန့်မှန်းချက်';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'အက်ပလီကေးရှင်းသည် အပျော်အပါး ရည်ရွယ်ချက်ဖြင့်သာ AI ကို အသုံးပြုသည်။ သင်ယူသော ဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့ တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -1505,7 +1527,8 @@ class AppLocalizationsMy extends AppLocalizations {
       'ဖော်ထုတ်ချက်တန်ဖိုးရယူရာတွင် အမှားဖြစ်ပွားခဲ့သည်။ ထပ်မံကြိုးစားပါ။';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'အပလီကေးရှင်းသည် အပျော်အပါးရည်ရွယ်ချက်ဖြင့်သာ AI ကို အသုံးပြုသည်။ သင်ယူဆောင်ရွက်သော ဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့ တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -1736,48 +1759,60 @@ class AppLocalizationsMy extends AppLocalizations {
       'ဘဝမှာ ညီမျှမှုကို ဘယ်လို ရှာဖွေမလဲ?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ်-ကိုချ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ အလုပ်အကိုင်နှင့် ငွေကြေးအတွက် ကတ်သုံးကတ်ဖြင့် ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည်။ ၁) အခြေအနေ — $situationCard၊ ၂) အတားအဆီး သို့မဟုတ် အဓိက အခွင့်အလမ်း — $challengeCard၊ ၃) အကြံပြုချက်နှင့် စွမ်းဆောင်ရည် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ $userName နှင့် မိတ်ဆွေတစ်ယောက်ကဲ့သို့ ပြောဆိုပြီး အရေးကြီးသောအချက်များကို ပြောပါ။ သူ၏ ရပ်တည်ရာ၊ တိုးတက်မှုကို တားဆီးနေသော အချက်များ (သို့) အရေးကြီးသော အခွင့်အလမ်းများကို ပြပါ။ လိုချင်သော ဝင်ငွေသို့ ဦးတည်ရန် လုပ်ဆောင်ရမည့် လက်တွေ့အဆင့်ကို ဖော်ပြပါ။ $userName အမည်ကို အနည်းဆုံး သုံးကြိမ် ထည့်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n၁) မင်္ဂလာပါ — စာကြောင်း ၁ ခု။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $situationCard | $challengeCard | $adviceCard။\n၃) $situationCard — ၄၅–၅၅ စကားလုံး: $userName ၏ လက်ရှိ အခြေအနေ (အလုပ်၊ စီးပွားရေး သို့မဟုတ် စုစုပေါင်း ငွေကြေးအခြေအနေ) နှင့် ကတ်၏ သင်္ကေတကို ဖော်ပြပါ။\n၄) $challengeCard — ၄၅–၅၅ စကားလုံး: အဓိက အတားအဆီး သို့မဟုတ် မမြင်သာသော အခွင့်အလမ်းကို ဖော်ထုတ်ပါ။ ၎င်းသည် ကတ်နှင့် $userName ၏ မေးခွန်းတွင် မည်သို့ ထင်ဟပ်နေသည်ကို ပြပါ။\n၅) $adviceCard — ၄၅–၅၅ စကားလုံး: သေချာသော လုပ်ဆောင်ချက်တစ်ခု (ဥပမာ၊ ဘတ်ဂျက် ပြန်လည်သုံးသပ်ခြင်း၊ လစာတိုးတောင်းဆိုခြင်း၊ ကျွမ်းကျင်မှုအသစ် သင်ယူခြင်း) ကို အကြံပြုပြီး ဖြစ်နိုင်သော ရလဒ်ကို ဖော်ပြပါ။\n၆) အဆုံးသတ် — ၂၀–၂၅ စကားလုံး: မိတ်ဆွေတစ်ယောက်ကဲ့သို့ အကျဉ်းချုပ်၊ အကောင်းမြင်သော အတည်ပြုချက်နှင့် စီးပွားရေးဆိုင်ရာ အီမိုဂျီ ၂ ခု။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၁၆၀–၁၈၅၊ ရိုးရှင်းသေချာသော စီးပွားရေးအသံ၊ စကားပုံမပါ၊ အီမိုဂျီ ၂–၃ ခု; အပိုဒ်များကို \\n\\n ဖြင့် ခွဲပါ; *, # နှင့် အခြား အမှတ်အသား မသုံးပါ။';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ ကတ်သုံးကတ်ဖြင့် «အားသာချက်နှင့်အားနည်းချက်» ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည်။ အားသာချက်များ — $proCard၊ အားနည်းချက်များ — $conCard၊ အကြံပြုချက်/အဆုံးသတ် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ $userName အမည်ကို အနည်းဆုံး သုံးကြိမ် ထည့်ပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $proCard | $conCard | $adviceCard။\n၃) အားသာချက်များ: $proCard — ၄၅–၅၅ စကားလုံး။ $userName ၏ အခြေအနေတွင် ကတ်သည် ပေးသော အဓိက အကျိုးကျေးဇူးများ သို့မဟုတ် အကောင်းမြင်သော အရင်းအမြစ်များကို ဖော်ပြပါ။\n၄) အားနည်းချက်များ: $conCard — ၄၅–၅၅ စကားလုံး။ $userName အတွက် ဆုံးဖြတ်ချက်၏ အန္တရာယ်များ၊ ဖုံးကွယ်ထားသော ကုန်ကျစရိတ်များ သို့မဟုတ် အားနည်းချက်များကို ဖော်ပြပါ။\n၅) အကြံပြုချက်: $adviceCard — ၄၅–၅၅ စကားလုံး။ အားသာချက်များနှင့် အားနည်းချက်များကို ချိန်ညှိပြီး တစ်ခုသော သေချာသော လုပ်ဆောင်ချက် (ကြိယာ + အရာဝတ္ထု) ကို အကြံပြုပါ။ ၎င်းသည် $userName အတွက် ရလဒ်ကို မည်သို့ ပြောင်းလဲစေမည်ကို ပြောပါ။\n၆) အဆုံးသတ် — «ဟုတ်» သို့မဟုတ် «မဟုတ်» စကားလုံးတစ်လုံး၊ ထို့နောက် စာကြောင်းတစ်ကြောင်းဖြင့် အကြောင်းပြချက်နှင့် အားပေးသော အတည်ပြုချက် (၂၀–၂၅ စကားလုံး)၊ အီမိုဂျီ ၁–၂ ခုဖြင့်။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၁၅၀–၁၈၀၊ မိတ်ဆွေတစ်ယောက်ကဲ့သို့ စကားပြောစတိုင်; အပိုဒ်တိုင်းကို \\n\\n ဖြင့် ခွဲပါ; *, # နှင့် အခြား အမှတ်အသား မသုံးပါ။';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ ပရော်ဖက်ရှင်နယ် တာရိုလိုဂ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ $month အတွက် «လ၏ဘီး» ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း အဆင့်လိုက် ပေးထားသည်။ ၁ — $card1, ၂ — $card2, ၃ — $card3, ၄ — $card4, ၅ — $card5, ၆ — $card6, ၇ — $card7, ၈ — $card8, ၉ — $card9, ၁၀ — $card10, ၁၁ — $card11, ၁၂ — $card12။ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ အမည်ကို အနည်းဆုံး ငါးကြိမ် ထည့်ပါ၊ သို့သော် **ရက်စွဲတိုင်းနောက်တွင် မထည့်ပါနှင့်** — အကြံပြုချက်များတွင်သာ မှတ်မိပါ။ ရက်စွဲများကို အောက်ပါအတိုင်း အသုံးပြုပါ။ ၁–၃, ၄–၆, ၇–၉, ၁၀–၁၂, ၁၃–၁၅, ၁၆–၁၈, ၁၉–၂၁, ၂၂–၂၄, ၂၅–၂၆, ၂၇–၂၈, ၂၉–၃၀, ၃၁ (လတွင် ၃၀ ရက်သာရှိပါက ၁၂ ကြိမ်ကတ်သည် ၃၀ ရက်နှင့် ဆက်စပ်သည်)။ ဖော်ပြချက်:\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ (၁–၂ စာကြောင်း)။\n၂) ဖော်ပြချက်ရည်ရွယ်ချက် အကျဉ်းချုပ် (စာကြောင်း ၁ ခု)။\n၃–၁၄) ကတ်တိုင်းအတွက် «၁–၃ $month — $card1» စာကြောင်းကို အသုံးပြုပါ (အမည်မပါ)။ ထို့နောက် အချိန်ကာလ၏ အဓိက စွမ်းအင်နှင့် လက်တွေ့ အကြံပြုချက် ၂–၃ စာကြောင်း၊ $userName ကို သဘာဝကျစွာ ထည့်သွင်းပါ။\n၁၅) အဆုံးသတ်: လအတွက် အကြံပြုချက် စုစုပေါင်း (အနီးကပ် ၄၀ စကားလုံး) နှင့် စိတ်အားထက်သန်စေသော အတည်ပြုချက်၊ အီမိုဂျီ ၂–၃ ခုဖြင့်။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၃၆၀–၄၀၀; မိတ်ဆွေတစ်ယောက်ကဲ့သို့ စကားသံ; အပိုဒ်များကို \\n\\n ဖြင့် ခွဲပါ; *, #, စာရင်း သို့မဟုတ် နည်းပညာဆိုင်ရာ မှတ်စု မပါ။';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ်-ကိုချ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ «ကိုယ်တိုင်တိုးတက်မှုနှင့် သွန်းညှိမှု» အတွက် ကတ်ခုနှစ်ကတ်ဖြင့် ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးထားသည်။ အဓိက — $coreCard၊ စိတ် — $mindCard၊ စိတ်ခံစားမှု — $emotionCard၊ ခန္ဓာကိုယ် — $bodyCard၊ အရင်းအမြစ် — $strengthCard၊ အတားအဆီး — $challengeCard၊ အကြံပြုချက် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ အသက်သွင်းပြီး ထောက်ခံမှုရှိစေရန် $userName အမည်ကို အနည်းဆုံး လေးကြိမ် ထည့်ပါ။ ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံနှင့် ဖော်မတ်ကို လိုက်နာပါ။\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard။\n၃) $coreCard — $userName ၏ ကိုယ်တိုင်တိုးတက်မှု အဓိက အာရုံစိုက်ချက်ကို ဖော်ပြပါ။\n၄) $mindCard — စိတ်ထားကို မည်သို့ ပြင်ဆင်ရမည်နှင့် ဘာကို သင်ယူရမည်ကို ပြောပါ။\n၅) $emotionCard — စိတ်ခံစားမှု အရင်းအမြစ်နှင့် အားပေးမှုကို ဖော်ပြပါ။\n၆) $bodyCard — ခန္ဓာကိုယ်နှင့် စွမ်းအင်ကို မည်သို့ စောင့်ရှောက်ရမည်ကို အကြံပြုပါ။\n၇) $strengthCard — အတွင်းစိတ် လက်ဆောင် သို့မဟုတ် ပြင်ပ ထောက်ခံမှုကို ပြပါ။\n၈) $challengeCard — အဓိက မညီမျှမှုနှင့် ၎င်း၏ အကြောင်းရင်းကို ဖော်ပြပါ။\n၉) $adviceCard — အစိတ်အပိုင်းအားလုံးကို ပေါင်းစည်းသည့် သေချာသော လုပ်ဆောင်ချက်ကို အကြံပြုပါ။\n၁၀) အဆုံးသတ်: စိတ်အားထက်သန်စေသော အတည်ပြုချက်နှင့် နွေးထွေးသော ဆုတောင်း၊ အီမိုဂျီ ၂–၃ ခုဖြင့်။\nလိုအပ်ချက်များ: အပိုင်း';
   }
 
@@ -2205,7 +2240,8 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
       'သင့်မေးခွန်းကို ထည့်ပါ...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       '\"ကိုယ်တိုင်ဖွံ့ဖြိုးတိုးတက်မှုနှင့် ညီမျှမှု\" ကတ်စီစဉ်မှာ ကတ် ၇ လုံး ပါဝင်ပြီး လှည့်ပတ်ပုံစံဖြင့်ထားရှိသည်။ ကတ်တိုင်းသည် သင့်ရဲ့ စိတ်ပိုင်းဆိုင်ရာ တိုးတက်မှုနှင့် အတွင်းပိုင်း ညီမျှမှု၏ အချက်အလက်တစ်ခုကို ကိုယ်စားပြုသည်။';
 
   @override
@@ -2820,7 +2856,9 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return '$userName အတွက် ကိုယ်တိုင်ဖွံ့ဖြိုးတိုးတက်မှုနှင့် သင့်တင့်မှုအတွက် ဒီကတ်သုံးကတ်ဖြင့် ဖတ်ရှုမှု ပြုလုပ်ပါ: $cards';
   }
 
@@ -2846,13 +2884,17 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '$lang ဘာသာစကားဖြင့် တာရိုကတ်ကတ် \"$cardName\" ၏ စုစုပေါင်းအဓိပ္ပါယ်ကို ဖော်ပြပါ။ သမိုင်း၊ သင်္ကေတများနှင့် အဓိကအဓိပ္ပါယ်များကို ပါဝင်စေရန်။';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return '\"$cardName\" တာရိုကတ်၏ လှည့်ပြန်ထားသော အဓိပ္ပါယ်ကို $lang ဘာသာဖြင့် ဖော်ပြပါ။ ဆန့်ကျင်သော အဓိပ္ပါယ်များနှင့် သတိပေးချက်များကို ပါဝင်စေရန်။';
   }
 
@@ -2888,13 +2930,17 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return '\"$cardName\" တာရိုကဒ်အမည်ကို $languageCode သို့ ဘာသာပြန်ပါ။ အဖြေတွင် ဘာသာပြန်ထားသော အမည်သာ ပါရှိရမည်၊ ထပ်ဆောင်းစာသား သို့မဟုတ် အမှတ်အသား မပါဝင်ရ။';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'သင်သည် ပရော်ဖက်ရှင်နယ် တာရိုလော့ဂ်ဖြစ်သည်။ $name အသုံးပြုသူအတွက် ဒီမေးခွန်းဘာသာစကားဖြင့် \"နေ့စဉ်ကဒ်\" အား စိတ်အားထက်သန်စေသောစာတမ်းရေးပါ။ ဖွဲ့စည်းမှုနှင့် အရွယ်အစားကိုလိုက်နာပါ။\n🌟 $name၊ သင့်နေ့စဉ်ကဒ်မှာ $cardName ဖြစ်ပါတယ်!\n🔑 အဓိကစကားလုံးများ - <3–5 ချုပ် Keywords ကို ဖော်ပြပါ>\n🃏 အဓိပ္ပါယ် (≈45–50 စကား): ကဒ်၏ အဓိကစွမ်းအင်နှင့် ယနေ့ $name တွင် ဘယ်လိုပေါ်လွင်မည်ကို ဖော်ပြပါ။\n💡 အကြံပြုချက် (≈35–40 စကား): $name အတွက် ဒီစွမ်းအင်ကို အသုံးချနိုင်ရန် အ konkret လုပ်ဆောင်ချက် သို့မဟုတ် စိတ်ထားတစ်ခုကို အကြံပြုပါ။\n✨ အတည်ပြုချက် (တန်းတစ်ကြောင်း): \"ကျွန်တော်/ကျွန်မ...\" ဖြင့် စတင်သော အပြုသဘောဆောင်သော အတည်ပြုချက်။\nလိုအပ်ချက်များ - စုစုပေါင်း စကား ၁၂၀–၁၅၀ ဖြစ်ရမည်၊ နွေးထွေးသော အာရုံစူးစိုက်မှုရှိသော အသံ၊ ၃–၄ ခုသော အဓိကအကြောင်းအရာ emoji များ၊ HTML/Markdown စာရင်းများ မပါဝင်ရ၊ ပုဒ်မများကို နှစ်ကြိမ်ကြောင်းပြန်၍ ခွဲပါ။';
   }
 
@@ -3113,19 +3159,20 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုကတ်ပညာရှင်ဖြစ်သည်။ အသုံးပြုသူ $userName က မေးမြန်းသည် - \"$userQuestion\"။ \"ကယ်လ်တ်စ်ခရစ်စ်\" (ဝေ့တ်၏ ရိုးရာဇယား) ဖြင့် ဖြေကြားပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည် - အခြေအနေ - $situationCard၊ စိန်ခေါ်မှု - $challengeCard၊ အတွင်းစိတ် - $subconsciousCard၊ မကြာသေးမီက အတိတ် - $pastCard၊ အသိအမှတ်ပြုမှု - $consciousCard၊ နီးစပ်သော အနာဂတ် - $hiddenCard၊ အတွင်းပိုင်း ကိုယ်တိုင် - $selfCard၊ ပတ်ဝန်းကျင် - $environmentCard၊ မျှော်လင့်ချက် သို့မဟုတ် ကြောက်ရွံ့မှုများ - $hopesCard၊ အဆုံးသတ် - $outcomeCard။ $userName အမည်ကို အနည်းဆုံး ခြောက်ကြိမ် ဖော်ပြပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n1) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ် - ရှင်းလင်းချက်: အခြေအနေ ($situationCard) / စိန်ခေါ်မှု ($challengeCard) / အတွင်းစိတ် ($subconsciousCard) / မကြာသေးမီက အတိတ် ($pastCard) / အသိအမှတ်ပြုမှု ($consciousCard) / နီးစပ်သော အနာဂတ် ($hiddenCard) / အတွင်းပိုင်း ကိုယ်တိုင် ($selfCard) / ပတ်ဝန်းကျင် ($environmentCard) / မျှော်လင့်ချက်/ကြောက်ရွံ့မှု ($hopesCard) / အဆုံးသတ် ($outcomeCard)။\n3) အခြေအနေ — $situationCard (စကား ၄၅-၅၅): သုံးလုံးသော အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName အတွက် $userQuestion ဆိုင်ရာ လက်ရှိ အခြေအနေ။\n4) စိန်ခေါ်မှု — $challengeCard (စကား ၄၅-၅၅): $userName အတွက် အဓိက အတားအဆီး သို့မဟုတ် အကူအညီ။\n5) အတွင်းစိတ် — $subconsciousCard (စကား ၄၅-၅၅): $userName ကို ထိခိုက်နေသော ဖုံးကွယ်သော အကြောင်းအရာများ သို့မဟုတ် စွမ်းအင်များ။\n6) မကြာသေးမီက အတိတ် — $pastCard (စကား ၄၅-၅၅): $userName ကို လက်ရှိ အခြေအနေသို့ ဦးတည်စေသော ဖြစ်ရပ်များ။\n7) အသိအမှတ်ပြုမှု — $consciousCard (စကား ၄၅-၅၅): $userName ၏ ရည်မှန်းချက်များ၊ မျှော်လင့်ချက်များ သို့မဟုတ် သိရှိထားသော အရာများ။\n8) နီးစပ်သော အနာဂတ် — $hiddenCard (စကား ၄၅-၅၅): နီးစပ်သော အပတ်များအတွင်း ဖြစ်နိုင်သော ဖွံ့ဖြိုးမှု။\n9) အတွင်းပိုင်း ကိုယ်တိုင် — $selfCard (စကား ၄၅-၅၅): $userName ၏ အခြေအနေ၊ အရင်းအမြစ်များ။\n10) ပတ်ဝန်းကျင် — $environmentCard (စကား ၄၅-၅၅): လူများနှင့် အခြေအနေများ၏ သက်ရောက်မှု။\n11) မျှော်လင့်ချက် / ကြောက်ရွံ့မှု — $hopesCard (စကား ၄၅-၅၅): $userName ၏ မျှော်လင့်ချက်များ သို့မဟုတ် ကြောက်ရွံ့မှုများ။\n12) အဆုံးသတ် — $outcomeCard (စကား ၄၅-၅၅): ရှင်းလင်းချက်အကြံပြုချက်များနှင့်အတူ ဖြစ်နိုင်သော ရလဒ်။\n13) နိဂုံးချုပ် - $userName အတွက် မိတ်ဆွေကဲ့သို့ ထောက်ခံမှုနှင့် အပေါင်းအသင်း အားပေးစကား (စကား ၃၀-၃၅)။\nစုစုပေါင်း စကား ၄၀၀-၅၀၀ ဖြစ်ရမည်၊ အသက်ဝင်သော စကားသံ၊ အာရုံစူးစိုက်မှုရှိသော အီမိုဂျီ ၄-၆ ခုပါဝင်ရမည်။ အပိုဒ်တိုင်းကို နှစ်ကြိမ် အကြားကွာခြားစေပါ (\n)။ *၊ # သို့မဟုတ် အခြား အမှတ်အသားများ မသုံးပါနှင့်။ ရိုးရှင်းသော စာသားဖြင့်သာ ရေးပါ။';
   }
 
@@ -3141,11 +3188,12 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုကတ်ပညာရှင်ဖြစ်သည်။ အသုံးပြုသူ $userName က မေးမြန်းသည် - \"$userQuestion\"။ \"အတိတ် - လက်ရှိ - အနာဂတ်\" ဇယားဖြင့် ဖြေကြားပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည် - အတိတ် - $pastCard၊ လက်ရှိ - $presentCard၊ အနာဂတ် - $hiddenCard။ $userName အမည်ကို အနည်းဆုံး လေးကြိမ် ဖော်ပြပြီး ကတ်များ၏ အဓိပ္ပာယ်များကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n1) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ် - ရှင်းလင်းချက်: အတိတ် ($pastCard) - လက်ရှိ ($presentCard) - အနာဂတ် ($hiddenCard)။\n3) အတိတ် အပိုင်း — $pastCard (စကား ၄၀-၅၀): သုံးလုံးသော အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName အတွက် $userQuestion ဆိုင်ရာ အတိတ် ဖြစ်ရပ်များ၏ သက်ရောက်မှု။\n4) လက်ရှိ အပိုင်း — $presentCard (စကား ၄၀-၅၀): အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userQuestion အပေါ် သက်ရောက်နေသော လက်ရှိ အခြေအနေများ။\n5) အနာဂတ် အပိုင်း — $hiddenCard (စကား ၄၀-၅၀): အဓိက စကားလုံးများ၊ ကတ်၏ သင်္ကေတများနှင့် $userName ၏ မေးခွန်းအပေါ် ဖြစ်နိုင်သော အနာဂတ် ဖြစ်ရပ်များ။\n6) အဆုံးသတ် - အတိုချုံး အကြံပြုချက်၊ အပေါင်းအသင်းအားပေးစကား (စကား ၂၀-၃၀) နှင့် အခွင့်အလမ်းများ၏ ရှင်းလင်းချက်။\nစုစုပေါင်း စကား ၁၈၀-၂၂၀ ဖြစ်ရမည်၊ နွေးထွေးသော အာရုံစူးစိုက်မှုရှိသော စကားသံ၊ အကြောင်းအရာနှင့် သက်ဆိုင်သော အီမိုဂျီ ၃-၅ ခုပါဝင်ရမည်။ အပိုဒ်တိုင်းကို နှစ်ကြိမ် အကြားကွာခြားစေပါ (\n)။ *၊ # သို့မဟုတ် အခြား အမှတ်အသားများ မသုံးပါနှင့်။ ရိုးရှင်းသော စာသားဖြင့်သာ ရေးပါ။';
   }
 
@@ -3193,13 +3241,14 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်သည် အတွေ့အကြုံရှိသော တာရိုက်ဖတ်သူဖြစ်သည်။ အသုံးပြုသူ $userName က မေးသည်- \"$userQuestion\"။ \"ကဒ် ၅ လုံး\" ဖြန့်ဖြူးမှုဖြင့် ဖြေကြားပါ။ ကဒ်များကို အစဉ်လိုက်ပေးထားသည်- အတိတ် - $pastCard; ယနေ့ - $presentCard; အနာဂတ် - $hiddenCard; အကြောင်း - $adviceCard; ဖြစ်နိုင်သောရလဒ် - $outcomeCard။ ကဒ်တစ်ခုချင်းစီ၏ အဓိပ္ပါယ်ကိုရှင်းပြပါ၊ ၎င်းတို့၏ပေါင်းစပ်အဓိပ္ပါယ်ကိုလည်းရှင်းပြပါ။';
   }
 
@@ -3210,7 +3259,8 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
   String get makeNewSpread => 'ဖော်ပြချက်အသစ် ပြုလုပ်ရန်';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'အပလီကေးရှင်းသည် AI ကို ဖျော်ဖြေရေးရည်ရွယ်ချက်ဖြင့်သာ အသုံးပြုသည်။ သင်ယူသောဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -3218,8 +3268,13 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
       'သင့်တောင်းဆိုမှုကို လက်ခံပြီးပါပြီ။ ကျေးဇူးပြု၍ ကတ်များကို ဖွင့်ပါ။';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'သင်သည် အတွေ့အကြုံရှိသော တာရိုလော့ဂ်ဖြစ်သည်။ အသုံးပြုသူ $userName သည် \" $userQuestion \" ဟု မေးမြန်းသည်။ သုံးကတ်ဖြင့် ချစ်ခြင်းမေတ္တာ ဖော်ပြချက်ဖြင့် ဖြေကြားပါ။ ကတ်များမှာ အောက်ပါအတိုင်းဖြစ်သည်။ $userName ၏ခံစားချက် — $youCard၊ မိတ်ဖက်၏ခံစားချက် — $partnerCard၊ ဆက်ဆံရေး၏ လှုပ်ရှားမှု သို့မဟုတ် အလားအလာ — $dynamicCard။ $userName ၏နာမည်ကို အနည်းဆုံး သုံးကြိမ်ဖော်ပြပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ-\n1) $userName ၏နာမည်ဖြင့် မင်္ဂလာပါ။\n2) ခေါင်းစဉ်- ဖော်ပြချက်: $youCard | $partnerCard | $dynamicCard။\n3) $youCard — ၄၀–၅၀ စကားလုံး: ကတ်သည် $userName ၏ခံစားချက်နှင့် မျှော်လင့်ချက်များကို ဘယ်လိုဖော်ပြသည်ကို ဖေါ်ပြပါ။\n4) $partnerCard — ၄၀–၅၀ စကားလုံး: မိတ်ဖက်၏ စိတ်ခံစားမှုများနှင့် ရည်ရွယ်ချက်များကို $userName ၏မေးခွန်းနှင့် ပတ်သက်၍ ဖော်ပြပါ။\n5) $dynamicCard — ၄၀–၅၀ စကားလုံး: ဤနှစ်ခုသော စွမ်းအင်များသည် မည်သို့ ပေါင်းစပ်ပြီး ဆက်ဆံရေးကို မည်သို့ ဦးတည်စေသည်ကို ပြပါ။\n6) နိဂုံးချုပ်- $userName အတွက် နွေးထွေးသော အကြံဉာဏ်နှင့် အပေါင်းအသင်း အတည်ပြုချက် (၂၀–၂၅ စကားလုံး)။\nလိုအပ်ချက်များ- စုစုပေါင်း စကားလုံး ၁၅၀–၁၈၀၊ မိတ်ဆွေတစ်ယောက်လို ချစ်ခင်ရင်းနှီးသော အသံ၊ ၂–၄ ခုသော ခေါင်းစဉ်ဆိုင်ရာ အီမိုဂျီများ၊ ပုဒ်မများကို \\n\\n ဖြင့် ခွဲပါ၊ *, # နှင့် မည်သည့် အမှတ်အသားမျိုးကို မသုံးပါနှင့်။';
   }
 
@@ -3227,7 +3282,8 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
   String get loveSpread => 'ချစ်ခြင်းမေတ္တာ ဖော်ပြချက်';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'အပလီကေးရှင်းသည် AI ကို ဖျော်ဖြေရေးရည်ရွယ်ချက်ဖြင့်သာ အသုံးပြုသည်။ သင်ယူသောဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -3308,7 +3364,8 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
   String get monthlyForecast => 'တစ်လစာ ခန့်မှန်းချက်';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'အက်ပလီကေးရှင်းသည် အပျော်အပါး ရည်ရွယ်ချက်ဖြင့်သာ AI ကို အသုံးပြုသည်။ သင်ယူသော ဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့ တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -3333,7 +3390,8 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
       'ဖော်ထုတ်ချက်တန်ဖိုးရယူရာတွင် အမှားဖြစ်ပွားခဲ့သည်။ ထပ်မံကြိုးစားပါ။';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'အပလီကေးရှင်းသည် အပျော်အပါးရည်ရွယ်ချက်ဖြင့်သာ AI ကို အသုံးပြုသည်။ သင်ယူဆောင်ရွက်သော ဆုံးဖြတ်ချက်များအတွက် ကျွန်ုပ်တို့ တာဝန်မယူပါ။ လိုအပ်ပါက ကျွမ်းကျင်သူထံ ဆက်သွယ်ပါ။';
 
   @override
@@ -3564,48 +3622,60 @@ class AppLocalizationsMyMm extends AppLocalizationsMy {
       'ဘဝမှာ ညီမျှမှုကို ဘယ်လို ရှာဖွေမလဲ?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ်-ကိုချ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ အလုပ်အကိုင်နှင့် ငွေကြေးအတွက် ကတ်သုံးကတ်ဖြင့် ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည်။ ၁) အခြေအနေ — $situationCard၊ ၂) အတားအဆီး သို့မဟုတ် အဓိက အခွင့်အလမ်း — $challengeCard၊ ၃) အကြံပြုချက်နှင့် စွမ်းဆောင်ရည် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ $userName နှင့် မိတ်ဆွေတစ်ယောက်ကဲ့သို့ ပြောဆိုပြီး အရေးကြီးသောအချက်များကို ပြောပါ။ သူ၏ ရပ်တည်ရာ၊ တိုးတက်မှုကို တားဆီးနေသော အချက်များ (သို့) အရေးကြီးသော အခွင့်အလမ်းများကို ပြပါ။ လိုချင်သော ဝင်ငွေသို့ ဦးတည်ရန် လုပ်ဆောင်ရမည့် လက်တွေ့အဆင့်ကို ဖော်ပြပါ။ $userName အမည်ကို အနည်းဆုံး သုံးကြိမ် ထည့်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n၁) မင်္ဂလာပါ — စာကြောင်း ၁ ခု။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $situationCard | $challengeCard | $adviceCard။\n၃) $situationCard — ၄၅–၅၅ စကားလုံး: $userName ၏ လက်ရှိ အခြေအနေ (အလုပ်၊ စီးပွားရေး သို့မဟုတ် စုစုပေါင်း ငွေကြေးအခြေအနေ) နှင့် ကတ်၏ သင်္ကေတကို ဖော်ပြပါ။\n၄) $challengeCard — ၄၅–၅၅ စကားလုံး: အဓိက အတားအဆီး သို့မဟုတ် မမြင်သာသော အခွင့်အလမ်းကို ဖော်ထုတ်ပါ။ ၎င်းသည် ကတ်နှင့် $userName ၏ မေးခွန်းတွင် မည်သို့ ထင်ဟပ်နေသည်ကို ပြပါ။\n၅) $adviceCard — ၄၅–၅၅ စကားလုံး: သေချာသော လုပ်ဆောင်ချက်တစ်ခု (ဥပမာ၊ ဘတ်ဂျက် ပြန်လည်သုံးသပ်ခြင်း၊ လစာတိုးတောင်းဆိုခြင်း၊ ကျွမ်းကျင်မှုအသစ် သင်ယူခြင်း) ကို အကြံပြုပြီး ဖြစ်နိုင်သော ရလဒ်ကို ဖော်ပြပါ။\n၆) အဆုံးသတ် — ၂၀–၂၅ စကားလုံး: မိတ်ဆွေတစ်ယောက်ကဲ့သို့ အကျဉ်းချုပ်၊ အကောင်းမြင်သော အတည်ပြုချက်နှင့် စီးပွားရေးဆိုင်ရာ အီမိုဂျီ ၂ ခု။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၁၆၀–၁၈၅၊ ရိုးရှင်းသေချာသော စီးပွားရေးအသံ၊ စကားပုံမပါ၊ အီမိုဂျီ ၂–၃ ခု; အပိုဒ်များကို \\n\\n ဖြင့် ခွဲပါ; *, # နှင့် အခြား အမှတ်အသား မသုံးပါ။';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ ကတ်သုံးကတ်ဖြင့် «အားသာချက်နှင့်အားနည်းချက်» ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးပို့ထားသည်။ အားသာချက်များ — $proCard၊ အားနည်းချက်များ — $conCard၊ အကြံပြုချက်/အဆုံးသတ် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ $userName အမည်ကို အနည်းဆုံး သုံးကြိမ် ထည့်ပြီး ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံကို လိုက်နာပါ။\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $proCard | $conCard | $adviceCard။\n၃) အားသာချက်များ: $proCard — ၄၅–၅၅ စကားလုံး။ $userName ၏ အခြေအနေတွင် ကတ်သည် ပေးသော အဓိက အကျိုးကျေးဇူးများ သို့မဟုတ် အကောင်းမြင်သော အရင်းအမြစ်များကို ဖော်ပြပါ။\n၄) အားနည်းချက်များ: $conCard — ၄၅–၅၅ စကားလုံး။ $userName အတွက် ဆုံးဖြတ်ချက်၏ အန္တရာယ်များ၊ ဖုံးကွယ်ထားသော ကုန်ကျစရိတ်များ သို့မဟုတ် အားနည်းချက်များကို ဖော်ပြပါ။\n၅) အကြံပြုချက်: $adviceCard — ၄၅–၅၅ စကားလုံး။ အားသာချက်များနှင့် အားနည်းချက်များကို ချိန်ညှိပြီး တစ်ခုသော သေချာသော လုပ်ဆောင်ချက် (ကြိယာ + အရာဝတ္ထု) ကို အကြံပြုပါ။ ၎င်းသည် $userName အတွက် ရလဒ်ကို မည်သို့ ပြောင်းလဲစေမည်ကို ပြောပါ။\n၆) အဆုံးသတ် — «ဟုတ်» သို့မဟုတ် «မဟုတ်» စကားလုံးတစ်လုံး၊ ထို့နောက် စာကြောင်းတစ်ကြောင်းဖြင့် အကြောင်းပြချက်နှင့် အားပေးသော အတည်ပြုချက် (၂၀–၂၅ စကားလုံး)၊ အီမိုဂျီ ၁–၂ ခုဖြင့်။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၁၅၀–၁၈၀၊ မိတ်ဆွေတစ်ယောက်ကဲ့သို့ စကားပြောစတိုင်; အပိုဒ်တိုင်းကို \\n\\n ဖြင့် ခွဲပါ; *, # နှင့် အခြား အမှတ်အသား မသုံးပါ။';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ ပရော်ဖက်ရှင်နယ် တာရိုလိုဂ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ $month အတွက် «လ၏ဘီး» ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း အဆင့်လိုက် ပေးထားသည်။ ၁ — $card1, ၂ — $card2, ၃ — $card3, ၄ — $card4, ၅ — $card5, ၆ — $card6, ၇ — $card7, ၈ — $card8, ၉ — $card9, ၁၀ — $card10, ၁၁ — $card11, ၁၂ — $card12။ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ အမည်ကို အနည်းဆုံး ငါးကြိမ် ထည့်ပါ၊ သို့သော် **ရက်စွဲတိုင်းနောက်တွင် မထည့်ပါနှင့်** — အကြံပြုချက်များတွင်သာ မှတ်မိပါ။ ရက်စွဲများကို အောက်ပါအတိုင်း အသုံးပြုပါ။ ၁–၃, ၄–၆, ၇–၉, ၁၀–၁၂, ၁၃–၁၅, ၁၆–၁၈, ၁၉–၂၁, ၂၂–၂၄, ၂၅–၂၆, ၂၇–၂၈, ၂၉–၃၀, ၃၁ (လတွင် ၃၀ ရက်သာရှိပါက ၁၂ ကြိမ်ကတ်သည် ၃၀ ရက်နှင့် ဆက်စပ်သည်)။ ဖော်ပြချက်:\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ (၁–၂ စာကြောင်း)။\n၂) ဖော်ပြချက်ရည်ရွယ်ချက် အကျဉ်းချုပ် (စာကြောင်း ၁ ခု)။\n၃–၁၄) ကတ်တိုင်းအတွက် «၁–၃ $month — $card1» စာကြောင်းကို အသုံးပြုပါ (အမည်မပါ)။ ထို့နောက် အချိန်ကာလ၏ အဓိက စွမ်းအင်နှင့် လက်တွေ့ အကြံပြုချက် ၂–၃ စာကြောင်း၊ $userName ကို သဘာဝကျစွာ ထည့်သွင်းပါ။\n၁၅) အဆုံးသတ်: လအတွက် အကြံပြုချက် စုစုပေါင်း (အနီးကပ် ၄၀ စကားလုံး) နှင့် စိတ်အားထက်သန်စေသော အတည်ပြုချက်၊ အီမိုဂျီ ၂–၃ ခုဖြင့်။\nလိုအပ်ချက်များ: စုစုပေါင်း စကားလုံး ၃၆၀–၄၀၀; မိတ်ဆွေတစ်ယောက်ကဲ့သို့ စကားသံ; အပိုဒ်များကို \\n\\n ဖြင့် ခွဲပါ; *, #, စာရင်း သို့မဟုတ် နည်းပညာဆိုင်ရာ မှတ်စု မပါ။';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'သင်မှာ အတွေ့အကြုံရှိသော တာရိုလိုဂ်-ကိုချ် ဖြစ်သည်။ အသုံးပြုသူ $userName က «$userQuestion» ဟုမေးသည်။ «ကိုယ်တိုင်တိုးတက်မှုနှင့် သွန်းညှိမှု» အတွက် ကတ်ခုနှစ်ကတ်ဖြင့် ဖော်ပြပါ။ ကတ်များကို အောက်ပါအတိုင်း ပေးထားသည်။ အဓိက — $coreCard၊ စိတ် — $mindCard၊ စိတ်ခံစားမှု — $emotionCard၊ ခန္ဓာကိုယ် — $bodyCard၊ အရင်းအမြစ် — $strengthCard၊ အတားအဆီး — $challengeCard၊ အကြံပြုချက် — $adviceCard။ အသုံးပြုသူ $userName ၏ လိင်ကို အမည်အရ သတ်မှတ်ပြီး မှန်ကန်သော နောက်ဆုံးစကားလုံးများနှင့် ဆက်ဆံပါ။ အသက်သွင်းပြီး ထောက်ခံမှုရှိစေရန် $userName အမည်ကို အနည်းဆုံး လေးကြိမ် ထည့်ပါ။ ကတ်တိုင်းကို မေးခွန်းနှင့် ဆက်စပ်ပါ။ ဖွဲ့စည်းပုံနှင့် ဖော်မတ်ကို လိုက်နာပါ။\n၁) $userName အမည်ဖြင့် မင်္ဂလာပါ။\n၂) ခေါင်းစဉ်: ဖော်ပြချက်: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard။\n၃) $coreCard — $userName ၏ ကိုယ်တိုင်တိုးတက်မှု အဓိက အာရုံစိုက်ချက်ကို ဖော်ပြပါ။\n၄) $mindCard — စိတ်ထားကို မည်သို့ ပြင်ဆင်ရမည်နှင့် ဘာကို သင်ယူရမည်ကို ပြောပါ။\n၅) $emotionCard — စိတ်ခံစားမှု အရင်းအမြစ်နှင့် အားပေးမှုကို ဖော်ပြပါ။\n၆) $bodyCard — ခန္ဓာကိုယ်နှင့် စွမ်းအင်ကို မည်သို့ စောင့်ရှောက်ရမည်ကို အကြံပြုပါ။\n၇) $strengthCard — အတွင်းစိတ် လက်ဆောင် သို့မဟုတ် ပြင်ပ ထောက်ခံမှုကို ပြပါ။\n၈) $challengeCard — အဓိက မညီမျှမှုနှင့် ၎င်း၏ အကြောင်းရင်းကို ဖော်ပြပါ။\n၉) $adviceCard — အစိတ်အပိုင်းအားလုံးကို ပေါင်းစည်းသည့် သေချာသော လုပ်ဆောင်ချက်ကို အကြံပြုပါ။\n၁၀) အဆုံးသတ်: စိတ်အားထက်သန်စေသော အတည်ပြုချက်နှင့် နွေးထွေးသော ဆုတောင်း၊ အီမိုဂျီ ၂–၃ ခုဖြင့်။\nလိုအပ်ချက်များ: အပိုင်း';
   }
 

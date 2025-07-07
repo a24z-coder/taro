@@ -377,7 +377,8 @@ class AppLocalizationsDe extends AppLocalizations {
       'Geben Sie Ihre Frage ein...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Das Legesystem \"Selbstentwicklung und Balance\" besteht aus 7 Karten, die in Form eines Kreises angeordnet sind. Jede Karte symbolisiert einen bestimmten Aspekt Ihres spirituellen Wachstums und Ihrer inneren Harmonie.';
 
   @override
@@ -992,7 +993,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Mache für $userName eine Legung zur Selbstentwicklung und zum Gleichgewicht mit diesen drei Karten: $cards';
   }
 
@@ -1018,13 +1021,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschreibe die allgemeine Bedeutung der Tarotkarte \"$cardName\" in der Sprache $lang. Füge Geschichte, Symbolik und Hauptbedeutungen hinzu.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschreibe die umgekehrte Bedeutung der Tarotkarte \"$cardName\" in der Sprache $lang. Füge gegensätzliche Bedeutungen und Warnungen hinzu.';
   }
 
@@ -1059,13 +1066,17 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Übersetze den Namen der Tarotkarte \"$cardName\" ins $languageCode. Die Antwort soll nur den übersetzten Namen enthalten, ohne zusätzlichen Text oder Satzzeichen.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Du bist ein professioneller Tarot-Leser. Schreibe eine inspirierende \"Karte des Tages\"-Nachricht in der Sprache dieser Anfrage für den Benutzer $name. Halte dich an die Struktur und den Umfang.\n🌟 $name, deine Karte des Tages ist $cardName!\n🔑 Schlüsselwörter: <gib 3–5 kurze Keywords an>\n🃏 Bedeutung (≈45–50 Wörter): Beschreibe die Hauptenergie der Karte und wie sie sich heute bei $name zeigen wird.\n💡 Rat (≈35–40 Wörter): Schlage eine konkrete Handlung oder Einstellung vor, die $name hilft, diese Energie zu nutzen.\n✨ Affirmation (1 Zeile): eine positive Aussage, beginnend mit \"Ich…\".\nAnforderungen: Gesamtlänge 120–150 Wörter, warmer esoterischer Ton, 3–4 thematische Emojis, keine Listen in HTML/Markdown; Absätze durch doppelten Zeilenumbruch (\\n\\n) trennen.';
   }
 
@@ -1287,19 +1298,20 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit dem Legesystem \"Keltisches Kreuz\" (klassisches Waite-Schema). Die Karten sind wie folgt verteilt: Situation - $situationCard; Herausforderung - $challengeCard; Unterbewusstsein - $subconsciousCard; jüngste Vergangenheit - $pastCard; Bewusstsein - $consciousCard; nahe Zukunft - $hiddenCard; inneres Selbst - $selfCard; Umfeld - $environmentCard; Hoffnungen oder Ängste - $hopesCard; Ergebnis - $outcomeCard. Erwähne den Namen $userName mindestens sechsmal und verbinde jede Karte unbedingt mit der Frage. Beachte die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: Situation ($situationCard) / Herausforderung ($challengeCard) / Unterbewusstsein ($subconsciousCard) / jüngste Vergangenheit ($pastCard) / Bewusstsein ($consciousCard) / nahe Zukunft ($hiddenCard) / inneres Selbst ($selfCard) / Umfeld ($environmentCard) / Hoffnungen/Ängste ($hopesCard) / Ergebnis ($outcomeCard).\n3) Situation — $situationCard (45-55 Wörter): drei Schlüsselwörter, Symbolik der Karte und aktuelle Lage zur Frage $userQuestion für $userName.\n4) Herausforderung — $challengeCard (45-55 Wörter): Haupthindernis oder Unterstützung für $userName.\n5) Unterbewusstsein — $subconsciousCard (45-55 Wörter): verborgene Motive oder Energien, die $userName beeinflussen.\n6) Jüngste Vergangenheit — $pastCard (45-55 Wörter): Ereignisse, die $userName zur aktuellen Situation geführt haben.\n7) Bewusstsein — $consciousCard (45-55 Wörter): Ziele, Erwartungen oder das, was $userName bewusst ist.\n8) Nahe Zukunft — $hiddenCard (45-55 Wörter): wahrscheinliche Entwicklung in den kommenden Wochen.\n9) Inneres Selbst — $selfCard (45-55 Wörter): Zustand, Ressourcen von $userName.\n10) Umfeld — $environmentCard (45-55 Wörter): Einfluss von Menschen und Umständen.\n11) Hoffnungen / Ängste — $hopesCard (45-55 Wörter): Erwartungen oder Befürchtungen von $userName.\n12) Ergebnis — $outcomeCard (45-55 Wörter): wahrscheinliches Resultat unter Berücksichtigung des Legungsrats.\n13) Abschluss: freundliche Unterstützung und positive Affirmation (30-35 Wörter) für $userName.\nGesamtumfang: 400-500 Wörter, lebendiger, gesprächiger Ton, 4-6 esoterische Emojis; jeder Abschnitt durch zwei Zeilenumbrüche trennen.\nKeine Verwendung von *, # oder anderer Markierung; nur einfacher Text.';
   }
 
@@ -1316,11 +1328,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit der Legung \"Vergangenheit - Gegenwart - Zukunft\". Die Karten sind wie folgt verteilt: Vergangenheit - $pastCard; Gegenwart - $presentCard; Zukunft - $hiddenCard. Erwähne den Namen $userName mindestens viermal und verbinde die Bedeutungen der Karten unbedingt mit der Frage. Beachte die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: Vergangenheit ($pastCard) - Gegenwart ($presentCard) - Zukunft ($hiddenCard).\n3) Block VERGANGENHEIT — $pastCard (40-50 Wörter): drei Schlüsselwörter, Symbolik der Karte und Erklärung, wie vergangene Fakten den Ausgang der Frage $userQuestion für $userName beeinflussen.\n4) Block GEGENWART — $presentCard (40-50 Wörter): Schlüsselwörter, Symbolik der Karte und aktuelle Faktoren, die die Antwort auf die Frage $userQuestion beeinflussen.\n5) Block ZUKUNFT — $hiddenCard (40-50 Wörter): Schlüsselwörter, Symbolik der Karte und wahrscheinliches Szenario der Entwicklung der Situation zur Frage $userName.\n6) Ergebnis: kurzer Rat, positive Affirmation (20-30 Wörter) und klare Zusammenfassung der Chancen.\nGesamtumfang: 180-220 Wörter, warmer esoterischer Ton, 3-5 thematische Emojis; jeder Abschnitt durch zwei Zeilenumbrüche trennen.\nKeine Verwendung von *, # oder anderer Markierung; nur einfacher Text.';
   }
 
@@ -1368,13 +1381,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarotleser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit dem \"5 Karten\" Spread. Die Karten werden in der Reihenfolge gegeben: Vergangenheit - $pastCard; Gegenwart - $presentCard; Verborgenes - $hiddenCard; Rat - $adviceCard; Ergebnis - $outcomeCard. Sprich $userName mindestens fünfmal an und stelle sicher, dass du jede Karte mit der Frage verbindest. Befolge die Struktur:\n\n1) Begrüßung mit Namen $userName.\n\n2) Titel: Spread: Vergangenheit ($pastCard) / Gegenwart ($presentCard) / Verborgenes ($hiddenCard) / Rat ($adviceCard) / Ergebnis ($outcomeCard).\n\n3) Vergangenheit — $pastCard (45-55 Wörter): drei Schlüsselwörter, Kartensymbolik und der Einfluss der Vergangenheit auf $userQuestion für $userName.\n\n4) Gegenwart — $presentCard (45-55 Wörter): Schlüsselwörter, Symbolik und der aktuelle Zustand der Frage von $userName.\n\n5) Verborgenes — $hiddenCard (45-55 Wörter): was unbewusst die Situation von $userName beeinflusst, mit Fokus auf Symbolik.\n\n6) Rat — $adviceCard (45-55 Wörter): praktische Handlung für $userName, basierend auf den Bildern der Karte.\n\n7) Ergebnis — $outcomeCard (45-55 Wörter): wahrscheinliches Szenario wenn der Rat befolgt wird, an $userName gerichtet.\n\n8) Schluss: freundliche Unterstützung und positive Affirmation (25-30 Wörter) für $userName.\n\nAnforderungen: Gesamtvolumen 230-260 Wörter, lebendiger Gesprächston, 3-5 esoterische Emojis; trenne jeden Block mit doppeltem Zeilenumbruch (\\n\\n); verwende keine Symbole *, # oder andere Markierung; schreibe nur einfachen Text.';
   }
 
@@ -1385,7 +1399,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get makeNewSpread => 'Neues Legesystem erstellen';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -1393,8 +1408,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ihre Anfrage wurde angenommen. Bitte legen Sie die Karten aus.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Nutzer $userName fragt: \"$userQuestion\". Antworte mit einer Liebeslegung aus drei Karten. Die Karten sind wie folgt gegeben: Gefühle von $userName — $youCard; Gefühle des Partners — $partnerCard; Dynamik oder Potenzial der Beziehung — $dynamicCard. Erwähne den Namen $userName mindestens dreimal und verbinde jede Karte mit der Frage. Halte die Struktur ein:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 Wörter: Beschreibe, was die Karte über die Gefühle und Erwartungen von $userName aussagt.\n4) $partnerCard — 40–50 Wörter: Erkläre die Emotionen und Absichten des Partners in Bezug auf die Frage von $userName.\n5) $dynamicCard — 40–50 Wörter: Zeige, wie diese beiden Energien zusammenwirken und wohin die Beziehung führen kann.\n6) Abschluss: Ein warmer Rat und eine positive Affirmation (20–25 Wörter) für $userName.\nAnforderungen: Gesamtumfang 150–180 Wörter, freundlicher romantischer Ton, 2–4 thematische Emojis; Absätze durch doppelten Zeilenumbruch (\\n\\n) trennen; vermeide die Zeichen *, # und jegliche Markierung.';
   }
 
@@ -1402,7 +1422,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get loveSpread => 'Liebeslegung';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -1483,7 +1504,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get monthlyForecast => 'Monatsprognose';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -1508,7 +1530,8 @@ class AppLocalizationsDe extends AppLocalizations {
       'Fehler beim Abrufen des Legungswerts. Bitte versuchen Sie es erneut.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -1738,48 +1761,60 @@ class AppLocalizationsDe extends AppLocalizations {
       'Wie finde ich Harmonie im Leben?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Coach. Der Nutzer $userName fragt: \"$userQuestion\". Mache ein Drei-Karten-Legung zu Karriere und Finanzen. Die Karten sind wie folgt übergeben: 1) Situation — $situationCard; 2) Hindernis oder Schlüsselgelegenheit — $challengeCard; 3) Rat und Potenzial — $adviceCard. Bestimme das Geschlecht des Nutzers anhand des Namens $userName und verwende die richtigen Endungen und Pronomen. Sprich $userName freundlich und sachlich an: Zeige, wo er steht, was das Wachstum blockiert (oder welche Chance wichtig ist zu erkennen) und welcher praktische Schritt zum gewünschten Einkommen führt. Erwähne den Namen $userName mindestens dreimal. Halte dich an die Struktur:\n1) Begrüßung — 1 Satz.\n2) Überschrift: Legung: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 Wörter: Beschreibe die aktuelle Lage von $userName (Arbeit, Geschäft oder allgemeiner finanzieller Hintergrund) und die Symbolik der Karte.\n4) $challengeCard — 45–55 Wörter: Erläutere das Hauptbarriere oder eine verborgene Möglichkeit; zeige, wie sie sich in der Karte und in der Frage von $userName widerspiegelt.\n5) $adviceCard — 45–55 Wörter: Schlage eine konkrete Handlung vor (z. B. Budget überprüfen, Gehaltserhöhung anfragen, neue Kompetenz erlernen) und beschreibe das mögliche Ergebnis.\n6) Abschluss — 20–25 Wörter: Freundlicher Schluss, positive Affirmation und 2 geschäftliche Emojis.\nAnforderungen: Gesamtumfang 160–185 Wörter, klarer geschäftlicher Ton ohne Jargon, 2–3 Emojis; Absätze mit doppeltem Zeilenumbruch \\n\\n trennen; keine *, # oder andere Markierungen verwenden.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Nutzer $userName fragt: \"$userQuestion\". Mache eine Drei-Karten-Legung \"Pro und Contra\". Die Karten sind so übergeben: Vorteile — $proCard; Nachteile — $conCard; Rat/Ergebnis — $adviceCard. Bestimme das Geschlecht des Nutzers anhand des Namens $userName und verwende die richtigen Endungen und Pronomen. Erwähne den Namen $userName mindestens dreimal und verbinde jede Karte mit der Frage. Halte dich an die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: $proCard | $conCard | $adviceCard.\n3) Vorteile: $proCard — 45–55 Wörter. Erkläre die wichtigsten Vorteile oder positiven Ressourcen, die diese Karte in die Situation von $userName bringt.\n4) Nachteile: $conCard — 45–55 Wörter. Beschreibe Risiken, versteckte Kosten oder Schwachstellen der Entscheidung für $userName.\n5) Rat: $adviceCard — 45–55 Wörter. Wiege die Vor- und Nachteile ab, schlage eine konkrete Handlung vor (Verb + Objekt) und erkläre, wie das den Ausgang für $userName verändert.\n6) Ergebnis — ein Wort \"Ja\" oder \"Nein\", dann 1 Begründungssatz und eine ermutigende Affirmation (20–25 Wörter) mit 1–2 Emojis.\nAnforderungen: Gesamtumfang 150–180 Wörter, freundlicher, umgangssprachlicher Ton; jeden Block mit doppeltem Zeilenumbruch \\n\\n trennen; keine *, # oder andere Markierungen verwenden.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Ты опытный таролог-коуч. Пользователь $userName спрашивает: «$userQuestion». Сделай расклад «Саморазвитие и баланс» из семи карт. Карты даны так: ядро — $coreCard; разум — $mindCard; эмоции — $emotionCard; тело — $bodyCard; ресурс — $strengthCard; блок — $challengeCard; совет — $adviceCard. Определи пол пользователя по имени $userName и обращайся с правильными окончаниями и местоимениями. Говори живо и поддерживающе, упоминай имя $userName не меньше четырёх раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру и формат:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n\n3) $coreCard — опиши главный фокус саморазвития $userName.\n\n4) $mindCard — расскажи, как настроить мышление и чему учиться.\n\n5) $emotionCard — раскрой эмоциональный ресурс и мотивацию.\n\n6) $bodyCard — подскажи, как заботиться о теле и энергии.\n\n7) $strengthCard — покажи внутренний дар или внешнюю поддержку.\n\n8) $challengeCard — обозначь ключевой дисбаланс и его причины.\n\n9) $adviceCard — предложи конкретное действие, объединяющее все аспекты.\n\n10) Финал: вдохновляющая аффирмация и тёплое напутствие с 2–3 эмодзи.\n\nТребования: каждый пункт 2–3 предложения; между пунктами ставь двойной перевод строки (\\n\\n); не используй символы *, # или другую разметку.';
   }
 
@@ -2203,7 +2238,8 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
       'Geben Sie Ihre Frage ein...';
 
   @override
-  String get self_development_balance_spread_screen_self_development_explanation =>
+  String
+  get self_development_balance_spread_screen_self_development_explanation =>
       'Das Legesystem \"Selbstentwicklung und Balance\" besteht aus 7 Karten, die in Form eines Kreises angeordnet sind. Jede Karte symbolisiert einen bestimmten Aspekt Ihres spirituellen Wachstums und Ihrer inneren Harmonie.';
 
   @override
@@ -2818,7 +2854,9 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String self_development_balance_spread_screen_prompt(
-      Object cards, Object userName) {
+    Object cards,
+    Object userName,
+  ) {
     return 'Mache für $userName eine Legung zur Selbstentwicklung und zum Gleichgewicht mit diesen drei Karten: $cards';
   }
 
@@ -2844,13 +2882,17 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String card_detail_screen_general_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschreibe die allgemeine Bedeutung der Tarotkarte \"$cardName\" in der Sprache $lang. Füge Geschichte, Symbolik und Hauptbedeutungen hinzu.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-      Object cardName, Object lang) {
+    Object cardName,
+    Object lang,
+  ) {
     return 'Beschreibe die umgekehrte Bedeutung der Tarotkarte \"$cardName\" in der Sprache $lang. Füge gegensätzliche Bedeutungen und Warnungen hinzu.';
   }
 
@@ -2885,13 +2927,17 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-      Object cardName, Object languageCode) {
+    Object cardName,
+    Object languageCode,
+  ) {
     return 'Übersetze den Namen der Tarotkarte \"$cardName\" ins $languageCode. Die Antwort soll nur den übersetzten Namen enthalten, ohne zusätzlichen Text oder Satzzeichen.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-      Object cardName, Object name) {
+    Object cardName,
+    Object name,
+  ) {
     return 'Du bist ein professioneller Tarot-Leser. Schreibe eine inspirierende \"Karte des Tages\"-Nachricht in der Sprache dieser Anfrage für den Benutzer $name. Halte dich an die Struktur und den Umfang.\n🌟 $name, deine Karte des Tages ist $cardName!\n🔑 Schlüsselwörter: <gib 3–5 kurze Keywords an>\n🃏 Bedeutung (≈45–50 Wörter): Beschreibe die Hauptenergie der Karte und wie sie sich heute bei $name zeigen wird.\n💡 Rat (≈35–40 Wörter): Schlage eine konkrete Handlung oder Einstellung vor, die $name hilft, diese Energie zu nutzen.\n✨ Affirmation (1 Zeile): eine positive Aussage, beginnend mit \"Ich…\".\nAnforderungen: Gesamtlänge 120–150 Wörter, warmer esoterischer Ton, 3–4 thematische Emojis, keine Listen in HTML/Markdown; Absätze durch doppelten Zeilenumbruch (\\n\\n) trennen.';
   }
 
@@ -3113,19 +3159,20 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String celtic_cross_screen_prompt(
-      Object challengeCard,
-      Object consciousCard,
-      Object environmentCard,
-      Object hiddenCard,
-      Object hopesCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object selfCard,
-      Object situationCard,
-      Object subconsciousCard,
-      Object userName,
-      Object userQuestion) {
+    Object challengeCard,
+    Object consciousCard,
+    Object environmentCard,
+    Object hiddenCard,
+    Object hopesCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object selfCard,
+    Object situationCard,
+    Object subconsciousCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit dem Legesystem \"Keltisches Kreuz\" (klassisches Waite-Schema). Die Karten sind wie folgt verteilt: Situation - $situationCard; Herausforderung - $challengeCard; Unterbewusstsein - $subconsciousCard; jüngste Vergangenheit - $pastCard; Bewusstsein - $consciousCard; nahe Zukunft - $hiddenCard; inneres Selbst - $selfCard; Umfeld - $environmentCard; Hoffnungen oder Ängste - $hopesCard; Ergebnis - $outcomeCard. Erwähne den Namen $userName mindestens sechsmal und verbinde jede Karte unbedingt mit der Frage. Beachte die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: Situation ($situationCard) / Herausforderung ($challengeCard) / Unterbewusstsein ($subconsciousCard) / jüngste Vergangenheit ($pastCard) / Bewusstsein ($consciousCard) / nahe Zukunft ($hiddenCard) / inneres Selbst ($selfCard) / Umfeld ($environmentCard) / Hoffnungen/Ängste ($hopesCard) / Ergebnis ($outcomeCard).\n3) Situation — $situationCard (45-55 Wörter): drei Schlüsselwörter, Symbolik der Karte und aktuelle Lage zur Frage $userQuestion für $userName.\n4) Herausforderung — $challengeCard (45-55 Wörter): Haupthindernis oder Unterstützung für $userName.\n5) Unterbewusstsein — $subconsciousCard (45-55 Wörter): verborgene Motive oder Energien, die $userName beeinflussen.\n6) Jüngste Vergangenheit — $pastCard (45-55 Wörter): Ereignisse, die $userName zur aktuellen Situation geführt haben.\n7) Bewusstsein — $consciousCard (45-55 Wörter): Ziele, Erwartungen oder das, was $userName bewusst ist.\n8) Nahe Zukunft — $hiddenCard (45-55 Wörter): wahrscheinliche Entwicklung in den kommenden Wochen.\n9) Inneres Selbst — $selfCard (45-55 Wörter): Zustand, Ressourcen von $userName.\n10) Umfeld — $environmentCard (45-55 Wörter): Einfluss von Menschen und Umständen.\n11) Hoffnungen / Ängste — $hopesCard (45-55 Wörter): Erwartungen oder Befürchtungen von $userName.\n12) Ergebnis — $outcomeCard (45-55 Wörter): wahrscheinliches Resultat unter Berücksichtigung des Legungsrats.\n13) Abschluss: freundliche Unterstützung und positive Affirmation (30-35 Wörter) für $userName.\nGesamtumfang: 400-500 Wörter, lebendiger, gesprächiger Ton, 4-6 esoterische Emojis; jeder Abschnitt durch zwei Zeilenumbrüche trennen.\nKeine Verwendung von *, # oder anderer Markierung; nur einfacher Text.';
   }
 
@@ -3142,11 +3189,12 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-      Object hiddenCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object hiddenCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit der Legung \"Vergangenheit - Gegenwart - Zukunft\". Die Karten sind wie folgt verteilt: Vergangenheit - $pastCard; Gegenwart - $presentCard; Zukunft - $hiddenCard. Erwähne den Namen $userName mindestens viermal und verbinde die Bedeutungen der Karten unbedingt mit der Frage. Beachte die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: Vergangenheit ($pastCard) - Gegenwart ($presentCard) - Zukunft ($hiddenCard).\n3) Block VERGANGENHEIT — $pastCard (40-50 Wörter): drei Schlüsselwörter, Symbolik der Karte und Erklärung, wie vergangene Fakten den Ausgang der Frage $userQuestion für $userName beeinflussen.\n4) Block GEGENWART — $presentCard (40-50 Wörter): Schlüsselwörter, Symbolik der Karte und aktuelle Faktoren, die die Antwort auf die Frage $userQuestion beeinflussen.\n5) Block ZUKUNFT — $hiddenCard (40-50 Wörter): Schlüsselwörter, Symbolik der Karte und wahrscheinliches Szenario der Entwicklung der Situation zur Frage $userName.\n6) Ergebnis: kurzer Rat, positive Affirmation (20-30 Wörter) und klare Zusammenfassung der Chancen.\nGesamtumfang: 180-220 Wörter, warmer esoterischer Ton, 3-5 thematische Emojis; jeder Abschnitt durch zwei Zeilenumbrüche trennen.\nKeine Verwendung von *, # oder anderer Markierung; nur einfacher Text.';
   }
 
@@ -3194,13 +3242,14 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
 
   @override
   String five_cards_screen_prompt(
-      Object adviceCard,
-      Object hiddenCard,
-      Object outcomeCard,
-      Object pastCard,
-      Object presentCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object hiddenCard,
+    Object outcomeCard,
+    Object pastCard,
+    Object presentCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarotleser. Der Benutzer $userName fragt: \"$userQuestion\". Antworte mit dem \"5 Karten\" Spread. Die Karten werden in der Reihenfolge gegeben: Vergangenheit - $pastCard; Gegenwart - $presentCard; Verborgenes - $hiddenCard; Rat - $adviceCard; Ergebnis - $outcomeCard. Sprich $userName mindestens fünfmal an und stelle sicher, dass du jede Karte mit der Frage verbindest. Befolge die Struktur:\n\n1) Begrüßung mit Namen $userName.\n\n2) Titel: Spread: Vergangenheit ($pastCard) / Gegenwart ($presentCard) / Verborgenes ($hiddenCard) / Rat ($adviceCard) / Ergebnis ($outcomeCard).\n\n3) Vergangenheit — $pastCard (45-55 Wörter): drei Schlüsselwörter, Kartensymbolik und der Einfluss der Vergangenheit auf $userQuestion für $userName.\n\n4) Gegenwart — $presentCard (45-55 Wörter): Schlüsselwörter, Symbolik und der aktuelle Zustand der Frage von $userName.\n\n5) Verborgenes — $hiddenCard (45-55 Wörter): was unbewusst die Situation von $userName beeinflusst, mit Fokus auf Symbolik.\n\n6) Rat — $adviceCard (45-55 Wörter): praktische Handlung für $userName, basierend auf den Bildern der Karte.\n\n7) Ergebnis — $outcomeCard (45-55 Wörter): wahrscheinliches Szenario wenn der Rat befolgt wird, an $userName gerichtet.\n\n8) Schluss: freundliche Unterstützung und positive Affirmation (25-30 Wörter) für $userName.\n\nAnforderungen: Gesamtvolumen 230-260 Wörter, lebendiger Gesprächston, 3-5 esoterische Emojis; trenne jeden Block mit doppeltem Zeilenumbruch (\\n\\n); verwende keine Symbole *, # oder andere Markierung; schreibe nur einfachen Text.';
   }
 
@@ -3211,7 +3260,8 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
   String get makeNewSpread => 'Neues Legesystem erstellen';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -3219,8 +3269,13 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
       'Ihre Anfrage wurde angenommen. Bitte legen Sie die Karten aus.';
 
   @override
-  String love_spread_prompt(Object dynamicCard, Object partnerCard,
-      Object userName, Object userQuestion, Object youCard) {
+  String love_spread_prompt(
+    Object dynamicCard,
+    Object partnerCard,
+    Object userName,
+    Object userQuestion,
+    Object youCard,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Nutzer $userName fragt: \"$userQuestion\". Antworte mit einer Liebeslegung aus drei Karten. Die Karten sind wie folgt gegeben: Gefühle von $userName — $youCard; Gefühle des Partners — $partnerCard; Dynamik oder Potenzial der Beziehung — $dynamicCard. Erwähne den Namen $userName mindestens dreimal und verbinde jede Karte mit der Frage. Halte die Struktur ein:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 Wörter: Beschreibe, was die Karte über die Gefühle und Erwartungen von $userName aussagt.\n4) $partnerCard — 40–50 Wörter: Erkläre die Emotionen und Absichten des Partners in Bezug auf die Frage von $userName.\n5) $dynamicCard — 40–50 Wörter: Zeige, wie diese beiden Energien zusammenwirken und wohin die Beziehung führen kann.\n6) Abschluss: Ein warmer Rat und eine positive Affirmation (20–25 Wörter) für $userName.\nAnforderungen: Gesamtumfang 150–180 Wörter, freundlicher romantischer Ton, 2–4 thematische Emojis; Absätze durch doppelten Zeilenumbruch (\\n\\n) trennen; vermeide die Zeichen *, # und jegliche Markierung.';
   }
 
@@ -3228,7 +3283,8 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
   String get loveSpread => 'Liebeslegung';
 
   @override
-  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+  String
+  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -3309,7 +3365,8 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
   String get monthlyForecast => 'Monatsprognose';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -3334,7 +3391,8 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
       'Fehler beim Abrufen des Legungswerts. Bitte versuchen Sie es erneut.';
 
   @override
-  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+  String
+  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
       'Die App verwendet KI ausschließlich zu Unterhaltungszwecken. Wir übernehmen keine Verantwortung für Ihre getroffenen Entscheidungen. Bei Bedarf wenden Sie sich bitte an einen Fachmann.';
 
   @override
@@ -3564,48 +3622,60 @@ class AppLocalizationsDeDe extends AppLocalizationsDe {
       'Wie finde ich Harmonie im Leben?';
 
   @override
-  String career_three_card_prompt(Object adviceCard, Object challengeCard,
-      Object situationCard, Object userName, Object userQuestion) {
+  String career_three_card_prompt(
+    Object adviceCard,
+    Object challengeCard,
+    Object situationCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Coach. Der Nutzer $userName fragt: \"$userQuestion\". Mache ein Drei-Karten-Legung zu Karriere und Finanzen. Die Karten sind wie folgt übergeben: 1) Situation — $situationCard; 2) Hindernis oder Schlüsselgelegenheit — $challengeCard; 3) Rat und Potenzial — $adviceCard. Bestimme das Geschlecht des Nutzers anhand des Namens $userName und verwende die richtigen Endungen und Pronomen. Sprich $userName freundlich und sachlich an: Zeige, wo er steht, was das Wachstum blockiert (oder welche Chance wichtig ist zu erkennen) und welcher praktische Schritt zum gewünschten Einkommen führt. Erwähne den Namen $userName mindestens dreimal. Halte dich an die Struktur:\n1) Begrüßung — 1 Satz.\n2) Überschrift: Legung: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 Wörter: Beschreibe die aktuelle Lage von $userName (Arbeit, Geschäft oder allgemeiner finanzieller Hintergrund) und die Symbolik der Karte.\n4) $challengeCard — 45–55 Wörter: Erläutere das Hauptbarriere oder eine verborgene Möglichkeit; zeige, wie sie sich in der Karte und in der Frage von $userName widerspiegelt.\n5) $adviceCard — 45–55 Wörter: Schlage eine konkrete Handlung vor (z. B. Budget überprüfen, Gehaltserhöhung anfragen, neue Kompetenz erlernen) und beschreibe das mögliche Ergebnis.\n6) Abschluss — 20–25 Wörter: Freundlicher Schluss, positive Affirmation und 2 geschäftliche Emojis.\nAnforderungen: Gesamtumfang 160–185 Wörter, klarer geschäftlicher Ton ohne Jargon, 2–3 Emojis; Absätze mit doppeltem Zeilenumbruch \\n\\n trennen; keine *, # oder andere Markierungen verwenden.';
   }
 
   @override
-  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
-      Object proCard, Object userName, Object userQuestion) {
+  String pros_cons_three_card_prompt(
+    Object adviceCard,
+    Object conCard,
+    Object proCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Leser. Der Nutzer $userName fragt: \"$userQuestion\". Mache eine Drei-Karten-Legung \"Pro und Contra\". Die Karten sind so übergeben: Vorteile — $proCard; Nachteile — $conCard; Rat/Ergebnis — $adviceCard. Bestimme das Geschlecht des Nutzers anhand des Namens $userName und verwende die richtigen Endungen und Pronomen. Erwähne den Namen $userName mindestens dreimal und verbinde jede Karte mit der Frage. Halte dich an die Struktur:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legung: $proCard | $conCard | $adviceCard.\n3) Vorteile: $proCard — 45–55 Wörter. Erkläre die wichtigsten Vorteile oder positiven Ressourcen, die diese Karte in die Situation von $userName bringt.\n4) Nachteile: $conCard — 45–55 Wörter. Beschreibe Risiken, versteckte Kosten oder Schwachstellen der Entscheidung für $userName.\n5) Rat: $adviceCard — 45–55 Wörter. Wiege die Vor- und Nachteile ab, schlage eine konkrete Handlung vor (Verb + Objekt) und erkläre, wie das den Ausgang für $userName verändert.\n6) Ergebnis — ein Wort \"Ja\" oder \"Nein\", dann 1 Begründungssatz und eine ermutigende Affirmation (20–25 Wörter) mit 1–2 Emojis.\nAnforderungen: Gesamtumfang 150–180 Wörter, freundlicher, umgangssprachlicher Ton; jeden Block mit doppeltem Zeilenumbruch \\n\\n trennen; keine *, # oder andere Markierungen verwenden.';
   }
 
   @override
   String monthly_wheel_prompt(
-      Object card1,
-      Object card10,
-      Object card11,
-      Object card12,
-      Object card2,
-      Object card3,
-      Object card4,
-      Object card5,
-      Object card6,
-      Object card7,
-      Object card8,
-      Object card9,
-      Object month,
-      Object userName,
-      Object userQuestion) {
+    Object card1,
+    Object card10,
+    Object card11,
+    Object card12,
+    Object card2,
+    Object card3,
+    Object card4,
+    Object card5,
+    Object card6,
+    Object card7,
+    Object card8,
+    Object card9,
+    Object month,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein professioneller Tarot-Leser. Der Nutzer $userName fragt: \"$userQuestion\". Erstelle eine Legung \"Rad des Monats\" für $month. Die Karten sind in folgender Reihenfolge: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Bestimme das Geschlecht von $userName anhand des Namens und verwende die richtigen Endungen und Pronomen. Erwähne den Namen mindestens fünfmal, aber **füge ihn nicht nach jedem Datum ein** — erinnere dich nur innerhalb der Ratschläge. Verwende das Kalenderschema der Daten: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (wenn der Monat 30 Tage hat, bezieht sich die 12. Karte ebenfalls auf den 30.). Format:\n1) Begrüßung mit dem Namen $userName (1–2 Sätze).\n2) Kurze Einführung zum Zweck der Legung (1 Satz).\n3–14) Für jede Karte verwende die Zeile \"1–3 $month — $card1\" (ohne Namen): dann 2–3 Sätze zur Schlüsselenergie des Zeitraums und praktischen Ratschlag, der $userName organisch erwähnt.\n15) Abschluss: allgemeiner Rat für den Monat (ca. 40 Wörter) und inspirierende Affirmation mit 2–3 Emojis.\nAnforderungen: insgesamt 360–400 Wörter; freundlicher, motivierender Ton; Blöcke mit doppeltem \\n\\n trennen; keine *, #, Listen oder technische Hinweise.';
   }
 
   @override
   String self_growth_balance_prompt(
-      Object adviceCard,
-      Object bodyCard,
-      Object challengeCard,
-      Object coreCard,
-      Object emotionCard,
-      Object mindCard,
-      Object strengthCard,
-      Object userName,
-      Object userQuestion) {
+    Object adviceCard,
+    Object bodyCard,
+    Object challengeCard,
+    Object coreCard,
+    Object emotionCard,
+    Object mindCard,
+    Object strengthCard,
+    Object userName,
+    Object userQuestion,
+  ) {
     return 'Du bist ein erfahrener Tarot-Coach. Der Benutzer $userName fragt: \"$userQuestion\". Erstelle ein \"Selbstentwicklung und Balance\"-Legesystem mit sieben Karten. Die Karten sind in folgender Reihenfolge angeordnet: Kern — $coreCard; Geist — $mindCard; Emotionen — $emotionCard; Körper — $bodyCard; Ressource — $strengthCard; Blockade — $challengeCard; Rat — $adviceCard. Bestimme das Geschlecht des Benutzers anhand des Namens $userName und verwende entsprechende Endungen und Pronomen. Sprich lebhaft und unterstützend, erwähne den Namen $userName mindestens viermal und verknüpfe unbedingt jede Karte mit der Frage. Halte dich an Struktur und Format:\n1) Begrüßung mit dem Namen $userName.\n2) Überschrift: Legesystem: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — beschreibe den Hauptfokus der Selbstentwicklung von $userName.\n4) $mindCard — erzähle, wie man das Denken einstellt und was man lernen sollte.\n5) $emotionCard — entdecke die emotionale Ressource und Motivation.\n6) $bodyCard — gib Hinweise, wie man sich um Körper und Energie kümmert.\n7) $strengthCard — zeige das innere Geschenk oder die äußere Unterstützung.\n8) $challengeCard — weise auf das Hauptungleichgewicht und seine Ursachen hin.\n9) $adviceCard — schlage eine konkrete Handlung vor, die alle Aspekte verbindet.\n10) Abschluss: inspirierende Affirmation und warme Verabschiedung mit 2–3 Emojis.\nAnforderungen: jeder Punkt 2–3 Sätze; zwischen den Punkten doppelte Zeilenumbrüche \\n\\n einfügen; verwende keine Symbole *, # oder andere Markierungen.';
   }
 
