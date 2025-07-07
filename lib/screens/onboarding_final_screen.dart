@@ -82,7 +82,7 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
 
   Future<void> _onBuy() async {
     final productId = _selectedPlan == 0 ? 'tarot_yearly' : 'tarot_monthly';
-    final product = _products.firstWhere((p) => p.id == productId, orElse: () => null);
+    final product = _products.where((p) => p.id == productId).firstOrNull;
     if (product == null) {
       showDialog(
         context: context,

@@ -10,6 +10,7 @@ import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:tarot_ai/services/user_service.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/services/review_service.dart';
+import 'package:tarot_ai/utils/subscription_utils.dart';
 
 class QuickReadingScreen extends StatefulWidget {
   const QuickReadingScreen({super.key});
@@ -416,24 +417,29 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                                               _loadAnswer();
 
                                               // Показываем рекламу параллельно
-                                              try {
-                                                final adStartTime = DateTime.now();
-                                                debugPrint('[QuickReading] Starting ad loading at ${adStartTime.toIso8601String()}');
-                                                
-                                                bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
-                                                if (isLoaded) {
-                                                  await Appodeal.show(AppodealAdType.Interstitial);
-                                                  await Appodeal.cache(AppodealAdType.Interstitial);
+                                              // Показываем рекламу только если нет активной подписки
+                                              if (SubscriptionUtils.shouldShowAds()) {
+                                                try {
+                                                  final adStartTime = DateTime.now();
+                                                  debugPrint('[QuickReading] Starting ad loading at ${adStartTime.toIso8601String()}');
+                                                  
+                                                  bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                                  if (isLoaded) {
+                                                    await Appodeal.show(AppodealAdType.Interstitial);
+                                                    await Appodeal.cache(AppodealAdType.Interstitial);
+                                                    final adEndTime = DateTime.now();
+                                                    debugPrint('[QuickReading] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                  } else {
+                                                    await Appodeal.cache(AppodealAdType.Interstitial);
+                                                    final adEndTime = DateTime.now();
+                                                    debugPrint('[QuickReading] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                  }
+                                                } catch (e, st) {
                                                   final adEndTime = DateTime.now();
-                                                  debugPrint('[QuickReading] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
-                                                } else {
-                                                  await Appodeal.cache(AppodealAdType.Interstitial);
-                                                  final adEndTime = DateTime.now();
-                                                  debugPrint('[QuickReading] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                  debugPrint('[QuickReading] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
                                                 }
-                                              } catch (e, st) {
-                                                final adEndTime = DateTime.now();
-                                                debugPrint('[QuickReading] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
+                                              } else {
+                                                debugPrint('[QuickReading] Skipping ad - user has active subscription');
                                               }
                                               
                                               // Ждем немного чтобы ответ мог сгенерироваться, затем переходим

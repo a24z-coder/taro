@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:tarot_ai/services/user_service.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import 'package:tarot_ai/utils/subscription_utils.dart';
 
 class CardOfTheDayScreen extends StatefulWidget {
   const CardOfTheDayScreen({super.key});
@@ -190,48 +191,43 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
     // Начинаем загрузку описания параллельно
     _descriptionFuture = _loadNewDescription();
 
-    try {
-      // Показываем рекламу
-      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
-      debugPrint('[CardOfTheDayScreen] Appodeal Interstitial loaded: $isLoaded');
-      
-      if (isLoaded) {
-        debugPrint('[CardOfTheDayScreen] Showing Appodeal Interstitial ad');
-        await Appodeal.show(AppodealAdType.Interstitial);
-        debugPrint('[CardOfTheDayScreen] Appodeal Interstitial ad shown');
-        await Appodeal.cache(AppodealAdType.Interstitial);
-      } else {
-        debugPrint('[CardOfTheDayScreen] Appodeal Interstitial not loaded, caching now');
-        await Appodeal.cache(AppodealAdType.Interstitial);
+    // Показываем рекламу только если нет активной подписки
+    if (SubscriptionUtils.shouldShowAds()) {
+      try {
+        // Показываем рекламу
+        bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+        debugPrint('[CardOfTheDayScreen] Appodeal Interstitial loaded: $isLoaded');
+        if (isLoaded) {
+          debugPrint('[CardOfTheDayScreen] Showing Appodeal Interstitial ad');
+          await Appodeal.show(AppodealAdType.Interstitial);
+          debugPrint('[CardOfTheDayScreen] Appodeal Interstitial ad shown');
+          await Appodeal.cache(AppodealAdType.Interstitial);
+        } else {
+          debugPrint('[CardOfTheDayScreen] Appodeal Interstitial not loaded, caching now');
+          await Appodeal.cache(AppodealAdType.Interstitial);
+        }
+      } catch (e, st) {
+        debugPrint('[CardOfTheDayScreen] ERROR showing Appodeal Interstitial: $e\n$st');
       }
+    } else {
+      debugPrint('[CardOfTheDayScreen] Skipping ad - user has active subscription');
+    }
 
-      // Ждем завершения загрузки описания (если еще не завершилось)
-      final newDescription = await _descriptionFuture;
-      
-      if (newDescription != null) {
-        setState(() {
-          description = newDescription;
-          _isLoadingNewDescription = false;
-          _newDescription = null;
-          _descriptionFuture = null;
-        });
-
-        // Сохраняем новое описание
-        final prefs = await SharedPreferences.getInstance();
-        final today = DateTime.now().toIso8601String().split('T')[0];
-        final descriptionKey = 'card_description_$today';
-        await prefs.setString(descriptionKey, newDescription);
-      }
-
-    } catch (e, st) {
-      debugPrint('[CardOfTheDayScreen] ERROR showing ad or loading description: $e\n$st');
+    // Ждем завершения загрузки описания (если еще не завершилось)
+    final newDescription = await _descriptionFuture;
+    if (newDescription != null) {
       setState(() {
+        description = newDescription;
         _isLoadingNewDescription = false;
         _newDescription = null;
         _descriptionFuture = null;
-        isError = true;
-        errorMessage = e.toString();
       });
+
+      // Сохраняем новое описание
+      final prefs = await SharedPreferences.getInstance();
+      final today = DateTime.now().toIso8601String().split('T')[0];
+      final descriptionKey = 'card_description_$today';
+      await prefs.setString(descriptionKey, newDescription);
     }
   }
 

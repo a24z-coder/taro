@@ -23,6 +23,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'dart:io';
 import 'package:tarot_ai/services/review_service.dart';
+import 'package:tarot_ai/utils/subscription_utils.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -732,21 +733,25 @@ class _MainScreenState extends State<MainScreen> {
                                 // Начинаем загрузку описания карты дня параллельно
                                 final descriptionFuture = _loadCardOfTheDayDescription();
                                 
-                                // Показываем рекламу параллельно
-                                try {
-                                  bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
-                                  debugPrint('[MainScreen] Appodeal Interstitial loaded: $isLoaded');
-                                  if (isLoaded) {
-                                    debugPrint('[MainScreen] Showing Appodeal Interstitial ad');
-                                    await Appodeal.show(AppodealAdType.Interstitial);
-                                    debugPrint('[MainScreen] Appodeal Interstitial ad shown');
-                                    await Appodeal.cache(AppodealAdType.Interstitial);
-                                  } else {
-                                    debugPrint('[MainScreen] Appodeal Interstitial not loaded, caching now');
-                                    await Appodeal.cache(AppodealAdType.Interstitial);
+                                // Показываем рекламу параллельно только если нет активной подписки
+                                if (SubscriptionUtils.shouldShowAds()) {
+                                  try {
+                                    bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                    debugPrint('[MainScreen] Appodeal Interstitial loaded: $isLoaded');
+                                    if (isLoaded) {
+                                      debugPrint('[MainScreen] Showing Appodeal Interstitial ad');
+                                      await Appodeal.show(AppodealAdType.Interstitial);
+                                      debugPrint('[MainScreen] Appodeal Interstitial ad shown');
+                                      await Appodeal.cache(AppodealAdType.Interstitial);
+                                    } else {
+                                      debugPrint('[MainScreen] Appodeal Interstitial not loaded, caching now');
+                                      await Appodeal.cache(AppodealAdType.Interstitial);
+                                    }
+                                  } catch (e, st) {
+                                    debugPrint('[MainScreen] ERROR showing Appodeal Interstitial: $e\n$st');
                                   }
-                                } catch (e, st) {
-                                  debugPrint('[MainScreen] ERROR showing Appodeal Interstitial: $e\n$st');
+                                } else {
+                                  debugPrint('[MainScreen] Skipping ad - user has active subscription');
                                 }
                                 
                                 // Ждем завершения загрузки описания (если еще не завершилось)
