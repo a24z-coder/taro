@@ -5,6 +5,7 @@ import 'main_screen.dart';
 import '../services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
 import 'onboarding_notifications_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingNameScreen extends StatefulWidget {
   const OnboardingNameScreen({Key? key}) : super(key: key);
@@ -90,6 +91,13 @@ class _OnboardingNameScreenState extends State<OnboardingNameScreen> {
                       child: GestureDetector(
                         onTap: () async {
                           await UserService().setUserName(_name.trim());
+                          // Показываем диалог согласия только один раз
+                          final prefs = await SharedPreferences.getInstance();
+                          final consentShown = prefs.getBool('consent_dialog_shown') ?? false;
+                          if (!consentShown) {
+                            // await ConsentService().showConsentDialog(context);
+                            await prefs.setBool('consent_dialog_shown', true);
+                          }
                           if (context.mounted) {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (_) => const OnboardingNotificationsScreen()),

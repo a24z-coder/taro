@@ -9,721 +9,705 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get main_title => 'Divine and study Tarot';
+  String get main_title => 'Гадай и изучай Таро';
 
   @override
-  String get your_name => 'Your name';
+  String get your_name => 'Ваше имя';
 
   @override
   String get personalization_hint =>
-      'Ask questions to the AI Tarot reader and get personalised spreads';
+      'Задавай вопросы AI Тарологу и получай персонализированные расклады';
 
   @override
-  String get start_button => 'START';
+  String get start_button => 'НАЧАТЬ';
 
   @override
-  String get language => 'Language';
+  String get language => 'Язык';
 
   @override
-  String get continueBtn => 'Continue';
+  String get continueBtn => 'Продолжить';
 
   @override
-  String get card_of_the_day => 'Card of the Day';
+  String get card_of_the_day => 'Карта дня';
 
   @override
-  String get description => 'Description';
+  String get description => 'Описание';
 
   @override
-  String get spreads => 'Spreads';
+  String get spreads => 'Расклады';
 
   @override
-  String get quick_spread => 'Quick Spread';
+  String get quick_spread => 'Быстрый расклад';
 
   @override
-  String get classic_spreads => 'Classic spreads';
+  String get classic_spreads => 'Классические расклады';
 
   @override
-  String get thematic_spreads => 'Thematic spreads';
+  String get thematic_spreads => 'Тематические расклады';
 
   @override
-  String get card_combination => 'Card combinations';
+  String get card_combination => 'Сочетание карт';
 
   @override
-  String get card_meanings => 'Card meanings';
+  String get card_meanings => 'Значения карт';
 
   @override
-  String get training => 'Training';
+  String get training => 'Обучение';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'Добро пожаловать';
 
   @override
-  String get today => 'Today';
+  String get today => 'Сегодня';
 
   @override
-  String get view => 'Watch';
+  String get view => 'Смотреть';
 
   @override
-  String get select_card => 'Select a card';
+  String get select_card => 'Выберите карту';
 
   @override
   String get please_select_cards =>
-      'Please select different cards in all fields.';
+      'Пожалуйста, выберите разные карты во всех полях.';
 
   @override
   String get good_day =>
-      'Have a good day,\nSelect cards to find out their combination and meaning';
+      'Хорошего дня,\nВыберите карты, чтобы узнать их сочетание и значение';
 
   @override
-  String get language_hint => 'For full personalisation of spreads';
+  String get language_hint => 'Для полной персонализации раскладов';
 
   @override
-  String get quickReading => 'Quick spread';
+  String get quickReading => 'Быстрый расклад';
 
   @override
-  String get comingSoon => 'Coming soon';
+  String get comingSoon => 'Скоро будет доступно';
 
   @override
   String get onboarding_notifications_title =>
-      '🔔 Want to never miss the \"Card of the Day\" and new spreads?';
+      '🔔 Хотите не пропускать «Карту дня» и новые расклады?';
 
   @override
   String get onboarding_notifications_subtitle =>
-      'Please agree to receive notifications (no spam).';
+      'Пожалуйста согласитесь на отправку уведомлений (без спама).';
 
   @override
-  String get onboarding_notifications_allow => 'AGREE';
+  String get onboarding_notifications_allow => 'СОГЛАСИТЬСЯ';
 
   @override
-  String get onboarding_notifications_decline => 'DECLINE';
+  String get onboarding_notifications_decline => 'ОТКАЗАТЬСЯ';
 
   @override
-  String get suggested_questions_chat_1 => 'Tell me about my love life';
+  String get suggested_questions_chat_1 =>
+      'Расскажите мне о моей любовной жизни';
 
   @override
-  String get suggested_questions_chat_2 => 'What will happen in my career?';
+  String get suggested_questions_chat_2 => 'Что произойдет в моей карьере?';
 
   @override
-  String get suggested_questions_chat_3 => 'How can I improve myself?';
+  String get suggested_questions_chat_3 => 'Как я могу улучшить себя?';
 
   @override
   String get suggested_questions_chat_4 =>
-      'What opportunities await me in the future?';
+      'Какие возможности ждут меня в будущем?';
 
   @override
-  String get onboarding_final_title => 'All set!';
+  String get onboarding_final_title => 'Все готово!';
 
   @override
   String get onboarding_final_subtitle =>
-      'To support the project, we show ads. BUT if you prefer, you can subscribe';
+      'Для поддержания работы проекта мы показываем рекламу. НО если не хотите, Вы можете подписаться';
 
   @override
   String get onboarding_final_benefits =>
-      'No ads\nUnlimited spreads\nUnlimited learning';
+      'Без рекламы\nРасклады без ограничений\nОбучение без ограничений';
 
   @override
-  String get onboarding_final_yearly => 'Annually';
+  String get onboarding_final_yearly => 'Ежегодно';
 
   @override
-  String get onboarding_final_badge => '50% off';
+  String get onboarding_final_badge => 'Выгода 50%';
 
   @override
-  String get onboarding_final_yearly_price => '249/year';
+  String get onboarding_final_yearly_price => '249/год';
 
   @override
-  String get onboarding_final_yearly_month => '24/month';
+  String get onboarding_final_yearly_month => '24/мес';
 
   @override
-  String get onboarding_final_trial => '7 days free';
+  String get onboarding_final_trial => '7 дней бесплатно';
 
   @override
-  String get onboarding_final_trial_price => 'then 9/month';
+  String get onboarding_final_trial_price => 'потом 9/мес';
 
   @override
-  String get onboarding_final_trial_month => 'Monthly';
+  String get onboarding_final_trial_month => 'Ежемесячно';
 
   @override
   String get onboarding_final_note =>
-      'Subscription is optional and renews automatically. You can cancel anytime';
+      'Подписка не обязательна и продлевается автоматически. Можете отменить в любое время';
 
   @override
-  String get onboarding_final_choose_yearly => 'Choose yearly';
+  String get onboarding_final_choose_yearly => 'Выбрать ежегодно';
 
   @override
-  String get onboarding_final_choose_trial => 'Choose 7 days free';
+  String get onboarding_final_choose_trial => 'Выбрать 7 дней бесплатно';
 
   @override
-  String get onboarding_final_or => 'OR';
+  String get onboarding_final_or => 'ИЛИ';
 
   @override
-  String get onboarding_final_continue_ads => 'CONTINUE WITH AD';
+  String get onboarding_final_continue_ads => 'ПРОДОЛЖИТЬ С РЕКЛАМОЙ';
 
   @override
-  String get main_screen_greeting => 'Greetings';
+  String get main_screen_greeting => 'Приветствую';
 
   @override
   String main_screen_date_today(Object date) {
-    return 'Today, $date';
+    return 'Сегодня, $date';
   }
 
   @override
-  String get main_screen_card_of_day_title => 'Your card of the day';
+  String get main_screen_card_of_day_title => 'Ваша карта дня';
 
   @override
   String main_screen_card_of_day_description(Object cardName) {
-    return 'Card of the day: $cardName';
+    return 'Карта дня: $cardName';
   }
 
   @override
-  String get main_screen_card_of_day_description_empty => 'Card of the day:';
+  String get main_screen_card_of_day_description_empty => 'Карта дня:';
 
   @override
-  String get main_screen_card_of_day_status_viewed => 'Open';
+  String get main_screen_card_of_day_status_viewed => 'Открыта';
 
   @override
-  String get main_screen_card_of_day_status_view => 'View';
+  String get main_screen_card_of_day_status_view => 'Посмотреть';
 
   @override
-  String get main_screen_section_spreads => 'Spreads';
+  String get main_screen_section_spreads => 'Расклады';
 
   @override
-  String get main_screen_section_training => 'Learning';
+  String get main_screen_section_training => 'Обучение';
 
   @override
-  String get main_screen_section_entertainment => 'Entertainment';
+  String get main_screen_section_entertainment => 'Развлечение';
 
   @override
-  String get main_screen_quick_spread_title => 'Quick Spread';
+  String get main_screen_quick_spread_title => 'Быстрый расклад';
 
   @override
   String get main_screen_quick_spread_description =>
-      'Get a clear answer to your question with one card in just a few taps';
+      'за пару касаний получите чёткий ответ на свой вопрос одной картой';
 
   @override
-  String get main_screen_thematic_spreads_title => 'Themed spreads';
+  String get main_screen_thematic_spreads_title => 'Тематические расклады';
 
   @override
   String get main_screen_thematic_spreads_description =>
-      'ready-made spreads for important areas: love, career, health, travel';
+      'готовые схемы для важных сфер: любовь, карьера, здоровье, путешествия';
 
   @override
-  String get main_screen_card_combination_title => 'Card combination';
+  String get main_screen_card_combination_title => 'Сочетание карт';
 
   @override
-  String get main_screen_fun_spread_title => 'Joke spread';
+  String get main_screen_fun_spread_title => 'Шуточный расклад';
 
   @override
   String get main_screen_fun_spread_description =>
-      'lift your spirits, do a joke spread and share it on social media';
+      'поднимите настроение, сделайте шуточный расклад и поделитесь в соц сетях';
 
   @override
-  String get main_screen_love_badge => 'LOVE';
+  String get main_screen_love_badge => 'ЛЮБОВЬ';
 
   @override
-  String get card_combination_screen_title => 'Card Combination';
+  String get card_combination_screen_title => 'Сочетание карт';
 
   @override
   String get card_combination_screen_greeting =>
-      'Good day, select cards to find out the combination and meaning';
+      'Добрый день, выберите карты, чтобы узнать сочетание и значение';
 
   @override
-  String get card_combination_screen_card_hint => 'Card';
+  String get card_combination_screen_card_hint => 'Карта';
 
   @override
   String get card_combination_screen_get_combination_button =>
-      'Find out the combination';
+      'Узнать сочетание';
 
   @override
-  String get card_combination_screen_new_spread_button => 'Make a new spread';
+  String get card_combination_screen_new_spread_button =>
+      'Сделать новый расклад';
 
   @override
   String get card_combination_screen_fill_all_fields_error =>
-      'Please fill in all card fields.';
+      'Пожалуйста, заполните все полей карт.';
 
   @override
   String get card_combination_screen_invalid_cards_error =>
-      'Please select cards only from the suggested list. Invalid cards:';
+      'Пожалуйста, выберите карты только из предложенного списка. Неверные карты:';
 
   @override
   String get card_combination_screen_duplicate_cards_error =>
-      'Please select different cards in all fields.';
+      'Пожалуйста, выберите разные карты во всех полях.';
 
   @override
   String get card_combination_screen_general_error =>
-      'Error: failed to get a response. Please try again.';
+      'Ошибка: не удалось получить ответ. Попробуйте еще раз.';
 
   @override
   String get card_combination_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for any decisions you make. Consult a specialist if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String card_combination_screen_prompt(Object cards, Object lang) {
-    return 'Analyse the combination of Tarot cards: $cards. Provide a deep mystical analysis of their interaction and overall advice. The response must be entirely in $lang. No greetings or conclusions.';
-  }
+  String get quick_reading_screen_title => 'Быстрый расклад';
 
   @override
-  String get quick_reading_screen_title => 'Quick spread';
+  String get quick_reading_screen_select_card => 'Выберите карту';
 
   @override
-  String get quick_reading_screen_select_card => 'Choose a card';
-
-  @override
-  String get quick_reading_screen_get_answer_button => 'Find out the answer';
+  String get quick_reading_screen_get_answer_button => 'Узнать ответ';
 
   @override
   String get quick_reading_screen_what_is_quick_spread =>
-      'What is a quick spread?';
+      'Что такое быстрый расклад?';
 
   @override
   String get quick_reading_screen_quick_spread_explanation =>
-      'Quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general vibe of the day. Perfect when you need quick inspiration or advice \"here and now\".';
+      'Быстрый расклад — это экспресс расклад (ответ: ДА или НЕТ) который помогает мгновенно получить ясный ответ на конкретный вопрос или общую атмосферу дня. Идеально, когда нужно быстрое вдохновение или совет «здесь и сейчас».';
 
   @override
-  String get quick_reading_screen_understand_button => 'Understood';
+  String get quick_reading_screen_understand_button => 'Понятно';
 
   @override
   String get quick_reading_result_screen_generating_response =>
-      'Generating response...';
+      'Генерация ответа...';
 
   @override
   String quick_reading_result_screen_error_generating(Object error) {
-    return 'Error generating response: $error';
+    return 'Ошибка при генерации ответа: $error';
   }
 
   @override
   String quick_reading_result_screen_error_generating_response(Object e) {
-    return 'Error generating response: $e';
+    return 'Ошибка при генерации ответа: $e';
   }
 
   @override
   String get quick_reading_result_screen_what_is_quick_spread =>
-      'What is a quick spread?';
+      'Что такое быстрый расклад?';
 
   @override
   String get quick_reading_result_screen_quick_spread_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general vibe of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
+      'Быстрый расклад — это экспресс расклад (ответ: ДА или НЕТ) который помогает мгновенно получить ясный ответ на конкретный вопрос или общую атмосферу дня. Идеально, когда нужно быстрое вдохновение или совет «здесь и сейчас».';
 
   @override
-  String get quick_reading_result_screen_understand_button => 'Understood';
+  String get quick_reading_result_screen_understand_button => 'Понятно';
 
   @override
-  String get quick_reading_result_screen_quick_spread_title => 'Quick spread';
+  String get quick_reading_result_screen_quick_spread_title =>
+      'Быстрый расклад';
 
   @override
-  String get quick_reading_result_screen_new_spread_button => 'New spread';
+  String get quick_reading_result_screen_new_spread_button => 'Новый расклад';
 
   @override
   String get quick_reading_result_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
-
-  @override
-  String quick_reading_result_screen_prompt(Object cardName, Object userName) {
-    return 'You are an experienced tarot reader. The user $userName has drawn the card — $cardName. First, write on a new line the phrase: Card answer: followed by a one-word answer \"Yes\" or \"No\". Then add a coherent interpretation of 120–150 words: 7–8 sentences explaining why the energy of $cardName leads to this answer and what it means personally for $userName. Mention the name $userName at least twice, include 1–2 thematic emojis, avoid *, #, and any markup; write in a simple conversational tone.';
-  }
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get career_finance_spread_screen_request_accepted =>
-      'Your request has been accepted. Please reveal the cards.';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
   String get career_finance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
   String get career_finance_spread_screen_what_is_career_finance =>
-      'What is the Career and Finance spread?';
+      'Что такое расклад Карьера и финансы?';
 
   @override
   String get career_finance_spread_screen_career_finance_explanation =>
-      'This spread helps to analyse the professional and financial sphere. You will learn about opportunities, obstacles, and growth prospects.';
+      'Этот расклад помогает проанализировать профессиональную и финансовую сферу. Вы узнаете о возможностях, препятствиях и перспективах роста.';
 
   @override
-  String get career_finance_spread_screen_understand_button => 'Understood';
+  String get career_finance_spread_screen_understand_button => 'Понятно';
 
   @override
   String get career_finance_spread_screen_learn_meaning_button =>
-      'Find out the meaning';
+      'Узнать значение';
 
   @override
   String get career_finance_spread_screen_career_finance_title =>
-      'Career and finances';
+      'Карьера и финансы';
 
   @override
   String get career_finance_spread_screen_new_spread_button =>
-      'Make a new spread';
+      'Сделать новый расклад';
 
   @override
   String get career_finance_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get career_finance_spread_screen_enter_question_hint =>
-      'Enter your question...';
+      'Введите ваш вопрос...';
 
   @override
   String get pros_cons_spread_screen_what_is_pros_cons =>
-      'What is the \"Pros and Cons\" spread?';
+      'Что такое расклад \"За и Против\"?';
 
   @override
   String get pros_cons_spread_screen_pros_cons_title =>
-      '\"Pros and Cons\" spread';
+      'Расклад \"За и Против\"';
 
   @override
   String get pros_cons_spread_screen_enter_question_hint =>
-      'Enter your question...';
+      'Введите ваш вопрос...';
 
   @override
-  String
-  get self_development_balance_spread_screen_self_development_explanation =>
-      'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
+  String get self_development_balance_spread_screen_self_development_explanation =>
+      'Расклад \"Саморазвитие и баланс\" состоит из 7 карт, расположенных в форме круга. Каждая карта символизирует определённый аспект вашего духовного роста и внутренней гармонии.';
 
   @override
-  String get card_meanings_screen_major_arcana => 'Major Arcana';
+  String get card_meanings_screen_major_arcana => 'Главные арканы';
 
   @override
-  String get card_meanings_screen_wands => 'Wands';
+  String get card_meanings_screen_wands => 'Жезлы';
 
   @override
-  String get card_meanings_screen_cups => 'Cups';
+  String get card_meanings_screen_cups => 'Кубки';
 
   @override
-  String get card_meanings_screen_swords => 'Swords';
+  String get card_meanings_screen_swords => 'Мечи';
 
   @override
-  String get card_meanings_screen_pentacles => 'Pentacles';
+  String get card_meanings_screen_pentacles => 'Пентакли';
 
   @override
-  String get card_meanings_screen_title => 'Card meanings';
+  String get card_meanings_screen_title => 'Значение карт';
 
   @override
-  String get love_spread_screen_new_spread_button => 'Make a new spread';
+  String get love_spread_screen_new_spread_button => 'Сделать новый расклад';
 
   @override
-  String get love_spread_screen_enter_question_hint => 'Enter your question...';
+  String get love_spread_screen_enter_question_hint => 'Введите ваш вопрос...';
 
   @override
   String purchase_love_screen_test_stub(Object plan) {
-    return 'Test placeholder: selected plan \"$plan\"';
+    return 'Тестовая заглушка: выбран тариф \"$plan\"';
   }
 
   @override
-  String get purchase_love_screen_love_tariff_title => 'Love Plan';
+  String get purchase_love_screen_love_tariff_title => 'Тариф ЛЮБОВЬ';
 
   @override
-  String get ad_promo_block_tariff => 'PLAN';
+  String get ad_promo_block_tariff => 'ТАРИФ';
 
   @override
-  String get ad_promo_block_love => 'LOVE';
+  String get ad_promo_block_love => 'ЛЮБОВЬ';
 
   @override
-  String get ad_promo_block_promotion_70 => 'PROMO -50%';
+  String get ad_promo_block_promotion_70 => 'АКЦИЯ -50%';
 
   @override
-  String get ad_promo_block_no_ads => '• no ads';
+  String get ad_promo_block_no_ads => '• без рекламы';
 
   @override
-  String get ad_promo_block_no_limits => '• no limits';
+  String get ad_promo_block_no_limits => '• без ограничений';
 
   @override
-  String three_cards_screen_title(Object cards) {
-    return '3 cards in the spread';
-  }
+  String get three_cards_screen_title => '3 карты в раскладе';
 
   @override
   String get three_cards_screen_initial_message =>
-      'Good day, please write your request below:';
+      'Добрый день, пожалуйста, напишите ваш запрос ниже:';
 
   @override
   String get three_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
   String get three_cards_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
+      'Какая основная проблема у меня сейчас?';
 
   @override
   String get three_cards_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
+      'На чем мне стоит сосредоточиться в ближайшем будущем?';
 
   @override
-  String get three_cards_screen_suggested_questions_3 =>
-      'What is hidden from me?';
+  String get three_cards_screen_suggested_questions_3 => 'Что скрыто от меня?';
 
   @override
-  String get three_cards_screen_see_meaning_button => 'Find out the meaning';
+  String get three_cards_screen_see_meaning_button => 'Узнать значение';
 
   @override
-  String get three_cards_screen_new_spread_button => 'New spread';
+  String get three_cards_screen_new_spread_button => 'Новый расклад';
 
   @override
-  String get three_cards_screen_enter_question_hint => 'Enter your query...';
+  String get three_cards_screen_enter_question_hint => 'Введите ваш запрос...';
 
   @override
   String get three_cards_screen_what_is_three_cards =>
-      'What is a 3-card spread?';
+      'Что такое расклад на 3 карты?';
 
   @override
   String get three_cards_screen_three_cards_explanation =>
-      'A classic spread that shows the past, present, and future of your situation. The first card is the past, the second is the present, the third is the future.';
+      'Классический расклад, который показывает прошлое, настоящее и будущее вашей ситуации. Первая карта — прошлое, вторая — настоящее, третья — будущее.';
 
   @override
-  String get three_cards_screen_understand_button => 'Understood';
+  String get three_cards_screen_understand_button => 'Понятно';
 
   @override
   String get three_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
   String get three_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get five_cards_screen_title => '5 cards in the spread';
+  String get five_cards_screen_title => '5 карт в раскладе';
 
   @override
   String get five_cards_screen_initial_message =>
-      'Good day, please write your request below:';
+      'Добрый день, пожалуйста, напишите ваш запрос ниже:';
 
   @override
   String get five_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
   String get five_cards_screen_suggested_questions_1 =>
-      'Which path should I choose?';
+      'Какой путь мне выбрать?';
 
   @override
   String get five_cards_screen_suggested_questions_2 =>
-      'What is preventing me from reaching my goal?';
+      'Что мешает мне достичь цели?';
 
   @override
   String get five_cards_screen_suggested_questions_3 =>
-      'What options do I have?';
+      'Какие возможности у меня есть?';
 
   @override
-  String get five_cards_screen_see_meaning_button => 'Find out the meaning';
+  String get five_cards_screen_see_meaning_button => 'Узнать значение';
 
   @override
-  String get five_cards_screen_new_spread_button => 'Make a new spread';
+  String get five_cards_screen_new_spread_button => 'Сделать новый расклад';
 
   @override
-  String get five_cards_screen_enter_question_hint => 'Enter your query...';
+  String get five_cards_screen_enter_question_hint => 'Введите ваш запрос...';
 
   @override
-  String get five_cards_screen_what_is_five_cards => 'What is a 5-card spread?';
+  String get five_cards_screen_what_is_five_cards =>
+      'Что такое расклад на 5 карт?';
 
   @override
   String get five_cards_screen_five_cards_explanation =>
-      'The 5-card spread is a compact layout that reveals five key aspects of the situation: the past, the present, hidden influences, the helper/obstacle, and the likely outcome.';
+      'Расклад на 5 карт это компактная схема, которая раскрывает пять ключевых аспектов ситуации: прошлое, настоящее, скрытые влияния, помощника/препятствие и вероятный итог.';
 
   @override
-  String get five_cards_screen_understand_button => 'Understood';
+  String get five_cards_screen_understand_button => 'Понятно';
 
   @override
   String get five_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
   String get five_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get celtic_cross_screen_title => 'Celtic Cross';
+  String get celtic_cross_screen_title => 'Кельтский крест';
 
   @override
   String get celtic_cross_screen_initial_message =>
-      'Good day, please write your request below:';
+      'Добрый день, пожалуйста, напишите ваш запрос ниже:';
 
   @override
   String get celtic_cross_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
+      'Какие внутренние ресурсы мне доступны?';
 
   @override
   String get celtic_cross_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
+      'Чему я должен уделить внимание прямо сейчас?';
 
   @override
   String get celtic_cross_screen_suggested_questions_3 =>
-      'What is hidden from me?';
+      'Что может помочь мне двигаться вперёд?';
 
   @override
-  String get celtic_cross_screen_see_meaning_button => 'Find out the meaning';
+  String get celtic_cross_screen_see_meaning_button => 'Узнать значение';
 
   @override
-  String get celtic_cross_screen_new_spread_button => 'Make a new spread';
+  String get celtic_cross_screen_new_spread_button => 'Сделать новый расклад';
 
   @override
-  String get celtic_cross_screen_enter_question_hint => 'Enter your query...';
+  String get celtic_cross_screen_enter_question_hint => 'Введите ваш запрос...';
 
   @override
   String get celtic_cross_screen_what_is_celtic_cross_dialog =>
-      'What is the Celtic Cross?';
+      'Что такое Кельтский крест?';
 
   @override
   String get celtic_cross_screen_celtic_cross_explanation_dialog =>
-      'The \"Celtic Cross\" is a 10-card spread that thoroughly analyses a situation from all angles: current circumstances, obstacles, internal and external influences, as well as the near future dynamics and the final outcome. The cards are laid out in order:\n1 - Situation — the essence of the question here and now.\n2 - Challenge — what helps or hinders progress.\n3 - Subconscious (root) — hidden motives and deep forces.\n4 - Recent past — events that led to the current position.\n5 - Conscious (goal) — what the querent\'s attention is focused on now.\n6 - Near future — likely developments in the coming weeks.\n7 - \"Self\" — internal state, resources, attitude towards the question.\n8 - Environment — influences of people and circumstances around.\n9 - Hopes / fears — expectations, doubts, strong emotions.\n10 - Outcome — possible result if trends continue.\nThis spread allows you to see the \"big picture\": where you stand, what hinders or helps, which hidden impulses are working behind the scenes, and where everything is heading next.\nThe spread diagram is shown in the image below.';
+      '«Кельтский крест» — это 10-карточный расклад, который подробно разбирает ситуацию со всех сторон: текущие обстоятельства, препятствия, внутренние и внешние влияния, а также ближайшую динамику и конечный исход. Карты выкладываются по порядку:\n\n1 - Ситуация — суть вопроса здесь-и-сейчас.\n2 - Вызов — то, что помогает или мешает продвинуться.\n3 - Подсознательное (корень) — скрытые мотивы и глубинные силы.\n4 - Недавнее прошлое — события, приведшие к текущему положению.\n5 - Сознательное (цель) — то, на чём сейчас сосредоточено внимание кверента.\n6 - Ближнее будущее — вероятное развитие в ближайшие недели.\n7 - «Я сам» — внутреннее состояние, ресурсы, отношение к вопросу.\n8 - Окружение — влияния людей и обстоятельств вокруг.\n9 - Надежды / страхи — ожидания, сомнения, сильные эмоции.\n10 - Итог — возможный исход, если тенденции сохранятся.\n\nЭтот расклад позволяет увидеть «большую картину»: где вы стоите, что мешает или помогает, какие скрытые импульсы работают за кулисами и куда всё движется дальше.\n\nСхема расклада представлена на изображении ниже.\n\n';
 
   @override
   String get celtic_cross_screen_celtic_cross_explanation_image =>
       'assets/images/kelt.png';
 
   @override
-  String get celtic_cross_screen_understand_button => 'Understood';
+  String get celtic_cross_screen_understand_button => 'Понятно';
 
   @override
-  String celtic_cross_screen_please_open_cards(Object cards) {
-    return 'Your request has been received. Please open the cards';
-  }
+  String get celtic_cross_screen_please_open_cards =>
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
-  String celtic_cross_screen_request_accepted(Object cards) {
-    return 'Request received, please open the cards';
-  }
+  String get celtic_cross_screen_request_accepted =>
+      'Запрос принят, пожалуйста, откройте карты';
 
   @override
-  String get the_user => 'user';
+  String get the_user => 'пользователь';
 
   @override
   String get good_day_please_write_your_question_below =>
-      'Good day, please write your request below';
+      'Добрый день, пожалуйста напишите Ваш запрос ниже';
 
   @override
   String get errorGettingSpreadMeaning =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
   String get errorGettingSpreadMeaningPleaseTryAgain =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
-  String get seeMeaning => 'Find out the meaning';
+  String get seeMeaning => 'Узнать значение';
 
   @override
-  String get newSpread => 'Make a new spread';
+  String get newSpread => 'Сделать новый расклад';
 
   @override
-  String get enterYourQuestion => 'Enter your question...';
+  String get enterYourQuestion => 'Введите ваш вопрос...';
 
   @override
-  String get enterQuestion => 'Enter your question...';
+  String get enterQuestion => 'Введите ваш вопрос...';
 
   @override
-  String makeTarotReadingFor(Object lang) {
-    return 'Make for';
-  }
+  String get makeTarotReadingFor => 'Сделай для ';
 
   @override
-  String get theUser => 'user';
+  String get theUser => 'пользователя';
 
   @override
-  String onTheseThreeCards(Object userName) {
-    return 'a spread on these three cards:';
-  }
+  String get onTheseThreeCards => ' расклад на эти три карты: ';
 
   @override
   String makeSelfDevelopmentAndBalanceTarotReadingFor(Object cards) {
-    return 'Make a Self-development and Balance spread for $cards';
+    return 'Сделай для $cards расклад Саморазвитие и баланс';
   }
 
   @override
-  String get getAnswer => 'Find out the answer';
+  String get getAnswer => 'Узнать ответ';
 
   @override
-  String get aboutTheSpread => 'About the spread';
+  String get aboutTheSpread => 'О раскладе';
 
   @override
   String get aboutSpreadDescription =>
-      'This spread helps to analyse your spiritual growth and inner harmony.';
+      'Этот расклад помогает проанализировать ваш духовный рост и внутреннюю гармонию.';
 
   @override
-  String get gotIt => 'Understood';
+  String get gotIt => 'Понятно';
 
   @override
-  String get selfDevelopmentAndBalance => 'Self-development and balance';
+  String get selfDevelopmentAndBalance => 'Саморазвитие и баланс';
 
   @override
   String get appUsageDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get careerFinance => 'Career and Finance';
+  String get careerFinance => 'Карьера и финансы';
 
   @override
-  String get fun_spread_screen_with_swear_words_title => 'With swearing (18+)';
+  String get fun_spread_screen_with_swear_words_title => 'С матом (18+)';
 
   @override
   String get fun_spread_screen_with_swear_words_subtitle =>
-      'For those who love thrills';
+      'Для тех, кто любит острые ощущения';
 
   @override
-  String get fun_spread_screen_without_swear_words_title => 'Without swearing';
+  String get fun_spread_screen_without_swear_words_title => 'Без мата';
 
   @override
   String get fun_spread_screen_without_swear_words_subtitle =>
-      'A fun spread without swear words';
+      'Веселый расклад без матершинных слов';
 
   @override
-  String get fun_spread_screen_generating => 'Generating your spread...';
+  String get fun_spread_screen_generating => 'Генерируем ваш расклад...';
 
   @override
-  String get card_name_the_fool => 'The Fool';
+  String get card_name_the_fool => 'Шут';
 
   @override
-  String get card_name_the_magician => 'The Magician';
+  String get card_name_the_magician => 'Маг';
 
   @override
-  String get card_name_the_high_priestess => 'The High Priestess';
+  String get card_name_the_high_priestess => 'Верховная Жрица';
 
   @override
-  String get card_name_the_empress => 'The Empress';
+  String get card_name_the_empress => 'Императрица';
 
   @override
-  String get card_name_the_emperor => 'The Emperor';
+  String get card_name_the_emperor => 'Император';
 
   @override
-  String get card_name_the_hierophant => 'The Hierophant';
+  String get card_name_the_hierophant => 'Иерофант';
 
   @override
-  String get card_name_the_lovers => 'The Lovers';
+  String get card_name_the_lovers => 'Влюбленные';
 
   @override
-  String get card_name_the_chariot => 'The Chariot';
+  String get card_name_the_chariot => 'Колесница';
 
   @override
-  String get card_name_strength => 'Strength';
+  String get card_name_strength => 'Сила';
 
   @override
-  String get card_name_the_hermit => 'Hermit';
+  String get card_name_the_hermit => 'Отшельник';
 
   @override
   String get ok_button => 'OK';
 
   @override
-  String get cancel_button => 'Cancel';
+  String get cancel_button => 'Отмена';
 
   @override
-  String get analyzing_cards => 'Analysing cards...';
+  String get analyzing_cards => 'Делаю разбор карт...';
 
   @override
-  String get yes_button => 'Yes';
+  String get yes_button => 'Да';
 
   @override
-  String get no_button => 'No';
+  String get no_button => 'Нет';
 
   @override
-  String get loading => 'Loading...';
+  String get loading => 'Загрузка...';
 
   @override
-  String get error => 'Error';
+  String get error => 'Ошибка';
 
   @override
-  String get success => 'Successful';
+  String get success => 'Успешно';
 
   @override
-  String get failed => 'Failed';
+  String get failed => 'Не удалось';
 
   @override
-  String get language_russian => 'Russian';
+  String get language_russian => 'Русский';
 
   @override
   String get language_english_us => 'English (US)';
@@ -732,4799 +716,1476 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language_english_gb => 'English (GB)';
 
   @override
-  String get card_name_wheel_of_fortune => 'Wheel of Fortune';
+  String get card_name_wheel_of_fortune => 'Колесо Фортуны';
 
   @override
-  String get card_name_justice => 'Justice';
+  String get card_name_justice => 'Справедливость';
 
   @override
-  String get card_name_the_hanged_man => 'The Hanged Man';
+  String get card_name_the_hanged_man => 'Повешенный';
 
   @override
-  String get card_name_death => 'Death';
+  String get card_name_death => 'Смерть';
 
   @override
-  String get card_name_temperance => 'Temperance';
+  String get card_name_temperance => 'Умеренность';
 
   @override
-  String get card_name_the_devil => 'The Devil';
+  String get card_name_the_devil => 'Дьявол';
 
   @override
-  String get card_name_the_tower => 'The Tower';
+  String get card_name_the_tower => 'Башня';
 
   @override
-  String get card_name_the_star => 'Star';
+  String get card_name_the_star => 'Звезда';
 
   @override
-  String get card_name_the_moon => 'Moon';
+  String get card_name_the_moon => 'Луна';
 
   @override
-  String get card_name_the_sun => 'Sun';
+  String get card_name_the_sun => 'Солнце';
 
   @override
-  String get card_name_judgement => 'Judgement';
+  String get card_name_judgement => 'Суд';
 
   @override
-  String get card_name_the_world => 'World';
+  String get card_name_the_world => 'Мир';
 
   @override
-  String get card_name_ace_of_wands => 'Ace of Wands';
+  String get card_name_ace_of_wands => 'Туз Жезлов';
 
   @override
-  String get card_name_two_of_wands => 'Two of Wands';
+  String get card_name_two_of_wands => 'Двойка Жезлов';
 
   @override
-  String get card_name_three_of_wands => 'Three of Wands';
+  String get card_name_three_of_wands => 'Тройка Жезлов';
 
   @override
-  String get card_name_four_of_wands => 'Four of Wands';
+  String get card_name_four_of_wands => 'Четверка Жезлов';
 
   @override
-  String get card_name_five_of_wands => 'Five of Wands';
+  String get card_name_five_of_wands => 'Пятерка Жезлов';
 
   @override
-  String get card_name_six_of_wands => 'Six of Wands';
+  String get card_name_six_of_wands => 'Шестерка Жезлов';
 
   @override
-  String get card_name_seven_of_wands => 'Seven of Wands';
+  String get card_name_seven_of_wands => 'Семерка Жезлов';
 
   @override
-  String get card_name_eight_of_wands => 'Eight of Wands';
+  String get card_name_eight_of_wands => 'Восьмерка Жезлов';
 
   @override
-  String get card_name_nine_of_wands => 'Nine of Wands';
+  String get card_name_nine_of_wands => 'Девятка Жезлов';
 
   @override
-  String get card_name_ten_of_wands => 'Ten of Wands';
+  String get card_name_ten_of_wands => 'Десятка Жезлов';
 
   @override
-  String get card_name_page_of_wands => 'Page of Wands';
+  String get card_name_page_of_wands => 'Паж Жезлов';
 
   @override
-  String get card_name_knight_of_wands => 'Knight of Wands';
+  String get card_name_knight_of_wands => 'Рыцарь Жезлов';
 
   @override
-  String get card_name_queen_of_wands => 'Queen of Wands';
+  String get card_name_queen_of_wands => 'Королева Жезлов';
 
   @override
-  String get card_name_king_of_wands => 'King of Wands';
+  String get card_name_king_of_wands => 'Король Жезлов';
 
   @override
-  String get card_name_ace_of_cups => 'Ace of Cups';
+  String get card_name_ace_of_cups => 'Туз Кубков';
 
   @override
-  String get card_name_two_of_cups => 'Two of Cups';
+  String get card_name_two_of_cups => 'Двойка Кубков';
 
   @override
-  String get card_name_three_of_cups => 'Three of Cups';
+  String get card_name_three_of_cups => 'Тройка Кубков';
 
   @override
-  String get card_name_four_of_cups => 'Four of Cups';
+  String get card_name_four_of_cups => 'Четверка Кубков';
 
   @override
-  String get card_name_five_of_cups => 'Five of Cups';
+  String get card_name_five_of_cups => 'Пятерка Кубков';
 
   @override
-  String get card_name_six_of_cups => 'Six of Cups';
+  String get card_name_six_of_cups => 'Шестерка Кубков';
 
   @override
-  String get card_name_seven_of_cups => 'Seven of Cups';
+  String get card_name_seven_of_cups => 'Семерка Кубков';
 
   @override
-  String get card_name_eight_of_cups => 'Eight of Cups';
+  String get card_name_eight_of_cups => 'Восьмерка Кубков';
 
   @override
-  String get card_name_nine_of_cups => 'Nine of Cups';
+  String get card_name_nine_of_cups => 'Девятка Кубков';
 
   @override
-  String get card_name_ten_of_cups => 'Ten of Cups';
+  String get card_name_ten_of_cups => 'Десятка Кубков';
 
   @override
-  String get card_name_page_of_cups => 'Page of Cups';
+  String get card_name_page_of_cups => 'Паж Кубков';
 
   @override
-  String get card_name_knight_of_cups => 'Knight of Cups';
+  String get card_name_knight_of_cups => 'Рыцарь Кубков';
 
   @override
-  String get card_name_queen_of_cups => 'Queen of Cups';
+  String get card_name_queen_of_cups => 'Королева Кубков';
 
   @override
-  String get card_name_king_of_cups => 'King of Cups';
+  String get card_name_king_of_cups => 'Король Кубков';
 
   @override
-  String get card_name_ace_of_swords => 'Ace of Swords';
+  String get card_name_ace_of_swords => 'Туз Мечей';
 
   @override
-  String get card_name_two_of_swords => 'Two of Swords';
+  String get card_name_two_of_swords => 'Двойка Мечей';
 
   @override
-  String get card_name_three_of_swords => 'Three of Swords';
+  String get card_name_three_of_swords => 'Тройка Мечей';
 
   @override
-  String get card_name_four_of_swords => 'Four of Swords';
+  String get card_name_four_of_swords => 'Четверка Мечей';
 
   @override
-  String get card_name_five_of_swords => 'Five of Swords';
+  String get card_name_five_of_swords => 'Пятерка Мечей';
 
   @override
-  String get card_name_six_of_swords => 'Six of Swords';
+  String get card_name_six_of_swords => 'Шестерка Мечей';
 
   @override
-  String get card_name_seven_of_swords => 'Seven of Swords';
+  String get card_name_seven_of_swords => 'Семерка Мечей';
 
   @override
-  String get card_name_eight_of_swords => 'Eight of Swords';
+  String get card_name_eight_of_swords => 'Восьмерка Мечей';
 
   @override
-  String get card_name_nine_of_swords => 'Nine of Swords';
+  String get card_name_nine_of_swords => 'Девятка Мечей';
 
   @override
-  String get card_name_ten_of_swords => 'Ten of Swords';
+  String get card_name_ten_of_swords => 'Десятка Мечей';
 
   @override
-  String get card_name_page_of_swords => 'Page of Swords';
+  String get card_name_page_of_swords => 'Паж Мечей';
 
   @override
-  String get card_name_knight_of_swords => 'Knight of Swords';
+  String get card_name_knight_of_swords => 'Рыцарь Мечей';
 
   @override
-  String get card_name_queen_of_swords => 'Queen of Swords';
+  String get card_name_queen_of_swords => 'Королева Мечей';
 
   @override
-  String get card_name_king_of_swords => 'King of Swords';
+  String get card_name_king_of_swords => 'Король Мечей';
 
   @override
-  String get card_name_ace_of_pentacles => 'Ace of Pentacles';
+  String get card_name_ace_of_pentacles => 'Туз Пентаклей';
 
   @override
-  String get card_name_two_of_pentacles => 'Two of Pentacles';
+  String get card_name_two_of_pentacles => 'Двойка Пентаклей';
 
   @override
-  String get card_name_three_of_pentacles => 'Three of Pentacles';
+  String get card_name_three_of_pentacles => 'Тройка Пентаклей';
 
   @override
-  String get card_name_four_of_pentacles => 'Four of Pentacles';
+  String get card_name_four_of_pentacles => 'Четверка Пентаклей';
 
   @override
-  String get card_name_five_of_pentacles => 'Five of Pentacles';
+  String get card_name_five_of_pentacles => 'Пятерка Пентаклей';
 
   @override
-  String get card_name_six_of_pentacles => 'Six of Pentacles';
+  String get card_name_six_of_pentacles => 'Шестерка Пентаклей';
 
   @override
-  String get card_name_seven_of_pentacles => 'Seven of Pentacles';
+  String get card_name_seven_of_pentacles => 'Семерка Пентаклей';
 
   @override
-  String get card_name_eight_of_pentacles => 'Eight of Pentacles';
+  String get card_name_eight_of_pentacles => 'Восьмерка Пентаклей';
 
   @override
-  String get card_name_nine_of_pentacles => 'Nine of Pentacles';
+  String get card_name_nine_of_pentacles => 'Девятка Пентаклей';
 
   @override
-  String get card_name_ten_of_pentacles => 'Ten of Pentacles';
+  String get card_name_ten_of_pentacles => 'Десятка Пентаклей';
 
   @override
-  String get card_name_page_of_pentacles => 'Page of Pentacles';
+  String get card_name_page_of_pentacles => 'Паж Пентаклей';
 
   @override
-  String get card_name_knight_of_pentacles => 'Knight of Pentacles';
+  String get card_name_knight_of_pentacles => 'Рыцарь Пентаклей';
 
   @override
-  String get card_name_queen_of_pentacles => 'Queen of Pentacles';
+  String get card_name_queen_of_pentacles => 'Королева Пентаклей';
 
   @override
-  String get card_name_king_of_pentacles => 'King of Pentacles';
+  String get card_name_king_of_pentacles => 'Король Пентаклей';
 
   @override
-  String get quick_reading_screen_suggested_questions_1 => 'Should I do this?';
+  String get quick_reading_screen_suggested_questions_1 =>
+      'Стоит ли мне это делать?';
 
   @override
   String get quick_reading_screen_suggested_questions_2 =>
-      'Is this the right path?';
+      'Правильный ли это путь?';
 
   @override
   String get quick_reading_screen_suggested_questions_3 =>
-      'What do I need to know?';
+      'Что мне нужно знать?';
 
   @override
   String get monthly_forecast_spread_screen_see_meaning_button =>
-      'Find out the meaning';
+      'Узнать значение';
 
   @override
   String get monthly_forecast_spread_screen_new_spread_button =>
-      'Make a new spread';
+      'Сделать новый расклад';
 
   @override
   String get monthly_forecast_spread_screen_enter_question_hint =>
-      'Enter your query...';
+      'Введите ваш запрос...';
 
   @override
   String get monthly_forecast_spread_screen_what_is_monthly_forecast =>
-      'What is a monthly forecast?';
+      'Что такое месячный прогноз?';
 
   @override
   String get monthly_forecast_spread_screen_monthly_forecast_explanation =>
-      'A monthly forecast shows the main events and trends for the upcoming month. It helps you prepare for changes and take advantage of opportunities.';
+      'Месячный прогноз показывает основные события и тенденции на ближайший месяц. Помогает подготовиться к изменениям и использовать возможности.';
 
   @override
-  String get monthly_forecast_spread_screen_understand_button => 'Got it';
+  String get monthly_forecast_spread_screen_understand_button => 'Понятно';
 
   @override
   String get monthly_forecast_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
   String get monthly_forecast_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
-
-  @override
-  String self_development_balance_spread_screen_prompt(
-    Object cards,
-    Object userName,
-  ) {
-    return 'Do a spread for $userName on self-development and balance with these three cards: $cards';
-  }
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get error_getting_answer_try_again =>
-      'Error: failed to get a response. Please try again.';
+      'Ошибка: не удалось получить ответ. Попробуйте еще раз.';
 
   @override
-  String get card_detail_screen_title => 'Card details';
+  String get card_detail_screen_title => 'Детали карты';
 
   @override
-  String get card_detail_screen_general_meaning => 'General meaning';
+  String get card_detail_screen_general_meaning => 'Общее значение';
 
   @override
-  String get card_detail_screen_reversed_meaning => 'Reversed meaning';
+  String get card_detail_screen_reversed_meaning => 'Перевернутое значение';
 
   @override
-  String get card_detail_screen_symbolism => 'Symbolism';
+  String get card_detail_screen_symbolism => 'Символизм';
 
   @override
-  String get card_detail_screen_error_loading_text => 'Error loading text';
-
-  @override
-  String card_detail_screen_general_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and main meanings.';
-  }
-
-  @override
-  String card_detail_screen_reversed_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
-  }
-
-  @override
-  String card_detail_screen_symbolism_prompt(Object cardName, Object lang) {
-    return 'Describe the symbolism of the Tarot card \"$cardName\" in $lang. Include details of the imagery, colours, and their meanings.';
-  }
+  String get card_detail_screen_error_loading_text => 'Ошибка загрузки текста';
 
   @override
   String card_detail_screen_description(Object cardName) {
-    return 'Description of the card $cardName';
+    return 'Описание карты $cardName';
   }
 
   @override
   String get card_detail_screen_see_other_card_meaning =>
-      'View the meaning of another card';
+      'Посмотреть значение другой карты';
 
   @override
-  String get card_detail_screen_or => 'or';
+  String get card_detail_screen_or => 'или';
 
   @override
-  String get card_detail_screen_loading_language => 'Loading language...';
+  String get card_detail_screen_loading_language => 'Загрузка языка...';
 
   @override
-  String get card_detail_screen_see_card_meaning => 'View card meaning';
+  String get card_detail_screen_see_card_meaning => 'Посмотреть значение карты';
 
   @override
-  String get card_detail_screen_original_waite_text => 'Original Waite text';
+  String get card_detail_screen_original_waite_text =>
+      'Оригинальный текст Уэйта';
 
   @override
-  String get card_detail_screen_no_original_text => 'No original text';
+  String get card_detail_screen_no_original_text => 'Нет оригинального текста';
 
   @override
-  String card_of_the_day_screen_translate_card_name_prompt(
-    Object cardName,
-    Object languageCode,
-  ) {
-    return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
-  }
+  String get card_of_the_day_screen_title => 'Карта дня';
 
   @override
-  String card_of_the_day_screen_generate_description_prompt(
-    Object cardName,
-    Object name,
-  ) {
-    return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest today for $name.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
-  }
+  String get card_of_the_day_screen_error_loading_card =>
+      'Ошибка загрузки карты';
 
   @override
-  String get card_of_the_day_screen_title => 'Card of the Day';
+  String get contact_us_title => 'Напишите нам';
 
   @override
-  String get card_of_the_day_screen_error_loading_card => 'Error loading card';
+  String get contact_us_email_hint => 'Ваш e-mail';
 
   @override
-  String career_finance_spread_screen_prompt(Object cards, Object userName) {
-    return 'Do a career and finance spread for $userName using these three cards: $cards';
-  }
+  String get contact_us_email_empty => 'Введите e-mail';
 
   @override
-  String get contact_us_title => 'Write to us';
+  String get contact_us_email_invalid => 'Некорректный e-mail';
 
   @override
-  String get contact_us_email_hint => 'Your e-mail';
+  String get contact_us_message_hint => 'Ваше сообщение';
 
   @override
-  String get contact_us_email_empty => 'Enter e-mail';
+  String get contact_us_message_empty => 'Введите сообщение';
 
   @override
-  String get contact_us_email_invalid => 'Invalid e-mail';
-
-  @override
-  String get contact_us_message_hint => 'Your message';
-
-  @override
-  String get contact_us_message_empty => 'Enter message';
-
-  @override
-  String get contact_us_send_button => 'Send';
+  String get contact_us_send_button => 'Отправить';
 
   @override
   String get five_cards_spread_screen_what_is_five_cards_dialog =>
-      'What is a 5-card spread?';
+      'Что такое расклад на 5 карт?';
 
   @override
   String get five_cards_spread_screen_five_cards_explanation_dialog =>
-      'This spread reveals the entire path of your question:\nCard 1 - The Past shows the original circumstances,\nCard 2 - The Present — the current energy,\nCard 3 - The Hidden reveals hidden influences,\nCard 4 - The Advice suggests the optimal action,\nCard 5 - The Outcome predicts the likely result.';
+      'Этот расклад раскрывает весь путь вашего вопроса:\nКарта 1 - Прошлое показывает исходные обстоятельства,\nКарта 2 - Настоящее — текущую энергию,\nКарта 3 - Скрытое выявляет скрытые влияния,\nКарта 4 - Совет подсказывает оптимальное действие,\nКарта 5 - Итог предсказывает вероятный результат.';
 
   @override
-  String get five_cards_spread_screen_understand_button => 'Understood';
+  String get five_cards_spread_screen_understand_button => 'Понятно';
 
   @override
-  String get language_selection_screen_title => 'Language';
+  String get language_selection_screen_title => 'Язык';
 
   @override
-  String get love_spread_screen_what_is_love_spread => 'What is a love spread?';
+  String get love_spread_screen_what_is_love_spread =>
+      'Что такое любовный расклад?';
 
   @override
   String get love_spread_screen_love_spread_explanation =>
-      'A love triplet is three cards laid out from left to right:\nCard 1 - You — shows the querent\'s feelings, motivation, and position.\nCard 2 - Partner — reveals the emotions, plans, and readiness of the other party.\nCard 3 - Dynamics / potential — describes how the two energies interact now and what the relationship could lead to in the near future.';
+      'Любовный триплет — это три карты, выложенные слева направо:\nКарта 1 - Ты — показывает чувства, мотивацию и позицию самого кверента.\nКарта 2 - Партнёр — раскрывает эмоции, планы и готовность второй стороны.\nКарта 3 - Динамика / потенциал — описывает, как две энергии взаимодействуют сейчас и к чему способны привести отношения в ближайшей перспективе.';
 
   @override
-  String get love_spread_screen_understand_button => 'Understood';
+  String get love_spread_screen_understand_button => 'Понятно';
 
   @override
-  String get main_screen_your_plan_trial => 'Your plan: Trial (with ads)';
+  String get main_screen_your_plan_trial => 'Ваш план: Пробный (с рекламой)';
 
   @override
-  String get main_screen_no_ads => '• no ads';
+  String get main_screen_no_ads => '• без рекламы';
 
   @override
-  String get main_screen_no_limits => '• unlimited';
+  String get main_screen_no_limits => '• без ограничений';
 
   @override
-  String get main_screen_shop_soon => 'Store (soon)';
+  String get main_screen_shop_soon => 'Магазин (soon)';
 
   @override
-  String get main_screen_notification_settings => 'Notification settings';
+  String get main_screen_notification_settings => 'Настройки уведомлений';
 
   @override
-  String get main_screen_language_selection => 'Language selection';
+  String get main_screen_language_selection => 'Выбор языка';
 
   @override
-  String get main_screen_rate_app => 'Rate the app';
+  String get main_screen_rate_app => 'Оцените приложение';
 
   @override
-  String get main_screen_contact_us => 'Contact us';
+  String get main_screen_contact_us => 'Связаться с нами';
 
   @override
-  String get main_screen_classic_spreads_title => 'Classic spreads';
+  String get main_screen_classic_spreads_title => 'Классические расклады';
 
   @override
   String get main_screen_classic_spreads_description =>
-      'spreads of 2 / 3 / 5 cards and the full detailed Celtic Cross';
+      'расклады на 2 / 3 / 5 карт и полный развёрнутый Кельтский крест';
 
   @override
-  String get main_screen_card_meanings_title => 'Card meanings';
+  String get main_screen_card_meanings_title => 'Значение карт';
 
   @override
   String get main_screen_card_meanings_description =>
-      'a complete guide to upright and reversed meanings of all Major and Minor Arcana cards';
+      'полный справочник прямых и перевёрнутых значений всех старших и младших арканов';
 
   @override
   String get main_screen_card_combination_description =>
-      '\"tarot calculator\" select cards and get a deep relationship analysis';
+      '\"калькулятор таро\" выберите карты и получите глубокий анализ связей';
 
   @override
-  String get notification_settings_screen_title => 'Notification settings';
+  String get notification_settings_screen_title => 'Настройки уведомлений';
 
   @override
   String get notification_settings_screen_frequency_question =>
-      'How often would you like to receive a card of the day notification?';
+      'Как часто вы хотите получать уведомление о карте дня?';
 
   @override
-  String get notification_settings_screen_every_day => 'Every day';
+  String get notification_settings_screen_every_day => 'Каждый день';
 
   @override
-  String get notification_settings_screen_every_three_days =>
-      'Every three days';
+  String get notification_settings_screen_every_three_days => 'Раз в три дня';
 
   @override
-  String get notification_settings_screen_every_week => 'Once a week';
+  String get notification_settings_screen_every_week => 'Раз в неделю';
 
   @override
   String get notification_settings_screen_time_question =>
-      'At what time of day?';
+      'В какое время суток?';
 
   @override
-  String get notification_settings_screen_morning => 'In the morning';
+  String get notification_settings_screen_morning => 'Утром';
 
   @override
-  String get notification_settings_screen_day => 'In the afternoon';
+  String get notification_settings_screen_day => 'Днем';
 
   @override
-  String get notification_settings_screen_evening => 'In the evening';
+  String get notification_settings_screen_evening => 'Вечером';
 
   @override
-  String get notification_settings_screen_save_button => 'Save';
+  String get notification_settings_screen_save_button => 'Сохранить';
 
   @override
-  String get onboarding_final_screen_yearly_price => '249/year';
+  String get onboarding_final_screen_yearly_price => '249/год';
 
   @override
-  String get onboarding_final_screen_yearly_month_price => '24/month';
+  String get onboarding_final_screen_yearly_month_price => '24/мес';
 
   @override
-  String get onboarding_final_screen_monthly_price => 'Monthly';
+  String get onboarding_final_screen_monthly_price => '9/мес';
 
   @override
-  String get onboarding_final_screen_monthly_month_price => '9/month';
+  String get onboarding_final_screen_monthly_month_price => '9/мес';
 
   @override
-  String get onboarding_final_screen_yearly_plan => 'Annually';
+  String get onboarding_final_screen_yearly_plan => 'Ежегодно';
 
   @override
-  String get onboarding_final_screen_free_trial => '7 days free';
+  String get onboarding_final_screen_free_trial => '7 дней бесплатно';
 
   @override
-  String get onboarding_final_screen_purchase_title => 'Purchase';
+  String get onboarding_final_screen_purchase_title => 'Покупка';
 
   @override
   String onboarding_final_screen_test_stub_message(Object plan) {
-    return 'Test stub: selected plan \"$plan\"';
+    return 'Тестовая заглушка: выбран тариф \"$plan\"';
   }
 
   @override
   String get onboarding_final_screen_ok_button => 'OK';
 
   @override
-  String get purchase_love_screen_yearly_price => '249/year';
+  String get purchase_love_screen_yearly_price => '249/год';
 
   @override
-  String get purchase_love_screen_yearly_month_price => '24/month';
+  String get purchase_love_screen_yearly_month_price => '24/мес';
 
   @override
-  String get purchase_love_screen_monthly_price => 'Monthly';
+  String get purchase_love_screen_monthly_price => '9/мес';
 
   @override
-  String get purchase_love_screen_monthly_month_price => '9/month';
+  String get purchase_love_screen_monthly_month_price => '9/мес';
 
   @override
-  String get purchase_love_screen_title => 'Purchase';
+  String get purchase_love_screen_title => 'Покупка';
 
   @override
   String get purchase_love_screen_ok_button => 'OK';
 
   @override
   String quick_reading_screen_error_no_image_file_found(Object cardName) {
-    return 'ERROR: Image file not found for card: $cardName';
+    return 'ОШИБКА: Файл изображения не найден для карты: $cardName';
   }
 
   @override
-  String get please_fill_all_fields => 'Please fill in all card fields.';
+  String get please_fill_all_fields => 'Пожалуйста, заполните все полей карт.';
 
   @override
   String get please_select_cards_only_from_suggested_list =>
-      'Please select cards only from the suggested list. Invalid cards:';
+      'Пожалуйста, выберите карты только из предложенного списка. Неверные карты:';
 
   @override
   String get please_select_different_cards_in_all_fields =>
-      'Please select different cards in all fields.';
+      'Пожалуйста, выберите разные карты во всех полях.';
 
   @override
-  String get card => 'Card';
+  String get card => 'Карта';
 
   @override
-  String get get_combination => 'Find out the combination';
+  String get get_combination => 'Узнать сочетание';
 
   @override
-  String get new_spread => 'Make a new spread';
+  String get new_spread => 'Сделать новый расклад';
 
   @override
   String get app_uses_ai_for_entertainment_purposes =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get career_finance_spread_screen_what_is_career_finance_spread =>
-      'What is the Career and Finance spread?';
-
-  @override
-  String celtic_cross_screen_prompt(
-    Object challengeCard,
-    Object consciousCard,
-    Object environmentCard,
-    Object hiddenCard,
-    Object hopesCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object selfCard,
-    Object situationCard,
-    Object subconsciousCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite layout). The cards are assigned as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three key words, card symbolism, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or aid for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (40-50 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): the state and resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): $userName\'s expectations or fears.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the spread\'s advice.\n13) Conclusion: friendly support and a positive affirmation (30-35 words) for $userName.\nRequirements: total length 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use *, # or other markup; write only in plain text.';
-  }
+      'Что такое расклад Карьера и финансы?';
 
   @override
   String get celtic_cross_screen_unable_to_load_card =>
-      'Failed to load the card';
+      'Не удалось загрузить карту';
 
   @override
-  String get celticCrossTitle => 'Celtic Cross';
+  String get celticCrossTitle => 'Кельтский крест';
 
   @override
   String get chat_with_tarot_reader_screen_request_received =>
-      'Your request has been received. Please reveal the cards';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
-  String chat_with_tarot_reader_screen_prompt(
-    Object hiddenCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are assigned as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the card meanings to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three key words, card symbolism, and explanation of how past events influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): key words, card symbolism, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): key words, card symbolism, and the likely scenario for the situation regarding $userName\'s question.\n6) Conclusion: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total length 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use *, # or other formatting marks; write only in plain text.';
-  }
+  String get see_meaning_button => 'Узнать значение';
 
   @override
-  String get see_meaning_button => 'Find out the meaning';
+  String get three_cards_title => '3 карты в раскладе';
 
   @override
-  String three_cards_title(Object cards) {
-    return '3 cards in the spread';
-  }
-
-  @override
-  String get new_spread_button => 'Make a new spread';
+  String get new_spread_button => 'Сделать новый расклад';
 
   @override
   String get disclaimer_text =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get enter_your_question => 'Enter your question...';
+  String get enter_your_question => 'Введите ваш вопрос...';
 
   @override
-  String get classic_spreads_screen_title => 'Classic spreads';
+  String get classic_spreads_screen_title => 'Классические расклады';
 
   @override
-  String get classic_spreads_screen_three_cards_title => '3 cards';
+  String get classic_spreads_screen_three_cards_title => '3 карты';
 
   @override
   String get classic_spreads_screen_three_cards_description =>
-      'Past, present, future';
+      'Прошлое, настоящее, будущее';
 
   @override
-  String get classic_spreads_screen_five_cards_title => '5 cards';
+  String get classic_spreads_screen_five_cards_title => '5 карт';
 
   @override
   String get classic_spreads_screen_five_cards_description =>
-      'In-depth situation analysis';
+      'Глубокий анализ ситуации';
 
   @override
-  String get classic_spreads_screen_celtic_cross_title => 'Celtic Cross';
+  String get classic_spreads_screen_celtic_cross_title => 'Кельтский крест';
 
   @override
   String get classic_spreads_screen_celtic_cross_description =>
-      'Full 10-card spread';
+      'Полный расклад на 10 карт';
 
   @override
-  String five_cards_screen_prompt(
-    Object adviceCard,
-    Object hiddenCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
-  }
+  String get fiveCardsInSpread => '5 карт в раскладе';
 
   @override
-  String get fiveCardsInSpread => '5 cards in the spread';
+  String get makeNewSpread => 'Сделать новый расклад';
 
   @override
-  String get makeNewSpread => 'Make a new spread';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
+  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get requestReceivedPleaseOpenCards =>
-      'Your request has been received. Please reveal the cards.';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
-  String love_spread_prompt(
-    Object dynamicCard,
-    Object partnerCard,
-    Object userName,
-    Object userQuestion,
-    Object youCard,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are as follows: $userName\'s feelings — $youCard; partner\'s feelings — $partnerCard; relationship dynamics or potential — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card reveals about ${userName}s feelings and expectations.\n4) $partnerCard — 40–50 words: explore the partner\'s emotions and intentions regarding ${userName}s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
-  }
+  String get loveSpread => 'Любовный расклад';
 
   @override
-  String get loveSpread => 'Love spread';
-
-  @override
-  String
-  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
+  String get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String main_screen_greeting_with_name(Object name) {
-    return 'Greetings, $name';
+    return 'Приветствую, $name';
   }
 
   @override
-  String get main_screen_monday => 'Monday';
+  String get main_screen_monday => 'Понедельник';
 
   @override
-  String get main_screen_tuesday => 'Tuesday';
+  String get main_screen_tuesday => 'Вторник';
 
   @override
-  String get main_screen_wednesday => 'Wednesday';
+  String get main_screen_wednesday => 'Среда';
 
   @override
-  String get main_screen_thursday => 'Thursday';
+  String get main_screen_thursday => 'Четверг';
 
   @override
-  String get main_screen_friday => 'Friday';
+  String get main_screen_friday => 'Пятница';
 
   @override
-  String get main_screen_saturday => 'Saturday';
+  String get main_screen_saturday => 'Суббота';
 
   @override
-  String get main_screen_sunday => 'Sunday';
+  String get main_screen_sunday => 'Воскресенье';
 
   @override
-  String get main_screen_your_card_of_the_day => 'Your card of the day';
+  String get main_screen_your_card_of_the_day => 'Ваша карта дня';
 
   @override
   String main_screen_card_of_the_day_with_name(Object cardName) {
-    return 'Card of the day: $cardName';
+    return 'Карта дня: $cardName';
   }
 
   @override
-  String get main_screen_card_of_the_day => 'Card of the day:';
+  String get main_screen_card_of_the_day => 'Карта дня:';
 
   @override
-  String get main_screen_viewed => 'Open';
+  String get main_screen_viewed => 'Открыта';
 
   @override
-  String get main_screen_not_viewed => 'View';
+  String get main_screen_not_viewed => 'Посмотреть';
 
   @override
-  String get main_screen_spreads => 'Spreads';
+  String get main_screen_spreads => 'Расклады';
 
   @override
-  String get main_screen_training => 'Tutorials';
+  String get main_screen_training => 'Обучение';
 
   @override
-  String get main_screen_entertainment => 'Entertainment';
+  String get main_screen_entertainment => 'Развлечение';
 
   @override
-  String get main_screen_glad_to_see_you_here => 'Glad to see you here!';
+  String get main_screen_glad_to_see_you_here => 'Рад видеть вас здесь!';
 
   @override
-  String get main_screen_quick_reading_title => 'Quick spread';
+  String get main_screen_quick_reading_title => 'Быстрый расклад';
 
   @override
   String get main_screen_quick_reading_description =>
-      'Get a clear answer to your question with one card in just a few taps';
+      'за пару касаний получите чёткий ответ на свой вопрос одной картой';
 
   @override
   String get monthly_forecast_spread_screen_request_accepted =>
-      'Your request has been received. Please lay out the cards';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
-  String monthly_forecast_spread_screen_prompt(Object cards, Object userName) {
-    return 'Make a monthly forecast for $userName based on these cards: $cards';
-  }
+  String get aboutSpread => 'О раскладе';
 
   @override
-  String get aboutSpread => 'About the spread';
+  String get monthlyForecast => 'Месячный прогноз';
 
   @override
-  String get monthlyForecast => 'Monthly forecast';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String purchase_love_screen_test_message(Object planName) {
-    return 'Test placeholder: selected plan \"$planName\"';
+    return 'Тестовая заглушка: выбран тариф \"$planName\"';
   }
 
   @override
   String get quick_reading_screen_what_is_quick_reading =>
-      'What is a quick spread?';
+      'Что такое быстрый расклад?';
 
   @override
   String get quick_reading_screen_quick_reading_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps you instantly get a clear answer to a specific question or the general vibe of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
+      'Быстрый расклад — это экспресс расклад (ответ: ДА или НЕТ) который помогает мгновенно получить ясный ответ на конкретный вопрос или общую атмосферу дня. Идеально, когда нужно быстрое вдохновение или совет «здесь и сейчас».';
 
   @override
   String get self_development_balance_spread_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards.';
+      'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
   String get self_development_balance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
+      'Ошибка при получении значения расклада. Попробуйте ещё раз.';
 
   @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+  String get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get thematic_spreads_screen_title => 'Themed spreads';
+  String get thematic_spreads_screen_title => 'Тематические расклады';
 
   @override
-  String get thematic_spreads_screen_love_spread_title => 'Love spread';
+  String get thematic_spreads_screen_love_spread_title => 'Любовный расклад';
 
   @override
   String get thematic_spreads_screen_love_spread_description =>
-      'Relationship and feelings analysis';
+      'Анализ отношений и чувств';
 
   @override
   String get thematic_spreads_screen_career_finance_title =>
-      'Career and finances';
+      'Карьера и финансы';
 
   @override
   String get thematic_spreads_screen_career_finance_description =>
-      'Professional and financial analysis';
+      'Профессиональный и финансовый анализ';
 
   @override
-  String get thematic_spreads_screen_pros_cons_title => 'Pros and Cons';
+  String get thematic_spreads_screen_pros_cons_title => 'За и Против';
 
   @override
   String get thematic_spreads_screen_pros_cons_description =>
-      'Analysis of pros and cons';
+      'Анализ плюсов и минусов';
 
   @override
   String get thematic_spreads_screen_monthly_forecast_title =>
-      'Monthly forecast';
+      'Месячный прогноз';
 
   @override
   String get thematic_spreads_screen_monthly_forecast_description =>
-      'Forecast by months';
+      'Прогноз по месяцам';
 
   @override
   String get thematic_spreads_screen_self_development_title =>
-      'Self-development and balance';
+      'Саморазвитие и баланс';
 
   @override
   String get thematic_spreads_screen_self_development_description =>
-      'Spiritual growth and harmony';
+      'Духовный рост и гармония';
 
   @override
-  String get requestReceived =>
-      'Your request has been accepted. Please reveal the cards';
-
-  @override
-  String pros_cons_spread_prompt(Object cards, Object userName) {
-    return 'Do a Pros and Cons spread for $userName with these cards: $cards';
-  }
+  String get requestReceived => 'Ваш запрос принят. Пожалуйста, откройте карты';
 
   @override
   String get pros_cons_spread_screen_what_is_pros_cons_spread =>
-      'What is a \"Pros and Cons\" spread?';
+      'Что такое расклад \"За и Против\"?';
 
   @override
   String get pros_cons_spread_screen_pros_cons_spread_explanation =>
-      'The \"Pros and Cons\" spread helps to analyse the advantages and disadvantages of a situation to make a balanced decision.';
+      'Расклад \"За и Против\" помогает проанализировать плюсы и минусы ситуации, чтобы принять взвешенное решение.';
 
   @override
-  String get pros_cons_spread_screen_understand_button => 'Understood';
+  String get pros_cons_spread_screen_understand_button => 'Понятно';
 
   @override
-  String get prosConsSpreadTitle => 'Spread \"Pros and Cons\"';
+  String get prosConsSpreadTitle => 'Расклад \"За и Против\"';
 
   @override
   String get spreadDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
   String get fun_spread_screen_generation_error =>
-      'Error generating the spread. Please try again.';
+      'Ошибка при генерации расклада. Попробуйте еще раз.';
 
   @override
-  String get fun_spread_screen_share_error => 'Error saving the image.';
+  String get fun_spread_screen_share_error =>
+      'Ошибка при сохранении изображения.';
 
   @override
-  String get fun_spread_screen_about_fun_spread => 'What is a fun spread?';
+  String get fun_spread_screen_about_fun_spread =>
+      'Что такое забавный расклад?';
 
   @override
   String get fun_spread_screen_fun_spread_explanation =>
-      'A fun spread is a special way of tarot card reading that combines the depth of traditional spreads with a light and positive approach. It will help you see the situation from a new perspective and find joy in everyday life.';
+      'Забавный расклад - это особый способ гадания на картах таро, который сочетает в себе глубину традиционных раскладов с легким и позитивным подходом. Он поможет вам взглянуть на ситуацию с новой стороны и найти радость в повседневной жизни.';
 
   @override
-  String get fun_spread_screen_understand_button => 'Understood';
+  String get fun_spread_screen_understand_button => 'Понятно';
 
   @override
-  String get fun_spread_screen_title => 'Fun spread';
+  String get fun_spread_screen_title => 'Забавный расклад';
 
   @override
-  String get fun_spread_screen_generate_button => 'Create spread';
+  String get fun_spread_screen_generate_button => 'Создать расклад';
 
   @override
-  String get fun_spread_screen_share_button => 'Share';
+  String get fun_spread_screen_share_button => 'Поделиться';
 
   @override
-  String get fun_spread_screen_new_button => 'New spread';
+  String get fun_spread_screen_new_button => 'Новый расклад';
 
   @override
   String get fun_spread_screen_share_text =>
-      'Look at the funny tarot spread I got in the Tarot AI app!';
+      'Посмотрите, какой забавный расклад таро я получил в приложении Tarot AI!';
 
   @override
-  String get ad_promo_tariff => 'PLAN';
+  String get ad_promo_tariff => 'ТАРИФ';
 
   @override
-  String get ad_promo_love => 'LOVE';
+  String get ad_promo_love => 'ЛЮБОВЬ';
 
   @override
-  String get ad_promo_discount => 'SALE -50%';
+  String get ad_promo_discount => 'АКЦИЯ -50%';
 
   @override
-  String get ad_promo_no_ads => '• no ads';
+  String get ad_promo_no_ads => '• без рекламы';
 
   @override
-  String get ad_promo_no_limits => '• no limits';
+  String get ad_promo_no_limits => '• без ограничений';
 
   @override
   String get no_internet_error =>
-      'Our app only works with internet. Please turn on Wi-Fi or mobile data.';
+      'Наше приложение работает только с интернетом. Пожалуйста, включите Wi-Fi или мобильный интернет.';
 
   @override
-  String fun_spread_screen_mate_prompt_3cards(Object userName) {
-    return 'Make a very funny, cheeky, and swear-filled 3-card tarot reading for $userName. For each card, come up with a funny title and write a separate paragraph: First card: <title> — <short funny description>, Second card: <title> — <short funny description>, Third card: <title> — <short funny description>. Use profanity to add humour, but don\'t offend. The whole text should be no longer than 7 sentences.';
-  }
-
-  @override
-  String fun_spread_screen_no_mate_prompt_3cards(Object userName) {
-    return 'Create a funny tarot spread for $userName with 3 cards. For each card, come up with a humorous title and write a separate paragraph: First card: <title> — <short funny description>, Second card: <title> — <short funny description>, Third card: <title> — <short funny description>. The spread should be fun but meaningful. Only 3 cards. The entire text no longer than 7 sentences.';
-  }
-
-  @override
-  String get fun_spread_screen_title_top => 'TAROT spread';
+  String get fun_spread_screen_title_top => 'ТАРО расклад';
 
   @override
   String fun_spread_screen_title_for_name(Object name) {
-    return 'for $name';
+    return 'для $name';
   }
 
   @override
   String get contact_us_screen_message_sent =>
-      'Your message has been received, thank you!';
+      'Ваше сообщение получено, спасибо!';
 
   @override
-  String get contact_us_screen_message_error => 'Message sending error';
+  String get contact_us_screen_message_error => 'Ошибка отправки сообщения';
 
   @override
   String get love_spread_screen_initial_message =>
-      'Good day, please write your question below:';
+      'Добрый день, пожалуйста, напишите ваш вопрос ниже:';
 
   @override
-  String get main_screen_tariff => 'PLAN';
+  String get main_screen_tariff => 'ТАРИФ';
 
   @override
-  String get main_screen_promo_50 => 'PROMOTION -50%';
+  String get main_screen_promo_50 => 'АКЦИЯ -50%';
 
   @override
   String get main_screen_rate_hint =>
-      'If the rating window did not appear, you can leave a review on Google Play.';
+      'Если окно оценки не появилось, вы можете оставить отзыв в Google Play.';
 
   @override
   String get main_screen_rate_error =>
-      'Failed to open Google Play. Please try again later.';
+      'Не удалось открыть Google Play. Попробуйте позже.';
 
   @override
   String get love_spread_screen_suggested_questions_1 =>
-      'What feelings do I have for this person?';
+      'Какие чувства у меня к этому человеку?';
 
   @override
   String get love_spread_screen_suggested_questions_2 =>
-      'What is holding back our relationship?';
+      'Что мешает нашим отношениям?';
 
   @override
   String get love_spread_screen_suggested_questions_3 =>
-      'What future awaits our relationship?';
+      'Какое будущее ждет наши отношения?';
 
   @override
   String get career_finance_spread_screen_suggested_questions_1 =>
-      'What opportunities await me in my career?';
+      'Какие возможности ждут меня в карьере?';
 
   @override
   String get career_finance_spread_screen_suggested_questions_2 =>
-      'How can I improve my financial situation?';
+      'Как улучшить мое финансовое положение?';
 
   @override
   String get career_finance_spread_screen_suggested_questions_3 =>
-      'Is it worth changing jobs?';
+      'Стоит ли менять работу?';
 
   @override
   String get pros_cons_spread_screen_suggested_questions_1 =>
-      'Should I make this decision?';
+      'Стоит ли мне принимать это решение?';
 
   @override
   String get pros_cons_spread_screen_suggested_questions_2 =>
-      'What are the pros and cons of this choice?';
+      'Какие плюсы и минусы у этого выбора?';
 
   @override
   String get pros_cons_spread_screen_suggested_questions_3 =>
-      'What is more important in this situation?';
+      'Что важнее в данной ситуации?';
 
   @override
   String get monthly_forecast_spread_screen_suggested_questions_1 =>
-      'What awaits me this month?';
+      'Что ждет меня в этом месяце?';
 
   @override
   String get monthly_forecast_spread_screen_suggested_questions_2 =>
-      'What events will happen soon?';
+      'Какие события произойдут в ближайшее время?';
 
   @override
   String get monthly_forecast_spread_screen_suggested_questions_3 =>
-      'What should I focus on this month?';
+      'На чем стоит сосредоточиться в этом месяце?';
 
   @override
   String get self_development_balance_spread_screen_suggested_questions_1 =>
-      'How can I develop spiritually?';
+      'Как мне развиваться духовно?';
 
   @override
   String get self_development_balance_spread_screen_suggested_questions_2 =>
-      'What is disturbing my inner balance?';
+      'Что мешает моему внутреннему балансу?';
 
   @override
   String get self_development_balance_spread_screen_suggested_questions_3 =>
-      'How to find harmony in life?';
-
-  @override
-  String career_three_card_prompt(
-    Object adviceCard,
-    Object challengeCard,
-    Object situationCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what chance is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe ${userName}s current position (work, business or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in ${userName}s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, ask for a raise, learn a new skill) and describe the possible outcome.\n6) Ending — 20–25 words: friendly conclusion, positive affirmation and 2 business emojis.\nRequirements: total length 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, # or other markup.';
-  }
-
-  @override
-  String pros_cons_three_card_prompt(
-    Object adviceCard,
-    Object conCard,
-    Object proCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/result — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and link each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to ${userName}s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object) and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No\", then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total length 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, # or other markup.';
-  }
-
-  @override
-  String monthly_wheel_prompt(
-    Object card1,
-    Object card10,
-    Object card11,
-    Object card12,
-    Object card2,
-    Object card3,
-    Object card4,
-    Object card5,
-    Object card6,
-    Object card7,
-    Object card8,
-    Object card9,
-    Object month,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
-  }
-
-  @override
-  String self_growth_balance_prompt(
-    Object adviceCard,
-    Object bodyCard,
-    Object challengeCard,
-    Object coreCard,
-    Object emotionCard,
-    Object mindCard,
-    Object strengthCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread with seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak lively and supportively, mention the name $userName at least four times and definitely link each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of ${userName}s self-development.\n4) $mindCard — explain how to set the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Ending: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double line breaks (\\n\\n); do not use *, # or other markup.';
-  }
-
-  @override
-  String get main_screen_suggest_spread => 'What spread to add? Write to us';
-
-  @override
-  String get main_screen_disclaimer =>
-      'The app uses AI exclusively for entertainment purposes. We do not take responsibility for decisions you make. If needed, please consult a specialist.';
-
-  @override
-  String get month_january => 'January';
-
-  @override
-  String get month_february => 'February';
-
-  @override
-  String get month_march => 'March';
-
-  @override
-  String get month_april => 'April';
-
-  @override
-  String get month_may => 'May';
-
-  @override
-  String get month_june => 'June';
-
-  @override
-  String get month_july => 'July';
-
-  @override
-  String get month_august => 'August';
-
-  @override
-  String get month_september => 'September';
-
-  @override
-  String get month_october => 'October';
-
-  @override
-  String get month_november => 'November';
-
-  @override
-  String get month_december => 'December';
-
-  @override
-  String get fun_share_button => 'Share';
-
-  @override
-  String get fun_new_spread_button => 'New spread';
-}
-
-/// The translations for English, as used in the United Kingdom (`en_GB`).
-class AppLocalizationsEnGb extends AppLocalizationsEn {
-  AppLocalizationsEnGb() : super('en_GB');
-
-  @override
-  String get main_title => 'Divine and study Tarot';
-
-  @override
-  String get your_name => 'Your name';
-
-  @override
-  String get personalization_hint =>
-      'Ask questions to the AI Tarot Reader and receive personalised spreads';
-
-  @override
-  String get start_button => 'START';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get continueBtn => 'Continue';
-
-  @override
-  String get card_of_the_day => 'Card of the day';
-
-  @override
-  String get description => 'Description';
-
-  @override
-  String get spreads => 'Spreads';
-
-  @override
-  String get quick_spread => 'Quick spread';
-
-  @override
-  String get classic_spreads => 'Classic spreads';
-
-  @override
-  String get thematic_spreads => 'Thematic spreads';
-
-  @override
-  String get card_combination => 'Card combinations';
-
-  @override
-  String get card_meanings => 'Card meanings';
-
-  @override
-  String get training => 'Training';
-
-  @override
-  String get welcome => 'Welcome';
-
-  @override
-  String get today => 'Today';
-
-  @override
-  String get view => 'Watch';
-
-  @override
-  String get select_card => 'Select a card';
-
-  @override
-  String get please_select_cards =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get good_day =>
-      'Have a good day,\nSelect cards to find out their combination and meaning';
-
-  @override
-  String get language_hint => 'For full personalisation of spreads';
-
-  @override
-  String get quickReading => 'Quick spread';
-
-  @override
-  String get comingSoon => 'Coming soon';
-
-  @override
-  String get onboarding_notifications_title =>
-      '🔔 Want to never miss the \"Card of the Day\" and new spreads?';
-
-  @override
-  String get onboarding_notifications_subtitle =>
-      'Please agree to receive notifications (no spam).';
-
-  @override
-  String get onboarding_notifications_allow => 'AGREE';
-
-  @override
-  String get onboarding_notifications_decline => 'DECLINE';
-
-  @override
-  String get suggested_questions_chat_1 => 'Tell me about my love life';
-
-  @override
-  String get suggested_questions_chat_2 => 'What will happen in my career?';
-
-  @override
-  String get suggested_questions_chat_3 => 'How can I improve myself?';
-
-  @override
-  String get suggested_questions_chat_4 =>
-      'What opportunities await me in the future?';
-
-  @override
-  String get onboarding_final_title => 'Everything is ready!';
-
-  @override
-  String get onboarding_final_subtitle =>
-      'To support the project, we show ads. BUT if you prefer, you can subscribe';
-
-  @override
-  String get onboarding_final_benefits =>
-      'No ads\nUnlimited spreads\nUnlimited learning';
-
-  @override
-  String get onboarding_final_yearly => 'Annually';
-
-  @override
-  String get onboarding_final_badge => '50% off';
-
-  @override
-  String get onboarding_final_yearly_price => '249/year';
-
-  @override
-  String get onboarding_final_yearly_month => '24/month';
-
-  @override
-  String get onboarding_final_trial => '7 days free';
-
-  @override
-  String get onboarding_final_trial_price => 'then 9/month';
-
-  @override
-  String get onboarding_final_trial_month => 'Monthly';
-
-  @override
-  String get onboarding_final_note =>
-      'Subscription is optional and renews automatically. You can cancel anytime';
-
-  @override
-  String get onboarding_final_choose_yearly => 'Choose annually';
-
-  @override
-  String get onboarding_final_choose_trial => 'Choose 7 days free';
-
-  @override
-  String get onboarding_final_or => 'OR';
-
-  @override
-  String get onboarding_final_continue_ads => 'CONTINUE WITH AD';
-
-  @override
-  String get main_screen_greeting => 'Greetings';
-
-  @override
-  String main_screen_date_today(Object date) {
-    return 'Today, $date';
-  }
-
-  @override
-  String get main_screen_card_of_day_title => 'Your card of the day';
-
-  @override
-  String main_screen_card_of_day_description(Object cardName) {
-    return 'Card of the day: $cardName';
-  }
-
-  @override
-  String get main_screen_card_of_day_description_empty => 'Card of the day:';
-
-  @override
-  String get main_screen_card_of_day_status_viewed => 'Opened';
-
-  @override
-  String get main_screen_card_of_day_status_view => 'View';
-
-  @override
-  String get main_screen_section_spreads => 'Spreads';
-
-  @override
-  String get main_screen_section_training => 'Learning';
-
-  @override
-  String get main_screen_section_entertainment => 'Entertainment';
-
-  @override
-  String get main_screen_quick_spread_title => 'Quick spread';
-
-  @override
-  String get main_screen_quick_spread_description =>
-      'Get a clear answer to your question with one card in just a few taps';
-
-  @override
-  String get main_screen_thematic_spreads_title => 'Themed spreads';
-
-  @override
-  String get main_screen_thematic_spreads_description =>
-      'ready-made spreads for important areas: love, career, health, travel';
-
-  @override
-  String get main_screen_card_combination_title => 'Card combination';
-
-  @override
-  String get main_screen_fun_spread_title => 'Joke reading';
-
-  @override
-  String get main_screen_fun_spread_description =>
-      'lift your spirits, do a joke reading and share it on social media';
-
-  @override
-  String get main_screen_love_badge => 'LOVE';
-
-  @override
-  String get card_combination_screen_title => 'Card Combination';
-
-  @override
-  String get card_combination_screen_greeting =>
-      'Good day, select cards to find out the combination and meaning';
-
-  @override
-  String get card_combination_screen_card_hint => 'Card';
-
-  @override
-  String get card_combination_screen_get_combination_button =>
-      'Find out the combination';
-
-  @override
-  String get card_combination_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get card_combination_screen_fill_all_fields_error =>
-      'Please fill in all card fields.';
-
-  @override
-  String get card_combination_screen_invalid_cards_error =>
-      'Please select cards only from the suggested list. Invalid cards:';
-
-  @override
-  String get card_combination_screen_duplicate_cards_error =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get card_combination_screen_general_error =>
-      'Error: failed to get a response. Please try again.';
-
-  @override
-  String get card_combination_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String card_combination_screen_prompt(Object cards, Object lang) {
-    return 'Analyse the combination of Tarot cards: $cards. Provide a deep mystical analysis of their interaction and overall advice. The response should be entirely in $lang. No greetings or conclusions.';
-  }
-
-  @override
-  String get quick_reading_screen_title => 'Quick spread';
-
-  @override
-  String get quick_reading_screen_select_card => 'Choose a card';
-
-  @override
-  String get quick_reading_screen_get_answer_button => 'Find out the answer';
-
-  @override
-  String get quick_reading_screen_what_is_quick_spread =>
-      'What is a quick spread?';
-
-  @override
-  String get quick_reading_screen_quick_spread_explanation =>
-      'Quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general atmosphere of the day. Perfect when you need quick inspiration or advice \"here and now\".';
-
-  @override
-  String get quick_reading_screen_understand_button => 'Understood';
-
-  @override
-  String get quick_reading_result_screen_generating_response =>
-      'Generating response...';
-
-  @override
-  String quick_reading_result_screen_error_generating(Object error) {
-    return 'Error generating response: $error';
-  }
-
-  @override
-  String quick_reading_result_screen_error_generating_response(Object e) {
-    return 'Error generating response: $e';
-  }
-
-  @override
-  String get quick_reading_result_screen_what_is_quick_spread =>
-      'What is a quick spread?';
-
-  @override
-  String get quick_reading_result_screen_quick_spread_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general atmosphere of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
-
-  @override
-  String get quick_reading_result_screen_understand_button => 'Understood';
-
-  @override
-  String get quick_reading_result_screen_quick_spread_title => 'Quick spread';
-
-  @override
-  String get quick_reading_result_screen_new_spread_button => 'New spread';
-
-  @override
-  String get quick_reading_result_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a specialist if necessary.';
-
-  @override
-  String quick_reading_result_screen_prompt(Object cardName, Object userName) {
-    return 'You are an experienced tarot reader. The user $userName has drawn the card — $cardName. First, write on a new line the phrase: Card answer: followed by a one-word answer \"Yes\" or \"No\". Then add a coherent interpretation of 120–150 words: 7–8 sentences explaining why the energy of $cardName leads to this answer and what it means personally for $userName. Mention the name $userName at least twice, include 1–2 thematic emojis, avoid *, #, and any markup; write in a simple conversational tone.';
-  }
-
-  @override
-  String get career_finance_spread_screen_request_accepted =>
-      'Your request has been accepted. Please reveal the cards.';
-
-  @override
-  String get career_finance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get career_finance_spread_screen_what_is_career_finance =>
-      'What is the Career and Finance spread?';
-
-  @override
-  String get career_finance_spread_screen_career_finance_explanation =>
-      'This spread helps to analyse the professional and financial sphere. You will learn about opportunities, obstacles, and growth prospects.';
-
-  @override
-  String get career_finance_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get career_finance_spread_screen_learn_meaning_button =>
-      'Find out the meaning';
-
-  @override
-  String get career_finance_spread_screen_career_finance_title =>
-      'Career and Finance';
-
-  @override
-  String get career_finance_spread_screen_new_spread_button =>
-      'Make a new spread';
-
-  @override
-  String get career_finance_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a specialist if necessary.';
-
-  @override
-  String get career_finance_spread_screen_enter_question_hint =>
-      'Enter your question...';
-
-  @override
-  String get pros_cons_spread_screen_what_is_pros_cons =>
-      'What is the \"Pros and Cons\" spread?';
-
-  @override
-  String get pros_cons_spread_screen_pros_cons_title =>
-      '\"Pros and Cons\" spread';
-
-  @override
-  String get pros_cons_spread_screen_enter_question_hint =>
-      'Enter your question...';
-
-  @override
-  String
-  get self_development_balance_spread_screen_self_development_explanation =>
-      'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
-
-  @override
-  String get card_meanings_screen_major_arcana => 'Major Arcana';
-
-  @override
-  String get card_meanings_screen_wands => 'Wands';
-
-  @override
-  String get card_meanings_screen_cups => 'Cups';
-
-  @override
-  String get card_meanings_screen_swords => 'Swords';
-
-  @override
-  String get card_meanings_screen_pentacles => 'Pentacles';
-
-  @override
-  String get card_meanings_screen_title => 'Card meanings';
-
-  @override
-  String get love_spread_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get love_spread_screen_enter_question_hint => 'Enter your question...';
-
-  @override
-  String purchase_love_screen_test_stub(Object plan) {
-    return 'Test placeholder: selected plan \"$plan\"';
-  }
-
-  @override
-  String get purchase_love_screen_love_tariff_title => 'Love Plan';
-
-  @override
-  String get ad_promo_block_tariff => 'PLAN';
-
-  @override
-  String get ad_promo_block_love => 'LOVE';
-
-  @override
-  String get ad_promo_block_promotion_70 => 'PROMOTION -50%';
-
-  @override
-  String get ad_promo_block_no_ads => '• no ads';
-
-  @override
-  String get ad_promo_block_no_limits => '• no limits';
-
-  @override
-  String three_cards_screen_title(Object cards) {
-    return '3 cards in the spread';
-  }
-
-  @override
-  String get three_cards_screen_initial_message =>
-      'Good afternoon, please write your request below:';
-
-  @override
-  String get three_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
-
-  @override
-  String get three_cards_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
-
-  @override
-  String get three_cards_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
-
-  @override
-  String get three_cards_screen_suggested_questions_3 =>
-      'What is hidden from me?';
-
-  @override
-  String get three_cards_screen_see_meaning_button => 'Find out the meaning';
-
-  @override
-  String get three_cards_screen_new_spread_button => 'New spread';
-
-  @override
-  String get three_cards_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get three_cards_screen_what_is_three_cards =>
-      'What is a 3-card spread?';
-
-  @override
-  String get three_cards_screen_three_cards_explanation =>
-      'A classic spread that shows the past, present, and future of your situation. The first card is the past, the second is the present, the third is the future.';
-
-  @override
-  String get three_cards_screen_understand_button => 'Understood';
-
-  @override
-  String get three_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get three_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get five_cards_screen_title => '5 cards in the spread';
-
-  @override
-  String get five_cards_screen_initial_message =>
-      'Good day, please write your request below:';
-
-  @override
-  String get five_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
-
-  @override
-  String get five_cards_screen_suggested_questions_1 =>
-      'Which path should I choose?';
-
-  @override
-  String get five_cards_screen_suggested_questions_2 =>
-      'What is preventing me from achieving my goal?';
-
-  @override
-  String get five_cards_screen_suggested_questions_3 =>
-      'What options do I have?';
-
-  @override
-  String get five_cards_screen_see_meaning_button => 'Find out the meaning';
-
-  @override
-  String get five_cards_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get five_cards_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get five_cards_screen_what_is_five_cards => 'What is a 5-card spread?';
-
-  @override
-  String get five_cards_screen_five_cards_explanation =>
-      'The 5-card spread is a compact layout that reveals five key aspects of the situation: past, present, hidden influences, helper/obstacle, and probable outcome.';
-
-  @override
-  String get five_cards_screen_understand_button => 'Understood';
-
-  @override
-  String get five_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get five_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get celtic_cross_screen_title => 'Celtic Cross';
-
-  @override
-  String get celtic_cross_screen_initial_message =>
-      'Good afternoon, please write your request below:';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_3 =>
-      'What is hidden from me?';
-
-  @override
-  String get celtic_cross_screen_see_meaning_button => 'Find out the meaning';
-
-  @override
-  String get celtic_cross_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get celtic_cross_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get celtic_cross_screen_what_is_celtic_cross_dialog =>
-      'What is the Celtic Cross?';
-
-  @override
-  String get celtic_cross_screen_celtic_cross_explanation_dialog =>
-      'The \"Celtic Cross\" is a 10-card spread that thoroughly analyses the situation from all angles: current circumstances, obstacles, internal and external influences, as well as the near dynamics and final outcome. The cards are laid out in order:\n1 - Situation — the essence of the question here and now.\n2 - Challenge — what helps or hinders progress.\n3 - Subconscious (root) — hidden motives and deep forces.\n4 - Recent past — events that led to the current position.\n5 - Conscious (goal) — what the querent\'s attention is focused on now.\n6 - Near future — probable development in the coming weeks.\n7 - \"Myself\" — internal state, resources, attitude towards the question.\n8 - Environment — influences of people and circumstances around.\n9 - Hopes / fears — expectations, doubts, strong emotions.\n10 - Outcome — possible result if the trends continue.\nThis spread allows you to see the \"big picture\": where you stand, what hinders or helps, which hidden impulses are working behind the scenes, and where everything is heading next.\nThe layout diagram is shown in the image below.';
-
-  @override
-  String get celtic_cross_screen_celtic_cross_explanation_image =>
-      'assets/images/kelt.png';
-
-  @override
-  String get celtic_cross_screen_understand_button => 'Understood';
-
-  @override
-  String celtic_cross_screen_please_open_cards(Object cards) {
-    return 'Your request has been received. Please open the cards';
-  }
-
-  @override
-  String celtic_cross_screen_request_accepted(Object cards) {
-    return 'Request received, please open the cards';
-  }
-
-  @override
-  String get the_user => 'user';
-
-  @override
-  String get good_day_please_write_your_question_below =>
-      'Good afternoon, please write your request below';
-
-  @override
-  String get errorGettingSpreadMeaning =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get errorGettingSpreadMeaningPleaseTryAgain =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get seeMeaning => 'Find out the meaning';
-
-  @override
-  String get newSpread => 'Make a new spread';
-
-  @override
-  String get enterYourQuestion => 'Enter your question...';
-
-  @override
-  String get enterQuestion => 'Enter your question...';
-
-  @override
-  String makeTarotReadingFor(Object lang) {
-    return 'Make for';
-  }
-
-  @override
-  String get theUser => 'user';
-
-  @override
-  String onTheseThreeCards(Object userName) {
-    return 'a spread on these three cards:';
-  }
-
-  @override
-  String makeSelfDevelopmentAndBalanceTarotReadingFor(Object cards) {
-    return 'Make a Self-development and Balance spread for $cards';
-  }
-
-  @override
-  String get getAnswer => 'Find out the answer';
-
-  @override
-  String get aboutTheSpread => 'About the spread';
-
-  @override
-  String get aboutSpreadDescription =>
-      'This spread helps to analyse your spiritual growth and inner harmony.';
-
-  @override
-  String get gotIt => 'Understood';
-
-  @override
-  String get selfDevelopmentAndBalance => 'Self-development and balance';
-
-  @override
-  String get appUsageDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
-
-  @override
-  String get careerFinance => 'Career and Finance';
-
-  @override
-  String get fun_spread_screen_with_swear_words_title => 'With swearing (18+)';
-
-  @override
-  String get fun_spread_screen_with_swear_words_subtitle =>
-      'For those who love thrills';
-
-  @override
-  String get fun_spread_screen_without_swear_words_title => 'Without swearing';
-
-  @override
-  String get fun_spread_screen_without_swear_words_subtitle =>
-      'A fun spread without swear words';
-
-  @override
-  String get fun_spread_screen_generating => 'Generating your spread...';
-
-  @override
-  String get card_name_the_fool => 'The Fool';
-
-  @override
-  String get card_name_the_magician => 'The Magician';
-
-  @override
-  String get card_name_the_high_priestess => 'The High Priestess';
-
-  @override
-  String get card_name_the_empress => 'The Empress';
-
-  @override
-  String get card_name_the_emperor => 'The Emperor';
-
-  @override
-  String get card_name_the_hierophant => 'The Hierophant';
-
-  @override
-  String get card_name_the_lovers => 'The Lovers';
-
-  @override
-  String get card_name_the_chariot => 'The Chariot';
-
-  @override
-  String get card_name_strength => 'Strength';
-
-  @override
-  String get card_name_the_hermit => 'Hermit';
-
-  @override
-  String get ok_button => 'OK';
-
-  @override
-  String get cancel_button => 'Cancel';
-
-  @override
-  String get analyzing_cards => 'Analysing cards...';
-
-  @override
-  String get yes_button => 'Yes';
-
-  @override
-  String get no_button => 'No';
-
-  @override
-  String get loading => 'Loading...';
-
-  @override
-  String get error => 'Error';
-
-  @override
-  String get success => 'Success';
-
-  @override
-  String get failed => 'Failed';
-
-  @override
-  String get language_russian => 'Russian';
-
-  @override
-  String get language_english_us => 'English (US)';
-
-  @override
-  String get language_english_gb => 'English (GB)';
-
-  @override
-  String get card_name_wheel_of_fortune => 'Wheel of Fortune';
-
-  @override
-  String get card_name_justice => 'Justice';
-
-  @override
-  String get card_name_the_hanged_man => 'The Hanged Man';
-
-  @override
-  String get card_name_death => 'Death';
-
-  @override
-  String get card_name_temperance => 'Temperance';
-
-  @override
-  String get card_name_the_devil => 'The Devil';
-
-  @override
-  String get card_name_the_tower => 'The Tower';
-
-  @override
-  String get card_name_the_star => 'The Star';
-
-  @override
-  String get card_name_the_moon => 'The Moon';
-
-  @override
-  String get card_name_the_sun => 'The Sun';
-
-  @override
-  String get card_name_judgement => 'Judgement';
-
-  @override
-  String get card_name_the_world => 'The World';
-
-  @override
-  String get card_name_ace_of_wands => 'Ace of Wands';
-
-  @override
-  String get card_name_two_of_wands => 'Two of Wands';
-
-  @override
-  String get card_name_three_of_wands => 'Three of Wands';
-
-  @override
-  String get card_name_four_of_wands => 'Four of Wands';
-
-  @override
-  String get card_name_five_of_wands => 'Five of Wands';
-
-  @override
-  String get card_name_six_of_wands => 'Six of Wands';
-
-  @override
-  String get card_name_seven_of_wands => 'Seven of Wands';
-
-  @override
-  String get card_name_eight_of_wands => 'Eight of Wands';
-
-  @override
-  String get card_name_nine_of_wands => 'Nine of Wands';
-
-  @override
-  String get card_name_ten_of_wands => 'Ten of Wands';
-
-  @override
-  String get card_name_page_of_wands => 'Page of Wands';
-
-  @override
-  String get card_name_knight_of_wands => 'Knight of Wands';
-
-  @override
-  String get card_name_queen_of_wands => 'Queen of Wands';
-
-  @override
-  String get card_name_king_of_wands => 'King of Wands';
-
-  @override
-  String get card_name_ace_of_cups => 'Ace of Cups';
-
-  @override
-  String get card_name_two_of_cups => 'Two of Cups';
-
-  @override
-  String get card_name_three_of_cups => 'Three of Cups';
-
-  @override
-  String get card_name_four_of_cups => 'Four of Cups';
-
-  @override
-  String get card_name_five_of_cups => 'Five of Cups';
-
-  @override
-  String get card_name_six_of_cups => 'Six of Cups';
-
-  @override
-  String get card_name_seven_of_cups => 'Seven of Cups';
-
-  @override
-  String get card_name_eight_of_cups => 'Eight of Cups';
-
-  @override
-  String get card_name_nine_of_cups => 'Nine of Cups';
-
-  @override
-  String get card_name_ten_of_cups => 'Ten of Cups';
-
-  @override
-  String get card_name_page_of_cups => 'Page of Cups';
-
-  @override
-  String get card_name_knight_of_cups => 'Knight of Cups';
-
-  @override
-  String get card_name_queen_of_cups => 'Queen of Cups';
-
-  @override
-  String get card_name_king_of_cups => 'King of Cups';
-
-  @override
-  String get card_name_ace_of_swords => 'Ace of Swords';
-
-  @override
-  String get card_name_two_of_swords => 'Two of Swords';
-
-  @override
-  String get card_name_three_of_swords => 'Three of Swords';
-
-  @override
-  String get card_name_four_of_swords => 'Four of Swords';
-
-  @override
-  String get card_name_five_of_swords => 'Five of Swords';
-
-  @override
-  String get card_name_six_of_swords => 'Six of Swords';
-
-  @override
-  String get card_name_seven_of_swords => 'Seven of Swords';
-
-  @override
-  String get card_name_eight_of_swords => 'Eight of Swords';
-
-  @override
-  String get card_name_nine_of_swords => 'Nine of Swords';
-
-  @override
-  String get card_name_ten_of_swords => 'Ten of Swords';
-
-  @override
-  String get card_name_page_of_swords => 'Page of Swords';
-
-  @override
-  String get card_name_knight_of_swords => 'Knight of Swords';
-
-  @override
-  String get card_name_queen_of_swords => 'Queen of Swords';
-
-  @override
-  String get card_name_king_of_swords => 'King of Swords';
-
-  @override
-  String get card_name_ace_of_pentacles => 'Ace of Pentacles';
-
-  @override
-  String get card_name_two_of_pentacles => 'Two of Pentacles';
-
-  @override
-  String get card_name_three_of_pentacles => 'Three of Pentacles';
-
-  @override
-  String get card_name_four_of_pentacles => 'Four of Pentacles';
-
-  @override
-  String get card_name_five_of_pentacles => 'Five of Pentacles';
-
-  @override
-  String get card_name_six_of_pentacles => 'Six of Pentacles';
-
-  @override
-  String get card_name_seven_of_pentacles => 'Seven of Pentacles';
-
-  @override
-  String get card_name_eight_of_pentacles => 'Eight of Pentacles';
-
-  @override
-  String get card_name_nine_of_pentacles => 'Nine of Pentacles';
-
-  @override
-  String get card_name_ten_of_pentacles => 'Ten of Pentacles';
-
-  @override
-  String get card_name_page_of_pentacles => 'Page of Pentacles';
-
-  @override
-  String get card_name_knight_of_pentacles => 'Knight of Pentacles';
-
-  @override
-  String get card_name_queen_of_pentacles => 'Queen of Pentacles';
-
-  @override
-  String get card_name_king_of_pentacles => 'King of Pentacles';
-
-  @override
-  String get quick_reading_screen_suggested_questions_1 => 'Should I do this?';
-
-  @override
-  String get quick_reading_screen_suggested_questions_2 =>
-      'Is this the right path?';
-
-  @override
-  String get quick_reading_screen_suggested_questions_3 =>
-      'What do I need to know?';
-
-  @override
-  String get monthly_forecast_spread_screen_see_meaning_button =>
-      'Find out the meaning';
-
-  @override
-  String get monthly_forecast_spread_screen_new_spread_button =>
-      'Make a new spread';
-
-  @override
-  String get monthly_forecast_spread_screen_enter_question_hint =>
-      'Enter your query...';
-
-  @override
-  String get monthly_forecast_spread_screen_what_is_monthly_forecast =>
-      'What is a monthly forecast?';
-
-  @override
-  String get monthly_forecast_spread_screen_monthly_forecast_explanation =>
-      'A monthly forecast shows the main events and trends for the upcoming month. It helps to prepare for changes and take advantage of opportunities.';
-
-  @override
-  String get monthly_forecast_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get monthly_forecast_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get monthly_forecast_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for any decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String self_development_balance_spread_screen_prompt(
-    Object cards,
-    Object userName,
-  ) {
-    return 'Do a spread for $userName on self-development and balance with these three cards: $cards';
-  }
-
-  @override
-  String get error_getting_answer_try_again =>
-      'Error: failed to get a response. Please try again.';
-
-  @override
-  String get card_detail_screen_title => 'Card details';
-
-  @override
-  String get card_detail_screen_general_meaning => 'General meaning';
-
-  @override
-  String get card_detail_screen_reversed_meaning => 'Reversed meaning';
-
-  @override
-  String get card_detail_screen_symbolism => 'Symbolism';
-
-  @override
-  String get card_detail_screen_error_loading_text => 'Text loading error';
-
-  @override
-  String card_detail_screen_general_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and key meanings.';
-  }
-
-  @override
-  String card_detail_screen_reversed_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
-  }
-
-  @override
-  String card_detail_screen_symbolism_prompt(Object cardName, Object lang) {
-    return 'Describe the symbolism of the Tarot card \"$cardName\" in $lang. Include details of the imagery, colours, and their meanings.';
-  }
-
-  @override
-  String card_detail_screen_description(Object cardName) {
-    return 'Description of the card $cardName';
-  }
-
-  @override
-  String get card_detail_screen_see_other_card_meaning =>
-      'View the meaning of another card';
-
-  @override
-  String get card_detail_screen_or => 'or';
-
-  @override
-  String get card_detail_screen_loading_language => 'Loading language...';
-
-  @override
-  String get card_detail_screen_see_card_meaning => 'View card meaning';
-
-  @override
-  String get card_detail_screen_original_waite_text => 'Original Wait text';
-
-  @override
-  String get card_detail_screen_no_original_text => 'No original text';
-
-  @override
-  String card_of_the_day_screen_translate_card_name_prompt(
-    Object cardName,
-    Object languageCode,
-  ) {
-    return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
-  }
-
-  @override
-  String card_of_the_day_screen_generate_description_prompt(
-    Object cardName,
-    Object name,
-  ) {
-    return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest for $name today.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
-  }
-
-  @override
-  String get card_of_the_day_screen_title => 'Card of the Day';
-
-  @override
-  String get card_of_the_day_screen_error_loading_card => 'Error loading card';
-
-  @override
-  String career_finance_spread_screen_prompt(Object cards, Object userName) {
-    return 'Make a career and finance spread for $userName using these three cards: $cards';
-  }
-
-  @override
-  String get contact_us_title => 'Write to us';
-
-  @override
-  String get contact_us_email_hint => 'Your e-mail';
-
-  @override
-  String get contact_us_email_empty => 'Enter e-mail';
-
-  @override
-  String get contact_us_email_invalid => 'Invalid e-mail';
-
-  @override
-  String get contact_us_message_hint => 'Your message';
-
-  @override
-  String get contact_us_message_empty => 'Enter message';
-
-  @override
-  String get contact_us_send_button => 'Send';
-
-  @override
-  String get five_cards_spread_screen_what_is_five_cards_dialog =>
-      'What is a 5-card spread?';
-
-  @override
-  String get five_cards_spread_screen_five_cards_explanation_dialog =>
-      'This spread reveals the entire path of your question:\nCard 1 - The Past shows the original circumstances,\nCard 2 - The Present — the current energy,\nCard 3 - The Hidden reveals hidden influences,\nCard 4 - The Advice suggests the optimal action,\nCard 5 - The Outcome predicts the likely result.';
-
-  @override
-  String get five_cards_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get language_selection_screen_title => 'Language';
-
-  @override
-  String get love_spread_screen_what_is_love_spread => 'What is a love spread?';
-
-  @override
-  String get love_spread_screen_love_spread_explanation =>
-      'A love triplet is three cards laid out from left to right:\nCard 1 - You — shows the querent\'s feelings, motivation, and position.\nCard 2 - Partner — reveals the emotions, plans, and readiness of the other party.\nCard 3 - Dynamics / potential — describes how the two energies interact now and what the relationship might lead to in the near future.';
-
-  @override
-  String get love_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get main_screen_your_plan_trial => 'Your plan: Trial (with ads)';
-
-  @override
-  String get main_screen_no_ads => '• no ads';
-
-  @override
-  String get main_screen_no_limits => '• unlimited';
-
-  @override
-  String get main_screen_shop_soon => 'Store (soon)';
-
-  @override
-  String get main_screen_notification_settings => 'Notification settings';
-
-  @override
-  String get main_screen_language_selection => 'Language selection';
-
-  @override
-  String get main_screen_rate_app => 'Rate the app';
-
-  @override
-  String get main_screen_contact_us => 'Contact us';
-
-  @override
-  String get main_screen_classic_spreads_title => 'Classic spreads';
-
-  @override
-  String get main_screen_classic_spreads_description =>
-      'spreads of 2 / 3 / 5 cards and the full detailed Celtic Cross';
-
-  @override
-  String get main_screen_card_meanings_title => 'Card meanings';
-
-  @override
-  String get main_screen_card_meanings_description =>
-      'a complete guide to the upright and reversed meanings of all Major and Minor Arcana';
-
-  @override
-  String get main_screen_card_combination_description =>
-      '\"tarot calculator\" select cards and get a deep relationship analysis';
-
-  @override
-  String get notification_settings_screen_title => 'Notification settings';
-
-  @override
-  String get notification_settings_screen_frequency_question =>
-      'How often do you want to receive a card of the day notification?';
-
-  @override
-  String get notification_settings_screen_every_day => 'Every day';
-
-  @override
-  String get notification_settings_screen_every_three_days =>
-      'Every three days';
-
-  @override
-  String get notification_settings_screen_every_week => 'Once a week';
-
-  @override
-  String get notification_settings_screen_time_question =>
-      'At what time of day?';
-
-  @override
-  String get notification_settings_screen_morning => 'In the morning';
-
-  @override
-  String get notification_settings_screen_day => 'In the afternoon';
-
-  @override
-  String get notification_settings_screen_evening => 'In the evening';
-
-  @override
-  String get notification_settings_screen_save_button => 'Save';
-
-  @override
-  String get onboarding_final_screen_yearly_price => '249/year';
-
-  @override
-  String get onboarding_final_screen_yearly_month_price => '24/month';
-
-  @override
-  String get onboarding_final_screen_monthly_price => 'Monthly';
-
-  @override
-  String get onboarding_final_screen_monthly_month_price => '9/month';
-
-  @override
-  String get onboarding_final_screen_yearly_plan => 'Annually';
-
-  @override
-  String get onboarding_final_screen_free_trial => '7 days free';
-
-  @override
-  String get onboarding_final_screen_purchase_title => 'Purchase';
-
-  @override
-  String onboarding_final_screen_test_stub_message(Object plan) {
-    return 'Test stub: selected plan \"$plan\"';
-  }
-
-  @override
-  String get onboarding_final_screen_ok_button => 'OK';
-
-  @override
-  String get purchase_love_screen_yearly_price => '249/year';
-
-  @override
-  String get purchase_love_screen_yearly_month_price => '24/month';
-
-  @override
-  String get purchase_love_screen_monthly_price => 'Monthly';
-
-  @override
-  String get purchase_love_screen_monthly_month_price => '9/month';
-
-  @override
-  String get purchase_love_screen_title => 'Purchase';
-
-  @override
-  String get purchase_love_screen_ok_button => 'OK';
-
-  @override
-  String quick_reading_screen_error_no_image_file_found(Object cardName) {
-    return 'ERROR: Image file not found for card: $cardName';
-  }
-
-  @override
-  String get please_fill_all_fields => 'Please fill in all card fields.';
-
-  @override
-  String get please_select_cards_only_from_suggested_list =>
-      'Please select cards only from the suggested list. Invalid cards:';
-
-  @override
-  String get please_select_different_cards_in_all_fields =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get card => 'Card';
-
-  @override
-  String get get_combination => 'Find out the combination';
-
-  @override
-  String get new_spread => 'Make a new spread';
-
-  @override
-  String get app_uses_ai_for_entertainment_purposes =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get career_finance_spread_screen_what_is_career_finance_spread =>
-      'What is the Career and Finance spread?';
-
-  @override
-  String celtic_cross_screen_prompt(
-    Object challengeCard,
-    Object consciousCard,
-    Object environmentCard,
-    Object hiddenCard,
-    Object hopesCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object selfCard,
-    Object situationCard,
-    Object subconsciousCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite scheme). The cards are laid out as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three key words, symbolism of the card, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or assistance for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (45-55 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): state, resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): expectations or fears of $userName.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the advice of the spread.\n13) Conclusion: friendly support and a positive affirmation (30-35 words) for $userName.\nRequirements: total length 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use symbols *, # or other markup; write only in plain text.';
-  }
-
-  @override
-  String get celtic_cross_screen_unable_to_load_card =>
-      'Failed to load the card';
-
-  @override
-  String get celticCrossTitle => 'Celtic Cross';
-
-  @override
-  String get chat_with_tarot_reader_screen_request_received =>
-      'Your request has been received. Please reveal the cards';
-
-  @override
-  String chat_with_tarot_reader_screen_prompt(
-    Object hiddenCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are laid out as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the meanings of the cards to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three key words, symbolism of the card, and explanation of how past facts influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): key words, symbolism of the card, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): key words, symbolism of the card, and the likely scenario of the situation\'s development regarding the question for $userName.\n6) Outcome: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total length 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use symbols *, # or other formatting marks; write only in plain text.';
-  }
-
-  @override
-  String get see_meaning_button => 'Find out the meaning';
-
-  @override
-  String three_cards_title(Object cards) {
-    return '3 cards in the spread';
-  }
-
-  @override
-  String get new_spread_button => 'Make a new spread';
-
-  @override
-  String get disclaimer_text =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get enter_your_question => 'Enter your question...';
-
-  @override
-  String get classic_spreads_screen_title => 'Classic spreads';
-
-  @override
-  String get classic_spreads_screen_three_cards_title => '3 cards';
-
-  @override
-  String get classic_spreads_screen_three_cards_description =>
-      'Past, present, future';
-
-  @override
-  String get classic_spreads_screen_five_cards_title => '5 cards';
-
-  @override
-  String get classic_spreads_screen_five_cards_description =>
-      'In-depth situation analysis';
-
-  @override
-  String get classic_spreads_screen_celtic_cross_title => 'Celtic Cross';
-
-  @override
-  String get classic_spreads_screen_celtic_cross_description =>
-      'Full 10-card spread';
-
-  @override
-  String five_cards_screen_prompt(
-    Object adviceCard,
-    Object hiddenCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
-  }
-
-  @override
-  String get fiveCardsInSpread => '5 cards in the spread';
-
-  @override
-  String get makeNewSpread => 'Make a new spread';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
-
-  @override
-  String get requestReceivedPleaseOpenCards =>
-      'Your request has been received. Please reveal the cards.';
-
-  @override
-  String love_spread_prompt(
-    Object dynamicCard,
-    Object partnerCard,
-    Object userName,
-    Object userQuestion,
-    Object youCard,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are given as follows: $userName\'s feelings — $youCard; partner\'s feelings — $partnerCard; dynamics or potential of the relationship — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card reveals about ${userName}s feelings and expectations.\n4) $partnerCard — 40–50 words: explore the partner\'s emotions and intentions regarding ${userName}s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
-  }
-
-  @override
-  String get loveSpread => 'Love spread';
-
-  @override
-  String
-  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
-
-  @override
-  String main_screen_greeting_with_name(Object name) {
-    return 'Greetings, $name';
-  }
-
-  @override
-  String get main_screen_monday => 'Monday';
-
-  @override
-  String get main_screen_tuesday => 'Tuesday';
-
-  @override
-  String get main_screen_wednesday => 'Wednesday';
-
-  @override
-  String get main_screen_thursday => 'Thursday';
-
-  @override
-  String get main_screen_friday => 'Friday';
-
-  @override
-  String get main_screen_saturday => 'Saturday';
-
-  @override
-  String get main_screen_sunday => 'Sunday';
-
-  @override
-  String get main_screen_your_card_of_the_day => 'Your card of the day';
-
-  @override
-  String main_screen_card_of_the_day_with_name(Object cardName) {
-    return 'Card of the day: $cardName';
-  }
-
-  @override
-  String get main_screen_card_of_the_day => 'Card of the day:';
-
-  @override
-  String get main_screen_viewed => 'Opened';
-
-  @override
-  String get main_screen_not_viewed => 'View';
-
-  @override
-  String get main_screen_spreads => 'Spreads';
-
-  @override
-  String get main_screen_training => 'Training';
-
-  @override
-  String get main_screen_entertainment => 'Entertainment';
-
-  @override
-  String get main_screen_glad_to_see_you_here => 'Glad to see you here!';
-
-  @override
-  String get main_screen_quick_reading_title => 'Quick spread';
-
-  @override
-  String get main_screen_quick_reading_description =>
-      'Get a clear answer to your question with one card in just a couple of taps';
-
-  @override
-  String get monthly_forecast_spread_screen_request_accepted =>
-      'Your request has been received. Please open the cards';
-
-  @override
-  String monthly_forecast_spread_screen_prompt(Object cards, Object userName) {
-    return 'Make a monthly forecast for $userName based on these cards: $cards';
-  }
-
-  @override
-  String get aboutSpread => 'About the spread';
-
-  @override
-  String get monthlyForecast => 'Monthly forecast';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a specialist if necessary.';
-
-  @override
-  String purchase_love_screen_test_message(Object planName) {
-    return 'Test placeholder: selected plan \"$planName\"';
-  }
-
-  @override
-  String get quick_reading_screen_what_is_quick_reading =>
-      'What is a quick spread?';
-
-  @override
-  String get quick_reading_screen_quick_reading_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps you instantly get a clear answer to a specific question or the general atmosphere of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
-
-  @override
-  String get self_development_balance_spread_screen_request_accepted =>
-      'Your request has been accepted. Please reveal the cards.';
-
-  @override
-  String get self_development_balance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get thematic_spreads_screen_title => 'Thematic spreads';
-
-  @override
-  String get thematic_spreads_screen_love_spread_title => 'Love spread';
-
-  @override
-  String get thematic_spreads_screen_love_spread_description =>
-      'Analysis of relationships and feelings';
-
-  @override
-  String get thematic_spreads_screen_career_finance_title =>
-      'Career and finances';
-
-  @override
-  String get thematic_spreads_screen_career_finance_description =>
-      'Professional and financial analysis';
-
-  @override
-  String get thematic_spreads_screen_pros_cons_title => 'Pros and Cons';
-
-  @override
-  String get thematic_spreads_screen_pros_cons_description =>
-      'Analysis of Advantages and Disadvantages';
-
-  @override
-  String get thematic_spreads_screen_monthly_forecast_title =>
-      'Monthly Forecast';
-
-  @override
-  String get thematic_spreads_screen_monthly_forecast_description =>
-      'Forecast by Months';
-
-  @override
-  String get thematic_spreads_screen_self_development_title =>
-      'Self-development and Balance';
-
-  @override
-  String get thematic_spreads_screen_self_development_description =>
-      'Spiritual growth and harmony';
-
-  @override
-  String get requestReceived =>
-      'Your request has been accepted. Please reveal the cards';
-
-  @override
-  String pros_cons_spread_prompt(Object cards, Object userName) {
-    return 'Make a Pros and Cons spread for $userName with these cards: $cards';
-  }
-
-  @override
-  String get pros_cons_spread_screen_what_is_pros_cons_spread =>
-      'What is the \"Pros and Cons\" spread?';
-
-  @override
-  String get pros_cons_spread_screen_pros_cons_spread_explanation =>
-      'The \"Pros and Cons\" spread helps to analyse the advantages and disadvantages of a situation to make a balanced decision.';
-
-  @override
-  String get pros_cons_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get prosConsSpreadTitle => 'Spread \"Pros and Cons\"';
-
-  @override
-  String get spreadDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get fun_spread_screen_generation_error =>
-      'Error generating the spread. Please try again.';
-
-  @override
-  String get fun_spread_screen_share_error => 'Error saving the image.';
-
-  @override
-  String get fun_spread_screen_about_fun_spread => 'What is a fun spread?';
-
-  @override
-  String get fun_spread_screen_fun_spread_explanation =>
-      'A fun spread is a special way of tarot card reading that combines the depth of traditional spreads with a light and positive approach. It will help you see the situation from a new perspective and find joy in everyday life.';
-
-  @override
-  String get fun_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get fun_spread_screen_title => 'Fun spread';
-
-  @override
-  String get fun_spread_screen_generate_button => 'Create a spread';
-
-  @override
-  String get fun_spread_screen_share_button => 'Share';
-
-  @override
-  String get fun_spread_screen_new_button => 'New spread';
-
-  @override
-  String get fun_spread_screen_share_text =>
-      'Look at the funny tarot spread I got in the Tarot AI app!';
-
-  @override
-  String get ad_promo_tariff => 'PLAN';
-
-  @override
-  String get ad_promo_love => 'LOVE';
-
-  @override
-  String get ad_promo_discount => 'PROMOTION -50%';
-
-  @override
-  String get ad_promo_no_ads => '• no ads';
-
-  @override
-  String get ad_promo_no_limits => '• no limits';
-
-  @override
-  String get no_internet_error =>
-      'Our app only works with internet. Please turn on Wi-Fi or mobile data.';
-
-  @override
-  String fun_spread_screen_mate_prompt_3cards(Object userName) {
-    return 'Make a very funny, cheeky, and swear-filled 3-card tarot reading for $userName. For each card, come up with a funny title and write a separate paragraph: First card: <title> — <short funny description>, Second card: <title> — <short funny description>, Third card: <title> — <short funny description>. Use profanity to add humour, but don\'t offend. The whole text should be no longer than 7 sentences.';
-  }
-
-  @override
-  String fun_spread_screen_no_mate_prompt_3cards(Object userName) {
-    return 'Create a funny tarot spread for $userName with 3 cards. For each card, come up with a humorous title and write a separate paragraph: First card: <title> — <short funny description>, Second card: <title> — <short funny description>, Third card: <title> — <short funny description>. The spread should be cheerful but meaningful. Only 3 cards. The entire text no longer than 7 sentences.';
-  }
-
-  @override
-  String get fun_spread_screen_title_top => 'TAROT spread';
-
-  @override
-  String fun_spread_screen_title_for_name(Object name) {
-    return 'for $name';
-  }
-
-  @override
-  String get contact_us_screen_message_sent =>
-      'Your message has been received, thank you!';
-
-  @override
-  String get contact_us_screen_message_error => 'Message sending error';
-
-  @override
-  String get love_spread_screen_initial_message =>
-      'Good afternoon, please write your question below:';
-
-  @override
-  String get main_screen_tariff => 'PLAN';
-
-  @override
-  String get main_screen_promo_50 => 'PROMOTION -50%';
-
-  @override
-  String get main_screen_rate_hint =>
-      'If the rating window did not appear, you can leave a review on Google Play.';
-
-  @override
-  String get main_screen_rate_error =>
-      'Failed to open Google Play. Please try again later.';
-
-  @override
-  String get love_spread_screen_suggested_questions_1 =>
-      'What feelings do I have for this person?';
-
-  @override
-  String get love_spread_screen_suggested_questions_2 =>
-      'What is hindering our relationship?';
-
-  @override
-  String get love_spread_screen_suggested_questions_3 =>
-      'What future awaits our relationship?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_1 =>
-      'What opportunities await me in my career?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_2 =>
-      'How can I improve my financial situation?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_3 =>
-      'Is it worth changing jobs?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_1 =>
-      'Should I make this decision?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_2 =>
-      'What are the pros and cons of this choice?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_3 =>
-      'What is more important in this situation?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_1 =>
-      'What awaits me this month?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_2 =>
-      'What events will happen soon?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_3 =>
-      'What should I focus on this month?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_1 =>
-      'How can I develop spiritually?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_2 =>
-      'What is disturbing my inner balance?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_3 =>
-      'How to find harmony in life?';
-
-  @override
-  String career_three_card_prompt(
-    Object adviceCard,
-    Object challengeCard,
-    Object situationCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what chance is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe ${userName}s current position (work, business or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in ${userName}s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, ask for a raise, learn a new skill) and describe the possible outcome.\n6) Ending — 20–25 words: friendly conclusion, positive affirmation and 2 business emojis.\nRequirements: total length 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, # or other markup.';
-  }
-
-  @override
-  String pros_cons_three_card_prompt(
-    Object adviceCard,
-    Object conCard,
-    Object proCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/outcome — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and link each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to ${userName}s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object) and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No\", then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total length 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, # or other markup.';
-  }
-
-  @override
-  String monthly_wheel_prompt(
-    Object card1,
-    Object card10,
-    Object card11,
-    Object card12,
-    Object card2,
-    Object card3,
-    Object card4,
-    Object card5,
-    Object card6,
-    Object card7,
-    Object card8,
-    Object card9,
-    Object month,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Create a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine ${userName}s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also refers to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists or technical notes.';
-  }
-
-  @override
-  String self_growth_balance_prompt(
-    Object adviceCard,
-    Object bodyCard,
-    Object challengeCard,
-    Object coreCard,
-    Object emotionCard,
-    Object mindCard,
-    Object strengthCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread of seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak lively and supportively, mention the name $userName at least four times and definitely link each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of ${userName}s self-development.\n4) $mindCard — explain how to set the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Ending: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double line breaks (\\n\\n); do not use *, # or other markup.';
-  }
+      'Как найти гармонию в жизни?';
 
   @override
   String get main_screen_suggest_spread =>
-      'Which spread should we add? Write to us';
+      'Какой расклад добавить? Напишите нам';
 
   @override
   String get main_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
+      'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.';
 
   @override
-  String get month_january => 'January';
+  String get month_january => 'января';
 
   @override
-  String get month_february => 'February';
+  String get month_february => 'февраля';
 
   @override
-  String get month_march => 'March';
+  String get month_march => 'марта';
 
   @override
-  String get month_april => 'April';
+  String get month_april => 'апреля';
 
   @override
-  String get month_may => 'May';
+  String get month_may => 'мая';
 
   @override
-  String get month_june => 'June';
+  String get month_june => 'июня';
 
   @override
-  String get month_july => 'July';
+  String get month_july => 'июля';
 
   @override
-  String get month_august => 'August';
+  String get month_august => 'августа';
 
   @override
-  String get month_september => 'September';
+  String get month_september => 'сентября';
 
   @override
-  String get month_october => 'October';
+  String get month_october => 'октября';
 
   @override
-  String get month_november => 'November';
+  String get month_november => 'ноября';
 
   @override
-  String get month_december => 'December';
+  String get month_december => 'декабря';
 
   @override
-  String get fun_share_button => 'Share';
+  String get fun_share_button => 'Поделиться';
 
   @override
-  String get fun_new_spread_button => 'New spread';
-}
-
-/// The translations for English, as used in the United States (`en_US`).
-class AppLocalizationsEnUs extends AppLocalizationsEn {
-  AppLocalizationsEnUs() : super('en_US');
+  String get fun_new_spread_button => 'Новый расклад';
 
   @override
-  String get main_title => 'Divine and Study Tarot';
+  String get reflection_voice_permission_denied =>
+      'Для голосового ввода нужно разрешение на микрофон';
 
   @override
-  String get your_name => 'Your name';
-
-  @override
-  String get personalization_hint =>
-      'Ask questions to the AI Tarot Reader and get personalized spreads';
-
-  @override
-  String get start_button => 'START';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get continueBtn => 'Continue';
-
-  @override
-  String get card_of_the_day => 'Card of the Day';
-
-  @override
-  String get description => 'Description';
-
-  @override
-  String get spreads => 'Spreads';
-
-  @override
-  String get quick_spread => 'Quick Spread';
-
-  @override
-  String get classic_spreads => 'Classic spreads';
-
-  @override
-  String get thematic_spreads => 'Thematic spreads';
-
-  @override
-  String get card_combination => 'Card combinations';
-
-  @override
-  String get card_meanings => 'Card meanings';
-
-  @override
-  String get training => 'Training';
-
-  @override
-  String get welcome => 'Welcome';
-
-  @override
-  String get today => 'Today';
-
-  @override
-  String get view => 'Watch';
-
-  @override
-  String get select_card => 'Select a card';
-
-  @override
-  String get please_select_cards =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get good_day =>
-      'Have a nice day,\nSelect cards to find out their combination and meaning';
-
-  @override
-  String get language_hint => 'For full personalization of spreads';
-
-  @override
-  String get quickReading => 'Quick spread';
-
-  @override
-  String get comingSoon => 'Coming soon';
-
-  @override
-  String get onboarding_notifications_title =>
-      '🔔 Want to never miss the \"Card of the Day\" and new spreads?';
-
-  @override
-  String get onboarding_notifications_subtitle =>
-      'Please agree to receive notifications (no spam).';
-
-  @override
-  String get onboarding_notifications_allow => 'AGREE';
-
-  @override
-  String get onboarding_notifications_decline => 'DECLINE';
-
-  @override
-  String get suggested_questions_chat_1 => 'Tell me about my love life';
-
-  @override
-  String get suggested_questions_chat_2 => 'What will happen in my career?';
-
-  @override
-  String get suggested_questions_chat_3 => 'How can I improve myself?';
-
-  @override
-  String get suggested_questions_chat_4 =>
-      'What opportunities await me in the future?';
-
-  @override
-  String get onboarding_final_title => 'Everything is ready!';
-
-  @override
-  String get onboarding_final_subtitle =>
-      'To support the project, we show ads. BUT if you don\'t want to, you can subscribe';
-
-  @override
-  String get onboarding_final_benefits =>
-      'No ads\nUnlimited spreads\nUnlimited learning';
-
-  @override
-  String get onboarding_final_yearly => 'Annually';
-
-  @override
-  String get onboarding_final_badge => '50% off';
-
-  @override
-  String get onboarding_final_yearly_price => '249/year';
-
-  @override
-  String get onboarding_final_yearly_month => '24/mo';
-
-  @override
-  String get onboarding_final_trial => '7 days free';
-
-  @override
-  String get onboarding_final_trial_price => 'then 9/mo';
-
-  @override
-  String get onboarding_final_trial_month => 'Monthly';
-
-  @override
-  String get onboarding_final_note =>
-      'Subscription is optional and renews automatically. You can cancel anytime';
-
-  @override
-  String get onboarding_final_choose_yearly => 'Choose yearly';
-
-  @override
-  String get onboarding_final_choose_trial => 'Choose 7 days free';
-
-  @override
-  String get onboarding_final_or => 'OR';
-
-  @override
-  String get onboarding_final_continue_ads => 'CONTINUE WITH AD';
-
-  @override
-  String get main_screen_greeting => 'Greetings';
-
-  @override
-  String main_screen_date_today(Object date) {
-    return 'Today, $date';
+  String reflection_voice_error(Object error) {
+    return 'Ошибка распознавания речи: $error';
   }
 
   @override
-  String get main_screen_card_of_day_title => 'Your card of the day';
+  String get reflection_voice_unavailable =>
+      'Распознавание речи недоступно на этом устройстве';
 
   @override
-  String main_screen_card_of_day_description(Object cardName) {
-    return 'Card of the day: $cardName';
+  String get reflection_voice_hint =>
+      'Нажмите на микрофон и начните говорить свои мысли...';
+
+  @override
+  String get reflection_voice_ios_microphone =>
+      'Для голосового ввода размышлений';
+
+  @override
+  String get reflection_voice_ios_speech =>
+      'Для распознавания речи в ваших размышлениях';
+
+  @override
+  String get reflection_summary_see_analysis_button => 'Увидеть анализ';
+
+  @override
+  String get reflection_summary_error_getting_analysis =>
+      'Ошибка при получении анализа. Попробуйте еще раз.';
+
+  @override
+  String get reflection_summary_ai_recommendations_title =>
+      'Персональные рекомендации';
+
+  @override
+  String get quick_reading_result_screen_quick_spread_type => 'Быстрое гадание';
+
+  @override
+  String get quick_reading_result_screen_microphone_permission_error =>
+      'Для голосового ввода нужно разрешение на микрофон';
+
+  @override
+  String quick_reading_result_screen_speech_recognition_error(Object errorMsg) {
+    return 'Ошибка распознавания речи: $errorMsg';
   }
 
   @override
-  String get main_screen_card_of_day_description_empty => 'Card of the day:';
+  String get quick_reading_result_screen_speech_not_available =>
+      'Распознавание речи недоступно на этом устройстве';
 
   @override
-  String get main_screen_card_of_day_status_viewed => 'Open';
-
-  @override
-  String get main_screen_card_of_day_status_view => 'View';
-
-  @override
-  String get main_screen_section_spreads => 'Spreads';
-
-  @override
-  String get main_screen_section_training => 'Learning';
-
-  @override
-  String get main_screen_section_entertainment => 'Entertainment';
-
-  @override
-  String get main_screen_quick_spread_title => 'Quick Spread';
-
-  @override
-  String get main_screen_quick_spread_description =>
-      'Get a clear answer to your question with one card in just a few taps';
-
-  @override
-  String get main_screen_thematic_spreads_title => 'Themed spreads';
-
-  @override
-  String get main_screen_thematic_spreads_description =>
-      'ready-made spreads for important areas: love, career, health, travel';
-
-  @override
-  String get main_screen_card_combination_title => 'Card combinations';
-
-  @override
-  String get main_screen_fun_spread_title => 'Joke spread';
-
-  @override
-  String get main_screen_fun_spread_description =>
-      'lift your mood, do a joke spread and share it on social media';
-
-  @override
-  String get main_screen_love_badge => 'LOVE';
-
-  @override
-  String get card_combination_screen_title => 'Card Combination';
-
-  @override
-  String get card_combination_screen_greeting =>
-      'Good day, select cards to find out the combination and meaning';
-
-  @override
-  String get card_combination_screen_card_hint => 'Card';
-
-  @override
-  String get card_combination_screen_get_combination_button =>
-      'Find Combination';
-
-  @override
-  String get card_combination_screen_new_spread_button => 'Make a New Spread';
-
-  @override
-  String get card_combination_screen_fill_all_fields_error =>
-      'Please fill in all card fields.';
-
-  @override
-  String get card_combination_screen_invalid_cards_error =>
-      'Please select cards only from the provided list. Invalid cards:';
-
-  @override
-  String get card_combination_screen_duplicate_cards_error =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get card_combination_screen_general_error =>
-      'Error: failed to get a response. Please try again.';
-
-  @override
-  String get card_combination_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for any decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String card_combination_screen_prompt(Object cards, Object lang) {
-    return 'Analyze the combination of Tarot cards: $cards. Provide a deep mystical analysis of their interaction and overall advice. The response should be entirely in $lang. No greetings or conclusions.';
+  String quick_reading_result_screen_your_card(Object cardName) {
+    return 'Ваша карта: $cardName';
   }
 
   @override
-  String get quick_reading_screen_title => 'Quick spread';
+  String get quick_reading_result_screen_reflection_intro =>
+      'Давай порефлексируем и запишем твои мысли, чтобы потом я мог дать тебе лучше рекомендации. Пожалуйста, ответь на два вопроса.';
 
   @override
-  String get quick_reading_screen_select_card => 'Choose a card';
+  String get quick_reading_result_screen_reflection_question =>
+      'Что этот расклад заставил тебя почувствовать сейчас? Подумай, как ты можешь применить этот расклад в своей жизни прямо сейчас?';
 
   @override
-  String get quick_reading_screen_get_answer_button => 'Find out the answer';
+  String get quick_reading_result_screen_reflection_final =>
+      'Благодарю тебя. Продолжай делать расклады и фиксировать свои мысли. Когда захочешь — загляни в раздел «Дневник», и я дам тебе персональные рекомендации на основе твоего внутреннего пути.';
 
   @override
-  String get quick_reading_screen_what_is_quick_spread =>
-      'What is a quick spread?';
+  String get quick_reading_result_screen_input_hint => '...';
 
   @override
-  String get quick_reading_screen_quick_spread_explanation =>
-      'Quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general atmosphere of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
+  String get quick_reading_result_screen_please_write_thoughts =>
+      'Пожалуйста, напишите свои мысли';
 
   @override
-  String get quick_reading_screen_understand_button => 'Understood';
+  String get quick_reading_result_screen_write_thoughts_hint =>
+      'Напишите свои мысли...';
 
   @override
-  String get quick_reading_result_screen_generating_response =>
-      'Generating response...';
+  String get quick_reading_result_screen_save_reflection =>
+      'Сохранить размышление';
 
   @override
-  String quick_reading_result_screen_error_generating(Object error) {
-    return 'Error generating response: $error';
+  String get quick_reading_result_screen_l10n_null_error =>
+      'Ошибка: l10n is null';
+
+  @override
+  String get quick_reading_result_screen_prompt_empty_error =>
+      'Ошибка: prompt is empty';
+
+  @override
+  String quick_reading_result_screen_general_error(Object error) {
+    return 'Ошибка: $error';
   }
 
   @override
-  String quick_reading_result_screen_error_generating_response(Object e) {
-    return 'Error generating response: $e';
+  String get server_temporarily_unavailable =>
+      'Сервер временно недоступен. Пожалуйста, попробуйте еще раз через несколько секунд.';
+
+  @override
+  String get onboarding_final_error_title => 'Ошибка';
+
+  @override
+  String get onboarding_final_error_ok => 'OK';
+
+  @override
+  String onboarding_final_purchase_error(Object error) {
+    return 'Ошибка покупки: $error';
   }
 
   @override
-  String get quick_reading_result_screen_what_is_quick_spread =>
-      'What is a quick spread?';
+  String get purchase_love_error_title => 'Ошибка';
 
   @override
-  String get quick_reading_result_screen_quick_spread_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps you instantly get a clear answer to a specific question or the general vibe of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
+  String get purchase_love_error_ok => 'OK';
 
   @override
-  String get quick_reading_result_screen_understand_button => 'Understood';
-
-  @override
-  String get quick_reading_result_screen_quick_spread_title => 'Quick spread';
-
-  @override
-  String get quick_reading_result_screen_new_spread_button => 'New spread';
-
-  @override
-  String get quick_reading_result_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Please consult a professional if necessary.';
-
-  @override
-  String quick_reading_result_screen_prompt(Object cardName, Object userName) {
-    return 'You are an experienced tarot reader. The user $userName drew the card — $cardName. First, write on a new line the phrase: Card answer: followed by a one-word answer \"Yes\" or \"No\". Then add a coherent interpretation of 120–150 words: 7–8 sentences about why the energy of $cardName leads to this answer and what it means personally for $userName. Mention the name $userName at least twice, include 1–2 thematic emojis, avoid symbols *, #, and any markup; write in a simple conversational tone.';
+  String purchase_love_purchase_error(Object error) {
+    return 'Ошибка покупки: $error';
   }
 
   @override
-  String get career_finance_spread_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards.';
+  String get purchase_love_restore_success => 'Ваша подписка восстановлена!';
 
   @override
-  String get career_finance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get career_finance_spread_screen_what_is_career_finance =>
-      'What is the Career and Finance spread?';
-
-  @override
-  String get career_finance_spread_screen_career_finance_explanation =>
-      'This spread helps analyze the professional and financial sphere. You will learn about opportunities, obstacles, and growth prospects.';
-
-  @override
-  String get career_finance_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get career_finance_spread_screen_learn_meaning_button =>
-      'Find out the meaning';
-
-  @override
-  String get career_finance_spread_screen_career_finance_title =>
-      'Career and Finance';
-
-  @override
-  String get career_finance_spread_screen_new_spread_button =>
-      'Make a new spread';
-
-  @override
-  String get career_finance_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
-
-  @override
-  String get career_finance_spread_screen_enter_question_hint =>
-      'Enter your question...';
-
-  @override
-  String get pros_cons_spread_screen_what_is_pros_cons =>
-      'What is the \"Pros and Cons\" spread?';
-
-  @override
-  String get pros_cons_spread_screen_pros_cons_title =>
-      '\"Pros and Cons\" spread';
-
-  @override
-  String get pros_cons_spread_screen_enter_question_hint =>
-      'Enter your question...';
-
-  @override
-  String
-  get self_development_balance_spread_screen_self_development_explanation =>
-      'The \"Self-Development and Balance\" spread consists of 7 cards arranged in a circle. Each card symbolizes a specific aspect of your spiritual growth and inner harmony.';
-
-  @override
-  String get card_meanings_screen_major_arcana => 'Major Arcana';
-
-  @override
-  String get card_meanings_screen_wands => 'Wands';
-
-  @override
-  String get card_meanings_screen_cups => 'Cups';
-
-  @override
-  String get card_meanings_screen_swords => 'Swords';
-
-  @override
-  String get card_meanings_screen_pentacles => 'Pentacles';
-
-  @override
-  String get card_meanings_screen_title => 'Card meanings';
-
-  @override
-  String get love_spread_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get love_spread_screen_enter_question_hint => 'Enter your question...';
-
-  @override
-  String purchase_love_screen_test_stub(Object plan) {
-    return 'Test placeholder: selected plan \"$plan\"';
+  String purchase_love_restore_error(Object error) {
+    return 'Ошибка восстановления: $error';
   }
 
   @override
-  String get purchase_love_screen_love_tariff_title => 'Love Plan';
+  String get purchase_love_restore_button => 'Восстановить';
 
   @override
-  String get ad_promo_block_tariff => 'PLAN';
+  String get purchase_love_loading => 'Загрузка...';
 
   @override
-  String get ad_promo_block_love => 'LOVE';
+  String get purchase_love_per_month => '/месяц';
 
   @override
-  String get ad_promo_block_promotion_70 => 'PROMOTION -50%';
+  String get reflection_screen_title => 'Саморефлексия';
 
   @override
-  String get ad_promo_block_no_ads => '• no ads';
-
-  @override
-  String get ad_promo_block_no_limits => '• no limits';
-
-  @override
-  String three_cards_screen_title(Object cards) {
-    return '3 cards in the spread';
+  String reflection_screen_card_of_day(Object cardName) {
+    return 'Карта дня: $cardName';
   }
 
   @override
-  String get three_cards_screen_initial_message =>
-      'Good day, please write your request below:';
+  String get reflection_screen_tarologist_name => 'Таролог';
 
   @override
-  String get three_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
+  String get reflection_screen_write_thoughts_hint => 'Напишите свои мысли...';
 
   @override
-  String get three_cards_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
+  String get reflection_screen_continue_button => 'Продолжить';
 
   @override
-  String get three_cards_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
+  String get reflection_screen_save_button => 'Сохранить';
 
   @override
-  String get three_cards_screen_suggested_questions_3 =>
-      'What is hidden from me?';
+  String get reflection_screen_finish_button => 'Завершить';
 
   @override
-  String get three_cards_screen_see_meaning_button => 'Find out the meaning';
+  String get reflection_screen_please_write_thoughts =>
+      'Пожалуйста, напишите свои мысли';
 
   @override
-  String get three_cards_screen_new_spread_button => 'New spread';
+  String get reflection_screen_saved_success => 'Ваши размышления сохранены';
 
   @override
-  String get three_cards_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get three_cards_screen_what_is_three_cards =>
-      'What is a 3-card spread?';
-
-  @override
-  String get three_cards_screen_three_cards_explanation =>
-      'A classic spread that shows the past, present, and future of your situation. The first card is the past, the second is the present, the third is the future.';
-
-  @override
-  String get three_cards_screen_understand_button => 'Understood';
-
-  @override
-  String get three_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get three_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get five_cards_screen_title => '5 cards in the spread';
-
-  @override
-  String get five_cards_screen_initial_message =>
-      'Good day, please write your request below:';
-
-  @override
-  String get five_cards_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
-
-  @override
-  String get five_cards_screen_suggested_questions_1 =>
-      'Which path should I choose?';
-
-  @override
-  String get five_cards_screen_suggested_questions_2 =>
-      'What is preventing me from reaching my goal?';
-
-  @override
-  String get five_cards_screen_suggested_questions_3 =>
-      'What options do I have?';
-
-  @override
-  String get five_cards_screen_see_meaning_button => 'Find out the meaning';
-
-  @override
-  String get five_cards_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get five_cards_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get five_cards_screen_what_is_five_cards => 'What is a 5-card spread?';
-
-  @override
-  String get five_cards_screen_five_cards_explanation =>
-      'A 5-card spread is a compact layout that reveals five key aspects of a situation: the past, the present, hidden influences, the helper/obstacle, and the likely outcome.';
-
-  @override
-  String get five_cards_screen_understand_button => 'Understood';
-
-  @override
-  String get five_cards_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get five_cards_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get celtic_cross_screen_title => 'Celtic Cross';
-
-  @override
-  String get celtic_cross_screen_initial_message =>
-      'Good afternoon, please write your request below:';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_1 =>
-      'What is my main problem right now?';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_2 =>
-      'What should I focus on in the near future?';
-
-  @override
-  String get celtic_cross_screen_suggested_questions_3 =>
-      'What is hidden from me?';
-
-  @override
-  String get celtic_cross_screen_see_meaning_button => 'Find out the meaning';
-
-  @override
-  String get celtic_cross_screen_new_spread_button => 'Make a new spread';
-
-  @override
-  String get celtic_cross_screen_enter_question_hint => 'Enter your query...';
-
-  @override
-  String get celtic_cross_screen_what_is_celtic_cross_dialog =>
-      'What is the Celtic Cross?';
-
-  @override
-  String get celtic_cross_screen_celtic_cross_explanation_dialog =>
-      'The \"Celtic Cross\" is a 10-card spread that thoroughly analyzes the situation from all angles: current circumstances, obstacles, internal and external influences, as well as near-term dynamics and the final outcome. The cards are laid out in order:\n1 - Situation — the essence of the question here and now.\n2 - Challenge — what helps or hinders progress.\n3 - Subconscious (root) — hidden motives and deep forces.\n4 - Recent past — events that led to the current state.\n5 - Conscious (goal) — what the querent\'s attention is focused on now.\n6 - Near future — likely developments in the coming weeks.\n7 - \"Self\" — internal state, resources, attitude toward the question.\n8 - Environment — influences of people and circumstances around.\n9 - Hopes / fears — expectations, doubts, strong emotions.\n10 - Outcome — possible result if current trends continue.\nThis spread allows you to see the \"big picture\": where you stand, what helps or hinders, which hidden impulses are working behind the scenes, and where everything is heading next.\nThe layout diagram is shown in the image below.';
-
-  @override
-  String get celtic_cross_screen_celtic_cross_explanation_image =>
-      'assets/images/kelt.png';
-
-  @override
-  String get celtic_cross_screen_understand_button => 'Understood';
-
-  @override
-  String celtic_cross_screen_please_open_cards(Object cards) {
-    return 'Your request has been received. Please open the cards';
+  String reflection_screen_save_error(Object error) {
+    return 'Ошибка сохранения: $error';
   }
 
   @override
-  String celtic_cross_screen_request_accepted(Object cards) {
-    return 'Request received, please open the cards';
+  String get reflection_screen_intro_message =>
+      'Давай порефлексируем и запишем твои мысли, чтобы потом я мог дать тебе лучше реккомендации. Пожалуйста ответь на два вопроса';
+
+  @override
+  String get reflection_screen_question_message =>
+      'Что этот расклад заставил тебя почувствовать сейчас? Подумай, как ты можешь применить этот расклад в своей жизни прямо сейчас?';
+
+  @override
+  String get reflection_screen_final_message =>
+      'Благодарю тебя. Продолжай делать расклады и фиксировать свои мысли.\n\nКогда захочешь — загляни в раздел «Мои размышления», и я дам тебе персональные рекомендации на основе твоего внутреннего пути.';
+
+  @override
+  String reflection_summary_load_error(Object error) {
+    return 'Ошибка загрузки: $error';
   }
 
   @override
-  String get the_user => 'user';
+  String get reflection_summary_need_7_entries =>
+      'Нужно 7 записей для получения рекомендаций';
 
   @override
-  String get good_day_please_write_your_question_below =>
-      'Good day, please write your request below';
+  String get reflection_summary_ok_button => 'ОК';
 
   @override
-  String get errorGettingSpreadMeaning =>
-      'Error retrieving the spread value. Please try again.';
+  String get reflection_summary_screen_title => 'Мои размышления';
 
   @override
-  String get errorGettingSpreadMeaningPleaseTryAgain =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get seeMeaning => 'Get the meaning';
-
-  @override
-  String get newSpread => 'Make a new spread';
-
-  @override
-  String get enterYourQuestion => 'Enter your question...';
-
-  @override
-  String get enterQuestion => 'Enter your question...';
-
-  @override
-  String makeTarotReadingFor(Object lang) {
-    return 'Make for';
+  String reflection_summary_left_to_analyze(Object count) {
+    return 'Осталось до анализа: $count раскладов';
   }
 
   @override
-  String get theUser => 'user';
+  String get reflection_summary_instruction_text =>
+      'Чтобы я мог проанализировать и дать советы по Вашим мыслям, пожалуйста, сделайте 7 раскладов и запишите свои мысли. А потом вернитесь сюда, чтобы узнать совет.';
 
   @override
-  String onTheseThreeCards(Object userName) {
-    return 'a spread on these three cards:';
+  String reflection_summary_spread_label(Object spreadName) {
+    return '🃏 Расклад: $spreadName';
   }
 
   @override
-  String makeSelfDevelopmentAndBalanceTarotReadingFor(Object cards) {
-    return 'Make a Self-development and Balance spread for $cards';
+  String get reflection_summary_cards_label => '🗂️ Карты в раскладе:';
+
+  @override
+  String get reflection_summary_thoughts_label => '💭 Мысли: ';
+
+  @override
+  String get reflection_summary_date_label => '📅 Дата: ';
+
+  @override
+  String get reflection_summary_empty_placeholder => '—';
+
+  @override
+  String journal_service_load_error(Object error) {
+    return 'Ошибка загрузки записей: $error';
   }
 
   @override
-  String get getAnswer => 'Find out the answer';
-
-  @override
-  String get aboutTheSpread => 'About the spread';
-
-  @override
-  String get aboutSpreadDescription =>
-      'This spread helps analyze your spiritual growth and inner harmony.';
-
-  @override
-  String get gotIt => 'Understood';
-
-  @override
-  String get selfDevelopmentAndBalance => 'Self-development and balance';
-
-  @override
-  String get appUsageDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get careerFinance => 'Career and Finance';
-
-  @override
-  String get fun_spread_screen_with_swear_words_title => 'With profanity (18+)';
-
-  @override
-  String get fun_spread_screen_with_swear_words_subtitle =>
-      'For those who love thrills';
-
-  @override
-  String get fun_spread_screen_without_swear_words_title => 'Without profanity';
-
-  @override
-  String get fun_spread_screen_without_swear_words_subtitle =>
-      'A fun spread without swear words';
-
-  @override
-  String get fun_spread_screen_generating => 'Generating your spread...';
-
-  @override
-  String get card_name_the_fool => 'The Fool';
-
-  @override
-  String get card_name_the_magician => 'The Magician';
-
-  @override
-  String get card_name_the_high_priestess => 'The High Priestess';
-
-  @override
-  String get card_name_the_empress => 'The Empress';
-
-  @override
-  String get card_name_the_emperor => 'The Emperor';
-
-  @override
-  String get card_name_the_hierophant => 'The Hierophant';
-
-  @override
-  String get card_name_the_lovers => 'The Lovers';
-
-  @override
-  String get card_name_the_chariot => 'The Chariot';
-
-  @override
-  String get card_name_strength => 'Strength';
-
-  @override
-  String get card_name_the_hermit => 'Hermit';
-
-  @override
-  String get ok_button => 'OK';
-
-  @override
-  String get cancel_button => 'Cancel';
-
-  @override
-  String get analyzing_cards => 'Analyzing cards...';
-
-  @override
-  String get yes_button => 'Yes';
-
-  @override
-  String get no_button => 'No';
-
-  @override
-  String get loading => 'Loading...';
-
-  @override
-  String get error => 'Error';
-
-  @override
-  String get success => 'Success';
-
-  @override
-  String get failed => 'Failed';
-
-  @override
-  String get language_russian => 'Russian';
-
-  @override
-  String get language_english_us => 'English (US)';
-
-  @override
-  String get language_english_gb => 'English (GB)';
-
-  @override
-  String get card_name_wheel_of_fortune => 'Wheel of Fortune';
-
-  @override
-  String get card_name_justice => 'Justice';
-
-  @override
-  String get card_name_the_hanged_man => 'The Hanged Man';
-
-  @override
-  String get card_name_death => 'Death';
-
-  @override
-  String get card_name_temperance => 'Temperance';
-
-  @override
-  String get card_name_the_devil => 'The Devil';
-
-  @override
-  String get card_name_the_tower => 'The Tower';
-
-  @override
-  String get card_name_the_star => 'Star';
-
-  @override
-  String get card_name_the_moon => 'Moon';
-
-  @override
-  String get card_name_the_sun => 'Sun';
-
-  @override
-  String get card_name_judgement => 'Judgment';
-
-  @override
-  String get card_name_the_world => 'World';
-
-  @override
-  String get card_name_ace_of_wands => 'Ace of Wands';
-
-  @override
-  String get card_name_two_of_wands => 'Two of Wands';
-
-  @override
-  String get card_name_three_of_wands => 'Three of Wands';
-
-  @override
-  String get card_name_four_of_wands => 'Four of Wands';
-
-  @override
-  String get card_name_five_of_wands => 'Five of Wands';
-
-  @override
-  String get card_name_six_of_wands => 'Six of Wands';
-
-  @override
-  String get card_name_seven_of_wands => 'Seven of Wands';
-
-  @override
-  String get card_name_eight_of_wands => 'Eight of Wands';
-
-  @override
-  String get card_name_nine_of_wands => 'Nine of Wands';
-
-  @override
-  String get card_name_ten_of_wands => 'Ten of Wands';
-
-  @override
-  String get card_name_page_of_wands => 'Page of Wands';
-
-  @override
-  String get card_name_knight_of_wands => 'Knight of Wands';
-
-  @override
-  String get card_name_queen_of_wands => 'Queen of Wands';
-
-  @override
-  String get card_name_king_of_wands => 'King of Wands';
-
-  @override
-  String get card_name_ace_of_cups => 'Ace of Cups';
-
-  @override
-  String get card_name_two_of_cups => 'Two of Cups';
-
-  @override
-  String get card_name_three_of_cups => 'Three of Cups';
-
-  @override
-  String get card_name_four_of_cups => 'Four of Cups';
-
-  @override
-  String get card_name_five_of_cups => 'Five of Cups';
-
-  @override
-  String get card_name_six_of_cups => 'Six of Cups';
-
-  @override
-  String get card_name_seven_of_cups => 'Seven of Cups';
-
-  @override
-  String get card_name_eight_of_cups => 'Eight of Cups';
-
-  @override
-  String get card_name_nine_of_cups => 'Nine of Cups';
-
-  @override
-  String get card_name_ten_of_cups => 'Ten of Cups';
-
-  @override
-  String get card_name_page_of_cups => 'Page of Cups';
-
-  @override
-  String get card_name_knight_of_cups => 'Knight of Cups';
-
-  @override
-  String get card_name_queen_of_cups => 'Queen of Cups';
-
-  @override
-  String get card_name_king_of_cups => 'King of Cups';
-
-  @override
-  String get card_name_ace_of_swords => 'Ace of Swords';
-
-  @override
-  String get card_name_two_of_swords => 'Two of Swords';
-
-  @override
-  String get card_name_three_of_swords => 'Three of Swords';
-
-  @override
-  String get card_name_four_of_swords => 'Four of Swords';
-
-  @override
-  String get card_name_five_of_swords => 'Five of Swords';
-
-  @override
-  String get card_name_six_of_swords => 'Six of Swords';
-
-  @override
-  String get card_name_seven_of_swords => 'Seven of Swords';
-
-  @override
-  String get card_name_eight_of_swords => 'Eight of Swords';
-
-  @override
-  String get card_name_nine_of_swords => 'Nine of Swords';
-
-  @override
-  String get card_name_ten_of_swords => 'Ten of Swords';
-
-  @override
-  String get card_name_page_of_swords => 'Page of Swords';
-
-  @override
-  String get card_name_knight_of_swords => 'Knight of Swords';
-
-  @override
-  String get card_name_queen_of_swords => 'Queen of Swords';
-
-  @override
-  String get card_name_king_of_swords => 'King of Swords';
-
-  @override
-  String get card_name_ace_of_pentacles => 'Ace of Pentacles';
-
-  @override
-  String get card_name_two_of_pentacles => 'Two of Pentacles';
-
-  @override
-  String get card_name_three_of_pentacles => 'Three of Pentacles';
-
-  @override
-  String get card_name_four_of_pentacles => 'Four of Pentacles';
-
-  @override
-  String get card_name_five_of_pentacles => 'Five of Pentacles';
-
-  @override
-  String get card_name_six_of_pentacles => 'Six of Pentacles';
-
-  @override
-  String get card_name_seven_of_pentacles => 'Seven of Pentacles';
-
-  @override
-  String get card_name_eight_of_pentacles => 'Eight of Pentacles';
-
-  @override
-  String get card_name_nine_of_pentacles => 'Nine of Pentacles';
-
-  @override
-  String get card_name_ten_of_pentacles => 'Ten of Pentacles';
-
-  @override
-  String get card_name_page_of_pentacles => 'Page of Pentacles';
-
-  @override
-  String get card_name_knight_of_pentacles => 'Knight of Pentacles';
-
-  @override
-  String get card_name_queen_of_pentacles => 'Queen of Pentacles';
-
-  @override
-  String get card_name_king_of_pentacles => 'King of Pentacles';
-
-  @override
-  String get quick_reading_screen_suggested_questions_1 => 'Should I do this?';
-
-  @override
-  String get quick_reading_screen_suggested_questions_2 =>
-      'Is this the right path?';
-
-  @override
-  String get quick_reading_screen_suggested_questions_3 =>
-      'What do I need to know?';
-
-  @override
-  String get monthly_forecast_spread_screen_see_meaning_button =>
-      'Find out the meaning';
-
-  @override
-  String get monthly_forecast_spread_screen_new_spread_button =>
-      'Make a new spread';
-
-  @override
-  String get monthly_forecast_spread_screen_enter_question_hint =>
-      'Enter your query...';
-
-  @override
-  String get monthly_forecast_spread_screen_what_is_monthly_forecast =>
-      'What is a monthly forecast?';
-
-  @override
-  String get monthly_forecast_spread_screen_monthly_forecast_explanation =>
-      'The monthly forecast shows the main events and trends for the upcoming month. It helps to prepare for changes and take advantage of opportunities.';
-
-  @override
-  String get monthly_forecast_spread_screen_understand_button => 'Got it';
-
-  @override
-  String get monthly_forecast_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String get monthly_forecast_spread_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String self_development_balance_spread_screen_prompt(
-    Object cards,
-    Object userName,
-  ) {
-    return 'Make a spread for $userName on self-development and balance with these three cards: $cards';
+  String journal_service_save_error(Object error) {
+    return 'Ошибка сохранения записи: $error';
   }
 
   @override
-  String get error_getting_answer_try_again =>
-      'Error: failed to get a response. Please try again.';
+  String journal_service_delete_error(Object error) {
+    return 'Ошибка удаления записи: $error';
+  }
 
   @override
-  String get card_detail_screen_title => 'Card details';
+  String get journal_service_no_note => 'Заметка не добавлена';
 
   @override
-  String get card_detail_screen_general_meaning => 'General meaning';
-
-  @override
-  String get card_detail_screen_reversed_meaning => 'Reversed meaning';
-
-  @override
-  String get card_detail_screen_symbolism => 'Symbolism';
-
-  @override
-  String get card_detail_screen_error_loading_text => 'Text loading error';
+  String celtic_cross_screen_prompt(
+      Object challengeCard,
+      Object consciousCard,
+      Object environmentCard,
+      Object hiddenCard,
+      Object hopesCard,
+      Object outcomeCard,
+      Object pastCard,
+      Object selfCard,
+      Object situationCard,
+      Object subconsciousCard,
+      Object userName,
+      Object userQuestion) {
+    return 'Ты опытный таролог. Пользователь $userName спрашивает: \"$userQuestion\". Ответь раскладом \"Кельтский крест\" (классическая схема Уэйта). Карты переданы так: ситуация - $situationCard; вызов - $challengeCard; подсознательное - $subconsciousCard; недавнее прошлое - $pastCard; сознательное - $consciousCard; ближайшее будущее - $hiddenCard; внутреннее Я - $selfCard; окружение - $environmentCard; надежды или страхи - $hopesCard; итог - $outcomeCard. Упоминай имя $userName минимум шесть раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: ситуация ($situationCard) / вызов ($challengeCard) / подсознательное ($subconsciousCard) / недавнее прошлое ($pastCard) / сознательное ($consciousCard) / ближайшее будущее ($hiddenCard) / внутреннее Я ($selfCard) / окружение ($environmentCard) / надежды/страхи ($hopesCard) / итог ($outcomeCard).\n\n3) Ситуация — $situationCard (45-55 слов): три ключевых слова, символика карты и текущее положение дел по вопросу $userQuestion для $userName.\n\n4) Вызов — $challengeCard (45-55 слов): главное препятствие или помощь для $userName.\n\n5) Подсознательное — $subconsciousCard (45-55 слов): скрытые мотивы или энергии, влияющие на $userName.\n\n6) Недавнее прошлое — $pastCard (45-55 слов): события, приведшие $userName к нынешней ситуации.\n\n7) Сознательное — $consciousCard (45-55 слов): цели, ожидания или то, что $userName осознаёт.\n\n8) Ближнее будущее — $hiddenCard (45-55 слов): вероятное развитие в ближайшие недели.\n\n9) Внутреннее Я — $selfCard (45-55 слов): состояние, ресурсы $userName.\n\n10) Окружение — $environmentCard (45-55 слов): влияние людей и обстоятельств.\n\n11) Надежды / страхи — $hopesCard (45-55 слов): ожидания или опасения $userName.\n\n12) Итог — $outcomeCard (45-55 слов): вероятный результат при учёте совета расклада.\n\n13) Заключение: дружеская поддержка и позитивная аффирмация (30-35 слов) для $userName.\n\nТребования: общий объём 400-500 слов, живой разговорный тон, 4-6 эзотерических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); не используй символы *, # или другую разметку; пиши только простым текстом.';
+  }
 
   @override
   String card_detail_screen_general_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the general meaning of the Tarot card \"$cardName\" in $lang. Include history, symbolism, and key meanings.';
+      Object cardName, Object lang) {
+    return 'Опиши общее значение карты Таро \"$cardName\" на языке $lang. Включи историю, символику и основные значения.';
   }
 
   @override
   String card_detail_screen_reversed_meaning_prompt(
-    Object cardName,
-    Object lang,
-  ) {
-    return 'Describe the reversed meaning of the Tarot card \"$cardName\" in $lang. Include opposite meanings and warnings.';
+      Object cardName, Object lang) {
+    return 'Опиши перевернутое значение карты Таро \"$cardName\" на языке $lang. Включи противоположные значения и предупреждения.';
   }
 
   @override
   String card_detail_screen_symbolism_prompt(Object cardName, Object lang) {
-    return 'Describe the symbolism of the Tarot card \"$cardName\" in $lang. Include details of the imagery, colors, and their meanings.';
+    return 'Опиши символизм карты Таро \"$cardName\" на языке $lang. Включи детали изображения, цвета и их значения.';
   }
 
   @override
-  String card_detail_screen_description(Object cardName) {
-    return 'Description of the card $cardName';
+  String self_development_balance_spread_screen_prompt(
+      Object cards, Object userName) {
+    return 'Сделай для $userName расклад на саморазвитие и баланс по этим трем картам: $cards';
   }
 
   @override
-  String get card_detail_screen_see_other_card_meaning =>
-      'View the meaning of another card';
-
-  @override
-  String get card_detail_screen_or => 'or';
-
-  @override
-  String get card_detail_screen_loading_language => 'Loading language...';
-
-  @override
-  String get card_detail_screen_see_card_meaning => 'View card meaning';
-
-  @override
-  String get card_detail_screen_original_waite_text => 'Original Wait text';
-
-  @override
-  String get card_detail_screen_no_original_text => 'No original text';
+  String quick_reading_result_screen_prompt(Object cardName, Object userName) {
+    return 'Ты опытный таролог. Пользователь $userName вытянул карту — $cardName. Сначала напиши с новой строки фразу: Ответ карт: и далее одним словом ответ «Да» или «Нет». Потом добавь связное толкование 120–150 слов: 7–8 предложений о том, почему энергия $cardName ведёт к такому ответу и что это значит лично для $userName. Упомяни имя $userName минимум два раза, вставь 1–2 тематических эмодзи, избегай символов *, # и любой разметки; пиши простым разговорным тоном.';
+  }
 
   @override
   String card_of_the_day_screen_translate_card_name_prompt(
-    Object cardName,
-    Object languageCode,
-  ) {
-    return 'Translate the Tarot card name \"$cardName\" into $languageCode. The response should contain only the translated name, without any additional text or punctuation.';
+      Object cardName, Object languageCode) {
+    return 'Переведи название карты Таро \"$cardName\" на $languageCode. Ответ должен содержать только переведенное название, без дополнительного текста или знаков препинания.';
   }
 
   @override
   String card_of_the_day_screen_generate_description_prompt(
-    Object cardName,
-    Object name,
-  ) {
-    return 'You are a professional tarot reader. Write an inspiring \"Card of the Day\" message in the language of this request for the user $name. Follow the structure and length.\n🌟 $name, your card of the day is $cardName!\n🔑 Keywords: <list 3–5 short keywords>\n🃏 Meaning (≈45–50 words): describe the main energy of the card and how it will manifest today for $name.\n💡 Advice (≈35–40 words): suggest a specific action or mindset that will help $name harness this energy.\n✨ Affirmation (1 line): a positive statement starting with \"I…\".\nRequirements: total length 120–150 words, warm esoteric tone, 3–4 thematic emojis, no HTML/Markdown lists; separate paragraphs with double line breaks (\\n\\n).';
+      Object cardName, Object name) {
+    return 'Ты профессиональный таролог. Напиши вдохновляющее сообщение «Карта дня» на языке этого запроса для пользователя $name. Соблюдай структуру и объём.\n\n🌟 $name, твоя карта дня — $cardName!\n\n🔑 Ключевые слова: <укажи 3–5 коротких keywords>\n\n🃏 Значение (≈45–50 слов): опиши основную энергию карты и как она проявится сегодня у $name.\n\n💡 Совет (≈35–40 слов): предложи конкретное действие или настрой, который поможет $name использовать эту энергию.\n\n✨ Аффирмация (1 строка): позитивное утверждение, начинающееся с «Я…».\n\nТребования: общая длина 120–150 слов, тёплый эзотерический тон, 3–4 тематических эмодзи, никаких списков в HTML/Markdown; абзацы разделяй двойным переносом строки (\n\n).';
   }
-
-  @override
-  String get card_of_the_day_screen_title => 'Card of the Day';
-
-  @override
-  String get card_of_the_day_screen_error_loading_card => 'Error loading card';
-
-  @override
-  String career_finance_spread_screen_prompt(Object cards, Object userName) {
-    return 'Do a career and finance spread for $userName using these three cards: $cards';
-  }
-
-  @override
-  String get contact_us_title => 'Write to us';
-
-  @override
-  String get contact_us_email_hint => 'Your e-mail';
-
-  @override
-  String get contact_us_email_empty => 'Enter e-mail';
-
-  @override
-  String get contact_us_email_invalid => 'Invalid e-mail';
-
-  @override
-  String get contact_us_message_hint => 'Your message';
-
-  @override
-  String get contact_us_message_empty => 'Enter message';
-
-  @override
-  String get contact_us_send_button => 'Send';
-
-  @override
-  String get five_cards_spread_screen_what_is_five_cards_dialog =>
-      'What is a 5-card spread?';
-
-  @override
-  String get five_cards_spread_screen_five_cards_explanation_dialog =>
-      'This spread reveals the entire path of your question:\nCard 1 - The Past shows the original circumstances,\nCard 2 - The Present — the current energy,\nCard 3 - The Hidden reveals hidden influences,\nCard 4 - The Advice suggests the optimal action,\nCard 5 - The Outcome predicts the likely result.';
-
-  @override
-  String get five_cards_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get language_selection_screen_title => 'Language';
-
-  @override
-  String get love_spread_screen_what_is_love_spread => 'What is a love spread?';
-
-  @override
-  String get love_spread_screen_love_spread_explanation =>
-      'A love triplet is three cards laid out from left to right:\nCard 1 - You — shows the querent\'s feelings, motivation, and position.\nCard 2 - Partner — reveals the emotions, plans, and readiness of the other party.\nCard 3 - Dynamics / potential — describes how the two energies interact now and what the relationship might lead to in the near future.';
-
-  @override
-  String get love_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get main_screen_your_plan_trial => 'Your plan: Trial (with ads)';
-
-  @override
-  String get main_screen_no_ads => '• no ads';
-
-  @override
-  String get main_screen_no_limits => '• unlimited';
-
-  @override
-  String get main_screen_shop_soon => 'Store (soon)';
-
-  @override
-  String get main_screen_notification_settings => 'Notification settings';
-
-  @override
-  String get main_screen_language_selection => 'Language selection';
-
-  @override
-  String get main_screen_rate_app => 'Rate the app';
-
-  @override
-  String get main_screen_contact_us => 'Contact us';
-
-  @override
-  String get main_screen_classic_spreads_title => 'Classic spreads';
-
-  @override
-  String get main_screen_classic_spreads_description =>
-      'spreads of 2 / 3 / 5 cards and the full detailed Celtic Cross';
-
-  @override
-  String get main_screen_card_meanings_title => 'Card meanings';
-
-  @override
-  String get main_screen_card_meanings_description =>
-      'a complete guide to upright and reversed meanings of all Major and Minor Arcana';
-
-  @override
-  String get main_screen_card_combination_description =>
-      '\"tarot calculator\" select cards and get a deep relationship analysis';
-
-  @override
-  String get notification_settings_screen_title => 'Notification settings';
-
-  @override
-  String get notification_settings_screen_frequency_question =>
-      'How often do you want to receive the card of the day notification?';
-
-  @override
-  String get notification_settings_screen_every_day => 'Every day';
-
-  @override
-  String get notification_settings_screen_every_three_days =>
-      'Every three days';
-
-  @override
-  String get notification_settings_screen_every_week => 'Once a week';
-
-  @override
-  String get notification_settings_screen_time_question =>
-      'At what time of day?';
-
-  @override
-  String get notification_settings_screen_morning => 'In the morning';
-
-  @override
-  String get notification_settings_screen_day => 'In the afternoon';
-
-  @override
-  String get notification_settings_screen_evening => 'In the evening';
-
-  @override
-  String get notification_settings_screen_save_button => 'Save';
-
-  @override
-  String get onboarding_final_screen_yearly_price => '249/year';
-
-  @override
-  String get onboarding_final_screen_yearly_month_price => '24/mo';
-
-  @override
-  String get onboarding_final_screen_monthly_price => 'Monthly';
-
-  @override
-  String get onboarding_final_screen_monthly_month_price => '9/mo';
-
-  @override
-  String get onboarding_final_screen_yearly_plan => 'Annually';
-
-  @override
-  String get onboarding_final_screen_free_trial => '7 days free';
-
-  @override
-  String get onboarding_final_screen_purchase_title => 'Purchase';
-
-  @override
-  String onboarding_final_screen_test_stub_message(Object plan) {
-    return 'Test stub: selected plan \"$plan\"';
-  }
-
-  @override
-  String get onboarding_final_screen_ok_button => 'OK';
-
-  @override
-  String get purchase_love_screen_yearly_price => '249/year';
-
-  @override
-  String get purchase_love_screen_yearly_month_price => '24/mo';
-
-  @override
-  String get purchase_love_screen_monthly_price => 'Monthly';
-
-  @override
-  String get purchase_love_screen_monthly_month_price => '9/mo';
-
-  @override
-  String get purchase_love_screen_title => 'Purchase';
-
-  @override
-  String get purchase_love_screen_ok_button => 'OK';
-
-  @override
-  String quick_reading_screen_error_no_image_file_found(Object cardName) {
-    return 'ERROR: Image file not found for card: $cardName';
-  }
-
-  @override
-  String get please_fill_all_fields => 'Please fill in all card fields.';
-
-  @override
-  String get please_select_cards_only_from_suggested_list =>
-      'Please select cards only from the suggested list. Invalid cards:';
-
-  @override
-  String get please_select_different_cards_in_all_fields =>
-      'Please select different cards in all fields.';
-
-  @override
-  String get card => 'Card';
-
-  @override
-  String get get_combination => 'Find out the combination';
-
-  @override
-  String get new_spread => 'Make a new spread';
-
-  @override
-  String get app_uses_ai_for_entertainment_purposes =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get career_finance_spread_screen_what_is_career_finance_spread =>
-      'What is the Career and Finance spread?';
-
-  @override
-  String celtic_cross_screen_prompt(
-    Object challengeCard,
-    Object consciousCard,
-    Object environmentCard,
-    Object hiddenCard,
-    Object hopesCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object selfCard,
-    Object situationCard,
-    Object subconsciousCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Celtic Cross\" spread (classic Waite layout). The cards are assigned as follows: situation - $situationCard; challenge - $challengeCard; subconscious - $subconsciousCard; recent past - $pastCard; conscious - $consciousCard; near future - $hiddenCard; inner self - $selfCard; environment - $environmentCard; hopes or fears - $hopesCard; outcome - $outcomeCard. Mention the name $userName at least six times and be sure to connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: situation ($situationCard) / challenge ($challengeCard) / subconscious ($subconsciousCard) / recent past ($pastCard) / conscious ($consciousCard) / near future ($hiddenCard) / inner self ($selfCard) / environment ($environmentCard) / hopes/fears ($hopesCard) / outcome ($outcomeCard).\n3) Situation — $situationCard (45-55 words): three keywords, symbolism of the card, and the current state of affairs regarding the question $userQuestion for $userName.\n4) Challenge — $challengeCard (45-55 words): the main obstacle or aid for $userName.\n5) Subconscious — $subconsciousCard (45-55 words): hidden motives or energies influencing $userName.\n6) Recent past — $pastCard (45-55 words): events that led $userName to the current situation.\n7) Conscious — $consciousCard (45-55 words): goals, expectations, or what $userName is aware of.\n8) Near future — $hiddenCard (45-55 words): likely developments in the coming weeks.\n9) Inner self — $selfCard (45-55 words): state, resources of $userName.\n10) Environment — $environmentCard (45-55 words): influence of people and circumstances.\n11) Hopes / fears — $hopesCard (45-55 words): expectations or fears of $userName.\n12) Outcome — $outcomeCard (45-55 words): probable result considering the advice of the spread.\n13) Conclusion: friendly support and positive affirmation (30-35 words) for $userName.\nRequirements: total volume 400-500 words, lively conversational tone, 4-6 esoteric emojis; separate each block with double line breaks (\n); do not use *, #, or other markup; write only in plain text.';
-  }
-
-  @override
-  String get celtic_cross_screen_unable_to_load_card =>
-      'Failed to load the card';
-
-  @override
-  String get celticCrossTitle => 'Celtic Cross';
-
-  @override
-  String get chat_with_tarot_reader_screen_request_received =>
-      'Your request has been received. Please reveal the cards';
 
   @override
   String chat_with_tarot_reader_screen_prompt(
-    Object hiddenCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond with the \"Past - Present - Future\" spread. The cards are assigned as follows: past - $pastCard; present - $presentCard; future - $hiddenCard. Mention the name $userName at least four times and be sure to connect the card meanings to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: Past ($pastCard) - Present ($presentCard) - Future ($hiddenCard).\n3) PAST block — $pastCard (40-50 words): three keywords, symbolism of the card, and explanation of how past facts influence the outcome of the question $userQuestion for $userName.\n4) PRESENT block — $presentCard (40-50 words): keywords, symbolism of the card, and current factors affecting the answer to the question $userQuestion.\n5) FUTURE block — $hiddenCard (40-50 words): keywords, symbolism of the card, and the likely scenario of the situation\'s development regarding the question for $userName.\n6) Conclusion: brief advice, positive affirmation (20-30 words), and a clear summary of the chances.\nRequirements: total volume 180-220 words, warm esoteric tone, 3-5 thematic emojis; separate each block with double line breaks (\n); do not use *, #, or other formatting marks; write only in plain text.';
+      Object hiddenCard,
+      Object pastCard,
+      Object presentCard,
+      Object userName,
+      Object userQuestion) {
+    return 'Ты опытный таролог. Пользователь $userName спрашивает: \"$userQuestion\". Ответь через расклад \"Прошлое - Настоящее - Будущее\". Карты переданы так: прошлое - $pastCard; настоящее - $presentCard; будущее - $hiddenCard. Упоминай имя $userName не менее четырёх раз и обязательно связывай значения карт с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: Прошлое ($pastCard) - Настоящее ($presentCard) - Будущее ($hiddenCard).\n\n3) Блок ПРОШЛОЕ — $pastCard (40-50 слов): три ключевых слова, символика карты и объяснение, как прошлые факты влияют на исход вопроса $userQuestion для $userName.\n\n4) Блок НАСТОЯЩЕЕ — $presentCard (40-50 слов): ключевые слова, символика карты и текущие факторы, влияющие на ответ на вопрос $userQuestion.\n\n5) Блок БУДУЩЕЕ — $hiddenCard (40-50 слов): ключевые слова, символика карты и вероятный сценарий развития ситуации по вопросу $userName.\n\n6) Итог: короткий совет, позитивная аффирмация (20-30 слов) и чёткое обобщение шансов.\n\nТребования: общий объём 180-220 слов, тёплый эзотерический тон, 3-5 тематических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); запрещено использовать символы *, # или другие знаки форматирования; пиши только простым текстом.';
   }
 
   @override
-  String get see_meaning_button => 'Find out the meaning';
-
-  @override
-  String three_cards_title(Object cards) {
-    return '3 cards in the spread';
+  String career_finance_spread_screen_prompt(Object cards, Object userName) {
+    return 'Сделай для $userName расклад на карьеру и финансы по этим трем картам: $cards';
   }
-
-  @override
-  String get new_spread_button => 'Make a new spread';
-
-  @override
-  String get disclaimer_text =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get enter_your_question => 'Enter your question...';
-
-  @override
-  String get classic_spreads_screen_title => 'Classic spreads';
-
-  @override
-  String get classic_spreads_screen_three_cards_title => '3 cards';
-
-  @override
-  String get classic_spreads_screen_three_cards_description =>
-      'Past, present, future';
-
-  @override
-  String get classic_spreads_screen_five_cards_title => '5 cards';
-
-  @override
-  String get classic_spreads_screen_five_cards_description =>
-      'Deep situation analysis';
-
-  @override
-  String get classic_spreads_screen_celtic_cross_title => 'Celtic Cross';
-
-  @override
-  String get classic_spreads_screen_celtic_cross_description =>
-      'Full 10-card spread';
 
   @override
   String five_cards_screen_prompt(
-    Object adviceCard,
-    Object hiddenCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Answer using the \"5 cards\" spread. The cards are given in order: past - $pastCard; present - $presentCard; hidden - $hiddenCard; advice - $adviceCard; outcome - $outcomeCard. Refer to $userName at least five times and be sure to relate each card to the question. Follow the structure:\n\n1) Greeting by name $userName.\n\n2) Title: Spread: past ($pastCard) / present ($presentCard) / hidden ($hiddenCard) / advice ($adviceCard) / outcome ($outcomeCard).\n\n3) Past — $pastCard (45-55 words): three keywords, card symbolism, and the influence of the past on $userQuestion for $userName.\n\n4) Present — $presentCard (45-55 words): keywords, symbolism, and the current state of $userName\'s question.\n\n5) Hidden — $hiddenCard (45-55 words): what unconsciously affects $userName\'s situation, focusing on symbolism.\n\n6) Advice — $adviceCard (45-55 words): practical action for $userName, based on the card\'s images.\n\n7) Outcome — $outcomeCard (45-55 words): likely scenario if the advice is followed, addressing $userName.\n\n8) Conclusion: friendly support and a positive affirmation (25-30 words) for $userName.\n\nRequirements: total volume 230-260 words, lively conversational tone, 3-5 esoteric emojis; separate each block with a double line break (\\n\\n); do not use *, # or other markup; write only plain text.';
+      Object adviceCard,
+      Object hiddenCard,
+      Object outcomeCard,
+      Object pastCard,
+      Object presentCard,
+      Object userName,
+      Object userQuestion) {
+    return 'You are an experienced tarot reader. User $userName asks: \"$userQuestion\". Answer through the \"5 cards\" spread. Cards are given in order: advice - $adviceCard; hidden - $hiddenCard; outcome - $outcomeCard; past - $pastCard; present - $presentCard. Explain the meaning of each card and their overall meaning.';
   }
-
-  @override
-  String get fiveCardsInSpread => '5 cards in the spread';
-
-  @override
-  String get makeNewSpread => 'Make a new spread';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get requestReceivedPleaseOpenCards =>
-      'Your request has been received. Please reveal the cards.';
-
-  @override
-  String love_spread_prompt(
-    Object dynamicCard,
-    Object partnerCard,
-    Object userName,
-    Object userQuestion,
-    Object youCard,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Respond using a three-card love spread. The cards are given as follows: feelings of $userName — $youCard; feelings of the partner — $partnerCard; dynamics or potential of the relationship — $dynamicCard. Mention the name $userName at least three times and connect each card to the question. Follow this structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $youCard | $partnerCard | $dynamicCard.\n3) $youCard — 40–50 words: describe what the card says about $userName\'s feelings and expectations.\n4) $partnerCard — 40–50 words: reveal the partner\'s emotions and intentions regarding $userName\'s question.\n5) $dynamicCard — 40–50 words: show how these two energies interact and what the relationship might lead to.\n6) Conclusion: warm advice and a positive affirmation (20–25 words) for $userName.\nRequirements: total length 150–180 words, friendly romantic tone, 2–4 thematic emojis; separate paragraphs with double line breaks (\\n\\n); avoid *, #, and any markup.';
-  }
-
-  @override
-  String get loveSpread => 'Love Spread';
-
-  @override
-  String
-  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String main_screen_greeting_with_name(Object name) {
-    return 'Hello, $name';
-  }
-
-  @override
-  String get main_screen_monday => 'Monday';
-
-  @override
-  String get main_screen_tuesday => 'Tuesday';
-
-  @override
-  String get main_screen_wednesday => 'Wednesday';
-
-  @override
-  String get main_screen_thursday => 'Thursday';
-
-  @override
-  String get main_screen_friday => 'Friday';
-
-  @override
-  String get main_screen_saturday => 'Saturday';
-
-  @override
-  String get main_screen_sunday => 'Sunday';
-
-  @override
-  String get main_screen_your_card_of_the_day => 'Your card of the day';
-
-  @override
-  String main_screen_card_of_the_day_with_name(Object cardName) {
-    return 'Card of the day: $cardName';
-  }
-
-  @override
-  String get main_screen_card_of_the_day => 'Card of the day:';
-
-  @override
-  String get main_screen_viewed => 'Opened';
-
-  @override
-  String get main_screen_not_viewed => 'View';
-
-  @override
-  String get main_screen_spreads => 'Spreads';
-
-  @override
-  String get main_screen_training => 'Tutorial';
-
-  @override
-  String get main_screen_entertainment => 'Entertainment';
-
-  @override
-  String get main_screen_glad_to_see_you_here => 'Glad to see you here!';
-
-  @override
-  String get main_screen_quick_reading_title => 'Quick spread';
-
-  @override
-  String get main_screen_quick_reading_description =>
-      'Get a clear answer to your question with one card in just a few taps';
-
-  @override
-  String get monthly_forecast_spread_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards';
 
   @override
   String monthly_forecast_spread_screen_prompt(Object cards, Object userName) {
-    return 'Make a monthly forecast for $userName based on these cards: $cards';
+    return 'Сделай для $userName месячный прогноз по этим картам: $cards';
   }
 
   @override
-  String get aboutSpread => 'About the spread';
-
-  @override
-  String get monthlyForecast => 'Monthly forecast';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String purchase_love_screen_test_message(Object planName) {
-    return 'Test placeholder: selected plan \"$planName\"';
+  String love_spread_prompt(Object dynamicCard, Object partnerCard,
+      Object userName, Object userQuestion, Object youCard) {
+    return 'Ты опытный таролог. Пользователь $userName спрашивает: «$userQuestion». Ответь с помощью любовного расклада из трёх карт. Карты даны так: чувства $userName — $youCard; чувства партнёра — $partnerCard; динамика или потенциал отношений — $dynamicCard. Упоминай имя $userName минимум три раза и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: $youCard | $partnerCard | $dynamicCard.\n\n3) $youCard — 40–50 слов: опиши, что карта говорит о чувствах и ожиданиях $userName.\n\n4) $partnerCard — 40–50 слов: раскрой эмоции и намерения партнёра относительно вопроса $userName.\n\n5) $dynamicCard — 40–50 слов: покажи, как эти две энергии взаимодействуют и к чему могут привести отношения.\n\n6) Заключение: тёплый совет и позитивная аффирмация (20–25 слов) для $userName.\n\nТребования: общий объём 150–180 слов, дружеский романтичный тон, 2–4 тематических эмодзи; абзацы отделяй двойным переводом строки (\n\n); избегай символов *, # и любой разметки.';
   }
-
-  @override
-  String get quick_reading_screen_what_is_quick_reading =>
-      'What is a quick spread?';
-
-  @override
-  String get quick_reading_screen_quick_reading_explanation =>
-      'A quick spread is an express reading (answer: YES or NO) that helps instantly get a clear answer to a specific question or the general vibe of the day. Perfect when you need quick inspiration or advice \"here and now.\"';
-
-  @override
-  String get self_development_balance_spread_screen_request_accepted =>
-      'Your request has been received. Please reveal the cards.';
-
-  @override
-  String get self_development_balance_spread_screen_error_getting_value =>
-      'Error retrieving the spread value. Please try again.';
-
-  @override
-  String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
-
-  @override
-  String get thematic_spreads_screen_title => 'Thematic spreads';
-
-  @override
-  String get thematic_spreads_screen_love_spread_title => 'Love spread';
-
-  @override
-  String get thematic_spreads_screen_love_spread_description =>
-      'Relationship and feelings analysis';
-
-  @override
-  String get thematic_spreads_screen_career_finance_title =>
-      'Career and finances';
-
-  @override
-  String get thematic_spreads_screen_career_finance_description =>
-      'Professional and financial analysis';
-
-  @override
-  String get thematic_spreads_screen_pros_cons_title => 'Pros and Cons';
-
-  @override
-  String get thematic_spreads_screen_pros_cons_description =>
-      'Analysis of Advantages and Disadvantages';
-
-  @override
-  String get thematic_spreads_screen_monthly_forecast_title =>
-      'Monthly Forecast';
-
-  @override
-  String get thematic_spreads_screen_monthly_forecast_description =>
-      'Forecast by Months';
-
-  @override
-  String get thematic_spreads_screen_self_development_title =>
-      'Self-development and Balance';
-
-  @override
-  String get thematic_spreads_screen_self_development_description =>
-      'Spiritual growth and harmony';
-
-  @override
-  String get requestReceived =>
-      'Your request has been accepted. Please reveal the cards';
 
   @override
   String pros_cons_spread_prompt(Object cards, Object userName) {
-    return 'Make a Pros and Cons spread for $userName with these cards: $cards';
+    return 'Сделай для $userName расклад За и Против по этим картам: $cards';
   }
 
   @override
-  String get pros_cons_spread_screen_what_is_pros_cons_spread =>
-      'What is the \"Pros and Cons\" spread?';
-
-  @override
-  String get pros_cons_spread_screen_pros_cons_spread_explanation =>
-      'The \"Pros and Cons\" spread helps analyze the advantages and disadvantages of a situation to make a well-informed decision.';
-
-  @override
-  String get pros_cons_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get prosConsSpreadTitle => 'Spread \"Pros and Cons\"';
-
-  @override
-  String get spreadDisclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a specialist if necessary.';
-
-  @override
-  String get fun_spread_screen_generation_error =>
-      'Error generating the spread. Please try again.';
-
-  @override
-  String get fun_spread_screen_share_error => 'Error saving the image.';
-
-  @override
-  String get fun_spread_screen_about_fun_spread => 'What is a fun spread?';
-
-  @override
-  String get fun_spread_screen_fun_spread_explanation =>
-      'A fun spread is a special way of tarot card reading that combines the depth of traditional spreads with a light and positive approach. It will help you see the situation from a new perspective and find joy in everyday life.';
-
-  @override
-  String get fun_spread_screen_understand_button => 'Understood';
-
-  @override
-  String get fun_spread_screen_title => 'Fun spread';
-
-  @override
-  String get fun_spread_screen_generate_button => 'Create spread';
-
-  @override
-  String get fun_spread_screen_share_button => 'Share';
-
-  @override
-  String get fun_spread_screen_new_button => 'New spread';
-
-  @override
-  String get fun_spread_screen_share_text =>
-      'Look at this funny tarot spread I got in the Tarot AI app!';
-
-  @override
-  String get ad_promo_tariff => 'PLAN';
-
-  @override
-  String get ad_promo_love => 'LOVE';
-
-  @override
-  String get ad_promo_discount => 'SALE -50%';
-
-  @override
-  String get ad_promo_no_ads => '• no ads';
-
-  @override
-  String get ad_promo_no_limits => '• no limits';
-
-  @override
-  String get no_internet_error =>
-      'Our app works only with internet. Please turn on Wi-Fi or mobile data.';
-
-  @override
   String fun_spread_screen_mate_prompt_3cards(Object userName) {
-    return 'Make a very funny, cheeky, and swear-filled 3-card tarot reading for $userName. For each card, come up with a funny name and write a separate paragraph: First card: <name> — <short funny description>, Second card: <name> — <short funny description>, Third card: <name> — <short funny description>. Use profanity to add humor, but don\'t offend. The whole text should be no longer than 7 sentences.';
+    return 'Сделай очень смешной, дерзкий и матершинный расклад таро на 3 карты для $userName . Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Используй нецензурную лексику, чтобы добавить юмора, но не оскорбляй. Весь текст не длиннее 7 предложений.';
   }
 
   @override
   String fun_spread_screen_no_mate_prompt_3cards(Object userName) {
-    return 'Create a funny tarot spread for $userName with 3 cards. For each card, come up with a funny title and write a separate paragraph: First card: <title> — <short funny description>, Second card: <title> — <short funny description>, Third card: <title> — <short funny description>. The spread should be fun but meaningful. Only 3 cards. The entire text no longer than 7 sentences.';
+    return 'Создай забавный расклад таро для $userName на 3 карты. Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Расклад должен быть веселым, но с глубоким смыслом. Только 3 карты. Весь текст не длиннее 7 предложений.';
   }
 
   @override
-  String get fun_spread_screen_title_top => 'TAROT spread';
-
-  @override
-  String fun_spread_screen_title_for_name(Object name) {
-    return 'for $name';
+  String card_combination_screen_prompt(Object cards, Object lang) {
+    return 'Проанализируй сочетание карт Таро: $cards. Дай глубокий мистический анализ их взаимодействия и общий совет. Ответ полностью на языке $lang. Без приветствий и заключений.';
   }
 
   @override
-  String get contact_us_screen_message_sent =>
-      'Your message has been received, thank you!';
-
-  @override
-  String get contact_us_screen_message_error => 'Message sending error';
-
-  @override
-  String get love_spread_screen_initial_message =>
-      'Good afternoon, please write your question below:';
-
-  @override
-  String get main_screen_tariff => 'PLAN';
-
-  @override
-  String get main_screen_promo_50 => 'PROMOTION -50%';
-
-  @override
-  String get main_screen_rate_hint =>
-      'If the rating window did not appear, you can leave a review on Google Play.';
-
-  @override
-  String get main_screen_rate_error =>
-      'Failed to open Google Play. Please try again later.';
-
-  @override
-  String get love_spread_screen_suggested_questions_1 =>
-      'What feelings do I have for this person?';
-
-  @override
-  String get love_spread_screen_suggested_questions_2 =>
-      'What is hindering our relationship?';
-
-  @override
-  String get love_spread_screen_suggested_questions_3 =>
-      'What future awaits our relationship?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_1 =>
-      'What opportunities await me in my career?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_2 =>
-      'How can I improve my financial situation?';
-
-  @override
-  String get career_finance_spread_screen_suggested_questions_3 =>
-      'Is it worth changing jobs?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_1 =>
-      'Should I make this decision?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_2 =>
-      'What are the pros and cons of this choice?';
-
-  @override
-  String get pros_cons_spread_screen_suggested_questions_3 =>
-      'What is more important in this situation?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_1 =>
-      'What awaits me this month?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_2 =>
-      'What events will happen in the near future?';
-
-  @override
-  String get monthly_forecast_spread_screen_suggested_questions_3 =>
-      'What should I focus on this month?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_1 =>
-      'How can I develop spiritually?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_2 =>
-      'What is disrupting my inner balance?';
-
-  @override
-  String get self_development_balance_spread_screen_suggested_questions_3 =>
-      'How to find harmony in life?';
-
-  @override
-  String career_three_card_prompt(
-    Object adviceCard,
-    Object challengeCard,
-    Object situationCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a three-card spread on career and finances. The cards are given as follows: 1) situation — $situationCard; 2) obstacle or key opportunity — $challengeCard; 3) advice and potential — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak to $userName in a friendly and businesslike manner: show where they stand, what blocks growth (or what opportunity is important to notice), and what practical step will lead to the desired income. Mention the name $userName at least three times. Follow the structure:\n1) Greeting — 1 sentence.\n2) Title: Spread: $situationCard | $challengeCard | $adviceCard.\n3) $situationCard — 45–55 words: describe $userName\'s current position (work, business, or general financial background) and the symbolism of the card.\n4) $challengeCard — 45–55 words: reveal the main barrier or hidden opportunity; indicate how it is reflected in the card and in $userName\'s question.\n5) $adviceCard — 45–55 words: suggest a specific action (for example, review the budget, request a raise, learn a new skill) and describe the possible outcome.\n6) Finale — 20–25 words: friendly conclusion, positive affirmation, and 2 business emojis.\nRequirements: total volume 160–185 words, clear business tone without jargon, 2–3 emojis; separate paragraphs with double \\n\\n; do not use *, #, or other markup.';
+  String journal_service_ai_insight_prompt(
+      Object cards, Object note, Object spreadType) {
+    return 'Проанализируй этот таро расклад и дай глубокое понимание:\n\nТип расклада: $spreadType\nКарты: $cards\nЗаметка пользователя: $note\n\nДай:\n1. Общий анализ энергетики расклада\n2. Ключевые темы и уроки\n3. Практические рекомендации для самопознания\n4. Что стоит развивать в себе\n5. На что обратить внимание в ближайшее время\n\nБудь вдохновляющим и поддерживающим. Пиши на языке пользователя.';
   }
 
   @override
-  String pros_cons_three_card_prompt(
-    Object adviceCard,
-    Object conCard,
-    Object proCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot reader. The user $userName asks: \"$userQuestion\". Do a three-card \"Pros and Cons\" spread. The cards are given as follows: pros — $proCard; cons — $conCard; advice/outcome — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Mention the name $userName at least three times and connect each card to the question. Follow the structure:\n1) Greeting by the name $userName.\n2) Title: Spread: $proCard | $conCard | $adviceCard.\n3) Pros: $proCard — 45–55 words. Reveal the main benefits or positive resources this card brings to $userName\'s situation.\n4) Cons: $conCard — 45–55 words. Describe the risks, hidden costs, or weaknesses of the decision for $userName.\n5) Advice: $adviceCard — 45–55 words. Weigh the pros and cons, suggest one specific action (verb + object), and say how this will change the outcome for $userName.\n6) Conclusion — one word \"Yes\" or \"No,\" then 1 sentence justification and an encouraging affirmation (20–25 words) with 1–2 emojis.\nRequirements: total volume 150–180 words, friendly conversational tone; separate each block with double line breaks (\\n\\n); no *, #, or other markup.';
+  String journal_service_weekly_analysis_prompt(
+      Object entriesSummary, Object spreadTypes, Object totalEntries) {
+    return 'Проанализируй мою неделю с таро и дай глубокое понимание моего пути самопознания:\n\nЗа неделю было сделано $totalEntries раскладов:\n$entriesSummary\n\nТипы раскладов: $spreadTypes\n\nДай:\n1. Общие тренды и паттерны недели\n2. Основные темы, которые проявились\n3. Мой прогресс в самопознании\n4. Рекомендации на следующую неделю\n5. Вдохновляющее послание для продолжения пути\n\nБудь поддерживающим и мотивирующим. Отмечай прогресс и достижения.';
+  }
+
+  @override
+  String career_three_card_prompt(Object adviceCard, Object challengeCard,
+      Object situationCard, Object userName, Object userQuestion) {
+    return 'Ты опытный таролог-коуч. Пользователь $userName спрашивает: «$userQuestion». Сделай расклад из трёх карт на карьеру и финансы. Карты переданы так: 1) ситуация — $situationCard; 2) преграда или ключевая возможность — $challengeCard; 3) совет и потенциал — $adviceCard. Определи пол пользователя по имени $userName и обращайся с правильными окончаниями и местоимениями. Говори с $userName дружелюбно и по делу: покажи, где он стоит, что блокирует рост (или какой шанс важно заметить) и какой практический шаг выведет к желаемому доходу. Упоминай имя $userName минимум три раза. Соблюдай структуру:\n\n1) Приветствие — 1 предложение.\n\n2) Заголовок: Расклад: $situationCard | $challengeCard | $adviceCard.\n\n3) $situationCard — 45–55 слов: опиши текущее положение $userName (работа, бизнес или общий финансовый фон) и символику карты.\n\n4) $challengeCard — 45–55 слов: раскрой главный барьер или неочевидную возможность; укажи, как она отражается в карте и в вопросе $userName.\n\n5) $adviceCard — 45–55 слов: предложи конкретное действие (например, пересмотреть бюджет, запросить повышение, изучить новую компетенцию) и опиши возможный результат.\n\n6) Финал — 20–25 слов: дружеский вывод, позитивная аффирмация и 2 деловых эмодзи.\n\nТребования: общий объём 160–185 слов, ясный деловой тон без жаргона, 2–3 эмодзи; абзацы разделяй двойным \n\n; не используй *, # и прочую разметку.';
+  }
+
+  @override
+  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
+      Object proCard, Object userName, Object userQuestion) {
+    return 'Ты опытный таролог. Пользователь $userName спрашивает: «$userQuestion». Сделай расклад «За и Против» из трёх карт. Карты переданы так: плюсы — $proCard; минусы — $conCard; совет/итог — $adviceCard. Определи пол пользователя по имени $userName и обращайся с правильными окончаниями и местоимениями. Упоминай имя $userName не менее трёх раз и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: $proCard | $conCard | $adviceCard.\n\n3) Плюсы: $proCard — 45–55 слов. Раскрой главные выгоды или положительные ресурсы, которые эта карта приносит в ситуацию $userName.\n\n4) Минусы: $conCard — 45–55 слов. Опиши риски, скрытые затраты или слабые места решения для $userName.\n\n5) Совет: $adviceCard — 45–55 слов. Взвесь плюсы и минусы, предложи одно конкретное действие (глагол + объект) и скажи, как это изменит исход для $userName.\n\n6) Итог — одним словом «Да» или «Нет», затем 1 предложение-обоснование и ободряющая аффирмация (20–25 слов) с 1–2 эмодзи.\n\nТребования: общий объём 150–180 слов, дружеский разговорный тон; каждый блок отделяй двойным переводом строки (\n\n); без символов *, # или другой разметки.';
   }
 
   @override
   String monthly_wheel_prompt(
-    Object card1,
-    Object card10,
-    Object card11,
-    Object card12,
-    Object card2,
-    Object card3,
-    Object card4,
-    Object card5,
-    Object card6,
-    Object card7,
-    Object card8,
-    Object card9,
-    Object month,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are a professional tarot reader. The user $userName asks: \"$userQuestion\". Make a \"Wheel of the Month\" spread for $month. The cards are in order: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Determine $userName\'s gender by the name and use the correct endings and pronouns. Mention the name at least five times, but do not insert it after every date — recall it only within the advice text. Use the calendar date grid: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (if the month has 30 days — the 12th card also applies to the 30th). Format:\n1) Greeting by the name $userName (1–2 sentences).\n2) Brief introduction about the purpose of the spread (1 sentence).\n3–14) For each card use a line like \"1–3 $month — $card1\" (without the name): then 2–3 sentences about the key energy of the period and practical advice, naturally mentioning $userName.\n15) Conclusion: general advice for the month (about 40 words) and an inspiring affirmation with 2–3 emojis.\nRequirements: total 360–400 words; friendly, motivating tone; separate blocks with double \\n\\n; no *, #, lists, or technical notes.';
+      Object card1,
+      Object card10,
+      Object card11,
+      Object card12,
+      Object card2,
+      Object card3,
+      Object card4,
+      Object card5,
+      Object card6,
+      Object card7,
+      Object card8,
+      Object card9,
+      Object month,
+      Object userName,
+      Object userQuestion) {
+    return 'Ты профессиональный таролог. Пользователь $userName спрашивает: «$userQuestion». Составь расклад «Колесо месяца» на $month. Карты идут по порядку: 1 — $card1, 2 — $card2, 3 — $card3, 4 — $card4, 5 — $card5, 6 — $card6, 7 — $card7, 8 — $card8, 9 — $card9, 10 — $card10, 11 — $card11, 12 — $card12. Определи пол $userName по имени и используй правильные окончания и местоимения. Упоминай имя не меньше пяти раз, но не вставляй его после каждой даты — вспоминай лишь внутри текста советов. ЗАПРЕЩЕНО писать имя пользователя после диапазона дат. После дат указывай только месяц. Используй календарную сетку дат: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (если в месяце 30 дней — 12-я карта тоже относится к 30-му числу). Формат:\n\n1) Приветствие по имени $userName (1–2 предложения).\n\n2) Напиши \'Твой запрос:\' и затем вопрос пользователя $userQuestion.\n\n3) Краткое вступление о цели расклада (1 предложение).\n\n4–15) Для каждой карты используй строку вида «1–3 $month — $card1» (без имени): затем 2–3 предложения о ключевой энергии периода и практическом совете, органично упоминая $userName. НЕ повторяй вопрос пользователя в каждом абзаце. Весь расклад должен органично отвечать на вопрос $userQuestion, но не цитировать его постоянно. Используй вопрос \'На чем стоит сосредоточиться в эти дни?\' только в некоторых абзацах, где это уместно.\n\n16) Итог: общий совет на месяц (около 40 слов) и вдохновляющая аффирмация с 2–3 эмодзи.\n\nТребования: суммарно 360–400 слов; дружеский, мотивирующий тон; блоки разделяй двойным \n\n; никаких символов *, #, списков или технических пометок.';
   }
 
   @override
   String self_growth_balance_prompt(
-    Object adviceCard,
-    Object bodyCard,
-    Object challengeCard,
-    Object coreCard,
-    Object emotionCard,
-    Object mindCard,
-    Object strengthCard,
-    Object userName,
-    Object userQuestion,
-  ) {
-    return 'You are an experienced tarot coach. The user $userName asks: \"$userQuestion\". Do a \"Self-development and Balance\" spread of seven cards. The cards are given as follows: core — $coreCard; mind — $mindCard; emotions — $emotionCard; body — $bodyCard; resource — $strengthCard; block — $challengeCard; advice — $adviceCard. Determine the user\'s gender by the name $userName and use the correct endings and pronouns. Speak vividly and supportively, mention the name $userName at least four times and definitely connect each card to the question. Follow the structure and format:\n1) Greeting by the name $userName.\n2) Title: Spread: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n3) $coreCard — describe the main focus of $userName\'s self-development.\n4) $mindCard — explain how to adjust the mindset and what to learn.\n5) $emotionCard — reveal the emotional resource and motivation.\n6) $bodyCard — suggest how to care for the body and energy.\n7) $strengthCard — show the inner gift or external support.\n8) $challengeCard — indicate the key imbalance and its causes.\n9) $adviceCard — suggest a specific action that unites all aspects.\n10) Finale: inspiring affirmation and warm parting words with 2–3 emojis.\nRequirements: each point 2–3 sentences; separate points with double \\n\\n; do not use *, #, or other markup.';
+      Object adviceCard,
+      Object bodyCard,
+      Object challengeCard,
+      Object coreCard,
+      Object emotionCard,
+      Object mindCard,
+      Object strengthCard,
+      Object userName,
+      Object userQuestion) {
+    return 'Ты опытный таролог-коуч. Пользователь $userName спрашивает: «$userQuestion». Сделай расклад «Саморазвитие и баланс» из семи карт. Карты даны так: ядро — $coreCard; разум — $mindCard; эмоции — $emotionCard; тело — $bodyCard; ресурс — $strengthCard; блок — $challengeCard; совет — $adviceCard. Определи пол пользователя по имени $userName и обращайся с правильными окончаниями и местоимениями. Говори живо и поддерживающе, упоминай имя $userName не меньше четырёх раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру и формат:\n\n1) Приветствие по имени $userName.\n\n2) Заголовок: Расклад: $coreCard | $mindCard | $emotionCard | $bodyCard | $strengthCard | $challengeCard | $adviceCard.\n\n3) $coreCard — опиши главный фокус саморазвития $userName.\n\n4) $mindCard — расскажи, как настроить мышление и чему учиться.\n\n5) $emotionCard — раскрой эмоциональный ресурс и мотивацию.\n\n6) $bodyCard — подскажи, как заботиться о теле и энергии.\n\n7) $strengthCard — покажи внутренний дар или внешнюю поддержку.\n\n8) $challengeCard — обозначь ключевой дисбаланс и его причины.\n\n9) $adviceCard — предложи конкретное действие, объединяющее все аспекты.\n\n10) Финал: вдохновляющая аффирмация и тёплое напутствие с 2–3 эмодзи.\n\nТребования: каждый пункт 2–3 предложения; между пунктами ставь двойной перевод строки (\\n\\n); не используй символы *, # или другую разметку.';
   }
 
   @override
-  String get main_screen_suggest_spread =>
-      'What spread should we add? Write to us';
+  String reflection_summary_ai_prompt(
+      Object cards, Object reflections, Object userName) {
+    return '$userName, спасибо за ваши размышления и доверие. Проанализируй все 7 раскладов пользователя и его размышления.\n\n1. Определи, какие 1-2 карты чаще всего встречались среди всех 7 раскладов, и объясни, что это может значить для пользователя.\n2. Проанализируй все 7 размышлений пользователя и дай персональные рекомендации, что ему сделать в жизни, чтобы улучшить своё внутреннее состояние и жизнь в целом.\n\nВот размышления пользователя:\n$reflections\n\nВот самые частые карты из 7 раскладов (через запятую):\n$cards\n\nОтвет напиши дружелюбно, подробно, без клише, с акцентом на внутренние темы и мягкие советы.';
+  }
 
   @override
-  String get main_screen_disclaimer =>
-      'The app uses AI solely for entertainment purposes. We are not responsible for the decisions you make. Consult a professional if necessary.';
+  String get love_spread_screen_title => 'Любовный расклад';
 
   @override
-  String get month_january => 'January';
+  String get love_spread_screen_description => 'Анализ отношений и чувств';
 
   @override
-  String get month_february => 'February';
+  String get career_finance_spread_screen_title => 'Карьера и финансы';
 
   @override
-  String get month_march => 'March';
+  String get career_finance_spread_screen_description =>
+      'Профессиональный и финансовый анализ';
 
   @override
-  String get month_april => 'April';
+  String get pros_cons_spread_screen_title => 'За и Против';
 
   @override
-  String get month_may => 'May';
+  String get pros_cons_spread_screen_description =>
+      'Анализ плюсов и минусов ситуации';
 
   @override
-  String get month_june => 'June';
+  String get monthly_forecast_spread_screen_title => 'Месячный прогноз';
 
   @override
-  String get month_july => 'July';
+  String get monthly_forecast_spread_screen_description => 'Прогноз по месяцам';
 
   @override
-  String get month_august => 'August';
+  String get self_development_balance_spread_screen_title =>
+      'Саморазвитие и баланс';
 
   @override
-  String get month_september => 'September';
+  String get self_development_balance_spread_screen_description =>
+      'Духовный рост и гармония';
 
   @override
-  String get month_october => 'October';
+  String get five_cards_spread_screen_title => '5 карт';
 
   @override
-  String get month_november => 'November';
+  String get five_cards_spread_screen_description => 'Глубокий анализ ситуации';
 
   @override
-  String get month_december => 'December';
+  String get celtic_cross_screen_description => 'Полный расклад на 10 карт';
 
   @override
-  String get fun_share_button => 'Share';
+  String get session_completed_title => 'Поздравляем! 🎉';
 
   @override
-  String get fun_new_spread_button => 'New spread';
+  String get session_completed_description =>
+      'Вы сделали 7 раскладов и Вам доступен анализ от таролога по Вашим мыслям';
+
+  @override
+  String get session_completed_view_analysis => 'Узнать анализ';
+
+  @override
+  String get session_completed_reset => 'Сбросить';
+
+  @override
+  String get purchase_love_store_unavailable =>
+      'Магазин недоступен, попробуйте позже';
+
+  @override
+  String get card_of_the_day_screen_generating_answer =>
+      'Generating answer... Please wait';
+
+  @override
+  String get main_screen_nav_spreads => 'Spreads';
+
+  @override
+  String get main_screen_nav_journal => 'Journal';
+
+  @override
+  String get main_screen_nav_menu => 'Menu';
+
+  @override
+  String get main_screen_privacy_settings => 'Privacy Settings';
+
+  @override
+  String get consent_dialog_title => 'Content Personalization';
+
+  @override
+  String get consent_dialog_description =>
+      'We use data to improve your experience and show relevant ads. Your data is protected and not shared with third parties.';
+
+  @override
+  String get consent_analytics => 'Analytics and app improvement';
+
+  @override
+  String get consent_personalized_ads => 'Personalized advertising';
+
+  @override
+  String get consent_accept => 'Accept';
+
+  @override
+  String get consent_decline => 'Decline';
+
+  @override
+  String get consent_privacy_policy => 'Privacy Policy';
+
+  @override
+  String get consent_settings_updated => 'Privacy settings updated';
+
+  @override
+  String get consent_settings_error => 'Error opening privacy settings';
+
+  @override
+  String get five_card_spread_past => 'Past';
+
+  @override
+  String get five_card_spread_present => 'Present';
+
+  @override
+  String get five_card_spread_hidden => 'Hidden';
+
+  @override
+  String get five_card_spread_advice => 'Advice';
+
+  @override
+  String get five_card_spread_outcome => 'Outcome';
 }

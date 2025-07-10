@@ -397,7 +397,9 @@ class _FunSpreadScreenState extends State<FunSpreadScreen> {
                               width: double.infinity,
                               height: 54,
                               child: ElevatedButton(
-                                onPressed: _generate,
+                                onPressed: () {
+                                  Navigator.of(context).popUntil((route) => route.isFirst);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),

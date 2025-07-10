@@ -349,4 +349,60 @@ class CardTranslations {
   static String getTranslation(String cardName, AppLocalizations l10n) {
     return getTranslatedCardName(cardName, l10n);
   }
+}
+
+/// Universal function to get localized spread title by spreadKey
+String getLocalizedSpreadTitle(String spreadKey, String languageCode) {
+  switch (spreadKey) {
+    case 'quick_reading':
+      return languageCode.startsWith('ru') ? 'Быстрое гадание' : 'Quick Reading';
+    case 'five_cards':
+      return languageCode.startsWith('ru') ? '5 карт' : '5 Cards';
+    case 'self_development':
+      return languageCode.startsWith('ru') ? 'Саморазвитие' : 'Self Development';
+    case 'monthly_forecast':
+      return languageCode.startsWith('ru') ? 'Месячный прогноз' : 'Monthly Forecast';
+    case 'pros_cons':
+      return languageCode.startsWith('ru') ? 'Плюсы и минусы' : 'Pros and Cons';
+    case 'career_finance':
+      return languageCode.startsWith('ru') ? 'Карьера и финансы' : 'Career & Finance';
+    case 'love':
+      return languageCode.startsWith('ru') ? 'Любовь' : 'Love';
+    case 'card_of_day':
+      return languageCode.startsWith('ru') ? 'Карта дня' : 'Card of the Day';
+    case 'celtic_cross':
+      return languageCode.startsWith('ru') ? 'Кельтский крест' : 'Celtic Cross';
+    case 'three_cards':
+      return languageCode.startsWith('ru') ? '3 карты' : '3 Cards';
+    default:
+      return spreadKey; // fallback to key if not found
+  }
+}
+
+/// Universal function to get localized spread type by spreadKey
+String getLocalizedSpreadType(String spreadKey, String languageCode) {
+  switch (spreadKey) {
+    case 'quick_reading':
+      return languageCode.startsWith('ru') ? 'Быстрое гадание' : 'Quick Reading';
+    case 'five_cards':
+      return languageCode.startsWith('ru') ? '5 карт' : '5 Cards';
+    case 'self_development':
+      return languageCode.startsWith('ru') ? 'Саморазвитие' : 'Self Development';
+    case 'monthly_forecast':
+      return languageCode.startsWith('ru') ? 'Месячный прогноз' : 'Monthly Forecast';
+    case 'pros_cons':
+      return languageCode.startsWith('ru') ? 'Плюсы и минусы' : 'Pros and Cons';
+    case 'career_finance':
+      return languageCode.startsWith('ru') ? 'Карьера и финансы' : 'Career & Finance';
+    case 'love':
+      return languageCode.startsWith('ru') ? 'Любовь' : 'Love';
+    case 'card_of_day':
+      return languageCode.startsWith('ru') ? 'Карта дня' : 'Card of the Day';
+    case 'celtic_cross':
+      return languageCode.startsWith('ru') ? 'Кельтский крест' : 'Celtic Cross';
+    case 'three_cards':
+      return languageCode.startsWith('ru') ? '3 карты' : '3 Cards';
+    default:
+      return spreadKey; // fallback to key if not found
+  }
 } 

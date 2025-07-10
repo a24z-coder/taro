@@ -59,12 +59,12 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Ошибка'),
+        title: Text(AppLocalizations.of(context)!.purchase_love_error_title),
         content: Text(message),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK'),
+            child: Text(AppLocalizations.of(context)!.purchase_love_error_ok),
           ),
         ],
       ),
@@ -119,7 +119,7 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
       setState(() {
         _isLoading = false;
       });
-      _showErrorDialog('Ошибка покупки: $e');
+      _showErrorDialog(AppLocalizations.of(context)!.purchase_love_purchase_error(e.toString()));
     }
   }
 
@@ -137,7 +137,7 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
           context: context,
           builder: (context) => AlertDialog(
             title: Text(loc.purchase_love_screen_title),
-            content: const Text('Your subscription has been restored!'),
+            content: Text(AppLocalizations.of(context)!.purchase_love_restore_success),
             actions: [
               TextButton(
                 onPressed: () {
@@ -153,7 +153,7 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
         );
       }
     } catch (e) {
-      _showErrorDialog('Ошибка восстановления: $e');
+      _showErrorDialog(AppLocalizations.of(context)!.purchase_love_restore_error(e.toString()));
     } finally {
       setState(() {
         _isLoading = false;
@@ -200,7 +200,7 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
           TextButton(
             onPressed: _onRestorePurchases,
             child: Text(
-              'Restore',
+              AppLocalizations.of(context)!.purchase_love_restore_button,
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
@@ -211,7 +211,7 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/onboarding-4.png',
+              'assets/images/main-2.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -220,17 +220,12 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
           if (!_isLoading)
             Positioned.fill(
               child: SafeArea(
-                child: SingleChildScrollView(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height - MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom,
-                    ),
-                    child: IntrinsicHeight(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                           SizedBox(height: size.height * 0.04),
                           Align(
                             alignment: Alignment.centerLeft,
@@ -300,8 +295,8 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
                             selected: _selectedPlan == 0,
                             title: loc.onboarding_final_yearly,
                             badge: loc.onboarding_final_badge,
-                            price: yearlyPrice.isNotEmpty ? yearlyPrice : 'Loading...',
-                            subPrice: yearlyMonthPrice.isNotEmpty ? '$yearlyMonthPrice/month' : '',
+                            price: _purchaseService.isAvailable && yearlyPrice.isNotEmpty ? yearlyPrice : AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                            subPrice: _purchaseService.isAvailable && yearlyMonthPrice.isNotEmpty ? '$yearlyMonthPrice${AppLocalizations.of(context)!.purchase_love_per_month}' : '',
                             onTap: () => setState(() => _selectedPlan = 0),
                           ),
                           const SizedBox(height: 12),
@@ -309,22 +304,22 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
                             selected: _selectedPlan == 1,
                             title: loc.onboarding_final_trial_month,
                             badge: loc.onboarding_final_badge,
-                            price: monthlyPrice.isNotEmpty ? monthlyPrice : 'Loading...',
-                            subPrice: monthlyMonthPrice.isNotEmpty ? '$monthlyMonthPrice/month' : '',
+                            price: _purchaseService.isAvailable && monthlyPrice.isNotEmpty ? monthlyPrice : AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                            subPrice: _purchaseService.isAvailable && monthlyMonthPrice.isNotEmpty ? '$monthlyMonthPrice${AppLocalizations.of(context)!.purchase_love_per_month}' : '',
                             onTap: () => setState(() => _selectedPlan = 1),
                           ),
                           const SizedBox(height: 16),
-                          if (_purchaseService.errorMessage != null)
+                          if (!_purchaseService.isAvailable || _purchaseService.errorMessage != null)
                             Padding(
                               padding: const EdgeInsets.only(bottom: 12),
                               child: Text(
-                                _purchaseService.errorMessage!,
-                                style: const TextStyle(color: Colors.red, fontSize: 13),
+                                AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                                style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14, fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.center,
                               ),
                             ),
                           ElevatedButton(
-                            onPressed: _purchaseService.isAvailable ? _onBuy : null,
+                            onPressed: (_purchaseService.isAvailable && _purchaseService.errorMessage == null) ? _onBuy : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: accentColor,
                               foregroundColor: Colors.black,
@@ -347,16 +342,14 @@ class _PurchaseLoveScreenState extends State<PurchaseLoveScreen> {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: size.height * 0.02),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
+                        ], // закрываем children: []
+                      ), // закрываем Column
+                    ), // закрываем Padding
+                  ), // закрываем SafeArea
+                ), // закрываем Positioned.fill
+            ], // закрываем children: [] у Stack
+          ), // закрываем Stack
+        ); // закрываем Scaffold
   }
 
   Widget _buildPlanOption({

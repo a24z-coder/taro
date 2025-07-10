@@ -11,6 +11,10 @@ import 'package:tarot_ai/services/user_service.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/services/review_service.dart';
 import 'package:tarot_ai/utils/subscription_utils.dart';
+import 'dart:ui'; // Added for ImageFilter
+import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/widgets/session_completed_dialog.dart';
+import 'package:tarot_ai/mixins/session_check_mixin.dart';
 
 class QuickReadingScreen extends StatefulWidget {
   const QuickReadingScreen({super.key});
@@ -19,7 +23,7 @@ class QuickReadingScreen extends StatefulWidget {
   State<QuickReadingScreen> createState() => _QuickReadingScreenState();
 }
 
-class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTickerProviderStateMixin {
+class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTickerProviderStateMixin, SessionCheckMixin {
   Map<int, String?> selectedCards = {}; // Для хранения выбранных карт: номер карты -> путь к изображению
   Map<int, String?> selectedCardNames = {}; // Для хранения названий выбранных карт: номер карты -> название карты
   final List<GlobalKey<_FlipCardState>> _cardKeys = List.generate(5, (index) => GlobalKey<_FlipCardState>());
@@ -205,6 +209,7 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
     );
     _loadLanguage();
     _loadUserName();
+    checkSession();
     // Добавляем слушатель изменений языка
     LanguageService().addListener(_onLanguageChanged);
     // Обновляем приветственное сообщение после инициализации
@@ -397,89 +402,100 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
                                     );
                                   },
                                 )
-                              : _tappedCardIndex != null
-                                  ? Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
+                              : (_tappedCardIndex != null
+                                  ? (() {
+                                      List<Widget> children = [
                                         SizedBox(
                                           width: size.width * 0.5,
                                           height: size.width * 0.5 * (320 / 220),
                                           child: _buildCardImage(_tappedCardIndex!),
                                         ),
                                         const SizedBox(height: 24),
-                                        if (_showAnswerButton)
-                                          ElevatedButton(
-                                            onPressed: () async {
-                                              final cardName = selectedCards[_tappedCardIndex!];
-                                              debugPrint('[QuickReadingScreen] onPressed: cardName=\x1b[36m$cardName\x1b[0m, languageCode=[36m[0m$_languageCode');
-                                              
-                                              // Запускаем загрузку ответа параллельно с показом рекламы
-                                              _loadAnswer();
-
-                                              // Показываем рекламу параллельно
-                                              // Показываем рекламу только если нет активной подписки
-                                              if (SubscriptionUtils.shouldShowAds()) {
-                                                try {
-                                                  final adStartTime = DateTime.now();
-                                                  debugPrint('[QuickReading] Starting ad loading at ${adStartTime.toIso8601String()}');
-                                                  
-                                                  bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
-                                                  if (isLoaded) {
-                                                    await Appodeal.show(AppodealAdType.Interstitial);
-                                                    await Appodeal.cache(AppodealAdType.Interstitial);
-                                                    final adEndTime = DateTime.now();
-                                                    debugPrint('[QuickReading] Appodeal Interstitial shown successfully at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                      ];
+                                      if (_showAnswerButton) {
+                                        children.add(
+                                          ClipRRect(
+                                            borderRadius: BorderRadius.circular(24),
+                                            child: BackdropFilter(
+                                              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+                                              child: GestureDetector(
+                                                onTap: () async {
+                                                  final cardName = selectedCards[_tappedCardIndex!];
+                                                  debugPrint('[QuickReadingScreen] onPressed: cardName=\x1b[36m$cardName\x1b[0m, languageCode=\x1b[36m\x1b[0m$_languageCode');
+                                                  _loadAnswer();
+                                                  if (SubscriptionUtils.shouldShowAds()) {
+                                                    try {
+                                                      final adStartTime = DateTime.now();
+                                                      debugPrint('[QuickReading] Starting ad loading at \x1b[36m${adStartTime.toIso8601String()}\x1b[0m');
+                                                      bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
+                                                      if (isLoaded) {
+                                                        await Appodeal.show(AppodealAdType.Interstitial);
+                                                        await Appodeal.cache(AppodealAdType.Interstitial);
+                                                        final adEndTime = DateTime.now();
+                                                        debugPrint('[QuickReading] Appodeal Interstitial shown successfully at \x1b[36m${adEndTime.toIso8601String()}\x1b[0m, duration: \x1b[36m${adEndTime.difference(adStartTime).inMilliseconds}\x1b[0mms');
+                                                      } else {
+                                                        await Appodeal.cache(AppodealAdType.Interstitial);
+                                                        final adEndTime = DateTime.now();
+                                                        debugPrint('[QuickReading] Appodeal Interstitial cached for next time at \x1b[36m${adEndTime.toIso8601String()}\x1b[0m, duration: \x1b[36m${adEndTime.difference(adStartTime).inMilliseconds}\x1b[0mms');
+                                                      }
+                                                    } catch (e, st) {
+                                                      final adEndTime = DateTime.now();
+                                                      debugPrint('[QuickReading] ERROR showing Appodeal Interstitial at \x1b[36m${adEndTime.toIso8601String()}\x1b[0m: $e\n$st');
+                                                    }
                                                   } else {
-                                                    await Appodeal.cache(AppodealAdType.Interstitial);
-                                                    final adEndTime = DateTime.now();
-                                                    debugPrint('[QuickReading] Appodeal Interstitial cached for next time at ${adEndTime.toIso8601String()}, duration: ${adEndTime.difference(adStartTime).inMilliseconds}ms');
+                                                    debugPrint('[QuickReading] Skipping ad - user has active subscription');
                                                   }
-                                                } catch (e, st) {
-                                                  final adEndTime = DateTime.now();
-                                                  debugPrint('[QuickReading] ERROR showing Appodeal Interstitial at ${adEndTime.toIso8601String()}: $e\n$st');
-                                                }
-                                              } else {
-                                                debugPrint('[QuickReading] Skipping ad - user has active subscription');
-                                              }
-                                              
-                                              // Ждем немного чтобы ответ мог сгенерироваться, затем переходим
-                                              await Future.delayed(const Duration(milliseconds: 500));
-                                              
-                                              // --- Переход к результату после рекламы ---
-                                              if (cardName != null) {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (_) => QuickReadingResultScreen(
-                                                      selectedCardName: cardName,
-                                                      languageCode: _languageCode,
-                                                      imagePath: _getCardImagePath(cardName),
-                                                      preGeneratedAnswer: _openAiAnswer,
+                                                  await Future.delayed(const Duration(milliseconds: 500));
+                                                  if (cardName != null) {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (_) => QuickReadingResultScreen(
+                                                          selectedCardName: cardName,
+                                                          languageCode: _languageCode,
+                                                          imagePath: _getCardImagePath(cardName),
+                                                          preGeneratedAnswer: _openAiAnswer,
+                                                        )
+                                                      ),
+                                                    );
+                                                    debugPrint('[QuickReadingScreen] Navigated to QuickReadingResultScreen with cardName=$cardName, languageCode=$_languageCode, preGeneratedAnswer: $_openAiAnswer');
+                                                  }
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white.withOpacity(0.18),
+                                                    borderRadius: BorderRadius.circular(24),
+                                                    border: Border.all(color: Colors.white.withOpacity(0.35), width: 1.5),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.white.withOpacity(0.18),
+                                                        blurRadius: 24,
+                                                        offset: const Offset(0, 4),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                                                  child: Text(
+                                                    loc.quick_reading_screen_get_answer_button,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 18,
+                                                      letterSpacing: 0.2,
                                                     ),
                                                   ),
-                                                );
-                                                debugPrint('[QuickReadingScreen] Navigated to QuickReadingResultScreen with cardName=$cardName, languageCode=$_languageCode, preGeneratedAnswer: $_openAiAnswer');
-                                              }
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Colors.white,
-                                              elevation: 6,
-                                              shadowColor: Colors.black.withOpacity(0.18),
-                                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-                                            ),
-                                            child: Text(
-                                              loc.quick_reading_screen_get_answer_button,
-                                              style: const TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                      ],
-                                    )
-                                  : const SizedBox.shrink(),
+                                        );
+                                      }
+                                      return Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: children,
+                                      );
+                                    })()
+                                : const SizedBox.shrink()),
                     ),
                   ),
                 ],

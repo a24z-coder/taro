@@ -15,6 +15,9 @@ import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:tarot_ai/services/user_service.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/utils/subscription_utils.dart';
+import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/widgets/session_completed_dialog.dart';
+import 'package:tarot_ai/mixins/session_check_mixin.dart';
 
 class CardOfTheDayScreen extends StatefulWidget {
   const CardOfTheDayScreen({super.key});
@@ -23,7 +26,7 @@ class CardOfTheDayScreen extends StatefulWidget {
   State<CardOfTheDayScreen> createState() => _CardOfTheDayScreenState();
 }
 
-class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
+class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> with SessionCheckMixin {
   final TranslationService translationService = TranslationService();
   String _languageCode = 'en';
   String? _userName;
@@ -46,6 +49,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
     _loadLanguage();
     _loadUserName();
     _setCard();
+    checkSession();
   }
 
   Future<void> _loadLanguage() async {
@@ -290,9 +294,20 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        const Center(
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFDBC195)),
+                        Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFDBC195)),
+                              ),
+                              const SizedBox(height: 18),
+                              Text(
+                                AppLocalizations.of(context)!.card_of_the_day_screen_generating_answer,
+                                style: const TextStyle(color: Colors.white, fontSize: 16),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -304,15 +319,16 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: SafeArea(
-                        child: SingleChildScrollView(
-                          padding: const EdgeInsets.only(top: 32, bottom: 24),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 20),
-                              ClipRRect(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).padding.top + kToolbarHeight + 12,
+                          bottom: 48,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ClipRRect(
                                 borderRadius: BorderRadius.circular(7),
                                 child: Image.asset(
                                   cardImage ?? '',
@@ -379,8 +395,6 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                                   ),
                                 ),
                               ),
-
-
                               Center(
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(maxWidth: 420),
@@ -399,7 +413,6 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> {
                                 ),
                               ),
                             ],
-                          ),
                         ),
                       ),
                     ),

@@ -10,6 +10,93 @@ import 'package:tarot_ai/l10n/app_localizations.dart';
 import '../widgets/ad_promo_block.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/services/review_service.dart';
+import '../widgets/message_bubble.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/models/journal_entry.dart';
+import '../mixins/session_check_mixin.dart';
+
+// dots анимация
+class _AnimatedDotsWidget extends StatefulWidget {
+  const _AnimatedDotsWidget({Key? key}) : super(key: key);
+  @override
+  State<_AnimatedDotsWidget> createState() => _AnimatedDotsWidgetState();
+}
+
+class _AnimatedDotsWidgetState extends State<_AnimatedDotsWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 900))..repeat();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, top: 8, bottom: 8),
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          int dots = 1 + (_controller.value * 3).floor();
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(dots, (i) =>
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: Container(
+                  width: 8, height: 8,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// Анимация красной точки для записи
+class _VoiceRecordingDot extends StatefulWidget {
+  @override
+  State<_VoiceRecordingDot> createState() => _VoiceRecordingDotState();
+}
+
+class _VoiceRecordingDotState extends State<_VoiceRecordingDot> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 900))..repeat();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    double scale = 1 + 0.3 * (0.5 - (0.5 - _controller.value).abs());
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 1),
+      width: 10 * scale,
+      height: 10 * scale,
+      decoration: BoxDecoration(
+        color: Colors.red.withOpacity(0.8),
+        shape: BoxShape.circle,
+      ),
+    );
+  }
+}
 
 class CareerFinanceSpreadScreen extends StatefulWidget {
   const CareerFinanceSpreadScreen({Key? key}) : super(key: key);
@@ -18,7 +105,7 @@ class CareerFinanceSpreadScreen extends StatefulWidget {
   State<CareerFinanceSpreadScreen> createState() => _CareerFinanceSpreadScreenState();
 }
 
-class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
+class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> with SessionCheckMixin {
   String _languageCode = 'en';
   final TextEditingController _questionController = TextEditingController();
   bool _isLoading = false;
@@ -66,11 +153,23 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     return AppLocalizations.of(context)!.good_day_please_write_your_question_below;
   }
 
+  // === ДОБАВЛЯЕМ ПЕРЕМЕННЫЕ ДЛЯ РЕФЛЕКСИИ ===
+  int _reflectionStep = 0; // 0: только AI, 1: dots, 2: вопрос, 5: форма, 6: после ответа пользователя, 7: финал
+  bool _showDots = false;
+  final TextEditingController _reflectionController = TextEditingController();
+  String? _userReflectionText;
+  bool _reflectionSaved = false;
+  stt.SpeechToText? _speech;
+  bool _isListening = false;
+  String _voiceInput = '';
+
   @override
   void initState() {
     super.initState();
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
+    _speech = stt.SpeechToText();
+    _reflectionController.addListener(() { setState(() {}); });
     // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -84,6 +183,9 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
         });
       }
     });
+    
+    // Проверяем сессию
+    checkSession();
   }
 
   @override
@@ -157,6 +259,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
         _showAdAndNewSpread = true;
         _isLoading = false;
       });
+      _startReflectionSequence();
               try {
           // Проверяем, не оценил ли пользователь уже приложение
           if (!await ReviewService().getStatistics().then((stats) => stats['hasRated'] ?? false)) {
@@ -195,7 +298,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     _loadCardsDescription();
     try {
       final adStartTime = DateTime.now();
-      debugPrint('[CareerFinance] Starting ad loading at [36m${adStartTime.toIso8601String()}[0m');
+      debugPrint('[CareerFinance] Starting ad loading at  [36m${adStartTime.toIso8601String()} [0m');
       bool isLoaded = await Appodeal.isLoaded(AppodealAdType.Interstitial);
       if (isLoaded) {
         await Appodeal.show(AppodealAdType.Interstitial);
@@ -275,28 +378,10 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: _messages.map((msg) {
-        return Align(
-          alignment: msg.isUser ? Alignment.centerRight : Alignment.centerLeft,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 6),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: msg.isUser
-                  ? Colors.white.withOpacity(0.15)
-                  : const Color(0xFF23272F).withOpacity(0.85),
-              borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(16),
-                topRight: const Radius.circular(16),
-                bottomLeft: msg.isUser ? const Radius.circular(16) : const Radius.circular(4),
-                bottomRight: msg.isUser ? const Radius.circular(4) : const Radius.circular(16),
-              ),
-              border: Border.all(color: Colors.white24),
-            ),
-            child: Text(
-              msg.text,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
+        return MessageBubble(
+          key: ValueKey(msg.text + msg.isUser.toString()),
+          text: msg.text,
+          isUser: msg.isUser,
         );
       }).toList(),
     );
@@ -450,6 +535,246 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
     );
   }
 
+  void _startReflectionSequence() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    setState(() { _reflectionStep = 1; _showDots = true; });
+    await Future.delayed(const Duration(milliseconds: 3500));
+    setState(() { _reflectionStep = 2; _showDots = false; });
+    setState(() { _reflectionStep = 2; _showDots = false; });
+    await Future.delayed(const Duration(milliseconds: 1000));
+    setState(() { _reflectionStep = 5; });
+  }
+
+  void _onSendReflection() async {
+    if (_reflectionController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text("Please write your thoughts."),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+    setState(() {
+      _userReflectionText = _reflectionController.text.trim();
+      _reflectionStep = 6;
+      _showDots = true;
+    });
+    try {
+      // Сохраняем в журнал
+      final entry = JournalEntry(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        date: DateTime.now(),
+        spreadKey: 'career_finance',
+        spreadType: AppLocalizations.of(context)!.career_finance_spread_screen_title,
+        spreadTitle: AppLocalizations.of(context)!.career_finance_spread_screen_title,
+        spreadDescription: AppLocalizations.of(context)!.career_finance_spread_screen_description,
+        cards: _flippedCards.whereType<String>().toList(),
+        userNote: '',
+        spreadData: null,
+        aiInsight: _openAiAnswer,
+        reflectionText: _userReflectionText,
+        isReflectionComplete: true,
+      );
+      await JournalService().addEntry(entry);
+      await Future.delayed(const Duration(milliseconds: 3500));
+      setState(() {
+        _showDots = false;
+        _reflectionStep = 7;
+        _reflectionSaved = true;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Error saving: "+e.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _startListening() async {
+    final status = await Permission.microphone.request();
+    if (!status.isGranted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_microphone_permission_error),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+    if (_speech == null) return;
+    bool available = await _speech!.initialize(
+      onStatus: (status) {
+        if (status == 'done' || status == 'notListening') {
+          setState(() => _isListening = false);
+        }
+      },
+      onError: (error) {
+        setState(() => _isListening = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_speech_recognition_error(error.errorMsg)),
+            backgroundColor: Colors.red,
+          ),
+        );
+      },
+    );
+    if (available) {
+      setState(() {
+        _isListening = true;
+        _voiceInput = '';
+      });
+      await _speech!.listen(
+        localeId: _languageCode,
+        onResult: (result) {
+          setState(() {
+            _voiceInput = result.recognizedWords;
+            _reflectionController.text = _voiceInput;
+            _reflectionController.selection = TextSelection.fromPosition(TextPosition(offset: _reflectionController.text.length));
+          });
+        },
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_speech_not_available),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _stopListening() async {
+    if (_speech == null) return;
+    await _speech!.stop();
+    setState(() => _isListening = false);
+  }
+
+  Widget _buildReflectionBlock() {
+    final l10n = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (_reflectionStep >= 0)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_intro.replaceAll(_userName, _userName.isNotEmpty ? _userName : l10n.the_user),
+            isUser: false,
+          ),
+        if (_reflectionStep == 1 && _showDots)
+          const _AnimatedDotsWidget(),
+        if (_reflectionStep >= 2)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_question,
+            isUser: false,
+          ),
+        if (_reflectionStep >= 5 && _reflectionStep < 6)
+          Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              margin: const EdgeInsets.only(left: 60, right: 12, bottom: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.white.withOpacity(0.3)),
+                      ),
+                      child: TextField(
+                        controller: _reflectionController,
+                        minLines: 1,
+                        maxLines: 4,
+                        style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'NotoSans'),
+                        decoration: InputDecoration(
+                          hintText: l10n.quick_reading_result_screen_write_thoughts_hint,
+                          hintStyle: const TextStyle(color: Colors.white70),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        ),
+                        cursorColor: Color(0xFFDBC195),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  // Кнопка отправки
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_forward, color: Color(0xFFDBC195)),
+                      onPressed: _reflectionController.text.trim().isEmpty ? null : _onSendReflection,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  // Кнопка микрофона или стопа
+                  if (!_isListening)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.mic, color: Color(0xFFDBC195)),
+                        onPressed: _startListening,
+                      ),
+                    )
+                  else
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: Colors.redAccent,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.stop, color: Colors.white),
+                        onPressed: _stopListening,
+                        iconSize: 28,
+                        padding: EdgeInsets.zero,
+                      ),
+                    ),
+                  // Анимация записи
+                  if (_isListening)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 6, right: 2),
+                      child: SizedBox(
+                        width: 28,
+                        height: 28,
+                        child: _VoiceRecordingDot(),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        if (_reflectionStep >= 6 && _userReflectionText != null)
+          MessageBubble(
+            text: _userReflectionText!,
+            isUser: true,
+          ),
+        if (_reflectionStep == 6 && _showDots)
+          const _AnimatedDotsWidget(),
+        if (_reflectionStep == 7)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_final,
+            isUser: false,
+          ),
+      ],
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -521,29 +846,43 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                             const SizedBox(height: 24),
                             _buildDialogMessages(),
                             if (_showCards) _buildThreeCards(),
-                            if (_openAiAnswer != null) ...[
+                            if (_isLoading && _openAiAnswer == null) ...[
                               const SizedBox(height: 24),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 6),
-                                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFF23272F).withOpacity(0.85),
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(16),
-                                      topRight: Radius.circular(16),
-                                      bottomLeft: Radius.circular(4),
-                                      bottomRight: Radius.circular(16),
+                              MessageBubble(
+                                key: const ValueKey('loading_bubble'),
+                                isUser: false,
+                                text: '',
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                      ),
                                     ),
-                                    border: Border.all(color: Colors.white24),
-                                  ),
-                                  child: Text(
-                                    _openAiAnswer!,
-                                    style: const TextStyle(color: Colors.white, fontSize: 16),
-                                  ),
+                                    const SizedBox(width: 12),
+                                    Text(
+                                      AppLocalizations.of(context)!.analyzing_cards,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
+                            ],
+                            if (_openAiAnswer != null) ...[
+                              MessageBubble(
+                                key: const ValueKey('openai_answer'),
+                                text: _openAiAnswer!,
+                                isUser: false,
+                              ),
+                              const SizedBox(height: 24),
+                              _buildReflectionBlock(),
                               const SizedBox(height: 24),
                               AdPromoBlock(),
                               const SizedBox(height: 18),
@@ -569,7 +908,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 24),
+                              const SizedBox(height: 18),
                               Center(
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(maxWidth: 420),
@@ -605,23 +944,22 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                 left: 0,
                 right: 0,
                 bottom: 24,
-                child: Container(
-                  color: Colors.transparent,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     children: [
                       Expanded(
                         child: TextField(
                           controller: _questionController,
-                          maxLines: 3,
+                          maxLines: 1,
                           minLines: 1,
                           style: const TextStyle(color: Colors.white, fontSize: 18),
                           cursorColor: Color(0xFFDBC195),
                           decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.enterYourQuestion,
+                            hintText: AppLocalizations.of(context)!.enter_your_question,
                             hintStyle: const TextStyle(color: Colors.white54),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.08),
+                            fillColor: Colors.transparent,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Colors.white24),
@@ -634,7 +972,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                               borderRadius: BorderRadius.circular(24),
                               borderSide: BorderSide(color: Color(0xFFDBC195)),
                             ),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                           ),
                         ),
                       ),
@@ -643,19 +981,14 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> {
                         onPressed: _isLoading ? null : _handleGetAnswer,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          padding: const EdgeInsets.all(16),
+                          elevation: 6,
+                          shadowColor: Colors.black.withOpacity(0.18),
+                          minimumSize: const Size(54, 54),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24),
                           ),
-                          minimumSize: const Size(48, 48),
                         ),
-                        child: _isLoading
-                            ? const SizedBox(
-                                width: 24,
-                                height: 24,
-                                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black),
-                              )
-                            : const Icon(Icons.send, color: Color(0xFFDBC195), size: 28),
+                        child: Icon(Icons.send, color: Color(0xFFDBC195), size: 28),
                       ),
                     ],
                   ),

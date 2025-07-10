@@ -9,6 +9,92 @@ import 'package:tarot_ai/services/user_service.dart';
 import '../widgets/ad_promo_block.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
+import '../widgets/message_bubble.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/models/journal_entry.dart';
+
+// dots анимация
+class _AnimatedDotsWidget extends StatefulWidget {
+  const _AnimatedDotsWidget({Key? key}) : super(key: key);
+  @override
+  State<_AnimatedDotsWidget> createState() => _AnimatedDotsWidgetState();
+}
+
+class _AnimatedDotsWidgetState extends State<_AnimatedDotsWidget> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 900))..repeat();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, top: 8, bottom: 8),
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          int dots = 1 + (_controller.value * 3).floor();
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(dots, (i) =>
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: Container(
+                  width: 8, height: 8,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// Одна красная точка для записи
+class _VoiceRecordingDot extends StatefulWidget {
+  @override
+  State<_VoiceRecordingDot> createState() => _VoiceRecordingDotState();
+}
+
+class _VoiceRecordingDotState extends State<_VoiceRecordingDot> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 900))..repeat();
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    double scale = 1 + 0.3 * (0.5 - (0.5 - _controller.value).abs());
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 1),
+      width: 10 * scale,
+      height: 10 * scale,
+      decoration: BoxDecoration(
+        color: Colors.red.withOpacity(0.8),
+        shape: BoxShape.circle,
+      ),
+    );
+  }
+}
 
 class CelticCrossScreen extends StatefulWidget {
   const CelticCrossScreen({Key? key}) : super(key: key);
@@ -37,6 +123,15 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
   List<_ChatMessage> _messages = [];
   bool _questionSent = false;
 
+  // reflection state
+  int _reflectionStep = 0; // 0: только AI, 1: dots, 2: интро, 3: dots, 4: вопрос, 5: поле, 6: после ответа пользователя, 7: dots, 8: финал
+  String? _userReflectionText;
+  bool _showDots = false;
+  final TextEditingController _reflectionController = TextEditingController();
+  stt.SpeechToText? _speech;
+  bool _isListening = false;
+  String _voiceInput = '';
+
   String _userName = '';
   String _userQuestion = '';
   Future<void> _loadUserName() async {
@@ -49,11 +144,11 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
   @override
   void initState() {
     super.initState();
+    _speech = stt.SpeechToText();
+    _reflectionController.addListener(() { setState(() {}); });
     _loadLanguage();
     _loadUserName();
-    // Добавляем слушатель изменений языка
     LanguageService().addListener(_onLanguageChanged);
-    // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -188,19 +283,18 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
 
     final promptStartTime = DateTime.now();
     String prompt = AppLocalizations.of(context)!.celtic_cross_screen_prompt(
-      getCardTranslation(_flippedCards[1] ?? ''), // challengeCard (1)
-      getCardTranslation(_flippedCards[4] ?? ''), // consciousCard (2)
-      getCardTranslation(_flippedCards[7] ?? ''), // environmentCard (3)
-      getCardTranslation(_flippedCards[5] ?? ''), // futureCard (4)
-      getCardTranslation(_flippedCards[8] ?? ''), // hopesCard (5)
-      getCardTranslation(_flippedCards[9] ?? ''), // outcomeCard (6)
-      getCardTranslation(_flippedCards[3] ?? ''), // pastCard (7)
-      getCardTranslation(_flippedCards[0] ?? ''), // presentCard (8) - situation card
-      getCardTranslation(_flippedCards[6] ?? ''), // selfCard (9)
-      getCardTranslation(_flippedCards[0] ?? ''), // situationCard (10)
-      getCardTranslation(_flippedCards[2] ?? ''), // subconsciousCard (11)
-      _userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user, // userName (12)
-      _userQuestion, // userQuestion (13)
+      getCardTranslation(_flippedCards[1] ?? ''), // challengeCard
+      getCardTranslation(_flippedCards[4] ?? ''), // consciousCard
+      getCardTranslation(_flippedCards[7] ?? ''), // environmentCard
+      getCardTranslation(_flippedCards[5] ?? ''), // hiddenCard
+      getCardTranslation(_flippedCards[8] ?? ''), // hopesCard
+      getCardTranslation(_flippedCards[9] ?? ''), // outcomeCard
+      getCardTranslation(_flippedCards[3] ?? ''), // pastCard
+      getCardTranslation(_flippedCards[6] ?? ''), // selfCard
+      getCardTranslation(_flippedCards[0] ?? ''), // situationCard
+      getCardTranslation(_flippedCards[2] ?? ''), // subconsciousCard
+      (_userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user),
+      _userQuestion,
     );
     final promptEndTime = DateTime.now();
     debugPrint('[CelticCross] _loadCardsDescription: prompt created in ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
@@ -224,6 +318,8 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
           _openAiAnswer = response;
           _isLoadingCardsDescription = false;
         });
+        // Запускаем последовательность рефлексии после получения ответа
+        _startReflectionSequence();
       }
       
       final totalTime = DateTime.now();
@@ -283,7 +379,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _messages.add(_ChatMessage(
-        text: AppLocalizations.of(context)!.celtic_cross_screen_please_open_cards(''),
+        text: AppLocalizations.of(context)!.celtic_cross_screen_please_open_cards,
         isUser: false,
       ));
       // Случайно выбираем 10 карт
@@ -344,32 +440,138 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
     }
   }
 
+  // === ДОБАВЛЯЕМ МЕТОДЫ ДЛЯ РЕФЛЕКСИИ ===
+  void _startReflectionSequence() async {
+    // 1. dots (3.5 сек)
+    await Future.delayed(const Duration(milliseconds: 500));
+    setState(() { _reflectionStep = 1; _showDots = true; });
+    await Future.delayed(const Duration(milliseconds: 3500));
+    setState(() { _reflectionStep = 2; _showDots = false; });
+    // 2. вопрос для рефлексии
+    setState(() { _reflectionStep = 2; _showDots = false; });
+    // 3. форма для пользователя через 1 секунду
+    await Future.delayed(const Duration(milliseconds: 1000));
+    setState(() { _reflectionStep = 5; });
+  }
+
+  void _onSendReflection() async {
+    if (_reflectionController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text("Please write your thoughts."),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      _userReflectionText = _reflectionController.text.trim();
+      _reflectionStep = 6;
+      _showDots = true;
+    });
+
+    // Сохраняем в журнал
+    try {
+      final entry = JournalEntry(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        date: DateTime.now(),
+        spreadKey: 'celtic_cross',
+        spreadType: AppLocalizations.of(context)!.celtic_cross_screen_title,
+        spreadTitle: AppLocalizations.of(context)!.celtic_cross_screen_title,
+        spreadDescription: AppLocalizations.of(context)!.celtic_cross_screen_description,
+        cards: _flippedCards.whereType<String>().toList(),
+        userNote: '',
+        spreadData: null,
+        aiInsight: _openAiAnswer,
+        reflectionText: _userReflectionText,
+        isReflectionComplete: true,
+      );
+      await JournalService().addEntry(entry);
+
+      // Показываем анимацию троеточия и паузу перед финальным сообщением
+      await Future.delayed(const Duration(milliseconds: 3500));
+      setState(() {
+        _showDots = false;
+        _reflectionStep = 7;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Error saving: "+e.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _startListening() async {
+    final status = await Permission.microphone.request();
+    if (!status.isGranted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_microphone_permission_error),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+    if (_speech == null) return;
+    bool available = await _speech!.initialize(
+      onStatus: (status) {
+        if (status == 'done' || status == 'notListening') {
+          setState(() => _isListening = false);
+        }
+      },
+      onError: (error) {
+        setState(() => _isListening = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_speech_recognition_error(error.errorMsg)),
+            backgroundColor: Colors.red,
+          ),
+        );
+      },
+    );
+    if (available) {
+      setState(() {
+        _isListening = true;
+        _voiceInput = '';
+      });
+      await _speech!.listen(
+        localeId: _languageCode,
+        onResult: (result) {
+          setState(() {
+            _voiceInput = result.recognizedWords;
+            _reflectionController.text = _voiceInput;
+            _reflectionController.selection = TextSelection.fromPosition(TextPosition(offset: _reflectionController.text.length));
+          });
+        },
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.quick_reading_result_screen_speech_not_available),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _stopListening() async {
+    if (_speech == null) return;
+    await _speech!.stop();
+    setState(() => _isListening = false);
+  }
+
   Widget _buildDialogMessages() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: _messages.map((msg) {
-        return Align(
-          alignment: msg.isUser ? Alignment.centerRight : Alignment.centerLeft,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 6),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: msg.isUser
-                  ? Colors.white.withOpacity(0.15)
-                  : const Color(0xFF23272F).withOpacity(0.85),
-              borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(16),
-                topRight: const Radius.circular(16),
-                bottomLeft: msg.isUser ? const Radius.circular(16) : const Radius.circular(4),
-                bottomRight: msg.isUser ? const Radius.circular(4) : const Radius.circular(16),
-              ),
-              border: Border.all(color: Colors.white24),
-            ),
-            child: Text(
-              msg.text,
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
+        return MessageBubble(
+          key: ValueKey(msg.text + msg.isUser.toString()),
+          text: msg.text,
+          isUser: msg.isUser,
         );
       }).toList(),
     );
@@ -577,7 +779,6 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
   }
 
   Widget _buildSuggestedQuestions() {
-    if (_questionSent) return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -690,6 +891,127 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
     );
   }
 
+  Widget _buildReflectionBlock() {
+    final l10n = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (_reflectionStep >= 0)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_intro.replaceAll(_userName, _userName.isNotEmpty ? _userName : l10n.the_user),
+            isUser: false,
+          ),
+        if (_reflectionStep == 1 && _showDots)
+          const _AnimatedDotsWidget(),
+        if (_reflectionStep >= 2)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_question,
+            isUser: false,
+          ),
+        if (_reflectionStep >= 5 && _reflectionStep < 6)
+          Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              margin: const EdgeInsets.only(left: 60, right: 12, bottom: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.white.withOpacity(0.3)),
+                      ),
+                      child: TextField(
+                        controller: _reflectionController,
+                        minLines: 1,
+                        maxLines: 4,
+                        style: const TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'NotoSans'),
+                        decoration: InputDecoration(
+                          hintText: l10n.quick_reading_result_screen_write_thoughts_hint,
+                          hintStyle: const TextStyle(color: Colors.white70),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        ),
+                        cursorColor: Color(0xFFDBC195),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  // Кнопка отправки
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.arrow_forward, color: Color(0xFFDBC195)),
+                      onPressed: _reflectionController.text.trim().isEmpty ? null : _onSendReflection,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  // Кнопка микрофона или стопа
+                  if (!_isListening)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.mic, color: Color(0xFFDBC195)),
+                        onPressed: _startListening,
+                      ),
+                    )
+                  else
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: Colors.redAccent,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.stop, color: Colors.white),
+                        onPressed: _stopListening,
+                        iconSize: 28,
+                        padding: EdgeInsets.zero,
+                      ),
+                    ),
+                  // Анимация записи
+                  if (_isListening)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 6, right: 2),
+                      child: SizedBox(
+                        width: 28,
+                        height: 28,
+                        child: _VoiceRecordingDot(),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        if (_reflectionStep >= 6 && _userReflectionText != null)
+          MessageBubble(
+            text: _userReflectionText!,
+            isUser: true,
+          ),
+        if (_reflectionStep == 6 && _showDots)
+          const _AnimatedDotsWidget(),
+        if (_reflectionStep == 7)
+          MessageBubble(
+            text: l10n.quick_reading_result_screen_reflection_final,
+            isUser: false,
+          ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -758,31 +1080,23 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                           ),
                           const SizedBox(height: 24),
                           _buildDialogMessages(),
+                          if (!_questionSent) ...[
+                            const SizedBox(height: 18),
+                            _buildSuggestedQuestions(),
+                            const SizedBox(height: 18),
+                          ],
                           if (_showCards) _buildCelticCrossCards(),
                           if (_openAiAnswer != null) ...[
                             const SizedBox(height: 24),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(vertical: 6),
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF23272F).withOpacity(0.85),
-                                  borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(16),
-                                    topRight: Radius.circular(16),
-                                    bottomLeft: Radius.circular(4),
-                                    bottomRight: Radius.circular(16),
-                                  ),
-                                  border: Border.all(color: Colors.white24),
-                                ),
-                                child: Text(
-                                  _openAiAnswer!,
-                                  style: const TextStyle(color: Colors.white, fontSize: 16),
-                                ),
-                              ),
+                            MessageBubble(
+                              key: const ValueKey('openai_answer'),
+                              text: _openAiAnswer!,
+                              isUser: false,
                             ),
                             const SizedBox(height: 24),
+                            _buildReflectionBlock(),
+                            const SizedBox(height: 24),
+                            // === Блок рекламы, кнопки и дисклеймера — только после первого ответа от OpenAI ===
                             AdPromoBlock(),
                             const SizedBox(height: 18),
                             Center(
@@ -827,9 +1141,6 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                             ),
                           ],
                           const SizedBox(height: 18),
-                          _buildSuggestedQuestions(),
-                          const SizedBox(height: 24),
-                          SizedBox(height: 10),
                           SizedBox(height: MediaQuery.of(context).padding.bottom + 10),
                         ],
                       ),
@@ -844,15 +1155,14 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
               left: 0,
               right: 0,
               bottom: 24,
-              child: Container(
-                color: Colors.transparent,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: [
                     Expanded(
                       child: TextField(
                         controller: _questionController,
-                        maxLines: 3,
+                        maxLines: 1,
                         minLines: 1,
                         style: const TextStyle(color: Colors.white, fontSize: 18),
                         cursorColor: Color(0xFFDBC195),
@@ -860,7 +1170,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                           hintText: AppLocalizations.of(context)!.enter_your_question,
                           hintStyle: const TextStyle(color: Colors.white54),
                           filled: true,
-                          fillColor: Colors.white.withOpacity(0.08),
+                          fillColor: Colors.transparent,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(24),
                             borderSide: BorderSide(color: Colors.white24),
@@ -873,7 +1183,7 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                             borderRadius: BorderRadius.circular(24),
                             borderSide: BorderSide(color: Color(0xFFDBC195)),
                           ),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                         ),
                       ),
                     ),
@@ -882,19 +1192,14 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                       onPressed: _isLoading ? null : _handleGetAnswer,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        padding: const EdgeInsets.all(16),
+                        elevation: 6,
+                        shadowColor: Colors.black.withOpacity(0.18),
+                        minimumSize: const Size(54, 54),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
                         ),
-                        minimumSize: const Size(48, 48),
                       ),
-                      child: _isLoading
-                          ? const SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black),
-                            )
-                          : const Icon(Icons.send, color: Color(0xFFDBC195), size: 28),
+                      child: Icon(Icons.send, color: Color(0xFFDBC195), size: 28),
                     ),
                   ],
                 ),

@@ -11,13 +11,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/services/notification_service.dart';
+import 'package:tarot_ai/services/journal_service.dart';
 import 'dart:io';
 import 'firebase_options.dart';
+import 'package:provider/provider.dart';
+import 'screens/journal_screen.dart';
+import 'package:flutter/widgets.dart';
+
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
 void main() async {
   debugPrint('[MAIN] main() called');
   final stopwatch = Stopwatch()..start();
   WidgetsFlutterBinding.ensureInitialized();
+
+  debugPrint('[MAIN] Starting ConsentService initialization');
+  try {
+    // await ConsentService().initialize();
+    debugPrint('[MAIN] ConsentService initialization skipped');
+  } catch (e, st) {
+    debugPrint('[MAIN] ConsentService initialization error: $e\n$st');
+  }
 
   debugPrint('[MAIN] Starting Appodeal initialization');
   String appodealKey = Platform.isIOS
@@ -54,6 +68,14 @@ void main() async {
     debugPrint('[MAIN] PurchaseService initialized successfully');
   } catch (e, st) {
     debugPrint('[MAIN] PurchaseService initialization error: $e\n$st');
+  }
+
+  debugPrint('[MAIN] Starting JournalService initialization');
+  try {
+    await JournalService().initialize();
+    debugPrint('[MAIN] JournalService initialized successfully');
+  } catch (e, st) {
+    debugPrint('[MAIN] JournalService initialization error: $e\n$st');
   }
 
   debugPrint('[MAIN] Running app...');
@@ -124,22 +146,28 @@ class _MyAppState extends State<MyApp> {
       final locale = _localeFromCode(languageCode);
       debugPrint('[MyApp] Locale: $locale');
       
-      final app = MaterialApp(
-        title: 'Tarot AI',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: fontFamily,
+      final app = ChangeNotifierProvider(
+        create: (context) => JournalService(),
+        child: MaterialApp(
+          title: 'Tarot AI',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            fontFamily: fontFamily,
+          ),
+          locale: locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: const SplashScreen(),
+          routes: {
+            '/journal': (context) => const ReflectionSummaryScreen(),
+          },
         ),
-        locale: locale,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.supportedLocales,
-        home: const SplashScreen(),
       );
       
       debugPrint('[MyApp] build completed, elapsed: ${stopwatch.elapsedMilliseconds}ms');

@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tarot_ai/screens/card_of_the_day_screen.dart';
 import 'package:tarot_ai/screens/classic_spreads_screen.dart';
 import 'package:tarot_ai/screens/thematic_spreads_screen.dart';
@@ -11,6 +12,7 @@ import 'package:tarot_ai/screens/notification_settings_screen.dart';
 import 'package:tarot_ai/screens/contact_us_screen.dart';
 import 'package:tarot_ai/screens/fun_spread_screen.dart';
 import 'package:tarot_ai/screens/purchase_love_screen.dart';
+import 'package:tarot_ai/screens/journal_screen.dart';
 import 'package:tarot_ai/services/user_service.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/font_utils.dart';
@@ -24,6 +26,10 @@ import 'package:tarot_ai/services/translation_service.dart';
 import 'dart:io';
 import 'package:tarot_ai/services/review_service.dart';
 import 'package:tarot_ai/utils/subscription_utils.dart';
+import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/widgets/session_completed_dialog.dart';
+import 'package:flutter/widgets.dart';
+import '../main.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -32,12 +38,13 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with RouteAware {
   String _userName = '';
   String? _cardOfTheDayName;
   String? _cardOfTheDayImage;
   bool _isLoading = true;
   final Stopwatch _stopwatch = Stopwatch();
+  int _navIndex = 0; // 0 - Расклады, 1 - Дневник, 2 - Меню
 
   @override
   void initState() {
@@ -47,13 +54,35 @@ class _MainScreenState extends State<MainScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       debugPrint('[MainScreen] addPostFrameCallback');
       _loadData();
+      // Подписываемся на RouteObserver
+      final ModalRoute? route = ModalRoute.of(context);
+      if (route is PageRoute) {
+        routeObserver.subscribe(this, route);
+      }
     });
+    // Добавляем слушатель на JournalService для обновления прогресса
+    JournalService().addListener(_onJournalChanged);
   }
 
   @override
   void dispose() {
     debugPrint('[MainScreen] dispose');
+    // Отписываемся от RouteObserver
+    routeObserver.unsubscribe(this);
+    // Удаляем слушатель
+    JournalService().removeListener(_onJournalChanged);
     super.dispose();
+  }
+
+  void _onJournalChanged() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void didPopNext() {
+    // Этот метод вызывается, когда возвращаемся на этот экран
+    debugPrint('[MainScreen] didPopNext: updating state');
+    setState(() {});
   }
 
   Future<void> _loadData() async {
@@ -67,6 +96,7 @@ class _MainScreenState extends State<MainScreen> {
         _loadCardOfTheDay(),
       ]);
       debugPrint('[MainScreen] _loadData: parallel loading completed, elapsed: ${loadStopwatch.elapsedMilliseconds}ms');
+      
     } catch (error, stack) {
       debugPrint('[MainScreen] ERROR in _loadData: $error\n$stack');
     } finally {
@@ -78,6 +108,58 @@ class _MainScreenState extends State<MainScreen> {
       } else {
         debugPrint('[MainScreen] _loadData: not mounted, skipping setState');
       }
+    }
+  }
+
+  /// Проверка и показ диалога о завершении сессии
+  Future<void> _checkAndShowSessionDialog() async {
+    try {
+      final journalService = JournalService();
+      final progress = await journalService.getCurrentSessionProgress();
+      
+      if (progress >= 7 && mounted) {
+        debugPrint('[MainScreen] Session completed, showing dialog');
+        await _showSessionCompletedDialog();
+      }
+    } catch (e) {
+      debugPrint('[MainScreen] Error checking session: $e');
+    }
+  }
+
+  /// Показ диалога о завершении сессии
+  Future<void> _showSessionCompletedDialog() async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => SessionCompletedDialog(
+        onViewAnalysis: () {
+          Navigator.of(context).pop(); // Закрываем диалог
+          Navigator.of(context).pushNamed('/journal'); // Переходим в журнал
+        },
+        onReset: () async {
+          Navigator.of(context).pop(); // Закрываем диалог
+          await JournalService().resetCurrentSession(); // Сбрасываем сессию
+          setState(() {}); // Обновляем UI
+        },
+      ),
+    );
+  }
+
+  /// Проверка, можно ли открыть расклад (не заблокирован ли сессией)
+  Future<bool> _canOpenSpread() async {
+    try {
+      final journalService = JournalService();
+      final progress = await journalService.getCurrentSessionProgress();
+      
+      if (progress >= 7) {
+        debugPrint('[MainScreen] Session completed, showing dialog instead of opening spread');
+        await _showSessionCompletedDialog();
+        return false;
+      }
+      return true;
+    } catch (e) {
+      debugPrint('[MainScreen] Error checking if can open spread: $e');
+      return true; // В случае ошибки разрешаем открыть
     }
   }
 
@@ -279,28 +361,25 @@ class _MainScreenState extends State<MainScreen> {
     Widget? overlay,
   }) {
     const accentColor = Color(0xFFDBC195);
-    
     return Stack(
       children: [
         if (overlay != null) overlay,
         ClipRRect(
           borderRadius: BorderRadius.circular(22),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+            filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.35),
+                color: Colors.black.withOpacity(0.22), // чуть темнее, чем на размышлениях
                 borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: Colors.white.withOpacity(0.85), width: 1.5),
-                boxShadow: highlight
-                    ? [
+                border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
+                boxShadow: [
                         BoxShadow(
-                          color: accentColor.withOpacity(0.25),
-                          blurRadius: 32,
-                          spreadRadius: 2,
+                    color: Colors.black.withOpacity(0.13),
+                    blurRadius: 18,
+                    offset: Offset(0, 4),
                         ),
-                      ]
-                    : [],
+                ],
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -312,6 +391,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
+                        // ellipse.png можно оставить для фирменного стиля, иначе убрать
                         Image.asset(
                           'assets/images/ellipse.png',
                           width: height ?? 110,
@@ -340,7 +420,7 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Text(
                             title,
-                            style: headingStyleForLang(Localizations.localeOf(context).toLanguageTag(), 20, color: accentColor),
+                            style: headingStyleForLang(Localizations.localeOf(context).toLanguageTag(), 20, color: Colors.white).copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 6),
                           Text(
@@ -368,19 +448,26 @@ class _MainScreenState extends State<MainScreen> {
 
   void _showMenu() {
     final loc = AppLocalizations.of(context)!;
-    debugPrint('[MainScreen] Меню открыто, elapsed: ${_stopwatch.elapsedMilliseconds}ms');
+    debugPrint('[MainScreen] Меню открыто, elapsed:  [33m${_stopwatch.elapsedMilliseconds}ms [0m');
     debugPrint('[MainScreen] Screen size: ${MediaQuery.of(context).size}');
     
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      backgroundColor: const Color(0xFF153842),
+      backgroundColor: Colors.transparent,
       builder: (context) {
         debugPrint('[MainScreen] Bottom sheet builder called');
-        return Padding(
+        return ClipRRect(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFF153842).withOpacity(0.45),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                border: Border.all(color: Colors.white.withOpacity(0.13)),
+              ),
+              child: Padding(
           padding: EdgeInsets.only(
             left: 20,
             right: 20,
@@ -627,6 +714,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
               const SizedBox(height: 8),
             ],
+                ),
+              ),
+            ),
           ),
         );
       },
@@ -663,21 +753,9 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: PerformanceUtils.optimizedImage(
-                assetPath: 'assets/images/main-2.jpg',
-                width: size.width,
-                height: size.height,
+              child: Image.asset(
+                'assets/images/main-2.jpg',
                 fit: BoxFit.cover,
-                errorWidget: Container(
-                  color: const Color(0xFF153842),
-                  child: const Center(
-                    child: Icon(
-                      Icons.image_not_supported,
-                      color: Colors.white,
-                      size: 64,
-                    ),
-                  ),
-                ),
               ),
             ),
             SafeArea(
@@ -690,7 +768,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     )
                   : SingleChildScrollView(
-                      padding: EdgeInsets.fromLTRB(16, 18, 16, MediaQuery.of(context).padding.bottom + 48),
+                      padding: EdgeInsets.fromLTRB(16, 18, 16, MediaQuery.of(context).padding.bottom + 96),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -702,6 +780,28 @@ class _MainScreenState extends State<MainScreen> {
                                   _getGreeting(),
                                   style: bodyStyleForLang(langCode, 20, color: Colors.white),
                                 ),
+                              ),
+                              // Индикатор прогресса журнала
+                              Consumer<JournalService>(
+                                builder: (context, journalService, child) {
+                                  return FutureBuilder<int>(
+                                    key: ValueKey('progress_${journalService.progressVersion}'),
+                                    future: journalService.getCurrentSessionProgress(),
+                                    builder: (context, snapshot) {
+                                      final count = (snapshot.data ?? 0).clamp(0, 7);
+                                      return Container(
+                                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                                        constraints: const BoxConstraints(maxWidth: 180),
+                                        child: _JournalProgressIndicator(
+                                          filledCount: count,
+                                          onTap: () {
+                                            Navigator.of(context).pushNamed('/journal');
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                               GestureDetector(
                                 onTap: _showMenu,
@@ -728,6 +828,13 @@ class _MainScreenState extends State<MainScreen> {
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: GestureDetector(
                               onTap: () async {
+                                debugPrint('[MainScreen] Card of the day tapped - checking session');
+                                
+                                // Проверяем, можно ли открыть расклад
+                                if (!await _canOpenSpread()) {
+                                  return;
+                                }
+                                
                                 debugPrint('[MainScreen] Card of the day tapped - starting parallel loading');
                                 
                                 // Начинаем загрузку описания карты дня параллельно
@@ -791,7 +898,11 @@ class _MainScreenState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                // Проверяем, можно ли открыть расклад
+                                if (!await _canOpenSpread()) {
+                                  return;
+                                }
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const QuickReadingScreen()));
                               },
                               child: _buildGlassBlock(
@@ -804,7 +915,11 @@ class _MainScreenState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                // Проверяем, можно ли открыть расклад
+                                if (!await _canOpenSpread()) {
+                                  return;
+                                }
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const ClassicSpreadsScreen()));
                               },
                               child: _buildGlassBlock(
@@ -817,7 +932,11 @@ class _MainScreenState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: GestureDetector(
-                              onTap: () {
+                              onTap: () async {
+                                // Проверяем, можно ли открыть расклад
+                                if (!await _canOpenSpread()) {
+                                  return;
+                                }
                                 Navigator.push(context, MaterialPageRoute(builder: (_) => const ThematicSpreadsScreen()));
                               },
                               child: _buildGlassBlock(
@@ -921,6 +1040,29 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
             ),
+            // Глассморфизм-меню поверх всего
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: GlassBottomNavBar(
+                currentIndex: _navIndex,
+                onTap: (index) {
+                  if (index == 0) {
+                    setState(() => _navIndex = 0); // Расклады (главный)
+                  } else if (index == 1) {
+                    setState(() => _navIndex = 1);
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ReflectionSummaryScreen()))
+                      .then((_) => setState(() => _navIndex = 0));
+                  } else if (index == 2) {
+                    setState(() => _navIndex = 2);
+                    _showMenu();
+                    // Сбросим на 'Расклады' после закрытия меню
+                    Future.delayed(const Duration(milliseconds: 400), () => setState(() => _navIndex = 0));
+                  }
+                },
+                    ),
+            ),
           ],
         ),
       );
@@ -931,5 +1073,176 @@ class _MainScreenState extends State<MainScreen> {
       debugPrint('[MainScreen] ERROR in build(): $e\n$stack');
       rethrow;
     }
+  }
+}
+
+// --- GlassBottomNavBar ---
+class GlassBottomNavBar extends StatelessWidget {
+  final int currentIndex;
+  final Function(int) onTap;
+  const GlassBottomNavBar({required this.currentIndex, required this.onTap, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final langCode = LanguageService().currentLanguageCode;
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 16, right: 16, bottom: MediaQuery.of(context).padding.bottom + 4,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(40),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+          child: Container(
+            height: 56,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.18),
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _GlassNavItem(
+                  label: AppLocalizations.of(context)!.main_screen_nav_spreads,
+                  isActive: currentIndex == 0,
+                  onTap: () => onTap(0),
+                  langCode: langCode,
+                ),
+                _GlassNavItem(
+                  label: AppLocalizations.of(context)!.main_screen_nav_journal,
+                  isActive: currentIndex == 1,
+                  onTap: () => onTap(1),
+                  langCode: langCode,
+                ),
+                _GlassNavItem(
+                  label: AppLocalizations.of(context)!.main_screen_nav_menu,
+                  isActive: currentIndex == 2,
+                  onTap: () => onTap(2),
+                  langCode: langCode,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GlassNavItem extends StatelessWidget {
+  final String label;
+  final bool isActive;
+  final VoidCallback onTap;
+  final String langCode;
+  const _GlassNavItem({required this.label, required this.isActive, required this.onTap, required this.langCode});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 200),
+          margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+          alignment: Alignment.center,
+          child: isActive
+              ? Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Белый фон с glow (меньше)
+                    Container(
+                      height: 36,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.85),
+                            blurRadius: 12,
+                            spreadRadius: 1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      label,
+                      style: bodyStyleForLang(langCode, 18, color: Colors.black)
+                          .copyWith(fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                )
+              : Text(
+                  label,
+                  style: bodyStyleForLang(langCode, 18, color: Colors.white)
+                      .copyWith(fontWeight: FontWeight.w500),
+                ),
+        ),
+      ),
+    );
+  }
+} 
+
+class _JournalProgressIndicator extends StatelessWidget {
+  final int filledCount;
+  final VoidCallback onTap;
+  const _JournalProgressIndicator({required this.filledCount, required this.onTap, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final isGold = filledCount >= 7;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final totalWidth = constraints.maxWidth > 0 ? constraints.maxWidth : MediaQuery.of(context).size.width;
+        final cardSpacing = 2.0; // было 6.0
+        final maxCardWidth = 18.0; // было 28.0
+        final minCardWidth = 10.0; // было 16.0
+        double cardWidth = ((totalWidth - cardSpacing * 6) / 7).clamp(minCardWidth, maxCardWidth);
+        final cardHeight = cardWidth * 2.0; // было 1.4, теперь вытянуты
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: List.generate(7, (i) {
+            final filled = i < filledCount;
+            return GestureDetector(
+              onTap: onTap,
+              child: Container(
+                width: cardWidth,
+                height: cardHeight,
+                margin: EdgeInsets.only(
+                  right: i < 6 ? cardSpacing : (cardSpacing + 12), // последний элемент — больше отступ
+                ),
+                decoration: BoxDecoration(
+                  color: filled ? (isGold ? Color(0xFFDBC195) : Colors.white) : Colors.transparent,
+                  border: Border.all(
+                    color: isGold ? Color(0xFFDBC195) : Colors.white,
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(7),
+                  boxShadow: [
+                    if (filled)
+                      BoxShadow(
+                        color: (isGold ? Color(0xFFDBC195) : Colors.white).withOpacity(0.3),
+                        blurRadius: 4,
+                        spreadRadius: 0,
+                        offset: const Offset(0, 2),
+                      ),
+                    if (!filled)
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.18),
+                        blurRadius: 8,
+                        spreadRadius: 1,
+                      ),
+                  ],
+                ),
+                child: filled ? _buildCardContent(isGold) : null,
+              ),
+            );
+          }),
+        );
+      },
+    );
+  }
+
+  Widget _buildCardContent(bool isGold) {
+    return Container(); // Просто пустой контейнер, чтобы карта была закрашена
   }
 } 

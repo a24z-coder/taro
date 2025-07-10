@@ -24,27 +24,26 @@ class ClassicSpreadsScreen extends StatelessWidget {
       bool highlight = false,
       Widget? overlay,
     }) {
+      const accentColor = Color(0xFFDBC195);
       return Stack(
         children: [
           if (overlay != null) overlay,
           ClipRRect(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(22),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+              filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.35),
-                  borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: Colors.white.withOpacity(0.85), width: 1.5),
-                  boxShadow: highlight
-                      ? [
+                  color: Colors.black.withOpacity(0.22),
+                  borderRadius: BorderRadius.circular(22),
+                  border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
+                  boxShadow: [
                           BoxShadow(
-                            color: accentColor.withOpacity(0.25),
-                            blurRadius: 32,
-                            spreadRadius: 2,
+                      color: Colors.black.withOpacity(0.13),
+                      blurRadius: 18,
+                      offset: Offset(0, 4),
                           ),
-                        ]
-                      : [],
+                  ],
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +75,7 @@ class ClassicSpreadsScreen extends StatelessWidget {
                     const SizedBox(width: 18),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 0),
+                        padding: const EdgeInsets.only(top: 14.0, bottom: 14.0, right: 18.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -84,12 +83,12 @@ class ClassicSpreadsScreen extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: headingStyleForLang(langCode, 20, color: accentColor),
+                              style: headingStyleForLang(Localizations.localeOf(context).toLanguageTag(), 20, color: Colors.white).copyWith(fontWeight: FontWeight.bold),
                             ),
                             const SizedBox(height: 6),
                             Text(
                               description,
-                              style: bodyStyleForLang(langCode, 13, color: Colors.white.withOpacity(0.92)),
+                              style: bodyStyleForLang(Localizations.localeOf(context).toLanguageTag(), 13, color: Colors.white.withOpacity(0.92)),
                               softWrap: true,
                             ),
                           ],

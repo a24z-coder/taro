@@ -5,72 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_af.dart';
-import 'app_localizations_am.dart';
-import 'app_localizations_ar.dart';
-import 'app_localizations_az.dart';
-import 'app_localizations_bg.dart';
-import 'app_localizations_bn.dart';
-import 'app_localizations_ca.dart';
-import 'app_localizations_cs.dart';
-import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
-import 'app_localizations_es.dart';
-import 'app_localizations_fa.dart';
-import 'app_localizations_fi.dart';
-import 'app_localizations_fil.dart';
-import 'app_localizations_fr.dart';
-import 'app_localizations_gl.dart';
-import 'app_localizations_gu.dart';
-import 'app_localizations_he.dart';
-import 'app_localizations_hi.dart';
-import 'app_localizations_hr.dart';
-import 'app_localizations_hu.dart';
-import 'app_localizations_hy.dart';
-import 'app_localizations_id.dart';
-import 'app_localizations_is.dart';
-import 'app_localizations_it.dart';
-import 'app_localizations_ja.dart';
-import 'app_localizations_ka.dart';
-import 'app_localizations_kk.dart';
-import 'app_localizations_km.dart';
-import 'app_localizations_kn.dart';
-import 'app_localizations_ko.dart';
-import 'app_localizations_ky.dart';
-import 'app_localizations_lo.dart';
-import 'app_localizations_lt.dart';
-import 'app_localizations_lv.dart';
-import 'app_localizations_mk.dart';
-import 'app_localizations_ml.dart';
-import 'app_localizations_mn.dart';
-import 'app_localizations_mr.dart';
-import 'app_localizations_ms.dart';
-import 'app_localizations_my.dart';
-import 'app_localizations_ne.dart';
-import 'app_localizations_nl.dart';
-import 'app_localizations_no.dart';
-import 'app_localizations_pa.dart';
-import 'app_localizations_pl.dart';
-import 'app_localizations_pt.dart';
-import 'app_localizations_rm.dart';
-import 'app_localizations_ro.dart';
 import 'app_localizations_ru.dart';
-import 'app_localizations_si.dart';
-import 'app_localizations_sk.dart';
-import 'app_localizations_sl.dart';
-import 'app_localizations_sq.dart';
-import 'app_localizations_sr.dart';
-import 'app_localizations_sv.dart';
-import 'app_localizations_sw.dart';
-import 'app_localizations_ta.dart';
-import 'app_localizations_te.dart';
-import 'app_localizations_th.dart';
-import 'app_localizations_tr.dart';
-import 'app_localizations_uk.dart';
-import 'app_localizations_ur.dart';
-import 'app_localizations_vi.dart';
-import 'app_localizations_zh.dart';
-import 'app_localizations_zu.dart';
 
 // ignore_for_file: type=lint
 
@@ -127,7 +63,7 @@ import 'app_localizations_zu.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -150,125 +86,17 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ru'),
-    Locale('af'),
-    Locale('am'),
-    Locale('ar'),
-    Locale('az'),
-    Locale('az', 'AZ'),
-    Locale('bg'),
-    Locale('bn'),
-    Locale('bn', 'BD'),
-    Locale('ca'),
-    Locale('cs'),
-    Locale('cs', 'CZ'),
-    Locale('de'),
-    Locale('de', 'DE'),
     Locale('en'),
-    Locale('en', 'GB'),
-    Locale('en', 'US'),
-    Locale('es'),
-    Locale('es', 'ES'),
-    Locale('fa'),
-    Locale('fi'),
-    Locale('fi', 'FI'),
-    Locale('fil'),
-    Locale('fr'),
-    Locale('fr', 'CA'),
-    Locale('fr', 'FR'),
-    Locale('gl'),
-    Locale('gl', 'ES'),
-    Locale('gu'),
-    Locale('hi'),
-    Locale('hi', 'IN'),
-    Locale('hr'),
-    Locale('hu'),
-    Locale('hu', 'HU'),
-    Locale('hy'),
-    Locale('hy', 'AM'),
-    Locale('id'),
-    Locale('is'),
-    Locale('is', 'IS'),
-    Locale('it'),
-    Locale('it', 'IT'),
-    Locale('he'),
-    Locale('he', 'IL'),
-    Locale('ja'),
-    Locale('ja', 'JP'),
-    Locale('ka'),
-    Locale('ka', 'GE'),
-    Locale('kk'),
-    Locale('km'),
-    Locale('km', 'KH'),
-    Locale('kn'),
-    Locale('kn', 'IN'),
-    Locale('ko'),
-    Locale('ko', 'KR'),
-    Locale('ky'),
-    Locale('ky', 'KG'),
-    Locale('lo'),
-    Locale('lo', 'LA'),
-    Locale('lt'),
-    Locale('lv'),
-    Locale('mk'),
-    Locale('mk', 'MK'),
-    Locale('ml'),
-    Locale('ml', 'IN'),
-    Locale('mn'),
-    Locale('mn', 'MN'),
-    Locale('mr'),
-    Locale('mr', 'IN'),
-    Locale('ms'),
-    Locale('ms', 'MY'),
-    Locale('my'),
-    Locale('my', 'MM'),
-    Locale('ne'),
-    Locale('ne', 'NP'),
-    Locale('nl'),
-    Locale('nl', 'NL'),
-    Locale('no'),
-    Locale('no', 'NO'),
-    Locale('pa'),
-    Locale('pl'),
-    Locale('pl', 'PL'),
-    Locale('pt'),
-    Locale('pt', 'BR'),
-    Locale('pt', 'PT'),
-    Locale('rm'),
-    Locale('ro'),
-    Locale('ru', 'RU'),
-    Locale('si'),
-    Locale('si', 'LK'),
-    Locale('sk'),
-    Locale('sl'),
-    Locale('sq'),
-    Locale('sr'),
-    Locale('sv'),
-    Locale('sv', 'SE'),
-    Locale('sw'),
-    Locale('ta'),
-    Locale('ta', 'IN'),
-    Locale('te'),
-    Locale('te', 'IN'),
-    Locale('th'),
-    Locale('tr'),
-    Locale('tr', 'TR'),
-    Locale('uk'),
-    Locale('ur'),
-    Locale('vi'),
-    Locale('zh'),
-    Locale('zh', 'CN'),
-    Locale('zh', 'HK'),
-    Locale('zh', 'TW'),
-    Locale('zu'),
+    Locale('ru', 'RU')
   ];
 
   /// No description provided for @main_title.
@@ -721,12 +549,6 @@ abstract class AppLocalizations {
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String get card_combination_screen_disclaimer;
 
-  /// No description provided for @card_combination_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Проанализируй сочетание карт Таро: {cards}. Дай глубокий мистический анализ их взаимодействия и общий совет. Ответ полностью на языке {lang}. Без приветствий и заключений.'**
-  String card_combination_screen_prompt(Object cards, Object lang);
-
   /// No description provided for @quick_reading_screen_title.
   ///
   /// In ru_RU, this message translates to:
@@ -817,12 +639,6 @@ abstract class AppLocalizations {
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String get quick_reading_result_screen_disclaimer;
 
-  /// No description provided for @quick_reading_result_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} вытянул карту — {cardName}. Сначала напиши с новой строки фразу: Ответ карт: и далее одним словом ответ «Да» или «Нет». Потом добавь связное толкование 120–150 слов: 7–8 предложений о том, почему энергия {userName} ведёт к такому ответу и что это значит лично для {cardName}. Упомяни имя {cardName} минимум два раза, вставь 1–2 тематических эмодзи, избегай символов *, # и любой разметки; пиши простым разговорным тоном.'**
-  String quick_reading_result_screen_prompt(Object cardName, Object userName);
-
   /// No description provided for @career_finance_spread_screen_request_accepted.
   ///
   /// In ru_RU, this message translates to:
@@ -906,7 +722,7 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Расклад \"Саморазвитие и баланс\" состоит из 7 карт, расположенных в форме круга. Каждая карта символизирует определённый аспект вашего духовного роста и внутренней гармонии.'**
   String
-  get self_development_balance_spread_screen_self_development_explanation;
+      get self_development_balance_spread_screen_self_development_explanation;
 
   /// No description provided for @card_meanings_screen_major_arcana.
   ///
@@ -1002,7 +818,7 @@ abstract class AppLocalizations {
   ///
   /// In ru_RU, this message translates to:
   /// **'3 карты в раскладе'**
-  String three_cards_screen_title(Object cards);
+  String get three_cards_screen_title;
 
   /// No description provided for @three_cards_screen_initial_message.
   ///
@@ -1181,19 +997,19 @@ abstract class AppLocalizations {
   /// No description provided for @celtic_cross_screen_suggested_questions_1.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Какая основная проблема у меня сейчас?'**
+  /// **'Какие внутренние ресурсы мне доступны?'**
   String get celtic_cross_screen_suggested_questions_1;
 
   /// No description provided for @celtic_cross_screen_suggested_questions_2.
   ///
   /// In ru_RU, this message translates to:
-  /// **'На чем мне стоит сосредоточиться в ближайшем будущем?'**
+  /// **'Чему я должен уделить внимание прямо сейчас?'**
   String get celtic_cross_screen_suggested_questions_2;
 
   /// No description provided for @celtic_cross_screen_suggested_questions_3.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Что скрыто от меня?'**
+  /// **'Что может помочь мне двигаться вперёд?'**
   String get celtic_cross_screen_suggested_questions_3;
 
   /// No description provided for @celtic_cross_screen_see_meaning_button.
@@ -1242,13 +1058,13 @@ abstract class AppLocalizations {
   ///
   /// In ru_RU, this message translates to:
   /// **'Ваш запрос принят. Пожалуйста, откройте карты'**
-  String celtic_cross_screen_please_open_cards(Object cards);
+  String get celtic_cross_screen_please_open_cards;
 
   /// No description provided for @celtic_cross_screen_request_accepted.
   ///
   /// In ru_RU, this message translates to:
   /// **'Запрос принят, пожалуйста, откройте карты'**
-  String celtic_cross_screen_request_accepted(Object cards);
+  String get celtic_cross_screen_request_accepted;
 
   /// No description provided for @the_user.
   ///
@@ -1302,7 +1118,7 @@ abstract class AppLocalizations {
   ///
   /// In ru_RU, this message translates to:
   /// **'Сделай для '**
-  String makeTarotReadingFor(Object lang);
+  String get makeTarotReadingFor;
 
   /// No description provided for @theUser.
   ///
@@ -1314,7 +1130,7 @@ abstract class AppLocalizations {
   ///
   /// In ru_RU, this message translates to:
   /// **' расклад на эти три карты: '**
-  String onTheseThreeCards(Object userName);
+  String get onTheseThreeCards;
 
   /// No description provided for @makeSelfDevelopmentAndBalanceTarotReadingFor.
   ///
@@ -2000,15 +1816,6 @@ abstract class AppLocalizations {
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String get monthly_forecast_spread_screen_disclaimer;
 
-  /// No description provided for @self_development_balance_spread_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Сделай для {userName} расклад на саморазвитие и баланс по этим трем картам: {cards}'**
-  String self_development_balance_spread_screen_prompt(
-    Object cards,
-    Object userName,
-  );
-
   /// No description provided for @error_getting_answer_try_again.
   ///
   /// In ru_RU, this message translates to:
@@ -2044,30 +1851,6 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Ошибка загрузки текста'**
   String get card_detail_screen_error_loading_text;
-
-  /// No description provided for @card_detail_screen_general_meaning_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Опиши общее значение карты Таро \"{cardName}\" на языке {lang}. Включи историю, символику и основные значения.'**
-  String card_detail_screen_general_meaning_prompt(
-    Object cardName,
-    Object lang,
-  );
-
-  /// No description provided for @card_detail_screen_reversed_meaning_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Опиши перевернутое значение карты Таро \"{cardName}\" на языке {lang}. Включи противоположные значения и предупреждения.'**
-  String card_detail_screen_reversed_meaning_prompt(
-    Object cardName,
-    Object lang,
-  );
-
-  /// No description provided for @card_detail_screen_symbolism_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Опиши символизм карты Таро \"{cardName}\" на языке {lang}. Включи детали изображения, цвета и их значения.'**
-  String card_detail_screen_symbolism_prompt(Object cardName, Object lang);
 
   /// No description provided for @card_detail_screen_description.
   ///
@@ -2111,24 +1894,6 @@ abstract class AppLocalizations {
   /// **'Нет оригинального текста'**
   String get card_detail_screen_no_original_text;
 
-  /// No description provided for @card_of_the_day_screen_translate_card_name_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Переведи название карты Таро \"{cardName}\" на {languageCode}. Ответ должен содержать только переведенное название, без дополнительного текста или знаков препинания.'**
-  String card_of_the_day_screen_translate_card_name_prompt(
-    Object cardName,
-    Object languageCode,
-  );
-
-  /// No description provided for @card_of_the_day_screen_generate_description_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты профессиональный таролог. Напиши вдохновляющее сообщение «Карта дня» на языке этого запроса для пользователя {name}. Соблюдай структуру и объём.\n\n🌟 {name}, твоя карта дня — {cardName}!\n\n🔑 Ключевые слова: <укажи 3–5 коротких keywords>\n\n🃏 Значение (≈45–50 слов): опиши основную энергию карты и как она проявится сегодня у {name}.\n\n💡 Совет (≈35–40 слов): предложи конкретное действие или настрой, который поможет {name} использовать эту энергию.\n\n✨ Аффирмация (1 строка): позитивное утверждение, начинающееся с «Я…».\n\nТребования: общая длина 120–150 слов, тёплый эзотерический тон, 3–4 тематических эмодзи, никаких списков в HTML/Markdown; абзацы разделяй двойным переносом строки (\\n\\n).'**
-  String card_of_the_day_screen_generate_description_prompt(
-    Object cardName,
-    Object name,
-  );
-
   /// No description provided for @card_of_the_day_screen_title.
   ///
   /// In ru_RU, this message translates to:
@@ -2140,12 +1905,6 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Ошибка загрузки карты'**
   String get card_of_the_day_screen_error_loading_card;
-
-  /// No description provided for @career_finance_spread_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Сделай для {userName} расклад на карьеру и финансы по этим трем картам: {cards}'**
-  String career_finance_spread_screen_prompt(Object cards, Object userName);
 
   /// No description provided for @contact_us_title.
   ///
@@ -2384,7 +2143,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboarding_final_screen_monthly_price.
   ///
   /// In ru_RU, this message translates to:
-  /// **'9/мес='**
+  /// **'9/мес'**
   String get onboarding_final_screen_monthly_price;
 
   /// No description provided for @onboarding_final_screen_monthly_month_price.
@@ -2438,7 +2197,7 @@ abstract class AppLocalizations {
   /// No description provided for @purchase_love_screen_monthly_price.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Ежемесячно'**
+  /// **'9/мес'**
   String get purchase_love_screen_monthly_price;
 
   /// No description provided for @purchase_love_screen_monthly_month_price.
@@ -2513,26 +2272,6 @@ abstract class AppLocalizations {
   /// **'Что такое расклад Карьера и финансы?'**
   String get career_finance_spread_screen_what_is_career_finance_spread;
 
-  /// No description provided for @celtic_cross_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь раскладом \"Кельтский крест\" (классическая схема Уэйта). Карты переданы так: ситуация - {situationCard}; вызов - {challengeCard}; подсознательное - {subconsciousCard}; недавнее прошлое - {pastCard}; сознательное - {consciousCard}; ближайшее будущее - {hiddenCard}; внутреннее Я - {selfCard}; окружение - {environmentCard}; надежды или страхи - {hopesCard}; итог - {outcomeCard}. Упоминай имя {userName} минимум шесть раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: ситуация ({situationCard}) / вызов ({challengeCard}) / подсознательное ({subconsciousCard}) / недавнее прошлое ({pastCard}) / сознательное ({consciousCard}) / ближайшее будущее ({hiddenCard}) / внутреннее Я ({selfCard}) / окружение ({environmentCard}) / надежды/страхи ({hopesCard}) / итог ({outcomeCard}).\n\n3) Ситуация — {situationCard} (45-55 слов): три ключевых слова, символика карты и текущее положение дел по вопросу {userQuestion} для {userName}.\n\n4) Вызов — {challengeCard} (45-55 слов): главное препятствие или помощь для {userName}.\n\n5) Подсознательное — {subconsciousCard} (45-55 слов): скрытые мотивы или энергии, влияющие на {userName}.\n\n6) Недавнее прошлое — {pastCard} (45-55 слов): события, приведшие {userName} к нынешней ситуации.\n\n7) Сознательное — {consciousCard} (45-55 слов): цели, ожидания или то, что {userName} осознаёт.\n\n8) Ближнее будущее — {hiddenCard} (45-55 слов): вероятное развитие в ближайшие недели.\n\n9) Внутреннее Я — {selfCard} (45-55 слов): состояние, ресурсы {userName}.\n\n10) Окружение — {environmentCard} (45-55 слов): влияние людей и обстоятельств.\n\n11) Надежды / страхи — {hopesCard} (45-55 слов): ожидания или опасения {userName}.\n\n12) Итог — {outcomeCard} (45-55 слов): вероятный результат при учёте совета расклада.\n\n13) Заключение: дружеская поддержка и позитивная аффирмация (30-35 слов) для {userName}.\n\nТребования: общий объём 400-500 слов, живой разговорный тон, 4-6 эзотерических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); не используй символы *, # или другую разметку; пиши только простым текстом.'**
-  String celtic_cross_screen_prompt(
-    Object challengeCard,
-    Object consciousCard,
-    Object environmentCard,
-    Object hiddenCard,
-    Object hopesCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object selfCard,
-    Object situationCard,
-    Object subconsciousCard,
-    Object userName,
-    Object userQuestion,
-  );
-
   /// No description provided for @celtic_cross_screen_unable_to_load_card.
   ///
   /// In ru_RU, this message translates to:
@@ -2551,18 +2290,6 @@ abstract class AppLocalizations {
   /// **'Ваш запрос принят. Пожалуйста, откройте карты'**
   String get chat_with_tarot_reader_screen_request_received;
 
-  /// No description provided for @chat_with_tarot_reader_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь через расклад \"Прошлое - Настоящее - Будущее\". Карты переданы так: прошлое - {pastCard}; настоящее - {presentCard}; будущее - {hiddenCard}. Упоминай имя {userName} не менее четырёх раз и обязательно связывай значения карт с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: Прошлое ({pastCard}) - Настоящее ({presentCard}) - Будущее ({hiddenCard}).\n\n3) Блок ПРОШЛОЕ — {pastCard} (40-50 слов): три ключевых слова, символика карты и объяснение, как прошлые факты влияют на исход вопроса {userQuestion} для {userName}.\n\n4) Блок НАСТОЯЩЕЕ — {presentCard} (40-50 слов): ключевые слова, символика карты и текущие факторы, влияющие на ответ на вопрос {userQuestion}.\n\n5) Блок БУДУЩЕЕ — {hiddenCard} (40-50 слов): ключевые слова, символика карты и вероятный сценарий развития ситуации по вопросу {userName}.\n\n6) Итог: короткий совет, позитивная аффирмация (20-30 слов) и чёткое обобщение шансов.\n\nТребования: общий объём 180-220 слов, тёплый эзотерический тон, 3-5 тематических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); запрещено использовать символы *, # или другие знаки форматирования; пиши только простым текстом.'**
-  String chat_with_tarot_reader_screen_prompt(
-    Object hiddenCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  );
-
   /// No description provided for @see_meaning_button.
   ///
   /// In ru_RU, this message translates to:
@@ -2573,7 +2300,7 @@ abstract class AppLocalizations {
   ///
   /// In ru_RU, this message translates to:
   /// **'3 карты в раскладе'**
-  String three_cards_title(Object cards);
+  String get three_cards_title;
 
   /// No description provided for @new_spread_button.
   ///
@@ -2635,20 +2362,6 @@ abstract class AppLocalizations {
   /// **'Полный расклад на 10 карт'**
   String get classic_spreads_screen_celtic_cross_description;
 
-  /// No description provided for @five_cards_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь через расклад \"5 карт\". Карты даны по порядку: прошлое - {pastCard}; настоящее - {presentCard}; будущее - {hiddenCard}; причина - {adviceCard}; возможный итог - {outcomeCard}. Объясни значение каждой карты и их общий смысл.'**
-  String five_cards_screen_prompt(
-    Object adviceCard,
-    Object hiddenCard,
-    Object outcomeCard,
-    Object pastCard,
-    Object presentCard,
-    Object userName,
-    Object userQuestion,
-  );
-
   /// No description provided for @fiveCardsInSpread.
   ///
   /// In ru_RU, this message translates to:
@@ -2666,25 +2379,13 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake;
+      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMake;
 
   /// No description provided for @requestReceivedPleaseOpenCards.
   ///
   /// In ru_RU, this message translates to:
   /// **'Ваш запрос принят. Пожалуйста, откройте карты'**
   String get requestReceivedPleaseOpenCards;
-
-  /// No description provided for @love_spread_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Ответь с помощью любовного расклада из трёх карт. Карты даны так: чувства {userName} — {youCard}; чувства партнёра — {partnerCard}; динамика или потенциал отношений — {dynamicCard}. Упоминай имя {userName} минимум три раза и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {youCard} | {partnerCard} | {dynamicCard}.\n\n3) {youCard} — 40–50 слов: опиши, что карта говорит о чувствах и ожиданиях {userName}.\n\n4) {partnerCard} — 40–50 слов: раскрой эмоции и намерения партнёра относительно вопроса {userName}.\n\n5) {dynamicCard} — 40–50 слов: покажи, как эти две энергии взаимодействуют и к чему могут привести отношения.\n\n6) Заключение: тёплый совет и позитивная аффирмация (20–25 слов) для {userName}.\n\nТребования: общий объём 150–180 слов, дружеский романтичный тон, 2–4 тематических эмодзи; абзацы отделяй двойным переводом строки (\\n\\n); избегай символов *, # и любой разметки.'**
-  String love_spread_prompt(
-    Object dynamicCard,
-    Object partnerCard,
-    Object userName,
-    Object userQuestion,
-    Object youCard,
-  );
 
   /// No description provided for @loveSpread.
   ///
@@ -2697,7 +2398,7 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String
-  get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist;
+      get applicationUsesAIExclusivelyForEntertainmentWeDoNotTakeResponsibilityForDecisionsYouHaveMadeIfNeededPleaseConsultSpecialist;
 
   /// No description provided for @main_screen_greeting_with_name.
   ///
@@ -2819,12 +2520,6 @@ abstract class AppLocalizations {
   /// **'Ваш запрос принят. Пожалуйста, откройте карты'**
   String get monthly_forecast_spread_screen_request_accepted;
 
-  /// No description provided for @monthly_forecast_spread_screen_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Сделай для {userName} месячный прогноз по этим картам: {cards}'**
-  String monthly_forecast_spread_screen_prompt(Object cards, Object userName);
-
   /// No description provided for @aboutSpread.
   ///
   /// In ru_RU, this message translates to:
@@ -2842,7 +2537,7 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist;
+      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNecessaryPleaseConsultSpecialist;
 
   /// No description provided for @purchase_love_screen_test_message.
   ///
@@ -2879,7 +2574,7 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Приложение использует ИИ исключительно в развлекательных целях. Мы не несем ответственности за принятые вами решения. При необходимости обратитесь к специалисту.'**
   String
-  get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist;
+      get appUsesAIForEntertainmentOnlyWeDoNotTakeResponsibilityForDecisionsYouMakeIfNeededConsultSpecialist;
 
   /// No description provided for @thematic_spreads_screen_title.
   ///
@@ -2952,12 +2647,6 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Ваш запрос принят. Пожалуйста, откройте карты'**
   String get requestReceived;
-
-  /// No description provided for @pros_cons_spread_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Сделай для {userName} расклад За и Против по этим картам: {cards}'**
-  String pros_cons_spread_prompt(Object cards, Object userName);
 
   /// No description provided for @pros_cons_spread_screen_what_is_pros_cons_spread.
   ///
@@ -3084,18 +2773,6 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Наше приложение работает только с интернетом. Пожалуйста, включите Wi-Fi или мобильный интернет.'**
   String get no_internet_error;
-
-  /// No description provided for @fun_spread_screen_mate_prompt_3cards.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Сделай очень смешной, дерзкий и матершинный расклад таро на 3 карты для {userName} . Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Используй нецензурную лексику, чтобы добавить юмора, но не оскорбляй. Весь текст не длиннее 7 предложений.'**
-  String fun_spread_screen_mate_prompt_3cards(Object userName);
-
-  /// No description provided for @fun_spread_screen_no_mate_prompt_3cards.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Создай забавный расклад таро для {userName} на 3 карты. Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Расклад должен быть веселым, но с глубоким смыслом. Только 3 карты. Весь текст не длиннее 7 предложений.'**
-  String fun_spread_screen_no_mate_prompt_3cards(Object userName);
 
   /// No description provided for @fun_spread_screen_title_top.
   ///
@@ -3241,68 +2918,6 @@ abstract class AppLocalizations {
   /// **'Как найти гармонию в жизни?'**
   String get self_development_balance_spread_screen_suggested_questions_3;
 
-  /// No description provided for @career_three_card_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог-коуч. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад из трёх карт на карьеру и финансы. Карты переданы так: 1) ситуация — {situationCard}; 2) преграда или ключевая возможность — {challengeCard}; 3) совет и потенциал — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Говори с {userName} дружелюбно и по делу: покажи, где он стоит, что блокирует рост (или какой шанс важно заметить) и какой практический шаг выведет к желаемому доходу. Упоминай имя {userName} минимум три раза. Соблюдай структуру:\n\n1) Приветствие — 1 предложение.\n\n2) Заголовок: Расклад: {situationCard} | {challengeCard} | {adviceCard}.\n\n3) {situationCard} — 45–55 слов: опиши текущее положение {userName} (работа, бизнес или общий финансовый фон) и символику карты.\n\n4) {challengeCard} — 45–55 слов: раскрой главный барьер или неочевидную возможность; укажи, как она отражается в карте и в вопросе {userName}.\n\n5) {adviceCard} — 45–55 слов: предложи конкретное действие (например, пересмотреть бюджет, запросить повышение, изучить новую компетенцию) и опиши возможный результат.\n\n6) Финал — 20–25 слов: дружеский вывод, позитивная аффирмация и 2 деловых эмодзи.\n\nТребования: общий объём 160–185 слов, ясный деловой тон без жаргона, 2–3 эмодзи; абзацы разделяй двойным \\n\\n; не используй *, # и прочую разметку.'**
-  String career_three_card_prompt(
-    Object adviceCard,
-    Object challengeCard,
-    Object situationCard,
-    Object userName,
-    Object userQuestion,
-  );
-
-  /// No description provided for @pros_cons_three_card_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад «За и Против» из трёх карт. Карты переданы так: плюсы — {proCard}; минусы — {conCard}; совет/итог — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Упоминай имя {userName} не менее трёх раз и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {proCard} | {conCard} | {adviceCard}.\n\n3) Плюсы: {proCard} — 45–55 слов. Раскрой главные выгоды или положительные ресурсы, которые эта карта приносит в ситуацию {userName}.\n\n4) Минусы: {conCard} — 45–55 слов. Опиши риски, скрытые затраты или слабые места решения для {userName}.\n\n5) Совет: {adviceCard} — 45–55 слов. Взвесь плюсы и минусы, предложи одно конкретное действие (глагол + объект) и скажи, как это изменит исход для {userName}.\n\n6) Итог — одним словом «Да» или «Нет», затем 1 предложение-обоснование и ободряющая аффирмация (20–25 слов) с 1–2 эмодзи.\n\nТребования: общий объём 150–180 слов, дружеский разговорный тон; каждый блок отделяй двойным переводом строки (\\n\\n); без символов *, # или другой разметки.'**
-  String pros_cons_three_card_prompt(
-    Object adviceCard,
-    Object conCard,
-    Object proCard,
-    Object userName,
-    Object userQuestion,
-  );
-
-  /// No description provided for @monthly_wheel_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты профессиональный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Составь расклад «Колесо месяца» на {month}. Карты идут по порядку: 1 — {card1}, 2 — {card2}, 3 — {card3}, 4 — {card4}, 5 — {card5}, 6 — {card6}, 7 — {card7}, 8 — {card8}, 9 — {card9}, 10 — {card10}, 11 — {card11}, 12 — {card12}. Определи пол {userName} по имени и используй правильные окончания и местоимения. Упоминай имя не меньше пяти раз, но **не вставляй его после каждой даты** — вспоминай лишь внутри текста советов. Используй календарную сетку дат: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (если в месяце 30 дней — 12-я карта тоже относится к 30-му числу). Формат:\n\n1) Приветствие по имени {userName} (1–2 предложения).\n\n2) Краткое вступление о цели расклада (1 предложение).\n\n3–14) Для каждой карты используй строку вида «1–3 {month} — {card1}» (без имени): затем 2–3 предложения о ключевой энергии периода и практическом совете, органично упоминая {userName}.\n\n15) Итог: общий совет на месяц (около 40 слов) и вдохновляющая аффирмация с 2–3 эмодзи.\n\nТребования: суммарно 360–400 слов; дружеский, мотивирующий тон; блоки разделяй двойным \\n\\n; никаких символов *, #, списков или технических пометок.'**
-  String monthly_wheel_prompt(
-    Object card1,
-    Object card10,
-    Object card11,
-    Object card12,
-    Object card2,
-    Object card3,
-    Object card4,
-    Object card5,
-    Object card6,
-    Object card7,
-    Object card8,
-    Object card9,
-    Object month,
-    Object userName,
-    Object userQuestion,
-  );
-
-  /// No description provided for @self_growth_balance_prompt.
-  ///
-  /// In ru_RU, this message translates to:
-  /// **'Ты опытный таролог-коуч. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад «Саморазвитие и баланс» из семи карт. Карты даны так: ядро — {coreCard}; разум — {mindCard}; эмоции — {emotionCard}; тело — {bodyCard}; ресурс — {strengthCard}; блок — {challengeCard}; совет — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Говори живо и поддерживающе, упоминай имя {userName} не меньше четырёх раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру и формат:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {coreCard} | {mindCard} | {emotionCard} | {bodyCard} | {strengthCard} | {challengeCard} | {adviceCard}.\n\n3) {coreCard} — опиши главный фокус саморазвития {userName}.\n\n4) {mindCard} — расскажи, как настроить мышление и чему учиться.\n\n5) {emotionCard} — раскрой эмоциональный ресурс и мотивацию.\n\n6) {bodyCard} — подскажи, как заботиться о теле и энергии.\n\n7) {strengthCard} — покажи внутренний дар или внешнюю поддержку.\n\n8) {challengeCard} — обозначь ключевой дисбаланс и его причины.\n\n9) {adviceCard} — предложи конкретное действие, объединяющее все аспекты.\n\n10) Финал: вдохновляющая аффирмация и тёплое напутствие с 2–3 эмодзи.\n\nТребования: каждый пункт 2–3 предложения; между пунктами ставь двойной перевод строки (\\n\\n); не используй символы *, # или другую разметку.'**
-  String self_growth_balance_prompt(
-    Object adviceCard,
-    Object bodyCard,
-    Object challengeCard,
-    Object coreCard,
-    Object emotionCard,
-    Object mindCard,
-    Object strengthCard,
-    Object userName,
-    Object userQuestion,
-  );
-
   /// No description provided for @main_screen_suggest_spread.
   ///
   /// In ru_RU, this message translates to:
@@ -3318,73 +2933,73 @@ abstract class AppLocalizations {
   /// No description provided for @month_january.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Январь'**
+  /// **'января'**
   String get month_january;
 
   /// No description provided for @month_february.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Февраль'**
+  /// **'февраля'**
   String get month_february;
 
   /// No description provided for @month_march.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Март'**
+  /// **'марта'**
   String get month_march;
 
   /// No description provided for @month_april.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Апрель'**
+  /// **'апреля'**
   String get month_april;
 
   /// No description provided for @month_may.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Май'**
+  /// **'мая'**
   String get month_may;
 
   /// No description provided for @month_june.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Июнь'**
+  /// **'июня'**
   String get month_june;
 
   /// No description provided for @month_july.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Июль'**
+  /// **'июля'**
   String get month_july;
 
   /// No description provided for @month_august.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Август'**
+  /// **'августа'**
   String get month_august;
 
   /// No description provided for @month_september.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Сентябрь'**
+  /// **'сентября'**
   String get month_september;
 
   /// No description provided for @month_october.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Октябрь'**
+  /// **'октября'**
   String get month_october;
 
   /// No description provided for @month_november.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Ноябрь'**
+  /// **'ноября'**
   String get month_november;
 
   /// No description provided for @month_december.
   ///
   /// In ru_RU, this message translates to:
-  /// **'Декабрь'**
+  /// **'декабря'**
   String get month_december;
 
   /// No description provided for @fun_share_button.
@@ -3398,6 +3013,815 @@ abstract class AppLocalizations {
   /// In ru_RU, this message translates to:
   /// **'Новый расклад'**
   String get fun_new_spread_button;
+
+  /// No description provided for @reflection_voice_permission_denied.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Для голосового ввода нужно разрешение на микрофон'**
+  String get reflection_voice_permission_denied;
+
+  /// No description provided for @reflection_voice_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка распознавания речи: {error}'**
+  String reflection_voice_error(Object error);
+
+  /// No description provided for @reflection_voice_unavailable.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Распознавание речи недоступно на этом устройстве'**
+  String get reflection_voice_unavailable;
+
+  /// No description provided for @reflection_voice_hint.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Нажмите на микрофон и начните говорить свои мысли...'**
+  String get reflection_voice_hint;
+
+  /// No description provided for @reflection_voice_ios_microphone.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Для голосового ввода размышлений'**
+  String get reflection_voice_ios_microphone;
+
+  /// No description provided for @reflection_voice_ios_speech.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Для распознавания речи в ваших размышлениях'**
+  String get reflection_voice_ios_speech;
+
+  /// No description provided for @reflection_summary_see_analysis_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Увидеть анализ'**
+  String get reflection_summary_see_analysis_button;
+
+  /// No description provided for @reflection_summary_error_getting_analysis.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка при получении анализа. Попробуйте еще раз.'**
+  String get reflection_summary_error_getting_analysis;
+
+  /// No description provided for @reflection_summary_ai_recommendations_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Персональные рекомендации'**
+  String get reflection_summary_ai_recommendations_title;
+
+  /// No description provided for @quick_reading_result_screen_quick_spread_type.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Быстрое гадание'**
+  String get quick_reading_result_screen_quick_spread_type;
+
+  /// No description provided for @quick_reading_result_screen_microphone_permission_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Для голосового ввода нужно разрешение на микрофон'**
+  String get quick_reading_result_screen_microphone_permission_error;
+
+  /// No description provided for @quick_reading_result_screen_speech_recognition_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка распознавания речи: {errorMsg}'**
+  String quick_reading_result_screen_speech_recognition_error(Object errorMsg);
+
+  /// No description provided for @quick_reading_result_screen_speech_not_available.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Распознавание речи недоступно на этом устройстве'**
+  String get quick_reading_result_screen_speech_not_available;
+
+  /// No description provided for @quick_reading_result_screen_your_card.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ваша карта: {cardName}'**
+  String quick_reading_result_screen_your_card(Object cardName);
+
+  /// No description provided for @quick_reading_result_screen_reflection_intro.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Давай порефлексируем и запишем твои мысли, чтобы потом я мог дать тебе лучше рекомендации. Пожалуйста, ответь на два вопроса.'**
+  String get quick_reading_result_screen_reflection_intro;
+
+  /// No description provided for @quick_reading_result_screen_reflection_question.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Что этот расклад заставил тебя почувствовать сейчас? Подумай, как ты можешь применить этот расклад в своей жизни прямо сейчас?'**
+  String get quick_reading_result_screen_reflection_question;
+
+  /// No description provided for @quick_reading_result_screen_reflection_final.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Благодарю тебя. Продолжай делать расклады и фиксировать свои мысли. Когда захочешь — загляни в раздел «Дневник», и я дам тебе персональные рекомендации на основе твоего внутреннего пути.'**
+  String get quick_reading_result_screen_reflection_final;
+
+  /// No description provided for @quick_reading_result_screen_input_hint.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'...'**
+  String get quick_reading_result_screen_input_hint;
+
+  /// No description provided for @quick_reading_result_screen_please_write_thoughts.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Пожалуйста, напишите свои мысли'**
+  String get quick_reading_result_screen_please_write_thoughts;
+
+  /// No description provided for @quick_reading_result_screen_write_thoughts_hint.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Напишите свои мысли...'**
+  String get quick_reading_result_screen_write_thoughts_hint;
+
+  /// No description provided for @quick_reading_result_screen_save_reflection.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сохранить размышление'**
+  String get quick_reading_result_screen_save_reflection;
+
+  /// No description provided for @quick_reading_result_screen_l10n_null_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка: l10n is null'**
+  String get quick_reading_result_screen_l10n_null_error;
+
+  /// No description provided for @quick_reading_result_screen_prompt_empty_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка: prompt is empty'**
+  String get quick_reading_result_screen_prompt_empty_error;
+
+  /// No description provided for @quick_reading_result_screen_general_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка: {error}'**
+  String quick_reading_result_screen_general_error(Object error);
+
+  /// No description provided for @server_temporarily_unavailable.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сервер временно недоступен. Пожалуйста, попробуйте еще раз через несколько секунд.'**
+  String get server_temporarily_unavailable;
+
+  /// No description provided for @onboarding_final_error_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка'**
+  String get onboarding_final_error_title;
+
+  /// No description provided for @onboarding_final_error_ok.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'OK'**
+  String get onboarding_final_error_ok;
+
+  /// No description provided for @onboarding_final_purchase_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка покупки: {error}'**
+  String onboarding_final_purchase_error(Object error);
+
+  /// No description provided for @purchase_love_error_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка'**
+  String get purchase_love_error_title;
+
+  /// No description provided for @purchase_love_error_ok.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'OK'**
+  String get purchase_love_error_ok;
+
+  /// No description provided for @purchase_love_purchase_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка покупки: {error}'**
+  String purchase_love_purchase_error(Object error);
+
+  /// No description provided for @purchase_love_restore_success.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ваша подписка восстановлена!'**
+  String get purchase_love_restore_success;
+
+  /// No description provided for @purchase_love_restore_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка восстановления: {error}'**
+  String purchase_love_restore_error(Object error);
+
+  /// No description provided for @purchase_love_restore_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Восстановить'**
+  String get purchase_love_restore_button;
+
+  /// No description provided for @purchase_love_loading.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Загрузка...'**
+  String get purchase_love_loading;
+
+  /// No description provided for @purchase_love_per_month.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'/месяц'**
+  String get purchase_love_per_month;
+
+  /// No description provided for @reflection_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Саморефлексия'**
+  String get reflection_screen_title;
+
+  /// No description provided for @reflection_screen_card_of_day.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Карта дня: {cardName}'**
+  String reflection_screen_card_of_day(Object cardName);
+
+  /// No description provided for @reflection_screen_tarologist_name.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Таролог'**
+  String get reflection_screen_tarologist_name;
+
+  /// No description provided for @reflection_screen_write_thoughts_hint.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Напишите свои мысли...'**
+  String get reflection_screen_write_thoughts_hint;
+
+  /// No description provided for @reflection_screen_continue_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Продолжить'**
+  String get reflection_screen_continue_button;
+
+  /// No description provided for @reflection_screen_save_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сохранить'**
+  String get reflection_screen_save_button;
+
+  /// No description provided for @reflection_screen_finish_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Завершить'**
+  String get reflection_screen_finish_button;
+
+  /// No description provided for @reflection_screen_please_write_thoughts.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Пожалуйста, напишите свои мысли'**
+  String get reflection_screen_please_write_thoughts;
+
+  /// No description provided for @reflection_screen_saved_success.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ваши размышления сохранены'**
+  String get reflection_screen_saved_success;
+
+  /// No description provided for @reflection_screen_save_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка сохранения: {error}'**
+  String reflection_screen_save_error(Object error);
+
+  /// No description provided for @reflection_screen_intro_message.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Давай порефлексируем и запишем твои мысли, чтобы потом я мог дать тебе лучше реккомендации. Пожалуйста ответь на два вопроса'**
+  String get reflection_screen_intro_message;
+
+  /// No description provided for @reflection_screen_question_message.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Что этот расклад заставил тебя почувствовать сейчас? Подумай, как ты можешь применить этот расклад в своей жизни прямо сейчас?'**
+  String get reflection_screen_question_message;
+
+  /// No description provided for @reflection_screen_final_message.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Благодарю тебя. Продолжай делать расклады и фиксировать свои мысли.\n\nКогда захочешь — загляни в раздел «Мои размышления», и я дам тебе персональные рекомендации на основе твоего внутреннего пути.'**
+  String get reflection_screen_final_message;
+
+  /// No description provided for @reflection_summary_load_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка загрузки: {error}'**
+  String reflection_summary_load_error(Object error);
+
+  /// No description provided for @reflection_summary_need_7_entries.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Нужно 7 записей для получения рекомендаций'**
+  String get reflection_summary_need_7_entries;
+
+  /// No description provided for @reflection_summary_ok_button.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'ОК'**
+  String get reflection_summary_ok_button;
+
+  /// No description provided for @reflection_summary_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Мои размышления'**
+  String get reflection_summary_screen_title;
+
+  /// No description provided for @reflection_summary_left_to_analyze.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Осталось до анализа: {count} раскладов'**
+  String reflection_summary_left_to_analyze(Object count);
+
+  /// No description provided for @reflection_summary_instruction_text.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Чтобы я мог проанализировать и дать советы по Вашим мыслям, пожалуйста, сделайте 7 раскладов и запишите свои мысли. А потом вернитесь сюда, чтобы узнать совет.'**
+  String get reflection_summary_instruction_text;
+
+  /// No description provided for @reflection_summary_spread_label.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'🃏 Расклад: {spreadName}'**
+  String reflection_summary_spread_label(Object spreadName);
+
+  /// No description provided for @reflection_summary_cards_label.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'🗂️ Карты в раскладе:'**
+  String get reflection_summary_cards_label;
+
+  /// No description provided for @reflection_summary_thoughts_label.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'💭 Мысли: '**
+  String get reflection_summary_thoughts_label;
+
+  /// No description provided for @reflection_summary_date_label.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'📅 Дата: '**
+  String get reflection_summary_date_label;
+
+  /// No description provided for @reflection_summary_empty_placeholder.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'—'**
+  String get reflection_summary_empty_placeholder;
+
+  /// No description provided for @journal_service_load_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка загрузки записей: {error}'**
+  String journal_service_load_error(Object error);
+
+  /// No description provided for @journal_service_save_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка сохранения записи: {error}'**
+  String journal_service_save_error(Object error);
+
+  /// No description provided for @journal_service_delete_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка удаления записи: {error}'**
+  String journal_service_delete_error(Object error);
+
+  /// No description provided for @journal_service_no_note.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Заметка не добавлена'**
+  String get journal_service_no_note;
+
+  /// No description provided for @celtic_cross_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь раскладом \"Кельтский крест\" (классическая схема Уэйта). Карты переданы так: ситуация - {situationCard}; вызов - {challengeCard}; подсознательное - {subconsciousCard}; недавнее прошлое - {pastCard}; сознательное - {consciousCard}; ближайшее будущее - {hiddenCard}; внутреннее Я - {selfCard}; окружение - {environmentCard}; надежды или страхи - {hopesCard}; итог - {outcomeCard}. Упоминай имя {userName} минимум шесть раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: ситуация ({situationCard}) / вызов ({challengeCard}) / подсознательное ({subconsciousCard}) / недавнее прошлое ({pastCard}) / сознательное ({consciousCard}) / ближайшее будущее ({hiddenCard}) / внутреннее Я ({selfCard}) / окружение ({environmentCard}) / надежды/страхи ({hopesCard}) / итог ({outcomeCard}).\n\n3) Ситуация — {situationCard} (45-55 слов): три ключевых слова, символика карты и текущее положение дел по вопросу {userQuestion} для {userName}.\n\n4) Вызов — {challengeCard} (45-55 слов): главное препятствие или помощь для {userName}.\n\n5) Подсознательное — {subconsciousCard} (45-55 слов): скрытые мотивы или энергии, влияющие на {userName}.\n\n6) Недавнее прошлое — {pastCard} (45-55 слов): события, приведшие {userName} к нынешней ситуации.\n\n7) Сознательное — {consciousCard} (45-55 слов): цели, ожидания или то, что {userName} осознаёт.\n\n8) Ближнее будущее — {hiddenCard} (45-55 слов): вероятное развитие в ближайшие недели.\n\n9) Внутреннее Я — {selfCard} (45-55 слов): состояние, ресурсы {userName}.\n\n10) Окружение — {environmentCard} (45-55 слов): влияние людей и обстоятельств.\n\n11) Надежды / страхи — {hopesCard} (45-55 слов): ожидания или опасения {userName}.\n\n12) Итог — {outcomeCard} (45-55 слов): вероятный результат при учёте совета расклада.\n\n13) Заключение: дружеская поддержка и позитивная аффирмация (30-35 слов) для {userName}.\n\nТребования: общий объём 400-500 слов, живой разговорный тон, 4-6 эзотерических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); не используй символы *, # или другую разметку; пиши только простым текстом.'**
+  String celtic_cross_screen_prompt(
+      Object challengeCard,
+      Object consciousCard,
+      Object environmentCard,
+      Object hiddenCard,
+      Object hopesCard,
+      Object outcomeCard,
+      Object pastCard,
+      Object selfCard,
+      Object situationCard,
+      Object subconsciousCard,
+      Object userName,
+      Object userQuestion);
+
+  /// No description provided for @card_detail_screen_general_meaning_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Опиши общее значение карты Таро \"{cardName}\" на языке {lang}. Включи историю, символику и основные значения.'**
+  String card_detail_screen_general_meaning_prompt(
+      Object cardName, Object lang);
+
+  /// No description provided for @card_detail_screen_reversed_meaning_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Опиши перевернутое значение карты Таро \"{cardName}\" на языке {lang}. Включи противоположные значения и предупреждения.'**
+  String card_detail_screen_reversed_meaning_prompt(
+      Object cardName, Object lang);
+
+  /// No description provided for @card_detail_screen_symbolism_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Опиши символизм карты Таро \"{cardName}\" на языке {lang}. Включи детали изображения, цвета и их значения.'**
+  String card_detail_screen_symbolism_prompt(Object cardName, Object lang);
+
+  /// No description provided for @self_development_balance_spread_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сделай для {userName} расклад на саморазвитие и баланс по этим трем картам: {cards}'**
+  String self_development_balance_spread_screen_prompt(
+      Object cards, Object userName);
+
+  /// No description provided for @quick_reading_result_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} вытянул карту — {cardName}. Сначала напиши с новой строки фразу: Ответ карт: и далее одним словом ответ «Да» или «Нет». Потом добавь связное толкование 120–150 слов: 7–8 предложений о том, почему энергия {cardName} ведёт к такому ответу и что это значит лично для {userName}. Упомяни имя {userName} минимум два раза, вставь 1–2 тематических эмодзи, избегай символов *, # и любой разметки; пиши простым разговорным тоном.'**
+  String quick_reading_result_screen_prompt(Object cardName, Object userName);
+
+  /// No description provided for @card_of_the_day_screen_translate_card_name_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Переведи название карты Таро \"{cardName}\" на {languageCode}. Ответ должен содержать только переведенное название, без дополнительного текста или знаков препинания.'**
+  String card_of_the_day_screen_translate_card_name_prompt(
+      Object cardName, Object languageCode);
+
+  /// No description provided for @card_of_the_day_screen_generate_description_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты профессиональный таролог. Напиши вдохновляющее сообщение «Карта дня» на языке этого запроса для пользователя {name}. Соблюдай структуру и объём.\n\n🌟 {name}, твоя карта дня — {cardName}!\n\n🔑 Ключевые слова: <укажи 3–5 коротких keywords>\n\n🃏 Значение (≈45–50 слов): опиши основную энергию карты и как она проявится сегодня у {name}.\n\n💡 Совет (≈35–40 слов): предложи конкретное действие или настрой, который поможет {name} использовать эту энергию.\n\n✨ Аффирмация (1 строка): позитивное утверждение, начинающееся с «Я…».\n\nТребования: общая длина 120–150 слов, тёплый эзотерический тон, 3–4 тематических эмодзи, никаких списков в HTML/Markdown; абзацы разделяй двойным переносом строки (\n\n).'**
+  String card_of_the_day_screen_generate_description_prompt(
+      Object cardName, Object name);
+
+  /// No description provided for @chat_with_tarot_reader_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь через расклад \"Прошлое - Настоящее - Будущее\". Карты переданы так: прошлое - {pastCard}; настоящее - {presentCard}; будущее - {hiddenCard}. Упоминай имя {userName} не менее четырёх раз и обязательно связывай значения карт с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: Прошлое ({pastCard}) - Настоящее ({presentCard}) - Будущее ({hiddenCard}).\n\n3) Блок ПРОШЛОЕ — {pastCard} (40-50 слов): три ключевых слова, символика карты и объяснение, как прошлые факты влияют на исход вопроса {userQuestion} для {userName}.\n\n4) Блок НАСТОЯЩЕЕ — {presentCard} (40-50 слов): ключевые слова, символика карты и текущие факторы, влияющие на ответ на вопрос {userQuestion}.\n\n5) Блок БУДУЩЕЕ — {hiddenCard} (40-50 слов): ключевые слова, символика карты и вероятный сценарий развития ситуации по вопросу {userName}.\n\n6) Итог: короткий совет, позитивная аффирмация (20-30 слов) и чёткое обобщение шансов.\n\nТребования: общий объём 180-220 слов, тёплый эзотерический тон, 3-5 тематических эмодзи; каждый блок отделяй двойным переводом строки (\n\n); запрещено использовать символы *, # или другие знаки форматирования; пиши только простым текстом.'**
+  String chat_with_tarot_reader_screen_prompt(
+      Object hiddenCard,
+      Object pastCard,
+      Object presentCard,
+      Object userName,
+      Object userQuestion);
+
+  /// No description provided for @career_finance_spread_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сделай для {userName} расклад на карьеру и финансы по этим трем картам: {cards}'**
+  String career_finance_spread_screen_prompt(Object cards, Object userName);
+
+  /// No description provided for @five_cards_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: \"{userQuestion}\". Ответь через расклад \"5 карт\". Карты даны по порядку: совет - {adviceCard}; скрытое - {hiddenCard}; итог - {outcomeCard}; прошлое - {pastCard}; настоящее - {presentCard}. Объясни значение каждой карты и их общий смысл.'**
+  String five_cards_screen_prompt(
+      Object adviceCard,
+      Object hiddenCard,
+      Object outcomeCard,
+      Object pastCard,
+      Object presentCard,
+      Object userName,
+      Object userQuestion);
+
+  /// No description provided for @monthly_forecast_spread_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сделай для {userName} месячный прогноз по этим картам: {cards}'**
+  String monthly_forecast_spread_screen_prompt(Object cards, Object userName);
+
+  /// No description provided for @love_spread_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Ответь с помощью любовного расклада из трёх карт. Карты даны так: чувства {userName} — {youCard}; чувства партнёра — {partnerCard}; динамика или потенциал отношений — {dynamicCard}. Упоминай имя {userName} минимум три раза и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {youCard} | {partnerCard} | {dynamicCard}.\n\n3) {youCard} — 40–50 слов: опиши, что карта говорит о чувствах и ожиданиях {userName}.\n\n4) {partnerCard} — 40–50 слов: раскрой эмоции и намерения партнёра относительно вопроса {userName}.\n\n5) {dynamicCard} — 40–50 слов: покажи, как эти две энергии взаимодействуют и к чему могут привести отношения.\n\n6) Заключение: тёплый совет и позитивная аффирмация (20–25 слов) для {userName}.\n\nТребования: общий объём 150–180 слов, дружеский романтичный тон, 2–4 тематических эмодзи; абзацы отделяй двойным переводом строки (\n\n); избегай символов *, # и любой разметки.'**
+  String love_spread_prompt(Object dynamicCard, Object partnerCard,
+      Object userName, Object userQuestion, Object youCard);
+
+  /// No description provided for @pros_cons_spread_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сделай для {userName} расклад За и Против по этим картам: {cards}'**
+  String pros_cons_spread_prompt(Object cards, Object userName);
+
+  /// No description provided for @fun_spread_screen_mate_prompt_3cards.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сделай очень смешной, дерзкий и матершинный расклад таро на 3 карты для {userName} . Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Используй нецензурную лексику, чтобы добавить юмора, но не оскорбляй. Весь текст не длиннее 7 предложений.'**
+  String fun_spread_screen_mate_prompt_3cards(Object userName);
+
+  /// No description provided for @fun_spread_screen_no_mate_prompt_3cards.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Создай забавный расклад таро для {userName} на 3 карты. Для каждой карты придумай смешное название и напиши отдельный абзац: Первая карта: <название> — <короткое смешное описание>, Вторая карта: <название> — <короткое смешное описание>, Третья карта: <название> — <короткое смешное описание>. Расклад должен быть веселым, но с глубоким смыслом. Только 3 карты. Весь текст не длиннее 7 предложений.'**
+  String fun_spread_screen_no_mate_prompt_3cards(Object userName);
+
+  /// No description provided for @card_combination_screen_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Проанализируй сочетание карт Таро: {cards}. Дай глубокий мистический анализ их взаимодействия и общий совет. Ответ полностью на языке {lang}. Без приветствий и заключений.'**
+  String card_combination_screen_prompt(Object cards, Object lang);
+
+  /// No description provided for @journal_service_ai_insight_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Проанализируй этот таро расклад и дай глубокое понимание:\n\nТип расклада: {spreadType}\nКарты: {cards}\nЗаметка пользователя: {note}\n\nДай:\n1. Общий анализ энергетики расклада\n2. Ключевые темы и уроки\n3. Практические рекомендации для самопознания\n4. Что стоит развивать в себе\n5. На что обратить внимание в ближайшее время\n\nБудь вдохновляющим и поддерживающим. Пиши на языке пользователя.'**
+  String journal_service_ai_insight_prompt(
+      Object cards, Object note, Object spreadType);
+
+  /// No description provided for @journal_service_weekly_analysis_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Проанализируй мою неделю с таро и дай глубокое понимание моего пути самопознания:\n\nЗа неделю было сделано {totalEntries} раскладов:\n{entriesSummary}\n\nТипы раскладов: {spreadTypes}\n\nДай:\n1. Общие тренды и паттерны недели\n2. Основные темы, которые проявились\n3. Мой прогресс в самопознании\n4. Рекомендации на следующую неделю\n5. Вдохновляющее послание для продолжения пути\n\nБудь поддерживающим и мотивирующим. Отмечай прогресс и достижения.'**
+  String journal_service_weekly_analysis_prompt(
+      Object entriesSummary, Object spreadTypes, Object totalEntries);
+
+  /// No description provided for @career_three_card_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог-коуч. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад из трёх карт на карьеру и финансы. Карты переданы так: 1) ситуация — {situationCard}; 2) преграда или ключевая возможность — {challengeCard}; 3) совет и потенциал — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Говори с {userName} дружелюбно и по делу: покажи, где он стоит, что блокирует рост (или какой шанс важно заметить) и какой практический шаг выведет к желаемому доходу. Упоминай имя {userName} минимум три раза. Соблюдай структуру:\n\n1) Приветствие — 1 предложение.\n\n2) Заголовок: Расклад: {situationCard} | {challengeCard} | {adviceCard}.\n\n3) {situationCard} — 45–55 слов: опиши текущее положение {userName} (работа, бизнес или общий финансовый фон) и символику карты.\n\n4) {challengeCard} — 45–55 слов: раскрой главный барьер или неочевидную возможность; укажи, как она отражается в карте и в вопросе {userName}.\n\n5) {adviceCard} — 45–55 слов: предложи конкретное действие (например, пересмотреть бюджет, запросить повышение, изучить новую компетенцию) и опиши возможный результат.\n\n6) Финал — 20–25 слов: дружеский вывод, позитивная аффирмация и 2 деловых эмодзи.\n\nТребования: общий объём 160–185 слов, ясный деловой тон без жаргона, 2–3 эмодзи; абзацы разделяй двойным \n\n; не используй *, # и прочую разметку.'**
+  String career_three_card_prompt(Object adviceCard, Object challengeCard,
+      Object situationCard, Object userName, Object userQuestion);
+
+  /// No description provided for @pros_cons_three_card_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад «За и Против» из трёх карт. Карты переданы так: плюсы — {proCard}; минусы — {conCard}; совет/итог — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Упоминай имя {userName} не менее трёх раз и связывай каждую карту с вопросом. Соблюдай структуру:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {proCard} | {conCard} | {adviceCard}.\n\n3) Плюсы: {proCard} — 45–55 слов. Раскрой главные выгоды или положительные ресурсы, которые эта карта приносит в ситуацию {userName}.\n\n4) Минусы: {conCard} — 45–55 слов. Опиши риски, скрытые затраты или слабые места решения для {userName}.\n\n5) Совет: {adviceCard} — 45–55 слов. Взвесь плюсы и минусы, предложи одно конкретное действие (глагол + объект) и скажи, как это изменит исход для {userName}.\n\n6) Итог — одним словом «Да» или «Нет», затем 1 предложение-обоснование и ободряющая аффирмация (20–25 слов) с 1–2 эмодзи.\n\nТребования: общий объём 150–180 слов, дружеский разговорный тон; каждый блок отделяй двойным переводом строки (\n\n); без символов *, # или другой разметки.'**
+  String pros_cons_three_card_prompt(Object adviceCard, Object conCard,
+      Object proCard, Object userName, Object userQuestion);
+
+  /// No description provided for @monthly_wheel_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты профессиональный таролог. Пользователь {userName} спрашивает: «{userQuestion}». Составь расклад «Колесо месяца» на {month}. Карты идут по порядку: 1 — {card1}, 2 — {card2}, 3 — {card3}, 4 — {card4}, 5 — {card5}, 6 — {card6}, 7 — {card7}, 8 — {card8}, 9 — {card9}, 10 — {card10}, 11 — {card11}, 12 — {card12}. Определи пол {userName} по имени и используй правильные окончания и местоимения. Упоминай имя не меньше пяти раз, но не вставляй его после каждой даты — вспоминай лишь внутри текста советов. ЗАПРЕЩЕНО писать имя пользователя после диапазона дат. После дат указывай только месяц. Используй календарную сетку дат: 1–3, 4–6, 7–9, 10–12, 13–15, 16–18, 19–21, 22–24, 25–26, 27–28, 29–30, 31 (если в месяце 30 дней — 12-я карта тоже относится к 30-му числу). Формат:\n\n1) Приветствие по имени {userName} (1–2 предложения).\n\n2) Напиши \'Твой запрос:\' и затем вопрос пользователя {userQuestion}.\n\n3) Краткое вступление о цели расклада (1 предложение).\n\n4–15) Для каждой карты используй строку вида «1–3 {month} — {card1}» (без имени): затем 2–3 предложения о ключевой энергии периода и практическом совете, органично упоминая {userName}. НЕ повторяй вопрос пользователя в каждом абзаце. Весь расклад должен органично отвечать на вопрос {userQuestion}, но не цитировать его постоянно. Используй вопрос \'На чем стоит сосредоточиться в эти дни?\' только в некоторых абзацах, где это уместно.\n\n16) Итог: общий совет на месяц (около 40 слов) и вдохновляющая аффирмация с 2–3 эмодзи.\n\nТребования: суммарно 360–400 слов; дружеский, мотивирующий тон; блоки разделяй двойным \n\n; никаких символов *, #, списков или технических пометок.'**
+  String monthly_wheel_prompt(
+      Object card1,
+      Object card10,
+      Object card11,
+      Object card12,
+      Object card2,
+      Object card3,
+      Object card4,
+      Object card5,
+      Object card6,
+      Object card7,
+      Object card8,
+      Object card9,
+      Object month,
+      Object userName,
+      Object userQuestion);
+
+  /// No description provided for @self_growth_balance_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ты опытный таролог-коуч. Пользователь {userName} спрашивает: «{userQuestion}». Сделай расклад «Саморазвитие и баланс» из семи карт. Карты даны так: ядро — {coreCard}; разум — {mindCard}; эмоции — {emotionCard}; тело — {bodyCard}; ресурс — {strengthCard}; блок — {challengeCard}; совет — {adviceCard}. Определи пол пользователя по имени {userName} и обращайся с правильными окончаниями и местоимениями. Говори живо и поддерживающе, упоминай имя {userName} не меньше четырёх раз и обязательно связывай каждую карту с вопросом. Соблюдай структуру и формат:\n\n1) Приветствие по имени {userName}.\n\n2) Заголовок: Расклад: {coreCard} | {mindCard} | {emotionCard} | {bodyCard} | {strengthCard} | {challengeCard} | {adviceCard}.\n\n3) {coreCard} — опиши главный фокус саморазвития {userName}.\n\n4) {mindCard} — расскажи, как настроить мышление и чему учиться.\n\n5) {emotionCard} — раскрой эмоциональный ресурс и мотивацию.\n\n6) {bodyCard} — подскажи, как заботиться о теле и энергии.\n\n7) {strengthCard} — покажи внутренний дар или внешнюю поддержку.\n\n8) {challengeCard} — обозначь ключевой дисбаланс и его причины.\n\n9) {adviceCard} — предложи конкретное действие, объединяющее все аспекты.\n\n10) Финал: вдохновляющая аффирмация и тёплое напутствие с 2–3 эмодзи.\n\nТребования: каждый пункт 2–3 предложения; между пунктами ставь двойной перевод строки (\\n\\n); не используй символы *, # или другую разметку.'**
+  String self_growth_balance_prompt(
+      Object adviceCard,
+      Object bodyCard,
+      Object challengeCard,
+      Object coreCard,
+      Object emotionCard,
+      Object mindCard,
+      Object strengthCard,
+      Object userName,
+      Object userQuestion);
+
+  /// No description provided for @reflection_summary_ai_prompt.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'{userName}, спасибо за ваши размышления и доверие. Проанализируй все 7 раскладов пользователя и его размышления.\n\n1. Определи, какие 1-2 карты чаще всего встречались среди всех 7 раскладов, и объясни, что это может значить для пользователя.\n2. Проанализируй все 7 размышлений пользователя и дай персональные рекомендации, что ему сделать в жизни, чтобы улучшить своё внутреннее состояние и жизнь в целом.\n\nВот размышления пользователя:\n{reflections}\n\nВот самые частые карты из 7 раскладов (через запятую):\n{cards}\n\nОтвет напиши дружелюбно, подробно, без клише, с акцентом на внутренние темы и мягкие советы.'**
+  String reflection_summary_ai_prompt(
+      Object cards, Object reflections, Object userName);
+
+  /// No description provided for @love_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Любовный расклад'**
+  String get love_spread_screen_title;
+
+  /// No description provided for @love_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Анализ отношений и чувств'**
+  String get love_spread_screen_description;
+
+  /// No description provided for @career_finance_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Карьера и финансы'**
+  String get career_finance_spread_screen_title;
+
+  /// No description provided for @career_finance_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Профессиональный и финансовый анализ'**
+  String get career_finance_spread_screen_description;
+
+  /// No description provided for @pros_cons_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'За и Против'**
+  String get pros_cons_spread_screen_title;
+
+  /// No description provided for @pros_cons_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Анализ плюсов и минусов ситуации'**
+  String get pros_cons_spread_screen_description;
+
+  /// No description provided for @monthly_forecast_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Месячный прогноз'**
+  String get monthly_forecast_spread_screen_title;
+
+  /// No description provided for @monthly_forecast_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Прогноз по месяцам'**
+  String get monthly_forecast_spread_screen_description;
+
+  /// No description provided for @self_development_balance_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Саморазвитие и баланс'**
+  String get self_development_balance_spread_screen_title;
+
+  /// No description provided for @self_development_balance_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Духовный рост и гармония'**
+  String get self_development_balance_spread_screen_description;
+
+  /// No description provided for @five_cards_spread_screen_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'5 карт'**
+  String get five_cards_spread_screen_title;
+
+  /// No description provided for @five_cards_spread_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Глубокий анализ ситуации'**
+  String get five_cards_spread_screen_description;
+
+  /// No description provided for @celtic_cross_screen_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Полный расклад на 10 карт'**
+  String get celtic_cross_screen_description;
+
+  /// No description provided for @session_completed_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Поздравляем! 🎉'**
+  String get session_completed_title;
+
+  /// No description provided for @session_completed_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Вы сделали 7 раскладов и Вам доступен анализ от таролога по Вашим мыслям'**
+  String get session_completed_description;
+
+  /// No description provided for @session_completed_view_analysis.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Узнать анализ'**
+  String get session_completed_view_analysis;
+
+  /// No description provided for @session_completed_reset.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Сбросить'**
+  String get session_completed_reset;
+
+  /// No description provided for @purchase_love_store_unavailable.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Магазин недоступен, попробуйте позже'**
+  String get purchase_love_store_unavailable;
+
+  /// No description provided for @card_of_the_day_screen_generating_answer.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Генерируется ответ... Пожалуйста, подождите'**
+  String get card_of_the_day_screen_generating_answer;
+
+  /// No description provided for @main_screen_nav_spreads.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Расклады'**
+  String get main_screen_nav_spreads;
+
+  /// No description provided for @main_screen_nav_journal.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Дневник'**
+  String get main_screen_nav_journal;
+
+  /// No description provided for @main_screen_nav_menu.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Меню'**
+  String get main_screen_nav_menu;
+
+  /// No description provided for @main_screen_privacy_settings.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Настройки конфиденциальности'**
+  String get main_screen_privacy_settings;
+
+  /// No description provided for @consent_dialog_title.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Персонализация контента'**
+  String get consent_dialog_title;
+
+  /// No description provided for @consent_dialog_description.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Мы используем данные для улучшения вашего опыта и показа релевантной рекламы. Ваши данные защищены и не передаются третьим лицам.'**
+  String get consent_dialog_description;
+
+  /// No description provided for @consent_analytics.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Аналитика и улучшение приложения'**
+  String get consent_analytics;
+
+  /// No description provided for @consent_personalized_ads.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Персонализированная реклама'**
+  String get consent_personalized_ads;
+
+  /// No description provided for @consent_accept.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Принять'**
+  String get consent_accept;
+
+  /// No description provided for @consent_decline.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Отклонить'**
+  String get consent_decline;
+
+  /// No description provided for @consent_privacy_policy.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Политика конфиденциальности'**
+  String get consent_privacy_policy;
+
+  /// No description provided for @consent_settings_updated.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Настройки конфиденциальности обновлены'**
+  String get consent_settings_updated;
+
+  /// No description provided for @consent_settings_error.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Ошибка при открытии настроек конфиденциальности'**
+  String get consent_settings_error;
+
+  /// No description provided for @five_card_spread_past.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Прошлое'**
+  String get five_card_spread_past;
+
+  /// No description provided for @five_card_spread_present.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Настоящее'**
+  String get five_card_spread_present;
+
+  /// No description provided for @five_card_spread_hidden.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Скрытое'**
+  String get five_card_spread_hidden;
+
+  /// No description provided for @five_card_spread_advice.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Совет'**
+  String get five_card_spread_advice;
+
+  /// No description provided for @five_card_spread_outcome.
+  ///
+  /// In ru_RU, this message translates to:
+  /// **'Итог'**
+  String get five_card_spread_outcome;
 }
 
 class _AppLocalizationsDelegate
@@ -3410,74 +3834,8 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-    'af',
-    'am',
-    'ar',
-    'az',
-    'bg',
-    'bn',
-    'ca',
-    'cs',
-    'de',
-    'en',
-    'es',
-    'fa',
-    'fi',
-    'fil',
-    'fr',
-    'gl',
-    'gu',
-    'hi',
-    'hr',
-    'hu',
-    'hy',
-    'id',
-    'is',
-    'it',
-    'he',
-    'ja',
-    'ka',
-    'kk',
-    'km',
-    'kn',
-    'ko',
-    'ky',
-    'lo',
-    'lt',
-    'lv',
-    'mk',
-    'ml',
-    'mn',
-    'mr',
-    'ms',
-    'my',
-    'ne',
-    'nl',
-    'no',
-    'pa',
-    'pl',
-    'pt',
-    'rm',
-    'ro',
-    'ru',
-    'si',
-    'sk',
-    'sl',
-    'sq',
-    'sr',
-    'sv',
-    'sw',
-    'ta',
-    'te',
-    'th',
-    'tr',
-    'uk',
-    'ur',
-    'vi',
-    'zh',
-    'zu',
-  ].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'ru'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -3486,276 +3844,6 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when language+country codes are specified.
   switch (locale.languageCode) {
-    case 'az':
-      {
-        switch (locale.countryCode) {
-          case 'AZ':
-            return AppLocalizationsAzAz();
-        }
-        break;
-      }
-    case 'bn':
-      {
-        switch (locale.countryCode) {
-          case 'BD':
-            return AppLocalizationsBnBd();
-        }
-        break;
-      }
-    case 'cs':
-      {
-        switch (locale.countryCode) {
-          case 'CZ':
-            return AppLocalizationsCsCz();
-        }
-        break;
-      }
-    case 'de':
-      {
-        switch (locale.countryCode) {
-          case 'DE':
-            return AppLocalizationsDeDe();
-        }
-        break;
-      }
-    case 'en':
-      {
-        switch (locale.countryCode) {
-          case 'GB':
-            return AppLocalizationsEnGb();
-          case 'US':
-            return AppLocalizationsEnUs();
-        }
-        break;
-      }
-    case 'es':
-      {
-        switch (locale.countryCode) {
-          case 'ES':
-            return AppLocalizationsEsEs();
-        }
-        break;
-      }
-    case 'fi':
-      {
-        switch (locale.countryCode) {
-          case 'FI':
-            return AppLocalizationsFiFi();
-        }
-        break;
-      }
-    case 'fr':
-      {
-        switch (locale.countryCode) {
-          case 'CA':
-            return AppLocalizationsFrCa();
-          case 'FR':
-            return AppLocalizationsFrFr();
-        }
-        break;
-      }
-    case 'gl':
-      {
-        switch (locale.countryCode) {
-          case 'ES':
-            return AppLocalizationsGlEs();
-        }
-        break;
-      }
-    case 'hi':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsHiIn();
-        }
-        break;
-      }
-    case 'hu':
-      {
-        switch (locale.countryCode) {
-          case 'HU':
-            return AppLocalizationsHuHu();
-        }
-        break;
-      }
-    case 'hy':
-      {
-        switch (locale.countryCode) {
-          case 'AM':
-            return AppLocalizationsHyAm();
-        }
-        break;
-      }
-    case 'is':
-      {
-        switch (locale.countryCode) {
-          case 'IS':
-            return AppLocalizationsIsIs();
-        }
-        break;
-      }
-    case 'it':
-      {
-        switch (locale.countryCode) {
-          case 'IT':
-            return AppLocalizationsItIt();
-        }
-        break;
-      }
-    case 'he':
-      {
-        switch (locale.countryCode) {
-          case 'IL':
-            return AppLocalizationsHeIl();
-        }
-        break;
-      }
-    case 'ja':
-      {
-        switch (locale.countryCode) {
-          case 'JP':
-            return AppLocalizationsJaJp();
-        }
-        break;
-      }
-    case 'ka':
-      {
-        switch (locale.countryCode) {
-          case 'GE':
-            return AppLocalizationsKaGe();
-        }
-        break;
-      }
-    case 'km':
-      {
-        switch (locale.countryCode) {
-          case 'KH':
-            return AppLocalizationsKmKh();
-        }
-        break;
-      }
-    case 'kn':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsKnIn();
-        }
-        break;
-      }
-    case 'ko':
-      {
-        switch (locale.countryCode) {
-          case 'KR':
-            return AppLocalizationsKoKr();
-        }
-        break;
-      }
-    case 'ky':
-      {
-        switch (locale.countryCode) {
-          case 'KG':
-            return AppLocalizationsKyKg();
-        }
-        break;
-      }
-    case 'lo':
-      {
-        switch (locale.countryCode) {
-          case 'LA':
-            return AppLocalizationsLoLa();
-        }
-        break;
-      }
-    case 'mk':
-      {
-        switch (locale.countryCode) {
-          case 'MK':
-            return AppLocalizationsMkMk();
-        }
-        break;
-      }
-    case 'ml':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsMlIn();
-        }
-        break;
-      }
-    case 'mn':
-      {
-        switch (locale.countryCode) {
-          case 'MN':
-            return AppLocalizationsMnMn();
-        }
-        break;
-      }
-    case 'mr':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsMrIn();
-        }
-        break;
-      }
-    case 'ms':
-      {
-        switch (locale.countryCode) {
-          case 'MY':
-            return AppLocalizationsMsMy();
-        }
-        break;
-      }
-    case 'my':
-      {
-        switch (locale.countryCode) {
-          case 'MM':
-            return AppLocalizationsMyMm();
-        }
-        break;
-      }
-    case 'ne':
-      {
-        switch (locale.countryCode) {
-          case 'NP':
-            return AppLocalizationsNeNp();
-        }
-        break;
-      }
-    case 'nl':
-      {
-        switch (locale.countryCode) {
-          case 'NL':
-            return AppLocalizationsNlNl();
-        }
-        break;
-      }
-    case 'no':
-      {
-        switch (locale.countryCode) {
-          case 'NO':
-            return AppLocalizationsNoNo();
-        }
-        break;
-      }
-    case 'pl':
-      {
-        switch (locale.countryCode) {
-          case 'PL':
-            return AppLocalizationsPlPl();
-        }
-        break;
-      }
-    case 'pt':
-      {
-        switch (locale.countryCode) {
-          case 'BR':
-            return AppLocalizationsPtBr();
-          case 'PT':
-            return AppLocalizationsPtPt();
-        }
-        break;
-      }
     case 'ru':
       {
         switch (locale.countryCode) {
@@ -3764,200 +3852,19 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
         }
         break;
       }
-    case 'si':
-      {
-        switch (locale.countryCode) {
-          case 'LK':
-            return AppLocalizationsSiLk();
-        }
-        break;
-      }
-    case 'sv':
-      {
-        switch (locale.countryCode) {
-          case 'SE':
-            return AppLocalizationsSvSe();
-        }
-        break;
-      }
-    case 'ta':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsTaIn();
-        }
-        break;
-      }
-    case 'te':
-      {
-        switch (locale.countryCode) {
-          case 'IN':
-            return AppLocalizationsTeIn();
-        }
-        break;
-      }
-    case 'tr':
-      {
-        switch (locale.countryCode) {
-          case 'TR':
-            return AppLocalizationsTrTr();
-        }
-        break;
-      }
-    case 'zh':
-      {
-        switch (locale.countryCode) {
-          case 'CN':
-            return AppLocalizationsZhCn();
-          case 'HK':
-            return AppLocalizationsZhHk();
-          case 'TW':
-            return AppLocalizationsZhTw();
-        }
-        break;
-      }
   }
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'af':
-      return AppLocalizationsAf();
-    case 'am':
-      return AppLocalizationsAm();
-    case 'ar':
-      return AppLocalizationsAr();
-    case 'az':
-      return AppLocalizationsAz();
-    case 'bg':
-      return AppLocalizationsBg();
-    case 'bn':
-      return AppLocalizationsBn();
-    case 'ca':
-      return AppLocalizationsCa();
-    case 'cs':
-      return AppLocalizationsCs();
-    case 'de':
-      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
-    case 'es':
-      return AppLocalizationsEs();
-    case 'fa':
-      return AppLocalizationsFa();
-    case 'fi':
-      return AppLocalizationsFi();
-    case 'fil':
-      return AppLocalizationsFil();
-    case 'fr':
-      return AppLocalizationsFr();
-    case 'gl':
-      return AppLocalizationsGl();
-    case 'gu':
-      return AppLocalizationsGu();
-    case 'hi':
-      return AppLocalizationsHi();
-    case 'hr':
-      return AppLocalizationsHr();
-    case 'hu':
-      return AppLocalizationsHu();
-    case 'hy':
-      return AppLocalizationsHy();
-    case 'id':
-      return AppLocalizationsId();
-    case 'is':
-      return AppLocalizationsIs();
-    case 'it':
-      return AppLocalizationsIt();
-    case 'he':
-      return AppLocalizationsHe();
-    case 'ja':
-      return AppLocalizationsJa();
-    case 'ka':
-      return AppLocalizationsKa();
-    case 'kk':
-      return AppLocalizationsKk();
-    case 'km':
-      return AppLocalizationsKm();
-    case 'kn':
-      return AppLocalizationsKn();
-    case 'ko':
-      return AppLocalizationsKo();
-    case 'ky':
-      return AppLocalizationsKy();
-    case 'lo':
-      return AppLocalizationsLo();
-    case 'lt':
-      return AppLocalizationsLt();
-    case 'lv':
-      return AppLocalizationsLv();
-    case 'mk':
-      return AppLocalizationsMk();
-    case 'ml':
-      return AppLocalizationsMl();
-    case 'mn':
-      return AppLocalizationsMn();
-    case 'mr':
-      return AppLocalizationsMr();
-    case 'ms':
-      return AppLocalizationsMs();
-    case 'my':
-      return AppLocalizationsMy();
-    case 'ne':
-      return AppLocalizationsNe();
-    case 'nl':
-      return AppLocalizationsNl();
-    case 'no':
-      return AppLocalizationsNo();
-    case 'pa':
-      return AppLocalizationsPa();
-    case 'pl':
-      return AppLocalizationsPl();
-    case 'pt':
-      return AppLocalizationsPt();
-    case 'rm':
-      return AppLocalizationsRm();
-    case 'ro':
-      return AppLocalizationsRo();
     case 'ru':
       return AppLocalizationsRu();
-    case 'si':
-      return AppLocalizationsSi();
-    case 'sk':
-      return AppLocalizationsSk();
-    case 'sl':
-      return AppLocalizationsSl();
-    case 'sq':
-      return AppLocalizationsSq();
-    case 'sr':
-      return AppLocalizationsSr();
-    case 'sv':
-      return AppLocalizationsSv();
-    case 'sw':
-      return AppLocalizationsSw();
-    case 'ta':
-      return AppLocalizationsTa();
-    case 'te':
-      return AppLocalizationsTe();
-    case 'th':
-      return AppLocalizationsTh();
-    case 'tr':
-      return AppLocalizationsTr();
-    case 'uk':
-      return AppLocalizationsUk();
-    case 'ur':
-      return AppLocalizationsUr();
-    case 'vi':
-      return AppLocalizationsVi();
-    case 'zh':
-      return AppLocalizationsZh();
-    case 'zu':
-      return AppLocalizationsZu();
   }
 
   throw FlutterError(
-    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
-  );
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

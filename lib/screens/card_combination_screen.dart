@@ -7,6 +7,7 @@ import '../widgets/ad_promo_block.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/services/review_service.dart';
+import 'dart:ui';
 
 class CardCombinationScreen extends StatefulWidget {
   const CardCombinationScreen({Key? key}) : super(key: key);
@@ -219,9 +220,6 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                 fit: BoxFit.cover,
               ),
             ),
-            Container(
-              color: Colors.black.withOpacity(0.35),
-            ),
             SafeArea(
               top: true,
               bottom: true,
@@ -231,9 +229,42 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                   padding: EdgeInsets.zero,
                   children: [
                     const SizedBox(height: 8),
-                    Text(
-                      AppLocalizations.of(context)!.good_day,
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 12, right: 60, bottom: 10),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 420),
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(22),
+                              topRight: Radius.circular(22),
+                              bottomRight: Radius.circular(22),
+                              bottomLeft: Radius.circular(6),
+                            ),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.22),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(22),
+                                    topRight: Radius.circular(22),
+                                    bottomRight: Radius.circular(22),
+                                    bottomLeft: Radius.circular(6),
+                                  ),
+                                  border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
+                                ),
+                                child: Text(
+                                  AppLocalizations.of(context)!.good_day,
+                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 18),
                     ...List.generate(_selectedCards.length, (index) {
@@ -263,31 +294,35 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                                     controller.text = displayText;
                                   }
                                   
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.13),
-                                      borderRadius: BorderRadius.circular(18),
-                                      border: Border.all(color: Color(0xFFDBC195), width: 1.5),
-                                    ),
-                                    child: TextField(
-                                      controller: controller,
-                                      focusNode: focusNode,
-                                      onChanged: (value) {
-                                        // При изменении текста ищем соответствующую английскую карту
-                                        final englishCard = _getEnglishCardName(value);
-                                        setState(() {
-                                          _selectedCards[index] = englishCard;
-                                        });
-                                      },
-                                      style: const TextStyle(color: Colors.white, fontSize: 18),
-                                      cursorColor: Color(0xFFDBC195),
-                                      decoration: InputDecoration(
-                                        filled: false,
-                                        hintText: AppLocalizations.of(context)!.card,
-                                        hintStyle: const TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.w400),
-                                        border: InputBorder.none,
-                                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                                  return TextField(
+                                    controller: controller,
+                                    focusNode: focusNode,
+                                    onChanged: (value) {
+                                      // При изменении текста ищем соответствующую английскую карту
+                                      final englishCard = _getEnglishCardName(value);
+                                      setState(() {
+                                        _selectedCards[index] = englishCard;
+                                      });
+                                    },
+                                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                                    cursorColor: Color(0xFFDBC195),
+                                    decoration: InputDecoration(
+                                      filled: false,
+                                      hintText: AppLocalizations.of(context)!.card,
+                                      hintStyle: const TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.w400),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(18),
+                                        borderSide: const BorderSide(color: Color(0xFFDBC195), width: 1.6),
                                       ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(18),
+                                        borderSide: const BorderSide(color: Color(0xFFDBC195), width: 1.6),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(18),
+                                        borderSide: const BorderSide(color: Color(0xFFDBC195), width: 2.2),
+                                      ),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                                     ),
                                   );
                                 },
@@ -374,33 +409,82 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                     if (_answerText != null && !_isError && !_isLoading)
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.35),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-                          child: Text(
-                            _answerText!,
-                            style: const TextStyle(color: Colors.white, fontSize: 16),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 12, right: 60, bottom: 10),
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 420),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(22),
+                                  topRight: Radius.circular(22),
+                                  bottomRight: Radius.circular(22),
+                                  bottomLeft: Radius.circular(6),
+                                ),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withOpacity(0.22),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(22),
+                                        topRight: Radius.circular(22),
+                                        bottomRight: Radius.circular(22),
+                                        bottomLeft: Radius.circular(6),
+                                      ),
+                                      border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
+                                    ),
+                                    child: Text(
+                                      _answerText!,
+                                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     if (_answerText != null && _isError)
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: Colors.red.withOpacity(0.5)),
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-                          child: Text(
-                            _answerText!,
-                            style: const TextStyle(color: Colors.white, fontSize: 16),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 12, right: 60, bottom: 10),
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(maxWidth: 420),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(22),
+                                  topRight: Radius.circular(22),
+                                  bottomRight: Radius.circular(22),
+                                  bottomLeft: Radius.circular(6),
+                                ),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red.withOpacity(0.18),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(22),
+                                        topRight: Radius.circular(22),
+                                        bottomRight: Radius.circular(22),
+                                        bottomLeft: Radius.circular(6),
+                                      ),
+                                      border: Border.all(color: Colors.red.withOpacity(0.35), width: 1.2),
+                                    ),
+                                    child: Text(
+                                      _answerText!,
+                                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

@@ -45,6 +45,10 @@
 	<string>TarotAI needs your location for analytics and advertising purposes</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>TarotAI needs your calendar to provide personalised advertising experience tailored to you</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Для голосового ввода размышлений</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Для распознавания речи в ваших размышлениях</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

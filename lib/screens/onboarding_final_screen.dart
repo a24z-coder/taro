@@ -58,12 +58,12 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Ошибка'),
+        title: const Text("Error"),
         content: Text(message),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK'),
+            child: const Text("OK"),
           ),
         ],
       ),
@@ -98,7 +98,7 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
       setState(() {
         _isLoading = false;
       });
-      _showErrorDialog('Ошибка покупки: $e');
+      _showErrorDialog("Purchase error: ${e.toString()}");
     }
   }
 
@@ -238,8 +238,8 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
                             selected: _selectedPlan == 0,
                             title: loc.onboarding_final_yearly,
                             badge: loc.onboarding_final_badge,
-                            price: _getYearlyPrice(),
-                            subPrice: _getYearlySubPrice(),
+                            price: _purchaseService.isAvailable && _getYearlyPrice().isNotEmpty ? _getYearlyPrice() : AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                            subPrice: _purchaseService.isAvailable && _getYearlySubPrice().isNotEmpty ? _getYearlySubPrice() : '',
                             onTap: () => setState(() => _selectedPlan = 0),
                             langCode: langCode,
                           ),
@@ -247,12 +247,21 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
                           _buildPlanOption(
                             selected: _selectedPlan == 1,
                             title: loc.onboarding_final_trial,
-                            price: _getMonthlyPrice(),
-                            subPrice: _getMonthlySubPrice(),
+                            price: _purchaseService.isAvailable && _getMonthlyPrice().isNotEmpty ? _getMonthlyPrice() : AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                            subPrice: _purchaseService.isAvailable && _getMonthlySubPrice().isNotEmpty ? _getMonthlySubPrice() : '',
                             onTap: () => setState(() => _selectedPlan = 1),
                             langCode: langCode,
                           ),
                           const SizedBox(height: 12),
+                         if (!_purchaseService.isAvailable || _purchaseService.errorMessage != null)
+                           Padding(
+                             padding: const EdgeInsets.only(bottom: 12),
+                             child: Text(
+                               AppLocalizations.of(context)!.purchase_love_store_unavailable,
+                               style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14, fontWeight: FontWeight.w500),
+                               textAlign: TextAlign.center,
+                             ),
+                           ),
                           Text(
                             loc.onboarding_final_note,
                             style: bodyStyleForLang(langCode, 11, color: Colors.white.withOpacity(0.8)),
@@ -260,7 +269,7 @@ class _OnboardingFinalScreenState extends State<OnboardingFinalScreen> {
                           ),
                           const SizedBox(height: 16),
                           ElevatedButton(
-                            onPressed: _onBuy,
+                            onPressed: (_purchaseService.isAvailable && _purchaseService.errorMessage == null) ? _onBuy : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: accentColor,
                               foregroundColor: Colors.black,
