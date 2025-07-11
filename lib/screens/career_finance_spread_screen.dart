@@ -13,9 +13,11 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 // dots анимация
 class _AnimatedDotsWidget extends StatefulWidget {
@@ -166,6 +168,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> w
   @override
   void initState() {
     super.initState();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
     _speech = stt.SpeechToText();
@@ -237,12 +240,25 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> w
     String challengeCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1]!, l10n) : '';
     String adviceCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2]!, l10n) : '';
     String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
-    String prompt = l10n.career_three_card_prompt(
-      situationCardRu,
-      challengeCardRu,
-      adviceCardRu,
-      _userName.isNotEmpty ? _userName : l10n.the_user,
-      userText,
+    // Формируем промт для OpenAI с учетом всех нужных параметров
+    final lang = _languageCode.split('-').first;
+    debugPrint('[CareerFinanceSpread] _languageCode:  [36m$_languageCode [0m, lang: $lang');
+    debugPrint('[CareerFinanceSpread] promptTemplates.keys: ' + promptTemplates.keys.toString());
+    debugPrint('[CareerFinanceSpread] promptTemplates[lang]: ' + (promptTemplates[lang]?.keys.toString() ?? 'null'));
+    final template = promptTemplates[lang]?['career_finance_spread_screen_prompt'] ?? '';
+    debugPrint('[CareerFinanceSpread] template: ' + template);
+    debugPrint('[CareerFinanceSpread] template found: ${template.isNotEmpty}');
+    
+    String prompt = interpolatePrompt(
+      template,
+      {
+        'userName': _userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user,
+        'pastCard': situationCardRu,
+        'presentCard': challengeCardRu,
+        'adviceCard': adviceCardRu,
+        'question': userText,
+        'lang': _languageCode,
+      },
     );
     print('[CareerSpread] situationCardRu: ' + situationCardRu);
     print('[CareerSpread] challengeCardRu: ' + challengeCardRu);
@@ -878,7 +894,7 @@ class _CareerFinanceSpreadScreenState extends State<CareerFinanceSpreadScreen> w
                             if (_openAiAnswer != null) ...[
                               MessageBubble(
                                 key: const ValueKey('openai_answer'),
-                                text: _openAiAnswer!,
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
                                 isUser: false,
                               ),
                               const SizedBox(height: 24),

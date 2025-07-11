@@ -133,6 +133,7 @@ class _ReflectionSummaryScreenState extends State<ReflectionSummaryScreen> {
         allReflections,
         cardsString,
         userName,
+        Localizations.localeOf(context).toLanguageTag(),
       );
 
       final recommendations = await _translationService.getTranslatedText(

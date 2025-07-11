@@ -351,6 +351,14 @@ class CardTranslations {
   }
 }
 
+/// Универсальная функция для подстановки значений по ключам в шаблон
+String interpolatePrompt(String template, Map<String, String> values) {
+  return template.replaceAllMapped(RegExp(r'\{(\w+)\}'), (match) {
+    final key = match.group(1);
+    return values[key] ?? match.group(0)!;
+  });
+}
+
 /// Universal function to get localized spread title by spreadKey
 String getLocalizedSpreadTitle(String spreadKey, String languageCode) {
   switch (spreadKey) {

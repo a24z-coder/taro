@@ -13,10 +13,12 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:flutter/services.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 class LoveSpreadScreen extends StatefulWidget {
   const LoveSpreadScreen({super.key});
@@ -66,11 +68,25 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
     _speech = stt.SpeechToText();
     _reflectionController.addListener(() { setState(() {}); });
+    // Обновляем приветственное сообщение после инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _messages = [
+            _ChatMessage(
+              text: _getTranslatedInitialMessage(),
+              isUser: false,
+            ),
+          ];
+        });
+      }
+    });
+    
     // Проверяем сессию
     checkSession();
   }
@@ -478,7 +494,7 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> with SingleTickerPr
                             if (_openAiAnswer != null) ...[
                               MessageBubble(
                                 key: const ValueKey('openai_answer'),
-                                text: _openAiAnswer!,
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
                                 isUser: false,
                               ),
                               const SizedBox(height: 24),
@@ -626,12 +642,21 @@ class _LoveSpreadScreenState extends State<LoveSpreadScreen> with SingleTickerPr
     String youCardRu = cards.length > 0 ? CardTranslations.getTranslatedCardName(cards[0], l10n) : '';
     String partnerCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1], l10n) : '';
     String dynamicCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2], l10n) : '';
-    String prompt = l10n.love_spread_prompt(
-      dynamicCardRu,
-      partnerCardRu,
-      _userName.isNotEmpty ? _userName : l10n.the_user,
-      userText,
-      youCardRu,
+    final lang = _languageCode.split('-').first;
+    debugPrint('[LoveSpread] _languageCode: $_languageCode, lang: $lang');
+    final template = promptTemplates[lang]?['love_spread_prompt'] ?? '';
+    debugPrint('[LoveSpread] template found: ${template.isNotEmpty}');
+    
+    String prompt = interpolatePrompt(
+      template,
+      {
+        'userName': _userName.isNotEmpty ? _userName : l10n.the_user,
+        'youCard': youCardRu,
+        'partnerCard': partnerCardRu,
+        'dynamicCard': dynamicCardRu,
+        'userQuestion': userText,
+        'lang': _languageCode,
+      },
     );
     print('[LoveSpread] youCardRu: ' + youCardRu);
     print('[LoveSpread] partnerCardRu: ' + partnerCardRu);

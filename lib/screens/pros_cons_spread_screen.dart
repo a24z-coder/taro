@@ -13,9 +13,11 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 // dots анимация
 class _AnimatedDotsWidget extends StatefulWidget {
@@ -163,7 +165,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> with Sessio
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
     _speech = stt.SpeechToText();
@@ -559,7 +561,7 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> with Sessio
                             if (_openAiAnswer != null) ...[
                               MessageBubble(
                                 key: const ValueKey('openai_answer'),
-                                text: _openAiAnswer!,
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
                                 isUser: false,
                               ),
                               const SizedBox(height: 24),
@@ -707,17 +709,24 @@ class _ProsConsSpreadScreenState extends State<ProsConsSpreadScreen> with Sessio
     String conCardRu = cards.length > 1 ? CardTranslations.getTranslatedCardName(cards[1]!, l10n) : '';
     String adviceCardRu = cards.length > 2 ? CardTranslations.getTranslatedCardName(cards[2]!, l10n) : '';
     String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
-    String prompt = l10n.pros_cons_three_card_prompt(
-      adviceCardRu,
-      conCardRu,
-      proCardRu,
-      _userName.isNotEmpty ? _userName : l10n.the_user,
-      userText,
-    );
-    print('[ProsConsSpread] proCardRu: ' + proCardRu);
-    print('[ProsConsSpread] conCardRu: ' + conCardRu);
-    print('[ProsConsSpread] adviceCardRu: ' + adviceCardRu);
-    print('[ProsConsSpread] prompt: ' + prompt);
+    final lang = _languageCode.split('-').first;
+    debugPrint('[ProsConsSpread] _languageCode: $_languageCode, lang: $lang');
+    final template = promptTemplates[lang]?['pros_cons_spread_prompt'] ?? '';
+    debugPrint('[ProsConsSpread] template found: ${template.isNotEmpty}');
+    final proCard = CardTranslations.getTranslatedCardName(_flippedCards[0] ?? '', l10n);
+    final conCard = CardTranslations.getTranslatedCardName(_flippedCards[1] ?? '', l10n);
+    final adviceCard = CardTranslations.getTranslatedCardName(_flippedCards[2] ?? '', l10n);
+    debugPrint('[ProsConsSpread] proCard: ' + proCard);
+    debugPrint('[ProsConsSpread] conCard: ' + conCard);
+    debugPrint('[ProsConsSpread] adviceCard: ' + adviceCard);
+    String prompt = template
+      .replaceAll('{userName}', _userName.isNotEmpty ? _userName : l10n.the_user)
+      .replaceAll('{question}', userText)
+      .replaceAll('{proCard}', proCard)
+      .replaceAll('{conCard}', conCard)
+      .replaceAll('{adviceCard}', adviceCard)
+      .replaceAll('{lang}', _languageCode);
+    debugPrint('[ProsConsSpread] prompt: ' + prompt);
     try {
       final response = await TranslationService().getTranslatedText(
         text: prompt,

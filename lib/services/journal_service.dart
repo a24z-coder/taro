@@ -5,6 +5,7 @@ import 'package:tarot_ai/models/journal_entry.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:tarot_ai/services/language_service.dart';
 import 'package:tarot_ai/utils/card_translations.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart'; // Added import for promptTemplates
 
 class JournalService extends ChangeNotifier {
   static final JournalService _instance = JournalService._internal();
@@ -407,27 +408,16 @@ class JournalService extends ChangeNotifier {
     final entriesSummary = entries.map((entry) {
       return '${entry.date.day}.${entry.date.month}: ${entry.spreadType} - ${entry.cards.join(', ')}';
     }).join('\n');
-    
     final totalEntries = entries.length;
     final spreadTypes = entries.map((e) => e.spreadType).toSet().join(', ');
-    
-    return '''
-Проанализируй мою неделю с таро и дай глубокое понимание моего пути самопознания:
-
-За неделю было сделано $totalEntries раскладов:
-$entriesSummary
-
-Типы раскладов: $spreadTypes
-
-Дай:
-1. Общие тренды и паттерны недели
-2. Основные темы, которые проявились
-3. Мой прогресс в самопознании
-4. Рекомендации на следующую неделю
-5. Вдохновляющее послание для продолжения пути
-
-Будь поддерживающим и мотивирующим. Отмечай прогресс и достижения.
-''';
+    // Получаем шаблон для нужного языка
+    final lang = languageCode.split('-').first;
+    final template = promptTemplates[lang]?['journal_service_weekly_analysis_prompt'] ?? promptTemplates['en']!['journal_service_weekly_analysis_prompt']!;
+    // Подставляем переменные
+    return template
+      .replaceAll('{totalEntries}', totalEntries.toString())
+      .replaceAll('{entriesSummary}', entriesSummary)
+      .replaceAll('{spreadTypes}', spreadTypes);
   }
 
   /// Установка состояния загрузки

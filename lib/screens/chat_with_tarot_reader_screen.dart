@@ -18,6 +18,7 @@ import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import 'dart:async';
 import 'package:tarot_ai/mixins/session_check_mixin.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 
 class ChatWithTarotReaderScreen extends StatefulWidget {
   const ChatWithTarotReaderScreen({super.key});
@@ -102,104 +103,35 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> w
       debugPrint('[ThreeCard] Starting prompt formation at ${promptStartTime.toIso8601String()}');
       
       final loc = AppLocalizations.of(context)!;
-      final cards = _flippedCards.whereType<String>().toList;
-      
-      // Получаем перевод названия карты через локализацию
-      String getCardTranslation(String cardName) {
-        final cardKey = CardTranslations.cardToLocalizationKey[cardName];
-        if (cardKey != null) {
-          switch (cardKey) {
-            case 'card_name_the_fool': return loc.card_name_the_fool;
-            case 'card_name_the_magician': return loc.card_name_the_magician;
-            case 'card_name_the_high_priestess': return loc.card_name_the_high_priestess;
-            case 'card_name_the_empress': return loc.card_name_the_empress;
-            case 'card_name_the_emperor': return loc.card_name_the_emperor;
-            case 'card_name_the_hierophant': return loc.card_name_the_hierophant;
-            case 'card_name_the_lovers': return loc.card_name_the_lovers;
-            case 'card_name_the_chariot': return loc.card_name_the_chariot;
-            case 'card_name_strength': return loc.card_name_strength;
-            case 'card_name_the_hermit': return loc.card_name_the_hermit;
-            case 'card_name_wheel_of_fortune': return loc.card_name_wheel_of_fortune;
-            case 'card_name_justice': return loc.card_name_justice;
-            case 'card_name_the_hanged_man': return loc.card_name_the_hanged_man;
-            case 'card_name_death': return loc.card_name_death;
-            case 'card_name_temperance': return loc.card_name_temperance;
-            case 'card_name_the_devil': return loc.card_name_the_devil;
-            case 'card_name_the_tower': return loc.card_name_the_tower;
-            case 'card_name_the_star': return loc.card_name_the_star;
-            case 'card_name_the_moon': return loc.card_name_the_moon;
-            case 'card_name_the_sun': return loc.card_name_the_sun;
-            case 'card_name_judgement': return loc.card_name_judgement;
-            case 'card_name_the_world': return loc.card_name_the_world;
-            case 'card_name_ace_of_wands': return loc.card_name_ace_of_wands;
-            case 'card_name_two_of_wands': return loc.card_name_two_of_wands;
-            case 'card_name_three_of_wands': return loc.card_name_three_of_wands;
-            case 'card_name_four_of_wands': return loc.card_name_four_of_wands;
-            case 'card_name_five_of_wands': return loc.card_name_five_of_wands;
-            case 'card_name_six_of_wands': return loc.card_name_six_of_wands;
-            case 'card_name_seven_of_wands': return loc.card_name_seven_of_wands;
-            case 'card_name_eight_of_wands': return loc.card_name_eight_of_wands;
-            case 'card_name_nine_of_wands': return loc.card_name_nine_of_wands;
-            case 'card_name_ten_of_wands': return loc.card_name_ten_of_wands;
-            case 'card_name_page_of_wands': return loc.card_name_page_of_wands;
-            case 'card_name_knight_of_wands': return loc.card_name_knight_of_wands;
-            case 'card_name_queen_of_wands': return loc.card_name_queen_of_wands;
-            case 'card_name_king_of_wands': return loc.card_name_king_of_wands;
-            case 'card_name_ace_of_cups': return loc.card_name_ace_of_cups;
-            case 'card_name_two_of_cups': return loc.card_name_two_of_cups;
-            case 'card_name_three_of_cups': return loc.card_name_three_of_cups;
-            case 'card_name_four_of_cups': return loc.card_name_four_of_cups;
-            case 'card_name_five_of_cups': return loc.card_name_five_of_cups;
-            case 'card_name_six_of_cups': return loc.card_name_six_of_cups;
-            case 'card_name_seven_of_cups': return loc.card_name_seven_of_cups;
-            case 'card_name_eight_of_cups': return loc.card_name_eight_of_cups;
-            case 'card_name_nine_of_cups': return loc.card_name_nine_of_cups;
-            case 'card_name_ten_of_cups': return loc.card_name_ten_of_cups;
-            case 'card_name_page_of_cups': return loc.card_name_page_of_cups;
-            case 'card_name_knight_of_cups': return loc.card_name_knight_of_cups;
-            case 'card_name_queen_of_cups': return loc.card_name_queen_of_cups;
-            case 'card_name_king_of_cups': return loc.card_name_king_of_cups;
-            case 'card_name_ace_of_swords': return loc.card_name_ace_of_swords;
-            case 'card_name_two_of_swords': return loc.card_name_two_of_swords;
-            case 'card_name_three_of_swords': return loc.card_name_three_of_swords;
-            case 'card_name_four_of_swords': return loc.card_name_four_of_swords;
-            case 'card_name_five_of_swords': return loc.card_name_five_of_swords;
-            case 'card_name_six_of_swords': return loc.card_name_six_of_swords;
-            case 'card_name_seven_of_swords': return loc.card_name_seven_of_swords;
-            case 'card_name_eight_of_swords': return loc.card_name_eight_of_swords;
-            case 'card_name_nine_of_swords': return loc.card_name_nine_of_swords;
-            case 'card_name_ten_of_swords': return loc.card_name_ten_of_swords;
-            case 'card_name_page_of_swords': return loc.card_name_page_of_swords;
-            case 'card_name_knight_of_swords': return loc.card_name_knight_of_swords;
-            case 'card_name_queen_of_swords': return loc.card_name_queen_of_swords;
-            case 'card_name_king_of_swords': return loc.card_name_king_of_swords;
-            case 'card_name_ace_of_pentacles': return loc.card_name_ace_of_pentacles;
-            case 'card_name_two_of_pentacles': return loc.card_name_two_of_pentacles;
-            case 'card_name_three_of_pentacles': return loc.card_name_three_of_pentacles;
-            case 'card_name_four_of_pentacles': return loc.card_name_four_of_pentacles;
-            case 'card_name_five_of_pentacles': return loc.card_name_five_of_pentacles;
-            case 'card_name_six_of_pentacles': return loc.card_name_six_of_pentacles;
-            case 'card_name_seven_of_pentacles': return loc.card_name_seven_of_pentacles;
-            case 'card_name_eight_of_pentacles': return loc.card_name_eight_of_pentacles;
-            case 'card_name_nine_of_pentacles': return loc.card_name_nine_of_pentacles;
-            case 'card_name_ten_of_pentacles': return loc.card_name_ten_of_pentacles;
-            case 'card_name_page_of_pentacles': return loc.card_name_page_of_pentacles;
-            case 'card_name_knight_of_pentacles': return loc.card_name_knight_of_pentacles;
-            case 'card_name_queen_of_pentacles': return loc.card_name_queen_of_pentacles;
-            case 'card_name_king_of_pentacles': return loc.card_name_king_of_pentacles;
-            default: return cardName;
-          }
-        }
-        return cardName;
-      }
-
-      String prompt = loc.chat_with_tarot_reader_screen_prompt(
-        getCardTranslation(_flippedCards[2] ?? ''), // futureCard
-        getCardTranslation(_flippedCards[0] ?? ''), // pastCard
-        getCardTranslation(_flippedCards[1] ?? ''), // presentCard
-        _userName.isNotEmpty ? _userName : loc.the_user, // userName
-        _userQuestion, // userQuestion
+      await UserService().loadUserName();
+      final String userName = UserService().userName;
+      final card1 = CardTranslations.getTranslatedCardName(_flippedCards[0] ?? '', loc);
+      final card2 = CardTranslations.getTranslatedCardName(_flippedCards[1] ?? '', loc);
+      final card3 = CardTranslations.getTranslatedCardName(_flippedCards[2] ?? '', loc);
+      debugPrint('[ThreeCard] userName: ' + userName);
+      debugPrint('[ThreeCard] card1: ' + card1);
+      debugPrint('[ThreeCard] card2: ' + card2);
+      debugPrint('[ThreeCard] card3: ' + card3);
+      debugPrint('[ThreeCard] userQuestion: ' + _userQuestion);
+      debugPrint('[ThreeCard] language: ' + _languageCode);
+      final lang = _languageCode.contains('-') ? _languageCode.replaceAll('-', '_') : _languageCode;
+      debugPrint('[ThreeCard] lang: $lang');
+      final template = promptTemplates[lang]?.containsKey('chat_with_tarot_reader_screen_prompt') == true
+        ? promptTemplates[lang]!['chat_with_tarot_reader_screen_prompt'] ?? ''
+        : promptTemplates[lang.split('_').first]?['chat_with_tarot_reader_screen_prompt'] ?? '';
+      debugPrint('[ThreeCard] template found: ${template.isNotEmpty}');
+      String prompt = interpolatePrompt(
+        template,
+        {
+          'userName': userName,
+          'pastCard': card1,
+          'presentCard': card2,
+          'hiddenCard': card3,
+          'userQuestion': _userQuestion,
+          'lang': _languageCode,
+        },
       );
+      debugPrint('[ThreeCard] PROMPT TO AI: ' + prompt);
 
       final promptEndTime = DateTime.now();
       debugPrint('[ThreeCard] Prompt formation completed at ${promptEndTime.toIso8601String()}, duration: ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
@@ -270,11 +202,11 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> w
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
-    checkSession();
-    // Добавляем слушатель изменений языка
     LanguageService().addListener(_onLanguageChanged);
+    _speech = stt.SpeechToText();
+    _reflectionController.addListener(() { setState(() {}); });
     // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -289,11 +221,8 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> w
       }
     });
     
-    // Инициализация для рефлексии
-    _reflectionController.addListener(() {
-      setState(() {});
-    });
-    _speech = stt.SpeechToText();
+    // Проверяем сессию
+    checkSession();
   }
 
   void _startReflectionSequence() async {
@@ -428,9 +357,11 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> w
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
+    final languageCode = LanguageService().currentLanguageCode;
+    debugPrint('[ChatWithTarotReaderScreen] _loadLanguage: loaded languageCode: $languageCode');
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = languageCode;
     });
   }
 
@@ -833,7 +764,7 @@ class _ChatWithTarotReaderScreenState extends State<ChatWithTarotReaderScreen> w
                                 margin: const EdgeInsets.only(left: 12, right: 60, bottom: 10),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: (_openAiAnswer ?? '').split('\n\n').map((p) => Padding(
+                                  children: (_openAiAnswer ?? '').replaceAll('**', '').replaceAll('*', '').split('\n\n').map((p) => Padding(
                                     padding: const EdgeInsets.only(bottom: 8),
                                     child: Text(p, style: const TextStyle(color: Colors.white, fontSize: 16)),
                                   )).toList(),

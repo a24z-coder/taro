@@ -13,9 +13,11 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 class FiveCardSpreadScreen extends StatefulWidget {
   const FiveCardSpreadScreen({Key? key}) : super(key: key);
@@ -215,16 +217,24 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> with Sessio
       debugPrint('[FiveCardPrompt] userName: "'+actualUserName+'"');
       debugPrint('[FiveCardPrompt] userQuestion: "'+_userQuestion+'"');
 
-      String prompt = AppLocalizations.of(context)!.five_cards_screen_prompt(
-        getCardTranslation(safeFlippedCards[3]), // adviceCard - 1-й параметр
-        getCardTranslation(safeFlippedCards[2]), // hiddenCard - 2-й параметр
-        getCardTranslation(safeFlippedCards[4]), // outcomeCard - 3-й параметр
-        getCardTranslation(safeFlippedCards[0]), // pastCard - 4-й параметр
-        getCardTranslation(safeFlippedCards[1]), // presentCard - 5-й параметр
-        actualUserName,                          // userName - 6-й параметр
-        _userQuestion,                           // userQuestion - 7-й параметр
+      final lang = _languageCode.split('-').first;
+      debugPrint('[FiveCardPrompt] _languageCode: $_languageCode, lang: $lang');
+      final template = promptTemplates[lang]?['five_cards_screen_prompt'] ?? '';
+      debugPrint('[FiveCardPrompt] template found: ${template.isNotEmpty}');
+      // Новый порядок: прошлое, настоящее, скрытая, совет, итог
+      String prompt = interpolatePrompt(
+        template,
+        {
+          'userName': actualUserName,
+          'pastCard': getCardTranslation(safeFlippedCards[0]),
+          'presentCard': getCardTranslation(safeFlippedCards[1]),
+          'hiddenCard': getCardTranslation(safeFlippedCards[2]),
+          'adviceCard': getCardTranslation(safeFlippedCards[3]),
+          'outcomeCard': getCardTranslation(safeFlippedCards[4]),
+          'userQuestion': _userQuestion,
+          'lang': _languageCode,
+        },
       );
-
       debugPrint('[FiveCardPrompt] PROMPT RESULT:\n' + prompt);
 
       final promptEndTime = DateTime.now();
@@ -294,14 +304,11 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> with Sessio
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
-    _speech = stt.SpeechToText();
-    _reflectionController.addListener(() {
-      setState(() {});
-    });
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
-    // Добавляем слушатель изменений языка
     LanguageService().addListener(_onLanguageChanged);
+    _speech = stt.SpeechToText();
+    _reflectionController.addListener(() { setState(() {}); });
     // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -316,11 +323,6 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> with Sessio
       }
     });
     
-    // Инициализация для рефлексии
-    _reflectionController.addListener(() {
-      setState(() {});
-    });
-    
     // Проверяем сессию
     checkSession();
   }
@@ -333,9 +335,11 @@ class _FiveCardSpreadScreenState extends State<FiveCardSpreadScreen> with Sessio
   }
 
   Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+    await LanguageService().loadLanguage();
+    final languageCode = LanguageService().currentLanguageCode;
+    debugPrint('[FiveCardSpreadScreen] _loadLanguage: loaded languageCode: $languageCode');
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'en';
+      _languageCode = languageCode;
     });
   }
 

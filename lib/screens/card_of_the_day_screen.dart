@@ -18,6 +18,7 @@ import 'package:tarot_ai/utils/subscription_utils.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/widgets/session_completed_dialog.dart';
 import 'package:tarot_ai/mixins/session_check_mixin.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 
 class CardOfTheDayScreen extends StatefulWidget {
   const CardOfTheDayScreen({super.key});
@@ -46,19 +47,28 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> with SessionChe
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
     _setCard();
     checkSession();
   }
 
+  void _onLanguageChanged() {
+    setState(() {
+      _languageCode = LanguageService().currentLanguageCode;
+    });
+  }
+
   Future<void> _loadLanguage() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
+      final languageCode = LanguageService().currentLanguageCode;
+      debugPrint('[CardOfTheDayScreen] _loadLanguage: loaded languageCode: $languageCode');
       setState(() {
-        _languageCode = prefs.getString('languageCode') ?? 'en';
+        _languageCode = languageCode;
       });
     } catch (e) {
+      debugPrint('[CardOfTheDayScreen] _loadLanguage: error: $e');
       setState(() {
         isError = true;
         errorMessage = e.toString();
@@ -139,9 +149,17 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> with SessionChe
 
       final translatedCardName = CardTranslations.getTranslation(cardName ?? '', AppLocalizations.of(context)!);
 
-      final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
-        translatedCardName,
-        _userName ?? '',
+      final lang = _languageCode.split('-').first;
+      debugPrint('[CardOfTheDayScreen] _languageCode: $_languageCode, lang: $lang');
+      final template = promptTemplates[lang]?['card_of_the_day_screen_generate_description_prompt'] ?? '';
+      debugPrint('[CardOfTheDayScreen] template found: ${template.isNotEmpty}');
+      final prompt = interpolatePrompt(
+        template,
+        {
+          'name': _userName ?? '',
+          'cardName': translatedCardName,
+          'lang': _languageCode,
+        },
       );
 
       final openAIDescription = await translationService.getTranslatedText(
@@ -168,9 +186,17 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> with SessionChe
     try {
       final translatedCardName = CardTranslations.getTranslation(cardName ?? '', AppLocalizations.of(context)!);
       
-      final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
-        translatedCardName,
-        _userName ?? '',
+      final lang = _languageCode.split('-').first;
+      debugPrint('[CardOfTheDayScreen] _loadNewDescription: _languageCode: $_languageCode, lang: $lang');
+      final template = promptTemplates[lang]?['card_of_the_day_screen_generate_description_prompt'] ?? '';
+      debugPrint('[CardOfTheDayScreen] _loadNewDescription: template found: ${template.isNotEmpty}');
+      final prompt = interpolatePrompt(
+        template,
+        {
+          'name': _userName ?? '',
+          'cardName': translatedCardName,
+          'lang': _languageCode,
+        },
       );
 
       final openAIDescription = await translationService.getTranslatedText(
@@ -377,7 +403,7 @@ class _CardOfTheDayScreenState extends State<CardOfTheDayScreen> with SessionChe
                                       ),
                                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                                       child: Text(
-                                        description ?? '',
+                                        (description ?? '').replaceAll('**', '').replaceAll('*', ''),
                                         style: bodyStyleForLang(langCode, 16, color: Colors.white),
                                         textAlign: TextAlign.left,
                                       ),

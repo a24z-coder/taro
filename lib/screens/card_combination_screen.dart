@@ -3,6 +3,7 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:tarot_ai/services/translation_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tarot_ai/services/user_service.dart';
+import 'package:tarot_ai/services/language_service.dart';
 import '../widgets/ad_promo_block.dart';
 import 'package:tarot_ai/l10n/app_localizations.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
@@ -29,15 +30,15 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _translationService = TranslationService();
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
   }
 
-  Future<void> _loadLanguage() async {
-    final prefs = await SharedPreferences.getInstance();
+  void _onLanguageChanged() {
     setState(() {
-      _languageCode = prefs.getString('language_code') ?? 'ru';
+      _languageCode = LanguageService().currentLanguageCode;
     });
   }
 
@@ -437,7 +438,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                                       border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
                                     ),
                                     child: Text(
-                                      _answerText!,
+                                      _answerText!.replaceAll('**', '').replaceAll('*', ''),
                                       style: const TextStyle(color: Colors.white, fontSize: 16),
                                     ),
                                   ),
@@ -478,7 +479,7 @@ class _CardCombinationScreenState extends State<CardCombinationScreen> {
                                       border: Border.all(color: Colors.red.withOpacity(0.35), width: 1.2),
                                     ),
                                     child: Text(
-                                      _answerText!,
+                                      _answerText!.replaceAll('**', '').replaceAll('*', ''),
                                       style: const TextStyle(color: Colors.white, fontSize: 16),
                                     ),
                                   ),

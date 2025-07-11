@@ -15,6 +15,7 @@ import 'dart:ui'; // Added for ImageFilter
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/widgets/session_completed_dialog.dart';
 import 'package:tarot_ai/mixins/session_check_mixin.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 
 class QuickReadingScreen extends StatefulWidget {
   const QuickReadingScreen({super.key});
@@ -122,11 +123,24 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
       // Убеждаемся, что имя пользователя загружено
       await UserService().loadUserName();
       final String userName = UserService().userName;
-      
-      final String prompt = l10n.quick_reading_result_screen_prompt(
-        cardNameRu,
-        userName,
+      debugPrint('[QuickReading] userName: ' + userName);
+      debugPrint('[QuickReading] cardName: ' + cardName);
+      debugPrint('[QuickReading] question: ' + _questionController.text.trim());
+      debugPrint('[QuickReading] language: ' + _languageCode);
+      final lang = _languageCode.split('-').first;
+      debugPrint('[QuickReading] lang: $lang');
+      final template = promptTemplates[lang]?['quick_reading_result_screen_prompt'] ?? '';
+      debugPrint('[QuickReading] template found: ${template.isNotEmpty}');
+      final String prompt = interpolatePrompt(
+        template,
+        {
+          'userName': userName,
+          'cards': cardName,
+          'question': _questionController.text.trim(),
+          'language': _languageCode,
+        },
       );
+      debugPrint('[QuickReading] PROMPT TO AI: ' + prompt);
       
       if (prompt.isEmpty) {
         debugPrint('[QuickReading] ERROR: prompt is empty');
@@ -203,15 +217,13 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
   @override
   void initState() {
     super.initState();
+    _languageCode = LanguageService().currentLanguageCode;
+    _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500), // Длительность анимации движения
     );
-    _loadLanguage();
-    _loadUserName();
-    checkSession();
-    // Добавляем слушатель изменений языка
-    LanguageService().addListener(_onLanguageChanged);
     // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
@@ -225,6 +237,9 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
         });
       }
     });
+    
+    // Проверяем сессию
+    checkSession();
   }
 
   @override
@@ -244,8 +259,10 @@ class _QuickReadingScreenState extends State<QuickReadingScreen> with SingleTick
 
   Future<void> _loadLanguage() async {
     await LanguageService().loadLanguage();
+    final languageCode = LanguageService().currentLanguageCode;
+    debugPrint('[QuickReadingScreen] _loadLanguage: loaded languageCode: $languageCode');
     setState(() {
-      _languageCode = LanguageService().currentLanguageCode;
+      _languageCode = languageCode;
     });
   }
 

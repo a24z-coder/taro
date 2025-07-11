@@ -13,9 +13,11 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 // dots анимация
 class _AnimatedDotsWidget extends StatefulWidget {
@@ -164,8 +166,9 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
+    LanguageService().addListener(_onLanguageChanged);
     _speech = stt.SpeechToText();
     _reflectionController.addListener(() { setState(() {}); });
     // Обновляем приветственное сообщение после инициализации
@@ -184,6 +187,12 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
     
     // Проверяем сессию
     checkSession();
+  }
+
+  void _onLanguageChanged() {
+    setState(() {
+      _languageCode = LanguageService().currentLanguageCode;
+    });
   }
 
   Future<void> _loadLanguage() async {
@@ -243,16 +252,19 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
     // Переводим каждую карту на русский (строго по индексам, чтобы порядок совпадал с визуальным)
     List<String> cardsRu = List.generate(7, (i) => _flippedCards[i] != null ? CardTranslations.getTranslatedCardName(_flippedCards[i]!, l10n) : '');
     String userText = _messages.firstWhere((m) => m.isUser, orElse: () => _ChatMessage(text: '', isUser: true)).text;
-    String prompt = l10n.self_growth_balance_prompt(
-      cardsRu[6], // adviceCard
-      cardsRu[3], // bodyCard
-      cardsRu[5], // challengeCard
-      cardsRu[0], // coreCard
-      cardsRu[2], // emotionCard
-      cardsRu[1], // mindCard
-      cardsRu[4], // strengthCard
-      _userName.isNotEmpty ? _userName : l10n.the_user,
-      userText,
+    final lang = _languageCode.split('-').first;
+    debugPrint('[SelfDevelopmentBalance] _languageCode: $_languageCode, lang: $lang');
+    final template = promptTemplates[lang]?['self_development_balance_spread_screen_prompt'] ?? '';
+    debugPrint('[SelfDevelopmentBalance] template found: ${template.isNotEmpty}');
+    
+    String prompt = interpolatePrompt(
+      template,
+      {
+        'userName': _userName.isNotEmpty ? _userName : l10n.the_user,
+        'cards': cardsRu.join(', '),
+        'userQuestion': userText,
+        'lang': _languageCode,
+      },
     );
     print('[SelfDevelopmentBalance] prompt: ' + prompt);
     try {
@@ -866,7 +878,7 @@ class _SelfDevelopmentBalanceSpreadScreenState extends State<SelfDevelopmentBala
                             if (_openAiAnswer != null) ...[
                               MessageBubble(
                                 key: const ValueKey('openai_answer'),
-                                text: _openAiAnswer!,
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
                                 isUser: false,
                               ),
                               const SizedBox(height: 24),

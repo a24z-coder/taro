@@ -52,8 +52,8 @@ class _FunSpreadScreenState extends State<FunSpreadScreen> {
     final userName = UserService().userName.isNotEmpty ? UserService().userName : loc.the_user;
     
     String prompt = _withSwearWords
-        ? loc.fun_spread_screen_mate_prompt_3cards(userName)
-        : loc.fun_spread_screen_no_mate_prompt_3cards(userName);
+        ? loc.fun_spread_screen_mate_prompt_3cards(LanguageService().currentLanguageCode, userName)
+        : loc.fun_spread_screen_no_mate_prompt_3cards(LanguageService().currentLanguageCode, userName);
     try {
       final text = await TranslationService().getTranslatedText(
         text: prompt,

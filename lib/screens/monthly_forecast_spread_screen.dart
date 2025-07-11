@@ -13,9 +13,11 @@ import 'package:tarot_ai/services/review_service.dart';
 import '../widgets/message_bubble.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
 import '../mixins/session_check_mixin.dart';
+
 
 // dots анимация
 class _AnimatedDotsWidget extends StatefulWidget {
@@ -163,7 +165,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
   @override
   void initState() {
     super.initState();
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
     _speech = stt.SpeechToText();
@@ -303,22 +305,17 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
       default:
         monthRu = AppLocalizations.of(context)!.month_january + ' ' + now.year.toString();
     }
-    String prompt = l10n.monthly_wheel_prompt(
-      cardsRu[0],
-      cardsRu[9],
-      cardsRu[10],
-      cardsRu[11],
-      cardsRu[1],
-      cardsRu[2],
-      cardsRu[3],
-      cardsRu[4],
-      cardsRu[5],
-      cardsRu[6],
-      cardsRu[7],
-      cardsRu[8],
-      monthRu,
-      _userName.isNotEmpty ? _userName : l10n.the_user,
-      userText
+    final lang = _languageCode.split('-').first;
+    debugPrint('[MonthlyForecast] _languageCode: $_languageCode, lang: $lang');
+    final template = promptTemplates[lang]?['monthly_forecast_spread_screen_prompt'] ?? '';
+    debugPrint('[MonthlyForecast] template found: ${template.isNotEmpty}');
+    String prompt = interpolatePrompt(
+      template,
+      {
+        'userName': _userName.isNotEmpty ? _userName : l10n.the_user,
+        'cards': cardsRu.join(', '),
+        'lang': _languageCode,
+      },
     );
     print('[MonthlyForecast] prompt: ' + prompt);
     try {
@@ -995,7 +992,7 @@ class _MonthlyForecastSpreadScreenState extends State<MonthlyForecastSpreadScree
                             if (_openAiAnswer != null) ...[
                               MessageBubble(
                                 key: const ValueKey('openai_answer'),
-                                text: _openAiAnswer!,
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
                                 isUser: false,
                               ),
                               const SizedBox(height: 24),

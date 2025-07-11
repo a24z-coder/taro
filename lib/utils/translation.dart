@@ -16,4 +16,12 @@ String tr(String key) {
   }
   // fallback: если нет перевода — возвращаем ключ (или дефолтный язык)
   return translations[key]?["ru-RU"] ?? key;
+}
+
+String interpolatePrompt(String template, Map<String, String> values) {
+  var result = template;
+  values.forEach((key, value) {
+    result = result.replaceAll('{$key}', value);
+  });
+  return result;
 } 

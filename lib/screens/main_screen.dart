@@ -30,6 +30,7 @@ import 'package:tarot_ai/services/journal_service.dart';
 import 'package:tarot_ai/widgets/session_completed_dialog.dart';
 import 'package:flutter/widgets.dart';
 import '../main.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -263,9 +264,15 @@ class _MainScreenState extends State<MainScreen> with RouteAware {
         final languageCode = LanguageService().currentLanguageCode;
         
         final translatedCardName = CardTranslations.getTranslation(cardName, AppLocalizations.of(context)!);
-        final prompt = AppLocalizations.of(context)!.card_of_the_day_screen_generate_description_prompt(
-          translatedCardName,
-          _userName,
+        final lang = languageCode.split('-').first;
+        final template = promptTemplates[lang]?['card_of_the_day_screen_generate_description_prompt'] ?? '';
+        final prompt = interpolatePrompt(
+          template,
+          {
+            'name': _userName ?? '',
+            'cardName': translatedCardName,
+            'lang': languageCode,
+          },
         );
         
         debugPrint('[MainScreen] _loadCardOfTheDayDescription: generating description for $cardName');

@@ -9,6 +9,7 @@ import 'package:tarot_ai/utils/card_translations.dart';
 import 'package:stack_appodeal_flutter/stack_appodeal_flutter.dart';
 import 'package:tarot_ai/utils/subscription_utils.dart';
 import 'package:tarot_ai/widgets/ad_promo_block.dart';
+import 'package:tarot_ai/services/user_service.dart';
 import 'dart:ui';
 
 class ReflectionSummaryScreen extends StatefulWidget {
@@ -89,12 +90,19 @@ class _ReflectionSummaryScreenState extends State<ReflectionSummaryScreen> {
           .map((entry) => entry!.reflectionText!)
           .join('\n\n');
 
-      final prompt = '''Ты виртуальный таролог и наставник. На основе размышлений пользователя после расклада карт Таро проанализируй его внутреннее состояние и мягко предложи совет, который поможет ему лучше осознать свой путь, чувства или действия.
+      // Собираем все карты
+      final allCards = _reflectionEntries
+          .where((entry) => entry?.cards != null && entry!.cards.isNotEmpty)
+          .expand((entry) => entry!.cards)
+          .toList();
 
-Вот его саморефлексия:
-$allReflections
-
-Сформулируй дружелюбную, личную рекомендацию (5-7 предложений), как будто ты говоришь это участнику духовной сессии. Не используй клише. Не давай "жёстких" советов, только мягкие подсказки. Не упоминай карты Таро напрямую, сосредоточься на внутренних темах и чувствах.''';
+      final userName = UserService().userName;
+      final prompt = AppLocalizations.of(context)!.reflection_summary_ai_prompt(
+        userName,
+        allReflections,
+        allCards.join(', '),
+        Localizations.localeOf(context).toLanguageTag(),
+      );
 
       final recommendations = await _translationService.getTranslatedText(
         text: prompt,

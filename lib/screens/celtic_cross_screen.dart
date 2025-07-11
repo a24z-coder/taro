@@ -13,7 +13,10 @@ import '../widgets/message_bubble.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tarot_ai/services/journal_service.dart';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 import 'package:tarot_ai/models/journal_entry.dart';
+import 'package:tarot_ai/mixins/session_check_mixin.dart';
+
 
 // dots анимация
 class _AnimatedDotsWidget extends StatefulWidget {
@@ -103,7 +106,7 @@ class CelticCrossScreen extends StatefulWidget {
   State<CelticCrossScreen> createState() => _CelticCrossScreenState();
 }
 
-class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTickerProviderStateMixin {
+class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTickerProviderStateMixin, SessionCheckMixin {
   final List<String> _allCardNames = CardTranslations.cards;
   final Random _random = Random();
 
@@ -144,11 +147,12 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
   @override
   void initState() {
     super.initState();
-    _speech = stt.SpeechToText();
-    _reflectionController.addListener(() { setState(() {}); });
-    _loadLanguage();
+    _languageCode = LanguageService().currentLanguageCode;
     _loadUserName();
     LanguageService().addListener(_onLanguageChanged);
+    _speech = stt.SpeechToText();
+    _reflectionController.addListener(() { setState(() {}); });
+    // Обновляем приветственное сообщение после инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -161,6 +165,9 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
         });
       }
     });
+    
+    // Проверяем сессию
+    checkSession();
   }
 
   @override
@@ -282,19 +289,29 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
     }
 
     final promptStartTime = DateTime.now();
-    String prompt = AppLocalizations.of(context)!.celtic_cross_screen_prompt(
-      getCardTranslation(_flippedCards[1] ?? ''), // challengeCard
-      getCardTranslation(_flippedCards[4] ?? ''), // consciousCard
-      getCardTranslation(_flippedCards[7] ?? ''), // environmentCard
-      getCardTranslation(_flippedCards[5] ?? ''), // hiddenCard
-      getCardTranslation(_flippedCards[8] ?? ''), // hopesCard
-      getCardTranslation(_flippedCards[9] ?? ''), // outcomeCard
-      getCardTranslation(_flippedCards[3] ?? ''), // pastCard
-      getCardTranslation(_flippedCards[6] ?? ''), // selfCard
-      getCardTranslation(_flippedCards[0] ?? ''), // situationCard
-      getCardTranslation(_flippedCards[2] ?? ''), // subconsciousCard
-      (_userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user),
-      _userQuestion,
+    
+    final lang = _languageCode.split('-').first;
+    debugPrint('[CelticCross] _languageCode: $_languageCode, lang: $lang');
+    final template = promptTemplates[lang]?['celtic_cross_screen_prompt'] ?? '';
+    debugPrint('[CelticCross] template found: ${template.isNotEmpty}');
+    
+    String prompt = interpolatePrompt(
+      template,
+      {
+        'userName': _userName.isNotEmpty ? _userName : AppLocalizations.of(context)!.the_user,
+        'situationCard': getCardTranslation(_flippedCards[0] ?? ''),
+        'challengeCard': getCardTranslation(_flippedCards[1] ?? ''),
+        'subconsciousCard': getCardTranslation(_flippedCards[2] ?? ''),
+        'pastCard': getCardTranslation(_flippedCards[3] ?? ''),
+        'consciousCard': getCardTranslation(_flippedCards[4] ?? ''),
+        'hiddenCard': getCardTranslation(_flippedCards[5] ?? ''),
+        'selfCard': getCardTranslation(_flippedCards[6] ?? ''),
+        'environmentCard': getCardTranslation(_flippedCards[7] ?? ''),
+        'hopesCard': getCardTranslation(_flippedCards[8] ?? ''),
+        'outcomeCard': getCardTranslation(_flippedCards[9] ?? ''),
+        'userQuestion': _userQuestion,
+        'lang': _languageCode,
+      },
     );
     final promptEndTime = DateTime.now();
     debugPrint('[CelticCross] _loadCardsDescription: prompt created in ${promptEndTime.difference(promptStartTime).inMilliseconds}ms');
@@ -1088,11 +1105,11 @@ class _CelticCrossScreenState extends State<CelticCrossScreen> with SingleTicker
                           if (_showCards) _buildCelticCrossCards(),
                           if (_openAiAnswer != null) ...[
                             const SizedBox(height: 24),
-                            MessageBubble(
-                              key: const ValueKey('openai_answer'),
-                              text: _openAiAnswer!,
-                              isUser: false,
-                            ),
+                                                          MessageBubble(
+                                key: const ValueKey('openai_answer'),
+                                text: _openAiAnswer!.replaceAll('**', '').replaceAll('*', ''),
+                                isUser: false,
+                              ),
                             const SizedBox(height: 24),
                             _buildReflectionBlock(),
                             const SizedBox(height: 24),

@@ -13,6 +13,7 @@ import 'dart:async';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:ui';
+import 'package:tarot_ai/utils/prompt_templates.dart';
 
 class QuickReadingResultScreen extends StatefulWidget {
   final String selectedCardName;
@@ -97,9 +98,16 @@ class _QuickReadingResultScreenState extends State<QuickReadingResultScreen> {
       final String cardNameRu = CardTranslations.getTranslation(widget.selectedCardName, l10n);
       await UserService().loadUserName();
       final String userName = UserService().userName;
-      final String prompt = l10n.quick_reading_result_screen_prompt(
-        cardNameRu,
-        userName,
+      final lang = widget.languageCode.split('-').first;
+      final template = promptTemplates[lang]?['quick_reading_result_screen_prompt'] ?? '';
+      final String prompt = interpolatePrompt(
+        template,
+        {
+          'userName': userName,
+          'cards': cardNameRu,
+          'question': '',
+          'language': widget.languageCode,
+        },
       );
       debugPrint('[QuickReadingResultScreen] PROMPT TO AI: ' + prompt);
       if (prompt.isEmpty) {
@@ -801,7 +809,7 @@ class _MessageBubble extends StatelessWidget {
                           ),
                           border: Border.all(color: Colors.white.withOpacity(0.18), width: 1.2),
                         ),
-                        child: Text(text, style: textStyle.copyWith(color: Colors.white)),
+                        child: Text(text.replaceAll('**', '').replaceAll('*', ''), style: textStyle.copyWith(color: Colors.white)),
                       ),
                     ),
                   ),
